@@ -199,7 +199,7 @@ DEPENDENCIES
   rails (= 3.1.0)
   rb-fsevent
   ruby-debug19
-  sass-rails (~> 3.1.0)
+  sass-rails (= 3.1.4)
   simple_form (= 1.5.2)
   slim-rails (= 0.2.1)
   sqlite3
