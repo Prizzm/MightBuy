@@ -1,0 +1,6 @@
+.detail-image
+  = centered { image_link(resource.image, :thumb) }
+
+.attrs
+  = attr "Name", resource.name
+  = attr "Created", shorthand(resource.created_at)

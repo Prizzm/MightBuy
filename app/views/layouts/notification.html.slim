@@ -1,0 +1,7 @@
+= table "email" do
+  = image_tag(url("assets/email/header-share.jpg"))
+  = table "content" do
+    = yield
+  .notes
+    .sent-by= sent_to_by
+    .powered-by= image_link url("assets/email/brand.png"), root_url

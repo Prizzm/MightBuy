@@ -1,0 +1,27 @@
+#feedback
+  = simple_form_for collection.new, :url => collection_path do |form|
+    #header
+      .logo
+        = image_tag(brand.logo.landing);
+      .message
+        h1 
+          | Thanks so much for your purchase!
+        blockquote
+          | It would really help us out at BRYNA if you let us know what you thought 
+          | of our Hermann Mini &amp; shared it with your friends too!
+    #comment
+      .product
+        .image
+          = image_tag(parent.image.thumb)
+        .social
+          = like_button("http://www.shopbryna.com")
+      = form.input :body, :as => :text, :label => false, :placeholder => "Say something about me.."
+      = hidden_field_tag(:redirect_to, product_feedback_thanks_path(parent))
+    #footer
+      .title
+        = link_to parent.name, product_path(parent), :class => "product-link"
+        |  by 
+        = link_to brand.name, "#", :class => "brand-link"
+      .buttons
+        = link_to "By Prizzm", "#prizzm", :class => "by-link"
+        = form.submit "Say It!"

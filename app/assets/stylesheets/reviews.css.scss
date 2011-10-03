@@ -1,0 +1,270 @@
+// Imports
+@import "compass/css3";
+
+// Feedback
+
+#feedback
+{
+  width: 640px;
+  margin: 150px auto 50px auto;
+  
+  #header
+  {
+    position: relative;
+    margin: 10px 0px;
+    padding: 20px;
+    height: 80px;
+    background: rgba(70, 70, 70, 0.1);
+    border: 1px solid #cacaca;
+    @include border-radius(3px, 3px);
+    @include single-box-shadow(#cfcfcf, 0px, 1px, 1px);
+    
+    .logo
+    {
+      position: relative;
+      top: -5px;
+      width: 150px;
+      height: 90px;
+      background: #fff;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      @include border-radius(3px, 3px);
+      @include single-box-shadow(#999, 0px, 1px, 2px);
+      img { vertical-align: middle; }
+    }
+    
+    .message
+    {
+      position: absolute;
+      top: 20px;
+      left: 190px;
+
+      h1
+      {
+        color: #333;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 5px 0px;
+        @include single-text-shadow(#efefef, 0px, 1px, 0px);
+      }
+      
+      blockquote
+      {
+        color: #666;
+        line-height: 1.5em;
+        font-style: italic;
+        @include single-text-shadow(#efefef, 0px, 1px, 0px);
+      }
+    }
+    
+  }
+  
+  #comment
+  {
+    position: relative;
+    width: 644px;
+    height: 252px;
+    left: -2px;
+    background: url("/assets/feedback-comment.png") no-repeat;
+    
+    .product
+    {
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      margin: 17px 15px;
+      text-align: center;
+      
+      .image
+      {
+        width: 100%;
+        height: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        img { vertical-align: middle; }
+      }
+      
+      .social
+      {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 25px;
+        background: rgba(255, 255, 255, 0.95);
+      }
+    }
+    
+    textarea
+    {
+      position: absolute;
+      color: #333;
+      margin: 25px;
+      top: 0px;
+      right: 0px;
+      width: 375px;
+      height: 190px;
+      resize: none;
+      font-size: 16px;
+      font-weight: normal;
+      outline: none;
+      border: none;
+      line-height: 1.5em;
+    }
+  }
+  
+  #footer
+  {
+    position: relative;
+    margin: 5px 0px;
+    height: 50px;
+    line-height: 50px;
+    
+    .title
+    {
+      float: left;
+      color: #999;
+      font-size: 12px;
+      font-style: italic;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      
+      a.product-link
+      {
+        color: #c84857;
+        font-size: 20px;
+        text-decoration: none;
+        @include single-text-shadow(#fff, 0px, 1px, 0px);
+        &:hover{ color: #ff5a6c; }
+      }
+      
+      a.brand-link
+      {
+        color: #333;
+        font-size: 14px;
+        &:hover { color: #666; }
+      }
+      
+    }
+    
+    .buttons
+    {
+      float: right;
+      
+      .by-link
+      {
+        float: left;
+        display: block;
+        width: 89px;
+        height: 37px;
+        margin: 5px 15px 0px 0px;
+        background: url("/assets/by.png");
+        overflow: hidden;
+        text-indent: -9999em;
+        
+        &:hover { background-position: 0px 37px; };
+      }
+      
+      input
+      {
+        cursor: pointer;
+        color: #fff;
+        font-size: 14px;
+        padding: 10px 25px;
+        border: 1px solid #982c39;
+        @include border-radius(4px, 4px);
+        @include single-box-shadow(#999, 0px, 1px, 2px);
+        @include single-text-shadow(#222, 0px, 1px, 0px);
+        @include linear-gradient(color-stops(#f16c7c, #bf404f));
+        
+        &:hover
+        {
+          @include linear-gradient(color-stops(#ff5369, #bf404f));
+        }
+      }
+      
+    }
+    
+  }
+  
+}
+
+// Thanks
+
+#feedback-thanks
+{
+  margin: auto;
+  width: 646px;
+  
+  h1
+  {
+    overflow: hidden;
+    margin: 100px auto 20px auto;
+    width: 369px;
+    height: 56px;
+    text-indent: -9999em;
+    background: url("/assets/sale/header.png");
+  }
+  
+  #banner-top,
+  #banner-mid,
+  #banner-bottom
+  {
+    margin: 5px 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  #banner-top
+  {
+    position: relative;
+    height: 186px;
+    background-image: url("/assets/sale/banner-top.png");
+  }
+  
+  #banner-mid
+  {
+    height: 174px;
+    background-image: url("/assets/sale/banner-mid.png");
+  }
+  
+  #banner-bottom
+  {
+    margin: 20px auto;
+    height: 144px;
+    background-image: url("/assets/sale/banner-bottom.png");
+  }
+  
+  a#notify-link
+  {
+    position: absolute;
+    top: 68px;
+    right: 30px;
+    
+    display: block;
+    width: 113px;
+    height: 45px;
+    overflow: hidden;
+    text-indent: -9999em;
+    background: url("/assets/sale/button-notify.png");
+    
+    &:hover { background-position: 0px 45px; }
+  }
+  
+  #bubble
+  {
+    position: absolute;
+    top: 65px;
+    right: -245px;
+    width: 241px;
+    height: 295px;
+    background: url("/assets/sale/bubble.png");
+  }
+  
+  .hr
+  {
+    margin: 15px 0px;
+    height: 2px;
+    background: url("/assets/dots-light.png");
+  }
+  
+}

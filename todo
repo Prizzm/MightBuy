@@ -1,0 +1,14 @@
+# Todo
+1) Implement invite functionality
+  a) Split invites into types.. base, feedback, etc.
+  b) Create special feedback invite references a product & creates or finds a user.
+  c) Add hash generation to invites w/ url recognition.
+  d) Create the invite mailer w/ styling..
+  e) Create an invite redirector controller (redirect invites to proper url)..
+
+2) Real Data for Feedbacks
+  a) Require user authorization.
+  b) Hook in real logo, image, wording, etc.
+  c) Collect feedback correctly.
+  d) Store user id on feedback save.
+  e) Implement real facebook like & twitter buttons.

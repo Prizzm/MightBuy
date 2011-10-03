@@ -1,0 +1,12 @@
+= app_page do
+
+  h1= header_for(:index)
+
+  - unless collection.empty?
+    = render "list"
+  - else
+    .empty
+      | Looks like there's nothing here!
+
+  .buttons
+     = link_to "Add new..", new_resource_path, :class => "button"

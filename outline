@@ -1,0 +1,24 @@
+# Outline
+
+brand ->
+  name: string
+  products ->
+    name: string
+    product_image: string
+    - reviews
+
+invites ->
+  inviter -> polymorphic
+  invitee -> polymorphic
+  reference -> polymorphic
+  code: string
+  type: string
+  
+reviews ->
+  product ->
+  user ->
+  body: text
+  rating: integer
+
+user ->
+  reviews ->

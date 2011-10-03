@@ -1,0 +1,108 @@
+table.email, table.email table
+{
+  -premailer-width: 100%;
+  -premailer-cellpadding: 0;
+  -premailer-cellspacing: 0;
+}
+
+table.email
+{
+  font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  width: 100%;
+  text-align: center;
+  background: #dcdcdc;
+  
+  td.email
+  {
+    padding: 55px 40px;
+    background: #dcdcdc;
+  }
+  
+  table.content
+  {
+    margin: 15px auto;
+    
+    td.content
+    {
+      color: #efefef;
+      padding: 10px 20px;
+    }
+    
+    h1, p
+    {
+      margin: 5px 0px;
+      line-height: 1.5em;
+    }
+    
+    h1
+    {
+      color: #fff;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    
+    p
+    {
+      color: #efefef;
+      font-size: 12px;
+    }
+    
+  }
+  
+  table.content, table.content td.content
+  {
+    width: 584px;
+    height: 124px;
+    -premailer-width: 584;
+    -premailer-height: 124;
+    background: #dcdcdc url("/assets/email/box.png") no-repeat;
+  }
+  
+  a
+  {
+    color: #0099ff;
+    text-decoration: none;
+  }
+  
+  // Notes
+  
+  .notes
+  {
+    color: #7e7e7e;
+    font-size: 11px;
+  }
+  
+  //  Powered by
+  
+  .powered-by
+  {
+    margin: 10px 0px;
+  }
+  
+  // Feedback
+  
+  table.feedback
+  {
+   
+    -premailer-cellpadding: 10;
+    
+    td.logo
+    {
+      overflow: hidden;
+      width: 100px;
+      -premailer-width: 100;
+
+      img
+      {
+        width: 100%;
+        border: 1px solid black;
+      }
+    }
+
+    td.action
+    {
+      width: 110px;
+    }
+  }
+  
+}

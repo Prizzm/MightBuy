@@ -1,0 +1,11 @@
+#app
+  #header
+    = link_to "Prizzm", root_path, :id => "brand"
+    #links
+      = render "menu"
+      
+  #content
+    = yield
+  
+  / Footer
+  = render "partials/footer"
