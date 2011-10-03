@@ -8,7 +8,7 @@ CarrierWave.configure do |config|
       :aws_secret_access_key  => ENV['AWS_SECRET_ACCESS_KEY'],
       :region                 => 'eu-west-1'
     }
-    config.fog_directory  = 'assets-invites.prizzm.com'
+    config.fog_directory  = 'prizzm-invites'
     config.cache_dir      = Rails.root.join("tmp/uploads")
   else
     config.storage :file
