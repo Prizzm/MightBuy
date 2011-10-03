@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 
 # Rails
 gem 'rails', '3.1.0'
-gem 'sqlite3'
 gem 'jquery-rails'
 
 # Authentication
@@ -39,6 +38,7 @@ end
 
 group :development do
   # gem 'unicorn'
+  gem 'sqlite3'
   gem 'rb-fsevent'
   gem 'ruby-debug19', :require => 'ruby-debug'
 end
