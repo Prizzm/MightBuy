@@ -1,5 +1,17 @@
 module ApplicationHelper
 
+  def image? (uploader)
+    !uploader.blank?
+  end
+  
+  def detail_image (uploader, style)
+    if image?(uploader)
+      content_tag :div, :class => "detail-image" do
+        centered { image_link(uploader, style) }
+      end
+    end
+  end
+
   def link (model)
     case model
       when Product then link_to model.name, product_path(model)

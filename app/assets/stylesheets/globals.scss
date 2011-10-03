@@ -311,6 +311,12 @@ body {
     clear: both;
     margin: 15px 0px;
     overflow: hidden;
+    line-height: 30px;
+    
+    a { 
+      font-size: 12px;
+      margin-left: 10px; 
+    }
   }
   
   .button
@@ -320,6 +326,7 @@ body {
     cursor: pointer;
     color: #fff;
     font-size: 12px;
+    line-height: 1em;
     padding: 7px 12px;
     border: 1px solid #982c39;
     @include border-radius(4px, 4px);

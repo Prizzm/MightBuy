@@ -10,7 +10,7 @@ NewPrizzmCom::Application.routes.draw do
   devise_for :brands, :path_names => { 
     :sign_in => 'login', 
     :sign_out => 'logout', 
-    :sign_up => 'signup'
+    :sign_up => 'join'
   }
   
   # Auth Roots

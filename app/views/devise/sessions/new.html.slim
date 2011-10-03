@@ -1,14 +1,12 @@
 = app_page do
-  h1 Sign In
-  = simple_form_for resource, :as => resource_name, :url => session_path(resource_name) do |form|
-    = form.input :email, :label => "Email"
-    = form.input :password, :as => :password, :label => "Password"
-    - if devise_mapping.rememberable?
-      = form.input :remember_me, :as => :boolean, :label => "Remember Me?"
+  #login
+    h1 Login!
+    = simple_form_for resource, :as => resource_name, :url => session_path(resource_name) do |form|
+      = form.input :email, :label => "Email"
+      = form.input :password, :as => :password, :label => "Password"
+      - if devise_mapping.rememberable?
+        = form.input :remember_me, :as => :boolean, :label => "Remember Me?"
     
-    .buttons
-      = form.button :submit, "Login!"
-    
-    /
-      .devise-links
-        = render :partial => "devise/shared/links"
+      .buttons
+        = form.button :submit, "Login!"
+        = link_to "Don't have an account?", new_brand_registration_path

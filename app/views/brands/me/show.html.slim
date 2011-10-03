@@ -2,8 +2,7 @@
 
   h1= current_brand.name || "Give your brand a name :)"
   
-  .detail-image
-    = centered { image_link(resource.logo, :landing) }
+  = detail_image(resource.logo, :landing)
   
   .attrs
     = attr "Name", resource.name

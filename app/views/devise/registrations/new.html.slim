@@ -1,0 +1,15 @@
+= app_page do
+  #join
+    h1 Join Up!
+    = simple_form_for resource, :as => resource_name, :url => registration_path(resource_name) do |form|
+      = form.input :email, :label => "Email"
+      = form.input :password, :as => :password, :label => "Password"
+      = form.input :password_confirmation, :as => :password, :label => "Confirm Password"
+    
+      .buttons
+        = form.button :submit, "Join!"
+        = link_to "Have an account already?", new_brand_session_path
+    
+      /
+        .devise-links
+          = render :partial => "devise/shared/links"

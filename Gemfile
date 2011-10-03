@@ -28,6 +28,9 @@ gem 'fog', '1.0.0'
 # Assets
 gem 'sass-rails', "3.1.4"
 
+# Server
+gem 'thin', '1.2.11'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
