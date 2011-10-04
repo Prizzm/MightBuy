@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110928204254) do
+ActiveRecord::Schema.define(:version => 20111004011210) do
 
   create_table "brands", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20110928204254) do
     t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "on_invite_list"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

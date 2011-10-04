@@ -5,7 +5,7 @@ class InviteObserver < ActiveRecord::Observer
   def after_create (invite)
     case invite
       when Invites::Feedback
-        Notifications.feedback(invite).deliver
+        # Notifications.feedback(invite).deliver
     end
   end
   

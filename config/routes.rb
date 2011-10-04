@@ -33,6 +33,7 @@ NewPrizzmCom::Application.routes.draw do
   
   # Router
   get 'invited/:invite_code' => 'router#invite', :as => :invited
+  post 'beta/join.js' => 'router#join', :as => :beta_join
   
   # Sandbox
   get 'sandbox' => "website#sandbox"

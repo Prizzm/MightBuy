@@ -8,6 +8,15 @@ class RouterController < ApplicationController
     end
   end
   
+  def join
+    if current_user
+      current_user.update_attribute :on_invite_list, true
+      respond_to do |wants|
+        wants.js
+      end
+    end
+  end
+  
   private
   
     def find_invite

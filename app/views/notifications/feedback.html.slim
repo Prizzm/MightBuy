@@ -1,8 +1,8 @@
 table.feedback
   td.logo
-    = image_tag(url(@brand.logo.landing))
+    = image_tag(url(@brand.logo.landing), :alt => @brand.name)
   td.message
     h1 Thanks for your purchase!
     p= truncate(@message, :length => 125)
   td.action
-    = image_link url("assets/email/button-sure.png"), invited_url(@invite.code)
+    = image_link url("assets/email/button-sure.png"), invited_url(@invite.code), :alt => "Sure thing!"

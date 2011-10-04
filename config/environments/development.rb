@@ -30,7 +30,7 @@ NewPrizzmCom::Application.configure do
   
   # Action Mailer default url
   config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'localhost:5000' }
   config.action_mailer.sendmail_settings = { :arguments => '-i' }
   
 end

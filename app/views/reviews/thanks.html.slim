@@ -2,7 +2,7 @@
   #feedback-thanks
     h1 Why, Thank you!
     #banner-top
-      = link_to "Notify Me", "#notify", :id => "notify-link"
+      = link_to "Notify Me", beta_join_path, :id => "notify-link", :remote => true, :method => :post
       #bubble
     #banner-mid
     #banner-bottom
