@@ -40,9 +40,11 @@ module ApplicationHelper
   end
   
   def attr (label, value = nil, &block)
-    content_tag(:div, :class => "attr") do
-      value = capture(&block) if block_given?
-      content_tag(:label, label) << value
+    unless value.blank?
+      content_tag(:div, :class => "attr") do
+        value = capture(&block) if block_given?
+        content_tag(:label, label) << value
+      end
     end
   end
   
@@ -135,6 +137,27 @@ module ApplicationHelper
       <div class="fb-like" data-href="#{url}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
     EOF
     button.html_safe
+  end
+  
+  def meta (options = {})
+    image = options[:image]
+    url   = options[:url] || root_url
+    site  = options[:site] || "Prizzm"
+    title = options[:title] || action_name.split("::").last.pluralize
+    desc = options[:desc]
+
+    display_meta_tags \
+      :site => site,
+      :title => title,
+      :description => desc,
+      :open_graph => {
+        :type => "website",
+        :url  => url,
+        :title => title,
+        :site_name => site,
+        :description => desc,
+        :image => image
+      }
   end
   
 end

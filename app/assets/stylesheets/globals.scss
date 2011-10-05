@@ -130,7 +130,7 @@ body {
     &:hover
     {
       color: #fff;
-      background: #f06;
+      background-color: #f06;
     }
   }
   
@@ -142,6 +142,14 @@ body {
     margin: 15px 0px;
     font-weight: bold;
     font-size: 20px;
+  }
+  
+  h2
+  {
+    color: #333;
+    margin: 15px 0px;
+    font-weight: bold;
+    font-size: 16px;
   }
   
   // Tables
@@ -230,7 +238,7 @@ body {
       margin: 0px 10px;
       font-weight: bold;
       font-size: 11px;
-      line-height: 21px;
+      line-height: 25px;
       text-align: right;
     }
     
@@ -251,10 +259,20 @@ body {
     
     // Inputs
     
-    input.string, input.password
+    input.string,
+    input.password,
+    .text textarea
     {
+      width: 300px;
+      font-size: 15px;
       padding: 3px 5px;
-      font-size: 12px;
+      border: 1px solid #ccc;
+    }
+    
+    .text textarea
+    {
+      resize: none;
+      height: 80px;
     }
     
     .input.boolean
@@ -376,4 +394,35 @@ body {
     }
   }
   
+  // Addthis styling..
+  .addthis_toolbox
+  { 
+    margin: 5px 0px;
+    
+    a:hover
+    {
+      color: #307eb6;
+      background-color: transparent;
+    }
+  }
+  
+}
+
+/* Tooltip */
+
+.ui-tooltip-content
+{
+  text-align: center;
+  
+  a
+  {
+    color: #0cf;
+    text-decoration: none;
+    
+    &:hover
+    {
+      color: #fff;
+      background-color: #f06;
+    }
+  }
 }

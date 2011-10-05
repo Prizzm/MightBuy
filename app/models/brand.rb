@@ -6,7 +6,9 @@ class Brand < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :logo
+  attr_accessible \
+    :email, :password, :password_confirmation, :remember_me, 
+    :name, :logo, :social_url, :social_title, :social_desc, :social_addthis_code
   
   # Uploaders
   mount_uploader :logo, LogoUploader

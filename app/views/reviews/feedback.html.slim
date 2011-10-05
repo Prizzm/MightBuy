@@ -7,21 +7,25 @@
         h1 
           | Thanks so much for your purchase!
         blockquote
-          | It would really help us out at BRYNA if you let us know what you thought 
-          | of our Hermann Mini &amp; shared it with your friends too!
+          = "It would really help us out at %s if you let us know what you thought of your %s &amp; shared it with your friends too!" % [ brand.name, parent.name ]
     #comment
       .product
         .image
           = image_tag(parent.image.thumb)
-        .social
-          = like_button("http://www.shopbryna.com")
       = form.input :body, :as => :text, :label => false, :placeholder => "Say something about me.."
       = hidden_field_tag(:redirect_to, product_feedback_thanks_path(parent))
+      
     #footer
       .title
         = link_to parent.name, product_path(parent), :class => "product-link"
         |  by 
         = link_to brand.name, "#", :class => "brand-link"
-      .buttons
-        = link_to "By Prizzm", "#prizzm", :class => "by-link"
-        = form.submit "Say It!"
+
+      .buttons        
+        = link_to "By Prizzm", root_url, :class => "by-link"
+        = form.submit "Say It!", :id => "feedback-submit"
+
+      - unless brand.social_addthis_code.blank?
+        .social
+          .content
+            = brand.social_addthis_code.html_safe

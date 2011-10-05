@@ -7,6 +7,15 @@
   .attrs
     = attr "Name", resource.name
     = attr "Email", resource.email
+  
+  br
+  h2 Social Details
+  
+  .attrs
+    = attr "URL", resource.social_url
+    = attr "Title", resource.social_title
+    = attr "Description", resource.social_desc
+    = attr "AddThis Sample", resource.social_addthis_code.html_safe
 
   .buttons
     = link_to "Edit", edit_resource_path, :class => "button"

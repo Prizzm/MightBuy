@@ -14,6 +14,7 @@ gem 'inherited_resources', '1.3.0'
 gem 'simple_form', '1.5.2'
 gem 'premailer-rails3', '1.0.0'
 gem 'nokogiri', '1.5.0'
+gem 'meta-tags', '1.2.4', :require => 'meta_tags'
 
 # Uploads
 gem 'mini_magick'

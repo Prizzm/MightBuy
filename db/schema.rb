@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111004011210) do
+ActiveRecord::Schema.define(:version => 20111005040644) do
 
   create_table "brands", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(:version => 20111004011210) do
     t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "social_url"
+    t.string   "social_title"
+    t.string   "social_desc"
+    t.text     "social_addthis_code"
   end
 
   add_index "brands", ["email"], :name => "index_brands_on_email", :unique => true
