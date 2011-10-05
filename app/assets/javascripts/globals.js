@@ -2,7 +2,7 @@ $(function () {
   
   $("#feedback-submit").qtip({
     
-    content: 'Your feedback is 100% confidential :) <br />please like us on facebook below too!',
+    content: 'Your feedback goes straight to us, privately.. unless you want to share! If you do, please like us on facebook below too!',
     position: {
       at: 'top center',
       my: 'bottom center'
