@@ -20,7 +20,8 @@ if Rails.env.development?
     :email => "demo@prizzm.com", 
     :password => "asdfasdf",
     :password_confirmation => "asdfasdf",
-    :logo => tmpfile("logo.jpg")
+    :logo => tmpfile("logo.jpg"),
+    :social_url => "http://www.shopbryna.com"
   
   # Products
   hermann = brand.products.create \

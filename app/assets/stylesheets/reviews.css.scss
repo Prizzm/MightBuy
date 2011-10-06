@@ -324,6 +324,16 @@
     width: 241px;
     height: 295px;
     background: url("/assets/sale/bubble.png");
+    
+    #brand
+    {
+      position: absolute;
+      top: -80px;
+      left: 50px;
+      width: 138px;
+      height: 64px;
+      background: url("/assets/sale/brand.png");
+    }
   }
   
   .hr
