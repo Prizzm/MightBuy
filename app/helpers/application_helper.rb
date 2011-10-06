@@ -174,7 +174,7 @@ module ApplicationHelper
     image = options[:image]
     url   = options[:url] || root_url
     site  = options[:site] || "Prizzm"
-    title = options[:title] || action_name.to_s.pluralize
+    title = options[:title] || resource_class.to_s.split("::").last.pluralize
     desc = options[:desc]
 
     display_meta_tags \
@@ -189,6 +189,28 @@ module ApplicationHelper
         :description => desc,
         :image => image
       }
+  end
+  
+  # Gaug.es helper :)
+  def gaug
+    script = <<-EOF
+      <script type="text/javascript">
+        var _gauges = _gauges || [];
+        (function() {
+          var t   = document.createElement('script');
+          t.type  = 'text/javascript';
+          t.async = true;
+          t.id    = 'gauges-tracker';
+          t.setAttribute('data-site-id', '4e8d448af5a1f52966000005');
+          t.src = '//secure.gaug.es/track.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(t, s);
+        })();
+      </script>
+    EOF
+
+    Struct.new(:es)
+      .new(script.html_safe)
   end
   
 end
