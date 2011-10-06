@@ -1,0 +1,45 @@
+#app.products-section
+{
+
+  // Index Page
+  &.index-page
+  {
+    .list
+    {
+      overflow: hidden;
+    }
+    
+    .product
+    {
+      float: left;
+      margin: 2px;
+      width: 145px;
+      height: 150px;
+      text-align: center;
+      
+      
+      #image td
+      {
+        width: 145px;
+        height: 100px;
+        
+        a:hover
+        {
+          background: #f7f7f7;
+        }
+      }
+      
+      .name, .brand
+      {
+        margin: 5px;
+      }
+      
+      .brand
+      {
+        font-size: 12px;
+        a { color: #999; }
+      }
+    }
+  }
+  
+}

@@ -2,30 +2,28 @@
   = simple_form_for collection.new, :url => collection_path do |form|
     #header
       .logo
-        = image_tag(brand.logo.landing);
+        = link_to image_tag(brand.logo.landing), brand_path(brand)
       .message
-        h1 
-          | Thanks so much for your purchase!
+        h1
+          | We'd love to hear your feedback!
         blockquote
-          = "It would really help us out at %s if you let us know what you thought of your %s ! Good or bad, we want to hear about it, your feedback helps us make better products." % [ brand.name, parent.name ]
+          | Help show your support by liking us on facebook too! :)
+        #social
+          = like("http://www.shopbryna.com")
+    
     #comment
       .product
         .image
           = image_tag(parent.image.thumb)
-      = form.input :body, :as => :text, :label => false, :placeholder => "Say something about me.."
+        .name
+          = link_to parent.name, product_path(parent)
+          
+      = form.input :body, :as => :text, :label => false, :placeholder => "Say something about your %s.." % parent.name
       = hidden_field_tag(:redirect_to, product_feedback_thanks_path(parent))
-      
+    
     #footer
-      .title
-        = link_to parent.name, product_path(parent), :class => "product-link"
-        |  by 
-        = link_to brand.name, "#", :class => "brand-link"
+    
+      = link_to "By Prizzm", root_url, :class => "by-link"
 
-      .buttons        
-        = link_to "By Prizzm", root_url, :class => "by-link"
+      .buttons
         = form.submit "Say It!", :id => "feedback-submit"
-
-      - unless brand.social_addthis_code.blank?
-        .social
-          .content
-            = brand.social_addthis_code.html_safe

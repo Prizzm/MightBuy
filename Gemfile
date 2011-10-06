@@ -45,6 +45,7 @@ group :development do
   gem 'sqlite3'
   gem 'rb-fsevent'
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'rails-dev-tweaks', '~> 0.5.1'
 end
 
 group :test do

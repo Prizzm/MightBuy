@@ -1,4 +1,37 @@
 module ApplicationHelper
+  
+  # Controller Helpers
+  
+  def action_name
+    params[:action].to_sym
+  end
+
+  def controller_name
+    params[:controller].parameterize.to_sym
+  end
+
+  def classes
+    "#{controller_name}-section #{action_name}-page"
+  end
+  
+  # Image Helper
+  def image (uploader, options = {}, &block)
+    if uploader.blank?
+      options.reverse_merge! :class => "no-image"
+      content_tag(:div, nil, options)
+    else
+      options.reverse_merge! :class => "with-image"
+      content_tag :table, options do
+        content_tag :tr do
+          content_tag :td do
+              yield(uploader)
+          end
+        end
+      end
+    end
+  end
+  
+  # Others
 
   def image? (uploader)
     !uploader.blank?
@@ -23,10 +56,6 @@ module ApplicationHelper
 
   def app_page (&block)
     render :layout => "layouts/app", &block
-  end
-  
-  def action_name
-    resource_class.to_s
   end
   
   def header_for (action)
@@ -124,11 +153,28 @@ module ApplicationHelper
   
   # Meta
   
+  def like (url)
+    code = <<-EOF
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      <div class="fb-like" data-href="#{url}" data-send="true" data-width="450" data-show-faces="false"></div>
+    EOF
+    
+    code.html_safe
+  end
+  
   def meta (options = {})
     image = options[:image]
     url   = options[:url] || root_url
     site  = options[:site] || "Prizzm"
-    title = options[:title] || action_name.split("::").last.pluralize
+    title = options[:title] || action_name.to_s.pluralize
     desc = options[:desc]
 
     display_meta_tags \

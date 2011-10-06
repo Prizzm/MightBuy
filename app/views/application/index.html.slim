@@ -3,7 +3,8 @@
   h1= header_for(:index)
 
   - unless collection.empty?
-    = render "list"
+    .list
+      = render "list"
   - else
     .empty
       | Looks like there's nothing here!

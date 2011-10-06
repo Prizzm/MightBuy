@@ -37,7 +37,7 @@
     .message
     {
       position: absolute;
-      top: 20px;
+      top: 15px;
       left: 190px;
 
       h1
@@ -60,6 +60,11 @@
     
   }
   
+  #social
+  {
+    margin: 5px 0px;
+  }
+  
   #comment
   {
     position: relative;
@@ -78,11 +83,34 @@
       
       .image
       {
-        width: 100%;
-        height: 100%;
+        width: 210px;
+        height: 210px;
         display: table-cell;
         vertical-align: middle;
         img { vertical-align: middle; }
+      }
+      
+      .name
+      {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        background: #fff;
+        background: rgba(255, 255, 255, 0.70);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font: 12px Georgia, 'Times New Roman', Times, serif;
+        font-style: italic;
+        
+        a
+        {
+          margin: 0px 5px;
+          color: #c84857;
+          font-size: 17px;
+          text-decoration: none;
+          &:hover{ color: #ff5a6c; }
+        }
       }
     }
     
@@ -111,70 +139,23 @@
     height: 50px;
     line-height: 50px;
     
-    .title
+    .by-link
     {
       float: left;
-      color: #999;
-      font-size: 12px;
-      font-style: italic;
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      
-      a.product-link
-      {
-        color: #c84857;
-        font-size: 20px;
-        text-decoration: none;
-        @include single-text-shadow(#fff, 0px, 1px, 0px);
-        &:hover{ color: #ff5a6c; }
-      }
-      
-      a.brand-link
-      {
-        color: #333;
-        font-size: 14px;
-        &:hover { color: #666; }
-      }
-      
-    }
-    
-    .social
-    {
       display: block;
-      clear: both;
+      width: 89px;
+      height: 37px;
+      margin: 5px 10px;
+      background: url("/assets/by.png");
       overflow: hidden;
+      text-indent: -9999em;
       
-      .content
-      {
-        float: right;
-        position: relative;
-        padding-right: 22px;
-      }
-      
-      .addthis_toolbox
-      {
-        width: 120%;
-        position: relative;
-        white-space: nowrap;
-      }
+      &:hover { background-position: 0px 37px; };
     }
     
     .buttons
     {
       float: right;
-      
-      .by-link
-      {
-        float: left;
-        display: block;
-        width: 89px;
-        height: 37px;
-        margin: 5px 15px 0px 0px;
-        background: url("/assets/by.png");
-        overflow: hidden;
-        text-indent: -9999em;
-        
-        &:hover { background-position: 0px 37px; };
-      }
       
       input
       {

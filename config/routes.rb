@@ -24,6 +24,9 @@ NewPrizzmCom::Application.routes.draw do
     resources :invites
   end
   
+  # Brands
+  resources :brands
+  
   # Products
   resources :products do
     get 'feedback' => 'reviews#feedback'
