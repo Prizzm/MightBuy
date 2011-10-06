@@ -12,7 +12,8 @@ class ReviewsController < InheritedResources::Base
   # Actions
   
   def create
-    @review = build_resource
+    @review = parent.reviews.find_by_user_id(current_user.id) || end_of_association_chain.new
+    @review.attributes = params[:review]
     @review.user = current_user
     create! do |format|
       format.html { redirect_to params[:redirect_to] || resource_path(@review) }

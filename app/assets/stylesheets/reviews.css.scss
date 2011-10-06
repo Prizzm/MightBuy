@@ -185,17 +185,31 @@
 
 #feedback-thanks
 {
+  position: relative;
   margin: auto;
   width: 646px;
   
+  h1, h2
+  {
+    margin: 10px auto;
+    overflow: hidden;
+    text-indent: -9999em;
+  }
+  
   h1
   {
-    overflow: hidden;
-    margin: 100px auto 20px auto;
+    margin-top: 100px;
     width: 369px;
     height: 56px;
-    text-indent: -9999em;
     background: url("/assets/sale/header.png");
+  }
+  
+  h2
+  {
+    margin-bottom: 20px;
+    width: 503px;
+    height: 32px;
+    background: url("/assets/sale/header2.png");
   }
   
   #banner-top,
@@ -211,7 +225,66 @@
   {
     position: relative;
     height: 186px;
-    background-image: url("/assets/sale/banner-top.png");
+    overflow: hidden;
+    
+    #invite, #thanks
+    {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-image: url("/assets/sale/banner-background.png");
+    }
+    
+    #invite .background
+    {
+      width: 100%;
+      height: 100%;
+      background: transparent url("/assets/sale/banner-top.png") no-repeat 36px 35px;
+    }
+    
+    #thanks
+    {
+      text-align: center;
+      
+      h3, p
+      {
+        width: 90%;
+        margin: 0px auto;
+        @include single-text-shadow(#000, 0px, 1px, 2px);
+      }
+      
+      h3
+      {
+        padding-top: 25px;
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      
+      p
+      {
+        line-height: 1.5em;
+        margin: 10px auto;
+        color: #ddd;
+      }
+      
+      strong
+      {
+        color: #fff;
+      }
+      
+      .invite-link
+      {
+        display: block;
+        width: 133px;
+        height: 45px;
+        overflow: hidden;
+        text-indent: -99999em;
+        margin: 10px auto;
+        background: url("/assets/sale/button-invite.png");
+        &:hover { background-position: 0px 45px; };
+      }
+    }
   }
   
   #banner-mid
@@ -246,7 +319,7 @@
   #bubble
   {
     position: absolute;
-    top: 65px;
+    top: 185px;
     right: -245px;
     width: 241px;
     height: 295px;

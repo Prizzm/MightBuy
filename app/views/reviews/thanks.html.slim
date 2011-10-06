@@ -1,9 +1,20 @@
 #app
   #feedback-thanks
     h1 Why, Thank you!
+    h2 You just used Prizzm. How bout that!
+    #bubble
     #banner-top
-      = link_to "Notify Me", beta_join_path, :id => "notify-link", :remote => true, :method => :post
-      #bubble
+      #invite
+        .background
+          = link_to "Notify Me", beta_join_path, :id => "notify-link", :remote => true, :method => :post
+      #thanks
+        h3 
+          | Awesome! You're on the list!
+        p
+          | You've been added to our exclusive beta list &amp; will be notified via 
+          strong= shorthand(current_user.email, :length => 25)
+          |  when we launch soon! Why not invite some friends too? :)
+        = link_to "Invite Friends", "http://www.prizzm.com", :class => "invite-link", :target => "_blank"
     #banner-mid
     #banner-bottom
     .hr
