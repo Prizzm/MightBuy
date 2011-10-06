@@ -14,7 +14,11 @@
           | You've been added to our exclusive beta list &amp; will be notified via 
           strong= shorthand(current_user.email, :length => 25)
           |  when we launch soon! Why not invite some friends too? :)
-        = link_to "Invite Friends", "http://www.prizzm.com", :class => "invite-link", :target => "_blank"
+        .social
+          span.facebook= prizzm_like
+          span.twitter= prizzm_tweet
+          input.copy type="text" value="http://prizzm.com"
+        
     #banner-mid
     #banner-bottom
     .hr

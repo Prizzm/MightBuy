@@ -12,4 +12,9 @@ $(function () {
     
   });
   
+  // Select all text for copying.
+  $("input.copy").click(function () {
+    $(this).select();
+  });
+  
 });

@@ -224,7 +224,7 @@
   {
     position: relative;
     height: 186px;
-    overflow: hidden;
+//    overflow: hidden;
     
     #invite, #thanks
     {
@@ -243,6 +243,7 @@
     
     #thanks
     {
+      display: none;
       text-align: center;
       
       h3, p
@@ -254,7 +255,7 @@
       
       h3
       {
-        padding-top: 25px;
+        padding-top: 20px;
         color: #fff;
         font-size: 20px;
         font-weight: bold;
@@ -263,7 +264,7 @@
       p
       {
         line-height: 1.5em;
-        margin: 10px auto;
+        margin: 5px auto;
         color: #ddd;
       }
       
@@ -272,16 +273,29 @@
         color: #fff;
       }
       
-      .invite-link
+      .social
       {
-        display: block;
-        width: 133px;
-        height: 45px;
-        overflow: hidden;
-        text-indent: -99999em;
+        position: relative;
         margin: 10px auto;
-        background: url("/assets/sale/button-invite.png");
-        &:hover { background-position: 0px 45px; };
+        width: 275px;
+        
+        .facebook, .twitter
+        {
+          float: right;
+          margin: 0px 3px;
+        }
+        
+        input.copy
+        {
+          margin: 10px auto;
+          clear: both;
+          background: #111;
+          border: 1px solid #000;
+          color: #f36;
+          font-size: 12px;
+          padding: 5px 10px;
+          
+        }    
       }
     }
   }
