@@ -1,3 +1,5 @@
 = list_for "Invitee", "Sent" do |resource|
   td= link(resource.invitee)
   td= shorthand(resource.created_at)
+  
+= paginate collection

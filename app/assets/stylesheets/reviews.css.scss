@@ -191,25 +191,24 @@
   
   h1, h2
   {
-    margin: 10px auto;
     overflow: hidden;
     text-indent: -9999em;
   }
   
   h1
   {
-    margin-top: 100px;
-    width: 369px;
-    height: 56px;
-    background: url("/assets/sale/header.png");
+    margin: 20px auto 25px auto;
+    width: 206px;
+    height: 94px;
+    background: url("/assets/sale/brand.png");
   }
   
   h2
   {
-    margin-bottom: 20px;
+    margin: 20px auto;
     width: 503px;
     height: 32px;
-    background: url("/assets/sale/header2.png");
+    background: url("/assets/sale/header.png");
   }
   
   #banner-top,
@@ -319,21 +318,11 @@
   #bubble
   {
     position: absolute;
-    top: 185px;
+    top: 240px;
     right: -245px;
     width: 241px;
     height: 295px;
     background: url("/assets/sale/bubble.png");
-    
-    #brand
-    {
-      position: absolute;
-      top: -80px;
-      left: 50px;
-      width: 138px;
-      height: 64px;
-      background: url("/assets/sale/brand.png");
-    }
   }
   
   .hr
