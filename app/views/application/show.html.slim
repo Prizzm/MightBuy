@@ -1,9 +1,3 @@
 = app_page do
-
-  h1= header_for(:show)
-  = render "detail"
-
-  .buttons
-    = link_to "Edit", edit_resource_path, :class => "button"
-    = link_to "Delete", resource_path, :confirm => "Are you sure?", :method => :delete, :class => "button"
-    = link_to "Go Back", collection_path, :class => "button dark"
+  #details
+    = render "detail"

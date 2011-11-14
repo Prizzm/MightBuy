@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
 if Rails.env.development?
   
   # File
@@ -14,13 +13,28 @@ if Rails.env.development?
     Rails.root.join("db/seeds", path).open
   end
   
+  # User
+  user = User.create \
+    :name => "Mitch Thompson",
+    :email => "user@prizzm.com",
+    :password => "password",
+    :password_confirmation => "password",
+    :photo => tmpfile("avatar.jpg")
+  
   # Brand
   brand = Brand.create \
     :name => "Bryna", 
-    :email => "demo@prizzm.com", 
-    :password => "asdfasdf",
-    :password_confirmation => "asdfasdf",
+    :email => "brand@prizzm.com", 
+    :password => "password",
+    :password_confirmation => "password",
     :logo => tmpfile("logo.jpg"),
+    :description => "BRYNA is a San Francisco based accessories label.
+      Its handbags, which combine uptown sophistication with downtown originality, 
+      are currently sold through over 150 stores and 10 websites (including 
+      fashionista favorites like SHOPBOP, PIPERLIME and ENDLESS). Publications 
+      including Elle, Lucky, and Daily Candy have noted BRYNA's ability to consistently 
+      produce must-have bags for busy women who are on the go but refuse to 
+      sacrifice style, quality, or originality.",
     :social_url => "http://www.shopbryna.com"
   
   # Products

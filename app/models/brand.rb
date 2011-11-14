@@ -1,5 +1,8 @@
 class Brand < ActiveRecord::Base
 
+  # Includes
+  include Deals::Model
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,7 +11,7 @@ class Brand < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible \
     :email, :password, :password_confirmation, :remember_me, 
-    :name, :logo, :social_url, :social_title, :social_desc
+    :name, :logo, :description, :social_url, :social_title, :social_desc
   
   # Uploaders
   mount_uploader :logo, LogoUploader

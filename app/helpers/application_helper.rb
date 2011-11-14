@@ -31,13 +31,20 @@ module ApplicationHelper
     end
   end
   
+  def uploader_link (uploader, url, options = {})
+    style = options.delete(:style) || :url
+    options[:class] = [options[:class], 'image', uploader.blank? ? "empty" : nil].compact.join(" ")
+    image = uploader.blank? ? '' : centered { image_tag(uploader.send(style)) }
+    link_to image, url, options
+  end
+  
   # Others
 
   def image? (uploader)
     !uploader.blank?
   end
   
-  def detail_image (uploader, style)
+  def detail_image (uploader, style, options = {})
     if image?(uploader)
       content_tag :div, :class => "detail-image" do
         centered { image_link(uploader, style) }
@@ -54,13 +61,13 @@ module ApplicationHelper
     end
   end
 
-  def app_page (&block)
-    render :layout => "layouts/app", &block
+  def app_page (locals = {}, &block)
+    render :layout => "layouts/app", :locals => locals, &block
   end
   
-  def header_for (action)
+  def header
     name = resource_class.to_s
-    case action
+    case action_name
       when :index then "Listing %s" % name.pluralize
       when :new then "Adding a %s" % name
       when :edit then "Updating a %s" % name
@@ -68,12 +75,34 @@ module ApplicationHelper
     end
   end
   
+  def quick_links
+    case action_name
+      when :show
+        link_for(:edit) + link_for(:delete) + link_for(:back)
+      when :new, :edit
+        link_for(:back)
+      when :index
+        link_for(:add)
+    end
+  end
+  
+  def link_for (action, label = nil)
+    case action
+      when :add
+        link_to label || "Add Another", new_resource_path
+      when :edit
+        link_to label || "Edit", edit_resource_path
+      when :back
+        link_to label || "Go Back", collection_path, :class => "dark"
+      when :delete
+        link_to label || "Delete", resource_path, :confirm => "Are you sure?", :method => :delete, :class => "button"
+    end
+  end
+  
   def attr (label, value = nil, &block)
-    unless value.blank?
-      content_tag(:div, :class => "attr") do
-        value = capture(&block) if block_given?
-        content_tag(:label, label) << value
-      end
+    content_tag(:div, :class => "attr") do
+      value = capture(&block) if block_given?
+      content_tag(:label, label) << value.to_s
     end
   end
   
@@ -83,7 +112,7 @@ module ApplicationHelper
   end
   
   def centered (&block)
-    ('<table class="centered"><tr><td>%s</td></tr></table>' % yield).html_safe
+    ('<table class="centered" cellspacing="0" cellpadding="0"><tr><td>%s</td></tr></table>' % yield).html_safe
   end
   
   def formatted (value)

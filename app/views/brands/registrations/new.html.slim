@@ -1,0 +1,10 @@
+= app_page :header => "Brands - Sign Up for Prizzm!" do
+  #join
+    = simple_form_for resource, :as => resource_name, :url => registration_path(resource_name) do |form|
+      = form.input :email, :label => "Email", :hint => "This is private. We will never spam your email address :)"
+      = form.input :password, :as => :password, :label => "Password"
+      = form.input :password_confirmation, :as => :password, :label => "Confirm Password"
+      
+      .buttons.inset
+        = form.button :submit, "Join!"
+        = link_to "Have an account already?", new_brand_session_path

@@ -4,7 +4,7 @@ NewPrizzmCom::Application.routes.draw do
   devise_for :users, :path_names => { 
     :sign_in => 'login', 
     :sign_out => 'logout', 
-    :sign_up => 'signup'
+    :sign_up => 'join'
   }
   
   devise_for :brands, :path_names => { 
@@ -14,7 +14,13 @@ NewPrizzmCom::Application.routes.draw do
   }
   
   # Auth Roots
+  get 'users/me' => 'users/me#show', :as => 'user_root'
   get 'brands/me' => 'brands/me#show', :as => 'brand_root'
+  
+  # Users
+  namespace :users do
+    resource :me, :controller => "me"
+  end
   
   # Brands
   namespace :brands do

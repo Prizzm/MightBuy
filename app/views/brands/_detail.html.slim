@@ -1,0 +1,12 @@
+.header
+  = uploader_link(resource.logo.landing, '#logo', :class => "logo")
+  .title= resource.name
+  .description= shorthand(resource.description, :length => 240)
+  .buttons
+    = link_to "Latest Deals", '#deals', :class => "active"
+    = link_to "Products", '#products'
+    = link_to "Reviews", '#reviews'
+    
+.switcher
+  h3 
+    span Our latest deals..

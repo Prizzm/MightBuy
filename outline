@@ -22,3 +22,20 @@ reviews ->
 
 user ->
   reviews ->
+  
+deal ->
+  brand -> belongs
+  for -> polymorphic
+  title: string
+  description: text
+  low_cost: integer
+  low_value: decimal
+  high_cost: integer
+  high_value: decimal
+  value_type: (percent dollar etc)
+  
+redemption:
+  deal: belongs
+  user: belongs
+  cost: integer
+  value: integer

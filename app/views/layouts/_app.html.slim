@@ -1,11 +1,42 @@
-#app class=classes
-  #header
-    = link_to "Prizzm", root_path, :id => "brand"
-    #links
-      = render "menu"
+#app
+  #frame
+    #sidebar
+      = link_to "Prizzm", root_path, :id => "brand"
       
-  #content
-    = yield
-  
-  / Footer
-  = render "partials/footer"
+      - if user_signed_in?
+        #points= "%pP" % current_user.points.available
+        #avatar
+          = uploader_link current_user.photo, user_root_path, :style => :thumb
+          = link_to "Signout", destroy_user_session_path, :method => :delete
+        #links
+          = link_to "My Profile", user_root_path
+      - else
+        #links
+          = link_to 'Sign up!', new_user_registration_path
+        
+    #header
+      #menu
+        = link_to "love it", "#loveit", :class => "active"
+        = link_to "hate it", '#hateit'
+        = link_to "brands", brands_path
+        = link_to "people", '#people'
+        = link_to "deals", '#deals'
+          
+      #search
+        input type="text" placeholder="Search.."
+        
+    #page
+      #banner
+        h1= header
+        #quick-links
+          = quick_links
+      #content
+        = yield
+    
+    #footer
+      #copyright Copyright &copy; 2011, Prizzm
+      #links
+        = link_to "about", "#about"
+        = link_to "contact", "#contact"
+        = link_to "privacy", "#privacy"
+        = link_to "help", "#help"

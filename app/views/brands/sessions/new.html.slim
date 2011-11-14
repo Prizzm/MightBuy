@@ -1,0 +1,11 @@
+= app_page :header => "Brands - Secure Login" do
+  #login
+    = simple_form_for resource, :as => resource_name, :url => session_path(resource_name) do |form|
+      = form.input :email, :label => "Email"
+      = form.input :password, :as => :password, :label => "Password"
+      - if devise_mapping.rememberable?
+        = form.input :remember_me, :as => :boolean, :label => "Remember Me?"
+    
+      .buttons.inset
+        = form.button :submit, "Login!"
+        = link_to "Don't have an account?", new_brand_registration_path

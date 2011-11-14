@@ -1,0 +1,6 @@
+li
+  = uploader_link(brand.logo.landing, brand_path(brand), :class => "logo")
+  = link_to brand.name, brand_path(brand), :class => "title"
+  .details= shorthand(brand.description, :length => 170)
+  .buttons
+    = link_to "Go to Brand Page", brand_path(brand), :class => "button"

@@ -2,7 +2,7 @@
 source 'http://rubygems.org'
 
 # Rails
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 gem 'jquery-rails'
 
 # Authentication
@@ -49,9 +49,11 @@ group :development do
   gem 'rails-dev-tweaks', '~> 0.5.1'
 end
 
-group :test do
-  # Pretty printed test output
-  gem 'turn', :require => false
+group :test, :development do
+  gem 'factory_girl_rails', '1.3.0'
+  gem 'rspec-rails', "~> 2.6"
+  gem 'shoulda-matchers', '1.0.0'
+  gem 'guard-rspec', "0.5.1"
 end
 
 group :production do

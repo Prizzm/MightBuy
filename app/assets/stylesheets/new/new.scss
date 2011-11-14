@@ -1,0 +1,779 @@
+/* Compass */
+@import "compass/reset";
+@import "compass/typography";
+@import "compass/css3";
+
+/* Fonts */
+
+@font-face {
+    font-family: 'Museo300';
+    src: url('/fonts/museo/museo300-regular-webfont.eot');
+    src: url('/fonts/museo/museo300-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/museo/museo300-regular-webfont.woff') format('woff'),
+         url('/fonts/museo/museo300-regular-webfont.ttf') format('truetype'),
+         url('/fonts/museo/museo300-regular-webfont.svg#Museo300') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo500';
+    src: url('/fonts/museo/museo500-regular-webfont.eot');
+    src: url('/fonts/museo/museo500-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/museo/museo500-regular-webfont.woff') format('woff'),
+         url('/fonts/museo/museo500-regular-webfont.ttf') format('truetype'),
+         url('/fonts/museo/museo500-regular-webfont.svg#Museo500') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo700';
+    src: url('/fonts/museo/museo700-regular-webfont.eot');
+    src: url('/fonts/museo/museo700-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/museo/museo700-regular-webfont.woff') format('woff'),
+         url('/fonts/museo/museo700-regular-webfont.ttf') format('truetype'),
+         url('/fonts/museo/museo700-regular-webfont.svg#Museo700') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Mixins */
+
+@mixin font-museo ($style : "500") 
+{
+  font-family: "Museo#{$style}", Georgia, "Times New Roman", Times, serif;
+}
+
+@mixin button ($from, $to) 
+{
+  cursor: pointer;
+	color: #ffffff;
+	font-weight: normal;
+	background: -moz-linear-gradient(top, $from 0%, $to);
+	background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border: 1px solid $to;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.35);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.35);
+	text-shadow:
+		0px 1px 0px rgba(000,000,000,0.3);
+	text-decoration: none;
+}
+
+@mixin hover-button ($from, $to)
+{
+  @include button($from, $to);
+  &:hover { @include button(lighten($from, 10%), $from) }
+}
+
+@mixin rounded-corners ($radius: 5px) {
+  -webkit-border-radius: $radius;
+  -khtml-border-radius:  $radius;	
+  -moz-border-radius:    $radius;
+  border-radius:         $radius;
+}
+
+@mixin drop-shadow ($distance: 1px, $blur: 3px, $alpha: 0.8) {
+  box-shadow:         0px $distance $blur rgba(0, 0, 0, $alpha);
+  -moz-box-shadow:    0px $distance $blur rgba(0, 0, 0, $alpha);
+  -webkit-box-shadow: 0px $distance $blur rgba(0, 0, 0, $alpha);
+}
+
+@mixin background-gradient ($start_color, $end_color) {
+  background: $start_color;
+  background: -webkit-gradient(linear, left top, left bottom, from($start_color), to($end_color));
+  background: -moz-linear-gradient(top,  $start_color,  $end_color);
+  filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#{$start_color},endColorstr=#{$end_color})";
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr={$start_color}, endColorstr={$start_color})";
+}
+
+/* Styles */
+
+body
+{
+  font: 14px "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 300;
+  background: #F5F5F1; //url("/images/app/background.png") repeat-x;
+}
+
+/* Text Selection */
+
+::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+
+/* Application */
+
+#app
+{
+  
+  #frame
+  {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    width: 680px;
+    margin-left: -300px;
+  }
+  
+  #sidebar
+  {
+    position: absolute;
+    top: 40px;
+    width: 150px;
+    left: -200px;
+    text-align: center;
+    
+    a#brand
+    {
+      display: block;
+      width: 114px;
+      height: 90px;
+      margin: 15px auto;
+      overflow: hidden;
+      text-indent: -9999em;
+      background: url("/images/app/logo.png");
+    }
+    
+    #points
+    {
+      color: #fff;
+      width: 114px;
+      height: 38px;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 32px;
+      margin: 20px auto 5px auto;
+      text-shadow: 0px 1px 1px rgba(0,0,0,0.4);
+      background: url("/images/app/points.png");
+    }
+    
+    #avatar
+    {
+      margin: 5px auto 10px auto;
+      
+      a.image
+      {
+        display: block;
+        width: 50px;
+        height: 50px;
+        margin: auto;
+        border: 3px solid #b1b19e;
+        
+        img { width: 50px; height: 50px; }
+        &:hover { border-color: #c5356a; }
+        &.empty { background: url("/images/app/placeholders/avatar-thumb.png"); }
+      }
+      
+      a
+      {
+        color: #666;
+        font-size: 12px;
+        font-weight: normal;
+        text-decoration: none;
+        
+        &:hover { color: #333; }
+      }
+    }
+    
+    #links
+    {
+      margin: 15px auto;
+      
+      a
+      {
+        @include hover-button(#c5356a, darken(#c5356a, 5%));
+        padding: 4px 8px;
+        font-size: 12px;
+        margin: 5px auto;
+      }
+    }
+  }
+  
+  #header
+  {
+    position: relative;
+    height: 40px;
+    margin: 0px 20px;
+    
+    #menu
+    {
+      position: absolute;
+      left: 0px;
+      
+      a
+      {
+        color: #39302a;
+        margin: 0px 20px 0px 0px;
+        font-weight: normal;
+        text-decoration: none;
+        text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+        
+        &:hover { color: #d02664; }
+        
+        &.active
+        {
+          @include hover-button(#c5356a, darken(#c5356a, 5%));
+          padding: 7px 15px;
+        }
+      }
+    }
+    
+    #search
+    {
+      position: absolute;
+      right: 0px;
+      
+      
+      input
+      {
+        @include rounded-corners(15px);
+        
+        padding: 0px 15px 0px 30px;
+        outline: none;
+        border: none;
+        width: 145px;
+        height: 30px;
+        color: #666;
+        background: url("/images/app/search.png");
+      }
+    }
+  }
+  
+  #page
+  {
+    @include rounded-corners(3px);
+    @include drop-shadow(1px, 2px, 0.18);
+    
+    position: relative;
+    width: 620px;
+    background: #fff;
+    margin: auto;
+    padding: 80px 30px 40px 30px;
+    
+    #banner
+    {
+      position: absolute;
+      top: 20px;
+      left: -60px;
+      width: 800px;
+      height: 67px;
+      background: url("/images/app/banner-large.png");
+      
+      h1
+      {
+        @include font-museo("700");
+        position: absolute;
+        left: 80px;
+        color: #667A80;
+        font-size: 1.5em;
+        line-height: 50px;
+        text-shadow: 0px 1px 0px #fff;
+      }
+      
+      #quick-links
+      {
+        position: absolute;
+        top: 12px;
+        right: 80px;
+        
+        a
+        {
+          @include hover-button(#c5356a, darken(#c5356a, 5%));
+          
+          float: left;
+          font-size: 11px;
+          padding: 5px 10px;
+          margin: 0px 2px;
+        }
+      }
+    }
+    
+    #content
+    {
+      
+    }
+    
+  }
+  
+  #footer
+  {
+    font-size: 12px;
+    margin: 15px 20px;
+    overflow: hidden;
+    
+    #copyright, #links a
+    {
+      color: #757575;
+      text-transform: lowercase;
+    }
+    
+    #copyright
+    {
+      float: left;
+    }
+    
+    #links
+    {
+      float: right;
+      
+      a
+      {
+        text-decoration: none;
+        margin-left: 5px;
+        &:hover { 
+          color:#d02664;
+          text-decoration: underline;
+        }
+      }
+    }
+    
+  }
+  
+  /* Lists */
+  
+  ol.list
+  { 
+    > li
+    {
+      margin: 10px 0px;
+      overflow: hidden;
+      padding-bottom: 10px;
+      background: url("/images/app/dots.png") repeat-x bottom;
+      
+      a.title
+      {
+        @include font-museo(500);
+        display: block;
+        font-size: 20px;
+        color: #000;
+        margin-bottom: 10px 0px;
+        &:hover { color: #c5356a; }
+      }
+
+      .details
+      {
+        color: #666;
+        line-height: 1.5em;
+        font-size: 13px;
+        margin: 10px 0px;
+      }
+      
+      a.image
+      {
+        display: block;
+        width: 100px;
+        height: 100px;
+        float: left;
+        margin: 0px 10px 0px 0px;
+        border: 4px solid #f5f5f1;
+        
+        img
+        {
+          max-width: 100%;
+          max-height: 100%;
+        }
+        
+        &:hover
+        {
+          border-color: #ddd;
+        }
+      }
+      
+      .buttons
+      {
+        margin-top: 10px;
+        
+        a
+        {
+          @include hover-button(#c5356a, darken(#c5356a, 5%));
+          padding: 4px 8px;
+          font-size: 12px;
+          margin: 5px auto;
+        }
+      }
+    }
+  }
+  
+  /* Detail */
+  
+  #details
+  {
+    
+    /* Header */
+    
+    .header
+    {
+      margin: 10px 0px;
+      overflow: hidden;
+      
+      .title
+      {
+        @include font-museo(700);
+        font-size: 25px;
+      }
+      
+      .description
+      {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.4em;
+        margin: 6px 0px 12px 0px;
+      }
+      
+      .image
+      {
+        float: left;
+        width: 125px;
+        height: 125px;
+        margin: 2px 20px 4px 2px;
+        @include single-box-shadow(#666, 0px, 1px, 2px);
+        
+        img { max-width: 100%; max-height: 100%; }
+        
+        &.avatar.empty { background: url("/images/app/placeholders/avatar-profile.png"); }
+      }
+      
+      .buttons
+      { 
+        a
+        {
+          @include hover-button(#4B494A, #363536);
+          font-size: 12px;
+          padding: 5px 10px;
+          margin-right: 5px;
+
+          &.active
+          {
+            @include hover-button(#c5356a, darken(#c5356a, 5%));
+          }
+        }
+      }
+      
+    }
+    
+    /* Attributes */
+
+    .attrs
+    {
+      $inset: 150px;
+      margin: 10px 0px;
+
+      .attr
+      { 
+        position: relative;
+        margin: 10px 0px;
+        padding-bottom: 10px;
+        padding-left: $inset + 10px;
+        overflow: hidden;
+        line-height: 1.5em;
+        background: url("/images/app/dots.png") repeat-x bottom;
+
+        label
+        {
+          position: absolute;
+          display: block;
+          color: #999;
+          left: 0px;
+          width: $inset;
+          margin-right: 10px;
+          text-align: right;
+        }
+
+        &:last-child
+        {
+          background: none;
+        }
+      }
+    }
+    
+  }
+  
+  /* Forms */
+  
+  form.simple_form
+  {
+    $inset: 120px;
+    
+    h3
+    {
+      margin: 20px 0px;
+    }
+    
+    div.required, div.optional
+    {
+      margin: 15px 0px;
+    }
+    
+    div.string, div.password, div.file, div.text
+    {
+      label
+      {
+        display: block;
+        width: $inset;
+        float: left;
+        color: #888;
+        line-height: 30px;
+        margin-right: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: right;
+      }
+    }
+    
+    
+    div.string, div.password, div.text
+    {
+      input, textarea
+      {
+        width: 550px - $inset;
+        padding: 5px 10px;
+        font-size: 16px;
+        border: 1px solid #999;
+        @include drop-shadow(1px, 2px, 0.2);
+      }
+      
+      textarea
+      {
+        height: 100px;
+      }
+    }
+    
+    div.boolean
+    {
+      font-size: 13px;
+      margin-left: $inset + 20px;
+    }
+    
+    span.hint
+    {
+      margin: 5px auto;
+      display: block;
+      color: #999;
+      font-size: 13px;
+      margin-left: $inset + 20px;
+    }
+    
+    .buttons
+    {
+      margin: 15px auto;
+      margin-left: $inset + 20px;
+      
+      input.button
+      {
+        @include hover-button(#c5356a, darken(#c5356a, 5%));
+        margin-right: 10px;
+        padding: 8px 18px;
+      }
+      
+      a
+      {
+        font-size: 13px;
+      }
+      
+      &.outset
+      {
+        margin-left: auto;
+      }
+    }
+    
+  }
+  
+  /* Globals */
+  
+  h3
+  {
+    @include font-museo("500");
+    color: #bbb;
+    font-size: 20px;
+    margin: 20px auto;
+    background: url("/images/app/dots.png") repeat-x center;
+    
+    span
+    {
+      background: #fff;
+      padding-right: 10px;
+    }
+  }
+  
+  a
+  {
+    color: #0af;
+    text-decoration: none;
+    &:hover { 
+      color: #0cf; 
+      text-decoration: underline;
+    }
+  }
+  
+  .feature
+  {
+    overflow: hidden;
+    
+    .image
+    {
+      float: left;
+      
+      a
+      {
+        display: block;
+        margin-right: 20px;
+        border: 5px solid #f5f5f1;
+        &:hover { border-color: #ddd; }
+      }
+    }
+    
+    .title
+    {
+      margin: 5px 0px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #555;
+    }
+    
+    .details
+    {
+      color: #666;
+      line-height: 1.5em;
+      font-size: 13px;
+    }
+    
+    
+  }
+  
+  /* Controls */
+  
+  .deal-slider
+  {
+    width: 200px;
+    position: relative;
+    margin: 4px 10px;
+    white-space: nowrap;
+    
+    label, .ui-slider
+    {
+      float: left;
+      white-space: nowrap;
+    }
+    
+    label
+    {
+      color: #333;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    
+    .ui-slider
+    {
+      @include rounded-corners(6px);
+      position: relative;
+      height: 6px;
+      background: #333;
+      width: 100px;
+      margin: 3px 5px;
+      border: 1px solid #333;
+      
+      .ui-slider-handle
+      {
+        position: absolute;
+        outline: none;
+        width: 19px;
+        height: 19px;
+        margin-top: -12px;
+        margin-left: -9px;
+        background: url("/images/app/control-slider-button.png");
+        &:hover { background-position: 0px 19px; }
+      }
+      
+      .ui-slider-range
+      {
+        @include rounded-corners(6px);
+        @include background-gradient(#9ec334, #90b230);
+        height: 100%;
+      }
+    }
+  }
+  
+  /* Flashes */
+  
+  .points-awarded
+  {
+    position: absolute;
+    bottom: 0px;
+    color: #fff;
+    width: 100%;
+    line-height: 50px;
+    text-align: center;
+    
+    .bar
+    {
+      height: 50px;
+      background: #e36032;
+      color: #fff;
+      font-size: 23px;
+      @include font-museo("700");
+    }
+    
+    .onomatopoeia
+    {
+      font-size: 18px;
+      color: #333;
+      @include font-museo("700");
+    }
+  }
+  
+  /* Extras */
+  
+  ol.buttons
+  {
+    height: 25px;
+    margin: 10px 0px;
+    padding-top: 4px;
+    
+    li
+    {
+      float: left;
+      margin-right: 3px;
+    }
+    
+    a.button
+    {
+      @include hover-button(#4B494A, #363536);
+      font-size: 12px;
+      padding: 5px 10px;
+      
+      &.active
+      {
+        @include hover-button(#c5356a, darken(#c5356a, 5%));
+      }
+      
+      &.deal-related
+      {
+        @include hover-button(#9ec535, #8aab2e);
+      }
+    }
+  }
+  
+  .hr
+  {
+    height: 1px;
+    margin: 8px auto;
+    background: url("/images/app/dots.png");
+  }
+  
+  table.centered
+  {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    td { text-align: center; }
+  }
+  
+}

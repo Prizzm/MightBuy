@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111006055004) do
+ActiveRecord::Schema.define(:version => 20111107153346) do
 
   create_table "brands", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20111006055004) do
     t.string   "last_sign_in_ip"
     t.string   "name"
     t.string   "logo"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "social_url"
@@ -35,6 +36,30 @@ ActiveRecord::Schema.define(:version => 20111006055004) do
 
   add_index "brands", ["email"], :name => "index_brands_on_email", :unique => true
   add_index "brands", ["reset_password_token"], :name => "index_brands_on_reset_password_token", :unique => true
+
+  create_table "deal_deals", :force => true do |t|
+    t.integer  "brand_id"
+    t.integer  "for_id"
+    t.string   "for_type"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "low_cost"
+    t.integer  "high_cost"
+    t.decimal  "low_value",   :precision => 8, :scale => 2
+    t.decimal  "high_value",  :precision => 8, :scale => 2
+    t.string   "value_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "deal_redemptions", :force => true do |t|
+    t.integer  "deal_id"
+    t.integer  "bank_id"
+    t.integer  "cost"
+    t.decimal  "value",      :precision => 8, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "invites", :force => true do |t|
     t.integer  "inviter_id"
@@ -46,6 +71,28 @@ ActiveRecord::Schema.define(:version => 20111006055004) do
     t.string   "code"
     t.string   "type"
     t.datetime "visited_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "point_allocations", :force => true do |t|
+    t.integer  "bank_id"
+    t.integer  "allocatable_id"
+    t.string   "allocatable_type"
+    t.string   "allocator"
+    t.integer  "points",                         :default => 0
+    t.string   "lookup",           :limit => 40
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "point_allocations", ["lookup"], :name => "index_point_allocations_on_lookup", :unique => true
+
+  create_table "point_banks", :force => true do |t|
+    t.integer  "bankable_id"
+    t.string   "bankable_type"
+    t.integer  "total",         :default => 0
+    t.integer  "available",     :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
