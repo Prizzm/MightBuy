@@ -7,7 +7,6 @@ class DeviseCreateBrands < ActiveRecord::Migration
       t.rememberable
       t.trackable
       t.string :name, :logo
-      t.text :description
       
       # t.encryptable
       # t.confirmable

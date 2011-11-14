@@ -48,5 +48,9 @@ module NewPrizzmCom
     
     # Don't automatically load all helpers.
     config.action_controller.include_all_helpers = false
+    
+    # Precompile these assets..
+    config.assets.precompile += ['new.js', 'new.css'];
+    
   end
 end
