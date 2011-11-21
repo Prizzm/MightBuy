@@ -6,18 +6,6 @@ FactoryGirl.define do
     password_confirmation "asdfasdf"
   end
   
-  factory :brand do
-    sequence(:email) { |i| "brand-#{i}@prizzm.com" }
-    sequence(:name) { |i| "Brand #{i}" }
-    password "asdfasdf"
-    password_confirmation "asdfasdf"
-  end
-    
-  factory :product do
-    sequence(:name) { |i| "Product #{i}" }
-    brand
-  end
-  
   factory :bank, :class => "Points::Bank" do
     bankable { |bank| Factory(:user) }
   end
@@ -29,7 +17,6 @@ FactoryGirl.define do
   end
   
   factory :deal, :class => "Deals::Deal" do
-    brand
     association :for, :factory => :product
     sequence(:title) { |i| "Deal #{i}" }
     low_cost 100

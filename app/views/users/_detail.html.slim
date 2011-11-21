@@ -1,0 +1,11 @@
+.header
+  = uploader_link(resource.photo.thumb, resource.photo.url, :class => "avatar")
+  .title= resource.name
+  .attrs
+    = attr "Points Available", resource.points.available
+    = attr "Points Earned", resource.points.total
+    
+= heading "What's on %s's mind?" % resource.name
+
+ol.list.topics
+  = render resource.topics.publics

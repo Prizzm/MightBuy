@@ -1,3 +1,21 @@
+# Topics
+
+topic:
+  image: file
+  owner: polymorphic
+  title: string
+  body: text
+  
+response:
+  topic: belongs_to
+  owner: polymorphic
+  body: text
+  
+invite -> response:
+  topic: belongs_to
+  inviter: polymorphic
+  invitee: polymorphic
+
 # Outline
 
 brand ->

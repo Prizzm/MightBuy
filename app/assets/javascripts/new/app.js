@@ -16,4 +16,12 @@ $(function () {
   // Points awarded..
   // pointsAwarded(100);
   
+  // Switcher
+  $('a[data-function=switch]').click(function () {
+    $('a[data-function=switch]').removeClass('active');
+    $(this).addClass('active');
+    $('ol.switchers li').hide();
+    $('ol.switchers li' + $(this).attr('href')).show();
+  })
+  
 });

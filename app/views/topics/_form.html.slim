@@ -1,0 +1,4 @@
+= form.input :subject, :label => "Subject", :hint => "E.x. What do you think of our new logo?"
+= form.input :image, :as => :file, :hint => "Give your audience something to look at."
+= form.input :body, :label => "Description", :hint => "Care to elaborate on your question / subject?"
+= form.input :access, :label => "Who can view?", :collection => Topic::Access, :as => :radio

@@ -164,9 +164,10 @@ body
         width: 50px;
         height: 50px;
         margin: auto;
+        background: #fff;
         border: 3px solid #b1b19e;
         
-        img { width: 50px; height: 50px; }
+        img { max-width: 100%; max-height: 100%; }
         &:hover { border-color: #c5356a; }
         &.empty { background: url("/images/app/placeholders/avatar-thumb.png"); }
       }
@@ -295,6 +296,26 @@ body
       }
     }
     
+    #sub-links
+    {
+      height: 28px;
+      overflow: hidden;
+      margin: 5px 0px;
+//      background: url("/images/app/dots.png") repeat-x bottom;
+      
+      a
+      {
+        @include hover-button(#4B494A, #363536);
+        
+        float: left;
+        font-size: 11px;
+        padding: 5px 10px;
+        margin: 0px 2px;
+        
+        &.active { @include hover-button(#c5356a, darken(#c5356a, 5%)); }
+      }
+    }
+    
     #content
     {
       
@@ -347,7 +368,9 @@ body
       padding-bottom: 10px;
       background: url("/images/app/dots.png") repeat-x bottom;
       
-      a.title
+      &:last-child { background: none; padding: none; }
+      
+      .title
       {
         @include font-museo(500);
         display: block;
@@ -384,6 +407,12 @@ body
         {
           border-color: #ddd;
         }
+        
+        &.small
+        {
+          width: 55px;
+          height: 55px;
+        }
       }
       
       .buttons
@@ -395,10 +424,15 @@ body
           @include hover-button(#c5356a, darken(#c5356a, 5%));
           padding: 4px 8px;
           font-size: 12px;
-          margin: 5px auto;
+          margin: 5px 5px 5px auto;
         }
       }
     }
+  }
+  
+  table.collection
+  {
+    width: 100%;
   }
   
   /* Detail */
@@ -435,9 +469,18 @@ body
         margin: 2px 20px 4px 2px;
         @include single-box-shadow(#666, 0px, 1px, 2px);
         
-        img { max-width: 100%; max-height: 100%; }
+        img 
+        { 
+          max-width: 100%; 
+          max-height: 100%; 
+        }
         
-        &.avatar.empty { background: url("/images/app/placeholders/avatar-profile.png"); }
+        &.empty
+        {
+          &.avatar { background: url("/images/app/placeholders/avatar-profile.png"); }
+        }
+        
+        &.medium { width: 80px; height: 80px; }
       }
       
       .buttons
@@ -473,6 +516,7 @@ body
         padding-left: $inset + 10px;
         overflow: hidden;
         line-height: 1.5em;
+        min-height: 1em;
         background: url("/images/app/dots.png") repeat-x bottom;
 
         label
@@ -511,9 +555,16 @@ body
       margin: 15px 0px;
     }
     
-    div.string, div.password, div.file, div.text
+    div.string, 
+    div.password, 
+    div.file, 
+    div.text, 
+    div.select,
+    div.integer,
+    div.numeric,
+    div.radio
     {
-      label
+      > label
       {
         display: block;
         width: $inset;
@@ -528,8 +579,7 @@ body
       }
     }
     
-    
-    div.string, div.password, div.text
+    div.string, div.password, div.text, div.numeric
     {
       input, textarea
       {
@@ -544,6 +594,25 @@ body
       {
         height: 100px;
       }
+      
+      input.numeric
+      {
+        width: 100px;
+      }
+    }
+    
+    div.radio
+    {
+      span
+      {
+        line-height: 30px;
+        margin-right: 8px;
+      }
+      
+      input.radio
+      {
+        margin-right: 3px;
+      }
     }
     
     div.boolean
@@ -552,13 +621,29 @@ body
       margin-left: $inset + 20px;
     }
     
-    span.hint
+    span.hint,
+    span.error
     {
       margin: 5px auto;
       display: block;
-      color: #999;
       font-size: 13px;
       margin-left: $inset + 20px;
+    }
+    
+    span.hint
+    {
+      color: #999;
+      strong { font-weight: bold; color: #888; }
+    }
+    
+    span.error
+    {
+      color: #a30;
+    }
+    
+    div.field_with_errors > label
+    {
+      color: #a30;
     }
     
     .buttons
@@ -608,7 +693,7 @@ body
     color: #0af;
     text-decoration: none;
     &:hover { 
-      color: #0cf; 
+      color: #c5356a;
       text-decoration: underline;
     }
   }
@@ -731,6 +816,13 @@ body
   
   /* Extras */
   
+  div.description
+  {
+    color: #666;
+    
+    strong { font-weight: bold; }
+  }
+  
   ol.buttons
   {
     height: 25px;
@@ -774,6 +866,57 @@ body
     height: 100%;
     text-align: center;
     td { text-align: center; }
+  }
+  
+  /* Switchers */
+  
+  form
+  {
+    .switch
+    {
+      color: #ccc;
+      margin: 20px 0px;
+      padding: 10px 15px;
+      background: #f7fafa;
+      @include rounded-corners(3px);
+
+      a 
+      {
+        color: #999;
+        margin-right: 5px;
+
+        &.active 
+        {
+          color: #444;
+          cursor: default; 
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  
+  ol.switchers
+  {
+    li { display:none; }
+    li:first-child { display: block;}
+  }
+  
+  /* Placeholders */
+  
+  a.image
+  {
+    &.empty
+    {
+      background-color: #ed3f7e;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &.product { background-image: url("/images/app/placeholders/product.png"); }
+      &.avatar 
+      {
+        background-image: url("/images/app/placeholders/avatar.png");
+      }
+    }
   }
   
 }

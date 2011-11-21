@@ -1,10 +1,16 @@
 module Deals
   
+  VALUE_TYPES = {
+    "(%) Percentage" => "percent",
+    "($) Dollar Amount" => "dollar"
+  }
+  
+  
   module Model
     extend ActiveSupport::Concern
     
     included do
-      if self == Brand
+      if self == User
         has_many :deals, :class_name => "Deals::Deal"
       elsif self == Points::Bank
         has_many :redemptions, :class_name => "Deals::Redemption"
@@ -19,8 +25,10 @@ module Deals
     set_table_name "deal_deals"
     
     has_many :redemptions, :class_name => "Deals::Redemption"
-    belongs_to :brand
+    belongs_to :user
     belongs_to :for, :polymorphic => true
+    
+    mount_uploader :photo, DealPhotoUploader
     
     def redeem! (*args)
       redeem(*args) ; save

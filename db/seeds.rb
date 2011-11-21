@@ -13,33 +13,35 @@ if Rails.env.development?
     Rails.root.join("db/seeds", path).open
   end
   
-  # User
-  user = User.create \
+  # Users
+  user1 = User.create \
     :name => "Mitch Thompson",
-    :email => "user@prizzm.com",
-    :password => "password",
-    :password_confirmation => "password",
-    :photo => tmpfile("avatar.jpg")
+    :email => "mitch@prizzm.com",
+    :password => "asdfasdf",
+    :password_confirmation => "asdfasdf",
+    :photo => tmpfile("avatar1.jpg")
+    
+  user2 = User.create \
+    :name => "Bryna",
+    :email => "bryna@prizzm.com",
+    :password => "asdfasdf",
+    :password_confirmation => "asdfasdf",
+    :photo => tmpfile("avatar2.jpg")
   
-  # Brand
-  brand = Brand.create \
-    :name => "Bryna", 
-    :email => "brand@prizzm.com", 
-    :password => "password",
-    :password_confirmation => "password",
-    :logo => tmpfile("logo.jpg"),
-    :description => "BRYNA is a San Francisco based accessories label.
-      Its handbags, which combine uptown sophistication with downtown originality, 
-      are currently sold through over 150 stores and 10 websites (including 
-      fashionista favorites like SHOPBOP, PIPERLIME and ENDLESS). Publications 
-      including Elle, Lucky, and Daily Candy have noted BRYNA's ability to consistently 
-      produce must-have bags for busy women who are on the go but refuse to 
-      sacrifice style, quality, or originality.",
-    :social_url => "http://www.shopbryna.com"
+  # Topics
   
-  # Products
-  hermann = brand.products.create \
-    :name => "Hermann Mini",
-    :image => tmpfile("product.jpg")
+  topic1 = Topic.create \
+    :user => user1,
+    :image => tmpfile("topic1.jpg"),
+    :subject => 'I love my 27" iMac.',
+    :body => "Such a good desktop, fast, tons of memory, classy, sleek. Man I love this thing.",
+    :access => "public"
+
+  topic2 = Topic.create \
+    :user => user2,
+    :image => tmpfile("topic2.jpg"),
+    :subject => "What do you think of our Hermann Mini?",
+    :body => "Good, bad? Love it, hate it? We'd love to know so we can make you a better bag!",
+    :access => "public"
     
 end

@@ -1,5 +1,7 @@
 module ApplicationHelper
   
+  include SharedHelper
+  
   # Controller Helpers
   
   def action_name
@@ -12,6 +14,24 @@ module ApplicationHelper
 
   def classes
     "#{controller_name}-section #{action_name}-page"
+  end
+  
+  def action? (*actions)
+    actions.include?(action_name)
+  end
+  
+  def heading (label)
+    content_tag :h3 do
+      content_tag :span, label
+    end
+  end
+  
+  def describe (text)
+    content_tag :div, stars(text), :class => "description"
+  end
+  
+  def stars (text)
+    text.gsub(/\*([^\*]+)\*/i, content_tag('strong', '\1')).html_safe
   end
   
   # Image Helper
@@ -56,7 +76,6 @@ module ApplicationHelper
     case model
       when Product then link_to model.name, product_path(model)
       when User then link_to model.email, "#"
-      when Invites::Invite then link_to invited_url(model.code), invited_path(model.code)
       else "-"
     end
   end
@@ -106,9 +125,9 @@ module ApplicationHelper
     end
   end
   
-  def selected_link (label, path, *controllers)
-    selected = controllers.include?(params[:controller])
-    link_to label, path, :class => selected ? "selected" : ""
+  def active_link (label, path, *controllers)
+    active = controllers.include?(params[:controller])
+    link_to label, path, :class => active ? "active" : ""
   end
   
   def centered (&block)

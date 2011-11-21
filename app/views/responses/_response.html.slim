@@ -1,0 +1,6 @@
+li
+  = uploader_link( response.user ? response.user.photo.thumb : nil, '#user', :class => "avatar small")
+  .message
+    = response.body
+  .notes
+    = said_this(response)

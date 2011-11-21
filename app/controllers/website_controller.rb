@@ -1,7 +1,7 @@
 class WebsiteController < ApplicationController  
   
   def index
-    redirect_to new_brand_session_path
+    redirect_to new_user_session_path
   end
   
 end

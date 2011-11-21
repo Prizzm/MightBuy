@@ -1,0 +1,4 @@
+li
+  = uploader_link(user.photo.thumb, user_path(user), :class => "user small")
+  = link_to user.name, user_path(user), :class => "title"
+  .notes= last_active(user)

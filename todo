@@ -1,4 +1,20 @@
 # Additions
-3) Updates
-  c) Add products page w/ detail.
-  d) Add brands page w/ detail.
+
+1) Add deals to brands:
+  a) index
+  b) show
+  c) new
+  d) edit
+
+2) People:
+  a) index
+  b) show
+
+3) Brands:
+  a) Add deals list, products list, reviews list.
+  
+4) Add reviews to brands:
+  a) index
+  b) show
+  c) new
+  d) edit

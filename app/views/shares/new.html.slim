@@ -1,0 +1,11 @@
+= app_page do
+  ol.list.topics
+    = render parent
+    
+  = heading "Share via.."
+  
+  = simple_form_for resource, :url => collection_path do |form|
+    = form.input :with, :label => "Email", :placeholder => "yourfriend@email.com"
+      
+    .buttons
+      = form.button :submit, "Send!"

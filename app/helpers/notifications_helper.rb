@@ -21,6 +21,10 @@ module NotificationsHelper
     simple_format(capture(&block)).html_safe
   end
   
+  def reply_text
+    @topic.question? ? "Give Your Answer!" : "Reply Now!"
+  end
+  
   def sent_to_by
     ("This email was sent to %s by %s." % 
       [ mail_to(@to_email), mail_to(@from_email) ]).html_safe

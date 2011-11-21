@@ -1,8 +1,2 @@
 = app_page do
-
-  - unless collection.empty?
-    .list
-      = render "list"
-  - else
-    .empty
-      | Looks like there's nothing here!
+  = render "list"

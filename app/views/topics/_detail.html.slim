@@ -1,0 +1,18 @@
+.header
+  = uploader_link(resource.image.thumb, resource.image.url, :class => "topic-image")
+  .title= resource.subject
+  .description= shorthand(resource.body, :length => 210)
+  .notes= phrase_for(:said)
+
+= heading phrase_for(:comments)
+
+ol.list.responses
+  = render :partial => "responses/response", :collection => resource.responses
+    
+
+= heading phrase_for(:respond)
+
+= simple_form_for resource.responses.new, :url => topic_responses_path(resource) do |form|
+  = form.input :body, :label => false
+  .buttons
+    = form.button :submit, "Say it!"

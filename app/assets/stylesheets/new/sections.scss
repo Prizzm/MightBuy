@@ -1,0 +1,89 @@
+#app
+{
+  ol.topics,
+  ol.users
+  {
+    li
+    {
+      .title
+      {
+        margin: 8px 0px;
+      }
+      
+      .notes
+      {
+        color: #999;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.topics-section.show-page
+{
+  #app
+  {
+    #frame .header .image
+    {
+      box-shadow:         none;
+      -moz-box-shadow:    none;
+      -webkit-box-shadow: none;
+    }
+    
+    .header
+    {
+      .notes
+      {
+        color: #999;
+        font-size: 12px;
+      }
+    }
+    
+    form.response
+    {
+      textarea.text
+      {
+        width: 600px;
+        height: 120px;
+      }
+    }
+    
+    ol.responses
+    {
+      li
+      {
+        position: relative;
+        
+        min-height: 55px;
+        padding-left: 80px;
+        
+        .avatar
+        {
+          position: absolute;
+          left: 0px;
+        }
+        
+        .message
+        {
+          color: #444;
+          font-size: 16px;
+          line-height: 1.8em;
+          margin-bottom: 5px;
+        }
+        
+        .notes
+        {
+          font-size: 12px;
+          color: #666;
+        }
+      }
+    }
+    
+    .buttons
+    {
+      margin: 10px 0px;
+    }
+    
+  }
+    
+}

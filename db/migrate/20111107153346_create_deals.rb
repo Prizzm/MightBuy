@@ -2,7 +2,7 @@ class CreateDeals < ActiveRecord::Migration
   
   def change
     create_table :deal_deals, :force => true do |t|
-      t.belongs_to :brand
+      t.belongs_to :user
       t.belongs_to :for, :polymorphic => true
       t.string :title
       t.text :description

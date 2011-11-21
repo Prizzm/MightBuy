@@ -15,8 +15,10 @@ class User < ActiveRecord::Base
   mount_uploader :photo, UserPhotoUploader
   
   # Relationships
-  has_many :reviews
-  has_many :invites, :as => :inviter
-  has_many :invites, :as => :invitee
+  has_many :topics, :order => "created_at desc"
+  has_many :shares, :class_name => "Shares::Share"
+  
+  # Validations
+  validates :name, :presence => true
   
 end

@@ -1,7 +1,12 @@
 = table "email" do
-  = image_tag(url("assets/email/header-share.png"), :alt => "Share your thoughts!")
-  = table "content" do
-    = yield
+  table.page
+    tr.top
+      td.page
+        .padding
+          .heading= @heading
+          .content
+            = yield
+    tr.bottom
+      td.page 
   .notes
     .sent-by= sent_to_by
-    .powered-by= image_link url("assets/email/brand.png"), root_url, :alt => root_url

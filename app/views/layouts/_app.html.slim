@@ -16,20 +16,16 @@
         
     #header
       #menu
-        = link_to "love it", "#loveit", :class => "active"
-        = link_to "hate it", '#hateit'
-        = link_to "brands", brands_path
-        = link_to "people", '#people'
-        = link_to "deals", '#deals'
+        = active_link "you", user_root_path, "profile", "devise/sessions"
+        = active_link "topics", topics_path, "topics", "shares"
+        = active_link "people", users_path, "users"
+        
           
       #search
         input type="text" placeholder="Search.."
         
     #page
-      #banner
-        h1= header
-        #quick-links
-          = quick_links
+      = render "banner", local_assigns
       #content
         = yield
     

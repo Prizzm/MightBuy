@@ -1,23 +1,23 @@
 class Notifications < ActionMailer::Base
-  default from: "notification@prizzm.com"
+  default from: "notify@prizzm.com"
   
   layout "notification"
   
-  def feedback (invite)
-    @invite  = invite
-    @brand   = invite.inviter
-    @user    = invite.invitee
-    @product = invite.reference
-
-    @to_email      = @user.email
-    @from_email    = "%s@prizzm.com" % @brand.name.parameterize
-    @subject = "%s thanks you for buying your new %s" % [ @brand.name, @product.name ]
-    @message = "%s wants to know what you think of your %s :)" % [ @brand.name, @product.name ]
-
+  def share (share)
+    @topic = share.topic
+    @user  = share.user
+    @name = @user ? @user.name : "Someone"
+    
+    @to_email   = share.with
+    @from_email = "notify@prizzm.com"
+    @heading    = (@topic.question? ? 
+      "%s wants your opinion.." : 
+      "%s shared this with you..") % @name
+      
     mail \
       :to => @to_email,
-      :from => "%s <%s>" % [ @brand.name, @from_email ],
-      :subject => @subject
+      :from => "%s <%s>" % [ @name, @from_email ],
+      :subject => @heading
   end
   
 end

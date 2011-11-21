@@ -1,0 +1,11 @@
+.header
+  = uploader_link(resource.photo.thumb, edit_resource_path, :class => "avatar")
+  .attrs
+    = attr "Your Name", resource.name
+    = attr "Points Available", resource.points.available
+    = attr "Points Earned", resource.points.total
+    
+= heading "Your Latest Posts.."
+
+ol.list.topics
+  = render :partial => "topics/topic", :collection => resource.topics

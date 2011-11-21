@@ -1,7 +1,0 @@
-.product
-  = image product.image, :id => "image" do |img|
-    =  link_to image_tag(img.thumb), product_path(product)
-  .name.truncate
-    = link_to product.name, product_path(product)
-  .brand.truncate
-    = link_to product.brand.name, brand_path(product.brand)

@@ -23,13 +23,13 @@ describe "Deals" do
     it { should have_many(:redemptions).class_name("Deals::Redemption") }
   end
   
-  describe Brand do
+  describe User do
     it { should have_many(:deals).class_name("Deals::Deal") }
   end
 
   describe Deals::Deal do
     
-    it { should belong_to(:brand) }
+    it { should belong_to(:user) }
     it { should belong_to(:for) }
     it { should have_many(:redemptions).class_name("Deals::Redemption") }
     
