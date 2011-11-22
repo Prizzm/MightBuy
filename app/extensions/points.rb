@@ -14,6 +14,34 @@ module Points
     end
   end
   
+  module Has
+    extend ActiveSupport::Concern
+    
+    included do
+      has_one :bank, :as => :bankable, :class_name => "Points::Bank"
+    end
+    
+    def points
+      bank || build_bank
+    end
+  end
+  
+  module Lookup
+    
+    def self.for (bank = nil, allocator = nil, allocatable = nil)
+      if bank && allocator
+        array = [bank.id, allocator]
+        array.push(allocatable.id, allocatable.class) if allocatable
+        Digest::SHA1.hexdigest array.join('/')
+      end
+    end
+    
+    def self.for_allocation (allocation)
+      self.for(allocation.bank, allocation.allocator, allocation.allocatable)
+    end
+    
+  end
+  
   class Bank < ActiveRecord::Base
     
     include Deals::Model
@@ -84,32 +112,10 @@ module Points
     
   end
   
-  module Has
-    extend ActiveSupport::Concern
-    
-    included do
-      has_one :bank, :as => :bankable, :class_name => "Points::Bank"
-    end
-    
-    def points
-      bank || build_bank
-    end
-  end
-  
-  module Lookup
-    
-    def self.for (bank = nil, allocator = nil, allocatable = nil)
-      if bank && allocator
-        array = [bank.id, allocator]
-        array.push(allocatable.id, allocatable.class) if allocatable
-        Digest::SHA1.hexdigest array.join('/')
-      end
-    end
-    
-    def self.for_allocation (allocation)
-      self.for(allocation.bank, allocation.allocator, allocation.allocatable)
-    end
-    
-  end
-  
+end
+
+# Allocators
+Points.allocators do
+  add :starting_a_topic, 10
+  add :responding, 20
 end

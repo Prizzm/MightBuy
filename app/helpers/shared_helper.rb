@@ -1,5 +1,11 @@
 module SharedHelper
   
+  def points_tag (allocator)
+    content_tag(:span, :class => "worth-points") do
+      content_tag(:span, "%sP" % Points.allocators[allocator])
+    end
+  end
+  
   def said_this (response, format = nil)
     info = user_info(response.user)
     ((format || "%s said this %s") % [

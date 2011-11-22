@@ -1,5 +1,5 @@
 class TopicsController < InheritedResources::Base
-
+  
   # Verify Owner
   before_filter :only => [:edit, :update, :destroy] do
     unless resource.user == current_user
@@ -10,7 +10,12 @@ class TopicsController < InheritedResources::Base
   def create
     @topic = build_resource
     @topic.user = current_user
-    create!
+    create! do |success, failure|
+      success.html do
+        give_points_for(:starting_a_topic, :allocatable => @topic)
+        redirect_to resource_path
+      end
+    end
   end
   
   protected

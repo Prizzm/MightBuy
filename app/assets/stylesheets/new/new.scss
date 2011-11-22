@@ -326,7 +326,7 @@ body
   #footer
   {
     font-size: 12px;
-    margin: 15px 20px;
+    margin: 15px 20px 50px 20px;
     overflow: hidden;
     
     #copyright, #links a
@@ -648,13 +648,15 @@ body
     
     .buttons
     {
+      overflow: hidden;
       margin: 15px auto;
       margin-left: $inset + 20px;
       
       input.button
       {
+        float: left;
         @include hover-button(#c5356a, darken(#c5356a, 5%));
-        margin-right: 10px;
+        margin-right: 8px;
         padding: 8px 18px;
       }
       
@@ -666,6 +668,11 @@ body
       &.outset
       {
         margin-left: auto;
+      }
+      
+      .worth-points
+      {
+        margin: 6px 0px;
       }
     }
     
@@ -786,34 +793,6 @@ body
     }
   }
   
-  /* Flashes */
-  
-  .points-awarded
-  {
-    position: absolute;
-    bottom: 0px;
-    color: #fff;
-    width: 100%;
-    line-height: 50px;
-    text-align: center;
-    
-    .bar
-    {
-      height: 50px;
-      background: #e36032;
-      color: #fff;
-      font-size: 23px;
-      @include font-museo("700");
-    }
-    
-    .onomatopoeia
-    {
-      font-size: 18px;
-      color: #333;
-      @include font-museo("700");
-    }
-  }
-  
   /* Extras */
   
   div.description
@@ -918,5 +897,82 @@ body
       }
     }
   }
+  
+  /* Points */
+  
+  .worth-points
+  {
+    float: left;
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    height: 24px;
+    line-height: 22px;
+    margin-right: 5px;
+    padding: 0px 0px 0px 13px;
+    text-shadow: 0px 1px 0px #aa3d17;
+    background: url("/images/app/points-tag.png") top left;
+    
+    span
+    {
+      display: block;
+      height: 100%;
+      padding-right: 8px;
+      background: url("/images/app/points-tag.png") top right;
+    }
+  }
+  
+  /* Flashes */
+  
+  #flashes
+  {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    color: #fff;
+    font-size: 23px;
+    line-height: 50px;
+    text-align: center;
+    z-index: 99999;
+    
+    .notice
+    {
+      font-size: 18px;
+      line-height: 40px;
+      background: #a2c71b;
+    }
+    
+    .error
+    {
+      font-size: 18px;
+      line-height: 40px;
+      background: #c71b50;
+    }
+    
+    .points
+    {
+      .bar
+      {
+        height: 50px;
+        background: #e36032;
+      }
+
+      .onomatopoeia
+      {
+        font-size: 18px;
+        color: #333;
+        @include font-museo("700");
+      }
+    }
+    
+    strong
+    {
+      font-weight: bold;
+    }
+  }
+  
+  /* Flashes */
+  
+  
   
 }
