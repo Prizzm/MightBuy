@@ -51,13 +51,6 @@ module ApplicationHelper
     end
   end
   
-  def uploader_link (uploader, url, options = {})
-    style = options.delete(:style) || :url
-    options[:class] = [options[:class], 'image', uploader.blank? ? "empty" : nil].compact.join(" ")
-    image = uploader.blank? ? '' : centered { image_tag(uploader.send(style)) }
-    link_to image, url, options
-  end
-  
   # Others
 
   def image? (uploader)

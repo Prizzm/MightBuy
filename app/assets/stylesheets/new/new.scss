@@ -164,12 +164,11 @@ body
         width: 50px;
         height: 50px;
         margin: auto;
-        background: #fff;
+        background-color: #e53d7a;
         border: 3px solid #b1b19e;
         
-        img { max-width: 100%; max-height: 100%; }
+        img { width: 50px; height: 50px; }
         &:hover { border-color: #c5356a; }
-        &.empty { background: url("/images/app/placeholders/avatar-thumb.png"); }
       }
       
       a
@@ -408,7 +407,7 @@ body
           border-color: #ddd;
         }
         
-        &.small
+        &.thumb
         {
           width: 55px;
           height: 55px;
@@ -473,11 +472,6 @@ body
         { 
           max-width: 100%; 
           max-height: 100%; 
-        }
-        
-        &.empty
-        {
-          &.avatar { background: url("/images/app/placeholders/avatar-profile.png"); }
         }
         
         &.medium { width: 80px; height: 80px; }
@@ -650,6 +644,7 @@ body
     {
       overflow: hidden;
       margin: 15px auto;
+      line-height: 35px;
       margin-left: $inset + 20px;
       
       input.button
@@ -662,6 +657,7 @@ body
       
       a
       {
+        float: left;
         font-size: 13px;
       }
       
@@ -884,16 +880,13 @@ body
   
   a.image
   {
-    &.empty
+    &.blank
     {
-      background-color: #ed3f7e;
-      background-repeat: no-repeat;
-      background-position: center;
-
-      &.product { background-image: url("/images/app/placeholders/product.png"); }
-      &.avatar 
+      background: #f7f7f7 url("/images/app/placeholder.png") no-repeat center;
+      
+      &.thumb
       {
-        background-image: url("/images/app/placeholders/avatar.png");
+        background-image: url("/images/app/placeholder-thumb.png");
       }
     }
   }
@@ -970,9 +963,5 @@ body
       font-weight: bold;
     }
   }
-  
-  /* Flashes */
-  
-  
   
 }

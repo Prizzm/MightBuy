@@ -1,5 +1,28 @@
 module SharedHelper
   
+  def image_link_for (model, url, options = {})
+    uploader = case model
+      when Topic then model.image
+      when User then model.photo
+      when Response then return image_link_for(model.user, url, options)
+    end
+
+    exists = !uploader.blank?
+    style = options.delete(:style) || :url
+    name  = exists ? model.class.to_s.downcase : nil
+    image = exists ? centered { image_tag(uploader.send(style)) } : nil
+    classes = ["image", name, style, exists ? "present" : "blank", options[:class]].compact.join(" ")
+    
+    unless exists
+      case model
+        when Topic
+          return image_link_for(model.user, url, options.merge(:style => style))
+      end
+    end
+    
+    link_to(image || "", url, options.merge(:class => classes))
+  end
+  
   def points_tag (allocator)
     content_tag(:span, :class => "worth-points") do
       content_tag(:span, "%sP" % Points.allocators[allocator])

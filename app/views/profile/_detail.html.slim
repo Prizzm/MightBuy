@@ -1,5 +1,5 @@
 .header
-  = uploader_link(resource.photo.thumb, edit_resource_path, :class => "avatar")
+  = image_link_for( resource, edit_resource_path )
   .attrs
     = attr "Your Name", resource.name
     = attr "Points Available", resource.points.available

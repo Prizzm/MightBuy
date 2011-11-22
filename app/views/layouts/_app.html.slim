@@ -13,7 +13,7 @@
       - if user_signed_in?
         #points= "%sP" % current_user.points.available
         #avatar
-          = uploader_link current_user.photo, user_root_path, :style => :thumb
+          = image_link_for current_user, user_root_path, :style => :thumb
           = link_to "Signout", destroy_user_session_path, :method => :delete
         #links
           = link_to "My Profile", user_root_path

@@ -1,5 +1,5 @@
 .header
-  = uploader_link(resource.image.thumb, resource.image.url, :class => "topic-image")
+  = image_link_for(resource, resource.image.url, :style => :thumb)
   .title= resource.subject
   .description= shorthand(resource.body, :length => 210)
   .notes= phrase_for(:said)
@@ -9,7 +9,6 @@
 ol.list.responses
   = render :partial => "responses/response", :collection => resource.responses
     
-
 = heading phrase_for(:respond)
 
 = simple_form_for resource.responses.new, :url => topic_responses_path(resource) do |form|

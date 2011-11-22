@@ -1,9 +1,12 @@
 class TopicsController < InheritedResources::Base
   
+  # Authenticate
+  authenticate! :except => [:index, :show]
+  
   # Verify Owner
   before_filter :only => [:edit, :update, :destroy] do
     unless resource.user == current_user
-      raise Exceptions::AccessDenied
+      redirect_to login_path
     end
   end
   

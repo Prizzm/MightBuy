@@ -13,9 +13,9 @@ module TopicsHelper
     case action_name
       when :show
         if resource.user == current_user
+          link_to("Share This", new_topic_share_path(resource)) +
           link_for(:edit, "Update") +
-          link_for(:delete, "Remove") +
-          link_to("Share This", new_topic_share_path(resource))
+          link_for(:delete, "Remove")
         else
           link_to("Share This", new_topic_share_path(resource))
         end

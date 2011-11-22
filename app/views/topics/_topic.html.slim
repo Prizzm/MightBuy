@@ -1,4 +1,4 @@
 li
-  = uploader_link(topic.image.thumb, topic_path(topic), :class => "topic small")
+  = image_link_for(topic, topic_path(topic), :style => :thumb)
   = link_to topic.subject, topic_path(topic), :class => "title"
   .notes= phrase_for(:said, topic)

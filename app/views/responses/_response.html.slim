@@ -1,5 +1,5 @@
 li
-  = uploader_link( response.user ? response.user.photo.thumb : nil, '#user', :class => "avatar small")
+  = image_link_for(response, user_info(response.user)[:url], :style => :thumb)
   .message
     = response.body
   .notes
