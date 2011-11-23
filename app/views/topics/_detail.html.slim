@@ -5,10 +5,6 @@
   .notes= phrase_for(:said)
 
 .group.bottom
-  = heading phrase_for(:comments), :id => "comments"
-
-  ol.list.responses
-    = render :partial => "responses/response", :collection => resource.responses
 
   .group.response-form
     = heading phrase_for(:respond)
@@ -18,3 +14,9 @@
       .buttons
         = form.button :submit, "Say it!"
         = points_tag(:responding)
+
+	  = heading phrase_for(:comments), :id => "comments"
+
+	  ol.list.responses
+
+		= render :partial => "responses/response", :collection => resource.responses
