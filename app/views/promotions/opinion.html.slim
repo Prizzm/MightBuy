@@ -1,0 +1,23 @@
+= app_page :header => "Thanks For Your Response!" do
+  #promo
+    h1 We want your opinion!
+    p 
+      |Your opinion matters to every one of the businesses you buy things from every day. And if it doesn't, it should. That's why we made Prizzm.
+    = image_tag "/images/promo/youbrandsdeals.jpg"
+      
+    h1 Join Up Now!
+    
+    p
+      | We've built a way to collaborate with the brands you love; share ideas, get better customer support &amp; help make products you can't live without!
+    
+    p
+      |And to top it all off, get rewarded for your loyalty, your opinion &amp; for sharing what you love with your friends. Sign up for free below &amp; get 40 reward points!
+    
+    .join-form
+      = simple_form_for User.new, :as => :user, :url => users_path do |form|
+        = form.input :name, :label => "Your Name", :required => true
+        = form.input :email, :label => "Email", :required => true
+        = form.input :password, :as => :password, :label => "Password", :required => true
+        .buttons
+          = form.button :submit, "Join Now!"
+          = points_tag :join_after_response

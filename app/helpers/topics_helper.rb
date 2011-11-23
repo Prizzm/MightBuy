@@ -22,5 +22,11 @@ module TopicsHelper
       else super
     end
   end
+  
+  def response_form_for (&block)
+    html = user_signed_in? ? {} : { "data-remote" => true }
+    url    = topic_responses_path(resource, :format => user_signed_in? ? nil : :js)
+    simple_form_for resource.responses.new, :url => url, :html => html, &block
+  end
 
 end

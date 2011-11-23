@@ -4,15 +4,17 @@
   .description= shorthand(resource.body, :length => 210)
   .notes= phrase_for(:said)
 
-= heading phrase_for(:comments)
+.group.bottom
+  = heading phrase_for(:comments), :id => "comments"
 
-ol.list.responses
-  = render :partial => "responses/response", :collection => resource.responses
-    
-= heading phrase_for(:respond)
+  ol.list.responses
+    = render :partial => "responses/response", :collection => resource.responses
 
-= simple_form_for resource.responses.new, :url => topic_responses_path(resource) do |form|
-  = form.input :body, :label => false
-  .buttons
-    = form.button :submit, "Say it!"
-    = points_tag(:responding)
+  .group.response-form
+    = heading phrase_for(:respond)
+
+    = response_form_for do |form|
+      = form.input :body, :label => false
+      .buttons
+        = form.button :submit, "Say it!"
+        = points_tag(:responding)

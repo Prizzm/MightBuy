@@ -1,6 +1,7 @@
 module ApplicationHelper
   
   include SharedHelper
+  include JavascriptHelper
   
   # Controller Helpers
   
@@ -20,8 +21,8 @@ module ApplicationHelper
     actions.include?(action_name)
   end
   
-  def heading (label)
-    content_tag :h3 do
+  def heading (label, options = {})
+    content_tag :h3, options do
       content_tag :span, label
     end
   end

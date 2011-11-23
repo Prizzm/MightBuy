@@ -1,0 +1,9 @@
+var response = $(<%= e(render(resource)) %>);
+var promotion = $(<%= e(render("join")) %>);
+
+$('.group.bottom').slideUp(300, function () {
+  $("ol.responses").empty().append(response);
+  $('h3#comments span').text("Here's what you said..");
+  $('.group.response-form ').html(promotion);
+  $(this).slideDown(300);
+});

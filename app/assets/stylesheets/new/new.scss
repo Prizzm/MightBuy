@@ -964,4 +964,57 @@ body
     }
   }
   
+  /* Promos */
+
+  #promo
+  {
+    text-align: center;
+    
+    h1, h2, p
+    {
+      text-align: left;
+      margin: 15px 0px;
+    }
+    
+    img
+    {
+      margin: 20px 0px;
+    }
+    
+    h1, h2
+    {
+      @include font-museo(700);
+    }
+
+    h1
+    {
+      font-size: 40px;
+    }
+    
+    h2
+    {
+      font-size: 25px;
+    }
+    
+    p
+    {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.5em;
+      
+      strong
+      {
+        color: #333;
+        font-weight: 400;
+      }
+    }
+    
+    
+    div.buttons
+    {
+      margin-left: 151px;
+    }
+
+  }
+  
 }

@@ -4,8 +4,7 @@
       = form.input :name, :label => "Name", :hint => "What shall we call you?"
       = form.input :email, :label => "Email", :hint => "This is private. We will never spam your email address :)"
       = form.input :password, :as => :password, :label => "Password"
-      = form.input :password_confirmation, :as => :password, :label => "Confirm Password"
-      
-      .buttons.inset
+
+      .buttons
         = form.button :submit, "Join!"
         = link_to "Have an account already?", new_user_session_path

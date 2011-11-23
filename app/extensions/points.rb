@@ -118,4 +118,5 @@ end
 Points.allocators do
   add :starting_a_topic, 10
   add :responding, 20
+  add :join_after_response, 40
 end

@@ -24,6 +24,7 @@ NewPrizzmCom::Application.routes.draw do
   resources :topics do
     resources :responses
     get 'share' => 'shares#new'
+    get 'thanks' => 'promotions#opinion'
     resources :shares, :only => [:new, :create]
   end
   

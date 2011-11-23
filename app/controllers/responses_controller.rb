@@ -7,10 +7,8 @@ class ResponsesController < InheritedResources::Base
     @repsonse = build_resource
     @response.user = current_user
     create! do |success, failure|
-      success.html do
-        give_points_for(:responding, :allocatable => parent)
-        redirect_to topic_path(parent)
-      end
+      success.html { redirect_to topic_path(parent) }
+      success.js
     end
   end
   
