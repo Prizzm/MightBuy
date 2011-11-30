@@ -88,3 +88,27 @@
   }
     
 }
+
+.users-section.show-page
+{
+  #app #details .header
+  {
+    .attrs
+    {
+      .attr
+      {
+        margin: 5px 0px;
+        padding: 0px;
+        background: none;
+        
+        label
+        {
+          display: inline;
+          position: static;
+          font-weight: bold;
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}

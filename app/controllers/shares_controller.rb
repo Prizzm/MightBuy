@@ -10,8 +10,9 @@ class SharesController < InheritedResources::Base
   
     def build_resource
       @share ||= Shares::Email.new(params[:shares_email]).tap do |share|
-        share.user = current_user
         share.topic = parent
+        share.user = current_user
+        share.visitor_code = visitor_code
       end
     end
   

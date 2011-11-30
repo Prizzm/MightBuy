@@ -11,7 +11,7 @@ module ProfileHelper
     case action_name
       when :show
         link_for(:edit, "Update Your Profile") +
-        link_to("Start a Topic", new_topic_path)
+        link_to("Start a Topic", new_topic_path, :class => "button")
       else super
     end
   end

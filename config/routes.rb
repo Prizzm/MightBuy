@@ -2,18 +2,22 @@ NewPrizzmCom::Application.routes.draw do
 
   # Authentication
   # devise_for :users
-  devise_for :users, :path_names => { 
-    :sign_in => '/login', 
-    :sign_out => '/logout', 
-    :sign_up => '/join'
-  }
+  devise_for :users, 
+    :path_names => { 
+      :sign_in => '/login', 
+      :sign_out => '/logout', 
+      :sign_up => '/join'
+    },
+    :controllers => {
+      :registrations => "registrations"
+    }
   
   devise_scope :user do
     get "login",   :to => "devise/sessions#new"
     post "login",  :to => "devise/sessions#create"
     get "logout",  :to => "devise/sessions#destroy"
-    get "join",  :to => "devise/registrations#new"
-    post "join", :to => "devise/registrations#create"
+    get "join",  :to => "registrations#new"
+    post "join", :to => "registrations#create"
   end
   
   # Auth Roots
@@ -30,6 +34,7 @@ NewPrizzmCom::Application.routes.draw do
   
   # Users
   resources :users, :only => [:index, :show]
+  resources :brands, :only => [:index, :show]
   
   # Products
   resources :products do

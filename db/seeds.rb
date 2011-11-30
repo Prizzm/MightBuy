@@ -19,14 +19,21 @@ if Rails.env.development?
     :email => "mitch@prizzm.com",
     :password => "asdfasdf",
     :password_confirmation => "asdfasdf",
-    :photo => tmpfile("avatar1.jpg")
+    :photo => tmpfile("avatar1.jpg"),
+    :description => "Here's a bunch of useless details about me & what I like.",
+    :url => "http://www.prizzm.com",
+    :facebook => "http://www.facebook.com/profile.php?id=100002401279548",
+    :twitter => "http://www.twitter.com",
+    :email_address => "mitchkthomson@gmail.com",
+    :phone => "435 817-3552"
     
   user2 = User.create \
     :name => "Bryna",
     :email => "bryna@prizzm.com",
     :password => "asdfasdf",
     :password_confirmation => "asdfasdf",
-    :photo => tmpfile("avatar2.jpg")
+    :photo => tmpfile("avatar2.jpg"),
+    :category => "brand"
   
   # Topics
   

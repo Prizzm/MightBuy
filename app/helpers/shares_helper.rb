@@ -5,7 +5,7 @@ module SharesHelper
   end
   
   def quick_links
-    link_to("Go Back", topic_path(parent))
+    link_to("Go Back", topic_path(parent), :class => "button")
   end
   
 end

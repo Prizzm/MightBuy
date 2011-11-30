@@ -23,9 +23,10 @@
         
     #header
       #menu
-        = active_link "you", user_root_path, "profile", "devise/sessions", "devise/registrations", "promotions"
+        = active_link "you", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
         = active_link "topics", topics_path, "topics", "shares"
         = active_link "people", users_path, "users"
+        = active_link "brands", brands_path, "brands"
           
       #search
         input type="text" placeholder="Search.."

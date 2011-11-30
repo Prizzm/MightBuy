@@ -6,10 +6,11 @@ class ResponsesController < InheritedResources::Base
   def create
     @repsonse = build_resource
     @response.user = current_user
+    @response.visitor_code = visitor_code
     create! do |success, failure|
       success.html { redirect_to topic_path(parent) }
       success.js
     end
   end
-  
+
 end

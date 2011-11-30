@@ -1,26 +1,38 @@
 module SharedHelper
+
+  def user_path (user, *args)
+    user.person? ? super(user, *args) : brand_path(user, *args)
+  end
   
   def image_link_for (model, url, options = {})
+    style     = options.delete(:style) || :url
+    image_url = image_url_for model, style
+    name    = model.class.to_s.downcase
+    classes = ["image", name, style, image_url ? "present" : "blank", options[:class]].compact.join(" ")
+    image   = image_url ? centered { image_tag(image_url) } : ""
+    
+    link_to(image, url, options.merge(:class => classes))
+  end
+  
+  def image_url_for (model, style = nil)
     uploader = case model
       when Topic then model.image
       when User then model.photo
-      when Response then return image_link_for(model.user, url, options)
+      when Response then model.image
+        # return image_url_for(model.user, style)
     end
-
+    
     exists = !uploader.blank?
-    style = options.delete(:style) || :url
-    name  = exists ? model.class.to_s.downcase : nil
-    image = exists ? centered { image_tag(uploader.send(style)) } : nil
-    classes = ["image", name, style, exists ? "present" : "blank", options[:class]].compact.join(" ")
+    style = style || :url
+    url   = exists ? uploader.send(style) : nil
     
     unless exists
       case model
-        when Topic
-          return image_link_for(model.user, url, options.merge(:style => style))
+      when Topic, Response then return image_url_for(model.user, style)
       end
     end
     
-    link_to(image || "", url, options.merge(:class => classes))
+    url
   end
   
   def points_tag (allocator)

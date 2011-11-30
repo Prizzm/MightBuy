@@ -6,6 +6,12 @@ var flashes = function () {
   });
 }
 
+var tabs = function () {
+  $(".tabs").tabs({ fx: { 
+      opacity: 'toggle', duration: 150
+  } });
+}
+
 var pointsAwarded = function (points) {
   return $('<div class="points-awarded">')
     .append('<div class="onomatopoeia">*Cha-Ching!*</div>')
@@ -30,5 +36,9 @@ $(function () {
   
   // Flashes
   flashes();
+  
+  // Tabs
+  tabs();
+  
   
 });

@@ -3,18 +3,35 @@
   .title= resource.subject
   .description= shorthand(resource.body, :length => 210)
   .notes= phrase_for(:said)
+  
+.tabs
+  ul
+    li= link_to phrase_for(:respond), "#respond"
+    li= link_to phrase_for(:comments), "#responses"
+    li= link_to "Shared With..", '#sharing'
+    
+  / Response
+  #respond
+    .group.respond
+      = heading phrase_for(:respond)
 
-.group.bottom
-  = heading phrase_for(:comments), :id => "comments"
+      = response_form_for do |form|
+        = form.input :body, :label => false
+        - if current_user
+          = form.input :image, :as => :file, :label => false
+        
+        .buttons
+          = form.button :submit, "Say it!"
+          = points_tag(:responding)
+  
+  / Responses
+  #responses
+    = heading phrase_for(:comments), :id => "comments"
 
-  ol.list.responses
-    = render :partial => "responses/response", :collection => resource.responses
-
-  .group.response-form
-    = heading phrase_for(:respond)
-
-    = response_form_for do |form|
-      = form.input :body, :label => false
-      .buttons
-        = form.button :submit, "Say it!"
-        = points_tag(:responding)
+    ol.list.responses
+      = render :partial => "responses/response", :collection => resource.responses
+      
+  / Sharing
+  #sharing
+    = heading "You've shared this with.."
+    = resource.shares.inspect

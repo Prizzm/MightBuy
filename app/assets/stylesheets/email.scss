@@ -60,16 +60,21 @@ table.email
     
     td.image
     {
+      width: 1%;
+      -premailer-width: 1%;
+      
       img
       {
         width: 100px;
         height: 100px;
-        margin-right: 10px;
+        margin-right: 20px;
       }
     }
     
     td.message
     {
+      width: 99%;
+      -premailer-width: 99%;
       text-align: left;
     }
     

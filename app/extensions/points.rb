@@ -48,7 +48,7 @@ module Points
 
     set_table_name "point_banks"
     
-    has_many :allocations, :class_name => "Points::Allocation"
+    has_many :allocations, :class_name => "Points::Allocation", :after_add => :increment_awarded!
     belongs_to :bankable, :polymorphic => true
     
     def add (allocator, attributes = {})
@@ -61,7 +61,7 @@ module Points
       if allocation.valid?
         self.total += allocation.points
         self.available += allocation.points
-        allocations << allocation
+        allocations.push(allocation)
       end
     end
     
@@ -79,6 +79,17 @@ module Points
     def spend! (*args)
       spend *args ; save
     end
+    
+    def awarded
+      @awarded ||= 0
+    end
+    
+    private
+    
+      def increment_awarded! (allocation)
+        awarded
+        @awarded += allocation.points
+      end
     
   end
   
@@ -118,5 +129,5 @@ end
 Points.allocators do
   add :starting_a_topic, 10
   add :responding, 20
-  add :join_after_response, 40
+  add :joining, 40
 end

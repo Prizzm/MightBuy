@@ -1,5 +1,5 @@
 li
-  = image_link_for(response, user_info(response.user)[:path], :style => :thumb)
+  = image_link_for(response, image_url_for(response), :style => :thumb)
   .message
     = response.body
   .notes

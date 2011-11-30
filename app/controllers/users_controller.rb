@@ -4,6 +4,10 @@ class UsersController < InheritedResources::Base
   
   protected
   
+    def end_of_association_chain
+      super.people
+    end
+  
     def collection
       @users ||= end_of_association_chain.order(:name)
     end

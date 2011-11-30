@@ -1,4 +1,6 @@
 module NotificationsHelper
+
+  include SharedHelper
   
   def url (path)
     URI::join(root_url, path.to_s)

@@ -1,6 +1,6 @@
 table.share
   td.image
-    = link_to image_tag(url(@topic.image.thumb)), topic_url(@topic)
+    = link_to image_tag(url(image_url_for(@topic, :thumb) || "/images/app/placeholder-image.png")), topic_url(@topic)
   td.message
     .subject= link_to @topic.subject, topic_url(@topic)
     .body= truncate(@topic.body, :length => 160)

@@ -1,9 +1,14 @@
 .header
   = image_link_for(resource, resource.photo.url, :style => :thumb)
   .title= resource.name
+  .description
+    = resource.description? ? shorthand(resource.description, :length => 150) : "I haven't said anything about myself yet :)"
+  
   .attrs
-    = attr "Points Available", resource.points.available
-    = attr "Points Earned", resource.points.total
+    - unless resource.url.blank?
+      = attr 'Visit Me:', link_to(resource.url, resource.url, :target => "_blank")
+    - unless resource.phone.blank?
+      = attr 'Call Me:', resource.phone
     
 = heading "What's on %s's mind?" % resource.name
 

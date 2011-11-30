@@ -4,4 +4,8 @@ class UserObserver < ActiveRecord::Observer
     user.password_confirmation = user.password
   end
   
+  def after_create (user)
+    user.points.add :joining
+  end
+  
 end

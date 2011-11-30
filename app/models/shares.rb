@@ -1,8 +1,17 @@
 module Shares
   class Share < ActiveRecord::Base
+    
+    # Table
     set_table_name "shares"
+    
+    # Relationships
     belongs_to :topic
     belongs_to :user
+    
+    # Scopes
+    scope :with_visitor_code, proc { |code| 
+      where(:visitor_code => code, :user_id => nil)  }
+    
   end
   
   class Email < Share

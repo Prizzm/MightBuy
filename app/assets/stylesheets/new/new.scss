@@ -283,7 +283,16 @@ body
         top: 12px;
         right: 80px;
         
-        a
+        span
+        {
+          color: #667A80;
+          font-size: 11px;
+          font-weight: bold;
+          line-height: 30px;
+          margin-right: 3px;
+        }
+        
+        a.button
         {
           @include hover-button(#c5356a, darken(#c5356a, 5%));
           
@@ -291,6 +300,12 @@ body
           font-size: 11px;
           padding: 5px 10px;
           margin: 0px 2px;
+          line-height: 1em;
+        }
+        
+        a.icon
+        {
+          margin: 0px 1px;
         }
       }
     }
@@ -1015,6 +1030,53 @@ body
       margin-left: 151px;
     }
 
+  }
+  
+  /* Tabs */
+  
+  .tabs
+  {
+    margin: 20px 0px;
+    
+    .ui-tabs-nav 
+    {
+      overflow: hidden;
+      margin: 10px 0px;
+      height: 30px;
+      
+      li
+      { 
+        float: left;
+        margin-right: 5px;
+      }
+      
+      li a
+      {
+        display: block;
+        color: #666;
+        line-height: 26px;
+        font-size: 12px;
+        @include hover-button(#4B494A, #363536);
+        padding: 0px 10px;
+      }
+      
+      li.ui-state-active a
+      {
+        
+        @include hover-button(#c5356a, darken(#c5356a, 5%));
+        font-weight: bold;
+        
+        &:hover { font-weight: bold; }
+      }
+      
+      .ui-tabs-panel
+      {
+        padding: 10px 0px;
+      }
+      
+    }
+    
+    .ui-tabs-hide { display: none; }
   }
   
 }

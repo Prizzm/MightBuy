@@ -13,11 +13,11 @@ module TopicsHelper
     case action_name
       when :show
         if resource.user == current_user
-          link_to("Share This", new_topic_share_path(resource)) +
+          link_to("Share This", new_topic_share_path(resource), :class => "button") +
           link_for(:edit, "Update") +
           link_for(:delete, "Remove")
         else
-          link_to("Share This", new_topic_share_path(resource))
+          link_to("Share This", new_topic_share_path(resource), :class => "button")
         end
       else super
     end
@@ -26,7 +26,7 @@ module TopicsHelper
   def response_form_for (&block)
     html = user_signed_in? ? {} : { "data-remote" => true }
     url    = topic_responses_path(resource, :format => user_signed_in? ? nil : :js)
-    simple_form_for resource.responses.new, :url => url, :html => html, &block
+    simple_form_for Response.new, :url => url, :html => html, &block
   end
 
 end

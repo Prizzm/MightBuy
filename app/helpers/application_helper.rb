@@ -102,11 +102,11 @@ module ApplicationHelper
   def link_for (action, label = nil)
     case action
       when :add
-        link_to label || "Add Another", new_resource_path
+        link_to label || "Add Another", new_resource_path, :class => "button"
       when :edit
-        link_to label || "Edit", edit_resource_path
+        link_to label || "Edit", edit_resource_path, :class => "button"
       when :back
-        link_to label || "Go Back", collection_path, :class => "dark"
+        link_to label || "Go Back", collection_path, :class => "dark button"
       when :delete
         link_to label || "Delete", resource_path, :confirm => "Are you sure?", :method => :delete, :class => "button"
     end
@@ -119,8 +119,8 @@ module ApplicationHelper
     end
   end
   
-  def active_link (label, path, *controllers)
-    active = controllers.include?(params[:controller])
+  def active_link (label, path, *args)
+    active = args.include?(params[:controller]) || args.any? { |value| value == true }
     link_to label, path, :class => active ? "active" : ""
   end
   

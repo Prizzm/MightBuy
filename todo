@@ -18,3 +18,14 @@
   b) show
   c) new
   d) edit
+
+5) Clean out promotions duplication.
+6) Make placeholders for empty collections..
+# 7) Fix email with missing topic image issue.
+8) Make button_link helper & switch out all (class => "button") calls.
+9) Add share stats on topic page.
+10) Add fancybox support for images.
+11) Change phrasing for brands / users.
+# 12) Add photos to responses..
+13) Fix response ajax for user & no user.
+14) Add email tracking for shares for owner.
