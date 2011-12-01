@@ -2,15 +2,16 @@
   = image_link_for(resource, resource.photo.url, :style => :thumb)
   .title= resource.name
   .description
-    = resource.description? ? shorthand(resource.description, :length => 150) : "I haven't said anything about myself yet :)"
+    = resource.description? ? shorthand(resource.description, :length => 150) : phrase_for(:no_description)
   
   .attrs
     - unless resource.url.blank?
-      = attr 'Visit Me:', link_to(resource.url, resource.url, :target => "_blank")
+      = attr phrase_for(:url), to_link(resource.url)
     - unless resource.phone.blank?
-      = attr 'Call Me:', resource.phone
+      = attr phrase_for(:phone), resource.phone
     
-= heading "What's on %s's mind?" % resource.name
+= heading phrase_for(:posts)
 
 ol.list.topics
-  = render resource.topics.publics
+  = placeholder resource.topics.publics do |collection|
+    = render collection

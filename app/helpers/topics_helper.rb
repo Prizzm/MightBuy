@@ -1,5 +1,25 @@
 module TopicsHelper
 
+  def shared_this (share, format = nil)
+    info = user_info(share.user)
+    ((format || "%s shared this with %s %s.") % [
+      link_to(info[:name], info[:path], :class => "user"),
+      mail_to(share.with),
+      content_tag( :span, shorthand(share.created_at).downcase, :class => "created-at" )  
+    ]).html_safe
+  end
+  
+  def shares_for_topic
+    case 
+      when owner_of_topic? then resource.shares
+      else resource.shares.where(:user_id => current_user)
+    end
+  end
+  
+  def owner_of_topic?
+    current_user == resource.user
+  end
+
   def header
     case action_name
       when :index then "Latest Topics.."

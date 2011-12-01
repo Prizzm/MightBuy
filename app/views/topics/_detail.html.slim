@@ -16,9 +16,14 @@
       = heading phrase_for(:respond)
 
       = response_form_for do |form|
-        = form.input :body, :label => false
+        
         - if current_user
           = form.input :image, :as => :file, :label => false
+        
+        = form.input :body, :label => false
+        
+        - if resource.recommendable
+          = form.input :recommended, :label => "Would you recommend this?", :as => :boolean
         
         .buttons
           = form.button :submit, "Say it!"
@@ -29,9 +34,12 @@
     = heading phrase_for(:comments), :id => "comments"
 
     ol.list.responses
-      = render :partial => "responses/response", :collection => resource.responses
+      = placeholder resource.responses do |collection|
+        = render :partial => "responses/response", :collection => collection
       
   / Sharing
   #sharing
     = heading "You've shared this with.."
-    = resource.shares.inspect
+    ol.list.shares.concise 
+      = placeholder shares_for_topic do |collection|
+        = render :partial => "shares/share", :collection => collection

@@ -1,5 +1,10 @@
 module SharedHelper
 
+  def to_link (string)
+    url = string.gsub /^(http(s)?\:\/\/)?/, 'http\2://'
+    link_to url, url, :target => "_blank"
+  end
+
   def user_path (user, *args)
     user.person? ? super(user, *args) : brand_path(user, *args)
   end
@@ -43,7 +48,7 @@ module SharedHelper
   
   def said_this (response, format = nil)
     info = user_info(response.user)
-    ((format || "%s said this %s") % [
+    ((format || "%s said this %s.") % [
       link_to(info[:name], info[:path], :class => "user"),
       content_tag( :span, shorthand(response.created_at).downcase, :class => "created-at" )  
     ]).html_safe
@@ -73,6 +78,21 @@ module SharedHelper
       :path => user ? user_path(user) : "#guest",
       :thumb => user ? (user.photo.blank? ? user.photo.thumb : nil) : nil
     }
+  end
+  
+  # Placeholders
+  
+  def placeholder (collection, &block)
+    type = collection.name.downcase.pluralize.gsub("::", "_")
+    name = [ params[:controller], params[:action], type ] * "_"
+    
+    if collection.empty?
+      content_tag :div, :class => "placeholder" do
+        render("placeholder", :type => type.to_sym, :name => name.to_sym)
+      end
+    else
+      capture(collection, &block)
+    end
   end
   
 end

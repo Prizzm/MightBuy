@@ -3,7 +3,10 @@ source 'http://rubygems.org'
 
 # Rails
 gem 'rails', '3.1.1'
+
+# Asset Gems
 gem 'jquery-rails'
+gem 'fancybox-rails', '0.1.4'
 
 # Authentication
 gem 'devise', '1.4.7'

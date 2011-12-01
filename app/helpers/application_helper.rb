@@ -137,7 +137,7 @@ module ApplicationHelper
   
   def shorthand (value, options = {})
     case value
-      when Time then ("%s ago." % time_ago_in_words(value)).capitalize
+      when Time then ("%s ago" % time_ago_in_words(value)).capitalize
       when String then truncate(value, options)
       when TrueClass then "Yes"
       when FalseClass then "No"

@@ -12,6 +12,18 @@ var tabs = function () {
   } });
 }
 
+var lightboxes = function () {
+  $('a').each(function () {
+    if( $(this).attr('href').match(/\.(jpg|jpeg|png|gif)/i) )
+     $(this).fancybox({
+      'overlayColor'		: '#000',
+      'overlayOpacity'	: 0.8,
+      'transitionIn'	: 'elastic',
+      'transitionOut'	: 'elastic',
+     });
+  });
+}
+
 var pointsAwarded = function (points) {
   return $('<div class="points-awarded">')
     .append('<div class="onomatopoeia">*Cha-Ching!*</div>')
@@ -40,5 +52,7 @@ $(function () {
   // Tabs
   tabs();
   
+  // Lightboxes
+  lightboxes();
   
 });

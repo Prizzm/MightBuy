@@ -8,9 +8,11 @@
 = heading "Your Latest Posts.."
 
 ol.list.topics
-  = render :partial => "topics/topic", :collection => resource.topics.limit(2)
+  = placeholder resource.topics.limit(2) do |collection|
+    = render :partial => "topics/topic", :collection => collection
   
 = heading "Your Latest Conversations.."
 
 ol.list.topics
-  = render :partial => "responses/response", :collection => resource.responses.limit(2)
+  = placeholder resource.responses.limit(2) do |collection|
+    = render :partial => "responses/response", :collection => collection

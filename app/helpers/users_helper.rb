@@ -38,4 +38,20 @@ module UsersHelper
     ]).html_safe
   end
   
+  def phrase_for (subject, object = nil)
+    object ||= resource
+
+    case subject
+      when :url then object.brand? ? "Visit Us:" : "Visit Me"
+      when :phone then object.brand? ? "Call Us" : "Call Me"
+      when :posts
+        (object.brand? ? "The latest from %s.." : "What's on %s's mind?") % resource.name
+      when :no_description
+        (object.brand? ? "%s hasn't described what they do yet." : 
+                         "I haven't said anything about myself yet :)") % resource.name
+          
+      else super
+    end
+  end
+  
 end

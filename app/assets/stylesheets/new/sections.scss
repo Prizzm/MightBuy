@@ -46,6 +46,12 @@
         width: 600px;
         height: 120px;
       }
+      
+      .boolean
+      {
+        margin-left: 0px;
+      }
+      
     }
     
     ol.responses
@@ -66,14 +72,21 @@
         
         .message
         {
+          margin: 5px 0px;
           color: #444;
           font-size: 16px;
           line-height: 1.8em;
-          margin-bottom: 5px;
+        }
+        
+        .recommended
+        {
+          margin: 10px 0px;
+          font-weight: bold;
         }
         
         .notes
         {
+          margin: 5px 0px;
           font-size: 12px;
           color: #666;
         }

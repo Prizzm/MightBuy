@@ -45,6 +45,11 @@
   font-family: "Museo#{$style}", Georgia, "Times New Roman", Times, serif;
 }
 
+@mixin font-serif ()
+{
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
 @mixin button ($from, $to) 
 {
   cursor: pointer;
@@ -255,7 +260,7 @@ body
     width: 620px;
     background: #fff;
     margin: auto;
-    padding: 80px 30px 40px 30px;
+    padding: 80px 30px 20px 30px;
     
     #banner
     {
@@ -441,6 +446,12 @@ body
           margin: 5px 5px 5px auto;
         }
       }
+    }
+    
+    &.concise
+    {
+      font-size: 13px;
+      color: #666;
     }
   }
   
@@ -1030,6 +1041,19 @@ body
       margin-left: 151px;
     }
 
+  }
+  
+  /* Placeholders */
+  
+  .placeholder
+  {
+    margin: 10px 0px;
+    color: #666;
+    padding: 5px 10px;
+    background: #f7f9f9;
+    @include rounded-corners(3px);
+    
+    strong { color: #555; font-weight: bold; }
   }
   
   /* Tabs */

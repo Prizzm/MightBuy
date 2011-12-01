@@ -1,0 +1,14 @@
+- if name == :profile_show_topics
+  = stars "Looks like you *haven't posted anything* yet."
+  
+- if name == :profile_show_responses
+  = stars "Looks like you *haven't been involved in any conversations* yet."
+
+- if name == :brands_show_topics || name == :users_show_topics
+  = stars "Looks like they *haven't posted anything* yet."
+  
+- if name == :topics_show_responses
+  = stars "Looks like *no one has responded* yet."
+  
+- if name == :topics_show_shares_shares
+  = stars "You *haven't shared this with anyone* yet."

@@ -2,5 +2,9 @@ li
   = image_link_for(response, image_url_for(response), :style => :thumb)
   .message
     = response.body
+  
+  - if response.recommended
+    .recommended Recommended.
+  
   .notes
     = said_this(response)
