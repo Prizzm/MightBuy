@@ -25,5 +25,15 @@ class TopicsController < InheritedResources::Base
     def resource
       @topic ||= end_of_association_chain.find_by_shortcode!(params[:id])
     end
+    
+  private
+  
+    helper_method :featured_response
+  
+    def featured_response
+      unless params[:feature].blank?
+        @response ||= resource.responses.find_by_id(params[:feature])
+      end
+    end
   
 end

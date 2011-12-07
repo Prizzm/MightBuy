@@ -14,7 +14,8 @@ var tabs = function () {
 
 var lightboxes = function () {
   $('a').each(function () {
-    if( $(this).attr('href').match(/\.(jpg|jpeg|png|gif)/i) )
+    var attr = $(this).attr('href');
+    if( attr && attr.match(/\.(jpg|jpeg|png|gif)/i) )
      $(this).fancybox({
       'overlayColor'		: '#000',
       'overlayOpacity'	: 0.8,

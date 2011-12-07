@@ -43,6 +43,9 @@ NewPrizzmCom::Application.routes.draw do
     resources :reviews
   end
   
+  # Router
+  get 'invited/:shortcode' => "router#invited", :as => :invited
+  
   # Sandbox
   get 'sandbox' => "website#sandbox"
   

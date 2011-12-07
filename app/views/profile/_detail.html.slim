@@ -13,6 +13,7 @@ ol.list.topics
   
 = heading "Your Latest Conversations.."
 
-ol.list.topics
+ol.list.responses
   = placeholder resource.responses.limit(2) do |collection|
+    
     = render :partial => "responses/response", :collection => collection

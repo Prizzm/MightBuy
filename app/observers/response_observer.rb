@@ -4,6 +4,10 @@ class ResponseObserver < ActiveRecord::Observer
     if response.user
       response.user.points.add :responding, :allocatable => response
     end
+    
+    if response.user != response.topic.user
+      Notifications.responded(response).deliver
+    end
   end
   
 end

@@ -19,6 +19,90 @@
   }
 }
 
+#app
+{
+  
+  ol.responses.highlight
+  {
+    padding: 15px;
+    background: #ffd;
+    border: 1px dashed #ee9;
+    
+    li
+    {
+      margin: 0px;
+      padding-bottom: 0px;
+    }
+  }
+  
+  ol.responses
+  {
+    li
+    {
+      overflow: visible;
+      position: relative;
+      
+      min-height: 65px;
+      padding-left: 75px;
+      
+      a.image
+      {
+        position: absolute;
+        left: 0px;
+      }
+      
+      .message
+      {
+        padding: 0px;
+        margin-bottom: 0px;
+        color: #444;
+        font-size: 16px;
+        line-height: 1.8em;
+      }
+      
+      .quoted
+      {
+        color: #333;
+        font-size: 14px;
+        line-height: 1.5em;
+        font-style: italic;
+        
+        &:hover 
+        {
+          color: #d02664;
+        }
+      }
+      
+      .recommended
+      {
+        line-height: 1.5em;
+        font-weight: bold;
+      }
+      
+      .notes
+      {
+        margin: 5px 0px;
+        font-size: 12px;
+        color: #666;
+      }
+      
+      .social
+      {
+        border-top: 1px dashed #ddd;
+        padding-top: 10px;
+        margin: 10px 0px;
+        width: 500px;
+        
+        .recommend, .tweet
+        {
+          float: left;
+        }
+        
+      }
+    }
+  }
+}
+
 .topics-section.show-page
 {
   #app
@@ -54,45 +138,6 @@
       
     }
     
-    ol.responses
-    {
-      li
-      {
-        overflow: hidden;
-        position: relative;
-        
-        min-height: 65px;
-        padding-left: 75px;
-        
-        a.image
-        {
-          position: absolute;
-          left: 0px;
-        }
-        
-        .message
-        {
-          margin: 5px 0px;
-          color: #444;
-          font-size: 16px;
-          line-height: 1.8em;
-        }
-        
-        .recommended
-        {
-          margin: 10px 0px;
-          font-weight: bold;
-        }
-        
-        .notes
-        {
-          margin: 5px 0px;
-          font-size: 12px;
-          color: #666;
-        }
-      }
-    }
-    
     .buttons
     {
       margin: 10px 0px;
@@ -124,4 +169,46 @@
       }
     }
   }
+}
+
+#app
+{
+  form .add_fields
+  {
+    font-size: 13px;
+    margin-left: 140px;
+  }
+  
+  .nested-fields
+  {
+    position: relative;
+    
+    a.remove_fields
+    {
+      position: absolute;
+      top: 8px;
+      right: 3px;
+      width: 18px;
+      height: 18px;
+      overflow: hidden;
+      text-indent: -9999em;
+      opacity: 0.5;
+      -moz-opacity: 0.5;
+      filter:alpha(opacity=50);
+      background: url("/images/app/delete.png") no-repeat center;
+      
+      &:hover
+      {
+        opacity: 1.0;
+        -moz-opacity: 1.0;
+        filter:alpha(opacity=100);
+      }
+    }
+    
+  }
+}
+
+.clearfix
+{
+  clear: both;
 }

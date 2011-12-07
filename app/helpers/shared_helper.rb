@@ -1,5 +1,7 @@
 module SharedHelper
 
+  include SocialHelper
+
   def to_link (string)
     url = string.gsub /^(http(s)?\:\/\/)?/, 'http\2://'
     link_to url, url, :target => "_blank"
@@ -54,6 +56,19 @@ module SharedHelper
     ]).html_safe
   end
   
+  def said_this_in_response (response)
+    format = resource.is_a?(Topic) ? 
+      "%1$s said this %4$s" : "In response to %2$s by %3$s %4$s."
+      
+    info = user_info(response.user)
+    user_link       = link_to info[:name], info[:path], :class => "user"
+    topic_link      = link_to response.topic.subject, topic_path(response.topic), :class => "topic"
+    topic_user_link = link_to response.topic.user.name, user_path(response.topic.user), :class => "topic-user"
+    created_at      = content_tag :span, shorthand(response.created_at).downcase, :class => "created-at"
+    
+    (format % [user_link, topic_link, topic_user_link, created_at]).html_safe
+  end
+  
   def phrase_for (subject, object = nil)
     object ||= resource
     
@@ -64,7 +79,7 @@ module SharedHelper
       when :comments
         object.question? ? "What others think.." : "Comments.."
       when :respond
-        object.question? ? "Your Feedback:" : "Have something to say?"
+        object.question? ? "Your Feedback.." : "Have something to say?"
       when :said
         phrase = object.question? ? "%s asked this %s" : "%s said this %s"
         said_this(object, phrase)

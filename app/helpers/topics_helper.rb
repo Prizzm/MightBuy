@@ -9,6 +9,20 @@ module TopicsHelper
     ]).html_safe
   end
   
+  def said_this (response, format = nil)
+     if response.is_a?(Response)
+      name = response.user ? response.user.name : (response.share ? response.share.with : "Guest" )
+      path = response.user ? user_path(response.user) : "#guest"
+      ((format || "%s said this %s.") % [
+        link_to(name, path, :class => "user"),
+        content_tag( :span, shorthand(response.created_at).downcase, :class => "created-at" )  
+      ]).html_safe
+    else 
+      super(response, format)
+    end
+  end
+  
+  
   def shares_for_topic
     case 
       when owner_of_topic? then resource.shares

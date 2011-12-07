@@ -1,7 +1,7 @@
 table.share
   td.image
-    = link_to image_tag(url(image_url_for(@topic, :thumb) || "/images/app/placeholder-image.png")), topic_url(@topic)
+    = link_to image_tag(url(image_url_for(@topic, :thumb) || "/images/app/placeholder-image.png")), @topic_url
   td.message
-    .subject= link_to @topic.subject, topic_url(@topic)
+    .subject= link_to @topic.subject, @topic_url
     .body= truncate(@topic.body, :length => 160)
-    .goto= link_to image_tag(url("/images/email/button.png")), topic_url(@topic)
+    .goto= link_to image_tag(url("/images/email/button.png")), @topic_url

@@ -29,3 +29,35 @@
 # 12) Add photos to responses..
 13) Fix response ajax for user & no user.
 14) Add email tracking for shares for owner.
+
+
+# Monday Deadline
+
+1) Profile setup - Give points for adding a picture
+# 2) Ask customer if they recommend product
+# 3) Show % of users who recommended product
+4) Provide incentive for users to share
+# 5) Add invite tracking (show email address of user who responded).
+# 6) Add response rate --
+# 7) Add recommended tracking
+8) Add charts & graphs for response rate, recommendations, etc.
+# 9) Format "Latest Activity" section better.
+# 10) Allow sending of multiple invites.
+# 11) Notify the owner of a topic when someone comments.
+12) Cross Browser testing..
+
+
+# Here...
+
+If recommended:
+Pop up share on facebook:
+  What do you think of our Hermann Mini?
+  I recommended this on Prizzm.
+
+I recommended a Hermann Mini on Prizzm.
+
+If recommended:
+  I gave feedback on Prizzm.
+  I recommended 
+  I gave Bryna my feedback on Prizzm.
+  I told Bryna what I think on Prizzm.

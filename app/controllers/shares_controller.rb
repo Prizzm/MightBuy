@@ -5,14 +5,33 @@ class SharesController < InheritedResources::Base
   
   # Actions
   actions :new, :create
-
-  protected
   
-    def build_resource
-      @share ||= Shares::Email.new(params[:shares_email]).tap do |share|
-        share.topic = parent
-        share.user = current_user
-        share.visitor_code = visitor_code
+  def create
+    @resources = build_resources
+    if resources.all?(&:valid?)
+      resources.each(&:save)
+      redirect_to parent_path
+    else
+      render "new"
+    end
+  end
+    
+  private
+  
+    helper_method :resources
+    
+    def resources 
+      @resources ||= [ Shares::Email.new ]
+    end
+    
+    def build_resources
+      (params[:topic][:shares_attributes] || {}).map do |key, attributes|
+        attributes.delete(:_destroy)
+        Shares::Email.new(attributes).tap do |share|
+          share.topic = parent
+          share.user  = current_user
+          share.visitor_code = visitor_code
+        end
       end
     end
   

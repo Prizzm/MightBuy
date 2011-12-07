@@ -14,9 +14,30 @@ class Notifications < ActionMailer::Base
       "%s wants your opinion.." : 
       "%s shared this with you..") % @name
       
+    @topic_url = invited_url(share.shortcode);
+      
     mail \
       :to => @to_email,
       :from => "%s <%s>" % [ @name, @from_email ],
+      :subject => @heading
+  end
+  
+  def responded (response)
+    @model = response
+    
+    @heading = "%s has responded to your post." % 
+      (response.user ? response.user.name : "Someone")
+      
+    @to_email = response.topic.user.email
+    @from_email = "notify@prizzm.com"
+    @url     = topic_url(response.topic)
+    
+    @title   = response.topic.subject
+    @message = response.body
+    
+    mail \
+      :to => @to_email,
+      :from => "Prizzm <%s>" % @from_email,
       :subject => @heading
   end
   
