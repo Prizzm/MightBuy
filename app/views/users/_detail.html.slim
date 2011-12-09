@@ -13,5 +13,11 @@
 = heading phrase_for(:posts)
 
 ol.list.topics
-  = placeholder resource.topics.publics do |collection|
+  = placeholder resource.topics.publics.limit(3) do |collection|
     = render collection
+    
+= heading phrase_for(:activity)
+
+ol.list.responses
+  = placeholder resource.responses.limit(2) do |collection|
+    = render :partial => "responses/response", :collection => collection

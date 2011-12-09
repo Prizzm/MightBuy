@@ -1,12 +1,28 @@
 module TopicsHelper
 
   def shared_this (share, format = nil)
+    case share
+      when Shares::Email
+        type   = :email
+        with   = mail_to(share.with)
+        format ||= "%s shared this with %s %s."
+      when Shares::Tweet
+        with   = nil
+        type   = :tweet
+        format ||= "%1$s tweeted about this %3$s."
+      when Shares::Recommend
+        with = nil
+        type = :recommend
+        format ||= "%1$s recommend this on facebook %3$s."
+    end
+    
     info = user_info(share.user)
-    ((format || "%s shared this with %s %s.") % [
-      link_to(info[:name], info[:path], :class => "user"),
-      mail_to(share.with),
-      content_tag( :span, shorthand(share.created_at).downcase, :class => "created-at" )  
-    ]).html_safe
+    user_link = link_to(info[:name], info[:path], :class => "user")
+    created_at = content_tag( :span, shorthand(share.created_at).downcase, :class => "created-at" )
+    
+    content_tag :div, :class => "share #{type}" do
+      (format % [ user_link, with, created_at ]).html_safe
+    end
   end
   
   def said_this (response, format = nil)
@@ -57,9 +73,9 @@ module TopicsHelper
     end
   end
   
-  def response_form_for (&block)
+  def response_form_for (topic, &block)
     html = user_signed_in? ? {} : { "data-remote" => true }
-    url    = topic_responses_path(resource, :format => user_signed_in? ? nil : :js)
+    url    = topic_responses_path(topic, :format => user_signed_in? ? nil : :js)
     simple_form_for Response.new, :url => url, :html => html, &block
   end
 

@@ -38,7 +38,7 @@ module SocialHelper
     
     def self.tweet (text, url)
       button = '<a href="https://twitter.com/share" class="twitter-share-button" data-url="%s" 
-        data-text="%s" data-count="horizontal">Tweet</a><script type="text/javascript" 
+        data-text="%s" data-count="none" data-via="prizzmtwt">Tweet</a><script type="text/javascript" 
         src="//platform.twitter.com/widgets.js"></script>'
         
       (button % [url, text]).html_safe

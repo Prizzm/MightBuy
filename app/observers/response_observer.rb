@@ -10,4 +10,12 @@ class ResponseObserver < ActiveRecord::Observer
     end
   end
   
+  # Only allow one level of replies.
+  def before_validation (response)
+    reply = response.reply
+    if reply && reply.reply_id?
+      response.reply_id = reply.reply_id
+    end
+  end
+  
 end

@@ -33,6 +33,16 @@
       margin: 0px;
       padding-bottom: 0px;
     }
+    
+    .actions
+    {
+      margin-left: 45px;
+    }
+    
+    h3 span
+    {
+      background: #ffd;
+    }
   }
   
   ol.responses
@@ -96,8 +106,23 @@
         .recommend, .tweet
         {
           float: left;
+          margin-right: 8px;
         }
         
+      }
+    }
+  }
+  
+  #reply-form
+  {
+    .text
+    {
+      margin-right: 20px;
+      
+      textarea
+      {
+        width: 100%;
+        height: 70px;
       }
     }
   }
@@ -205,6 +230,24 @@
       }
     }
     
+  }
+}
+
+#app
+{
+  ol.shares
+  {
+    .share
+    {
+      text-indent: 25px;
+      background: url("/images/icons/email.png");
+      background-repeat: no-repeat;
+      background-position: left middle;
+      
+      &.email     { background-image: url("/images/icons/email.png"); }
+      &.tweet     { background-image: url("/images/icons/twitter.png"); }
+      &.recommend { background-image: url("/images/icons/facebook.png"); }
+    }
   }
 }
 

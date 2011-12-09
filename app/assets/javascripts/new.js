@@ -4,5 +4,6 @@
 //= require fancybox
 //= require cocoon
 //= require vendor/jquery.qtip.js
+//= require vendor/jquery.hoverintent.js
 //= require new/sound.js
 //= require new/app.js

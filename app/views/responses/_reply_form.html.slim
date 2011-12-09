@@ -1,0 +1,5 @@
+= response_form_for topic do |form|
+  = form.input :reply_id, :as => :hidden
+  = form.input :body, :label => false
+  .buttons
+    = form.button :submit, "Say it!"

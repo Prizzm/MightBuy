@@ -43,6 +43,10 @@ NewPrizzmCom::Application.routes.draw do
     resources :reviews
   end
   
+  # Social
+  post 'social/tweeted' => 'social#tweeted'
+  post 'social/recommended' => 'social#recommended'
+  
   # Router
   get 'invited/:shortcode' => "router#invited", :as => :invited
   

@@ -28,12 +28,16 @@ class TopicsController < InheritedResources::Base
     
   private
   
-    helper_method :featured_response
+    helper_method :featured_response, :responses
   
     def featured_response
       unless params[:feature].blank?
         @response ||= resource.responses.find_by_id(params[:feature])
       end
+    end
+    
+    def responses
+      @responses ||= resource.responses.includes(:replies).where(:reply_id => nil)
     end
   
 end

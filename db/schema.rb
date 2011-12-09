@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111205004925) do
+ActiveRecord::Schema.define(:version => 20111208225638) do
 
   create_table "deal_deals", :force => true do |t|
     t.integer  "user_id"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20111205004925) do
     t.string   "image"
     t.boolean  "recommended"
     t.integer  "share_id"
+    t.integer  "reply_id"
   end
 
   create_table "shares", :force => true do |t|

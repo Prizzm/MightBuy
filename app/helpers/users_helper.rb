@@ -46,6 +46,8 @@ module UsersHelper
       when :phone then object.brand? ? "Call Us" : "Call Me"
       when :posts
         (object.brand? ? "The latest from %s.." : "What's on %s's mind?") % resource.name
+      when :activity
+        "%s's Latest Activity.." % resource.name
       when :no_description
         (object.brand? ? "%s hasn't described what they do yet." : 
                          "I haven't said anything about myself yet :)") % resource.name

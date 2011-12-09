@@ -1,0 +1,13 @@
+= response_form_for topic do |form|
+  
+  - if current_user
+    = form.input :image, :as => :file, :label => false
+  
+  = form.input :body, :label => false
+  
+  - if topic.recommendable
+    = form.input :recommended, :label => "Would you recommend this?", :as => :boolean
+  
+  .buttons
+    = form.button :submit, "Say it!"
+    = points_tag(:responding)

@@ -31,28 +31,19 @@
   #respond
     .group.respond
       = heading phrase_for(:respond)
-
-      = response_form_for do |form|
-        
-        - if current_user
-          = form.input :image, :as => :file, :label => false
-        
-        = form.input :body, :label => false
-        
-        - if resource.recommendable
-          = form.input :recommended, :label => "Would you recommend this?", :as => :boolean
-        
-        .buttons
-          = form.button :submit, "Say it!"
-          = points_tag(:responding)
+      = render "responses/form", :topic => resource
   
   / Responses
   #responses
     = heading phrase_for(:comments), :id => "comments"
 
     ol.list.responses
-      = placeholder resource.responses do |collection|
+      = placeholder responses do |collection|
         = render :partial => "responses/response", :collection => collection
+    
+    #reply-form.hidden
+      = heading "Quick Reply", :class => "small"
+      = render "responses/reply_form", :topic => resource
       
   / Sharing
   #sharing

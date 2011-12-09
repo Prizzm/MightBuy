@@ -22,6 +22,12 @@ module Shares
     validates :with, :format => 
       { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
   end
+  
+  class Tweet < Share
+  end
+  
+  class Recommend < Share
+  end
 end
 
 

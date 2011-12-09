@@ -1,33 +1,44 @@
-li
+li.has-actions
+  .response
+    - feature_url = topic_url(response.topic, :feature => response.id)
 
-  - feature_url = topic_url(response.topic, :feature => response.id)
-
-  - if resource.is_a?(Topic)
+    - if resource.is_a?(Topic)
   
-    = image_link_for(response, image_url_for(response), :style => :thumb)
+      = image_link_for(response, image_url_for(response), :style => :thumb)
     
-    .message
-      = response.body
+      .message
+        = response.body
       
-    - if response.recommended
-      .recommended Recommended.
+      - if response.recommended
+        .recommended Recommended.
       
-    .notes
-      = said_this(response)
+      .notes
+        = said_this(response)
   
-  - else
+    - else
   
-    = image_link_for(response.topic, feature_url, :style => :thumb)
+      = image_link_for(response.topic, feature_url, :style => :thumb)
 
-    = link_to '"%s"' % response.body, feature_url, :class => "quoted"
+      = link_to '"%s"' % response.body, feature_url, :class => "quoted"
     
-    .notes
-      = said_this_in_response(response)
+      .notes
+        = said_this_in_response(response)
   
-  - if response.user == current_user
-    .social
-      .tweet
-        = twitter.tweet("Here's something to tweet about.", feature_url)
-      .recommend
-        = facebook.like(feature_url)
-      .clearfix
+    - if response.user == current_user
+      .social
+        .tweet
+          = twitter.tweet("Heres something to tweet about.", feature_url)
+        .recommend
+          = facebook.like(feature_url)
+        .clearfix
+      
+  - if resource.is_a?(Topic) && !response.replies.blank?
+    .replies
+      = heading "Replies", :class => "small"
+      ol.list.responses
+        - response.replies.each do |reply|
+          = render reply
+  
+  - if resource.is_a?(Topic) 
+    .actions
+      = link_to image_tag("/images/icons/reply.png"), "#reply", :class => "reply", :data => { :action => "reply", :id => response.id }, :title => "Reply"
