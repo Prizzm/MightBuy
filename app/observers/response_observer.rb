@@ -2,7 +2,7 @@ class ResponseObserver < ActiveRecord::Observer
   
   def after_create (response)
     if response.user
-      response.user.points.add :responding, :allocatable => response
+      response.user.points.add :responding, :allocatable => response.topic
     end
     
     if response.user != response.topic.user

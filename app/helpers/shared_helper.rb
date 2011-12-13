@@ -1,6 +1,10 @@
 module SharedHelper
 
   include SocialHelper
+  
+  def title (heading = nil)
+    heading ? "%s | Prizzm" % heading : "Prizzm | Rewarding Feedback"
+  end
 
   def to_link (string)
     url = string.gsub /^(http(s)?\:\/\/)?/, 'http\2://'
@@ -33,6 +37,8 @@ module SharedHelper
     style = style || :url
     url   = exists ? uploader.send(style) : nil
     
+    url = URI.join(root_url, url.to_s).to_s if url && Rails.env.development?
+    
     unless exists
       case model
       when Topic, Response then return image_url_for(model.user, style)
@@ -58,7 +64,7 @@ module SharedHelper
   
   def said_this_in_response (response)
     format = resource.is_a?(Topic) ? 
-      "%1$s said this %4$s" : "In response to %2$s by %3$s %4$s."
+      "%1$s said this %4$s." : "In response to %2$s by %3$s %4$s."
       
     info = user_info(response.user)
     user_link       = link_to info[:name], info[:path], :class => "user"
@@ -81,7 +87,7 @@ module SharedHelper
       when :respond
         object.question? ? "Your Feedback.." : "Have something to say?"
       when :said
-        phrase = object.question? ? "%s asked this %s" : "%s said this %s"
+        phrase = object.question? ? "%s asked this %s." : "%s said this %s."
         said_this(object, phrase)
         
     end
@@ -108,6 +114,10 @@ module SharedHelper
     else
       capture(collection, &block)
     end
+  end
+  
+  def image_url (path)
+    URI.join(root_url, image_path(path))
   end
   
 end

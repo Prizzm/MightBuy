@@ -51,9 +51,9 @@ class Topic < ActiveRecord::Base
       hash[:shares] = total_shares
       hash[:responses] = total_responses
       hash[:share_responses] = unique_responses
-      hash[:response_rate] = "%s%" % ((unique_responses.to_f / unique_shares.to_f) * 100).to_i
+      hash[:response_rate] = "%s%" % ((unique_responses.to_f / unique_shares.to_f) * 100).to_i rescue 0
       hash[:recommends] = total_recommends
-      hash[:recommendation_rate] = "%s%%" % ((total_recommends.to_f / total_responses.to_f) * 100).to_i
+      hash[:recommendation_rate] = "%s%%" % ((total_recommends.to_f / total_responses.to_f) * 100).to_i rescue 0
     end
   end
   

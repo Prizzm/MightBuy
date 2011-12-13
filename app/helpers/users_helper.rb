@@ -32,7 +32,7 @@ module UsersHelper
   end
   
   def last_active (user)
-    ("%s was last active %s" % [
+    ("%s was last active %s." % [
       link_to(user.name, user_path(user), :class => "user"),
       shorthand(user.updated_at).downcase
     ]).html_safe
@@ -54,6 +54,14 @@ module UsersHelper
           
       else super
     end
+  end
+  
+  def latest_posts
+    resource.topics.order("created_at desc").limit(2)
+  end
+  
+  def latest_activity
+    resource.responses.order("created_at desc").limit(2)
   end
   
 end

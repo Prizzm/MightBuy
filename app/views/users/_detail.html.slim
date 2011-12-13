@@ -2,7 +2,7 @@
   = image_link_for(resource, resource.photo.url, :style => :thumb)
   .title= resource.name
   .description
-    = resource.description? ? shorthand(resource.description, :length => 150) : phrase_for(:no_description)
+    = resource.description? ? resource.description : phrase_for(:no_description)
   
   .attrs
     - unless resource.url.blank?
@@ -13,11 +13,11 @@
 = heading phrase_for(:posts)
 
 ol.list.topics
-  = placeholder resource.topics.publics.limit(3) do |collection|
+  = placeholder latest_posts do |collection|
     = render collection
     
 = heading phrase_for(:activity)
 
 ol.list.responses
-  = placeholder resource.responses.limit(2) do |collection|
+  = placeholder latest_activity do |collection|
     = render :partial => "responses/response", :collection => collection

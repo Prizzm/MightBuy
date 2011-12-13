@@ -13,39 +13,80 @@ if Rails.env.development?
     Rails.root.join("db/seeds", path).open
   end
   
+  def random_file_from (dir)
+    @files_from ||= {}
+    @files_from[dir] ||= Dir.glob(Rails.root.join("db/seeds", dir, "*.jpg")).map do |path|
+      File.open(path, "r")
+    end
+    @files_from[dir].sample
+  end
+  
+  def create (model, int, attributes = {})
+    puts "Creating #{model}: #{int}"
+    model.create attributes
+  end
+  
   # Users
-  user1 = User.create \
+  user = User.create \
     :name => "Mitch Thompson",
     :email => "mitch@prizzm.com",
     :password => "asdfasdf",
     :password_confirmation => "asdfasdf",
-    :photo => tmpfile("avatar1.jpg"),
+    :photo => tmpfile("avatar.jpg"),
     :description => "Here's a bunch of useless details about me & what I like.",
     :url => "http://www.prizzm.com",
     :facebook => "http://www.facebook.com/profile.php?id=100002401279548",
     :twitter => "http://www.twitter.com",
     :email_address => "mitchkthomson@gmail.com",
     :phone => "435 817-3552"
-    
-  user2 = User.create \
+
+  # Generate a Few Users..
+  100.times do |count|
+    create User, count, \
+      :name => Faker::Name.name,
+      :email => Faker::Internet.email,
+      :password => "asdfasdf",
+      :photo => random_file_from("avatars"),
+      :description => Faker::Lorem.sentence(18),
+      :url => Faker::Internet.uri("http"),
+      :email_address => Faker::Internet.email,
+      :phone => Faker::PhoneNumber.short_phone_number
+  end
+  
+  # Brands
+  brand = User.create \
     :name => "Bryna",
     :email => "bryna@prizzm.com",
     :password => "asdfasdf",
     :password_confirmation => "asdfasdf",
-    :photo => tmpfile("avatar2.jpg"),
+    :photo => tmpfile("logo.jpg"),
     :category => "brand"
+  
+  # Generate a Few Brands..
+  100.times do |count|
+    create User, count, \
+      :name => Faker::Company.name,
+      :email => Faker::Internet.email,
+      :password => "asdfasdf",
+      :photo => random_file_from("logos"),
+      :description => Faker::Lorem.sentence(18),
+      :url => Faker::Internet.uri("http"),
+      :email_address => Faker::Internet.email,
+      :phone => Faker::PhoneNumber.short_phone_number,
+      :category => "brand"
+  end
   
   # Topics
   
   topic1 = Topic.create \
-    :user => user1,
+    :user => user,
     :image => tmpfile("topic1.jpg"),
     :subject => 'I love my 27" iMac.',
     :body => "Such a good desktop, fast, tons of memory, classy, sleek. Man I love this thing.",
     :access => "public"
 
   topic2 = Topic.create \
-    :user => user2,
+    :user => brand,
     :image => tmpfile("topic2.jpg"),
     :subject => "What do you think of our Hermann Mini?",
     :body => "Good, bad? Love it, hate it? We'd love to know so we can make you a better bag!",

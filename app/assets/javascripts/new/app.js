@@ -59,6 +59,35 @@ var tweets = function () {
   });
 }
 
+var pageless = function () {
+  var loader = $('<li id="pageless-loader"><h3><span>Loading more results..</span></h3></li>');
+  $('ol.list[data-pages]').each(function (element) {
+    var pages = parseInt($(this).attr("data-pages"));
+    if( pages > 1 )
+      $(this).pageless({
+        loaderHtml : loader,
+        totalPages : pages
+      });
+  });
+}
+
+var scrolltotop = function () {
+  var element = $('<a id="scroll-to-top" href="javascript:void(0);" />').hide();
+      element.click(function () {
+        $('body, html').animate({ scrollTop: 0 }, 500);
+        return false;
+      });
+  
+  $("#app").append(element);
+  
+  $(window).scroll(function (event) {
+    if( $(window).scrollTop() > 200 )
+      element.slideDown();
+    else
+      element.slideUp();
+  })
+}
+
 // Facebook
 window.fbAsyncInit = function() {
   FB.Event.subscribe('edge.create', function(url) {
@@ -98,5 +127,11 @@ $(function () {
   
   // Tweets
   tweets();
+  
+  // Pageless
+  pageless();
+  
+  // Back To Top
+  scrolltotop();
   
 });

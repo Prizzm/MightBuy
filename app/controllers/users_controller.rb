@@ -1,4 +1,4 @@
-class UsersController < InheritedResources::Base
+class UsersController < RestfulController
   
   actions :index, :show
   

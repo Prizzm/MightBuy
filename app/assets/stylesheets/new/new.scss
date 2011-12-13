@@ -153,12 +153,17 @@ body
     margin-left: -300px;
   }
   
+  .fixed
+  {
+    position: fixed;
+  }
+  
   #sidebar
   {
     position: absolute;
     top: 40px;
     width: 150px;
-    left: -200px;
+    left: -190px;
     text-align: center;
     
     a#brand
@@ -494,8 +499,11 @@ body
     
     .header
     {
+      position: relative;
       margin: 10px 0px;
       overflow: hidden;
+      min-height: 125px;
+      padding-left: 145px;
       
       .title
       {
@@ -513,10 +521,10 @@ body
       
       .image
       {
-        float: left;
+        position: absolute;
+        left: 0px;
         width: 125px;
         height: 125px;
-        margin: 2px 20px 4px 2px;
         @include single-box-shadow(#666, 0px, 1px, 2px);
         
         img 
@@ -1168,6 +1176,23 @@ body
     }
     
     .ui-tabs-hide { display: none; }
+  }
+  
+  /* Scroll To Top */
+  
+  a#scroll-to-top
+  {
+    position: fixed;
+    bottom: 0px;
+    right: 75px;
+    width: 66px;
+    height: 103px;
+    background: url("/images/app/scrolltotop.png");
+    
+    &:hover
+    {
+      background-position: 66px 0px;
+    }
   }
   
   /* Utility */

@@ -16,4 +16,12 @@ module ProfileHelper
     end
   end
   
+  def latest_posts
+    resource.topics.order("created_at desc").limit(2)
+  end
+  
+  def latest_activity
+    resource.responses.order("created_at desc").limit(2)
+  end
+  
 end

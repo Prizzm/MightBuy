@@ -1,7 +1,7 @@
 .header
   = image_link_for(resource, resource.image.url, :style => :thumb)
   .title= resource.subject
-  .description= shorthand(resource.body, :length => 210)
+  .description= resource.body
   .notes= phrase_for(:said)
   
 .tabs

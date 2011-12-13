@@ -51,6 +51,7 @@ group :development do
   gem 'rb-fsevent'
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'rails-dev-tweaks', '~> 0.5.1'
+  gem 'ffaker', '1.10.1'
 end
 
 group :test, :development do

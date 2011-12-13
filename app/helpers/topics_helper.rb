@@ -1,5 +1,14 @@
 module TopicsHelper
 
+  def title
+    case action_name
+      when :show then super truncate(resource.subject, :length => 50)
+      when :index then super "Latest Topics"
+      when :new, :create then super "Start a Topic"
+      when :edit, :update then super "Update your Topic"
+    end
+  end
+
   def shared_this (share, format = nil)
     case share
       when Shares::Email
@@ -77,6 +86,16 @@ module TopicsHelper
     html = user_signed_in? ? {} : { "data-remote" => true }
     url    = topic_responses_path(topic, :format => user_signed_in? ? nil : :js)
     simple_form_for Response.new, :url => url, :html => html, &block
+  end
+  
+  def open_graph_info
+    case action_name
+      when :show
+        super.merge \
+          :image => image_url_for(resource, :thumb),
+          :desc  => truncate(resource.body, :length => 100)
+      else super
+    end
   end
 
 end

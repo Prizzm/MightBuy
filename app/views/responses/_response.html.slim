@@ -27,7 +27,7 @@ li.has-actions
     - if response.user == current_user
       .social
         .tweet
-          = twitter.tweet("Heres something to tweet about.", feature_url)
+          = twitter.tweet(h(response.topic.subject), feature_url)
         .recommend
           = facebook.like(feature_url)
         .clearfix

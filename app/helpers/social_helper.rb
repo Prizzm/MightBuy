@@ -8,6 +8,32 @@ module SocialHelper
     @twitter ||= TwitterHelper
   end
   
+  def open_graph_tags
+    [
+      "\n",
+      open_graph_tag( :type, :article ),
+      open_graph_tag( :site_name, "Prizzm" ),
+      open_graph_tag( :url, open_graph_info[:url] ),
+      open_graph_tag( :title, h(open_graph_info[:title]) ),
+      open_graph_tag( :description, h(open_graph_info[:desc]) ),
+      open_graph_tag( :image, open_graph_info[:image] ),
+      "\n"
+    ].join("\n").html_safe
+  end
+  
+  def open_graph_tag (name, content)
+    ('<meta property="og:%s" content="%s" />' % [name, content]).html_safe
+  end
+  
+  def open_graph_info
+    {
+      :title => title,
+      :url   => request.url,
+      :image => image_url("/images/app/open-graph-image.png"),
+      :desc  => "Prizzm - collaborate with brands, share ideas & help make products you can't live without!"
+    }
+  end
+  
   module FacebookHelper
     
     def self.script

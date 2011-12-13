@@ -130,4 +130,6 @@ Points.allocators do
   add :starting_a_topic, 10
   add :responding, 20
   add :joining, 40
+  add :tweeting, 30
+  add :recommending, 30
 end

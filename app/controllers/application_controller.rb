@@ -20,6 +20,20 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  # Actions
+  
+  def self.index_with_xhr
+    define_method :index do
+      respond_to do |wants|
+        wants.html do
+          !request.xhr? ? 
+            render("application/index") : 
+            render("index.xhr", :layout => false)
+        end
+      end
+    end
+  end
+  
   private
   
     def visitor_code
@@ -29,5 +43,4 @@ class ApplicationController < ActionController::Base
     def self.authenticate! (options = {})
       before_filter :authenticate_user!, options
     end
-    
 end

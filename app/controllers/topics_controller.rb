@@ -1,4 +1,4 @@
-class TopicsController < InheritedResources::Base
+class TopicsController < RestfulController
   
   # Authenticate
   authenticate! :except => [:index, :show]
