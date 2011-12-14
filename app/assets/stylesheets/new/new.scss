@@ -292,6 +292,16 @@ body
     background: #fff;
     margin: auto;
     padding: 80px 30px 20px 30px;
+  }
+  
+  #popup
+  {
+    width: 620px;
+    margin: 40px;
+  }
+  
+  #page, #popup
+  {
     
     #banner
     {
@@ -502,7 +512,7 @@ body
       position: relative;
       margin: 10px 0px;
       overflow: hidden;
-      min-height: 125px;
+      min-height: 130px;
       padding-left: 145px;
       
       .title
@@ -523,6 +533,7 @@ body
       {
         position: absolute;
         left: 0px;
+        margin: 3px;
         width: 125px;
         height: 125px;
         @include single-box-shadow(#666, 0px, 1px, 2px);
@@ -957,6 +968,12 @@ body
   
   /* Points */
   
+  .points-with-desc
+  {
+    color: #999;
+    line-height: 24px;
+  }
+  
   .worth-points
   {
     float: left;
@@ -1070,6 +1087,27 @@ body
       {
         color: #333;
         font-weight: 400;
+      }
+    }
+    
+    ol
+    {
+      color: #444;
+      font-size: 16px;
+      line-height: 1.5em;
+      list-style-type: decimal;
+      list-style-position: inside;
+      
+      li
+      {
+        font-weight: 400;
+        text-align: left;
+        margin: 8px 0px;
+      }
+      
+      .aside
+      {
+        color: #e36032;
       }
     }
     

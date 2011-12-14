@@ -2,7 +2,7 @@ class RouterController < ApplicationController
   
   def invited
     cookies[:share_code] = share.shortcode
-    redirect_to topic_path(share.topic)
+    redirect_to topic_path(share.topic, :responding => true)
   end
   
   private

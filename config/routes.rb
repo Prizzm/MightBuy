@@ -1,7 +1,6 @@
 NewPrizzmCom::Application.routes.draw do
 
   # Authentication
-  # devise_for :users
   devise_for :users, 
     :path_names => { 
       :sign_in => '/login', 
@@ -18,6 +17,7 @@ NewPrizzmCom::Application.routes.draw do
     get "logout",  :to => "devise/sessions#destroy"
     get "join",  :to => "registrations#new"
     post "join", :to => "registrations#create"
+    get 'brands/join', :to => 'registrations#new', :brand => true
   end
   
   # Auth Roots

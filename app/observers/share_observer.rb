@@ -11,6 +11,15 @@ class ShareObserver < ActiveRecord::Observer
       when Shares::Email
         Notifications.share(share).deliver
     end
+    
+    if share.user
+      case share
+        when Shares::Tweet
+          share.user.points.add :tweeting, :allocatable => share.topic
+        when Shares::Recommend
+          share.user.points.add :recommending, :allocatable => share.topic
+      end
+    end
   end
   
 end

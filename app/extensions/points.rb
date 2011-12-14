@@ -128,6 +128,7 @@ end
 # Allocators
 Points.allocators do
   add :starting_a_topic, 10
+  add :uploading_a_photo, 30
   add :responding, 20
   add :joining, 40
   add :tweeting, 30

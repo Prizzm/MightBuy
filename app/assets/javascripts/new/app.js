@@ -52,13 +52,6 @@ var replies = function () {
   });
 }
 
-var tweets = function () {
-  twttr.events.bind('tweet', function(event) {
-    var url = $(event.target).attr("src");
-    $.post('/social/tweeted', { url: url });
-  });
-}
-
 var pageless = function () {
   var loader = $('<li id="pageless-loader"><h3><span>Loading more results..</span></h3></li>');
   $('ol.list[data-pages]').each(function (element) {
@@ -88,10 +81,18 @@ var scrolltotop = function () {
   })
 }
 
+// Twitter
+var tweets = function () {
+  twttr.events.bind('tweet', function(event) {
+    var url = $(event.target).attr("src");
+    $.post('/social/tweeted.js', { url: url });
+  });
+}
+
 // Facebook
 window.fbAsyncInit = function() {
   FB.Event.subscribe('edge.create', function(url) {
-    $.post('/social/recommended', { url: url });
+    $.post('/social/recommended.js', { url: url });
   });
 };
 

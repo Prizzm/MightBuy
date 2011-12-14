@@ -57,23 +57,40 @@
 # 7) "Back to top" popup.
 # 8) Change ordering on posts / activity to ascending.
 # 9) Change facebook / twitter wording.
-10) Add points to tweet / recommend actions.
-11) Remove duplicate points from posts / replies.
+# 10) Add points to tweet / recommend actions.
+# 11) Remove duplicate points from posts / replies.
 # 12) Remove truncate from topic description.
 13) Cross browser testing.
 14) Tagging?
+# 15) Fix shadow issue..
 
-# Here...
+# Newest Round..
 
-If recommended:
-Pop up share on facebook:
-  What do you think of our Hermann Mini?
-  I recommended this on Prizzm.
+# Feedback as a Customer:
+#     1) Remove 20 points tag.
+#     2) Change "Say It" to "Save Feedback"
+#     3) Remove tabs, only have "Your Feedback"
+#     4) Change field label on recommendable question "Do you recommend this?".. Nicer looking checkbox "I recommend this!"
+# 
+# Sign Up to recommend flow:
+#   1) Change signup form to light box.
+#   2) Show the feedback within lightbox.
+#   3) Have points:
+#       a) Get rewarded for your loyalty "You can save your account for 40 points!"
+#       b) You can add other topics / products you recommend!
+#       c) After sign up make sure to share your recommendation on facebook!
+      
+# Bug Fixes:
+#   1) Web (url) requires http
+#   2) Twitter format is relative / broken.
+  
+# Invite others to topic:
+#   1) Make share button more obvious "Invite Others"
+#   2) Rename "recommendable" label in topic.
+  
+# Profile:
+#   Ask user to update picture / add points.
 
-I recommended a Hermann Mini on Prizzm.
-
-If recommended:
-  I gave feedback on Prizzm.
-  I recommended 
-  I gave Bryna my feedback on Prizzm.
-  I told Bryna what I think on Prizzm.
+# Brand Sign Up:
+#   Brands should have own signup page.
+#   Your name should be "Company name".

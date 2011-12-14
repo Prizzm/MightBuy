@@ -1,10 +1,17 @@
 .header
-  = image_link_for( resource, edit_resource_path )
+  = image_link_for( resource, edit_resource_path, :style => :thumb )
+  
   .attrs
     = attr "Your Name", resource.name
-    = attr "Points Available", resource.points.available
     = attr "Points Earned", resource.points.total
-    
+  
+  - if resource.photo.blank?
+    .points-with-desc
+      = points_tag(:uploading_a_photo)
+      |Upload a photo of yourself for 30 points!
+      .clearfix
+  
+
 = heading "Your Latest Posts.."
 
 ol.list.topics

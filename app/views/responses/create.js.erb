@@ -1,10 +1,17 @@
 var response = $(<%= e(render(resource)) %>);
-var promotion = $(<%= e(render("join")) %>);
+var promotion = $(<%= e(render("join", :response => resource)) %>);
+
+$.fancybox({
+  'overlayColor'		: '#000',
+  'overlayOpacity'	: 0.8,
+  'transitionIn'	: 'elastic',
+  'transitionOut'	: 'elastic',
+  content : promotion
+});
 
 $('.group.respond').slideUp(300, function () {
   $(this).empty();
   $('<h3 id="comments" />').append("<span>Here's what you said..</span>").appendTo($(this));
   $('<ol class="list responses" />').append(response).appendTo($(this));
-  $(this).append(promotion);
   $(this).slideDown(300);
 });

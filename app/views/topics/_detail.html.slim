@@ -3,73 +3,91 @@
   .title= resource.subject
   .description= resource.body
   .notes= phrase_for(:said)
-  
-.tabs
-  ul
-  
-    - if featured_response
-      li= link_to "Featured", "#featured"
-  
-    li= link_to phrase_for(:respond), "#respond"
-    li= link_to phrase_for(:comments), "#responses"
-    li= link_to "Shared With..", '#sharing'
-    
-    - if owner_of_topic?
-      li= link_to "Statistics", '#stats'
-  
-  / Featured Response
-  - if featured_response
-  
-    #featured
-    
-      = heading "Featured Response"
-      
-      ol.list.responses.highlight
-        = render featured_response
-  
-  / Response
+
+
+
+- if params[:responding]
+
   #respond
     .group.respond
-      = heading phrase_for(:respond)
-      = render "responses/form", :topic => resource
-  
-  / Responses
-  #responses
-    = heading phrase_for(:comments), :id => "comments"
-
-    ol.list.responses
-      = placeholder responses do |collection|
-        = render :partial => "responses/response", :collection => collection
-    
-    #reply-form.hidden
-      = heading "Quick Reply", :class => "small"
-      = render "responses/reply_form", :topic => resource
+      = heading "Your Feedback"
+      = response_form_for resource do |form|
+        = form.input :body, :label => false
       
-  / Sharing
-  #sharing
-    = heading "You've shared this with.."
-    ol.list.shares.concise 
-      = placeholder shares_for_topic do |collection|
-        = render :partial => "shares/share", :collection => collection
+        - if resource.recommendable
+          = form.input :recommended, :label => "I recommend this!", :as => :boolean
+        
+        .buttons
+          = form.button :submit, "Send to %s" % resource.user.name
+
+- else
+
+  .tabs
+    ul
   
-  - if owner_of_topic?
+      - if featured_response
+        li= link_to "Featured", "#featured"
   
-    / Statistics
-    #stats
+      li= link_to phrase_for(:respond), "#respond"
+      li= link_to phrase_for(:comments), "#responses"
+      li= link_to "Shared With..", '#sharing'
     
-      / Stats
-      = heading "Statistics"
+      - if owner_of_topic?
+        li= link_to "Statistics", '#stats'
   
-      ol.attrs
-        = attr "Shares Sent", resource.stats[:shares]
-        = attr "Share Responses", resource.stats[:share_responses]
-        = attr "Response Rate", resource.stats[:response_rate]
+    / Featured Response
+    - if featured_response
   
-      / Recommendations
-      - if resource.recommendable?
+      #featured
     
-        = heading "Recommendations"
+        = heading "Featured Response"
+      
+        ol.list.responses.highlight
+          = render featured_response
+  
+    / Response
+    #respond
+      .group.respond
+        = heading phrase_for(:respond)
+        = render "responses/form", :topic => resource
+  
+    / Responses
+    #responses
+      = heading phrase_for(:comments), :id => "comments"
+
+      ol.list.responses
+        = placeholder responses do |collection|
+          = render :partial => "responses/response", :collection => collection
     
+      #reply-form.hidden
+        = heading "Quick Reply", :class => "small"
+        = render "responses/reply_form", :topic => resource
+      
+    / Sharing
+    #sharing
+      = heading "You've shared this with.."
+      ol.list.shares.concise 
+        = placeholder shares_for_topic do |collection|
+          = render :partial => "shares/share", :collection => collection
+  
+    - if owner_of_topic?
+  
+      / Statistics
+      #stats
+    
+        / Stats
+        = heading "Statistics"
+  
         ol.attrs
-          = attr "Total Recommends", resource.stats[:recommends]
-          = attr "Recommendation Rate", resource.stats[:recommendation_rate]
+          = attr "Shares Sent", resource.stats[:shares]
+          = attr "Share Responses", resource.stats[:share_responses]
+          = attr "Response Rate", resource.stats[:response_rate]
+  
+        / Recommendations
+        - if resource.recommendable?
+    
+          = heading "Recommendations"
+    
+          ol.attrs
+            = attr "Total Recommends", resource.stats[:recommends]
+            = attr "Recommendation Rate", resource.stats[:recommendation_rate]

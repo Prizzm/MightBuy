@@ -2,9 +2,7 @@
   #flashes
     - flash.each do |key, message|
       - if key == :points
-        .points
-          .onomatopoeia *Cha-Ching!*
-          .bar= message.html_safe
+        = points_flash(message)
 
   #frame
     #sidebar

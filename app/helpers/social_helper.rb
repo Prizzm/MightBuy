@@ -1,5 +1,19 @@
 module SocialHelper
   
+  def js_points_awarded
+    message = flash.now[:points]
+    flash.discard
+    points_flash(message) unless message.blank?
+  end
+  
+  def js_total_points
+    "%sP" % current_user.points.available if current_user
+  end
+  
+  def twitter_url_for (string)
+    "http://twitter.com/%s" % string
+  end
+  
   def facebook
     @facebook ||= FacebookHelper
   end

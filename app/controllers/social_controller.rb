@@ -3,6 +3,8 @@ class SocialController < ApplicationController
   require 'cgi'
   require 'uri'
   
+  skip_filter :award_points
+  
   def tweeted
     
     attrs = {}.tap do |hash|
@@ -16,8 +18,12 @@ class SocialController < ApplicationController
       :topic => Topic.find_by_shortcode(attrs[:id]),
       :user  => current_user,
       :visitor_code => visitor_code
-    
-    render :nothing => true
+      
+    award_points
+      
+    respond_to do |wants|
+      wants.js { render "points" }
+    end
 
   end
   
@@ -34,7 +40,11 @@ class SocialController < ApplicationController
       :user => current_user,
       :visitor_code => visitor_code
       
-    render :nothing => true
+    award_points
+      
+    respond_to do |wants|
+      wants.js { render "points" }
+    end
     
   end
   

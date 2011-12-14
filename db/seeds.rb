@@ -36,7 +36,7 @@ if Rails.env.development?
     :description => "Here's a bunch of useless details about me & what I like.",
     :url => "http://www.prizzm.com",
     :facebook => "http://www.facebook.com/profile.php?id=100002401279548",
-    :twitter => "http://www.twitter.com",
+    :twitter => "@mindoutsidemine",
     :email_address => "mitchkthomson@gmail.com",
     :phone => "435 817-3552"
 

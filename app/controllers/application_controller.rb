@@ -13,12 +13,7 @@ class ApplicationController < ActionController::Base
   end
   
   # If points were awarded, show a flash..
-  after_filter do
-    if current_user && current_user.points.awarded > 0
-      flash[:points] = "You just earned <strong>%s</strong> points!" % current_user.points.awarded
-      current_user.points.save
-    end
-  end
+  after_filter :award_points
   
   # Actions
   
@@ -35,6 +30,13 @@ class ApplicationController < ActionController::Base
   end
   
   private
+  
+    def award_points
+      if current_user && current_user.points.awarded > 0
+        flash[:points] = "You just earned <strong>%s</strong> points!" % current_user.points.awarded
+        current_user.points.save
+      end
+    end
   
     def visitor_code
       cookies[:visitor_code]

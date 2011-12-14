@@ -30,6 +30,9 @@ li.has-actions
           = twitter.tweet(h(response.topic.subject), feature_url)
         .recommend
           = facebook.like(feature_url)
+        .points-with-desc
+          = points_tag(:recommending)
+          |Tweet or Share for 30 points!
         .clearfix
       
   - if resource.is_a?(Topic) && !response.replies.blank?

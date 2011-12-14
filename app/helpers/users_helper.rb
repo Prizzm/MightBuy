@@ -20,7 +20,7 @@ module UsersHelper
       unless value.blank?
         case attr.to_sym
           when :facebook then icon_link "facebook.png", value
-          when :twitter then icon_link "twitter.png", value
+          when :twitter then icon_link "twitter.png", twitter_url_for(value)
           when :email_address then icon_link "email.png", "mailto:#{value}"
         end
       end
