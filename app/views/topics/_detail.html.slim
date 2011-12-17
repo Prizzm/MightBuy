@@ -1,7 +1,7 @@
 .header
   = image_link_for(resource, resource.image.url, :style => :thumb)
   .title= resource.subject
-  .description= resource.body
+  .description= simple_format(resource.body)
   .notes= phrase_for(:said)
 
 
