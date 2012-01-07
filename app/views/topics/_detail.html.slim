@@ -30,10 +30,12 @@
   
       li= link_to phrase_for(:respond), "#respond"
       li= link_to phrase_for(:comments), "#responses"
-      li= link_to "Shared With..", '#sharing'
+      
     
       - if owner_of_topic?
-        li= link_to "Statistics", '#stats'
+        li= link_to "Shared With..", '#sharing'
+		li= link_to "Statistics", '#stats'
+		
   
     / Featured Response
     - if featured_response
