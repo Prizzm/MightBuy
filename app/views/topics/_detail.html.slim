@@ -1,5 +1,4 @@
 .header
-  
 
   - unless resource.url.blank?
     = image_link_for(resource, resource.url, :style => :thumb, :target => "_blank")
@@ -8,7 +7,7 @@
     = image_link_for(resource, resource.image.url, :style => :thumb)
     .title= resource.subject
       
-  .description= resource.body
+  .description= simple_format(resource.body)
   .notes= phrase_for(:said)
 
 - if params[:responding]
@@ -60,10 +59,12 @@
   
       li= link_to phrase_for(:respond), "#respond"
       li= link_to phrase_for(:comments), "#responses"
-      li= link_to "Shared With..", '#sharing'
+      
     
       - if owner_of_topic?
-        li= link_to "Statistics", '#stats'
+        li= link_to "Shared With..", '#sharing'
+		li= link_to "Statistics", '#stats'
+		
   
     / Featured Response
     - if featured_response
