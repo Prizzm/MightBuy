@@ -80,7 +80,13 @@ module SharedHelper
     
     case subject
       when :header
-        response = object.question? ? "%s Wants to Know.." : "%s Was Thinking.."
+        response = case
+          when object.question? then "%s Wants to Know.."
+          when object.form == "recommend" then "%s Recommended.."
+          else "%s Was Thinking.."
+        end
+        
+        # response = object.question? ? "%s Wants to Know.." : "%s Was Thinking.."
         response % object.user.name
       when :comments
         object.question? ? "What others think.." : "Comments.."

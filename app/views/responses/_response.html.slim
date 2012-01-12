@@ -6,11 +6,12 @@ li.has-actions
   
       = image_link_for(response, image_url_for(response), :style => :thumb)
     
-      .message
-        = response.body
+      - unless response.body.blank?
+        .message
+          = response.body
       
       - if response.recommended
-        .recommended Recommended.
+        .recommended I recommend this!
       
       .notes
         = said_this(response)
@@ -18,8 +19,12 @@ li.has-actions
     - else
   
       = image_link_for(response.topic, feature_url, :style => :thumb)
-
-      = link_to '"%s"' % response.body, feature_url, :class => "quoted"
+      
+      - unless response.body.blank?
+        = link_to '"%s"' % response.body, feature_url, :class => "quoted"
+      
+      - if response.recommended
+        .recommended I recommend this!
     
       .notes
         = said_this_in_response(response)

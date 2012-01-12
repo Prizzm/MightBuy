@@ -20,7 +20,12 @@ NewPrizzmCom::Application.routes.draw do
     get 'brands/join', :to => 'registrations#new', :brand => true
   end
   
+  # Scraping
+  post 'get/product' => 'get#product'
+  post 'get/images' => 'get#images'
+  
   # Auth Roots
+  get 'welcome' => 'profile#welcome', :as => 'welcome'
   get 'me' => 'profile#show', :as => 'user_root'
   resource :profile, :controller => "profile"
   
@@ -29,7 +34,13 @@ NewPrizzmCom::Application.routes.draw do
     resources :responses
     get 'share' => 'shares#new'
     get 'thanks' => 'promotions#opinion'
+    
     resources :shares, :only => [:new, :create]
+    
+    collection do
+      get 'recommendation' => 'topics#new', :topic => { :form => :recommendation }
+      get 'recommend' => 'topics#new', :topic => { :form => :recommend }
+    end
   end
   
   # Users

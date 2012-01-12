@@ -1,0 +1,23 @@
+/ Image Selector Input
+.image-selector-uploader.input
+  .image-holder
+    a href="javascript:void(0);" class="image blank"
+      = centered do
+        - unless form.object.image.blank?
+          = image_tag form.object.image.url
+    .controls
+      a href="#prev" class="prev" Previous
+      a href="#next" class="next" Next
+  .web
+    label Grab one from the web..
+    .field
+      input type="text" placeholder="http://www.myshop.com/myproduct"
+      = link_to "Grab", "#get", :class => "button get"
+      .clearfix
+  .computer
+    label Or one from your computer..
+    .field
+      = link_to "Select a File..", "#select", :class => "button select"
+      = form.input :image, :label => false
+  
+  = form.input :remote_image_url, :as => :hidden, :input_html => { :class => "remote-url" }

@@ -63,9 +63,24 @@ module TopicsHelper
     case action_name
       when :index then "Latest Topics.."
       when :show then phrase_for(:header)
-      when :new then "What's on your mind?"
+      when :new, :create
+        case resource.form.to_s.to_sym
+          when :recommendation then "Get Recommendations.."
+          when :recommend then "Recommend a Product.."
+          else "What's on your mind?"
+        end
+      when :feedback then "Get Feedback on A Product"
       else super
     end
+  end
+  
+  def form_partial_for (topic)
+    "topics/forms/%s" %
+      case topic.form.to_s.to_sym
+        when :recommendation then "recommendation"
+        when :recommend then "recommend"
+        else "default"
+      end    
   end
   
   def quick_links

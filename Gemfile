@@ -37,6 +37,9 @@ gem 'sass-rails', "3.1.4"
 # Server
 gem 'thin', '1.2.11'
 
+# Others
+gem 'image_scraper', '0.1.7'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

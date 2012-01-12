@@ -1,0 +1,19 @@
+#recommend-form
+  = heading "Enter the url of the product.."
+
+  = form.input :url, :label => "Web Address", :placeholder => "http://www.something.com"
+
+  = heading "Enter the name of the product.."
+
+  = form.input :subject, :label => "Product Name", :placeholder => "T-Shirt"
+
+  = heading "Grab an image of the product.."
+
+  = render "partials/image_selector_input", :form => form
+  
+  / Hidden fields
+  = form.input :recommendable, :as => :hidden, :input_html => { :value => 1 }
+  = form.input :access, :as => :hidden, :input_html => { :value => "public" }
+  = form.input :body, :as => :hidden, :input_html => { :value => "..." }
+
+  = heading "And finally.."

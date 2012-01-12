@@ -1,24 +1,54 @@
 .header
-  = image_link_for(resource, resource.image.url, :style => :thumb)
-  .title= resource.subject
+  
+
+  - unless resource.url.blank?
+    = image_link_for(resource, resource.url, :style => :thumb, :target => "_blank")
+    = link_to resource.subject, resource.url, :class => "title", :target => "_blank"
+  - else
+    = image_link_for(resource, resource.image.url, :style => :thumb)
+    .title= resource.subject
+      
   .description= resource.body
   .notes= phrase_for(:said)
-
-
 
 - if params[:responding]
 
   #respond
     .group.respond
-      = heading "Your Feedback"
-      = response_form_for resource do |form|
-        = form.input :body, :label => false
       
-        - if resource.recommendable
-          = form.input :recommended, :label => "I recommend this!", :as => :boolean
+      - if resource.form.to_s == "recommendation"
+      
+        .recommendation
+          = heading "So, would you recommend this?"
         
-        .buttons
-          = form.button :submit, "Send to %s" % resource.user.name
+          = response_form_for resource do |form|
+        
+            .recommend-or-not
+              = link_to ("%s I recommend it!" % image_tag('/images/icons/thumbup.png')).html_safe, "#recommend", :class => "button recommend-this"
+              = link_to "Have more feedback?", "#give-feedback", :class => "give-feedback"
+              = form.input :recommended, :as => :hidden, :input_html => { :class => "recommended" }
+              .clearfix
+            
+            .other-feedback
+            
+              = heading "What else would you like to say?"
+              
+              = form.input :body, :label => false, :placeholder => "Tell us what you think here!"
+              
+              .buttons
+                = form.button :submit, "Send to %s" % resource.user.name
+      
+      - else
+    
+        = heading "Your Feedback"
+        = response_form_for resource do |form|
+          = form.input :body, :label => false
+      
+          - if resource.recommendable
+            = form.input :recommended, :label => "I recommend this!", :as => :boolean
+        
+          .buttons
+            = form.button :submit, "Send to %s" % resource.user.name
 
 - else
 

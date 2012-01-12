@@ -1,0 +1,50 @@
+= app_page do
+
+  = simple_form_for resource, :url => topics_path do |form|
+  
+    = heading "Choose an Image for your Product.."
+    
+    .image-selector-uploader.input.string
+      .image-holder
+        a href="javascript:void(0);" class="image blank"
+          = centered {}
+        .controls
+          a href="#prev" class="prev" Previous
+          a href="#next" class="next" Next
+      .web
+        label Grab one from the web..
+        .field
+          input type="text" placeholder="http://www.myshop.com/myproduct"
+          = link_to "Grab", "#get", :class => "button get"
+          .clearfix
+      .computer
+        label Or one from your computer..
+        .field
+          = link_to "Select a File..", "#select", :class => "button select"
+      = form.input :remote_image_url, :as => :hidden, :input_html => { :class => "remote-url" }
+  
+    = heading "What Would you Like To Ask?"
+  
+    = form.input :subject, :label => "Your Question", :placeholder => "What do you think of your new shoes?"
+    = form.input :body, :label => "Description", :placeholder => "Did they fit well? Were they stylish or sleek? Etc.", :hint => "Elaborate further on what type of feedback you'd like."
+          
+    
+    / = form.input :image, :as => :file, :label => "Your Image..", :hint => "Choose an image from your hard drive.", :input_html => { :class => "special" }
+    
+    / Customers
+    = heading "Which Customers Should We Ask?"
+    
+    = form.simple_fields_for :shares, form.object.shares.new do |fields|
+      = render "share_fields", :f => fields
+    .links
+      = link_to_add_association 'Send to another customer..', form, :shares
+    
+    / Other
+    = heading "Other Fields.."
+    
+    = form.input :recommendable, :label => "Recommendations", :hint => "Would you like users to be able to recommend this?", :as => :radio
+    = form.input :access, :label => "Who can view?", :collection => Topic::Access, :as => :radio    
+    
+    .buttons
+      = form.button :submit, "Send!"
+      = go_back(collection_path)

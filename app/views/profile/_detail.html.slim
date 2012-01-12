@@ -1,16 +1,31 @@
-.header
-  = image_link_for( resource, edit_resource_path, :style => :thumb )
+- if resource.brand?
   
-  .attrs
-    = attr "Your Name", resource.name
-    = attr "Points Earned", resource.points.total
+  .brand-welcome
+    = heading "Here's What to Do.."
+    
+    p= link_to "Update Your Profile..", edit_resource_path
+    p= link_to "Get Recommendations for a Product..", recommendation_topics_path
   
-  - if resource.photo.blank?
-    .points-with-desc
-      = points_tag(:uploading_a_photo)
-      |Upload a photo of yourself for 30 points!
-      .clearfix
+- else
+
+  .header
+    = image_link_for( resource, edit_resource_path, :style => :thumb )
   
+    .attrs
+      = attr "Your Name", resource.name
+      = attr "Points Earned", resource.points.total
+  
+    - if resource.photo.blank?
+      .points-with-desc
+        = points_tag(:uploading_a_photo)
+        |Upload a photo of yourself for 30 points!
+        .clearfix
+        
+    
+  .user-welcome
+    = heading "Here's What to Do.."
+
+    p= link_to "Recommend a Product..", recommend_topics_path
 
 = heading "Your Latest Posts.."
 

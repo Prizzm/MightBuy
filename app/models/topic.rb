@@ -25,7 +25,8 @@ class Topic < ActiveRecord::Base
   mount_uploader :image, TopicImageUploader
   
   # Nested Attributes
-  accepts_nested_attributes_for :shares
+  accepts_nested_attributes_for :shares,
+    :reject_if => proc { |attributes| attributes['with'].blank? }
   
   def post?
     !question?

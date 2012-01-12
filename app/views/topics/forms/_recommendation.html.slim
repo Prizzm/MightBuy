@@ -1,0 +1,20 @@
+= heading "Enter the Name of your Product"
+
+= form.input :subject, :label => "Product Name"
+
+= heading "Choose an Image for your Product.."
+
+= render "partials/image_selector_input", :form => form
+
+/ Customers
+= heading "Which Customers Should We Ask?"
+
+= form.simple_fields_for :shares, form.object.shares.new do |fields|
+  = render "share_fields", :f => fields
+.links
+  = link_to_add_association 'Send to another customer..', form, :shares
+  
+/ Hidden fields
+= form.input :recommendable, :as => :hidden, :input_html => { :value => 1 }
+= form.input :access, :as => :hidden, :input_html => { :value => "private" }
+= form.input :body, :as => :hidden, :input_html => { :value => "..." }

@@ -3,6 +3,9 @@ class TopicsController < RestfulController
   # Authenticate
   authenticate! :except => [:index, :show]
   
+  # Custom Actions
+  custom_actions :collection => :feedback
+  
   # Verify Owner
   before_filter :only => [:edit, :update, :destroy] do
     unless resource.user == current_user
@@ -10,8 +13,13 @@ class TopicsController < RestfulController
     end
   end
   
+  def feedback
+    new!
+  end
+  
   def create
     @topic = build_resource
+    @topic.shares = build_shares
     @topic.user = current_user
     create!
   end
@@ -24,6 +32,18 @@ class TopicsController < RestfulController
     
     def resource
       @topic ||= end_of_association_chain.find_by_shortcode!(params[:id])
+    end
+  
+  private
+  
+    def build_shares
+      (params[:topic][:shares_attributes] || {}).map do |key, attributes|
+        attributes.delete(:_destroy)
+        Shares::Email.new(attributes).tap do |share|
+          share.user  = current_user
+          share.visitor_code = visitor_code
+        end
+      end
     end
     
   private

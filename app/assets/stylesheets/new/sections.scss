@@ -1,3 +1,8 @@
+/* Mixins */
+@import "mixins";
+
+/* Sections */
+
 #app
 {
   ol.topics,
@@ -85,8 +90,12 @@
       
       .recommended
       {
+        background: url("/images/icons/good.png") no-repeat left center;
+        text-indent: 28px;
         line-height: 1.5em;
         font-weight: bold;
+        font-size: 12px;
+        margin: 10px 0px;
       }
       
       .notes
@@ -252,6 +261,204 @@
       &.email     { background-image: url("/images/icons/email.png"); }
       &.tweet     { background-image: url("/images/icons/twitter.png"); }
       &.recommend { background-image: url("/images/icons/facebook.png"); }
+    }
+  }
+}
+
+#app
+{
+  .brand-welcome, .user-welcome
+  {
+    p
+    {
+      margin: 10px 0px;
+    }
+    
+    a
+    {
+      @include font-museo(500);
+      font-size: 18px;
+    }
+  }
+}
+
+#app
+{
+  .image-selector-uploader
+  {
+    position: relative;
+    height: 120px;
+    padding-left: 140px;
+    
+    .image-holder
+    {
+      position: absolute;
+      left: 20px;
+      
+      a.image
+      {
+        display: block;
+        width: 90px;
+        height: 90px;
+        border: 3px solid #fff;
+        @include drop-shadow(1px, 2px, 0.6);
+        
+        &.present
+        {
+          background: #fff;
+        }
+        
+        img
+        {
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+      
+      .controls
+      {
+        width: 35px;
+        margin: 5px auto;
+      }
+      
+      .next, .prev
+      {
+        display: block;
+        overflow: hidden;
+        text-indent: -9999em;
+        width: 16px;
+        height: 16px;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.5;
+        -moz-opacity: 0.5;
+        filter:alpha(opacity=50);
+        
+        &:hover
+        {
+          opacity: 1.0;
+          -moz-opacity: 1.0;
+          filter:alpha(opacity=100);
+        }
+      }
+      
+      .next { float: right; background-image: url("/images/icons/next.png"); }
+      .prev { float: left; background-image: url("/images/icons/previous.png"); }
+    }
+    
+    label
+    {
+      display: block;
+      margin: 5px 0px;
+      color: #666;
+      font-size: 12px;
+    }
+    
+    .web
+    {
+      
+      .field input
+      {
+        padding: 5px 10px;
+        font-size: 16px;
+        border: 1px solid #999;
+        @include drop-shadow(1px, 2px, 0.2);
+        float: left;
+        width: 400px;
+        margin-right: 5px;
+      }
+      
+      .button
+      {
+        display: block;
+        float: left;
+        margin-top: 3px;
+      }
+    }
+    
+    .computer
+    {
+      label { margin-bottom: 10px; }
+
+      .field
+      {
+        position: relative;
+        
+        .file
+        {
+          position: absolute;
+          top: -5px;
+          margin: 0px;
+          height: 30px;
+          width: 85px;
+          overflow: hidden;
+          
+          input
+          {
+            cursor: pointer;
+            height: 100%;
+            width: 100%;
+            @include opacity(0.0);
+          }
+        }
+      }
+    }
+    
+    .field
+    {
+      
+      a.button
+      {
+        @include hover-button(#c5356a, darken(#c5356a, 5%));
+        font-size: 12px;
+        padding: 6px 8px;
+      }
+      
+    }
+  }
+}
+
+#app
+{
+  #respond
+  {
+    .recommendation
+    {
+      .recommend-or-not
+      { 
+        margin: 10px 0px;
+        
+        a.button
+        {
+          @include hover-button(#c5356a, darken(#c5356a, 5%));
+          float: left;
+          line-height: 45px;
+          padding: 0px 20px;
+          
+          img
+          {
+            position: relative;
+            top: 6px;
+            left: -2px;
+          }
+          
+          &.clicked
+          {
+            @include hover-button(#666, #333);
+          }
+        }
+        
+        a
+        {
+          margin-right: 15px;
+          line-height: 45px;
+        }
+      }
+      
+      .other-feedback
+      {
+        display: none;
+      }
     }
   }
 }
