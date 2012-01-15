@@ -24,7 +24,7 @@
         
             .recommend-or-not
               = link_to ("%s I recommend it!" % image_tag('/images/icons/thumbup.png')).html_safe, "#recommend", :class => "button recommend-this"
-              /= link_to "Have more feedback?", "#give-feedback", :class => "give-feedback"
+              = link_to "Have more feedback?", "#give-feedback", :class => "give-feedback"
               = form.input :recommended, :as => :hidden, :input_html => { :class => "recommended" }
               .clearfix
             

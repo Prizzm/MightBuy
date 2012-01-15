@@ -8,7 +8,7 @@
     #sidebar
       .fixed
         = link_to "Prizzm", root_path, :id => "brand"
-    
+
         - if user_signed_in?
           #points= "%sP" % current_user.points.available
           #avatar
