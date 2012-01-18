@@ -133,4 +133,5 @@ Points.allocators do
   add :joining, 40
   add :tweeting, 30
   add :recommending, 30
+  add :giving_more_feedback, 60
 end

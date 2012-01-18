@@ -1,6 +1,6 @@
 li.has-actions
   .response
-    - feature_url = topic_url(response.topic, :feature => response.id)
+    - feature_url = response.topic.url || topic_url(response.topic, :feature => response.id)
 
     - if resource.is_a?(Topic)
   
@@ -10,8 +10,7 @@ li.has-actions
         .message
           = response.body
       
-      - if response.recommended
-        .recommended I recommend this!
+      = render_recommend_type(response)
       
       .notes
         = said_this(response)
@@ -23,8 +22,7 @@ li.has-actions
       - unless response.body.blank?
         = link_to '"%s"' % response.body, feature_url, :class => "quoted"
       
-      - if response.recommended
-        .recommended I recommend this!
+      = render_recommend_type(response)
     
       .notes
         = said_this_in_response(response)
@@ -38,7 +36,6 @@ li.has-actions
         .points-with-desc
           = points_tag(:recommending)
           |Tweet or Share for 30 points!
-        .clearfix
       
   - if resource.is_a?(Topic) && !response.replies.blank?
     .replies

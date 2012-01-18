@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120112215551) do
+ActiveRecord::Schema.define(:version => 20120118002018) do
 
   create_table "deal_deals", :force => true do |t|
     t.integer  "user_id"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20120112215551) do
     t.boolean  "recommended"
     t.integer  "share_id"
     t.integer  "reply_id"
+    t.string   "recommend_type"
   end
 
   create_table "shares", :force => true do |t|

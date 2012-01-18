@@ -1,5 +1,7 @@
 var debug;
 
+// Functions
+
 var flashes = function () {
   $("#flashes > div").hide().each(function (i) {
     if( $(this).hasClass("points"))
@@ -85,40 +87,46 @@ var scrolltotop = function () {
 var recommend = function () {
   $('#respond .recommendation').each(function () {
     
-    var element = $(this);
-    var form    = element.find('form');
-    var button  = element.find('a.recommend-this');
-    var input   = element.find('input.recommended');
-    var toggle  = element.find('a.give-feedback');
+    var element   = $(this);
+    var form      = element.find('form');
+    var button    = element.find('a.recommend-this');
+    var input     = element.find('input.recommend-type');
+    var toggle    = element.find('a.give-feedback');    
+    var buttons   = element.find('.recommend-or-not a');
+    var recommend = element.find('a.recommended');
+    var undecided   = element.find('a.undecided');
+    var notrecommended = element.find('a.not_recommended');
+    
+    var clicked = function (element, type) {
+      buttons.removeClass('clicked');
+      $(element).addClass('clicked');
+      input.val(type);
+    }
+    
+    recommend.click(function () { clicked(this, 'recommend'); });
+    undecided.click(function () { clicked(this, 'undecided'); });
+    notrecommended.click(function () { clicked(this, 'not_recommended'); });
     
     toggle.click(function () {
-      toggle.hide();
+      element.find('.left').empty();
       $('.other-feedback').slideDown();
+      element.find('.right .worth-points span').text('90P');
       return false;
     });
-    
-    button.click(function () {
-      input.val(1);
-      $(this).text("You recommended this!");
-      $(this).addClass('clicked');
-      if( $('.other-feedback').is(':hidden') ) form.submit();
-      return false;
-    });
-    
     
   });
 };
 
-// Recommend Form
+// Scrape Form
 
-var recommendform = function () {
-  var element = $('#recommend-form');
+var getproductform = function () {
+  var element = $('.get-product-form');
   
   if( element.size() > 0 )
   {
     
-    var urlinput = element.find('#topic_url');
-    var nameinput = element.find('#topic_subject');
+    var urlinput = element.find('.url-input');
+    var nameinput = element.find('.name-input');
     var uploaderinput = element.find ('.image-selector-uploader');
     
     var scrape = function (url) {
@@ -209,6 +217,28 @@ var selectoruploaders = function () {
   });
 };
 
+// Facebook
+
+var facebook = function () {
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+}
+
+var fbparse = function () {
+  try { FB.XFBML.parse(); } catch(ex){}
+}
+
+window.fbAsyncInit = function() {
+  FB.Event.subscribe('edge.create', function(url) {
+    $.post('/social/recommended.js', { url: url });
+  });
+};
+
 // Twitter
 var tweets = function () {
   twttr.events.bind('tweet', function(event) {
@@ -216,13 +246,6 @@ var tweets = function () {
     $.post('/social/tweeted.js', { url: url });
   });
 }
-
-// Facebook
-window.fbAsyncInit = function() {
-  FB.Event.subscribe('edge.create', function(url) {
-    $.post('/social/recommended.js', { url: url });
-  });
-};
 
 $(function () {
   
@@ -238,6 +261,9 @@ $(function () {
     $('ol.switchers li').hide();
     $('ol.switchers li' + $(this).attr('href')).show();
   });
+  
+  // Facebook
+  facebook();
   
   // Flashes
   flashes();
@@ -266,8 +292,8 @@ $(function () {
   // Recommend
   recommend();
   
-  // Recommend Form
-  recommendform();
+  // Get Product Form
+  getproductform();
   
   // Selector Uploads
   selectoruploaders();

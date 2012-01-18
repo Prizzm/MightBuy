@@ -110,3 +110,25 @@ More:
       
   Recommend:
     Awesome, do you have anything else to say about this.
+    
+01/17:
+  
+  1) Change point model to allow points to be allocated before account is created.
+    a) Change as user interacts with it.
+    b) Change left sidebar w/ description & points.
+  
+  2) Change recommend page:
+    # a) Would you recommend this -> Do you recommend this?
+    # b) What else would you like to say? -> More feedback please!
+    # c) Recommend +60 points.
+    # d) Change buttons - recommend, not sure, dont recommend.
+    # e) Add more feedback (+60) OR Send to Bryna! (+30).
+    # f) Make product urls likeable / tweetable / shareable.
+    g) Didnt recommend - Oh no - can we make it right? - (contact me)
+    
+  3) Signup
+    # a) Remove lightbox.
+    # b) Fix facebook / twitter share buttons.
+    c) Add "Register for beta. button" (+30)
+    
+  4) Add recommendation % as bar chart.

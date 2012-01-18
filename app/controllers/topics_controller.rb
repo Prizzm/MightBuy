@@ -38,12 +38,14 @@ class TopicsController < RestfulController
   
     def build_shares
       (params[:topic][:shares_attributes] || {}).map do |key, attributes|
-        attributes.delete(:_destroy)
-        Shares::Email.new(attributes).tap do |share|
-          share.user  = current_user
-          share.visitor_code = visitor_code
+        unless attributes[:with].blank?
+          attributes.delete(:_destroy)
+          Shares::Email.new(attributes).tap do |share|
+            share.user  = current_user
+            share.visitor_code = visitor_code
+          end
         end
-      end
+      end.compact
     end
     
   private

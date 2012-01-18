@@ -1,11 +1,12 @@
-#recommend-form
+.get-product-form
+
   = heading "Enter the url of the product.."
 
-  = form.input :url, :label => "Web Address", :placeholder => "http://www.something.com"
+  = form.input :url, :label => "Web Address", :placeholder => "http://www.something.com", :input_html => { :class => "url-input" }
 
   = heading "Enter the name of the product.."
 
-  = form.input :subject, :label => "Product Name", :placeholder => "T-Shirt"
+  = form.input :subject, :label => "Product Name", :placeholder => "T-Shirt", :input_html => { :class => "name-input" }
 
   = heading "Grab an image of the product.."
 

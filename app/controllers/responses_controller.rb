@@ -11,6 +11,7 @@ class ResponsesController < InheritedResources::Base
     create! do |success, failure|
       success.html { redirect_to topic_path(parent) }
       success.js
+      failure.js { render 'error' }
     end
   end
   

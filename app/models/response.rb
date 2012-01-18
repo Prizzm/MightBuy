@@ -14,9 +14,16 @@ class Response < ActiveRecord::Base
     where(:visitor_code => code, :user_id => nil)  }
     
   # Validations  
-  validates :body, :presence => true
+  validates :body, :presence => true, :unless => :recommendation?
+  validates :recommend_type, :presence => true, :if => :recommendation?
     
   # Uploaders
   mount_uploader :image, ResponseImageUploader
+  
+  # Methods
+  
+  def recommendation?
+    topic.form.to_s.to_sym == :recommendation
+  end
   
 end

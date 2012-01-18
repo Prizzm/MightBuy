@@ -18,24 +18,31 @@
       - if resource.form.to_s == "recommendation"
       
         .recommendation
-          = heading "So, would you recommend this?"
+          = heading "Do you recommend this?"
         
           = response_form_for resource do |form|
         
             .recommend-or-not
-              = link_to ("%s I recommend it!" % image_tag('/images/icons/thumbup.png')).html_safe, "#recommend", :class => "button recommend-this"
-              = link_to "Have more feedback?", "#give-feedback", :class => "give-feedback"
-              = form.input :recommended, :as => :hidden, :input_html => { :class => "recommended" }
-              .clearfix
+              = respond_button :recommended, 'I recommend it!', :icon => 'thumbup.png'
+              = respond_button :undecided, 'Not Sure..'
+              = respond_button :not_recommended, "I don't recommend it!", :icon => 'thumbdown.png'
+              = form.input :recommend_type, :as => :hidden, :input_html => { :class => "recommend-type" }
             
             .other-feedback
             
-              = heading "What else would you like to say?"
+              = heading "More feedback please!"
               
-              = form.input :body, :label => false, :placeholder => "Tell us what you think here!"
-              
-              .buttons
+              = form.input :body, :label => false, :placeholder => "Tell us what you think!", :required => false
+                
+            .hr
+            
+            .buttons
+              .left
+                = link_to "Have more feedback? Click here!", 'javascript:void(0);', :class => 'give-feedback'
+                = points_tag(:giving_more_feedback)
+              .right
                 = form.button :submit, "Send to %s" % resource.user.name
+                = points_tag(:recommending)
       
       - else
     
@@ -59,11 +66,10 @@
   
       li= link_to phrase_for(:respond), "#respond"
       li= link_to phrase_for(:comments), "#responses"
-      
+      li= link_to "Shared With..", '#sharing'
     
       - if owner_of_topic?
-        li= link_to "Shared With..", '#sharing'
-		li= link_to "Statistics", '#stats'
+        li= link_to "Statistics", '#stats'
 		
   
     / Featured Response

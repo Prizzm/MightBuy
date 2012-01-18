@@ -67,7 +67,7 @@ module SocialHelper
     
     def self.like (url)
       button = '<div class="fb-like" data-href="%s" data-send="true" data-layout="button_count" 
-        data-show-faces="false" data-action="recommend"></div>'
+        data-show-faces="false" data-action="like"></div>'
         
       (button % url).html_safe
     end

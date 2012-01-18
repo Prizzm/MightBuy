@@ -1,20 +1,28 @@
-= heading "Enter the Name of your Product"
+.get-product-form
 
-= form.input :subject, :label => "Product Name"
+  = form.object.errors.inspect
 
-= heading "Choose an Image for your Product.."
+  = heading "Enter the URL for your Product.."
 
-= render "partials/image_selector_input", :form => form
+  = form.input :url, :label => "Web Address", :placeholder => "http://www.something.com", :input_html => { :class => "url-input" }
 
-/ Customers
-= heading "Which Customers Should We Ask?"
+  = heading "Enter the Name of your Product"
 
-= form.simple_fields_for :shares, form.object.shares.new do |fields|
-  = render "share_fields", :f => fields
-.links
-  = link_to_add_association 'Send to another customer..', form, :shares
+  = form.input :subject, :label => "Product Name", :placeholder => "White T-Shirt", :input_html => { :class => "name-input" }
+
+  = heading "Choose an Image for your Product.."
+
+  = render "partials/image_selector_input", :form => form
+
+  / Customers
+  = heading "Which Customers Should We Ask?"
+
+  = form.simple_fields_for :shares, form.object.shares.new do |fields|
+    = render "share_fields", :f => fields
+  .links
+    = link_to_add_association 'Send to another customer..', form, :shares
   
-/ Hidden fields
-= form.input :recommendable, :as => :hidden, :input_html => { :value => 1 }
-= form.input :access, :as => :hidden, :input_html => { :value => "private" }
-= form.input :body, :as => :hidden, :input_html => { :value => "..." }
+  / Hidden fields
+  = form.input :recommendable, :as => :hidden, :input_html => { :value => 1 }
+  = form.input :access, :as => :hidden, :input_html => { :value => "private" }
+  = form.input :body, :as => :hidden, :input_html => { :value => "..." }

@@ -29,9 +29,9 @@
   
   ol.responses.highlight
   {
-    padding: 15px;
-    background: #ffd;
-    border: 1px dashed #ee9;
+//    padding: 15px;
+//    background: #ffd;
+//    border: 1px dashed #ee9;
     
     li
     {
@@ -88,14 +88,22 @@
         }
       }
       
-      .recommended
+      .recommend-type
       {
-        background: url("/images/icons/good.png") no-repeat left center;
-        text-indent: 28px;
-        line-height: 1.5em;
-        font-weight: bold;
-        font-size: 12px;
         margin: 10px 0px;
+        
+        span
+        {
+          text-indent: 28px;
+          font-weight: bold;
+          font-size: 12px;
+          padding: 3px 10px;
+          @include rounded-corners(3px);
+          
+          &.recommend { background-color: #e2efcc; }
+          &.undecided { background-color: #ffc; }
+          &.not_recommended { background-color: #fcc; }
+        }
       }
       
       .notes
@@ -107,20 +115,15 @@
       
       .social
       {
+        height: 30px;
         border-top: 1px dashed #ddd;
         padding-top: 10px;
         margin: 10px 0px;
-        width: 500px;
         
-        .recommend, .tweet
+        .recommend, .tweet, .points-with-desc
         {
           float: left;
           margin-right: 8px;
-        }
-        
-        .points-with-desc
-        {
-          float: right;
         }
         
       }
@@ -426,20 +429,39 @@
     {
       .recommend-or-not
       { 
+        position: relative;
         margin: 10px 0px;
+        height: 45px;
         
         a.button
         {
-          @include hover-button(#c5356a, darken(#c5356a, 5%));
-          float: left;
-          line-height: 45px;
+          position: absolute;
+          line-height: 35px;
           padding: 0px 20px;
           
           img
           {
             position: relative;
-            top: 6px;
-            left: -2px;
+            top: 7px;
+            left: -4px;
+          }
+          
+          &.undecided 
+          { 
+            left: 50%;
+            width: 70px;
+            margin-left: -70px;
+            text-align: center;
+            @include hover-button(#c4a53b, darken(#c4a53b, 5%)); 
+          }
+          
+          &.recommended { 
+            @include hover-button(#8fc43b, darken(#8fc43b, 5%)); 
+          }
+          
+          &.not_recommended {
+            right: 0px;
+            @include hover-button(#c5356a, darken(#c5356a, 5%));
           }
           
           &.clicked
@@ -450,7 +472,6 @@
         
         a
         {
-          margin-right: 15px;
           line-height: 45px;
         }
       }
@@ -458,6 +479,26 @@
       .other-feedback
       {
         display: none;
+      }
+    }
+    
+    .buttons
+    {
+      
+      .left
+      {
+        float: left;
+        
+        a
+        {
+          font-size: 14px;
+          margin-right: 10px;
+        }
+      }
+      
+      .right
+      {
+        float: right;
       }
     }
   }

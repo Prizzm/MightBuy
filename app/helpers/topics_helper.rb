@@ -1,5 +1,7 @@
 module TopicsHelper
 
+  include ResponsesHelper
+
   def title
     case action_name
       when :show then super truncate(resource.subject, :length => 50)
@@ -7,6 +9,12 @@ module TopicsHelper
       when :new, :create then super "Start a Topic"
       when :edit, :update then super "Update your Topic"
     end
+  end
+  
+  def respond_button (type, label, options = {})
+    icon = options[:icon] ? image_tag('/images/icons/%s' % options[:icon]) : nil
+    label = [ icon, label ].compact.join(' ').html_safe
+    link_to label, 'javascript:void(0);', :class => ['button', type].join(' ')
   end
 
   def shared_this (share, format = nil)
