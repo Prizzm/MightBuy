@@ -1,4 +1,5 @@
 #app
+
   #flashes
     - flash.each do |key, message|
       - if key == :points
@@ -9,16 +10,18 @@
       .fixed
         = link_to "Prizzm", root_path, :id => "brand"
 
-        - if user_signed_in?
-          #points= "%sP" % current_user.points.available
-          #avatar
-            = image_link_for current_user, user_root_path, :style => :thumb
-            = link_to "Signout", destroy_user_session_path, :method => :delete
-          #links
-            = link_to "My Profile", user_root_path
-        - else
-          #links
-            = link_to 'Sign up!', new_user_registration_path
+        / Sidebar
+        = override(:sidebar) do
+          - if user_signed_in?
+            #points= "%sP" % current_user.points.available
+            #avatar
+              = image_link_for current_user, user_root_path, :style => :thumb
+              = link_to "Signout", destroy_user_session_path, :method => :delete
+            #links
+              = link_to "My Profile", user_root_path
+          - else
+            #links
+              = link_to 'Sign up!', new_user_registration_path
         
     #header
       #menu

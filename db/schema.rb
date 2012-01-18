@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120118002018) do
+ActiveRecord::Schema.define(:version => 20120118103432) do
 
   create_table "deal_deals", :force => true do |t|
     t.integer  "user_id"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20120118002018) do
     t.datetime "updated_at"
     t.string   "visitor_code"
     t.string   "shortcode"
+    t.boolean  "registered",   :default => false
   end
 
   add_index "shares", ["shortcode"], :name => "index_shares_on_shortcode", :unique => true

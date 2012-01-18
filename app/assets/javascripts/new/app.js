@@ -1,5 +1,15 @@
 var debug;
 
+// Helpers
+
+function f (string) {  
+  var args = arguments;  
+  var pattern = new RegExp("%([1-" + arguments.length + "])", "g");  
+  return String(string).replace(pattern, function(match, index) {  
+    return args[index];  
+  });
+}
+
 // Functions
 
 var flashes = function () {
@@ -89,6 +99,9 @@ var recommend = function () {
     
     var element   = $(this);
     var form      = element.find('form');
+    var status    = element.find('.left');
+    var feedback  = element.find('.other-feedback');
+    var heading   = feedback.find('h3 span');
     var button    = element.find('a.recommend-this');
     var input     = element.find('input.recommend-type');
     var toggle    = element.find('a.give-feedback');    
@@ -103,13 +116,28 @@ var recommend = function () {
       input.val(type);
     }
     
-    recommend.click(function () { clicked(this, 'recommend'); });
-    undecided.click(function () { clicked(this, 'undecided'); });
-    notrecommended.click(function () { clicked(this, 'not_recommended'); });
+    recommend.click(function () {
+      heading.text('More feedback please!');
+      clicked(this, 'recommend'); 
+    });
+    
+    undecided.click(function () {
+      status.empty();
+      heading.text("Okay! What can we do better? :)");
+      feedback.slideDown();
+      clicked(this, 'undecided'); 
+    });
+    
+    notrecommended.click(function () {
+      status.empty();
+      heading.text("Oh no! How can we win your support?");
+      feedback.slideDown();
+      clicked(this, 'not_recommended');
+    });
     
     toggle.click(function () {
-      element.find('.left').empty();
-      $('.other-feedback').slideDown();
+      status.empty();
+      feedback.slideDown();
       element.find('.right .worth-points span').text('90P');
       return false;
     });
@@ -217,6 +245,17 @@ var selectoruploaders = function () {
   });
 };
 
+// Register for beta..
+
+var register = function () {
+ 
+  $('.register-for-beta a').click(function () {
+    $.post('/register.js');
+    return false;
+  });
+  
+}
+
 // Facebook
 
 var facebook = function () {
@@ -297,5 +336,8 @@ $(function () {
   
   // Selector Uploads
   selectoruploaders();
+  
+  // Register
+  register();
   
 });

@@ -13,4 +13,21 @@ module ResponsesHelper
     end
   end
   
+  def recommendation_points_awarded
+    message = "You just earned <strong>%s</strong> points!" % recommendation_total_points
+    points_flash(message)
+  end
+  
+  def recommendation_total_points
+    "%sP" % recommendation_points_earned
+  end
+  
+  def recommendation_points_earned
+    points = Points.allocators[:recommending]
+    unless resource.body.blank?
+      points += Points.allocators[:giving_more_feedback]
+    end
+    points
+  end
+  
 end

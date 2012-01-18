@@ -1,5 +1,25 @@
 var response = $(<%= e(render(resource)) %>);
 
+<% if resource.topic.form == "recommendation" %>
+
+  $('#flashes').append(<%= e(recommendation_points_awarded) %>);
+  $("#points").text(<%= e(recommendation_total_points) %>)
+  flashes();
+  
+  $('.group.respond').after(<%= e(render('topics/register')) %>);
+
+<% end %>
+
+$('.group.respond').slideUp(300, function () {
+  $(this).empty();
+  $('<h3 id="comments" />').append("<span>Here's what you said..</span>").appendTo($(this));
+  $('<ol class="list responses" />').append(response).appendTo($(this));
+  $(this).slideDown(300, function () {
+    fbparse();
+    register();
+  });
+});
+
 // var promotion = $(<%= e(render("join", :response => resource)) %>);
 // 
 // $.fancybox({
@@ -9,12 +29,3 @@ var response = $(<%= e(render(resource)) %>);
 //   'transitionOut'  : 'elastic',
 //   content : promotion
 // });
-
-$('.group.respond').slideUp(300, function () {
-  $(this).empty();
-  $('<h3 id="comments" />').append("<span>Here's what you said..</span>").appendTo($(this));
-  $('<ol class="list responses" />').append(response).appendTo($(this));
-  $(this).slideDown(300, function () {
-    fbparse();
-  });
-});

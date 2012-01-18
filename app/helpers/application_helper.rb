@@ -75,7 +75,8 @@ module ApplicationHelper
   end
 
   def app_page (locals = {}, &block)
-    render :layout => "layouts/app", :locals => locals, &block
+    content = capture(&block)
+    render( :layout => "layouts/app", :locals => locals ) { content }
   end
   
   def header

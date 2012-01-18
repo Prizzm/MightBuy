@@ -60,6 +60,7 @@ NewPrizzmCom::Application.routes.draw do
   
   # Router
   get 'invited/:shortcode' => "router#invited", :as => :invited
+  post 'register' => 'router#register', :as => :register
   
   # Sandbox
   get 'sandbox' => "website#sandbox"

@@ -15,6 +15,11 @@ module SharedHelper
     user.person? ? super(user, *args) : brand_path(user, *args)
   end
   
+  def override (id, &block)
+    content = content_for(id)
+    content.blank? ? capture(&block) : content
+  end
+  
   def image_link_for (model, url, options = {})
     style     = options.delete(:style) || :url
     image_url = image_url_for model, style
