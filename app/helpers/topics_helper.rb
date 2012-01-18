@@ -1,7 +1,5 @@
 module TopicsHelper
 
-  include ResponsesHelper
-
   def title
     case action_name
       when :show then super truncate(resource.subject, :length => 50)

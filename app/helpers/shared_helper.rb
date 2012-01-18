@@ -1,6 +1,7 @@
 module SharedHelper
 
   include SocialHelper
+  include ResponsesHelper
   
   def title (heading = nil)
     heading ? "%s | Prizzm" % heading : "Prizzm | Rewarding Feedback"
