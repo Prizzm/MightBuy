@@ -1,0 +1,29 @@
+#app
+
+  #flashes
+    - flash.each do |key, message|
+      - if key == :points
+        = points_flash(message)
+
+  #frame
+    #sidebar
+      .fixed
+        = link_to "Prizzm", root_path, :id => "brand"
+        #points 0P
+        #avatar
+          = image_link_for resource.user, user_path(resource.user), :style => :thumb
+        
+    #page
+      #banner
+        h1= header
+      #content
+        #details
+          = render "detail"
+    
+    #footer
+      #copyright Copyright &copy; 2011, Prizzm
+      #links
+        = link_to "about", "#about"
+        = link_to "contact", "#contact"
+        = link_to "privacy", "#privacy"
+        = link_to "help", "#help"

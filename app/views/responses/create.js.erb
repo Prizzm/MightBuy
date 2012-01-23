@@ -2,10 +2,7 @@ var response = $(<%= e(render(resource)) %>);
 
 <% if resource.topic.form == "recommendation" %>
 
-  $('#flashes').append(<%= e(recommendation_points_awarded) %>);
-  $("#points").text(<%= e(recommendation_total_points) %>)
-  flashes();
-  
+  givepoints(<%= recommendation_points_earned %>);
   $('.group.respond').after(<%= e(render('topics/register')) %>);
 
 <% end %>

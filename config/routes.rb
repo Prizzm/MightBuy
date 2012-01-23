@@ -59,11 +59,15 @@ NewPrizzmCom::Application.routes.draw do
   post 'social/recommended' => 'social#recommended'
   
   # Router
+  get 'share/:shortcode' => "router#shared", :as => :shared
   get 'invited/:shortcode' => "router#invited", :as => :invited
   post 'register' => 'router#register', :as => :register
   
   # Sandbox
   get 'sandbox' => "website#sandbox"
+  
+  # Fragments
+  get 'partial/:action' => 'fragments'
   
   # Root
   root :to => "website#index"

@@ -1,5 +1,6 @@
 li.has-actions
   .response
+
     - feature_url = topic_url(response.topic, :feature => response.id)
 
     - if resource.is_a?(Topic)
@@ -28,14 +29,13 @@ li.has-actions
         = said_this_in_response(response)
   
     - if response.user == current_user
-      .social
-        .tweet
-          = twitter.tweet(h(response.topic.subject), feature_url)
-        .recommend
-          = facebook.like(feature_url)
-        .points-with-desc
-          = points_tag(:recommending)
-          |Tweet or Share for 30 points!
+      - if response.recommend_type == "recommend" || response.recommended
+        .social
+          = response_tweet(response, feature_url)
+          = response_like(response, feature_url)
+          .points-with-desc
+            = points_tag(:recommending)
+            = "Tweet or Share for %s points!" % Points.allocators[:recommending]
       
   - if resource.is_a?(Topic) && !response.replies.blank?
     .replies

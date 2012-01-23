@@ -132,3 +132,17 @@ More:
     # c) Add "Register for beta. button" (+30)
     
   4) Add recommendation % as bar chart.
+  
+  
+01/19:
+  
+  # 1) Add & style brand logo.
+  # 2) Add description & text under points on hover.
+  # 3) Fix like / tweet points update (givepoints).
+  4) Enable fb / twitter sharing of specific links.
+  # 5) Change facebook / twitter wording:
+  #     a) Twitter: I recommend <Widget> by <Prizzm>!  (product url).
+  #     b) Facebook: I recommend <Widget> by <Prizzm>! (is that possible).
+  # 6) Change sharing to 200P.
+  # 7) Add points description / intro popup.
+  # 8) Create facebook / twitter specific reference urls.

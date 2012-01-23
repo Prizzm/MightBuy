@@ -12,6 +12,7 @@ class TopicObserver < ActiveRecord::Observer
         product = topic.subject
         topic.subject = "Would you recommend your %s?" % product
         topic.body = "%s would like to know if you would recommend your %s to your friends!" % [ topic.user.name, product ]
+        topic.share_title = "I recommend %s by %s!" % [ product, topic.user.name ]
       when :recommend
         topic.body = "I recommend you check out %s!" % topic.subject
     end

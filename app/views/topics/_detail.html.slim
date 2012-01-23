@@ -55,16 +55,17 @@
 
               = heading "More feedback please!"
               = form.input :body, :label => false, :placeholder => "Tell us what you think!", :required => false
-                
-            .hr
             
-            .buttons
-              .left
-                = link_to "Have more feedback? Click here!", 'javascript:void(0);', :class => 'give-feedback'
-                = points_tag(:giving_more_feedback)
-              .right
-                = form.button :submit, "Send to %s" % resource.user.name
-                = points_tag(:recommending)
+            .group.footer
+            
+              .hr
+            
+              .buttons
+                .left
+                  = link_to "Have more feedback? Click here!", 'javascript:void(0);', :class => 'give-feedback'
+                  = points_tag(:giving_more_feedback)
+                .right
+                  = form.button :submit, "Send to %s" % resource.user.name
       
       - else
     

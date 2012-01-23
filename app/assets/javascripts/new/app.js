@@ -20,6 +20,17 @@ var flashes = function () {
   });
 }
 
+var givepoints = function (points) {
+  var text = f("You just earned <strong>%1</strong> points!", points);
+  var flash = $('<div class="points"><div class="onomatopoeia">*Cha-Ching!*</div></div>');
+  var message = $('<div class="bar" />').html(text);
+      flash.append(message);
+      
+  $('#points').text( f('%1P', parseInt($('#points').text()) + points) );    
+  $('#flashes').empty().append(flash);
+  flashes();
+}
+
 var tabs = function () {
   $(".tabs").tabs({ fx: { 
       opacity: 'toggle', duration: 150
@@ -109,6 +120,34 @@ var recommend = function () {
     var recommend = element.find('a.recommended');
     var undecided   = element.find('a.undecided');
     var notrecommended = element.find('a.not_recommended');
+    var footer = element.find('.group.footer');
+    var pointsgiven = false;
+    
+    var chosen = function (element, type) {
+      if( !pointsgiven ){
+        givepoints(40);
+        pointsgiven = true
+      }
+      footer.slideDown();
+      clicked(element, type);
+      pointshelper();
+    }
+    
+    $("#points").qtip({
+
+      content: function () {
+        return $('<div />')
+          .append('<h5><strong>Prizzm</strong> rewards your feedback!</h5>')
+          .append('<p><strong>Rack up points</strong> for speaking your mind, giving honest feedback & recommendations.</p>')
+          .append('<p><strong>Prizzm</strong> is *not* open to the public yet. You will be one of the first to be able to spend your points once open, just opt-in!</p>');
+      },
+      position: {
+        at: 'top center',
+        my: 'bottom center'
+      },
+      style: 'ui-tooltip-tipsy ui-tooltip-shadow tooltip'
+
+    });
     
     var clicked = function (element, type) {
       buttons.removeClass('clicked');
@@ -118,21 +157,21 @@ var recommend = function () {
     
     recommend.click(function () {
       heading.text('More feedback please!');
-      clicked(this, 'recommend'); 
+      chosen(this, 'recommend');
     });
     
     undecided.click(function () {
       status.empty();
       heading.text("Okay! What can we do better? :)");
       feedback.slideDown();
-      clicked(this, 'undecided'); 
+      chosen(this, 'undecided');
     });
     
     notrecommended.click(function () {
       status.empty();
       heading.text("Oh no! How can we win your support?");
       feedback.slideDown();
-      clicked(this, 'not_recommended');
+      chosen(this, 'not_recommended');
     });
     
     toggle.click(function () {
@@ -176,6 +215,17 @@ var getproductform = function () {
     });
     
   }
+}
+
+var pointshelper = function () {
+  $.fancybox({
+    width : 440,
+    overlayColor		: '#000',
+    overlayOpacity	: 0.8,
+    transitionIn	: 'elastic',
+    transitionOut	: 'elastic',
+    href : '/partial/points'
+   })
 }
 
 // Special Upload

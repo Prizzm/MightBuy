@@ -1,5 +1,19 @@
 module SocialHelper
   
+  def response_like (response, url)
+    social_info_wrapper :recommend, response, facebook.like(url)
+  end
+  
+  def response_tweet (response, url)
+    title = response.topic.share_title
+    title = response.topic.subject if title.blank?
+    social_info_wrapper :tweet, response, twitter.tweet(h(title), url)
+  end
+  
+  def social_info_wrapper (type, response, content)
+    content_tag :div, content, :class => "#{type} social-info", :data => { :response_id => response.id }
+  end
+  
   def js_points_awarded
     message = flash.now[:points]
     flash.discard

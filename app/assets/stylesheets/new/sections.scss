@@ -5,6 +5,11 @@
 
 #app
 {
+  #points
+  {
+    cursor: pointer;
+  }
+  
   ol.topics,
   ol.users
   {
@@ -484,6 +489,11 @@
       }
     }
     
+    .group.footer
+    {
+      display: none;
+    }
+    
     .buttons
     {
       
@@ -559,6 +569,7 @@
   {
     .description
     {
+      display: none;
       position: absolute;
       margin-left: -30px;
       line-height: 1.5em;
@@ -577,6 +588,65 @@
         background: none;
       }
     }
+  }
+}
+
+#fancybox-outer, #fancybox-content 
+{
+  @include rounded-corners(5px);
+}
+
+.popup
+{
+  width: 440px;
+  
+  h3
+  {
+    color: #fff;
+    background: #e36032;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 0px 0px 10px 0px;
+    @include rounded-corners(5px);
+  }
+  
+  p
+  {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5em;
+    margin: 10px 20px;
+  }
+  
+  strong
+  {
+    font-weight: 500;
+  }
+  
+  a.button
+  {
+    float: left;
+    margin: 0px 20px 10px 20px;
+    padding: 5px 15px;
+    @include hover-button(#8fc43b, darken(#8fc43b, 5%)); 
+  }
+}
+
+.tooltip .ui-tooltip-content
+{
+  text-align: center;
+  
+  h5
+  {
+    color: #ff2e7b;
+    font-size: 14px;
+    margin: 10px 0px;
+  }
+  
+  p
+  {
+    margin: 10px 0px;
   }
 }
 

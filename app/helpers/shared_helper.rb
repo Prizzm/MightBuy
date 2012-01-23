@@ -18,7 +18,7 @@ module SharedHelper
   
   def override (id, &block)
     content = content_for(id)
-    content.blank? ? capture(&block) : content
+    content.blank? ? (block_given? ? capture(&block) : "") : content
   end
   
   def image_link_for (model, url, options = {})

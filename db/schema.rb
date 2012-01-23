@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120118103432) do
+ActiveRecord::Schema.define(:version => 20120123081444) do
 
   create_table "deal_deals", :force => true do |t|
     t.integer  "user_id"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20120118103432) do
     t.boolean  "recommendable", :default => false
     t.string   "form"
     t.string   "url"
+    t.string   "share_title"
   end
 
   add_index "topics", ["shortcode"], :name => "index_topics_on_shortcode", :unique => true

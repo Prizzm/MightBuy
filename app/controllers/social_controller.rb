@@ -20,6 +20,8 @@ class SocialController < ApplicationController
       :visitor_code => visitor_code
       
     award_points
+    
+    @points_awarded = Points.allocators[:tweeting]
       
     respond_to do |wants|
       wants.js { render "points" }
@@ -41,6 +43,8 @@ class SocialController < ApplicationController
       :visitor_code => visitor_code
       
     award_points
+    
+    @points_awarded = Points.allocators[:recommending]
       
     respond_to do |wants|
       wants.js { render "points" }

@@ -17,6 +17,16 @@ class TopicsController < RestfulController
     new!
   end
   
+  def show
+    show! do |format|
+      format.html do
+        responding_to_recommendation = params[:responding] && resource.form.to_s == "recommendation"
+        render responding_to_recommendation ? "responding" : "show"
+      end
+    end
+  end
+  
+  
   def create
     @topic = build_resource
     @topic.shares = build_shares

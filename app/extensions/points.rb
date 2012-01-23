@@ -131,8 +131,8 @@ Points.allocators do
   add :uploading_a_photo, 30
   add :responding, 20
   add :joining, 40
-  add :tweeting, 30
-  add :recommending, 30
+  add :tweeting, 150
+  add :recommending, 150
   add :giving_more_feedback, 60
   add :registering, 30
 end

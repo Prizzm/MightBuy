@@ -110,12 +110,23 @@ module TopicsHelper
   end
   
   def open_graph_info
-    case action_name
-      when :show
-        super.merge \
-          :image => image_url_for(resource, :thumb),
-          :desc  => truncate(resource.body, :length => 100)
-      else super
+    if params[:feature]
+      title = resource.share_title
+      title = resource.subject if title.blank?
+      {
+        :title => title,
+        :url   => request.url,
+        :image => image_url_for(resource, :thumb),
+        :desc  => featured_response.body
+      }
+    else
+      case action_name
+        when :show
+          super.merge \
+            :image => image_url_for(resource, :thumb),
+            :desc  => truncate(resource.body, :length => 100)
+        else super
+      end
     end
   end
 
