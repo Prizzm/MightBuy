@@ -55,6 +55,7 @@ group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'rails-dev-tweaks', '~> 0.5.1'
   gem 'ffaker', '1.10.1'
+  gem "rails-erd"
 end
 
 group :test, :development do
