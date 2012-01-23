@@ -7,15 +7,10 @@ class SocialController < ApplicationController
   
   def tweeted
     
-    attrs = {}.tap do |hash|
-      url = URI.parse(params[:url]).fragment
-      uri = URI.parse(Rack::Utils.parse_query(url)["url"])
-      hash.merge! Rack::Utils.parse_query(uri.query)
-      hash.merge! Rails.application.routes.recognize_path(uri.path, :method => :get)
-    end.symbolize_keys
+    topic = get_topic_for(URI.parse(params[:url]).fragment)
 
     Shares::Tweet.create \
-      :topic => Topic.find_by_shortcode(attrs[:id]),
+      :topic => topic,
       :user  => current_user,
       :visitor_code => visitor_code
       
@@ -31,14 +26,10 @@ class SocialController < ApplicationController
   
   def recommended
     
-    attrs = {}.tap do |hash|
-      uri = URI.parse(params[:url])
-      hash.merge! Rack::Utils.parse_query(uri.query)
-      hash.merge! Rails.application.routes.recognize_path(uri.path, :method => :get)
-    end.symbolize_keys
+    topic = get_topic_for(params[:url])
     
     Shares::Recommend.create \
-      :topic => Topic.find_by_shortcode(attrs[:id]),
+      :topic => topic,
       :user => current_user,
       :visitor_code => visitor_code
       
@@ -51,5 +42,25 @@ class SocialController < ApplicationController
     end
     
   end
+  
+  private
+  
+    def get_topic_for (url)
+      prizzm_url?(url) ? 
+        Topic.find_by_shortcode(parse_params_for(url)[:id]) :
+        Topic.find_by_url(url)
+    end
+  
+    def parse_params_for (url)
+      attrs = {}.tap do |hash|
+        uri = URI.parse(params[:url])
+        hash.merge! Rack::Utils.parse_query(uri.query)
+        hash.merge! Rails.application.routes.recognize_path(uri.path, :method => :get)
+      end.symbolize_keys
+    end
+  
+    def prizzm_url? (url)
+      URI.parse(request.url).host == URI.parse(url).host
+    end
   
 end

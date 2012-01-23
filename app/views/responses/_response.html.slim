@@ -1,7 +1,7 @@
 li.has-actions
   .response
 
-    - feature_url = topic_url(response.topic, :feature => response.id)
+    - feature_url = resource.url.blank? ? topic_url(resource, :feature => response.id) : resource.url
 
     - if resource.is_a?(Topic)
   
