@@ -8,6 +8,9 @@ class ResponsesController < InheritedResources::Base
     @response.user = current_user
     @response.visitor_code = visitor_code
     @response.share = related_share
+    
+    puts @response.errors.inspect
+    
     create! do |success, failure|
       success.html { redirect_to topic_path(parent) }
       success.js

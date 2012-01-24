@@ -2,7 +2,6 @@ class Response < ActiveRecord::Base
   
   # Relationships
   has_many :replies, :class_name => "Response", :foreign_key => "reply_id"
-
     
   belongs_to :topic
   belongs_to :user
@@ -23,7 +22,7 @@ class Response < ActiveRecord::Base
   # Methods
   
   def recommendation?
-    topic.form.to_s.to_sym == :recommendation
+    topic.form.to_s.to_sym == :recommendation && !reply_id?
   end
   
 end

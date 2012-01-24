@@ -146,3 +146,28 @@ More:
   # 6) Change sharing to 200P.
   # 7) Add points description / intro popup.
   # 8) Create facebook / twitter specific reference urls.
+  
+01/24:
+  
+  Top: Topic response bug - (2) Paginate products - (3a) set up profile - Dashboard
+  
+  1) Fix .bottom css style.
+  2) Fix .tip hover onload.
+  3) "Where can I spend points?" => 
+  4) Fix reply to comment bug.
+  5) Pagination to posts / conversations.
+  
+  6) Profile
+    a) Add image upload selector for logo.
+  
+  7) Ask for "Business Recommendation"
+    a) Uses profile & description.
+    b) Allow csv upload for email.
+    c) Asks customers to recommend them as a business.
+    
+  8) Dashboards
+    a) Reports % of recommendations per product.
+    b) Reports on % or number of shares on FB
+    c) Reports on FB and twitter shares.
+    d) Stream of comments, reviews, complaints.
+    e) Design out ui.

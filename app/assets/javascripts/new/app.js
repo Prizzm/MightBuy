@@ -149,7 +149,7 @@ var recommend = function () {
     });
     
     
-        $(".worth-points").qtip({
+    $(".worth-points").qtip({
 
       content: function () {
         return $('<div />')
