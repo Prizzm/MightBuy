@@ -64,9 +64,11 @@
                 .left
                   = link_to "Have more feedback? Click here!", 'javascript:void(0);', :class => 'give-feedback'
                   = points_tag(:giving_more_feedback)
-                .right
-                  = form.button :submit, "Send to %s" % resource.user.name
-      
+                .bottom
+                  = form.button :submit, "Submit now" 
+                  = points_tag(:responding)
+/                  = form.button :submit, "Send now to %s" % resource.user.name
+      			  	
       - else
     
         = heading "Your Feedback"

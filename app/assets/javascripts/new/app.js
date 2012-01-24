@@ -10,7 +10,6 @@ function f (string) {
   });
 }
 
-// Functions
 
 var flashes = function () {
   $("#flashes > div").hide().each(function (i) {
@@ -130,7 +129,7 @@ var recommend = function () {
       }
       footer.slideDown();
       clicked(element, type);
-      pointshelper();
+      //pointshelper();
     }
     
     $("#points").qtip({
@@ -149,6 +148,24 @@ var recommend = function () {
 
     });
     
+    
+        $(".worth-points").qtip({
+
+      content: function () {
+        return $('<div />')
+          .append('<h5><strong>Prizzm</strong> rewards your feedback!</h5>')
+          .append('<p><strong>Rack up points</strong> for speaking your mind, giving honest feedback & recommendations.</p>')
+          .append('<p><strong>Prizzm</strong> is *not* open to the public yet. You will be one of the first to be able to spend your points once open, just opt-in!</p>');
+      },
+      position: {
+        at: 'top center',
+        my: 'bottom center'
+      },
+      style: 'ui-tooltip-tipsy ui-tooltip-shadow tooltip'
+
+    });
+      
+    
     var clicked = function (element, type) {
       buttons.removeClass('clicked');
       $(element).addClass('clicked');
@@ -156,7 +173,7 @@ var recommend = function () {
     }
     
     recommend.click(function () {
-      heading.text('More feedback please!');
+      heading.text('What do you like the most?');
       chosen(this, 'recommend');
     });
     
