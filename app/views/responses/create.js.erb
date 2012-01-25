@@ -3,7 +3,7 @@ var response = $(<%= e(render(resource)) %>);
 <% if resource.topic.form == "recommendation" %>
 
   givepoints(<%= recommendation_points_earned %>);
-  $('.group.respond').after(<%= e(render('topics/register')) %>);
+  //$('.group.respond').after(<%= e(render('topics/register')) %>);
 
 <% end %>
 

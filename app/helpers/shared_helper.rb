@@ -30,6 +30,16 @@ module SharedHelper
     
     link_to(image, url, options.merge(:class => classes))
   end
+    
+  def image_link_for_nolink (model, url, options = {})
+        style     = options.delete(:style) || :url
+        image_url = image_url_for model, style
+        name    = model.class.to_s.downcase
+        classes = ["image", name, style, image_url ? "present" : "blank", options[:class]].compact.join(" ")
+        image   = image_url ? centered { image_tag(image_url) } : ""
+        
+        link_to(image, "#about", options.merge(:class => classes))
+   end  
   
   def image_url_for (model, style = nil)
     uploader = case model
@@ -87,7 +97,7 @@ module SharedHelper
     case subject
       when :header
         response = case
-          when object.question? then "%s Wants to Know.."
+          when object.question? then "%s is asking for feedback.."
           when object.form == "recommend" then "%s Recommended.."
           else "%s Was Thinking.."
         end

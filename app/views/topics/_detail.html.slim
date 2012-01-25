@@ -31,7 +31,7 @@
     .title= resource.subject
       
   .description= simple_format(resource.body)
-  .notes= phrase_for(:said)
+  /getting rid of the link back to prizzm on the response page (also gets rid of it for the internal app)   .notes= phrase_for(:said)
 
 - if params[:responding]
 
@@ -54,7 +54,7 @@
             .other-feedback
 
               = heading "More feedback please!"
-              = form.input :body, :label => false, :placeholder => "Tell us what you think!", :required => false
+              = form.input :body, :label => false, :placeholder => "Write it down! *optional", :required => false
             
             .group.footer
             
@@ -64,7 +64,7 @@
                 .left
                   = link_to "Have more feedback? Click here!", 'javascript:void(0);', :class => 'give-feedback'
                   = points_tag(:giving_more_feedback)
-                .bottom
+                .right
                   = form.button :submit, "Submit now" 
                   = points_tag(:responding)
 /                  = form.button :submit, "Send now to %s" % resource.user.name
