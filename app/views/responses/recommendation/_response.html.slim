@@ -1,0 +1,28 @@
+- feature_url = response.topic.url.blank? ? topic_url(response.topic, :feature => response.id) : response.topic.url
+
+= heading "Here's what you said.."
+
+ol.list.responses
+  li.has-actions
+    .response
+  
+      = image_link_for(response.topic, "javascript:void(0)", :style => :thumb)
+    
+      - unless response.body.blank?
+        .quoted= '"%s"' %response.body
+    
+      = render_recommend_type(response)
+  
+      .notes
+        = ("In response to <strong>%s</strong> by <strong>%s</strong> %s." % [response.topic.subject, response.topic.user.name, shorthand(response.created_at).downcase]).html_safe
+  
+- if response.recommend_type == "recommend"
+  
+  = heading "Now share it!"
+
+  .social
+    = response_tweet(response, feature_url)
+    = response_like(response, feature_url)
+    .points-with-desc
+      = points_tag(:recommending)
+      = "Tweet or Share for %s points!" % Points.allocators[:recommending]

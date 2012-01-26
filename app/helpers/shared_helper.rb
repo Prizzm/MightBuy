@@ -7,11 +7,6 @@ module SharedHelper
     heading ? "%s | Prizzm" % heading : "Prizzm | Rewarding Feedback"
   end
 
-  def to_link (string)
-    url = string.gsub /^(http(s)?\:\/\/)?/, 'http\2://'
-    link_to url, url, :target => "_blank"
-  end
-
   def user_path (user, *args)
     user.person? ? super(user, *args) : brand_path(user, *args)
   end

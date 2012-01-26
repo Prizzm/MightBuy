@@ -1,4 +1,4 @@
-#app
+#app.recommendation-response
 
   #flashes
     - flash.each do |key, message|
@@ -8,13 +8,13 @@
   #frame
     #sidebar
       .fixed
-        #avatar
-          = image_link_for_nolink resource.user, user_path(resource.user), :style => :thumb
-
-         
-		= link_to "Prizzm", "#about", :id => "brand"
+        
+        = link_to "Prizzm", "#about", :id => "brand"
+        #logo
+          = image_tag resource.user.photo
+		
         /#points 0P
-		/= link_to "Where can I spend points?", "#points"
+    		/= link_to "Where can I spend points?", "#points"
 
     #page
       #banner

@@ -1,0 +1,13 @@
+var response = $(<%= e(render("responses/recommendation/response", :response => resource)) %>);
+
+givepoints(<%= recommendation_points_earned %>);
+
+$('.group.respond').slideUp(300, function () {
+  $(this).empty();
+  $(this).append(response);
+  $(this).slideDown(300, function () {
+    fbparse();
+    register();
+    pointstips();
+  });
+});

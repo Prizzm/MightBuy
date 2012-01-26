@@ -9,10 +9,15 @@ class ResponsesController < InheritedResources::Base
     @response.visitor_code = visitor_code
     @response.share = related_share
     
-    puts @response.errors.inspect
-    
     create! do |success, failure|
       success.html { redirect_to topic_path(parent) }
+      success.js do
+        case parent.form
+          when "recommendation"
+            render "responses/recommendation/create"
+          else render "create"
+        end
+      end
       success.js
       failure.js { render 'error' }
     end
