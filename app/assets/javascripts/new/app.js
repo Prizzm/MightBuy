@@ -173,7 +173,9 @@ var recommend = function () {
     }
     
     recommend.click(function () {
+      status.empty();
       heading.text('What do you like the most?');
+      feedback.slideDown();
       chosen(this, 'recommend');
     });
     

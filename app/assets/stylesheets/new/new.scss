@@ -49,13 +49,16 @@ body
     
     a#brand
     {
-      display: block;
+      position: fixed;
+      top: 350px;
+	  display: block;
       width: 114px;
       height: 90px;
       margin: 15px auto;
       overflow: hidden;
       text-indent: -9999em;
       background: url("/images/app/logo.png");
+      
     }
     
     #points
