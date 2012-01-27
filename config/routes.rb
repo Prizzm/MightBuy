@@ -39,9 +39,12 @@ NewPrizzmCom::Application.routes.draw do
     
     collection do
       get 'recommendation' => 'topics#new', :topic => { :form => :recommendation }
+      get 'business/recommendation' => 'topics#new', :topic => { :form => :business_recommendation }
       get 'recommend' => 'topics#new', :topic => { :form => :recommend }
     end
   end
+  
+  get 'activity' => 'activity#index'
   
   # Users
   resources :users, :only => [:index, :show]

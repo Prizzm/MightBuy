@@ -17,7 +17,7 @@
   #respond
     .group.respond
       
-      - if resource.form.to_s == "recommendation"
+      - if [:recommendation, :business_recommendation].include?(resource.form?)
       
         .recommendation
           = heading "Do you recommend this?"

@@ -70,7 +70,8 @@ module TopicsHelper
       when :index then "Latest Topics.."
       when :show then phrase_for(:header)
       when :new, :create
-        case resource.form.to_s.to_sym
+        case resource.form?
+          when :business_recommendation then "See if Your Customers Recommend You!"
           when :recommendation then "Get Recommendations.."
           when :recommend then "Recommend a Product.."
           else "What's on your mind?"
@@ -82,7 +83,8 @@ module TopicsHelper
   
   def form_partial_for (topic)
     "topics/forms/%s" %
-      case topic.form.to_s.to_sym
+      case topic.form?
+        when :business_recommendation then "business_recommendation"
         when :recommendation then "recommendation"
         when :recommend then "recommend"
         else "default"

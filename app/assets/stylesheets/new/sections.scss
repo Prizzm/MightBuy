@@ -27,6 +27,11 @@
       }
     }
   }
+  
+  p
+  {
+    margin: 10px 0px;
+  }
 }
 
 #app
@@ -128,9 +133,7 @@
       
       .social
       {
-        position: absolute;
-		    left: 3px;
-        border-top: 5px dashed #ddd;
+        border-top: 1px dotted #ddd;
         padding-top: 20px;
         margin: 10px 0px 0px 0px;
         

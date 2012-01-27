@@ -3,8 +3,8 @@
   .image-holder
     a href="javascript:void(0);" class="image blank"
       = centered do
-        - unless form.object.image.blank?
-          = image_tag form.object.image.url
+        - unless form.object.send(field).blank?
+          = image_tag form.object.send(field).url
     .controls
       a href="#prev" class="prev" Previous
       a href="#next" class="next" Next
@@ -18,6 +18,6 @@
     label Or one from your computer..
     .field
       = link_to "Select a File..", "#select", :class => "button select"
-      = form.input :image, :label => false
+      = form.input field, :label => false
   
-  = form.input :remote_image_url, :as => :hidden, :input_html => { :class => "remote-url" }
+  = form.input "remote_#{field}_url", :as => :hidden, :input_html => { :class => "remote-url" }

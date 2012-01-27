@@ -149,22 +149,23 @@ More:
   
 01/24:
   
-  Next: Post Recommend partial - Here's what you said! ... Now share it!
-  Top: Topic response bug - (2) Paginate products - (3a) set up profile - Dashboard
+  # Next: Post Recommend partial - Here's what you said! ... Now share it!
+  # Top: Topic response bug - (2) Paginate products - (3a) set up profile - Dashboard
+  # Another: Turn points on / off.
   
-  1) Fix .bottom css style.
-  2) Fix .tip hover onload.
-  3) "Where can I spend points?" => 
-  4) Fix reply to comment bug.
-  5) Pagination to posts / conversations.
+  # 1) Fix .bottom css style.
+  # 2) Fix .tip hover onload.
+  # 3) "Where can I spend points?" => 
+  # 4) Fix reply to comment bug.
+  # 5) Pagination to posts / conversations.
   
-  6) Profile
-    a) Add image upload selector for logo.
+  # 6) Profile
+  #   a) Add image upload selector for logo.
   
-  7) Ask for "Business Recommendation"
-    a) Uses profile & description.
+  # 7) Ask for "Business Recommendation"
+    # a) Uses profile & description.
     b) Allow csv upload for email.
-    c) Asks customers to recommend them as a business.
+    # c) Asks customers to recommend them as a business.
     
   8) Dashboards
     a) Reports % of recommendations per product.

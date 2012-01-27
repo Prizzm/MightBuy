@@ -1,8 +1,11 @@
+= heading "Your Photo / Logo"
+
+= render "partials/image_selector_input", :form => form, :field => :photo
+
 = heading "General Details"
 
 = form.input :category, :label => "You Are A", :collection => User::Categories, :as => :radio
 = form.input :name, :label => "Your Name"
-= form.input :photo, :as => :file, :label => "Your Photo"
 = form.input :description, :label => "Description", :hint => "Tell everyone who you are & what you do!", :input_html => { :maxlength => 150 }
 
 = heading "Social Details"

@@ -7,7 +7,9 @@ class TopicObserver < ActiveRecord::Observer
   def before_create (topic)
 
     # Topic Forms..
-    case topic.form.to_s.to_sym
+    case topic.form?
+      when :business_recommendation
+        topic.share_title = "I recommend %s!" % topic.user.name
       when :recommendation
         product = topic.subject
         topic.subject = "Would you recommend your %s?" % product

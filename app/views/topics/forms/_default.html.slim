@@ -1,6 +1,6 @@
 = heading "General Details"
 
-= render "partials/image_selector_input", :form => form
+= render "partials/image_selector_input", :form => form, :field => :image
 = form.input :subject, :label => "Subject", :hint => "E.x. What do you think of our new logo?"
 = form.input :body, :label => "Description", :hint => "Care to elaborate on your question / subject?"
 = form.input :url, :label => "URL", :hint => "Where should this link to? (Leave blank if nowhere.)"

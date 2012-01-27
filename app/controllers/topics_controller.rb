@@ -17,15 +17,26 @@ class TopicsController < RestfulController
     new!
   end
   
+  def index
+    index!
+  end
+  
   def show
     show! do |format|
       format.html do
-        responding_to_recommendation = params[:responding] && resource.form.to_s == "recommendation"
-        render responding_to_recommendation ? "responding" : "show"
+        if params[:responding]
+          case resource.form?
+            when :recommendation
+            when :business_recommendation
+              render "responding"
+            else render "show"
+          end
+        else
+          render "show"
+        end
       end
     end
   end
-  
   
   def create
     @topic = build_resource
@@ -36,8 +47,18 @@ class TopicsController < RestfulController
   
   protected
   
+    def search
+      if params[:user]
+        owner = current_user.id == params[:user].to_i
+        search = end_of_association_chain.where(:user_id => params[:user])
+        owner ? search : search.publics
+      else
+        end_of_association_chain.publics
+      end
+    end
+  
     def collection
-      @topics ||= end_of_association_chain.publics.order("created_at desc")
+      @topics ||= search.order("created_at desc")
     end
     
     def resource

@@ -326,6 +326,14 @@ var pointstips = function () {
   });
 }
 
+var pointsdisabler = function () {
+  if(!POINTS_ENABLED)
+  {
+    $('.points-with-desc, .worth-points, #points').hide();
+    givepoints = function () {}
+  }
+}
+
 // Facebook
 
 var facebook = function () {
@@ -371,6 +379,8 @@ $(function () {
     $('ol.switchers li' + $(this).attr('href')).show();
   });
   
+  // Points Disabler..
+  pointsdisabler();
   
   // Add tooltips to anything worth points.
   pointstips();

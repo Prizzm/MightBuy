@@ -1,0 +1,20 @@
+.get-product-form
+
+  / Details
+  = heading "Subject & Description"
+  
+  = form.input :subject, :input_html => { :value => "Would you recommend %s?" % current_user.name }
+  = form.input :body, :as => :text, :label => "Description", :input_html => { :value => "We'd like to know how we're doing! Would you recommend us? Any thoughts?" }
+
+  / Customers
+  = heading "Which Customers Should We Ask?"
+
+  = form.simple_fields_for :shares, form.object.shares.new do |fields|
+    = render "share_fields", :f => fields
+  .links
+    = link_to_add_association 'Send to another customer..', form, :shares
+  
+  / Hidden fields
+  / = form.input :remote_image_url, :as => :hidden, :input_html => { :value => URI.join(root_url, current_user.photo.to_s) }
+  = form.input :recommendable, :as => :hidden, :input_html => { :value => 1 }
+  = form.input :access, :as => :hidden, :input_html => { :value => "private" }

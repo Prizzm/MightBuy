@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
       :value => Shortcode.new(40),
       :expires => 1.week.from_now
     }
+    
+    unless params[:points].blank?
+      cookies[:disable_points] = params[:points] == 'false'
+    end
   end
   
   # If points were awarded, show a flash..

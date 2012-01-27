@@ -22,7 +22,7 @@ class Response < ActiveRecord::Base
   # Methods
   
   def recommendation?
-    topic.form.to_s.to_sym == :recommendation && !reply_id?
+    [:recommendation, :business_recommendation].include?(topic.form?) && !reply_id?
   end
   
 end

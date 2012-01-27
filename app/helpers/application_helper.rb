@@ -126,7 +126,7 @@ module ApplicationHelper
   end
   
   def centered (&block)
-    ('<table class="centered" cellspacing="0" cellpadding="0"><tr><td>%s</td></tr></table>' % yield).html_safe
+    ('<table class="centered" cellspacing="0" cellpadding="0"><tr><td>%s</td></tr></table>' % capture(&block)).html_safe
   end
   
   def formatted (value)

@@ -1,3 +1,6 @@
+- content_for :head do
+  = javascript_tag "var POINTS_ENABLED = %s" % (cookies[:disable_points].to_s != 'true')
+
 #app
 
   #flashes
@@ -26,7 +29,7 @@
     #header
       #menu
         = active_link "you", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
-        = active_link "topics", topics_path, "topics", "shares"
+        = active_link "topics", topics_path, "topics", "shares", "activity"
         = active_link "people", users_path, "users"
         = active_link "brands", brands_path, "brands"
           

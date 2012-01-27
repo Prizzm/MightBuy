@@ -5,6 +5,7 @@
     
     p= link_to "Update Your Profile..", edit_resource_path
     p= link_to "Get Recommendations for a Product..", recommendation_topics_path
+    p= link_to "Get Recommendations for your Business..", business_recommendation_topics_path
   
 - else
 
@@ -27,11 +28,13 @@
 
     p= link_to "Recommend a Product..", recommend_topics_path
 
-= heading "Your Latest Posts.."
+p= heading "Your Latest Posts.."
 
 ol.list.topics
   = placeholder latest_posts do |collection|
     = render :partial => "topics/topic", :collection => collection
+    
+= link_to "See all your posts..", topics_path(:user => resource.id)
   
 = heading "Your Latest Conversations.."
 
@@ -39,3 +42,5 @@ ol.list.responses
   = placeholder latest_activity do |collection|
     
     = render :partial => "responses/response", :collection => collection
+    
+p= link_to "See all your activity..", activity_path(:user => resource.id)

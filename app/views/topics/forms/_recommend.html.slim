@@ -10,7 +10,7 @@
 
   = heading "Grab an image of the product.."
 
-  = render "partials/image_selector_input", :form => form
+  = render "partials/image_selector_input", :form => form, :field => :image
   
   / Hidden fields
   = form.input :recommendable, :as => :hidden, :input_html => { :value => 1 }

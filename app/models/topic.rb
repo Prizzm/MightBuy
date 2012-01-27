@@ -36,6 +36,10 @@ class Topic < ActiveRecord::Base
     subject[/\?\s*$/i] ? true : false
   end
   
+  def form?
+    form.to_s.to_sym
+  end
+  
   def to_param
     shortcode
   end
