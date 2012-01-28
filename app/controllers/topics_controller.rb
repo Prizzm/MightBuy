@@ -27,6 +27,7 @@ class TopicsController < RestfulController
         if params[:responding]
           case resource.form?
             when :recommendation
+              render "responding"
             when :business_recommendation
               render "responding"
             else render "show"

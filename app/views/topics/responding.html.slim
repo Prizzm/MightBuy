@@ -1,3 +1,6 @@
+- content_for :head do
+  = javascript_tag "var POINTS_ENABLED = %s" % (cookies[:disable_points].to_s != 'true')
+
 #app.recommendation-response
 
   #flashes
@@ -13,7 +16,7 @@
         #logo
           = image_tag resource.user.photo
 		
-        /#points 0P
+        / #points 0P
     		/= link_to "Where can I spend points?", "#points"
 
     #page
