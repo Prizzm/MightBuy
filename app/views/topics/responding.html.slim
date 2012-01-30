@@ -11,13 +11,18 @@
   #frame
     #sidebar
       .fixed
-        
-        = link_to "Prizzm", "#about", :id => "brand"
 
         #logo
           = image_tag resource.user.photo
+
+        p= "%s is using" % resource.user.name 
+        p Prizzm to ask for
+        p your opinion.
+        p &nbsp
+
           		
         #points 0P
+        = link_to "Prizzm", "#about", :id => "brandresponse"
         
 
     #page
