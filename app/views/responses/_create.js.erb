@@ -1,0 +1,31 @@
+var response = $(<%= e(render(resource)) %>);
+
+<% if resource.topic.form == "recommendation" %>
+
+  givepoints(<%= recommendation_points_earned %>);
+  $('.group.respond').after(<%= e(render('topics/register')) %>);
+
+<% end %>
+
+$('.group.respond').slideUp(300, function () {
+  $(this).empty();
+  $('<h3 id="comments" />').append("<span>Here's what you said..</span>").appendTo($(this));
+  $('<ol class="list responses" />').append(response).appendTo($(this));
+  $(this).slideDown(300, function () {
+    fbparse();
+    register();
+    pointstips();
+   pointsdisabler();
+
+  });
+});
+
+// var promotion = $(<%= e(render("join", :response => resource)) %>);
+// 
+// $.fancybox({
+//   'overlayColor'   : '#000',
+//   'overlayOpacity' : 0.8,
+//   'transitionIn' : 'elastic',
+//   'transitionOut'  : 'elastic',
+//   content : promotion
+// });
