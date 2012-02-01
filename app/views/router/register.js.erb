@@ -1,7 +1,7 @@
 var points = parseInt($('#points').text());
 
-$('#flashes').append(<%= e(register_points_awarded) %>);
+//$('#flashes').append(<%= e(register_points_awarded) %>);
 $("#points").text(f('%1P', points + <%= register_points %>));
-flashes();
+//flashes();
 
-$('.register-for-beta .content').html('<div class="thanks">Great! Thanks for registering!</div>');
+$('.register-for-beta .content').html('<div class="thanks">You are on the list!</div>');

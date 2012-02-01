@@ -20,14 +20,14 @@ var flashes = function () {
 }
 
 var givepoints = function (points) {
-  var text = f("You just earned <strong>%1</strong> points!", points);
-  var flash = $('<div class="points"><div class="onomatopoeia">*Cha-Ching!*</div></div>');
-  var message = $('<div class="bar" />').html(text);
-      flash.append(message);
+  //var text = f("You just earned <strong>%1</strong> points!", points);
+  //var flash = $('<div class="points"><div class="onomatopoeia">*Cha-Ching!*</div></div>');
+  //var message = $('<div class="bar" />').html(text);
+  //    flash.append(message);
       
   $('#points').text( f('%1P', parseInt($('#points').text()) + points) );    
-  $('#flashes').empty().append(flash);
-  flashes();
+  //$('#flashes').empty().append(flash);
+  //flashes();
 }
 
 var tabs = function () {
@@ -138,7 +138,7 @@ var recommend = function () {
         return $('<div />')
           .append('<h5><strong>Prizzm</strong> rewards your feedback!</h5>')
           .append('<p><strong>Rack up points</strong> for speaking your mind, giving honest feedback & recommendations.</p>')
-          .append('<p><strong>Prizzm</strong> is *not* open to the public yet. You will be one of the first to be able to spend your points once open, just opt-in!</p>');
+          .append('<p><strong>Prizzm</strong> is *not* open to the public yet. You will be one of the first to be able to spend your points once open, just press the register button.</p>');
       },
       position: {
         at: 'top center',
@@ -308,14 +308,35 @@ var register = function () {
   
 }
 
+
 var pointstips = function () {
-  $(".worth-points").qtip({
+  $('.worth-points').qtip({
 
     content: function () {
       return $('<div />')
         .append('<h5><strong>Prizzm</strong> rewards your feedback!</h5>')
         .append('<p><strong>Rack up points</strong> for speaking your mind, giving honest feedback & recommendations.</p>')
-        .append('<p><strong>Prizzm</strong> is *not* open to the public yet. You will be one of the first to be able to spend your points once open, just opt-in!</p>');
+        .append('<p><strong>Prizzm</strong> is not open to the public yet, but if you register you will retain these points and be one of the first to be let in.</p>');
+    },
+    position: {
+      at: 'top center',
+      my: 'bottom center'
+    },
+    style: 'ui-tooltip-tipsy ui-tooltip-shadow tooltip'
+
+  });
+}
+
+var pointstips = function () {
+  $('.register-for-beta a').qtip({
+
+    content: function () {
+      return $('<div />')
+        .append('<h5><strong>One click</strong></h5>')
+        .append('<p><strong>Register for Prizzm, and save the points you\'ve earned here here.  What are the points good for?</p>')
+         .append('<p>1. Street Cred</p>')
+         .append('<p>2. Achieving Total Conciousness</p>')
+         .append('<p>3. Discounts and free stuff!</p>');
     },
     position: {
       at: 'top center',
@@ -331,7 +352,10 @@ var pointsdisabler = function () {
   if(!POINTS_ENABLED)
   {
     $('.points-with-desc, .worth-points, .recommending, #points, .register-for-beta a').hide();
-    givepoints = function () {}
+    givepoints = function (points) {
+       $('#points').text( f('%1P', parseInt($('#points').text()) + points) );    
+    }
+
   }
 }
 

@@ -1,6 +1,6 @@
 - feature_url = response.topic.url.blank? ? topic_url(response.topic, :feature => response.id) : response.topic.url
 
-= heading "Here's what you said.."
+= heading "Thanks! Your feedback:"
 
 ol.list.responses
   li.has-actions
@@ -24,5 +24,5 @@ ol.list.responses
     = response_tweet(response, feature_url)
     = response_like(response, feature_url)
     .points-with-desc
-      = points_tag(:recommending)
+/      = points_tag(:recommending)
       = "Tweet or Share for %s points!" % Points.allocators[:recommending]
