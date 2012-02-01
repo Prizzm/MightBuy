@@ -6,6 +6,9 @@
   = form.input :subject, :input_html => { :value => "Would you recommend %s?" % current_user.name }
   = form.input :body, :as => :text, :label => "Description", :input_html => { :value => "We'd like to know how we're doing! Would you recommend us? Any thoughts?" }
 
+  = form.input :url, :label => "Web Address", :input_html => { :value => current_user.url, :class => "url-input" }
+
+
   / Customers
   = heading "Which Customers Should We Ask?"
 

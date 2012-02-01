@@ -540,13 +540,13 @@
     
     .content
     {
-      float: right;
+      float: left;
     }
     
     a
     {
-      float: left;
-      line-height: 35px;
+      float: center;
+      line-height: 15px;
       padding: 0px 30px;
       margin-right: 10px;
       @include hover-button(#c5356a, darken(#c5356a, 5%));
@@ -564,8 +564,8 @@
       line-height: 35px;
       font-size: 14px;
       margin-right: 15px;
-    }
-    
+    }  
+
     .thanks
     {
       line-height: 35px;

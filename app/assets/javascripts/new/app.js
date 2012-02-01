@@ -326,10 +326,11 @@ var pointstips = function () {
   });
 }
 
+
 var pointsdisabler = function () {
   if(!POINTS_ENABLED)
   {
-    $('.points-with-desc, .worth-points, .recommending, #points').hide();
+    $('.points-with-desc, .worth-points, .recommending, #points, .register-for-beta a').hide();
     givepoints = function () {}
   }
 }
