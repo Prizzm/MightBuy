@@ -1,0 +1,13 @@
+.tabs.mini
+  ul
+    li= link_to "Enter them yourself..", "#share-list"
+    li= link_to "Upload a CSV..", "#share-csv"
+
+  #share-list
+    = form.simple_fields_for :shares, form.object.shares.new do |fields|
+      = render "share_fields", :f => fields
+    .links
+      = link_to_add_association 'Send to another customer..', form, :shares
+
+  #share-csv
+    = form.input :share_csv, :as => :file, :label => "Choose file.."

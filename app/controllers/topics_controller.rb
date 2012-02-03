@@ -1,5 +1,8 @@
 class TopicsController < RestfulController
   
+  # Pageless
+  index_with_xhr
+  
   # Authenticate
   authenticate! :except => [:index, :show]
   
@@ -15,10 +18,6 @@ class TopicsController < RestfulController
   
   def feedback
     new!
-  end
-  
-  def index
-    index!
   end
   
   def show
@@ -41,7 +40,7 @@ class TopicsController < RestfulController
   
   def create
     @topic = build_resource
-    @topic.shares = build_shares
+    @topic.shares = build_shares if @topic.shares.blank?
     @topic.user = current_user
     create!
   end

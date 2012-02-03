@@ -1,9 +1,24 @@
 li.has-actions
   .response
-
+  
+    - topic_view = %w(topics responses).include?(params[:controller])
     - feature_url = response.topic.url.blank? ? topic_url(response.topic, :feature => response.id) : response.topic.url
+  
+    - if params[:controller] == 'activity'
+      
+      = image_link_for(response, image_url_for(response), :style => :thumb)
+      
+      - unless response.body.blank?
+        .message
+            = link_to '"%s"' % response.body, topic_url(response.topic, :feature => response.id), :class => "quoted"
+          
+      = render_recommend_type(response)
+      
+      .notes
+        = said_this_in_response(response)  
+    
 
-    - if resource.is_a?(Topic)
+    - elsif topic_view
   
       = image_link_for(response, image_url_for(response), :style => :thumb)
     
@@ -15,6 +30,7 @@ li.has-actions
       
       .notes
         = said_this(response)
+        
   
     - else
   
@@ -37,15 +53,16 @@ li.has-actions
             = points_tag(:recommending)
             = "Tweet or Share for %s points!" % Points.allocators[:recommending]
       
-  - if resource.is_a?(Topic) && !response.replies.blank?
+    - if topic_view
+      .actions
+        = link_to image_tag("/images/icons/reply.png"), "#reply", :class => "reply", :data => { :action => "reply", :id => response.id }, :title => "Reply"
+      .clearfix
+      
+  - if topic_view && !response.replies.blank?
     .replies
       = heading "Replies", :class => "small"
       ol.list.responses
         - response.replies.each do |reply|
           = render reply
-  
-  - if resource.is_a?(Topic) 
-    .actions
-      = link_to image_tag("/images/icons/reply.png"), "#reply", :class => "reply", :data => { :action => "reply", :id => response.id }, :title => "Reply"
       
   .clearfix

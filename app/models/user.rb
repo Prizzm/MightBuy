@@ -25,9 +25,12 @@ class User < ActiveRecord::Base
   mount_uploader :photo, UserPhotoUploader
   
   # Relationships
-  has_many :topics, :order => "created_at desc"
   has_many :responses
+  has_many :topics, :order => "created_at desc"
+  has_many :topic_responses, :through => :topics, :source => :responses
+  has_many :topic_shares, :through => :topics, :source => :shares
   has_many :shares, :class_name => "Shares::Share"
+  
   
   # Validations
   validates :name, :presence => true
@@ -49,6 +52,12 @@ class User < ActiveRecord::Base
   
   def brand?
     category == "brand"
+  end
+  
+  # User statistics..
+    
+  def stats
+    @stats ||= Statistics.for(self)
   end
   
 end

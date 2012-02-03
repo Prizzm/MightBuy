@@ -13,6 +13,8 @@ module Shares
     scope :with_visitor_code, proc { |code| 
       where(:visitor_code => code, :user_id => nil)  }
       
+    scope :social, where(:type => [ "Shares::Recommend", "Shares::Tweet" ])
+      
     # Validations
     validates :shortcode, :presence => true, :uniqueness => true
     

@@ -44,22 +44,12 @@ class Topic < ActiveRecord::Base
     shortcode
   end
   
+  def share_csv= (file)
+    Importer.csv(file, self)
+  end
+  
   def stats
-    @stats ||= {}.tap do |hash|
-      total_shares       = shares.count
-      total_responses    = responses.count
-      total_recommends   = responses.where(:recommended => true).count
-      unique_shares      = shares.group(:with).count.inject(0) { |count, item| count + item[1] }
-      unique_responses   = responses.group(:share_id).where("share_id is not null").
-                              count.inject(0) { |count, item| count + item[1] }
-      
-      hash[:shares] = total_shares
-      hash[:responses] = total_responses
-      hash[:share_responses] = unique_responses
-      hash[:response_rate] = "%s%" % ((unique_responses.to_f / unique_shares.to_f) * 100).to_i rescue 0
-      hash[:recommends] = total_recommends
-      hash[:recommendation_rate] = "%s%%" % ((total_recommends.to_f / total_responses.to_f) * 100).to_i rescue 0
-    end
+    @stats ||= Statistics.for(self)
   end
   
 end

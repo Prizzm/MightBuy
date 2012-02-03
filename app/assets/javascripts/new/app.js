@@ -30,6 +30,28 @@ var givepoints = function (points) {
   //flashes();
 }
 
+var hints = function () {
+  $('.tip').each(function () {    
+      $(this).parent().qtip({
+
+        content: $(this).text(),
+        position: {
+          at: 'top center',
+          my: 'bottom center'
+        },
+        style: 'ui-tooltip-tipsy ui-tooltip-shadow tooltip'
+
+      });
+  })
+}
+
+var datalinks = function () {
+  $('[data-link]').click(function () {
+    var url = $(this).attr('data-link');
+    $.get(url);
+  })
+}
+
 var tabs = function () {
   $(".tabs").tabs({ fx: { 
       opacity: 'toggle', duration: 150
@@ -62,10 +84,13 @@ var actions = function () {
 }
 
 var replies = function () {
+  if( $('#reply-form.cloned').size() == 0 )
+    $('#reply-form').clone().attr('class', 'cloned').appendTo('#app');
+    
   $('a[data-action="reply"]').click(function () {
     var id = $(this).attr("data-id");
     var response = $(this).closest('.has-actions').find('.response').first();
-    var form = $('#reply-form').detach();
+    var form = $('#reply-form.cloned').detach();
         response.after(form);
         form.show();
         form.find("#response_reply_id").val(id);
@@ -81,7 +106,10 @@ var pageless = function () {
     if( pages > 1 )
       $(this).pageless({
         loaderHtml : loader,
-        totalPages : pages
+        totalPages : pages,
+        complete : function () {
+          fbparse();
+        }
       });
   });
 }
@@ -389,8 +417,9 @@ var tweets = function () {
   });
 }
 
-$(function () {
-  
+// Initialize
+
+var initialize = function () {
   // Sliders
   $(".deal-slider .slider").slider({
     range: 'min', min: 1, max: 100, value: 20, step: 10
@@ -403,6 +432,12 @@ $(function () {
     $('ol.switchers li').hide();
     $('ol.switchers li' + $(this).attr('href')).show();
   });
+  
+  // Hints..
+  hints();
+  
+  // Data Links
+  datalinks();
   
   // Points Disabler..
   pointsdisabler();
@@ -448,5 +483,10 @@ $(function () {
   
   // Register
   register();
+}
+
+$(function () {
+  
+  initialize();
   
 });

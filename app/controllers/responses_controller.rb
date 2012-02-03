@@ -3,6 +3,12 @@ class ResponsesController < InheritedResources::Base
   # Relationships
   belongs_to :topic, :finder => :find_by_shortcode!
   
+  def index
+    index! do |format|
+      format.js
+    end
+  end
+  
   def create
     @repsonse = build_resource
     @response.user = current_user
@@ -24,6 +30,20 @@ class ResponsesController < InheritedResources::Base
   end
   
   private
+  
+    def filter
+      case params[:filter_by]
+        when 'unreplied' then end_of_association_chain.unreplied
+        when 'recommended' then end_of_association_chain.recommended
+        when 'undecided' then end_of_association_chain.undecided
+        when 'not_recommended' then end_of_association_chain.not_recommended
+        else end_of_association_chain
+      end
+    end
+  
+    def collection
+      @responses ||= filter.includes(:replies).where(:reply_id => nil)
+    end
   
     def related_share
       if !current_user && cookies.has_key?(:share_code)

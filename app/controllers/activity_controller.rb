@@ -4,7 +4,7 @@ class ActivityController < RestfulController
   defaults :resource_class => Response, :collection_name => 'responses', :instance_name => 'response'
   
   def collection
-    end_of_association_chain.where(:user_id => params[:user])
+    current_user.topic_responses.order('created_at desc')
   end
   
   def resource

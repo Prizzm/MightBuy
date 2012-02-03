@@ -164,12 +164,47 @@ More:
   
   # 7) Ask for "Business Recommendation"
     # a) Uses profile & description.
-    b) Allow csv upload for email.
+    # b) Allow csv upload for email.
     # c) Asks customers to recommend them as a business.
     
-  8) Dashboards
-    a) Reports % of recommendations per product.
-    b) Reports on % or number of shares on FB
-    c) Reports on FB and twitter shares.
-    d) Stream of comments, reviews, complaints.
-    e) Design out ui.
+  # 8) Dashboards
+  #   a) Reports % of recommendations per product.
+  #   b) Reports on % or number of shares on FB
+  #   c) Reports on FB and twitter shares.
+  #   d) Stream of comments, reviews, complaints.
+  #   e) Design out ui.
+  
+  
+01/31:
+  
+  # 1) Add csv upload w/ throttling.
+
+  # 2) Dashboard:
+  #   a) Invites sent overall.
+  #   b) Net % of promoters.
+  #   c) number who shared responses on network.
+  #     - number of times a user recommended and shared on social network.
+  
+  # 3) Change topics link to show only topics for user.
+  
+  # 4) Topic View
+  #   a) Statistics:
+  #     - The % of net promotion.
+  #     - The number who shared socially.
+  #   b) Quick links on each topic:
+  #     - positive (links where recommendation = yes)
+  #     - negative (links where not recommended)
+  #     - no response (resend)
+  # 
+  #   c) Business details:
+  #     - Remove asking for feedback (when logged in as business).
+  #     - Show posts that have not been replied to.
+  
+  5) Feedback tab
+    a) Show responses to topics youve created
+      - All feedback, ordered by date.
+      - Filter by: havent responded to, didnt recommend, did recommmend, all.
+      
+  6) Emphasize the "share" function after feedback.
+  
+  7) Business / brand login.

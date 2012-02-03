@@ -12,6 +12,15 @@ class Response < ActiveRecord::Base
   scope :with_visitor_code, proc { |code| 
     where(:visitor_code => code, :user_id => nil)  }
     
+  scope :recommended, where(:recommend_type => 'recommend')
+  scope :not_recommended, where(:recommend_type => 'not_recommended')
+  scope :undecided, where(:recommend_type => 'undecided')
+    
+  scope :unreplied,   
+    where('replies.id IS NULL').where('responses.reply_id IS null').
+    joins('LEFT OUTER JOIN responses as replies 
+           ON replies.reply_id = responses.id')
+    
   # Validations  
   validates :body, :presence => true, :unless => :recommendation?
   validates :recommend_type, :presence => true, :if => :recommendation?

@@ -62,36 +62,67 @@
 
 - else
 
-  .tabs
-    ul
+  - if current_user && current_user.brand?
+    
+    / Stats
+    
+    .statistics
+      - stats = resource.stats
+      .section
+        .tip= "This is the total # of invites you've sent out."
+        label Invites Sent
+        span= stats[:invites_sent]
+      .section data-link=filter_url(:unreplied)
+        .tip= "Feedback you haven't yet responded to."
+        label Unreplied
+        span= stats[:unreplied]
+      .section data-link=filter_url(:recommended)
+        .tip= "Percent of users who recommended this."
+        label Liked
+        span= stats[:recommended]
+      .section data-link=filter_url(:undecided)
+        .tip= "Percent of users who were undecided about this."
+        label Undecided
+        span= stats[:undecided]
+      .section data-link=filter_url(:not_recommended)
+        .tip= "Percent of users who did not recommend this."
+        label Disliked
+        span= stats[:not_recommended]        
+      .section
+        .tip= "Times your products have been shared on social networking sites."
+        label Social Shares
+        span= stats[:social_shares]
   
+  .tabs
+    ul.buttons
+
       - if featured_response
         li= link_to "Featured", "#featured"
-  
-      li= link_to phrase_for(:respond), "#respond"
+
+      - unless current_user && current_user.brand?
+        li= link_to phrase_for(:respond), "#respond"
+      
       li= link_to phrase_for(:comments), "#responses"
       li= link_to "Shared With..", '#sharing'
-    
-      - if owner_of_topic?
-        li= link_to "Statistics", '#stats'
-		
-  
+	
+
     / Featured Response
     - if featured_response
-  
+
       #featured
-    
+  
         = heading "Featured Response"
-      
+    
         ol.list.responses.highlight
           = render featured_response
-  
+
     / Response
-    #respond
-      .group.respond
-        = heading phrase_for(:respond)
-        = render "responses/form", :topic => resource
-  
+    - unless current_user && current_user.brand?
+      #respond
+        .group.respond
+          = heading phrase_for(:respond)
+          = render "responses/form", :topic => resource
+
     / Responses
     #responses
       = heading phrase_for(:comments), :id => "comments"
@@ -99,36 +130,14 @@
       ol.list.responses
         = placeholder responses do |collection|
           = render :partial => "responses/response", :collection => collection
-    
+  
       #reply-form.hidden
         = heading "Quick Reply", :class => "small"
         = render "responses/reply_form", :topic => resource
-      
+    
     / Sharing
     #sharing
       = heading "You've shared this with.."
       ol.list.shares.concise 
         = placeholder shares_for_topic do |collection|
           = render :partial => "shares/share", :collection => collection
-  
-    - if owner_of_topic?
-  
-      / Statistics
-      #stats
-    
-        / Stats
-        = heading "Statistics"
-  
-        ol.attrs
-          = attr "Shares Sent", resource.stats[:shares]
-          = attr "Share Responses", resource.stats[:share_responses]
-          = attr "Response Rate", resource.stats[:response_rate]
-  
-        / Recommendations
-        - if resource.recommendable?
-    
-          = heading "Recommendations"
-    
-          ol.attrs
-            = attr "Total Recommends", resource.stats[:recommends]
-            = attr "Recommendation Rate", resource.stats[:recommendation_rate]

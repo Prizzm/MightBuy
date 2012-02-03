@@ -14,11 +14,8 @@
 
   / Customers
   = heading "Which Customers Should We Ask?"
-
-  = form.simple_fields_for :shares, form.object.shares.new do |fields|
-    = render "share_fields", :f => fields
-  .links
-    = link_to_add_association 'Send to another customer..', form, :shares
+  
+  = render "share_with_customers", :form => form
   
   / Hidden fields
   = form.input :recommendable, :as => :hidden, :input_html => { :value => 1 }

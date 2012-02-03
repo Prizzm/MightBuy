@@ -4,6 +4,9 @@ class ShareObserver < ActiveRecord::Observer
   
   def before_validation (share)
     share.shortcode ||= Shortcode.new
+    share.user ||= share.topic.user
+    
+    puts "beforevalid: #{share.inspect}"
   end
   
   def after_create (share)

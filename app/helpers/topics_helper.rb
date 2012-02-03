@@ -1,5 +1,9 @@
 module TopicsHelper
 
+  def filter_url (type)
+    topic_responses_path(resource, :filter_by => type, :format => :js)
+  end
+
   def title
     case action_name
       when :show then super truncate(resource.subject, :length => 50)

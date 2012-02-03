@@ -4,7 +4,7 @@ module ActivityHelper
   end
   
   def header
-    "Listing Your Activity.."
+    "Latest Activity.."
   end
   
 end
