@@ -1,10 +1,12 @@
 module SocialHelper
   
   def response_like (response, url)
+    url = ShareTracker.tag(url, response.topic)
     social_info_wrapper :recommend, response, facebook.like(url)
   end
   
   def response_tweet (response, url)
+    url   = ShareTracker.tag(url, response.topic)
     title = response.topic.share_title
     title = response.topic.subject if title.blank?
     social_info_wrapper :tweet, response, twitter.tweet(h(title), url)

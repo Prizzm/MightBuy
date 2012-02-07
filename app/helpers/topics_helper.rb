@@ -73,6 +73,7 @@ module TopicsHelper
     case action_name
       when :index then "Latest Topics.."
       when :show then phrase_for(:header)
+      when :share then "Share This With Others!"
       when :new, :create
         case resource.form?
           when :business_recommendation then "See if Your Customers Recommend You!"
@@ -99,12 +100,14 @@ module TopicsHelper
     case action_name
       when :show
         if resource.user == current_user
-          link_to("Invite Others", new_topic_share_path(resource), :class => "button") +
+          link_to("Invite Others", topic_share_path(resource), :class => "button") +
           link_for(:edit, "Update") +
           link_for(:delete, "Remove")
         else
-          link_to("Invite Others", new_topic_share_path(resource), :class => "button")
+          link_to("Invite Others", topic_share_path(resource), :class => "button")
         end
+      when :share
+        link_for(:back, "Go Back")
       else super
     end
   end

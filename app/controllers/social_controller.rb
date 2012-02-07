@@ -1,13 +1,11 @@
 class SocialController < ApplicationController
   
-  require 'cgi'
-  require 'uri'
-  
   skip_filter :award_points
   
   def tweeted
     
-    topic = get_topic_for(URI.parse(params[:url]).fragment)
+    url   = Rack::Utils.parse_query(URI.parse(params[:url]).fragment)["url"]
+    topic = ShareTracker.get( url )
 
     Shares::Tweet.create \
       :topic => topic,
@@ -26,7 +24,7 @@ class SocialController < ApplicationController
   
   def recommended
     
-    topic = get_topic_for(params[:url])
+    topic = ShareTracker.get( params[:url] )
     
     Shares::Recommend.create \
       :topic => topic,
@@ -42,25 +40,5 @@ class SocialController < ApplicationController
     end
     
   end
-  
-  private
-  
-    def get_topic_for (url)
-      prizzm_url?(url) ? 
-        Topic.find_by_shortcode(parse_params_for(url)[:id]) :
-        Topic.find_by_url(url)
-    end
-  
-    def parse_params_for (url)
-      attrs = {}.tap do |hash|
-        uri = URI.parse(params[:url])
-        hash.merge! Rack::Utils.parse_query(uri.query)
-        hash.merge! Rails.application.routes.recognize_path(uri.path, :method => :get)
-      end.symbolize_keys
-    end
-  
-    def prizzm_url? (url)
-      URI.parse(request.url).host == URI.parse(url).host
-    end
   
 end

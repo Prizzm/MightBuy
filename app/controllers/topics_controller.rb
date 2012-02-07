@@ -7,7 +7,7 @@ class TopicsController < RestfulController
   authenticate! :except => [:index, :show]
   
   # Custom Actions
-  custom_actions :collection => :feedback
+  custom_actions :collection => :feedback, :resource => :share
   
   # Verify Owner
   before_filter :only => [:edit, :update, :destroy] do
@@ -18,6 +18,10 @@ class TopicsController < RestfulController
   
   def feedback
     new!
+  end
+  
+  def share
+    edit!
   end
   
   def show
@@ -62,7 +66,7 @@ class TopicsController < RestfulController
     end
     
     def resource
-      @topic ||= end_of_association_chain.find_by_shortcode!(params[:id])
+      @topic ||= end_of_association_chain.find_by_shortcode!(params[:id] || params[:topic_id])
     end
   
   private

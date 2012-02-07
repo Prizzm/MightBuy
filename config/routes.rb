@@ -32,10 +32,8 @@ NewPrizzmCom::Application.routes.draw do
   # Topics
   resources :topics do
     resources :responses
-    get 'share' => 'shares#new'
+    get 'share' => 'topics#share'
     get 'thanks' => 'promotions#opinion'
-    
-    resources :shares, :only => [:new, :create]
     
     collection do
       get 'recommendation' => 'topics#new', :topic => { :form => :recommendation }
@@ -65,6 +63,11 @@ NewPrizzmCom::Application.routes.draw do
   get 'share/:shortcode' => "router#shared", :as => :shared
   get 'invited/:shortcode' => "router#invited", :as => :invited
   post 'register' => 'router#register', :as => :register
+  
+  # Website
+  get 'about'   => 'website#about'
+  get 'contact' => 'website#contact'
+  get 'privacy' => 'website#privacy'
   
   # Sandbox
   get 'sandbox' => "website#sandbox"
