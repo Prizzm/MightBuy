@@ -44,9 +44,15 @@ class TopicsController < RestfulController
   
   def create
     @topic = build_resource
-    @topic.shares = build_shares if @topic.shares.blank?
     @topic.user = current_user
+    @topic.pass_visitor_code = visitor_code
     create!
+  end
+  
+  def update
+    @topic = resource
+    @topic.pass_visitor_code = visitor_code
+    update!
   end
   
   protected
@@ -67,20 +73,6 @@ class TopicsController < RestfulController
     
     def resource
       @topic ||= end_of_association_chain.find_by_shortcode!(params[:id] || params[:topic_id])
-    end
-  
-  private
-  
-    def build_shares
-      (params[:topic][:shares_attributes] || {}).map do |key, attributes|
-        unless attributes[:with].blank?
-          attributes.delete(:_destroy)
-          Shares::Email.new(attributes).tap do |share|
-            share.user  = current_user
-            share.visitor_code = visitor_code
-          end
-        end
-      end.compact
     end
     
   private

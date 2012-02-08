@@ -6,7 +6,7 @@ module Shares
     
     # Relationships
     has_many :responeses
-    belongs_to :topic
+    belongs_to :topic, :inverse_of => :shares
     belongs_to :user
     
     # Scopes
@@ -17,6 +17,9 @@ module Shares
       
     # Validations
     validates :shortcode, :presence => true, :uniqueness => true
+    
+    
+    attr_accessible :type, :with
     
   end
   

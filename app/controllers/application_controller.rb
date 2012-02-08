@@ -35,6 +35,8 @@ class ApplicationController < ActionController::Base
   
   private
   
+    helper_method :visitor_code
+  
     def award_points
       if current_user && current_user.points.awarded > 0
         flash[:points] = "You just earned <strong>%s</strong> points!" % current_user.points.awarded

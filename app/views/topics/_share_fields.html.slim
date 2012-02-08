@@ -1,3 +1,4 @@
 .nested-fields
   = f.input :with, :label => "Email", :placeholder => "customer@email.com"
+  = f.input :type, :as => :hidden, :input_html => { :value => Shares::Email }
   = link_to_remove_association "remove", f

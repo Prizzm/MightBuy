@@ -8,7 +8,7 @@ class Topic < ActiveRecord::Base
   
   # Relationships
   has_many :responses
-  has_many :shares, :class_name => "Shares::Share"
+  has_many :shares, :class_name => "Shares::Share", :inverse_of => :topic
   belongs_to :user
   
   # Scopes
@@ -26,7 +26,10 @@ class Topic < ActiveRecord::Base
   
   # Nested Attributes
   accepts_nested_attributes_for :shares,
-    :reject_if => proc { |attributes| attributes['with'].blank? }
+    :reject_if => proc { |attributes| attributes["with"].blank? }
+  
+  # Attributes
+  attr_accessor :pass_visitor_code
   
   def post?
     !question?

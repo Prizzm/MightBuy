@@ -4,7 +4,8 @@
     li= link_to "Upload a CSV..", "#share-csv"
 
   #share-list
-    = form.simple_fields_for :shares, form.object.shares.new do |fields|
+    - new_shares = form.object.shares.select(&:new_record?)
+    = form.simple_fields_for :shares, new_shares.blank? ? form.object.shares.new : new_shares do |fields|
       = render "share_fields", :f => fields
     .links
       = link_to_add_association 'Send to another customer..', form, :shares
