@@ -28,7 +28,12 @@ class Response < ActiveRecord::Base
   # Uploaders
   mount_uploader :image, ResponseImageUploader
   
-  # Methods
+  # Attributes
+  attr_accessor :reply_to_email
+  
+  def email_address
+    user ? user.email : share ? share.with : nil
+  end
   
   def recommendation?
     [:recommendation, :business_recommendation].include?(topic.form?) && !reply_id?

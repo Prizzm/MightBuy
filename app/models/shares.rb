@@ -19,7 +19,7 @@ module Shares
     validates :shortcode, :presence => true, :uniqueness => true
     
     
-    attr_accessible :type, :with
+    attr_accessible :type, :with, :topic, :user, :visitor_code
     
   end
   

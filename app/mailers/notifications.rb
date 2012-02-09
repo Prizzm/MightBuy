@@ -23,22 +23,22 @@ class Notifications < ActionMailer::Base
   end
   
   def responded (response)
-    @model = response
-    
-    @heading = "%s has responded to your post." % 
+    @model   = response
+    @heading = "%s has responded to you." % 
       (response.user ? response.user.name : "Someone")
-      
-    @to_email = response.topic.user.email
-    @from_email = "notify@prizzm.com"
-    @url     = topic_url(response.topic)
     
-    @title   = response.topic.subject
-    @message = response.body
+    @to_email   = response.reply_to_email
+    @from_email = "notify@prizzm.com"
+    @url        = topic_url(response.topic, :feature => response.id)
+    
+    @title      = response.topic.subject
+    @message    = response.body
     
     mail \
       :to => @to_email,
       :from => "Prizzm <%s>" % @from_email,
       :subject => @heading
+    
   end
   
 end
