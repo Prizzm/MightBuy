@@ -18,11 +18,16 @@ ol.list.responses
   
 - if response.recommend_type == "recommend"
   
-  = heading "Please SHARE! Your recommendation really helps"
-
+  .socialsharingheader
+    = "AWESOME!! You recommended us!"
+	
   .social
     = response_tweet(response, feature_url)
     = response_like(response, feature_url)
     .points-with-desc
+    = "<---Help your friends (and us) - share!! *and get point!"
 /      = points_tag(:recommending)
       = "Tweet or Share for %s points!" % Points.allocators[:recommending]
+
+  
+  

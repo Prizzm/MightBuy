@@ -696,6 +696,14 @@
     min-height: 50px;
   }
   
+  .socialsharingheader
+  {
+    @include font-museo("500");
+    color: #000000;
+    font-size: 30px;
+    margin: 20px auto;
+  }
+
   .social
   {
     height: 20px;
