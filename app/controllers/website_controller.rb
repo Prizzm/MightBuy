@@ -1,7 +1,11 @@
 class WebsiteController < ApplicationController  
   
-  def index
-    redirect_to new_user_session_path
-  end
+  private
+    
+    helper_method :brand?
+  
+    def brand?
+      params[:shopper] != true
+    end
   
 end

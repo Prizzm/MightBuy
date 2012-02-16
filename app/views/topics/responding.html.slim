@@ -7,6 +7,8 @@
     - flash.each do |key, message|
       - if key == :points
         = points_flash(message)
+        
+  = link_to "Prizzm", root_path, :id => "brand"
 
   #frame
     #sidebar
@@ -14,21 +16,13 @@
 
         #logo
           = image_tag resource.user.photo
-
-        p= "%s is using" % resource.user.name 
-        p Prizzm to ask for
-        p your opinion.
-        p &nbsp
-
-          		
         
-        = link_to "Prizzm", "#about", :id => "brandresponse"
-        #points 0P
+        .descriptor
+          = "%s is using Prizzm to ask for your opinion." % resource.user.name 
 
-        .register-for-beta 
-          .content 
-            .buttons
-              = link_to "Register now!", "javascript:void(0)"
+        #points 0P
+        
+        = link_to "Register now!", shoppers_path, :class => "register"
 
     #page
       #banner

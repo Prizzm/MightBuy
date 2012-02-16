@@ -188,6 +188,7 @@
       {
         width: 600px;
         height: 120px;
+        line-height: 1.8em;
       }
       
       .boolean
@@ -672,8 +673,31 @@
 
 #app.recommendation-response
 {
+  #frame
+  {
+    margin-left: -250px;
+  }
+  
+  a#brand
+  {
+    position: fixed;
+    display: block;
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 92px;
+    height: 86px;
+    bottom: 20px;
+    right: 30px;
+    background: url("/images/app/logo-small.png");
+    background-position: 0px 86px;
+    
+    &:hover { background-position: 0px 0px; }
+  }
+  
   #sidebar
   {
+    width: 150px;
+    left: -210px;
     
     #logo
     { 
@@ -687,7 +711,29 @@
         @include rounded-corners(3px);
         @include drop-shadow(1px, 2px, 0.3);
       }
-
+    }
+    
+    .descriptor
+    {
+      margin: 10px 0px;
+      width: 150px;
+      color: #786855;
+      font-size: 13px;
+      line-height: 1.8em;
+      white-space: normal;
+      font-weight: normal;
+      text-shadow: 0px 1px #fff;
+    }
+    
+    #points
+    {
+      margin-bottom: 15px;
+    }
+    
+    a.register
+    {
+      @include hover-button(#c5356a, darken(#c5356a, 5%));
+      padding: 8px 15px;
     }
   }
   

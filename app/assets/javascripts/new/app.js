@@ -353,10 +353,8 @@ var pointstips = function () {
     style: 'ui-tooltip-tipsy ui-tooltip-shadow tooltip'
 
   });
-}
-
-var pointstips = function () {
-  $('.register-for-beta a').qtip({
+  
+  $('a.register').qtip({
 
     content: function () {
       return $('<div />')
@@ -374,7 +372,6 @@ var pointstips = function () {
 
   });
 }
-
 
 var pointsdisabler = function () {
   if(!POINTS_ENABLED)

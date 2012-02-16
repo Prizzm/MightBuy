@@ -11,7 +11,7 @@
   #frame
     #sidebar
       .fixed
-        = link_to "Prizzm", root_path, :id => "brand"
+        = link_to "Prizzm", user_root_path, :id => "brand"
 
         / Sidebar
         = override(:sidebar) do
@@ -25,22 +25,20 @@
           - else
             #links
               = link_to 'Sign up!', new_user_registration_path
-        
-    #header
-      #menu
-      
-        - if current_user && current_user.brand?
+    
+    - if current_user && current_user.brand?
+      #header
+        #menu
           = active_link "you", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
           = active_link "topics", topics_path(:user => current_user), "topics", "shares"
           = active_link "feedback", activity_path(:user => current_user), "activity"
-        - else
-          = active_link "you", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
-          = active_link "topics", topics_path, "topics", "shares", "activity"          
-          = active_link "people", users_path, "users"
-          = active_link "brands", brands_path, "brands"
+          / = active_link "you", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
+          / = active_link "topics", topics_path, "topics", "shares", "activity"          
+          / = active_link "people", users_path, "users"
+          / = active_link "brands", brands_path, "brands"
           
-      #search
-        input type="text" placeholder="Search.."
+        #search
+          input type="text" placeholder="Search.."
         
     #page
       = render "banner", local_assigns
@@ -50,6 +48,6 @@
     #footer
       #copyright Copyright &copy; 2011, Prizzm
       #links
-        = link_to "about", about_path
-        = link_to "contact", contact_path
-        = link_to "privacy", privacy_path
+        = link_to "About", about_path
+        = link_to "Contact", contact_path
+        = link_to "Privacy", privacy_path

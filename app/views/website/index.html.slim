@@ -1,24 +1,67 @@
-ol.buttons
-  li= link_to "Latest Deals", '#deals', :class => "active button"
-  li= link_to "Products", '#products', :class => "button"
-  li= link_to "Reviews", '#reviews', :class => "button"
+#website class="#{ brand? ? 'brands' : 'shoppers' }"
+  = link_to "Prizzm - Rewarding Feedback", root_url, :id => "logo"
+  #content
+    h1= brand? ? "Get More Recommendations." : "Show Your Brands Love"
+    h2= brand? ? "And turn your customers into fans." : "And they'll love you back."
+    
+    #switcher
+      = link_to "I'm a Brand", root_url, :class => brand? ? 'active' : nil
+      span |
+      = link_to "I'm a Shopper", shoppers_url, :class => brand? ? nil : 'active'
+    
+    #sections
+      
+      #sliders
+      
+        .holder
+        
+          - if brand?
 
-h3 
-  span Our Latest Deals..
-  
-.feature
-  .image
-    = link_to image_tag("/images/app/placeholder-product.png"), "#product"  
-  .group
-    .title 
-      |20-50% Off Any Handbag!
-    .details
-      |We're offering all handbags 20-50% off! You better hurry & grab it now though, offer will expire on January 31, 2011!
-    ol.buttons
-      li= link_to "I'll take it!", "#takeit", :class => "button deal-related"
-      li
-        .deal-slider
-          .slider-contents
-            label.min 20%
-            .slider
-            label.max 100%
+            / Simple Feedback..
+            = render "slide", :image => :feedback, :title => "Simple Feedback", :desc => "Prizzm makes it simple to ask for recommendations and fedback - and you'll never know if you don't ask!"
+        
+            / More Responses..
+            = render "slide", :image => :responses, :title => "More Responses", :desc => "Our gorgeous, straight-forward forms & built-in rewards make it quick, easy & enticing for your customers to respond to you!"
+          
+            / More Responses..
+            = render "slide", :image => :sharing, :title => "Social Sharing", :desc => "Integrates directly with twitter & facebook, so you can track & reward your customers for promoting you & your products!"
+            
+          - else
+            
+            / Get Rewarded
+            = render "slide", :image => :rewards, :title => "Get Rewarded", :desc => "Prizzm makes it easy for you to get rewarded for your loyalty! Share your opinion for discounts on stuff you’ll love!"
+      
+      #forms
+        
+        .badge= "Signup! It's free"
+        
+        - if brand?
+        
+          / Brand Signup
+          = simple_form_for User.new, :as => :user, :url => registration_path(:user), :html => { :id => "signup", :disabled => true } do |form|
+            = form.input :name, :placeholder => "Company Name", :label => false
+            = form.input :email, :placeholder => "Email", :label => false
+            = form.input :password, :as => :password, :placeholder => "Password", :label => false
+            = form.input :category, :as => :hidden, :input_html => { :value => "brand" }, :label => false
+            = form.button :submit, "Sign up for Prizzm!"
+            .clearfix
+        - else
+          
+          #coming-soon
+            .text
+              |Coming Soon! - Prizzm for Shoppers!
+        
+        / Login
+        = simple_form_for User.new, :as => :user, :url => session_path(:user), :html => { :id => "login" } do |form|
+          = form.input :email, :placeholder => "Email", :label => false
+          = form.input :password, :as => :password, :placeholder => "Password", :label => false
+          = form.button :submit, "Sign in!"
+          .clearfix
+
+    #markers
+          
+    #navigation
+      = link_to "About", about_path
+      = link_to "Contact", contact_path
+      = link_to "Privacy", privacy_path
+      span.copyright &copy; 2012 Prizzm.

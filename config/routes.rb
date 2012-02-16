@@ -75,6 +75,9 @@ NewPrizzmCom::Application.routes.draw do
   # Fragments
   get 'partial/:action' => 'fragments'
   
+  # Brands / Shoppers
+  get '/shoppers' => 'website#index', :shopper => true
+  
   # Root
   root :to => "website#index"
   

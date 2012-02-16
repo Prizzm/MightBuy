@@ -12,7 +12,8 @@ body
 {
   font: 14px "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 300;
-  background: #F5F5F1; //url("/images/app/background.png") repeat-x;
+  //  background: #F5F5F1;
+  background: #d5c6b3 url("/images/website/gradient.png") repeat-x fixed;
 }
 
 /* Text Selection */
@@ -31,7 +32,7 @@ body
     top: 80px;
     left: 50%;
     width: 680px;
-    margin-left: -300px;
+    margin-left: -270px;
   }
   
   .fixed
@@ -43,31 +44,19 @@ body
   {
     position: absolute;
     top: 40px;
-    width: 150px;
-    left: -190px;
+    width: 140px;
+    left: -170px;
     text-align: center;
     
     a#brand
     {
       display: block;
-      width: 114px;
-      height: 90px;
+      width: 116px;
+      height: 107px;
       margin: 15px auto;
       overflow: hidden;
       text-indent: -9999em;
-      background: url("/images/app/logo.png");
-      
-    }
-
-    a#brandresponse
-    {
-      display: block;
-      width: 72px;
-      height: 57px;
-      margin: 15px auto;
-      overflow: hidden;
-      text-indent: -9999em;
-      background: url("/images/app/logo_medium.png");
+      background: url("/images/website/logo.png");
       
     }
     
@@ -201,16 +190,16 @@ body
     {
       position: absolute;
       top: 20px;
-      left: -60px;
-      width: 800px;
+      left: -40px;
+      width: 762px;
       height: 67px;
-      background: url("/images/app/banner-large.png");
+      background: url("/images/app/banner.png");
       
       h1
       {
         @include font-museo("700");
         position: absolute;
-        left: 80px;
+        left: 55px;
         color: #667A80;
         font-size: 1.5em;
         line-height: 50px;
@@ -220,8 +209,8 @@ body
       #quick-links
       {
         position: absolute;
-        top: 12px;
-        right: 80px;
+        top: 14px;
+        right: 55px;
         
         span
         {
@@ -282,14 +271,9 @@ body
     margin: 15px 20px 50px 20px;
     overflow: hidden;
     
-    #copyright, #links a
-    {
-      color: #757575;
-      text-transform: lowercase;
-    }
-    
     #copyright
     {
+      color: #a09587;
       float: left;
     }
     
@@ -299,11 +283,11 @@ body
       
       a
       {
+        color: #7c7369;
         text-decoration: none;
         margin-left: 5px;
         &:hover { 
-          color:#d02664;
-          text-decoration: underline;
+          color: darken(#7c7369, 30%);
         }
       }
     }

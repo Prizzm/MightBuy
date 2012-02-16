@@ -1,0 +1,384 @@
+/* Mixins */
+@import "mixins";
+
+/* Compass */
+@import "compass/reset";
+@import "compass/typography";
+@import "compass/css3";
+
+/* Globals */
+
+body
+{
+  font: 14px "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 300;
+  background: #d5c6b3 url("/images/website/gradient.png") repeat-x;
+}
+
+/* Text Selection */
+
+::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+
+/* Mixins */
+
+@mixin hidden-text ()
+{
+  display: block;
+  overflow: hidden;
+  text-indent: -9999em;
+}
+
+@mixin block-with-image ($width, $height, $url)
+{
+  display: block;
+  width: $width;
+  height: $height;
+  background: url($url);
+}
+
+@mixin dark-box ()
+{
+  @include background-gradient(#332c24, #221d18);
+  @include drop-shadow(1px, 2px, 0.6);
+}
+
+/* Styles */
+
+#website
+{
+  
+  a#logo
+  {
+    position: absolute;
+    display: block;
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 116px;
+    height: 107px;
+    top: 30px;
+    left: 50px;
+    background: url("/images/website/logo.png");
+  }
+  
+  #content
+  {
+    position: relative;
+    width: 990px;
+    margin: 200px auto;
+    
+    h1, h2
+    {
+      margin: 10px 0px;
+    }
+    
+    h1
+    {
+      @include hidden-text();
+      @include block-with-image(634px, 44px, "/images/website/brands-header.png");
+    }
+    
+    h2
+    {
+      @include font-museo(700);
+      font-size: 22px;
+      color: #46321B;
+      text-shadow: 0px 1px #fff;
+    }
+    
+    #switcher
+    {
+      position: absolute;
+      top: 25px;
+      right: 20px;
+      line-height: 30px;
+      
+      a
+      {
+        font-size: 16px;
+        color: #a59786;
+        font-weight: 500;
+        text-decoration: none;
+        text-shadow: 0px 1px #fff;
+        
+        &:hover
+        {
+          color: darken(#a59786, 15%);
+        }
+        
+        &.active
+        {
+          color: #d9373a;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+      
+      span
+      {
+        color: #c5b9ac;
+        margin: 0px 8px;
+        font-size: 20px;
+        text-shadow: -1px 0px #fff;
+      }
+      
+    }
+    
+  }
+  
+  #sections
+  {
+    position: relative;
+    height: 300px;
+    margin: 30px 0px;
+    
+    #sliders
+    {
+      position: relative;
+      overflow: hidden;
+      width: 714px;
+      height: 305px;
+      
+      .holder
+      {
+        width: 10000px;
+        height: 100%;
+      }
+      
+      .slide
+      {
+        float: left;
+        width: 710px;
+        margin: 0px 2px;
+        
+        table.caption
+        {
+          position: absolute;
+          z-index: 999;
+          width: 240px;
+          height: 301px;
+          color: #fff;
+          @include dark-box();
+          @include rounded-corners-all(5px, 0px, 0px, 5px);
+          
+          h3, p
+          {
+            width: 200px;
+            margin: 10px auto;
+            text-align: center;
+            text-shadow: 0px 1px #000;
+          }
+          
+          h3
+          {
+            font-size: 24px;
+            @include font-museo(700);
+          }
+          
+          p
+          {
+            font-size: 17px;
+            color: #ddd;
+            line-height: 1.5em;
+          }
+          
+          .arrow
+          {
+            position: absolute;
+            top: 50%;
+            right: -14px;
+            margin-top: -12px;
+            @include block-with-image(14px, 24px, "/images/website/arrow.png");
+          }
+        }
+        
+        img
+        {
+          float: right;
+          @include drop-shadow(1px, 2px, 0.5);
+          @include rounded-corners(5px);
+        }
+      }
+    }
+  
+    #forms
+    {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      
+      .badge
+      {
+        position: absolute;
+        top: -45px;
+        right: -70px;
+        @include hidden-text();
+        @include block-with-image(121px, 123px, "/images/website/badge.png");
+      }
+      
+      .string, .password
+      { 
+        margin-bottom: 5px;
+        
+        input
+        {
+          display: block;
+          width: 230px;
+          border: none;
+          background: #fff;
+          padding: 9px 5px;
+          border: 1px solid #000;
+          @include rounded-corners(3px);
+          box-shadow:         0px 1px 0px #575451;
+          -moz-box-shadow:    0px 1px 0px #575451;
+          -webkit-box-shadow: 0px 1px 0px #575451;
+        }
+      }
+      
+      input.button
+      {
+        border: none;
+        height: 30px;
+        line-height: 30px;
+        padding: 0px 10px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: -1px;
+        margin-top: 5px;
+        cursor: pointer;
+        @include rounded-corners(3px);
+        @include background-gradient(#fc0, #f90);
+        
+        &:hover
+        {
+          @include background-gradient(lighten(#fc0, 15%), lighten(#f90, 10%));
+        }
+      }
+      
+      form
+      {
+        padding: 13px;
+        width: 240px;
+        @include dark-box();
+        @include rounded-corners(5px);
+      }
+      
+      form#signup
+      {
+        margin-bottom: 12px;
+        
+        input.button
+        {
+          color: #593a1d;
+          text-shadow: 0px 1px #ffcd66;
+          float: right;
+        }
+      }
+      
+      form#login
+      {
+        .password
+        {
+          width: 162px;
+          float: left;
+        }
+        
+        .password
+        {
+          float: left;
+        }
+        
+        input.button
+        {
+          position: relative;
+          float: right;
+          top: -1px;
+          right: -3px;
+          color: #fff;
+          text-shadow: 0px 1px #A2292A;
+          @include background-gradient(#dc4346, #c42b2b);
+          
+          &:hover
+          {
+            @include background-gradient(#ff4e57, #c42b2b);
+          }
+        }
+      }
+      
+    }
+  
+  }
+  
+  #markers
+  {
+    margin: 20px auto;
+    text-align: center;
+
+    a
+    {
+      @include hidden-text();
+      @include block-with-image(18px, 18px, "/images/website/marker.png");
+      display: inline-block;
+      
+      &.active, &:hover
+      {
+        margin: 0px 1px;
+        background-position: 0px 18px;
+      }
+    }
+  }
+  
+  #navigation
+  {
+    font-size: 11px;
+    text-align: center;
+    font-weight: normal;
+    color: #a09587;
+    
+    a, span { margin: 0px 5px; }
+    
+    a
+    {
+      color: #7c7369;
+      text-decoration: none;
+      &:hover { color: darken(#7c7369, 30%) };
+    }
+    
+    
+  }
+  
+  /* Shopper Styles */
+  
+  &.shoppers
+  {
+    #content
+    {
+      h1 
+      {
+        width: 519px;
+        background: url("/images/website/shoppers-header.png");
+      }
+    }
+    
+    #coming-soon
+    {
+      @include dark-box();
+      @include rounded-corners();
+      height: 177px;
+      margin-bottom: 13px;
+      
+      .text
+      {
+        @include hidden-text();
+        width: 100%;
+        height: 100%;
+        background: url("/images/website/comingsoon.png") no-repeat center;
+      }
+    }
+  }
+  
+  .clearfix
+  {
+    clear: both;
+  }
+}
