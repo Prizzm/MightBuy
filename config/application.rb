@@ -50,7 +50,7 @@ module NewPrizzmCom
     config.action_controller.include_all_helpers = false
     
     # Precompile these assets..
-    config.assets.precompile += ['new.js', 'new.css'];
+    config.assets.precompile += ['new.js', 'new.css', 'website.js', 'website.css'];
     
   end
 end
