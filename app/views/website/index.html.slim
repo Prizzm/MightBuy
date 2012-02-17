@@ -1,13 +1,13 @@
 #website class="#{ brand? ? 'brands' : 'shoppers' }"
   = link_to "Prizzm - Rewarding Feedback", root_url, :id => "logo"
   #content
-    h1= brand? ? "Get More Recommendations." : "Show Your Brands Love"
-    h2= brand? ? "And turn your customers into fans." : "And they'll love you back."
+    h1= brand? ? "Get More Recommendations" : "What do you recommend?"
+    h2= brand? ? "rewarding feedback" : "rewarding feedback"
     
     #switcher
       = link_to "I'm a Brand", root_url, :class => brand? ? 'active' : nil
       span |
-      = link_to "I'm a Shopper", shoppers_url, :class => brand? ? nil : 'active'
+      = link_to "I'm a Person", shoppers_url, :class => brand? ? nil : 'active'
     
     #sections
       
@@ -29,7 +29,7 @@
           - else
             
             / Get Rewarded
-            = render "slide", :image => :rewards, :title => "Get Rewarded", :desc => "Prizzm makes it easy for you to get rewarded for your loyalty! Share your opinion for discounts on stuff you’ll love!"
+            = render "slide", :image => :deals, :title => "Recommendations are valuable", :desc => "Store and publish recommendations. Ask your friends if you need their opinion, and rack up points!"
       
       #forms
         
