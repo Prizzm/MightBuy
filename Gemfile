@@ -24,9 +24,6 @@ gem 'cocoon', '1.0.14'
 gem 'mini_magick'
 gem 'carrierwave', '0.5.7'
 
-# Assets
-gem "compass", "0.12.alpha.0"
-
 # AWS
 gem 'fog', '1.0.0'
 
@@ -34,6 +31,7 @@ gem 'fog', '1.0.0'
 gem 'activeadmin', '0.4.1'
 gem 'sass-rails', "~> 3.1.4"
 gem "meta_search",    '>= 1.1.0.pre'
+gem "compass", "0.12.alpha.0"
 
 # Server
 gem 'thin', '1.2.11'
