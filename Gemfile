@@ -41,14 +41,6 @@ gem 'thin', '1.2.11'
 # Others
 gem 'image_scraper', '0.1.7'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  # gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
-  gem 'uglifier'
-end
-
 group :development do
   # gem 'unicorn'
   gem 'sqlite3'
@@ -57,6 +49,13 @@ group :development do
   gem 'rails-dev-tweaks', '~> 0.5.1'
   gem 'ffaker', '1.10.1'
   gem "rails-erd"
+end
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
 end
 
 group :test, :development do

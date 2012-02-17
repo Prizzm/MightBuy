@@ -52,5 +52,7 @@ module NewPrizzmCom
     # Precompile these assets..
     config.assets.precompile += ['new.js', 'new.css', 'website.js', 'website.css'];
     
+    # Don't access the DB or load models when precompiling your assets.
+    config.assets.initialize_on_precompile = false
   end
 end
