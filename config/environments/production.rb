@@ -43,7 +43,7 @@ NewPrizzmCom::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
   
   # Compile admin assets..
-  # config.assets.precompile += %w[active_admin.css active_admin.js]
+  config.assets.precompile += %w[active_admin.css active_admin.js]
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
