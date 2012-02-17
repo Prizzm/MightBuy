@@ -1,10 +1,7 @@
-/* Mixins */
+/* Imports */
+@import "reset";
 @import "mixins";
-
-/* Compass */
-@import "compass/reset";
-@import "compass/typography";
-@import "compass/css3";
+@import "globals";
 
 /* Styles */
 
@@ -420,7 +417,7 @@ body
         margin: 3px;
         width: 125px;
         height: 125px;
-        @include single-box-shadow(#666, 0px, 1px, 2px);
+        @include drop-shadow(1px, 2px, 0.3);
         
         img 
         { 
