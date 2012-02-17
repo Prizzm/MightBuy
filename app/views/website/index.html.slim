@@ -8,7 +8,7 @@
     #switcher
       = link_to "I'm a Brand", root_url, :class => brand? ? 'active' : nil
       span |
-      = link_to "I'm a Shopper", shoppers_url, :class => brand? ? nil : 'active'
+      = link_to "I'm a Person", shoppers_url, :class => brand? ? nil : 'active'
     
     #sections
       
@@ -30,7 +30,11 @@
           - else
             
             / Get Rewarded
+<<<<<<< HEAD
             = render "slide", :image => :deals, :title => "Get Rewarded", :desc => "Prizzm makes it easy for you to get rewarded for your loyalty! Share your opinion for discounts on stuff you’ll love!"
+=======
+            = render "slide", :image => :deals, :title => "Recommendations are valuable", :desc => "Store and publish recommendations. Ask your friends if you need their opinion, and rack up points!"
+>>>>>>> 2cf475f28405d07986f03e948ca890b9240c1c52
       
       #forms
         
