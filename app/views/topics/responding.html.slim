@@ -15,14 +15,18 @@
       .fixed
 
         #logo
-          = image_tag resource.user.photo
+          = image_link_for(resource.user, "javascript:void(0)")
         
         .descriptor
           = "%s is using Prizzm to ask for your opinion." % resource.user.name 
 
         #points 0P
         
-        = link_to "Register now!", shoppers_path, :class => "register"
+        / Join the beta list..
+        = simple_form_for BetaSignup.new, :url => join_beta_path(:format => :js), :remote => true, :id => "register" do |form|
+          .join-the-beta
+            = form.input :email_address, :as => :hidden, :input_html => { :value => invited_email_address }
+            = form.button :submit, "Register Now!"
 
     #page
       #banner

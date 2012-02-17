@@ -74,8 +74,24 @@ body
     
     h1
     {
-      @include hidden-text();
-      @include block-with-image(634px, 44px, "/images/website/brands-header.png");
+      @include font-museo(700);
+      font-size: 50px;
+      letter-spacing: -1px;
+      text-shadow:
+        0px 1px #6D3F3D,
+        0px 2px 4px rgba(0, 0, 0, 0.15);
+
+      span
+      {
+        position: absolute;
+        color: #b22525;
+        -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)));  
+      }
+      
+      &:after {
+        color: #ff484e;
+        content : 'Get More Recommendations.';
+      }
     }
     
     h2
@@ -354,9 +370,11 @@ body
     #content
     {
       h1 
-      {
-        width: 519px;
-        background: url("/images/website/shoppers-header.png");
+      { 
+        &:after
+        {
+          content: "Show Your Brands Love.";
+        }
       }
     }
     
@@ -373,6 +391,35 @@ body
         width: 100%;
         height: 100%;
         background: url("/images/website/comingsoon.png") no-repeat center;
+      }
+    }
+    
+    #forms
+    {
+      form#signup
+      {
+        padding: 30px 13px;
+        
+        h4
+        {
+          color: #fff;
+          font-size: 18px;
+          font-weight: bold;
+          margin: 10px 0px;
+          text-shadow: 0px 1px #000;
+        }
+        
+        .thanks
+        {
+          color: #fff;
+          font-size: 18px;
+          font-weight: bold;
+          margin: 10px 0px;
+          text-align: center;
+          line-height: 97px;
+          text-shadow: 0px 1px #000;
+        }
+        
       }
     }
   }

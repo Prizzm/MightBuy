@@ -25,7 +25,7 @@ var givepoints = function (points) {
   //var message = $('<div class="bar" />').html(text);
   //    flash.append(message);
       
-  $('#points').text( f('%1P', parseInt($('#points').text()) + points) );    
+  $('#points').text( f('%1P', parseInt($('#points').text()) + parseInt(points)) );    
   //$('#flashes').empty().append(flash);
   //flashes();
 }
@@ -354,7 +354,7 @@ var pointstips = function () {
 
   });
   
-  $('a.register').qtip({
+  $('.recommendation-response .join-the-beta input.button').qtip({
 
     content: function () {
       return $('<div />')
@@ -377,10 +377,7 @@ var pointsdisabler = function () {
   if(!POINTS_ENABLED)
   {
     $('.points-with-desc, .worth-points, .recommending, #points, .register-for-beta a').hide();
-    givepoints = function (points) {
-       $('#points').text( f('%1P', parseInt($('#points').text()) + points) );    
-    }
-
+    givepoints = null
   }
 }
 

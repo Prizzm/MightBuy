@@ -16,15 +16,6 @@ module ResponsesHelper
     end
   end
   
-  def recommendation_points_awarded
-    message = "You just earned <strong>%s</strong> points!" % recommendation_total_points
-    points_flash(message)
-  end
-  
-  def recommendation_total_points
-    "%sP" % recommendation_points_earned
-  end
-  
   def recommendation_points_earned
     points = Points.allocators[:responding]
     unless resource.body.blank?

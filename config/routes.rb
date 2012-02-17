@@ -1,5 +1,9 @@
 NewPrizzmCom::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   # Authentication
   devise_for :users, 
     :path_names => { 
@@ -8,13 +12,14 @@ NewPrizzmCom::Application.routes.draw do
       :sign_up => '/join'
     },
     :controllers => {
+      :sessions     => "sessions",
       :registrations => "registrations"
     }
   
   devise_scope :user do
-    get "login",   :to => "devise/sessions#new"
-    post "login",  :to => "devise/sessions#create"
-    get "logout",  :to => "devise/sessions#destroy"
+    get "login",   :to => "sessions#new"
+    post "login",  :to => "sessions#create"
+    get "logout",  :to => "sessions#destroy"
     get "join",  :to => "registrations#new"
     post "join", :to => "registrations#create"
     get 'brands/join', :to => 'registrations#new', :brand => true
@@ -63,6 +68,7 @@ NewPrizzmCom::Application.routes.draw do
   get 'share/:shortcode' => "router#shared", :as => :shared
   get 'invited/:shortcode' => "router#invited", :as => :invited
   post 'register' => 'router#register', :as => :register
+  post 'join_beta' => 'router#join_beta', :as => :join_beta
   
   # Website
   get 'about'   => 'website#about'

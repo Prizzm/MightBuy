@@ -26,6 +26,12 @@ if Rails.env.development?
     model.create attributes
   end
   
+  # Admin
+  AdminUser.create \
+    :email => 'admin@prizzm.com', 
+    :password => 'moc.mzzirp', 
+    :password_confirmation => 'moc.mzzirp'
+  
   # Users
   user = User.create \
     :name => "Mitch Thompson",

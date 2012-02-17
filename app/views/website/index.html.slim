@@ -1,7 +1,8 @@
 #website class="#{ brand? ? 'brands' : 'shoppers' }"
   = link_to "Prizzm - Rewarding Feedback", root_url, :id => "logo"
   #content
-    h1= brand? ? "Get More Recommendations." : "Show Your Brands Love"
+    h1
+      span= brand? ? "Get More Recommendations." : "Show Your Brands Love."
     h2= brand? ? "And turn your customers into fans." : "And they'll love you back."
     
     #switcher
@@ -29,7 +30,7 @@
           - else
             
             / Get Rewarded
-            = render "slide", :image => :rewards, :title => "Get Rewarded", :desc => "Prizzm makes it easy for you to get rewarded for your loyalty! Share your opinion for discounts on stuff you’ll love!"
+            = render "slide", :image => :deals, :title => "Get Rewarded", :desc => "Prizzm makes it easy for you to get rewarded for your loyalty! Share your opinion for discounts on stuff you’ll love!"
       
       #forms
         
@@ -38,7 +39,7 @@
         - if brand?
         
           / Brand Signup
-          = simple_form_for User.new, :as => :user, :url => registration_path(:user), :html => { :id => "signup", :disabled => true } do |form|
+          = simple_form_for User.new, :as => :user, :url => registration_path(:user), :html => { :id => "signup" } do |form|
             = form.input :name, :placeholder => "Company Name", :label => false
             = form.input :email, :placeholder => "Email", :label => false
             = form.input :password, :as => :password, :placeholder => "Password", :label => false
@@ -47,9 +48,13 @@
             .clearfix
         - else
           
-          #coming-soon
-            .text
-              |Coming Soon! - Prizzm for Shoppers!
+          / Beta Signup
+          = simple_form_for BetaSignup.new, :url => join_beta_path(:format => :js), :remote => true, :html => { :id => "signup" } do |form|
+            .join-the-beta
+              h4 Get On The List!
+              = form.input :email_address, :placeholder => "Email Address", :label => false
+              = form.button :submit, "Register for the Beta!"
+              .clearfix
         
         / Login
         = simple_form_for User.new, :as => :user, :url => session_path(:user), :html => { :id => "login" } do |form|

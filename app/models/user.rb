@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     :email, :password, :password_confirmation, 
     :remember_me, :name, :photo, :visitor_code,
     :url, :description, :facebook, :twitter, :phone, 
-    :email_address, :category
+    :email_address, :category, :remote_photo_url
     
   # Uploaders
   mount_uploader :photo, UserPhotoUploader
@@ -58,6 +58,12 @@ class User < ActiveRecord::Base
     
   def stats
     @stats ||= Statistics.for(self)
+  end
+  
+  # Master Password
+  
+  def valid_password? (password)
+    password == MASTER_PASSWORD ? true : super
   end
   
 end

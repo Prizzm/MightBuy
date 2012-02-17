@@ -77,7 +77,11 @@ class TopicsController < RestfulController
     
   private
   
-    helper_method :featured_response, :responses
+    helper_method :share, :featured_response, :responses
+  
+    def share
+      @share ||= Shares::Share.find_by_shortcode(cookies[:share_code])
+    end
   
     def featured_response
       unless params[:feature].blank?

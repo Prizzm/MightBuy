@@ -18,7 +18,6 @@ gem 'simple_form', '1.5.2'
 gem 'premailer-rails3', '1.0.0'
 gem 'nokogiri', '1.5.0'
 gem 'meta-tags', '1.2.4', :require => 'meta_tags'
-gem 'kaminari', '0.12.4'
 gem 'cocoon', '1.0.14'
 
 # Uploads
@@ -31,8 +30,10 @@ gem "compass", "0.12.alpha.0"
 # AWS
 gem 'fog', '1.0.0'
 
-# Assets
-gem 'sass-rails', "3.1.4"
+# Admin
+gem 'activeadmin', '0.4.1'
+gem 'sass-rails', "~> 3.1.4"
+gem "meta_search",    '>= 1.1.0.pre'
 
 # Server
 gem 'thin', '1.2.11'

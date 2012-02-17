@@ -5,14 +5,16 @@ class RouterController < ApplicationController
     redirect_to topic_path(share.topic, :responding => true)
   end
   
-  def register
-    share = Shares::Share.find_by_visitor_code!(cookies[:visitor_code]);
-    share.update_attribute :registered, true
+  def join_beta
+    BetaSignup.new(params[:beta_signup]).tap do |signup|
+      signup.visitor_code = cookies[:visitor_code]
+    end.save
+    
     respond_to do |wants|
       wants.js
     end
   end
-  
+
   private
     
     def share

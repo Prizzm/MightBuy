@@ -16,7 +16,7 @@ class Response < ActiveRecord::Base
   scope :not_recommended, where(:recommend_type => 'not_recommended')
   scope :undecided, where(:recommend_type => 'undecided')
     
-  scope :unreplied,   
+  scope :unreplied,
     where('replies.id IS NULL').where('responses.reply_id IS null').
     joins('LEFT OUTER JOIN responses as replies 
            ON replies.reply_id = responses.id')

@@ -203,8 +203,18 @@ More:
   5) Feedback tab
     a) Show responses to topics youve created
       - All feedback, ordered by date.
+      
       - Filter by: havent responded to, didnt recommend, did recommmend, all.
       
   6) Emphasize the "share" function after feedback.
   
   7) Business / brand login.
+  
+02/16:
+  # 1) Profile pic url grabber.
+  # 2) Business without profile pic causes errors on invites..
+  # 3) Allow people to join beta list on landing page.
+  # 4) Optimize the Sign Up experience from a Recommend page
+  # 5) Admin & master password.
+  6) Fix email send w/ no image issue.
+  # 7) Change shoppers header.
