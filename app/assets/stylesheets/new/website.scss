@@ -370,7 +370,7 @@ body
       { 
         &:after
         {
-          content: "Show Your Brands Love.";
+           content: "What do you recommend?"; 
         }
       }
     }
@@ -425,4 +425,70 @@ body
   {
     clear: both;
   }
+}
+
+#pages
+{
+  
+  a#logo
+  {
+    position: absolute;
+    display: block;
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 116px;
+    height: 107px;
+    top: 30px;
+    left: 50px;
+    background: url("/images/website/logo.png");
+  }
+  
+ #content
+ {
+   position: relative;
+   width: 990px;
+   margin: 200px auto;
+   
+   h1, h2
+   {
+     margin: 10px 0px;
+   }
+   
+   h1
+   {
+     @include font-museo(700);
+     font-size: 35px;
+     letter-spacing: -1px;
+     text-shadow:
+       0px 1px #6D3F3D,
+       0px 2px 4px rgba(0, 0, 0, 0.15);
+
+     span
+     {
+       position: absolute;
+       color: #b22525;
+       -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)));  
+     }
+     
+   }
+ }
+ #navigation
+ {
+   font-size: 11px;
+   text-align: center;
+   font-weight: normal;
+   color: #a09587;
+   
+   a, span { margin: 0px 5px; }
+   
+   a
+   {
+     color: #7c7369;
+     text-decoration: none;
+     &:hover { color: darken(#7c7369, 30%) };
+   }
+    
+ }
+
+
 }
