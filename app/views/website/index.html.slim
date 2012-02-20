@@ -19,18 +19,18 @@
           - if brand?
 
             / Simple Feedback..
-            = render "slide", :image => :feedback, :title => "Simple Feedback", :desc => "Prizzm makes it simple to ask for recommendations and fedback - and you'll never know if you don't ask!"
+            = render "slide", :image => :feedback, :title => "*THE* question", :desc => "Do your customers recommend you?  Prizzm is the best way to answer the most important question a business can ask."
         
             / More Responses..
             = render "slide", :image => :responses, :title => "More Responses", :desc => "Our gorgeous, straight-forward forms & built-in rewards make it quick, easy & enticing for your customers to respond to you!"
           
-            / More Responses..
-            = render "slide", :image => :sharing, :title => "Social Sharing", :desc => "Integrates directly with twitter & facebook, so you can track & reward your customers for promoting you & your products!"
+            / Social sharing..
+            = render "slide", :image => :sharing, :title => "Social Sharing", :desc => "How many of your customers recommend you on FB/Twitter? Measure *and* vastly increase the number who do with Prizzm."
             
           - else
             
             / Get Rewarded
-            = render "slide", :image => :deals, :title => "Get Recommended", :desc => "Store and publish recommendations. Ask your friends if you need their opinion, and rack up points!"
+            = render "slide", :image => :deals, :title => "Your opinion is valuable", :desc => "Store and publish recommendations. Ask your friends if you need their opinion, and rack up points!"
       
       #forms
         
@@ -67,6 +67,5 @@
           
     #navigation
       = link_to "About", about_path
-      = link_to "Contact", contact_path
       = link_to "Privacy", privacy_path
       span.copyright &copy; 2012 Prizzm.
