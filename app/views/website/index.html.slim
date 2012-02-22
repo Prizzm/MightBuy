@@ -19,18 +19,21 @@
           - if brand?
 
             / Simple Feedback..
-            = render "slide", :image => :feedback, :title => "*THE* question", :desc => "Do your customers recommend you?  Prizzm is the best way to answer the most important question a business can ask."
+            = render "slide", :image => "feedback.jpg", :title => "*THE* question", :desc => "Do your customers recommend you?  Prizzm is the best way to answer the most important question a business can ask."
         
             / More Responses..
-            = render "slide", :image => :responses, :title => "More Responses", :desc => "Our gorgeous, straight-forward forms & built-in rewards make it quick, easy & enticing for your customers to respond to you!"
-          
+            = render "slide", :image => "responses.jpg", :title => "More Responses", :desc => "Our gorgeous, straight-forward forms & built-in rewards make it quick, easy & enticing for your customers to respond to you!"
+
             / Social sharing..
-            = render "slide", :image => :sharing, :title => "Social Sharing", :desc => "How many of your customers recommend you on FB/Twitter? Measure *and* vastly increase the number who do with Prizzm."
+            = render "slide", :image => "sharing.jpg", :title => "Social Sharing", :desc => "How many of your customers recommend you on FB/Twitter? Measure *and* vastly increase the number who do with Prizzm."
             
           - else
             
+            / Points
+            = render "slide", :image => "points.png", :title => "Get Recommended", :desc => "Store and publish recommendations. Ask your friends if you need their opinion, and rack up points!"
+            
             / Get Rewarded
-            = render "slide", :image => :deals, :title => "Your opinion is valuable", :desc => "Store and publish recommendations. Ask your friends if you need their opinion, and rack up points!"
+            = render "slide", :image => "deals.jpg", :title => "Your opinion is valuable", :desc => "Store and publish recommendations. Ask your friends if you need their opinion, and rack up points!"
       
       #forms
         

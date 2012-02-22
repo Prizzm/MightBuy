@@ -17,7 +17,7 @@ var slider = function () {
   var startTimer = function () {
     timer = setInterval(function () {
       nextslide();
-    }, 6000);
+    }, 10000);
   }
   
   var resetTimer = function () {
@@ -25,7 +25,7 @@ var slider = function () {
     clearTimeout(timeout);
     timeout = setTimeout(function () {
       startTimer()
-    }, 2000);
+    }, 3000);
   }
   
   var gotoslide = function (num) {
