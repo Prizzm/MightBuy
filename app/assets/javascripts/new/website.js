@@ -33,7 +33,7 @@ var slider = function () {
     var links = markers.find('a');
     var slide = $(slides[num]);
     var marker = $(links[num]);
-    var to = num * 714;
+    var to = num * 735;
 
     slider.stop().animate({ scrollLeft : to }, 750, 'easeOutQuart');
     links.removeClass('active');
@@ -67,8 +67,13 @@ var slider = function () {
   makeslides();
 }
 
+var placeholders = function () {
+  $('input[placeholder], textarea[placeholder]').placeholder();
+}
+
 $(function () {
   
   slider();
+  placeholders();
   
 });

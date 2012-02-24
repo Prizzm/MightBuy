@@ -28,10 +28,10 @@
     
     - if current_user && current_user.brand?
       #header
-        #menu
-          = active_link "you", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
-          = active_link "topics", topics_path(:user => current_user), "topics", "shares"
-          = active_link "feedback", activity_path(:user => current_user), "activity"
+        ol#menu
+          li= active_link "you", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
+          li= active_link "topics", topics_path(:user => current_user), "topics", "shares"
+          li= active_link "feedback", activity_path(:user => current_user), "activity"
           / = active_link "you", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
           / = active_link "topics", topics_path, "topics", "shares", "activity"          
           / = active_link "people", users_path, "users"

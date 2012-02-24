@@ -116,27 +116,35 @@ body
   {
     position: relative;
     height: 40px;
-    margin: 0px 20px;
+    margin: 0px 20px 10px 20px;
     
-    #menu
+    ol#menu
     {
       position: absolute;
       left: 0px;
       
+      li
+      {
+        float: left;
+        margin-right: 20px;
+      }
+      
       a
       {
+        display: block;
         color: #39302a;
-        margin: 0px 20px 0px 0px;
         font-weight: normal;
         text-decoration: none;
+        height: 34px;
+        line-height: 31px;
         text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
         
         &:hover { color: #d02664; }
         
         &.active
         {
+          padding: 0px 15px;
           @include hover-button(#c5356a, darken(#c5356a, 5%));
-          padding: 7px 15px;
         }
       }
     }
@@ -144,20 +152,24 @@ body
     #search
     {
       position: absolute;
+      top: 5px;
       right: 0px;
+      width: 190px;
+      height: 30px;
+      background: url("/images/app/search.png");
       
       
       input
       {
-        @include rounded-corners(15px);
-        
-        padding: 0px 15px 0px 30px;
+        width: 140px;
+        margin: 6px 0px 0px 30px;
+        font-size: 12px;
+        color: #666;
         outline: none;
         border: none;
-        width: 145px;
-        height: 30px;
-        color: #666;
-        background: url("/images/app/search.png");
+        background: none;
+        
+        &.placeholder { color: #999; }
       }
     }
   }
@@ -200,6 +212,7 @@ body
         color: #667A80;
         font-size: 1.5em;
         line-height: 50px;
+        font-weight: normal;
         text-shadow: 0px 1px 0px #fff;
       }
       
@@ -306,7 +319,6 @@ body
       
       .title
       {
-        @include font-museo(500);
         display: block;
         font-size: 20px;
         color: #000;
@@ -333,8 +345,8 @@ body
         
         img
         {
-          max-width: 100%;
-          max-height: 100%;
+          max-width: 100px;
+          max-height: 100px;
         }
         
         &:hover
@@ -346,6 +358,12 @@ body
         {
           width: 55px;
           height: 55px;
+          
+          img
+          {
+            max-width: 55px;
+            max-height: 55px;
+          }
         }
       }
       
@@ -392,8 +410,8 @@ body
       
       .title
       {
-        @include font-museo(700);
         font-size: 25px;
+        font-weight: 400;
         color: #000;
       }
       
@@ -421,8 +439,8 @@ body
         
         img 
         { 
-          max-width: 100%; 
-          max-height: 100%; 
+          max-width: 125px; 
+          max-height: 125px; 
         }
         
         &.medium { width: 80px; height: 80px; }
@@ -528,6 +546,7 @@ body
     {
       input, textarea
       {
+        font: 14px "Helvetica Neue", Helvetica, sans-serif;
         width: 550px - $inset;
         padding: 5px 10px;
         font-size: 16px;
@@ -538,6 +557,7 @@ body
       textarea
       {
         height: 100px;
+        line-height: 1.5em;
       }
       
       input.numeric
@@ -591,6 +611,11 @@ body
       color: #a30;
     }
     
+    .placeholder
+    {
+      color: #999;
+    }
+    
     .buttons
     {
       overflow: hidden;
@@ -632,6 +657,7 @@ body
     @include font-museo("500");
     color: #bbb;
     font-size: 20px;
+    font-weight: normal;
     margin: 20px auto;
     background: url("/images/app/dots.png") repeat-x center;
     
@@ -1005,7 +1031,7 @@ body
   
   /* Placeholders */
   
-  .placeholder
+  div.placeholder
   {
     margin: 10px 0px;
     color: #666;
@@ -1157,5 +1183,29 @@ body
   /* Utility */
   
   .hidden { display: none; }
+  
+  /* Pages */
+  
+  #pages
+  {
+    h1
+    {
+      color: #000;
+      font-size: 18px;
+      margin: 15px 0px;
+    }
+    
+    p
+    {
+      color: #333;
+      line-height: 1.8em;
+      margin: 10px 0px;
+    }
+    
+    strong
+    {
+      font-weight: bold;
+    }
+  }
   
 }

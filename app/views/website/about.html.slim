@@ -1,34 +1,62 @@
-#pages
-  = link_to "Prizzm - Rewarding Feedback", root_url, :id => "logo"
-  #content
-    h1 Prizzm makes it rewarding for people to track things they recommend.
-    p Prizzm is a social CRM platform that makes it rewarding for customers to tell businesses what they want, what they like, and what they have problems with.
-    br       
-    p Businesses: Prizzm allows you  this simple question – will your customers recommend you?  Make sure you Ask them with Prizzm!
-	br
-	p People:  Use Prizzm to track things you recommend. Ask your friends for opinion, and ask for help publicly if something isn’t working for you. Get extra credit for sharing and publishing your opinion.  
-	br
-    h2 Prizzm Team:
-    p Founded by Charles Oppenheimer in 2011 based on over a decade of work in the CRM industry, Prizzm was founded on the premise that the future of Customer Relationship Management will be powered by the customers themselves. Prizzm provides tools to People to publish their opinions, and tools for businesses to encourage customers to share, to listen to their customers.  
-    br 
-	p Prizzm is an Angelpad s2011 Company.
-    h2 Contact
-    p Prizzm is located in San Francisco, CA
-	p email:  contact@prizzm.com
-	br
-	p call: 415-577-3411
-	br
-	p Address: 653 5th Avenue, San Francisco CA 94118
-	br
-    h2 Jobs
-	h2 Software Engineer
-	p Fullstack developer with design skills - expert with Rails, Javascript, CSS - you should be able to prototype Prizzm based on the description in this About page lickety split. If so - contact us!  
+= app_page do
 
-  #navigation
-    = link_to "About", about_path
-    = link_to "Privacy", privacy_path
-    span.copyright &copy; 2012 Prizzm.    
+  #pages
+  
+    .tabs
+      ul
+        li= link_to "Introduction", "#intro"
+        li= link_to "Our Team", "#team"
+        li= link_to "Contact Us", "#contact"
+        li= link_to "Jobs", "#jobs"
+        li= link_to "Privacy Policy", "#privacy"
+      
+      / Intro
+      #intro
+        h1 Prizzm makes it rewarding for people to track things they recommend.
 
+        p Prizzm is a social CRM platform that makes it rewarding for customers to tell businesses what they want, what they like, and what they have problems with.
+        
+        p 
+          strong Businesses: 
+          Prizzm allows you  this simple question – will your customers recommend you?  Make sure you Ask them with Prizzm!
+        
+        p 
+          strong People: 
+          Use Prizzm to track things you recommend. Ask your friends for opinion, and ask for help publicly if something isn’t working for you. Get extra credit for sharing and publishing your opinion.
+      
+      / Team
+      #team
+        h1 The Prizzm Team
 
+        p Founded by Charles Oppenheimer in 2011 based on over a decade of work in the CRM industry, Prizzm was founded on the premise that the future of Customer Relationship Management will be powered by the customers themselves. Prizzm provides tools to People to publish their opinions, and tools for businesses to encourage customers to share, to listen to their customers.
 
-	
+        p
+          strong Prizzm is an Angelpad 2011 Company.
+      
+      #contact
+        h1 Contact Us
+        p Prizzm is located in San Francisco, CA
+        p 
+          strong Email: 
+          = mail_to "contact@prizzm.com"
+        p 
+          strong Call: 
+          |(415) 577-3411
+          
+        p 
+          strong Address: 
+          p 653 5th Avenue <br />San Francisco, CA 94118
+
+      #jobs
+        h1 Jobs
+        h2 Software Engineer
+        p Fullstack developer with design skills - expert with Rails, Javascript, CSS - you should be able to prototype Prizzm based on the description in this About page lickety split. If so - contact us!
+        
+      #privacy
+        h1 Our Privacy Policy
+        
+        p <strong>Prizzm</strong> is a website that allows companies to ask their customers for feedback and recommendations, publicly. The expectation is that feedback will be published, like a blog post or a tweet.  Prizzm is designed for People as well as companies, and once open to the public any Person can use Prizzm to publish reviews and topics about any company.  Currently Prizzm is invite only.
+        
+        p <strong>Companies</strong> that invite their customers to participate in Prizzm are asking for public feedback, ideally feedback that is also shared by their customers on other social networks such as Facebook and Twitter.  Every customer that a company invites to use Prizzm will have the option to sign up with Prizzm to create their own recommendations/feedback once Prizzm is open to the public.   
+        
+        p  <strong>Prizzm</strong> will not sell any data entered in Prizzm or make it available to third parties in any manner outside of the material that each customer makes public on Prizzm.

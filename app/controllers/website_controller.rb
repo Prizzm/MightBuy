@@ -1,5 +1,9 @@
 class WebsiteController < ApplicationController  
   
+  def about
+    render :layout => "application"
+  end
+  
   private
     
     helper_method :brand?

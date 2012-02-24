@@ -10,6 +10,9 @@ function f (string) {
   });
 }
 
+var placeholders = function () {
+  $('input[placeholder], textarea[placeholder]').placeholder();
+}
 
 var flashes = function () {
   $("#flashes > div").hide().each(function (i) {
@@ -426,6 +429,9 @@ var initialize = function () {
     $('ol.switchers li').hide();
     $('ol.switchers li' + $(this).attr('href')).show();
   });
+  
+  // Placeholders
+  placeholders();
   
   // Hints..
   hints();

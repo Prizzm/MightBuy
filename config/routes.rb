@@ -72,8 +72,8 @@ NewPrizzmCom::Application.routes.draw do
   
   # Website
   get 'about'   => 'website#about'
-  get 'contact' => 'website#contact'
-  get 'privacy' => 'website#privacy'
+  get 'contact' => redirect('/about#contact')
+  get 'privacy' => redirect('/about#privacy')
   
   # Sandbox
   get 'sandbox' => "website#sandbox"

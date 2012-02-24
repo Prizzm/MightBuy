@@ -153,7 +153,7 @@ body
     {
       position: relative;
       overflow: hidden;
-      width: 714px;
+      width: 715px;
       height: 305px;
       
       .holder
@@ -165,55 +165,54 @@ body
       .slide
       {
         float: left;
-        width: 710px;
-        margin: 0px 2px;
+        margin-right: 20px;
+        @include block-with-image(715px, 304px, "/images/website/splash.png");
         
-        table.caption
+        .margin
         {
+          margin: 1px 2px 3px 2px;
+        }
+        
+        .caption
+        {
+          @include block-with-image(257px, 300px, "/images/website/caption.png");
           position: absolute;
           z-index: 999;
-          width: 240px;
-          height: 301px;
           color: #fff;
-          @include dark-box();
-          @include rounded-corners-all(5px, 0px, 0px, 5px);
           
-          h3, p
+          table
           {
-            width: 200px;
-            margin: 10px auto;
-            text-align: center;
-            text-shadow: 0px 1px #000;
-          }
-          
-          h3
-          {
-            font-size: 24px;
-            @include font-museo(700);
-          }
-          
-          p
-          {
-            font-size: 17px;
-            color: #ddd;
-            line-height: 1.5em;
-          }
-          
-          .arrow
-          {
-            position: absolute;
-            top: 50%;
-            right: -14px;
-            margin-top: -12px;
-            @include block-with-image(14px, 24px, "/images/website/arrow.png");
+            width: 240px;
+            height: 300px;
+            color: #fff;
+
+            h3, p
+            {
+              width: 200px;
+              margin: 10px auto;
+              text-align: center;
+              text-shadow: 0px 1px #000;
+            }
+
+            h3
+            {
+              font-size: 24px;
+              @include font-museo(700);
+            }
+
+            p
+            {
+              font-size: 17px;
+              color: #ddd;
+              line-height: 1.5em;
+            }
           }
         }
         
         img
         {
           float: right;
-          @include drop-shadow(1px, 2px, 0.5);
-          @include rounded-corners(5px);
+          @include rounded-corners(4px);
         }
       }
     }
@@ -223,12 +222,14 @@ body
       position: absolute;
       top: 0px;
       right: 0px;
+      @include block-with-image(271px, 302px, "/images/website/forms.png");
       
       .badge
       {
         position: absolute;
         top: -45px;
         right: -70px;
+        z-index: 9999;
         @include hidden-text();
         @include block-with-image(121px, 123px, "/images/website/badge.png");
       }
@@ -240,23 +241,26 @@ body
         input
         {
           display: block;
+          font-size: 12px;
           width: 230px;
           border: none;
           background: #fff;
-          padding: 9px 5px;
+          padding: 8px 5px;
           border: 1px solid #000;
           @include rounded-corners(3px);
           box-shadow:         0px 1px 0px #575451;
           -moz-box-shadow:    0px 1px 0px #575451;
           -webkit-box-shadow: 0px 1px 0px #575451;
+          
+          &.placeholder { color: #999; }
         }
       }
       
       input.button
       {
         border: none;
-        height: 30px;
-        line-height: 30px;
+        height: 32px;
+        line-height: 32px;
         padding: 0px 10px;
         font-size: 13px;
         font-weight: 600;
@@ -274,15 +278,14 @@ body
       
       form
       {
-        padding: 13px;
+        position: absolute;
         width: 240px;
-        @include dark-box();
-        @include rounded-corners(5px);
       }
       
       form#signup
       {
-        margin-bottom: 12px;
+        top: 12px;
+        left: 14px;
         
         input.button
         {
@@ -294,9 +297,12 @@ body
       
       form#login
       {
+        top: 205px;
+        left: 14px;
+        
         .password
         {
-          width: 162px;
+          width: 163px;
           float: left;
         }
         
@@ -307,11 +313,11 @@ body
         
         input.button
         {
-          position: relative;
-          float: right;
-          top: -1px;
-          right: -3px;
+          position: absolute;
+          right: -1px;
+          bottom: 10px;
           color: #fff;
+          width: 60px;
           text-shadow: 0px 1px #A2292A;
           @include background-gradient(#dc4346, #c42b2b);
           
@@ -379,27 +385,11 @@ body
       }
     }
     
-    #coming-soon
+    #sections #forms
     {
-      @include dark-box();
-      @include rounded-corners();
-      height: 177px;
-      margin-bottom: 13px;
-      
-      .text
+      form#signup.beta_signup
       {
-        @include hidden-text();
-        width: 100%;
-        height: 100%;
-        background: url("/images/website/comingsoon.png") no-repeat center;
-      }
-    }
-    
-    #forms
-    {
-      form#signup
-      {
-        padding: 30px 13px;
+        top: 30px;
         
         h4
         {
@@ -429,70 +419,4 @@ body
   {
     clear: both;
   }
-}
-
-#pages
-{
-  
-  a#logo
-  {
-    position: absolute;
-    display: block;
-    text-indent: -9999em;
-    overflow: hidden;
-    width: 116px;
-    height: 107px;
-    top: 30px;
-    left: 50px;
-    background: url("/images/website/logo.png");
-  }
-  
- #content
- {
-   position: relative;
-   width: 990px;
-   margin: 200px auto;
-   
-   h1, h2
-   {
-     margin: 10px 0px;
-   }
-   
-   h1
-   {
-     @include font-museo(700);
-     font-size: 35px;
-     letter-spacing: -1px;
-     text-shadow:
-       0px 1px #6D3F3D,
-       0px 2px 4px rgba(0, 0, 0, 0.15);
-
-     span
-     {
-       position: absolute;
-       color: #b22525;
-       -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)));  
-     }
-     
-   }
- }
- #navigation
- {
-   font-size: 11px;
-   text-align: center;
-   font-weight: normal;
-   color: #a09587;
-   
-   a, span { margin: 0px 5px; }
-   
-   a
-   {
-     color: #7c7369;
-     text-decoration: none;
-     &:hover { color: darken(#7c7369, 30%) };
-   }
-    
- }
-
-
 }
