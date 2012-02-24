@@ -414,6 +414,46 @@ var tweets = function () {
   });
 }
 
+
+// Social Share Methods
+window.loadFBShare = function(url){
+  url = encodeURIComponent(url);
+  $.post('/social/recommended.js', { url: url });
+  window.open('http://www.facebook.com/sharer.php?u='+url,'sharer','toolbar=0,status=0,width=626,height=436');
+}
+
+window.loadTwitterShare = function(url){
+  url = encodeURIComponent(url);
+  text = encodeURIComponent("Enter review here...");
+  $.post('/social/tweeted.js', { url: url });
+  window.open('http://twitter.com/share?url='+url+'&text='+text,'tweet','toolbar=0,status=0,width=626,height=436');
+}
+
+window.loadEmailShare = function(url, name) {
+  var subject = encodeURIComponent("I've got to recommend this Brand!");
+  var body = "Hey,\n\n";
+  body += "I'm using this brand! You should check it out!";
+  body += "\n\n\n" + url + "\n\n\n";
+  body += name;
+  body = encodeURIComponent(body);
+  location.href = 'mailto:?subject=' + subject + '&body=' + body, 'Share';
+}
+
+function initShareButtons() {
+  $('.social #facebook img').live('click', function() {
+    feature_url && loadFBShare(feature_url);
+  });
+ 
+  $('.social #twitter img').live('click', function() {
+    feature_url && loadTwitterShare(feature_url);
+  });
+
+  $('.social #email img').live('click', function() {
+    feature_url && loadEmailShare(feature_url);
+  });
+}
+
+
 // Initialize
 
 var initialize = function () {
@@ -430,6 +470,9 @@ var initialize = function () {
     $('ol.switchers li' + $(this).attr('href')).show();
   });
   
+  // Social Share Buttons
+  initShareButtons()
+
   // Placeholders
   placeholders();
   

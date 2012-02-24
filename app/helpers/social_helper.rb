@@ -1,5 +1,17 @@
 module SocialHelper
+
+  def facebook_share_button
+    social_share_button :facebook
+  end
   
+  def twitter_share_button
+    social_share_button :twitter
+  end
+
+  def social_share_button(type)
+    content_tag :div, image_tag("/assets/#{type}_share_button.png", :alt => "Share on #{type.to_s.capitalize}"), :id => type
+  end
+
   def response_like (response, url)
     url = ShareTracker.tag(url, response.topic)
     social_info_wrapper :recommend, response, facebook.like(url)
@@ -15,8 +27,8 @@ module SocialHelper
   def social_info_wrapper (type, response, content)
     content_tag :div, content, :class => "#{type} social-info", :data => { :response_id => response.id }
   end
-  
-  def twitter_url_for (string)
+
+  def twitter_url_for(string)
     "http://twitter.com/%s" % string
   end
   
