@@ -26,8 +26,8 @@ ol.list.responses
     .points-with-desc
       /= points_tag(:recommending)
       /= "Tweet or Share for %s points!" % Points.allocators[:recommending]
-      = resource.user.name
-      = " loves you. Love us back please!!" % Points.allocators[:recommending]
+      /= resource.user.name
+      = "Please let your friends know what you recommend!!" % Points.allocators[:recommending]
       
 	
 script 
