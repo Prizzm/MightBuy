@@ -168,8 +168,8 @@ var recommend = function () {
       content: function () {
         return $('<div />')
           .append('<h5><strong>Prizzm</strong> rewards your feedback!</h5>')
-          .append('<p><strong>Rack up points</strong> for speaking your mind, giving honest feedback & recommendations.</p>')
-          .append('<p><strong>Prizzm</strong> is *not* open to the public yet. You will be one of the first to be able to spend your points once open, just press the register button.</p>');
+          .append('<p><strong>Prizzm</strong> is invite only, and you\'ve been invited!</p>')
+          .append('<p><strong>Rack up points</strong> for speaking your mind, giving honest feedback & recommendations.  Just press the "Register Now" button below to bank your points.</p>');
       },
       position: {
         at: 'top center',
@@ -188,14 +188,14 @@ var recommend = function () {
     
     recommend.click(function () {
       status.empty();
-      heading.text('What do you like the most?');
+      heading.text('Let us know what you think:');
       feedback.slideDown();
       chosen(this, 'recommend');
     });
     
     undecided.click(function () {
       status.empty();
-      heading.text("Okay! What can we do better? :)");
+      heading.text("Okay! What can we do better?");
       feedback.slideDown();
       chosen(this, 'undecided');
     });
@@ -345,24 +345,8 @@ var pointstips = function () {
 
     content: function () {
       return $('<div />')
-        .append('<h5><strong>Prizzm</strong> rewards your feedback!</h5>')
-        .append('<p><strong>Rack up points</strong> for speaking your mind, giving honest feedback & recommendations.</p>')
-        .append('<p><strong>Prizzm</strong> is not open to the public yet, but if you register you will retain these points and be one of the first to be let in.</p>');
-    },
-    position: {
-      at: 'top center',
-      my: 'bottom center'
-    },
-    style: 'ui-tooltip-tipsy ui-tooltip-shadow tooltip'
-
-  });
-  
-  $('.recommendation-response .join-the-beta input.button').qtip({
-
-    content: function () {
-      return $('<div />')
-        .append('<h5><strong>One click</strong></h5>')
-        .append('<p><strong>Register for Prizzm, and save the points you\'ve earned here here.  What are the points good for?</p>')
+        .append('<h5><strong>Rewarding Feedback!</strong></h5>')
+        .append('<p><strong>Register for Prizzm, and save the points you\'ve earned for sharing your honest opinion.  What are the points good for?</p>')
          .append('<p>1. Street Cred</p>')
          .append('<p>2. Achieving Total Conciousness</p>')
          .append('<p>3. Discounts and free stuff!</p>');
@@ -424,7 +408,7 @@ window.loadFBShare = function(url){
 
 window.loadTwitterShare = function(url){
   url = encodeURIComponent(url);
-  text = encodeURIComponent("Enter review here...");
+  text = encodeURIComponent("I #recommend: ");
   $.post('/social/tweeted.js', { url: url });
   window.open('http://twitter.com/share?url='+url+'&text='+text,'tweet','toolbar=0,status=0,width=626,height=436');
 }
