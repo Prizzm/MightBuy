@@ -8,8 +8,6 @@ module Scrape
   def self.product (url)
     url = full_url(url)
     
-    puts url
-    
     open url do |file|
       uri = URI.parse(url);
       doc = Nokogiri::HTML(file.read);
@@ -19,7 +17,7 @@ module Scrape
         :product => doc.title,
         :images => images
       }
-    end #rescue false
+    end rescue false
   end
   
   private
