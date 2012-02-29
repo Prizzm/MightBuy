@@ -19,7 +19,7 @@ module UsersHelper
     resource.attributes.map do |attr, value|
       unless value.blank?
         case attr.to_sym
-          when :facebook then icon_link "facebook.png", value
+          when :facebook then icon_link "facebook.png", formatted_url(value)
           when :twitter then icon_link "twitter.png", twitter_url_for(value)
           when :email_address then icon_link "email.png", "mailto:#{value}"
         end

@@ -6,7 +6,7 @@
   
   .attrs
     - unless resource.url.blank?
-      = attr phrase_for(:url), link_to(resource.url, resource.url)
+      = attr phrase_for(:url), link_to(formatted_url(resource.url), formatted_url(resource.url), :target => "_blank")
     - unless resource.phone.blank?
       = attr phrase_for(:phone), resource.phone
     

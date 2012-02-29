@@ -125,6 +125,10 @@ module SharedHelper
     URI.join(root_url, image_path(path)).to_s
   end
   
+  def formatted_url (url)
+    url[/^https?:\/\//] ? "#{url}" : "http://#{url}"
+  end
+  
   def points_flash (message)
     content_tag :div, :class => "points" do
       content_tag( :div, '*Cha-Ching!*', :class => "onomatopoeia" ) +
