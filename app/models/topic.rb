@@ -34,6 +34,11 @@ class Topic < ActiveRecord::Base
   # Attributes
   attr_accessor :pass_visitor_code
   
+  def url
+    url = attributes['url']
+    url.blank? ? url : Scrape.full_url(url)
+  end
+  
   def post?
     !question?
   end
