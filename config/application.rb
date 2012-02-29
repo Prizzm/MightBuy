@@ -54,5 +54,9 @@ module NewPrizzmCom
     
     # Don't access the DB or load models when precompiling your assets.
     config.assets.initialize_on_precompile = false
+    
+    # Dragonfly middleware.
+    config.middleware.insert 1, 'Dragonfly::Middleware', :images
+    
   end
 end

@@ -6,3 +6,4 @@ tmp/
 doc/
 .sass-cache/
 public/uploads
+public/system

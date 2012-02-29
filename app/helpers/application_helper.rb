@@ -146,10 +146,6 @@ module ApplicationHelper
     end
   end
   
-  def image_link (uploader, style)
-    link_to image_tag(uploader.send(style)), uploader.url, :class => "image-link", :target => "_blank"
-  end
-  
   def list_for (*headers, &block)
 
     options      = headers.extract_options!

@@ -4,6 +4,7 @@
 //= require fancybox
 //= require cocoon
 //= require vendor/selectivizr.js
+//= require vendor/fileuploader.js
 //= require vendor/jquery.qtip.js
 //= require vendor/jquery.pageless.js
 //= require vendor/jquery.hoverintent.js

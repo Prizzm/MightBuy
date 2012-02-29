@@ -1,4 +1,4 @@
 li
-  = image_link_for(topic, topic_path(topic), :style => :thumb)
+  = image_link(topic, topic_path(topic), :class => "thumb") { thumb('55x55#') }
   = link_to topic.subject, topic_path(topic), :class => "title"
   .notes= phrase_for(:said, topic)

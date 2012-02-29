@@ -1,4 +1,7 @@
 class Response < ActiveRecord::Base
+
+  # Includes
+  include InheritUpload
   
   # Relationships
   has_many :replies, :class_name => "Response", :foreign_key => "reply_id"
@@ -26,7 +29,7 @@ class Response < ActiveRecord::Base
   validates :recommend_type, :presence => true, :if => :recommendation?
     
   # Uploaders
-  mount_uploader :image, ResponseImageUploader
+  image_accessor :image
   
   # Attributes
   attr_accessor :reply_to_email

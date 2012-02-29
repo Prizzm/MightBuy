@@ -15,6 +15,5 @@
   = render "share_with_customers", :form => form
   
   / Hidden fields
-  / = form.input :remote_image_url, :as => :hidden, :input_html => { :value => URI.join(root_url, current_user.photo.to_s) }
   = form.input :recommendable, :as => :hidden, :input_html => { :value => 1 }
   = form.input :access, :as => :hidden, :input_html => { :value => "private" }

@@ -49,7 +49,7 @@ module SocialHelper
     {
       :title => title,
       :url   => request.url,
-      :image => image_url("/images/app/open-graph-image.png"),
+      :image => absolute_url("/images/app/open-graph-image.png"),
       :desc  => "Prizzm - collaborate with brands, share ideas & help make products you can't live without!"
     }
   end

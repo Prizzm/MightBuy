@@ -38,7 +38,7 @@ if Rails.env.development?
     :email => "mitch@prizzm.com",
     :password => "asdfasdf",
     :password_confirmation => "asdfasdf",
-    :photo => tmpfile("avatar.jpg"),
+    :image => tmpfile("avatar.jpg"),
     :description => "Here's a bunch of useless details about me & what I like.",
     :url => "http://www.prizzm.com",
     :facebook => "http://www.facebook.com/profile.php?id=100002401279548",
@@ -52,7 +52,7 @@ if Rails.env.development?
       :name => Faker::Name.name,
       :email => Faker::Internet.email,
       :password => "asdfasdf",
-      :photo => random_file_from("avatars"),
+      :image => random_file_from("avatars"),
       :description => Faker::Lorem.sentence(18),
       :url => Faker::Internet.uri("http"),
       :email_address => Faker::Internet.email,
@@ -65,7 +65,7 @@ if Rails.env.development?
     :email => "bryna@prizzm.com",
     :password => "asdfasdf",
     :password_confirmation => "asdfasdf",
-    :photo => tmpfile("logo.jpg"),
+    :image => tmpfile("logo.jpg"),
     :category => "brand"
   
   # Generate a Few Brands..
@@ -74,7 +74,7 @@ if Rails.env.development?
       :name => Faker::Company.name,
       :email => Faker::Internet.email,
       :password => "asdfasdf",
-      :photo => random_file_from("logos"),
+      :image => random_file_from("logos"),
       :description => Faker::Lorem.sentence(18),
       :url => Faker::Internet.uri("http"),
       :email_address => Faker::Internet.email,

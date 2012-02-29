@@ -125,14 +125,14 @@ module TopicsHelper
       {
         :title => title,
         :url   => request.url,
-        :image => image_url_for(resource, :thumb),
+        :image => image_url(resource) { thumb('125x125#') },
         :desc  => featured_response.body
       }
     else
       case action_name
         when :show
           super.merge \
-            :image => image_url_for(resource, :thumb),
+            :image => image_url(resource) { thumb('125x125#') },
             :desc  => truncate(resource.body, :length => 100)
         else super
       end

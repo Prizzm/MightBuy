@@ -28,8 +28,6 @@ module Deals
     belongs_to :user
     belongs_to :for, :polymorphic => true
     
-    mount_uploader :photo, DealPhotoUploader
-    
     def redeem! (*args)
       redeem(*args) ; save
     end

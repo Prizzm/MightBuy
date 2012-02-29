@@ -70,6 +70,9 @@ NewPrizzmCom::Application.routes.draw do
   post 'register' => 'router#register', :as => :register
   post 'join_beta' => 'router#join_beta', :as => :join_beta
   
+  # Uploads
+  post 'uploads/accept' => 'upload#accept'
+  
   # Website
   get 'about'   => 'website#about'
   get 'contact' => redirect('/about#contact')

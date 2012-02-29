@@ -5,7 +5,7 @@ class UserObserver < ActiveRecord::Observer
   end
   
   def after_save (user)
-    unless user.photo.blank?
+    unless user.image.blank?
       user.points.add :uploading_a_photo
     end
   end

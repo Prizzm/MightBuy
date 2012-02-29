@@ -6,7 +6,7 @@ ol.list.responses
   li.has-actions
     .response
   
-      = image_link_for(response.topic, "javascript:void(0)", :style => :thumb)
+      = image_link(response.topic, "javascript:void(0)", :class => :thumb) { thumb('55x55#') }
     
       - unless response.body.blank?
         .quoted= '"%s"' %response.body

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120217222136) do
+ActiveRecord::Schema.define(:version => 20120229001524) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(:version => 20120217222136) do
   create_table "beta_signups", :force => true do |t|
     t.string   "email_address"
     t.string   "visitor_code"
-    t.string   "string"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -108,11 +107,11 @@ ActiveRecord::Schema.define(:version => 20120217222136) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "visitor_code"
-    t.string   "image"
     t.boolean  "recommended"
     t.integer  "share_id"
     t.integer  "reply_id"
     t.string   "recommend_type"
+    t.string   "image_uid"
   end
 
   create_table "shares", :force => true do |t|
@@ -132,7 +131,6 @@ ActiveRecord::Schema.define(:version => 20120217222136) do
   create_table "topics", :force => true do |t|
     t.integer  "user_id"
     t.string   "shortcode"
-    t.string   "image"
     t.string   "subject"
     t.text     "body"
     t.string   "access"
@@ -143,9 +141,16 @@ ActiveRecord::Schema.define(:version => 20120217222136) do
     t.string   "form"
     t.string   "url"
     t.string   "share_title"
+    t.string   "image_uid"
   end
 
   add_index "topics", ["shortcode"], :name => "index_topics_on_shortcode", :unique => true
+
+  create_table "uploads", :force => true do |t|
+    t.string   "image_uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "",       :null => false
@@ -159,7 +164,6 @@ ActiveRecord::Schema.define(:version => 20120217222136) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name"
-    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
@@ -169,6 +173,7 @@ ActiveRecord::Schema.define(:version => 20120217222136) do
     t.string   "phone"
     t.string   "email_address"
     t.string   "category",                              :default => "person"
+    t.string   "image_uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

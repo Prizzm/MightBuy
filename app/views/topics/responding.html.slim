@@ -15,7 +15,7 @@
       .fixed
 
         #logo
-          = image_link_for(resource.user, "javascript:void(0)")
+          = image_link(resource.user, "javascript:void(0)") { thumb("150x100") }
         
         .descriptor
           = "%s is using Prizzm to ask for your opinion." % resource.user.name 

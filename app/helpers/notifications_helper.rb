@@ -15,10 +15,6 @@ module NotificationsHelper
     end
   end
   
-  def image_link (image_url, url, options = {})
-    link_to image_tag(image_url, options), url
-  end
-  
   def lines (&block)
     simple_format(capture(&block)).html_safe
   end

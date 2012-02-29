@@ -3,10 +3,10 @@
 .header
 
   - unless resource.url.blank?
-    = image_link_for(resource, resource.url, :style => :thumb, :target => "_blank")
+    = image_link(resource, resource.url, :class => "thumb", :target => "_blank") { thumb('125x125') }
     = link_to resource.subject, resource.url, :class => "title", :target => "_blank"
   - else
-    = image_link_for(resource, resource.image.url, :style => :thumb)
+    = image_link(resource, image_url(resource), :class => "thumb") { thumb('125x125') }
     .title= resource.subject
       
   .description= simple_format(resource.body)

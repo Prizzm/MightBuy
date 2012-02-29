@@ -1,4 +1,4 @@
 li
-  = image_link_for(user, user_path(user), :style => :thumb)
+  = image_link(user, user_path(user), :class => :thumb) { thumb("55x55#") }
   = link_to user.name, user_path(user), :class => "title"
   .notes= last_active(user)

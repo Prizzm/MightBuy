@@ -16,33 +16,31 @@ module SharedHelper
     content.blank? ? (block_given? ? capture(&block) : "") : content
   end
   
-  def image_link_for (model, url, options = {})
-    style     = options.delete(:style) || :url
-    image_url = image_url_for model, style
+  def image_link (model, url, options = {}, &block)
+    image_url = image_url(model, &block)
     name    = model.class.to_s.downcase
-    classes = ["image", name, style, image_url ? "present" : "blank", options[:class]].compact.join(" ")
+    classes = ["image", name, image_url ? "present" : "blank", options[:class]].compact.join(" ")
     image   = image_url ? centered { image_tag(image_url) } : ""
-    
+
     link_to(image, url, options.merge(:class => classes))
   end
   
-  def image_url_for (model, style = nil)
-    uploader = case model
+  def image_url (model, &block)
+    image = case model
       when Topic then model.image
-      when User then model.photo
+      when User then model.image
       when Response then model.image
-        # return image_url_for(model.user, style)
     end
     
-    exists = !uploader.blank?
-    style = style || :url
-    url   = exists ? uploader.send(style) : nil
+    exists = !image.blank?
+    block  = block_given? ? block : proc { self }
+    url    = exists ? image.instance_eval(&block).url : nil
     
-    url = URI.join(root_url, url.to_s).to_s if url && Rails.env.development?
+    url = absolute_url(url.to_s) if url && Rails.env.development?
     
     unless exists
       case model
-      when Topic, Response then return image_url_for(model.user, style)
+        when Topic, Response then return image_url(model.user, &block)
       end
     end
     
@@ -104,7 +102,7 @@ module SharedHelper
     {
       :name => user ? (user == current_user ? "You" : user.name) : "Guest",
       :path => user ? user_path(user) : "#guest",
-      :thumb => user ? (user.photo.blank? ? user.photo.thumb : nil) : nil
+      :thumb => user ? (user.image.blank? ? user.image.thumb : nil) : nil
     }
   end
   
@@ -123,8 +121,8 @@ module SharedHelper
     end
   end
   
-  def image_url (path)
-    URI.join(root_url, image_path(path))
+  def absolute_url (path)
+    URI.join(root_url, image_path(path)).to_s
   end
   
   def points_flash (message)

@@ -10,6 +10,30 @@ function f (string) {
   });
 }
 
+var csrftoken = function () {
+  return $('meta[name="csrf-token"]').attr('content');
+}
+
+var showloader = function (selector) {
+  $(selector).qtip({
+    content: '<div class="loading">Loading..</div>',
+    position: {
+      at: 'top center',
+      my: 'bottom center'
+    },
+    show: {
+       event: false,
+       ready: true
+    },
+    hide: false,
+    style: 'ui-tooltip-tipsy ui-tooltip-shadow tooltip'
+  });
+}
+
+var hideloader = function (selector) {
+  $(selector).delay(500).qtip('destroy');
+}
+
 var placeholders = function () {
   $('input[placeholder], textarea[placeholder]').placeholder();
 }
@@ -230,10 +254,14 @@ var getproductform = function () {
     var uploaderinput = element.find ('.image-selector-uploader');
     
     var scrape = function (url) {
+      showloader(element);
       $.post('/get/product.json', { url: url }, success);
     }
     
     var success = function (data) {
+      hideloader(element);
+      console.log(data)
+      
       if( data )
       {
         element.find('> .input').effect('highlight', {}, 1000);
@@ -265,28 +293,31 @@ var pointshelper = function () {
 var selectoruploaders = function () {
   $('.image-selector-uploader').each(function (element) {
     
-    var uploader = $(this);
-    var position = 0;
-    var images = [];
-    var image = uploader.find('a.image');
-    var grab = uploader.find('a.get');
-    var next = uploader.find('a.next');
-    var prev = uploader.find('a.prev');
-    var webfield = uploader.find('.web input');
-    var remotefield = uploader.find('input.remote-url');
-    var filefield   = uploader.find('input.file');
+    var uploader      = $(this);
+    var position      = 0;
+    var images        = [];
+    var image         = uploader.find('a.image');
+    var grab          = uploader.find('a.get');
+    var next          = uploader.find('a.next');
+    var prev          = uploader.find('a.prev');
+    var webfield      = uploader.find('#web input');
+    var remotefield   = uploader.find('input.remote-url');
+    var idfield       = uploader.find('input.upload-id');
+    var uploadfield   = uploader.find('.file-uploader');
     
     this.setimages = function (images) {
       success(images);
     }
 
     var scrape = function (url) {
+      showloader(image);
       $.post('/get/images.json', { url: url }, success);
     }
     
     var success = function (data) { 
       position = 0;
       images   = data;
+      hideloader(image);
       change();
     }
     
@@ -317,9 +348,26 @@ var selectoruploaders = function () {
     }
         
     grab.click(function () {
-      placeimage('/images/app/loader.gif');
       scrape(webfield.val());
       return false;
+    });
+    
+    // Initialize Uploader..
+    var upload = new qq.FileUploader({
+        element: uploadfield[0],
+        action: '/uploads/accept.json',
+        params: {
+          authenticity_token : csrftoken()
+        },
+        onSubmit: function (id, filename) {
+          showloader(image);
+        },
+        onComplete: function(id, filename, response){
+          placeimage(response.thumb);
+          remotefield.val('');
+          idfield.val(response.id);
+          hideloader(image);
+        },
     });
     
     next.click(function () { return gonext(); })

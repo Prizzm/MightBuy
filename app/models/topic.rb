@@ -1,5 +1,8 @@
 class Topic < ActiveRecord::Base
-
+  
+  # Includes
+  include InheritUpload
+  
   # Options
   Access = {
     "Anyone." => "public",
@@ -22,7 +25,7 @@ class Topic < ActiveRecord::Base
   validates :body, :presence => true
   
   # Uploaders
-  mount_uploader :image, TopicImageUploader
+  image_accessor :image
   
   # Nested Attributes
   accepts_nested_attributes_for :shares,

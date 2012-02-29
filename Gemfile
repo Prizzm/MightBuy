@@ -20,12 +20,13 @@ gem 'nokogiri', '1.5.0'
 gem 'meta-tags', '1.2.4', :require => 'meta_tags'
 gem 'cocoon', '1.0.14'
 
-# Uploads
-gem 'mini_magick'
-gem 'carrierwave', '0.5.7'
-
 # AWS
 gem 'fog', '1.0.0'
+
+# Uploads
+gem 'mini_magick'
+gem 'rack-cache', :require => 'rack/cache'
+gem 'dragonfly', '~>0.9.10'
 
 # Admin
 gem 'activeadmin', '0.4.1'

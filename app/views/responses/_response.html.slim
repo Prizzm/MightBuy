@@ -6,7 +6,7 @@ li.has-actions
   
     - if params[:controller] == 'activity'
       
-      = image_link_for(response, image_url_for(response), :style => :thumb)
+      = image_link(response, image_url(response), :class => :thumb) { thumb('55x55#').jpg }
       
       - unless response.body.blank?
         .message
@@ -20,7 +20,7 @@ li.has-actions
 
     - elsif topic_view
   
-      = image_link_for(response, image_url_for(response), :style => :thumb)
+      = image_link(response, image_url(response), :class => :thumb) { thumb('55x55#') }
     
       - unless response.body.blank?
         .message
@@ -34,7 +34,7 @@ li.has-actions
   
     - else
   
-      = image_link_for(response.topic, feature_url, :style => :thumb)
+      = image_link(response.topic, feature_url, :class => :thumb) { thumb('55x55#') }
       
       - unless response.body.blank?
         = link_to '"%s"' % response.body, feature_url, :class => "quoted"

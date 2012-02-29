@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   # Includes
   include Points::Has
+  include InheritUpload
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -17,12 +18,12 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible \
     :email, :password, :password_confirmation, 
-    :remember_me, :name, :photo, :visitor_code,
+    :remember_me, :name, :image, :visitor_code,
     :url, :description, :facebook, :twitter, :phone, 
-    :email_address, :category, :remote_photo_url
+    :email_address, :category, :image_url, :inherit_upload_id
     
   # Uploaders
-  mount_uploader :photo, UserPhotoUploader
+  image_accessor :image
   
   # Relationships
   has_many :responses
