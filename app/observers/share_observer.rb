@@ -11,7 +11,7 @@ class ShareObserver < ActiveRecord::Observer
   def after_create (share)
     case share
       when Shares::Email
-        Notifications.share(share).deliver
+        Notifications.delay(:queue => 'Notifications').share(share)
     end
     
     if share.user

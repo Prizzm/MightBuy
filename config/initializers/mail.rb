@@ -4,7 +4,7 @@ if Rails.env.development?
   class DevelopmentMailInterceptor  
     def self.delivering_email(message)  
       message.subject = "[#{message.to}] #{message.subject}"  
-      message.to = "mitchkthompson@gmail.com"
+      message.to = ENV['DEV_EMAIL'] || "dev@prizzm.com"
     end  
   end
   

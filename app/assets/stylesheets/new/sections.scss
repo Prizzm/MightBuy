@@ -187,7 +187,7 @@
       textarea.text
       {
         width: 600px;
-        height: 120px;
+        height: 80px;
         line-height: 1.8em;
       }
       
@@ -779,15 +779,32 @@
 
   .social
   {
-    height: 20px;
+    height: 42px;
     margin: 10px 0px;
     
     .recommend, .tweet, .points-with-desc
     {
       float: left;
-      margin-right: 8px;
+      margin: 8px;
     }
-    
+
+   
+    #twitter, #facebook {
+      float: left;
+      margin-right: 15px;
+      width: 122px;
+      height: 42px;
+      border: none;
+    }
+
+    #twitter img, #facebook img {
+      cursor: pointer;
+      width: 122px;
+      height: 42px;
+      border: none;
+    }
+
+
   }
 }
 

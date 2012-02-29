@@ -192,8 +192,8 @@ var recommend = function () {
       content: function () {
         return $('<div />')
           .append('<h5><strong>Prizzm</strong> rewards your feedback!</h5>')
-          .append('<p><strong>Rack up points</strong> for speaking your mind, giving honest feedback & recommendations.</p>')
-          .append('<p><strong>Prizzm</strong> is *not* open to the public yet. You will be one of the first to be able to spend your points once open, just press the register button.</p>');
+          .append('<p><strong>Prizzm</strong> is invite only, and you\'ve been invited!</p>')
+          .append('<p><strong>Rack up points</strong> for speaking your mind, giving honest feedback & recommendations.  Just press the "Register Now" button below to bank your points.</p>');
       },
       position: {
         at: 'top center',
@@ -212,14 +212,14 @@ var recommend = function () {
     
     recommend.click(function () {
       status.empty();
-      heading.text('What do you like the most?');
+      heading.text('Let us know what you think:');
       feedback.slideDown();
       chosen(this, 'recommend');
     });
     
     undecided.click(function () {
       status.empty();
-      heading.text("Okay! What can we do better? :)");
+      heading.text("Okay! What can we do better?");
       feedback.slideDown();
       chosen(this, 'undecided');
     });
@@ -393,24 +393,8 @@ var pointstips = function () {
 
     content: function () {
       return $('<div />')
-        .append('<h5><strong>Prizzm</strong> rewards your feedback!</h5>')
-        .append('<p><strong>Rack up points</strong> for speaking your mind, giving honest feedback & recommendations.</p>')
-        .append('<p><strong>Prizzm</strong> is not open to the public yet, but if you register you will retain these points and be one of the first to be let in.</p>');
-    },
-    position: {
-      at: 'top center',
-      my: 'bottom center'
-    },
-    style: 'ui-tooltip-tipsy ui-tooltip-shadow tooltip'
-
-  });
-  
-  $('.recommendation-response .join-the-beta input.button').qtip({
-
-    content: function () {
-      return $('<div />')
-        .append('<h5><strong>One click</strong></h5>')
-        .append('<p><strong>Register for Prizzm, and save the points you\'ve earned here here.  What are the points good for?</p>')
+        .append('<h5><strong>Rewarding Feedback!</strong></h5>')
+        .append('<p><strong>Register for Prizzm, and save the points you\'ve earned for sharing your honest opinion.  What are the points good for?</p>')
          .append('<p>1. Street Cred</p>')
          .append('<p>2. Achieving Total Conciousness</p>')
          .append('<p>3. Discounts and free stuff!</p>');
@@ -462,6 +446,46 @@ var tweets = function () {
   });
 }
 
+
+// Social Share Methods
+window.loadFBShare = function(url){
+  url = encodeURIComponent(url);
+  $.post('/social/recommended.js', { url: url });
+  window.open('http://www.facebook.com/sharer.php?u='+url,'sharer','toolbar=0,status=0,width=626,height=436');
+}
+
+window.loadTwitterShare = function(url){
+  url = encodeURIComponent(url);
+  text = encodeURIComponent("I #recommend: ");
+  $.post('/social/tweeted.js', { url: url });
+  window.open('http://twitter.com/share?url='+url+'&text='+text,'tweet','toolbar=0,status=0,width=626,height=436');
+}
+
+window.loadEmailShare = function(url, name) {
+  var subject = encodeURIComponent("I've got to recommend this Brand!");
+  var body = "Hey,\n\n";
+  body += "I'm using this brand! You should check it out!";
+  body += "\n\n\n" + url + "\n\n\n";
+  body += name;
+  body = encodeURIComponent(body);
+  location.href = 'mailto:?subject=' + subject + '&body=' + body, 'Share';
+}
+
+function initShareButtons() {
+  $('.social #facebook img').live('click', function() {
+    feature_url && loadFBShare(feature_url);
+  });
+ 
+  $('.social #twitter img').live('click', function() {
+    feature_url && loadTwitterShare(feature_url);
+  });
+
+  $('.social #email img').live('click', function() {
+    feature_url && loadEmailShare(feature_url);
+  });
+}
+
+
 // Initialize
 
 var initialize = function () {
@@ -478,6 +502,9 @@ var initialize = function () {
     $('ol.switchers li' + $(this).attr('href')).show();
   });
   
+  // Social Share Buttons
+  initShareButtons()
+
   // Placeholders
   placeholders();
   

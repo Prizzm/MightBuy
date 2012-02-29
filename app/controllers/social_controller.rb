@@ -5,6 +5,7 @@ class SocialController < ApplicationController
   def tweeted
     
     url   = Rack::Utils.parse_query(URI.parse(params[:url]).fragment)["url"]
+    url   = CGI.unescape(params[:url]) if url.blank?
     topic = ShareTracker.get( url )
 
     Shares::Tweet.create \
@@ -24,7 +25,8 @@ class SocialController < ApplicationController
   
   def recommended
     
-    topic = ShareTracker.get( params[:url] )
+    url   = CGI.unescape(params[:url])
+    topic = ShareTracker.get(url)
     
     Shares::Recommend.create \
       :topic => topic,

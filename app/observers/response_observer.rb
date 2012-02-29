@@ -6,7 +6,7 @@ class ResponseObserver < ActiveRecord::Observer
     end
     
     unless response.reply_to_email.blank?
-      Notifications.responded(response).deliver
+      Notifications.delay(:queue => 'Notifications').responded(response)
     end
   end
   
