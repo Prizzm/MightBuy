@@ -102,7 +102,7 @@ module SharedHelper
     {
       :name => user ? (user == current_user ? "You" : user.name) : "Guest",
       :path => user ? user_path(user) : "#guest",
-      :thumb => user ? (user.image.blank? ? user.image.thumb : nil) : nil
+      :thumb => user ? (user.image.blank? ? nil : user.image.thumb) : nil
     }
   end
   

@@ -22,8 +22,8 @@ ol.list.responses
   = heading "Make your recommendation count - share it!"
 	
   .social
-     = response_tweet(response, feature_url)	  	
-     = response_like(response, feature_url)
+     = facebook_share_button
+     = twitter_share_button
      .points-with-desc
       = "Please let your friends know what you recommend!!" % Points.allocators[:recommending]
       
