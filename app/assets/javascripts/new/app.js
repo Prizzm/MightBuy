@@ -450,14 +450,14 @@ var tweets = function () {
 // Social Share Methods
 window.loadFBShare = function(url){
   url = encodeURIComponent(url);
-  $.post('/social/recommended.js', { url: url });
+  $.post('/social/recommended.js', { url: url, short_code: short_code});
   window.open('http://www.facebook.com/sharer.php?u='+url,'sharer','toolbar=0,status=0,width=626,height=436');
 }
 
 window.loadTwitterShare = function(url){
   url = encodeURIComponent(url);
   text = encodeURIComponent("I #recommend: ");
-  $.post('/social/tweeted.js', { url: url });
+  $.post('/social/tweeted.js', { url: url, short_code: short_code });
   window.open('http://twitter.com/share?url='+url+'&text='+text,'tweet','toolbar=0,status=0,width=626,height=436');
 }
 

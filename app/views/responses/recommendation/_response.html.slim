@@ -1,4 +1,5 @@
 - feature_url = response.topic.url.blank? ? topic_url(response.topic, :feature => response.id) : response.topic.url
+- short_code = response.topic.shortcode
 
 = heading "Thanks! Your feedback:"
 
@@ -32,3 +33,4 @@ ol.list.responses
 	
 script 
   | feature_url = '#{{feature_url}}';
+  | short_code = '#{{short_code}}';
