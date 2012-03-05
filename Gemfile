@@ -39,6 +39,7 @@ gem 'thin', '1.2.11'
 # Background Jobs
 gem 'daemons'
 gem 'delayed_job_active_record'
+gem 'hirefireapp'
 
 # Others
 gem 'image_scraper', '0.1.7'
