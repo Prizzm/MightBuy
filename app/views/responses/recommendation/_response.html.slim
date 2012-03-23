@@ -1,5 +1,7 @@
 - feature_url = response.topic.url.blank? ? topic_url(response.topic, :feature => response.id) : response.topic.url
 - short_code = response.topic.shortcode
+- twitter_topic = response.topic.share_title
+- twitter_sender = response.topic.user.twitter
 
 = heading "Thanks! Your feedback:"
 
@@ -31,3 +33,5 @@ ol.list.responses
 script 
   | feature_url = '#{{feature_url}}';
   | short_code = '#{{short_code}}';
+  | twitter_topic = '#{{twitter_topic}}';
+  | twitter_sender = '#{{twitter_sender}}';

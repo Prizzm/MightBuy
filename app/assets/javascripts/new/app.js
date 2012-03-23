@@ -454,11 +454,18 @@ window.loadFBShare = function(url){
   window.open('http://www.facebook.com/sharer.php?u='+url,'sharer','toolbar=0,status=0,width=626,height=436');
 }
 
-window.loadTwitterShare = function(url){
+window.loadTwitterShare = function(url,twitter_topic, twitter_sender){
   url = encodeURIComponent(url);
+  twitter_topic = encodeURIComponent(twitter_topic);
+  if (twitter_sender) {
+     twitter_sender = twitter_sender.replace(/\@/g, "");
+  }   
+  else {
+     twitter_sender = 'prizzmtwt';
+  }
   text = encodeURIComponent("I #recommend: ");
   $.post('/social/tweeted.js', { url: url, short_code: short_code });
-  window.open('http://twitter.com/share?url='+url+'&text='+text,'tweet','toolbar=0,status=0,width=626,height=436');
+  window.open('http://twitter.com/share?url='+url+'&text='+twitter_topic+'&via='+twitter_sender,'tweet','toolbar=0,status=0,width=626,height=436');
 }
 
 window.loadEmailShare = function(url, name) {
@@ -477,7 +484,7 @@ function initShareButtons() {
   });
  
   $('.social #twitter img').live('click', function() {
-    feature_url && loadTwitterShare(feature_url);
+    feature_url && loadTwitterShare(feature_url, twitter_topic,twitter_sender);
   });
 
   $('.social #email img').live('click', function() {
