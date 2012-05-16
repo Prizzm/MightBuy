@@ -10,7 +10,7 @@ class Notifications < ActionMailer::Base
     
     @to_email   = share.with
     @from_email = "notify@prizzm.com"
-    @heading    = @topic.share
+    @heading    = @topic.subject
       
     @topic_url = invited_url(share.shortcode);
       
