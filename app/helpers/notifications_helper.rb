@@ -24,10 +24,10 @@ module NotificationsHelper
   end
   
   def sent_to_by
-    ("This email was sent to %s by Prizzm(tm) - a survey that Rewards Feedback.
+    ("This email was sent to %s by using Prizzm(tm) surveys.
      This is a one-time request, so no need to unsubscribe.  
      But please share your opinion, it's easy!!" % 
-      [ mail_to(@to_email), mail_to(@from_email) ]).html_safe
+      [ mail_to(@to_email), @name ]).html_safe
   end
   
 end
