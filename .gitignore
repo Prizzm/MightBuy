@@ -7,3 +7,5 @@ doc/
 .sass-cache/
 public/uploads
 public/system
+*.swp
+.rvmrc

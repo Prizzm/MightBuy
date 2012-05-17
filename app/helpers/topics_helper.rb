@@ -45,8 +45,8 @@ module TopicsHelper
   end
   
   def said_this (response, format = nil)
-     if response.is_a?(Response)
-      name = response.user ? response.user.name : (response.share ? response.share.with : "Guest" )
+    if response.is_a?(Response)
+      name = response.user ? response.user.name : (response.share ? (user_signed_in?? response.share.with : "Guest") : "Guest" )
       path = response.user ? user_path(response.user) : "#guest"
       ((format || "%s said this %s.") % [
         link_to(name, path, :class => "user"),
