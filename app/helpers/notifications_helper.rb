@@ -24,7 +24,9 @@ module NotificationsHelper
   end
   
   def sent_to_by
-    ("This email was sent to %s by Prizzm(tm) - a survey that Rewards Feedback.  This is a one-time request, so no need to unsubscribe.  But please share your opinion, it's easy!!" % 
+    ("This email was sent to %s by Prizzm(tm) - a survey that Rewards Feedback.
+     This is a one-time request, so no need to unsubscribe.  
+     But please share your opinion, it's easy!!" % 
       [ mail_to(@to_email), mail_to(@from_email) ]).html_safe
   end
   
