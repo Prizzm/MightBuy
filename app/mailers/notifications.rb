@@ -7,7 +7,9 @@ class Notifications < ActionMailer::Base
     @topic = share.topic
     @user  = share.user
     @name = @user ? @user.name : "Someone"
-    
+    @bannername = ("%s wants your opinion..") % @name  
+    @homeurl = @topic.url
+      
     @to_email   = share.with
     @from_email = "notify@prizzm.com"
     @heading    = @topic.subject
