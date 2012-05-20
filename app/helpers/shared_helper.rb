@@ -60,20 +60,24 @@ module SharedHelper
       content_tag( :span, shorthand(response.created_at).downcase, :class => "created-at" )  
     ]).html_safe
   end
-  
-  def said_this_in_response (response)
-    format = resource.is_a?(Topic) ? 
+
+  def said_this_in_response (response, is_feedback=false)
+    format = resource.is_a?(Topic) ?
       "%1$s said this %4$s." : "%1$s said this in response to %2$s by %3$s %4$s."
-      
+
     info = user_info(response.user)
+
+    # If this is a feedback's response and user is Guest, show the user's email.
+    is_feedback && info[:name] == "Guest" && info[:name] = response.email_address
+
     user_link       = link_to info[:name], info[:path], :class => "user"
     topic_link      = link_to shorthand(response.topic.subject), topic_path(response.topic), :class => "topic"
     topic_user_link = link_to shorthand(response.topic.user.name), user_path(response.topic.user), :class => "topic-user"
     created_at      = content_tag :span, shorthand(response.created_at).downcase, :class => "created-at"
-    
+
     (format % [user_link, topic_link, topic_user_link, created_at]).html_safe
   end
-  
+
   def phrase_for (subject, object = nil)
     object ||= resource
     

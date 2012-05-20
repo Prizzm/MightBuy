@@ -10,7 +10,7 @@ li.has-actions
             = link_to '"%s"' % response.body, topic_url(response.topic, :feature => response.id), :class => "quoted"
       = render_recommend_type(response)
       .notes
-        = said_this_in_response(response)  
+        = said_this_in_response(response, true)  
     - elsif topic_view
       = image_link(response, image_url(response), :class => :thumb) { thumb('55x55#') }
       - unless response.body.blank?

@@ -9,3 +9,4 @@ public/uploads
 public/system
 *.swp
 .rvmrc
+routes.txt
