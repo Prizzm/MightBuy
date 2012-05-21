@@ -138,6 +138,23 @@
     / Sharing
     #sharing
       = heading "You've shared this with.."
-      ol.list.shares.concise 
-        = placeholder shares_for_topic do |collection|
-          = render :partial => "shares/share", :collection => collection
+      .tabs
+        ul.buttons
+          li= link_to "All", "#all-shares"
+          li= link_to "Emails", "#email-shares"
+          li= link_to "Socials", "#social-shares"
+
+        #all-shares
+          ol.list.shares.concise
+            = placeholder shares_for_topic do |collection|
+              = render :partial => "shares/share", :collection => collection
+
+        #email-shares
+          ol.list.shares.concise
+            = placeholder shares_for_topic(false) do |collection|
+              = render :partial => "shares/share", :collection => collection
+
+        #social-shares
+          ol.list.shares.concise
+            = placeholder shares_for_topic(true) do |collection|
+              = render :partial => "shares/share", :collection => collection

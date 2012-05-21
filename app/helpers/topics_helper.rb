@@ -58,9 +58,10 @@ module TopicsHelper
   end
   
   
-  def shares_for_topic
+  def shares_for_topic(social=nil)
     case 
-      when owner_of_topic? then resource.shares
+      when owner_of_topic?
+        social.nil?? resource.shares : (social ? resource.shares.social : resource.shares.email)
       else resource.shares.where(:user_id => current_user)
     end
   end
