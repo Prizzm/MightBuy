@@ -1,71 +1,8 @@
-- if resource.brand?
-  
-  .brand-welcome
-    = heading "Here's What to Do.."
-    
-    p= link_to "Update Your Profile..", edit_resource_path
-    p= link_to "Get Recommendations for a Product..", recommendation_topics_path
-    p= link_to "Get Recommendations for your Business..", business_recommendation_topics_path
-    
-  = heading "Quick Stats.."
-  
-  .statistics
-    - stats = resource.stats
-    .section
-      .tip= "This is the total # of invites you've sent out."
-      label Invites Sent
-      span= stats[:invites_sent]
-    .section
-      .tip= "Percent of users who responded."
-      label Response Rate
-      span= stats[:responded]
-    .section
-      .tip= "Percent of users who both responded & recommended."
-      label Promoters
-      span= stats[:promoted]
-    .section
-      .tip= "Times your products have been recommended on facebook."
-      label Recommends
-      span= stats[:recommended]
-    .section
-      .tip= "Times your products have been tweeted."
-      label Tweets
-      span= stats[:tweeted]
-  
-- else
+ol.list.topics
+  = placeholder latest_posts do |collection|
+    = render :partial => "topics/topic", :collection => collection
 
-  .header
-    = image_link( resource, edit_resource_path, :class => :thumb ) { thumb('125x125#') }
-  
-    .attrs
-      = attr "Your Name", resource.name
-      = attr "Points Earned", resource.points.total
-  
-    - if resource.image.blank?
-      .points-with-desc
-        = points_tag(:uploading_a_photo)
-        |Upload a photo of yourself for 30 points!
-        .clearfix
-        
-    
-  .user-welcome
-    = heading "Here's What to Do.."
+= link_to "Add something you might buy", new_topic_path   
+/= link_to "More...", topics_path(:user => resource.id)
 
-    p= link_to "Recommend a Product..", recommend_topics_path
-
-  p= heading "Your Latest Posts.."
-
-  ol.list.topics
-    = placeholder latest_posts do |collection|
-      = render :partial => "topics/topic", :collection => collection
-    
-  = link_to "See all your posts..", topics_path(:user => resource.id)
-  
-  = heading "Your Latest Conversations.."
-
-  ol.list.responses
-    = placeholder latest_activity do |collection|
-    
-      = render :partial => "responses/response", :collection => collection
-    
-  p= link_to "See all your activity..", activity_path(:user => resource.id)
+ 

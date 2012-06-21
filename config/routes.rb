@@ -32,6 +32,7 @@ NewPrizzmCom::Application.routes.draw do
   # Auth Roots
   get 'welcome' => 'profile#welcome', :as => 'welcome'
   get 'me' => 'profile#show', :as => 'user_root'
+  #get 'me' => 'topics#index', :as => 'user_root'
   resource :profile, :controller => "profile"
   
   # Topics

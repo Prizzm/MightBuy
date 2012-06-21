@@ -1,13 +1,18 @@
-= heading "General Details"
+= heading "Details"
 
+= form.input :subject, :label => "Name", :hint => "E.x. What do you think of our new logo?"
+= form.input :url, :label => "URL", :hint => "Paste URL - or search google for  <name>"
+= form.input :body, :label => "Notes", :hint => "Details on the item, or notes of why you want it"
+
+
+= heading "Image"
 = render "partials/image_selector_input", :form => form, :field => :image
-= form.input :subject, :label => "Subject", :hint => "E.x. What do you think of our new logo?"
-= form.input :body, :label => "Description", :hint => "Care to elaborate on your question / subject?"
-= form.input :url, :label => "URL", :hint => "Where should this link to? (Leave blank if nowhere.)"
-= form.input :recommendable, :label => "Recommendations", :hint => "Would you like users to be able to recommend this?", :as => :radio
 
 
-= heading "Sharing Details"
+/= form.input :recommendable, :label => "Recommendations", :hint => "Would you like users to be able to recommend this?", :as => :radio
 
-= form.input :share_title, :label => "Title", :hint => "When shared on facebook or twitter, what should the title be?"
-= form.input :access, :label => "Who can view?", :collection => Topic::Access, :as => :radio
+
+
+/= form.input :share_title, :label => "Title", :hint => "When shared on facebook or twitter, what should the title be?"
+/	= form.input :access, :label => "Who can view?", :collection => Topic::Access, :as => :radio
+= form.input :access, :label => "Who can view?", :collection => Topic::Access, :as => :hidden , :input_html => { :value => "public" }

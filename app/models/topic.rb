@@ -22,7 +22,7 @@ class Topic < ActiveRecord::Base
   validates :access, :presence => { :message => "Please select one of the above :)" }
   validates :shortcode, :presence => true, :uniqueness => true
   validates :subject, :presence => true
-  validates :body, :presence => true
+  #validates :body, :presence => true
   
   # Uploaders
   image_accessor :image

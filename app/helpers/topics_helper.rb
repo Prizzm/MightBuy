@@ -80,7 +80,7 @@ module TopicsHelper
           when :business_recommendation then "See if Your Customers Recommend You!"
           when :recommendation then "Get Recommendations.."
           when :recommend then "Recommend a Product.."
-          else "What's on your mind?"
+          else "I might buy..."
         end
       when :feedback then "Get Feedback on A Product"
       else super
