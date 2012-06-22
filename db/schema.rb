@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621215121) do
+ActiveRecord::Schema.define(:version => 20120622185416) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20120621215121) do
     t.string   "share_title"
     t.string   "image_uid"
     t.integer  "price"
+    t.integer  "offer"
   end
 
   add_index "topics", ["shortcode"], :name => "index_topics_on_shortcode", :unique => true
