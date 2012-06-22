@@ -6,9 +6,9 @@ module ResponsesHelper
     
     unless type.blank?
       label = case type
-        when "recommend" then "I recommend this!"
-        when "undecided" then "I'm undecided about this."
-        when "not_recommended" then "I do not recommend this!"
+        when "recommend" then "Buy it!"
+        when "undecided" then "Uhm..."
+        when "not_recommended" then "Don't buy it!"
       end
       content_tag :div, :class => "recommend-type" do
         content_tag :span, label, :class => type

@@ -19,7 +19,7 @@ ol.list.responses
       .notes
         = ("In response to <strong>%s</strong> by <strong>%s</strong> %s." % [response.topic.subject, response.topic.user.name, shorthand(response.created_at).downcase]).html_safe
   
-- if response.recommend_type == "recommend"
+/- if response.recommend_type == "recommend"
   
   = heading "Make your recommendation count - share it!"
 	

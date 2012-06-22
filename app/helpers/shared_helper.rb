@@ -86,7 +86,7 @@ module SharedHelper
         response = case
           when object.question? then "%s is asking for feedback.."
           when object.form == "recommend" then "%s Recommended.."
-          else "%s Was Thinking.."
+          else "%s might buy.."
         end
         
         # response = object.question? ? "%s Wants to Know.." : "%s Was Thinking.."

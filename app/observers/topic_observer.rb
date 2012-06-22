@@ -10,7 +10,7 @@ class TopicObserver < ActiveRecord::Observer
     case topic.form?
       when :business_recommendation
         topic.share_title = "I recommend %s!" % topic.user.name
-      when :recommendation
+      when :recommendation_dontdothis
         product = topic.subject
         topic.subject = "Would you recommend your %s?" % product
         topic.body = "We really value your feedback on your %s.   Would you recommend it to your friends?  And if you don't recommend it please tell us why.  Your feedback goes straight to us here at %s , so please let us know exactly what you think." % [ product, topic.user.name ]

@@ -20,20 +20,20 @@
       - if [:recommendation, :business_recommendation].include?(resource.form?)
       
         .recommendation
-          = heading "Do you recommend this?"
+          = heading "Should %s Buy This?" % resource.user.name 
         
           = simple_form_for Response.new, :url => topic_responses_path(resource, :format => :js), :html => { "data-remote" => true } do |form|
         
             .recommend-or-not
-              = respond_button :recommended, 'I recommend it!', :icon => 'thumbup.png'
+              = respond_button :recommended, 'Yes!', :icon => 'thumbup.png'
               = respond_button :undecided, 'Not Sure..'
-              = respond_button :not_recommended, "I don't recommend it!", :icon => 'thumbdown.png'
+              = respond_button :not_recommended, "NO!", :icon => 'thumbdown.png'
               = form.input :recommend_type, :as => :hidden, :input_html => { :class => "recommend-type" }
             
             .other-feedback
 
               = heading "More feedback please!"
-              = form.input :body, :label => false, :placeholder => "Write it down!... unless.. too much work? It's optional - just press \"submit\".", :required => false
+              = form.input :body, :label => false, :placeholder => "..additional comments", :required => false
             
             .group.footer
             
@@ -64,46 +64,47 @@
 
   - if current_user && current_user.brand?
     
+	#sharemore
+	  = heading "Ask Friends - should you buy it?", :id => "share"
+	  = link_to "Email friends", topic_share_path(resource), :class => "button" 
+	  | "FB Button"
+	  | "Twitter Button"
+
+
     / Stats
-    
+	#stats
+      = heading "Votes", :id => "stats"
+       
     .statistics
       - stats = resource.stats
-      .section
-        .tip= "This is the total # of invites you've sent out."
-        label Invites Sent
-        span= stats[:invites_sent]
-      .section data-link=filter_url(:unreplied)
-        .tip= "Feedback you haven't yet responded to."
-        label Awaiting reply
-        span= stats[:unreplied]
       .section data-link=filter_url(:recommended)
-        .tip= "Percent of users who recommended this."
-        label Liked
+        .tip= "Percent of friends who said YES!"
+        label Yes
         span= stats[:recommended]
       .section data-link=filter_url(:undecided)
-        .tip= "Percent of users who were undecided about this."
+        .tip= "Percent of friends who had no opinion."
         label Undecided
         span= stats[:undecided]
       .section data-link=filter_url(:not_recommended)
-        .tip= "Percent of users who did not recommend this."
-        label Disliked
-        span= stats[:not_recommended]        
-      .section
-        .tip= "Times your products have been shared on social networking sites."
-        label Social Shares
-        span= stats[:social_shares]
-  
+        .tip= "Percent of friends who said - don't buy it!"
+        label No
+        span= stats[:not_recommended]        	
+
+  	
   .tabs
     ul.buttons
 
+      
       - if featured_response
         li= link_to "Featured", "#featured"
 
       - unless current_user && current_user.brand?
         li= link_to phrase_for(:respond), "#respond"
       
+	  
       li= link_to phrase_for(:comments), "#responses"
-      li= link_to "Sent invitations", '#sharing'
+      li= link_to "View emails", '#sharing'
+	  	 
 	
 
     / Featured Response

@@ -21,7 +21,7 @@
               = image_link(current_user, user_root_path) { thumb('100x100#') }
               = link_to "Signout", destroy_user_session_path, :method => :delete
             #links
-              = link_to "My Profile", user_root_path
+              = link_to "Edit Profile", edit_profile_path
           - else
             #links
               = link_to 'Sign up!', new_user_registration_path
@@ -29,9 +29,9 @@
     - if current_user && current_user.brand?
       #header
         ol#menu
-          li= active_link "you", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
-          li= active_link "topics", topics_path(:user => current_user), "topics", "shares"
-          li= active_link "feedback", activity_path(:user => current_user), "activity"
+          li= active_link "Home", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
+          /li= active_link "I Have", topics_path(:user => current_user), "topics", "shares"
+          /li= active_link "feedback", activity_path(:user => current_user), "activity"
           / = active_link "you", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
           / = active_link "topics", topics_path, "topics", "shares", "activity"          
           / = active_link "people", users_path, "users"

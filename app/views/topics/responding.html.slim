@@ -18,12 +18,12 @@
           = image_link(resource.user, "javascript:void(0)") { thumb("150x100") }
         
         .descriptor
-          = "%s is using Prizzm to ask for your opinion." % resource.user.name 
+          = "Your friend %s is shopping with Prizzm and asking your opinion!" % resource.user.name 
 
-        #points 0P
+        /#points 0P
         
         / Join the beta list..
-        = simple_form_for BetaSignup.new, :url => join_beta_path(:format => :js), :remote => true, :id => "register" do |form|
+        /= simple_form_for BetaSignup.new, :url => join_beta_path(:format => :js), :remote => true, :id => "register" do |form|
           .join-the-beta
             = form.input :email_address, :as => :hidden, :input_html => { :value => invited_email_address }
             = form.button :submit, "Register Now!"

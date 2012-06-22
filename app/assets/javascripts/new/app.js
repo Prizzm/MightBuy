@@ -212,21 +212,21 @@ var recommend = function () {
     
     recommend.click(function () {
       status.empty();
-      heading.text('Let us know what you think:');
+      heading.text('Comments?');
       feedback.slideDown();
       chosen(this, 'recommend');
     });
     
     undecided.click(function () {
       status.empty();
-      heading.text("Okay! What can we do better?");
+      heading.text("Comments?");
       feedback.slideDown();
       chosen(this, 'undecided');
     });
     
     notrecommended.click(function () {
       status.empty();
-      heading.text("Oh no! How can we win your support?");
+      heading.text("Why not?");
       feedback.slideDown();
       chosen(this, 'not_recommended');
     });
