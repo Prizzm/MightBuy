@@ -11,3 +11,4 @@
 //= require vendor/jquery.placeholder.js
 //= require new/sound.js
 //= require new/app.js
+//= require new/item_search.js
