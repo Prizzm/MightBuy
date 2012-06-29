@@ -34,7 +34,7 @@ gem 'sass-rails', "~> 3.1.4"
 gem "meta_search",    '>= 1.1.0.pre'
 
 # Server
-gem 'thin'#, '1.3.1'
+gem 'thin', '1.2.11'
 
 # Background Jobs
 gem 'daemons'
