@@ -5,7 +5,6 @@
  *= require_self
  *= require fancybox
  *= require vendor/jquery.qtip
- *= require vendor/jquery-ui
  *= require new/new
  *= require new/sections
 */
