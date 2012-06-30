@@ -4,6 +4,7 @@
     = form.input :image, :as => :file, :label => false
   
   = form.input :body, :label => false
+  = form.input :recommend_type, :as => :hidden
   
   - if topic.recommendable
     = form.input :recommended, :label => "Would you recommend this?", :as => :boolean
