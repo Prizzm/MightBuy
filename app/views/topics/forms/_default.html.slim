@@ -1,7 +1,12 @@
 = heading "Details"
 
 = form.input :subject, :label => "Name", :hint => "E.x. What do you think of our new logo?"
-= form.input :url, :label => "URL", :hint => "Paste URL - or search google for  <name>"
+= form.input :url, :label => "URL", :hint => "Paste URL - or search google for  <name>", :wrapper_html => { :class => "string" }, :wrapper => :append \
+    do \
+      form.input_field(:url) + \
+      link_to(image_tag("/images/app/search-icon.png", :class => "item-url-search-icon"), "#", :id => "item_url_search") \
+    end
+#item_url_search_autocomplete
 = form.input :price, :label => "Price $", :hint => "Price - as listed"
 = form.input :offer, :label => "Offer $", :hint => "What price would you buy it now for?"
 = form.input :body, :label => "Notes", :hint => "Details on the item, or notes of why you want it"
