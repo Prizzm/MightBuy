@@ -124,11 +124,11 @@
           = render featured_response
 
     / Response
-    - unless current_user && current_user.brand?
-      #respond
-        .group.respond
-          = heading phrase_for(:respond)
-          = render "responses/form", :topic => resource
+    /- unless current_user && current_user.brand?
+    #respond
+      .group.respond
+        = heading phrase_for(:respond)
+        = render "responses/form", :topic => resource
 
     / Responses
     #responses

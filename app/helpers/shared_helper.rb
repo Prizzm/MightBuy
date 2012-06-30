@@ -94,7 +94,7 @@ module SharedHelper
       when :comments
         object.question? ? "What others think.." : "Comments.."
       when :respond
-        object.question? ? "Your Feedback.." : "Have something to say?"
+        object.question? ? "Comments.." : "Comments.."
       when :said
         phrase = object.question? ? "%s asked this %s." : "%s said this %s."
         said_this(object, phrase)
