@@ -116,7 +116,7 @@ module TopicsHelper
   def response_form_for (topic, &block)
     html = user_signed_in? ? {} : { "data-remote" => true }
     url    = topic_responses_path(topic, :format => user_signed_in? ? nil : :js)
-    simple_form_for Response.new, :url => url, :html => html, &block
+    simple_form_for Response.new(:recommend_type => "undecided"), :url => url, :html => html, &block
   end
   
   def open_graph_info
