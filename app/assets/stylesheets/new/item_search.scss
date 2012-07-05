@@ -124,3 +124,14 @@ a#item_url_search {
   padding-left:5px;
   background-color:White;
 }
+
+/* TODO : Should probably shift this to common css file */
+.collapsible {
+  .input {
+    display:none;
+  }
+  .toggle {
+    display:inline-block;
+    margin-left:140px;
+  }
+}

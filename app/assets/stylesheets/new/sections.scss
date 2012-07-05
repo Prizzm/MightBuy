@@ -351,13 +351,14 @@
         @include rounded-corners(15px);
         
         overflow: hidden;
-        width: 40px;
+        width: 70px;
         margin: 8px auto;
         padding: 3px 5px;
+        padding-left:10px;
         background: #efefef;
       }
       
-      .next, .prev
+      .next, .prev, .cancel
       {
         display: block;
         overflow: hidden;
@@ -371,8 +372,9 @@
       
       .next 
       { 
-        float: right;
+        float: left;
         background-position: -20px 0px;
+        margin-left:5px;
         &:hover { background-position: -20px -20px; }
       }
       
@@ -380,6 +382,16 @@
         float: left; 
         background-position: 0px 0px; 
         &:hover { background-position: 0px -20px; }
+      }
+
+      .cancel {
+        float: left;
+        margin:1px;
+        margin-left:10px;
+        width: 15px;
+        height: 15px;
+        background-position: -40px 0px; 
+        &:hover { background-position: -40px -20px; }
       }
     }
     

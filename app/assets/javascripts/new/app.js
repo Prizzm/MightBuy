@@ -34,6 +34,10 @@ var hideloader = function (selector) {
   $(selector).delay(500).qtip('destroy');
 }
 
+var showblank = function (selector) {
+  //$(selector).delay(500).
+}
+
 var placeholders = function () {
   $('input[placeholder], textarea[placeholder]').placeholder();
 }
@@ -293,17 +297,19 @@ var pointshelper = function () {
 var selectoruploaders = function () {
   $('.image-selector-uploader').each(function (element) {
     
-    var uploader      = $(this);
-    var position      = 0;
-    var images        = [];
-    var image         = uploader.find('a.image');
-    var grab          = uploader.find('a.get');
-    var next          = uploader.find('a.next');
-    var prev          = uploader.find('a.prev');
-    var webfield      = uploader.find('#web input');
-    var remotefield   = uploader.find('input.remote-url');
-    var idfield       = uploader.find('input.upload-id');
-    var uploadfield   = uploader.find('.file-uploader');
+    var uploader          = $(this);
+    var position          = 0;
+    var images            = [];
+    var image             = uploader.find('a.image');
+    var grab              = uploader.find('a.get');
+    var next              = uploader.find('a.next');
+    var prev              = uploader.find('a.prev');
+    var cancel            = uploader.find('a.cancel');
+    var webfield          = uploader.find('#web input');
+    var remotefield       = uploader.find('input.remote-url');
+    var idfield           = uploader.find('input.upload-id');
+    var uploadfield       = uploader.find('.file-uploader');
+    var blank_image_html  = image.html();
     
     this.setimages = function (images) {
       success(images);
@@ -331,6 +337,14 @@ var selectoruploaders = function () {
       return change();
     }
     
+    var gocancel = function () {
+      image.html(blank_image_html).removeClass('present').addClass("blank");
+      remotefield.val("");
+      position          = 0;
+      images            = [];
+      return false;
+    }
+    
     var change = function () {
       if(images[position])
       {
@@ -346,12 +360,12 @@ var selectoruploaders = function () {
       image.removeClass('blank').addClass('present');
       image.find('td').html(img);
     }
-        
+
     grab.click(function () {
       scrape(webfield.val());
       return false;
     });
-    
+
     // Initialize Uploader..
     var upload = new qq.FileUploader({
         element: uploadfield[0],
@@ -372,7 +386,8 @@ var selectoruploaders = function () {
     
     next.click(function () { return gonext(); })
     prev.click(function () { return goprev(); })
-    
+    cancel.click(function () { return gocancel(); })
+
   });
 };
 
