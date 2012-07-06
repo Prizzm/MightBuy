@@ -117,4 +117,10 @@ $(function(){
     $("#new_topic .buttons .button").removeClass("hidden");
   });
 
+  // if URL is not blank show grab image dialog immediately
+  // used in bookmarklet
+  if ( $("#topic_url").val() ) {
+    $("#topic_url").trigger("complete");
+  }
+
 });
