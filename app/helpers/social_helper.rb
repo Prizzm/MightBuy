@@ -23,9 +23,18 @@ module SocialHelper
     title = response.topic.subject if title.blank?
     social_info_wrapper :tweet, response, twitter.tweet(h(title), url)
   end
-  
-  def social_info_wrapper (type, response, content)
-    content_tag :div, content, :class => "#{type} social-info", :data => { :response_id => response.id }
+
+  def topic_tweet(topic)
+    title = "I might buy #{topic.share_title || topic.subject} #{topic_url(topic)}"
+    social_info_wrapper :tweet, topic, twitter.tweet(h(title), topic_url(topic))
+  end
+
+  def topic_fb_send(topic)
+    social_info_wrapper :recommend, topic, facebook.like(topic.url)
+  end
+
+  def social_info_wrapper (type, object, content)
+    content_tag :div, content, :class => "#{type} social-info", :data => { "#{object.class.to_s.downcase}_id".to_sym => object.id }
   end
 
   def twitter_url_for(string)
@@ -96,12 +105,11 @@ module SocialHelper
     
     def self.tweet (text, url)
       button = '<a href="https://twitter.com/share" class="twitter-share-button" data-url="%s" 
-        data-text="%s" data-count="none" data-via="prizzmtwt">Tweet</a><script type="text/javascript" 
+        data-text="%s" data-count="none" data-via="Mightbuy">Tweet</a><script type="text/javascript" 
         src="//platform.twitter.com/widgets.js"></script>'
         
       (button % [url, text]).html_safe
     end
-    
   end
   
 end
