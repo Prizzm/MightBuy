@@ -20,14 +20,12 @@ module NotificationsHelper
   end
   
   def reply_text
-    @topic.question? ? "Give Your Answer!" : "Reply Now!"
+    @topic.question? ? "Give Your Answer!" : "Should I buy them?"
   end
   
   def sent_to_by
-    ("This email was sent to %s by %s %s - using Prizzm(tm) surveys.
-     This is a one-time request, so no need to unsubscribe.  
-     But please share your opinion, it's easy!!" % 
-      [ mail_to(@to_email), @name, @homeurl ]).html_safe
+    ("This email was sent to %s by %s" % 
+      [ mail_to(@to_email), @name ]).html_safe
   end
   
 end

@@ -71,7 +71,7 @@ NewPrizzmCom::Application.configure do
   }
   
   config.action_mailer.default_url_options = { 
-    :host => 'www.prizzm.com'
+    :host => 'prizzm-staging.herokuapp.com'
   }
 
 end

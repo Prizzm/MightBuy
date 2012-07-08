@@ -70,12 +70,13 @@
 
   - if current_user && current_user.brand?
     
-	#sharemore
-	  = heading "Ask Friends - should you buy it?", :id => "share"
-	  = link_to "Email friends", topic_share_path(resource), :class => "button" 
-	  | "FB Button"
-	  | "Twitter Button"
-
+    #sharemore
+      = heading "Ask Friends - should you buy it?", :id => "share"
+      .email-friend
+        = link_to "Email friends", topic_share_path(resource), :class => "button" 
+      = topic_tweet(resource)
+      = topic_fb_send(resource)
+      .clear
 
     / Stats
 	#stats
