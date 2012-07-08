@@ -3,6 +3,10 @@
 
 /* Sections */
 
+.clear {
+  clear: both;
+}
+
 #app
 {
   #points
@@ -161,7 +165,13 @@
       }
     }
   }
-  
+
+  #sharemore
+    .tweet, .recommend, .email-friend {
+      float: left;
+      margin-right: 8px;
+    }
+
   #reply-form
   {
     .text

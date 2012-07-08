@@ -72,9 +72,11 @@
     
     #sharemore
       = heading "Ask Friends - should you buy it?", :id => "share"
-      = link_to "Email friends", topic_share_path(resource), :class => "button" 
+      .email-friend
+        = link_to "Email friends", topic_share_path(resource), :class => "button" 
       = topic_tweet(resource)
       = topic_fb_send(resource)
+      .clear
 
     / Stats
 	#stats
