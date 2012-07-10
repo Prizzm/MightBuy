@@ -4,19 +4,19 @@
 #app
 
   #flashes
-    - flash.each do |key, message|
+    /- flash.each do |key, message|
       - if key == :points
         = points_flash(message)
 
   #frame
     #sidebar
       .fixed
-        = link_to "Prizzm", user_root_path, :id => "brand"
+        /= link_to "Prizzm", user_root_path, :id => "brand"
 
         / Sidebar
         = override(:sidebar) do
           - if user_signed_in?
-            #points= "%sP" % current_user.points.available
+            /#points= "%sP" % current_user.points.available
             #avatar
               = image_link(current_user, user_root_path) { thumb('100x100#') }
               = link_to "Signout", destroy_user_session_path, :method => :delete

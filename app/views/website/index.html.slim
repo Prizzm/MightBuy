@@ -1,15 +1,10 @@
 #website class="#{ brand? ? 'brands' : 'shoppers' }"
-  = link_to "Prizzm - Rewarding Feedback", root_url, :id => "logo"
+  / = link_to "Prizzm - Rewarding Feedback", root_url, :id => "logo"
   #content
     h1
-      span= brand? ? "Get More Recommendations." : "What do you recommend?"
-    h2= brand? ? "rewarding feedback." : "rewarding feedback"
-    
-    #switcher
-      = link_to "I'm a Business", root_url, :class => brand? ? 'active' : nil
-      span |
-      = link_to "I'm a Person", shoppers_url, :class => brand? ? nil : 'active'
-    
+      span= brand? ? "MightBuy." : "track stuff you might buy"
+    h2= brand? ? "Track stuff you might buy" : "Track stuff you might buy"
+
     #sections
       
       #sliders
@@ -18,14 +13,14 @@
         
           - if brand?
 
-            / Simple Feedback..
-            = render "slide", :image => "feedback.jpg", :title => "*THE* question", :desc => "Do your customers recommend you?  Prizzm is the best way to answer the most important question a business can ask."
+            / Add link to anything
+            = render "slide", :image => "add-anything.png", :title => "Add link to anything", :desc => "..."
         
-            / More Responses..
-            = render "slide", :image => "responses.jpg", :title => "More Responses", :desc => "Our gorgeous, straight-forward forms & built-in rewards make it quick, easy & enticing for your customers to respond to you!"
+            / Track your ideal price
+            = render "slide", :image => "track-price.png", :title => "Track your ideal price", :desc => "..."
 
-            / Social sharing..
-            = render "slide", :image => "sharing.jpg", :title => "Social Sharing", :desc => "How many of your customers recommend you on FB/Twitter? Measure *and* vastly increase the number who do with Prizzm."
+            / Get friends feedback
+            = render "slide", :image => "feedback.png", :title => "Get friends feedback", :desc => "..."
             
           - else
             
@@ -37,17 +32,15 @@
       
       #forms
         
-        .badge= "Signup! It's free"
-        
         - if brand?
         
           / Brand Signup
           = simple_form_for User.new, :as => :user, :url => registration_path(:user), :html => { :id => "signup" } do |form|
-            = form.input :name, :placeholder => "Company Name", :label => false
+            = form.input :name, :placeholder => "Username", :label => false
             = form.input :email, :placeholder => "Email", :label => false
             = form.input :password, :as => :password, :placeholder => "Password", :label => false
             = form.input :category, :as => :hidden, :input_html => { :value => "brand" }, :label => false
-            = form.button :submit, "Sign up for Prizzm!"
+            = form.button :submit, "Sign up for MightBuy!"
             .clearfix
         - else
           
@@ -71,4 +64,4 @@
     #navigation
       = link_to "About", about_path
       = link_to "Privacy", privacy_path
-      span.copyright &copy; 2012 Prizzm.
+      span.copyright &copy; 2012 MightBuy.

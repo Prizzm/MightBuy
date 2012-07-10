@@ -1,6 +1,8 @@
 # Sources
 source 'http://rubygems.org'
 
+
+
 # Rails
 gem 'rails', '3.1.1'
 
@@ -30,7 +32,7 @@ gem 'dragonfly', '~>0.9.10'
 
 # Admin
 gem 'activeadmin', '0.4.1'
-gem 'sass-rails', "~> 3.1.4"
+gem 'sass-rails', "3.1.5"
 gem "meta_search",    '>= 1.1.0.pre'
 
 # Server
@@ -48,7 +50,7 @@ group :development do
   # gem 'unicorn'
   gem 'sqlite3'
   gem 'rb-fsevent'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+
   gem 'rails-dev-tweaks', '~> 0.5.1'
   gem 'ffaker', '1.10.1'
   gem "rails-erd"
