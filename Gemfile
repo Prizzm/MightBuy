@@ -10,6 +10,9 @@ gem 'rails', '3.1.1'
 gem 'jquery-rails'
 gem 'fancybox-rails', '0.1.4'
 
+# API
+gem 'rabl'
+
 # Authentication
 gem 'devise', '1.4.7'
 
