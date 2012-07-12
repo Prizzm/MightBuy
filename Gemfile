@@ -50,7 +50,7 @@ group :development do
   # gem 'unicorn'
   gem 'sqlite3'
   gem 'rb-fsevent'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'rails-dev-tweaks', '~> 0.5.1'
   gem 'ffaker', '1.10.1'
   gem "rails-erd"
