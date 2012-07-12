@@ -14,6 +14,29 @@ body
   background: #d5c6b3 url("/images/website/gradient.png") repeat-x fixed;
 }
 
+.logo
+{
+  @include font-museo(700);
+  font-size: 50px;
+  letter-spacing: -1px;
+  margin-bottom: 0.3em;
+  text-shadow:
+    0px 1px #6D3F3D,
+    0px 2px 4px rgba(0, 0, 0, 0.15);
+
+  span
+  {
+    position: absolute;
+    color: #b22525;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)));  
+  }
+  
+  &:after {
+    color: #ff484e;
+    content : 'MightBuy ';
+  }
+}
+
 /* Text Selection */
 
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
@@ -41,9 +64,9 @@ body
   #sidebar
   {
     position: absolute;
-    top: 40px;
+    top: 0;
     width: 140px;
-    left: -170px;
+    left: -250px;
     text-align: center;
     
     a#brand
