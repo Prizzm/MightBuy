@@ -18,7 +18,7 @@ NewPrizzmCom::Application.routes.draw do
     :path_names => { 
       :sign_in => '/login', 
       :sign_out => '/logout', 
-      :sign_up => '/join'
+      :sign_up => '/join',  
     },
     :controllers => {
       :sessions     => "sessions",
