@@ -4,6 +4,14 @@ NewPrizzmCom::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  # API
+  namespace :api do
+    namespace :v1  do
+      resources :tokens,:only => [:create, :destroy]
+      match "/user/info" => "users_api#info"
+    end
+  end
+
   # Authentication
   devise_for :users, 
     :path_names => { 

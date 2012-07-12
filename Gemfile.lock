@@ -156,6 +156,9 @@ GEM
     premailer-rails3 (1.0.0)
       premailer (~> 1.7)
       rails (~> 3)
+    rabl (0.6.14)
+      activesupport (>= 2.3.14)
+      multi_json (~> 1.0)
     rack (1.3.6)
     rack-cache (1.1)
       rack (>= 0.4)
@@ -272,6 +275,7 @@ DEPENDENCIES
   nokogiri (= 1.5.0)
   pg (= 0.11.0)
   premailer-rails3 (= 1.0.0)
+  rabl
   rack-cache
   rails (= 3.1.1)
   rails-dev-tweaks (~> 0.5.1)
