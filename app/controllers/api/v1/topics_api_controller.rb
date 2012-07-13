@@ -26,7 +26,12 @@ class Api::V1::TopicsApiController < ApplicationController
   # POST /topics
   # POST /topics.xml
   def create
-    @topic = current_user.topics.new(params[:topic])
+    @topic = build_resource
+    @topic.subject = params[:subject]
+    @topic.price = params[:price]
+    @topic.offer = params[:offer]
+    @topic.image = params[:image]
+    @topic.user = current_user
     @topic.save
   end
 
