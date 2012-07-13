@@ -16,7 +16,7 @@ class Api::V1::TopicsApiController < ApplicationController
   # GET /topics/new
   # GET /topics/new.xml
   def new
-    @topic = current_user.topic.new
+    @topic = current_user.topics.new
   end
 
   # GET /topics/1/edit
@@ -26,18 +26,8 @@ class Api::V1::TopicsApiController < ApplicationController
   # POST /topics
   # POST /topics.xml
   def create
-    @topic = current_user.topic.new(params[:topic])
-
-    respond_to do |wants|
-      if @topic.save
-        flash[:notice] = 'Topic was successfully created.'
-        wants.html { redirect_to(@topic) }
-        wants.xml  { render :xml => @topic, :status => :created, :location => @topic }
-      else
-        wants.html { render :action => "new" }
-        wants.xml  { render :xml => @topic.errors, :status => :unprocessable_entity }
-      end
-    end
+    @topic = current_user.topics.new(params[:topic])
+    @topic.save
   end
 
   # PUT /topics/1
@@ -69,9 +59,6 @@ class Api::V1::TopicsApiController < ApplicationController
   private
     def find_topic
       @topic = Topic.find(params[:id])
-      if @topic.user_id != current_user.id then
-        head :unauthorized
-      end
     end
 
 end
