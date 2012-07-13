@@ -1,0 +1,1 @@
+MASTER_PASSWORD = "moc.mzzirp"

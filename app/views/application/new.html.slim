@@ -1,0 +1,7 @@
+= app_page do
+
+  = simple_form_for resource, :url => collection_path do |form|
+    = render "form", :form => form
+    .buttons
+      = form.button :submit, "Save!"
+      = go_back(collection_path)

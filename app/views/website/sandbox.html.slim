@@ -1,0 +1,24 @@
+ol.buttons
+  li= link_to "Latest Deals", '#deals', :class => "active button"
+  li= link_to "Products", '#products', :class => "button"
+  li= link_to "Reviews", '#reviews', :class => "button"
+
+h3 
+  span Our Latest Deals..
+  
+.feature
+  .image
+    = link_to image_tag("/images/app/placeholder-product.png"), "#product"  
+  .group
+    .title 
+      |20-50% Off Any Handbag!
+    .details
+      |We're offering all handbags 20-50% off! You better hurry & grab it now though, offer will expire on January 31, 2011!
+    ol.buttons
+      li= link_to "I'll take it!", "#takeit", :class => "button deal-related"
+      li
+        .deal-slider
+          .slider-contents
+            label.min 20%
+            .slider
+            label.max 100%

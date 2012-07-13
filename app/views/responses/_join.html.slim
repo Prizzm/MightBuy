@@ -1,0 +1,29 @@
+#app
+  #popup
+  
+    = heading "Here's what you said.."
+    
+    ol.list.responses
+      = render response
+
+    #promo
+
+      h2 Thanks! Now you should join up! :)
+      p
+        | We've built a way to <strong>collaborate with the brands you love</strong>; share ideas, get better customer support &amp; help make products you can't live without!
+
+      ol
+        li 
+          |Get rewarded for your loyalty! 
+          span.aside You can save your account for 40 points!
+        li You can add other topics / products you recommend!
+        li After signing up, make sure to share your recommendation on facebook!
+
+      .join-form
+        = simple_form_for User.new, :as => :user, :url => users_path do |form|
+          = form.input :name, :label => "Your Name", :required => true
+          = form.input :email, :label => "Email", :required => true
+          = form.input :password, :as => :password, :label => "Password", :required => true
+          .buttons
+            = form.button :submit, "Join Now!"
+            = points_tag :joining

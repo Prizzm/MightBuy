@@ -1,0 +1,7 @@
+= app_page do
+
+  = simple_form_for resource, :url => resource_path do |form|
+    = render "topics/forms/default", :form => form
+    .buttons
+      = form.button :submit, "Save!"
+      = points_tag(:starting_a_topic)

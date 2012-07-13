@@ -1,0 +1,23 @@
+.header
+  = image_link(resource, image_url(resource), :class => :thumb) { thumb('125x125#') }
+  .title= resource.name
+  .description
+    = resource.description? ? resource.description : phrase_for(:no_description)
+  
+  .attrs
+    - unless resource.url.blank?
+      = attr phrase_for(:url), link_to(formatted_url(resource.url), formatted_url(resource.url), :target => "_blank")
+    - unless resource.phone.blank?
+      = attr phrase_for(:phone), resource.phone
+    
+= heading phrase_for(:posts)
+
+ol.list.topics
+  = placeholder latest_posts do |collection|
+    = render collection
+    
+= heading phrase_for(:activity)
+
+ol.list.responses
+  = placeholder latest_activity do |collection|
+    = render :partial => "responses/response", :collection => collection

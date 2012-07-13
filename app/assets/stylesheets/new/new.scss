@@ -1,0 +1,1249 @@
+/* Imports */
+@import "reset";
+@import "mixins";
+@import "globals";
+@import "item_search";
+
+/* Styles */
+
+body
+{
+  font: 14px "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 300;
+  //  background: #F5F5F1;
+  background: #d5c6b3 url("/images/website/gradient.png") repeat-x fixed;
+}
+
+.logo
+{
+  @include font-museo(700);
+  font-size: 50px;
+  letter-spacing: -1px;
+  margin-bottom: 0.3em;
+  text-shadow:
+    0px 1px #6D3F3D,
+    0px 2px 4px rgba(0, 0, 0, 0.15);
+
+  span
+  {
+    position: absolute;
+    color: #b22525;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)));  
+  }
+  
+  &:after {
+    color: #ff484e;
+    content : 'MightBuy';
+  }
+}
+
+/* Text Selection */
+
+::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+
+/* Application */
+
+#app
+{
+  
+  #frame
+  {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    width: 680px;
+    margin-left: -270px;
+  }
+  
+  .fixed
+  {
+    position: fixed;
+  }
+  
+  #sidebar
+  {
+    position: absolute;
+    top: 0;
+    width: 140px;
+    left: -250px;
+    text-align: center;
+    
+    a#brand
+    {
+      display: block;
+      width: 116px;
+      height: 107px;
+      margin: 15px auto;
+      overflow: hidden;
+      text-indent: -9999em;
+      background: url("/images/website/logo.png");
+      
+    }
+    
+    #points
+    {
+      color: #fff;
+      width: 114px;
+      height: 38px;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 32px;
+      margin: 20px auto 5px auto;
+      text-shadow: 0px 1px 1px rgba(0,0,0,0.4);
+      background: url("/images/app/points.png");
+    }
+    
+    #avatar
+    {
+      margin: 5px auto 10px auto;
+      
+      a.image
+      {
+        display: block;
+        width: 50px;
+        height: 50px;
+        margin: auto;
+        background-color: #e53d7a;
+        border: 3px solid #b1b19e;
+        
+        img { width: 50px; height: 50px; }
+        &:hover { border-color: #c5356a; }
+      }
+      
+      a
+      {
+        color: #666;
+        font-size: 12px;
+        font-weight: normal;
+        text-decoration: none;
+        
+        &:hover { color: #333; }
+      }
+    }
+    
+    #links
+    {
+      margin: 15px auto;
+      
+      a
+      {
+        @include hover-button(#c5356a, darken(#c5356a, 5%));
+        padding: 4px 8px;
+        font-size: 12px;
+        margin: 5px auto;
+      }
+    }
+  }
+  
+  #header
+  {
+    position: relative;
+    height: 40px;
+    margin: 0px 20px 10px 20px;
+    
+    ol#menu
+    {
+      position: absolute;
+      left: 0px;
+      
+      li
+      {
+        float: left;
+        margin-right: 20px;
+      }
+      
+      a
+      {
+        display: block;
+        color: #39302a;
+        font-weight: normal;
+        text-decoration: none;
+        height: 34px;
+        line-height: 31px;
+        text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+        
+        &:hover { color: #d02664; }
+        
+        &.active
+        {
+          padding: 0px 15px;
+          @include hover-button(#c5356a, darken(#c5356a, 5%));
+        }
+      }
+    }
+    
+    #search
+    {
+      position: absolute;
+      top: 5px;
+      right: 0px;
+      width: 190px;
+      height: 30px;
+      background: url("/images/app/search.png");
+      
+      
+      input
+      {
+        width: 140px;
+        margin: 6px 0px 0px 30px;
+        font-size: 12px;
+        color: #666;
+        outline: none;
+        border: none;
+        background: none;
+        
+        &.placeholder { color: #999; }
+      }
+    }
+  }
+  
+  #page
+  {
+    @include rounded-corners(3px);
+    @include drop-shadow(1px, 2px, 0.18);
+    
+    position: relative;
+    width: 620px;
+    background: #fff;
+    margin: auto;
+    padding: 80px 30px 20px 30px;
+  }
+  
+  #popup
+  {
+    width: 620px;
+    margin: 40px;
+  }
+  
+  #page, #popup
+  {
+    
+    #banner
+    {
+      position: absolute;
+      top: 20px;
+      left: -40px;
+      width: 762px;
+      height: 67px;
+      background: url("/images/app/banner.png");
+      
+      h1
+      {
+        @include font-museo("700");
+        position: absolute;
+        left: 55px;
+        color: #667A80;
+        font-size: 1.5em;
+        line-height: 50px;
+        font-weight: normal;
+        text-shadow: 0px 1px 0px #fff;
+      }
+      
+      #quick-links
+      {
+        position: absolute;
+        top: 14px;
+        right: 55px;
+        
+        span
+        {
+          color: #667A80;
+          font-size: 11px;
+          font-weight: bold;
+          line-height: 30px;
+          margin-right: 3px;
+        }
+        
+        a.button
+        {
+          @include hover-button(#c5356a, darken(#c5356a, 5%));
+          
+          float: left;
+          font-size: 11px;
+          padding: 5px 10px;
+          margin: 0px 2px;
+          line-height: 1em;
+        }
+        
+        a.icon
+        {
+          margin: 0px 1px;
+        }
+      }
+    }
+    
+    #sub-links
+    {
+      height: 28px;
+      overflow: hidden;
+      margin: 5px 0px;
+      
+      a
+      {
+        @include hover-button(#4B494A, #363536);
+        
+        float: left;
+        font-size: 11px;
+        padding: 5px 10px;
+        margin: 0px 2px;
+        
+        &.active { @include hover-button(#c5356a, darken(#c5356a, 5%)); }
+      }
+    }
+    
+    #content
+    {
+      
+    }
+    
+  }
+  
+  #footer
+  {
+    font-size: 12px;
+    margin: 15px 20px 50px 20px;
+    overflow: hidden;
+    
+    #copyright
+    {
+      color: #a09587;
+      float: left;
+    }
+    
+    #links
+    {
+      float: right;
+      
+      a
+      {
+        color: #7c7369;
+        text-decoration: none;
+        margin-left: 5px;
+        &:hover { 
+          color: darken(#7c7369, 30%);
+        }
+      }
+    }
+    
+  }
+  
+  /* Lists */
+  
+  ol.list
+  { 
+    > li
+    {
+      margin: 10px 0px;
+      overflow: hidden;
+      padding-bottom: 10px;
+      background: url("/images/app/dots.png") repeat-x bottom;
+      
+      &:last-child { background: none; padding: none; }
+      
+      .title
+      {
+        display: block;
+        font-size: 20px;
+        color: #000;
+        margin-bottom: 10px 0px;
+        &:hover { color: #c5356a; }
+      }
+
+      .details
+      {
+        color: #666;
+        line-height: 1.5em;
+        font-size: 13px;
+        margin: 10px 0px;
+      }
+      
+      a.image
+      {
+        display: block;
+        width: 100px;
+        height: 100px;
+        float: left;
+        margin: 0px 10px 0px 0px;
+        border: 4px solid #f5f5f1;
+        
+        img
+        {
+          max-width: 100px;
+          max-height: 100px;
+        }
+        
+        &:hover
+        {
+          border-color: #ddd;
+        }
+        
+        &.thumb
+        {
+          width: 55px;
+          height: 55px;
+          
+          img
+          {
+            max-width: 55px;
+            max-height: 55px;
+          }
+        }
+      }
+      
+      .buttons
+      {
+        margin-top: 10px;
+        
+        a
+        {
+          @include hover-button(#c5356a, darken(#c5356a, 5%));
+          padding: 4px 8px;
+          font-size: 12px;
+          margin: 5px 5px 5px auto;
+        }
+      }
+    }
+    
+    &.concise
+    {
+      font-size: 13px;
+      color: #666;
+    }
+  }
+  
+  table.collection
+  {
+    width: 100%;
+  }
+  
+  /* Detail */
+  
+  #details
+  {
+    
+    /* Header */
+    
+    .header
+    {
+      position: relative;
+      margin: 10px 0px;
+      overflow: hidden;
+      min-height: 130px;
+      padding-left: 145px;
+      
+      .title
+      {
+        font-size: 25px;
+        font-weight: 400;
+        color: #000;
+      }
+      
+      a.title:hover
+      {
+        color: #c5356a;
+      }
+      
+      .description
+      {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.4em;
+        margin: 6px 0px 12px 0px;
+      }
+      
+	  .price
+	  {
+		color: #00AAFF;
+        font-size: 24px;
+	  	float: right;
+	  }
+	
+		.buyitnow
+		{
+			float: right;
+			font-size: 10;
+			color: #999;
+		}
+		
+      .image
+      {
+        position: absolute;
+        left: 0px;
+        margin: 3px;
+        width: 125px;
+        height: 125px;
+        @include drop-shadow(1px, 2px, 0.3);
+        
+        img 
+        { 
+          max-width: 125px; 
+          max-height: 125px; 
+        }
+        
+        &.medium { width: 80px; height: 80px; }
+      }
+      
+      .buttons
+      { 
+        a
+        {
+          @include hover-button(#4B494A, #363536);
+          font-size: 12px;
+          padding: 5px 10px;
+          margin-right: 5px;
+
+          &.active
+          {
+            @include hover-button(#c5356a, darken(#c5356a, 5%));
+          }
+        }
+      }
+      
+    }
+    
+    /* Attributes */
+
+    .attrs
+    {
+      $inset: 150px;
+      margin: 10px 0px;
+
+      .attr
+      { 
+        position: relative;
+        margin: 10px 0px;
+        padding-bottom: 10px;
+        padding-left: $inset + 10px;
+        overflow: hidden;
+        line-height: 1.5em;
+        min-height: 1em;
+        background: url("/images/app/dots.png") repeat-x bottom;
+
+        label
+        {
+          position: absolute;
+          display: block;
+          color: #999;
+          left: 0px;
+          width: $inset;
+          margin-right: 10px;
+          text-align: right;
+        }
+
+        &:last-child
+        {
+          background: none;
+        }
+      }
+    }
+    
+  }
+  
+  /* Forms */
+  
+  form.simple_form
+  {
+    $inset: 120px;
+    
+    h3
+    {
+      margin: 20px 0px;
+    }
+    
+    div.required, div.optional
+    {
+      margin: 15px 0px;
+    }
+    
+    div.string, 
+    div.password, 
+    div.file, 
+    div.text, 
+    div.select,
+    div.integer,
+    div.numeric,
+    div.radio
+    {
+      > label
+      {
+        display: block;
+        width: $inset;
+        float: left;
+        color: #888;
+        line-height: 30px;
+        margin-right: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: right;
+      }
+    }
+    
+    div.string, div.password, div.text, div.numeric
+    {
+      input, textarea
+      {
+        font: 14px "Helvetica Neue", Helvetica, sans-serif;
+        width: 550px - $inset;
+        padding: 5px 10px;
+        font-size: 16px;
+        border: 1px solid #999;
+        @include drop-shadow(1px, 2px, 0.2);
+      }
+      
+      textarea
+      {
+        height: 100px;
+        line-height: 1.5em;
+      }
+      
+      input.numeric
+      {
+        width: 100px;
+      }
+    }
+    
+    div.radio
+    {
+      span
+      {
+        line-height: 30px;
+        margin-right: 8px;
+      }
+      
+      input.radio
+      {
+        margin-right: 3px;
+      }
+    }
+    
+    div.boolean
+    {
+      font-size: 13px;
+      margin-left: $inset + 20px;
+    }
+    
+    span.hint,
+    span.error
+    {
+      margin: 5px auto;
+      display: block;
+      font-size: 13px;
+      margin-left: $inset + 20px;
+    }
+    
+    span.hint
+    {
+      color: #999;
+      strong { font-weight: bold; color: #888; }
+    }
+    
+    span.error
+    {
+      color: #a30;
+    }
+    
+    div.field_with_errors > label
+    {
+      color: #a30;
+    }
+    
+    .placeholder
+    {
+      color: #999;
+    }
+    
+    .buttons
+    {
+      overflow: hidden;
+      margin: 15px auto;
+      line-height: 35px;
+      margin-left: $inset + 20px;
+      
+      input.button
+      {
+        float: left;
+        @include hover-button(#c5356a, darken(#c5356a, 5%));
+        margin-right: 8px;
+        padding: 8px 18px;
+      }
+      
+      a
+      {
+        float: left;
+        font-size: 13px;
+      }
+      
+      &.outset
+      {
+        margin-left: auto;
+      }
+      
+      .worth-points
+      {
+        margin: 6px 0px;
+      }
+    }
+    
+  }
+  
+  /* Globals */
+  
+  h3
+  {
+    @include font-museo("500");
+    color: #bbb;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 20px auto;
+    background: url("/images/app/dots.png") repeat-x center;
+    
+    span
+    {
+      background: #fff;
+      padding-right: 10px;
+    }
+    
+    &.small
+    {
+      font-size: 16px;
+    }
+  }
+  
+  a
+  {
+    color: #0af;
+    text-decoration: none;
+    &:hover { 
+      color: #c5356a;
+      text-decoration: underline;
+    }
+  }
+  
+  .feature
+  {
+    overflow: hidden;
+    
+    .image
+    {
+      float: left;
+      
+      a
+      {
+        display: block;
+        margin-right: 20px;
+        border: 5px solid #f5f5f1;
+        &:hover { border-color: #ddd; }
+      }
+    }
+    
+    .title
+    {
+      margin: 5px 0px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #555;
+    }
+    
+    .details
+    {
+      color: #666;
+      line-height: 1.5em;
+      font-size: 13px;
+    }
+    
+    
+  }
+  
+  /* Controls */
+  
+  .deal-slider
+  {
+    width: 200px;
+    position: relative;
+    margin: 4px 10px;
+    white-space: nowrap;
+    
+    label, .ui-slider
+    {
+      float: left;
+      white-space: nowrap;
+    }
+    
+    label
+    {
+      color: #333;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    
+    .ui-slider
+    {
+      @include rounded-corners(6px);
+      position: relative;
+      height: 6px;
+      background: #333;
+      width: 100px;
+      margin: 3px 5px;
+      border: 1px solid #333;
+      
+      .ui-slider-handle
+      {
+        position: absolute;
+        outline: none;
+        width: 19px;
+        height: 19px;
+        margin-top: -12px;
+        margin-left: -9px;
+        background: url("/images/app/control-slider-button.png");
+        &:hover { background-position: 0px 19px; }
+      }
+      
+      .ui-slider-range
+      {
+        @include rounded-corners(6px);
+        @include background-gradient(#9ec334, #90b230);
+        height: 100%;
+      }
+    }
+  }
+  
+  /* Extras */
+  
+  div.description
+  {
+    color: #666;
+    
+    strong { font-weight: bold; }
+  }
+  
+  ol.buttons
+  {
+    height: 25px;
+    margin: 10px 0px;
+    padding-top: 4px;
+    
+    li
+    {
+      float: left;
+      margin-right: 3px;
+    }
+    
+    a.button
+    {
+      @include hover-button(#4B494A, #363536);
+      font-size: 12px;
+      padding: 5px 10px;
+      
+      &.active
+      {
+        @include hover-button(#c5356a, darken(#c5356a, 5%));
+      }
+      
+      &.deal-related
+      {
+        @include hover-button(#9ec535, #8aab2e);
+      }
+    }
+  }
+  
+  .hr
+  {
+    height: 1px;
+    margin: 8px auto;
+    background: url("/images/app/dots.png");
+  }
+  
+  table.centered
+  {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    td { text-align: center; }
+  }
+  
+  /* Switchers */
+  
+  form
+  {
+    .switch
+    {
+      color: #ccc;
+      margin: 20px 0px;
+      padding: 10px 15px;
+      background: #f7fafa;
+      @include rounded-corners(3px);
+
+      a 
+      {
+        color: #999;
+        margin-right: 5px;
+
+        &.active 
+        {
+          color: #444;
+          cursor: default; 
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  
+  ol.switchers
+  {
+    li { display:none; }
+    li:first-child { display: block;}
+  }
+  
+  /* Placeholders */
+  
+  a.image
+  {
+    overflow: hidden;
+    
+    &.blank
+    {
+      background: #f7f7f7 url("/images/app/placeholder.png") no-repeat center;
+      
+      &.thumb
+      {
+        background-image: url("/images/app/placeholder-thumb.png");
+      }
+    }
+  }
+  
+  /* Points */
+  
+  .points-with-desc
+  {
+    color: #888;
+    line-height: 24px;
+    font-size: 12px;
+  }
+  
+  .worth-points
+  {
+    float: left;
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    height: 24px;
+    line-height: 22px;
+    margin-right: 5px;
+    padding: 0px 0px 0px 13px;
+    text-shadow: 0px 1px 0px #aa3d17;
+    background: url("/images/app/points-tag.png") top left;
+    
+    span
+    {
+      display: block;
+      height: 100%;
+      padding-right: 8px;
+      background: url("/images/app/points-tag.png") top right;
+    }
+  }
+  
+  /* Flashes */
+  
+  #flashes
+  {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    color: #fff;
+    font-size: 23px;
+    line-height: 50px;
+    text-align: center;
+    z-index: 99999;
+    
+    .notice
+    {
+      font-size: 18px;
+      line-height: 40px;
+      background: #a2c71b;
+    }
+    
+    .error
+    {
+      font-size: 18px;
+      line-height: 40px;
+      background: #c71b50;
+    }
+    
+    .points
+    {
+      .bar
+      {
+        height: 50px;
+        background: #e36032;
+      }
+
+      .onomatopoeia
+      {
+        font-size: 18px;
+        color: #333;
+        @include font-museo("700");
+      }
+    }
+    
+    strong
+    {
+      font-weight: bold;
+    }
+  }
+  
+  /* Promos */
+
+  #promo
+  {
+    text-align: center;
+    
+    h1, h2, p
+    {
+      text-align: left;
+      margin: 15px 0px;
+    }
+    
+    img
+    {
+      margin: 20px 0px;
+    }
+    
+    h1, h2
+    {
+      @include font-museo(700);
+    }
+
+    h1
+    {
+      font-size: 40px;
+    }
+    
+    h2
+    {
+      font-size: 25px;
+    }
+    
+    p
+    {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.5em;
+      
+      strong
+      {
+        color: #333;
+        font-weight: 400;
+      }
+    }
+    
+    ol
+    {
+      color: #444;
+      font-size: 16px;
+      line-height: 1.5em;
+      list-style-type: decimal;
+      list-style-position: inside;
+      
+      li
+      {
+        font-weight: 400;
+        text-align: left;
+        margin: 8px 0px;
+      }
+      
+      .aside
+      {
+        color: #e36032;
+      }
+    }
+    
+    
+    div.buttons
+    {
+      margin-left: 151px;
+    }
+
+  }
+  
+  /* Placeholders */
+  
+  div.placeholder
+  {
+    margin: 10px 0px;
+    color: #666;
+    padding: 5px 10px;
+    background: #f7f9f9;
+    @include rounded-corners(3px);
+    
+    strong { color: #555; font-weight: bold; }
+  }
+  
+  /* Actions */
+  
+  .has-actions
+  {
+    position: relative;
+  }
+  
+  .actions
+  {
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    margin-left: 30px;
+    padding: 10px 5px 10px 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: -10;
+    
+    @include drop-shadow(1px, 2px, 0.4);
+    @include rounded-corners-all(0px, 5px, 5px, 0px);
+    @include background-gradient(#c5356a, darken(#c5356a, 5%));
+    
+    a
+    {
+      color: #fff;
+      display: block;
+      float: left;
+      margin-right: 10px;
+      @include opacity(0.5);
+      
+      &:hover
+      {
+        @include opacity(1.0);
+      }
+    }
+  }
+  
+  /* Tabs */
+  
+  .tabs
+  {
+    margin: 20px 0px;
+    
+    .ui-tabs-nav
+    {
+      overflow: hidden;
+      margin: 10px 0px;
+      height: 30px;
+      
+      li
+      { 
+        float: left;
+        margin-right: 15px;
+      }
+      
+      .ui-tabs-panel
+      {
+        padding: 10px 0px;
+      }
+      
+      li a
+      {
+        display: block;
+        color: #666;
+        font-size: 13px;
+        line-height: 25px;
+        
+        &:hover { 
+          color: #000;
+          text-decoration: none; 
+        }
+      }
+      
+      li.ui-state-active a
+      {
+        color: #fff;
+        font-weight: 500;
+        padding: 0px 15px;
+        text-shadow: 0px 1px 0px rgba(000,000,000,0.3);
+        @include drop-shadow(1px, 2px, 0.2);
+        @include rounded-corners(15px);
+        @include background-gradient(#777, #555);
+        
+        &:hover
+        {
+          @include background-gradient(#999, #777);
+        }
+      }
+      
+      &.buttons
+      {
+        li
+        {
+          margin-right: 5px;
+        }
+        
+        li a
+        {
+          display: block;
+          color: #666;
+          line-height: 26px;
+          font-size: 12px;
+          @include hover-button(#4B494A, #363536);
+          padding: 0px 10px;
+        }
+
+        li.ui-state-active a
+        {
+
+          @include hover-button(#c5356a, darken(#c5356a, 5%));
+          font-weight: bold;
+
+          &:hover { font-weight: bold; }
+        }
+      }
+      
+    }
+    
+    .ui-tabs-hide { display: none; }
+  }
+  
+  /* Scroll To Top */
+  
+  a#scroll-to-top
+  {
+    position: fixed;
+    bottom: 0px;
+    right: 75px;
+    width: 66px;
+    height: 103px;
+    background: url("/images/app/scrolltotop.png");
+    
+    &:hover
+    {
+      background-position: 66px 0px;
+    }
+  }
+  
+  /* Utility */
+  
+  .hidden { display: none; }
+  
+  /* Pages */
+  
+  #pages
+  {
+    h1
+    {
+      color: #000;
+      font-size: 18px;
+      margin: 15px 0px;
+    }
+    
+    p
+    {
+      color: #333;
+      line-height: 1.8em;
+      margin: 10px 0px;
+    }
+    
+    strong
+    {
+      font-weight: bold;
+    }
+  }
+  
+}

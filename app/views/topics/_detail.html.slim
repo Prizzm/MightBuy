@@ -1,0 +1,168 @@
+/ And the page content..
+
+.header
+
+  - unless resource.url.blank?
+	.price= "$%s" % resource.price
+    = image_link(resource, resource.url, :class => "thumb", :target => "_blank") { thumb('125x125') }
+    = link_to resource.subject, resource.url, :class => "title", :target => "_blank"
+
+  - else
+    = image_link(resource, image_url(resource), :class => "thumb") { thumb('125x125') }
+    .title= resource.subject
+      
+  .description= simple_format(resource.body)
+
+  .buyitnow= "You would pay: "
+  br 
+  .buyitnow= "$%s to buy it now" % resource.offer
+
+  
+- if params[:responding]
+
+  #respond
+    .group.respond
+      
+      - if [:recommendation, :business_recommendation].include?(resource.form?)
+      
+        .recommendation
+          = heading "Should %s Buy This?" % resource.user.name 
+        
+          = simple_form_for Response.new, :url => topic_responses_path(resource, :format => :js), :html => { "data-remote" => true } do |form|
+        
+            .recommend-or-not
+              = respond_button :recommended, 'Yes!', :icon => 'thumbup.png'
+              = respond_button :undecided, 'Not Sure..'
+              = respond_button :not_recommended, "NO!", :icon => 'thumbdown.png'
+              = form.input :recommend_type, :as => :hidden, :input_html => { :class => "recommend-type" }
+            
+            .other-feedback
+
+              = heading "More feedback please!"
+              = form.input :body, :label => false, :placeholder => "..additional comments", :required => false
+            
+            .group.footer
+            
+              .hr
+            
+              .buttons
+                .left
+                  = link_to "Have more feedback? Click here!", 'javascript:void(0);', :class => 'give-feedback'
+                  = points_tag(:giving_more_feedback)
+                .right
+                  = form.button :submit, "Submit now" 
+/                  = points_tag(:responding)
+/                  = form.button :submit, "Send now to %s" % resource.user.name
+      			  	
+      - else
+    
+        = heading "Your Feedback"
+        = response_form_for resource do |form|
+          = form.input :body, :label => false
+      
+          - if resource.recommendable
+            = form.input :recommended, :label => "I recommend this!", :as => :boolean
+        
+          .buttons
+            = form.button :submit, "Send to %s" % resource.user.name
+
+- else
+
+  - if current_user && current_user.brand?
+    
+    #sharemore
+      = heading "Ask Friends - should you buy it?", :id => "share"
+      .email-friend
+        = link_to "Email friends", topic_share_path(resource), :class => "button" 
+      = topic_tweet(resource)
+      = topic_fb_send(resource)
+      .clear
+
+    / Stats
+	#stats
+      = heading "Votes", :id => "stats"
+       
+    .statistics
+      - stats = resource.stats
+      .section data-link=filter_url(:recommended)
+        .tip= "Percent of friends who said YES!"
+        label Yes
+        span= stats[:recommended]
+      .section data-link=filter_url(:undecided)
+        .tip= "Percent of friends who had no opinion."
+        label Undecided
+        span= stats[:undecided]
+      .section data-link=filter_url(:not_recommended)
+        .tip= "Percent of friends who said - don't buy it!"
+        label No
+        span= stats[:not_recommended]        	
+
+  	
+  .tabs
+    ul.buttons
+
+      
+      - if featured_response
+        li= link_to "Featured", "#featured"
+
+      - unless current_user && current_user.brand?
+        li= link_to phrase_for(:respond), "#respond"
+      
+	  
+      li= link_to phrase_for(:comments), "#responses"
+      li= link_to "View emails", '#sharing'
+	  	 
+	
+
+    / Featured Response
+    - if featured_response
+
+      #featured
+  
+        = heading "Featured Response"
+    
+        ol.list.responses.highlight
+          = render featured_response
+
+    / Response
+    /- unless current_user && current_user.brand?
+    #respond
+      .group.respond
+        = heading phrase_for(:respond)
+        = render "responses/form", :topic => resource
+
+    / Responses
+    #responses
+      = heading phrase_for(:comments), :id => "comments"
+
+      ol.list.responses
+        = placeholder responses do |collection|
+          = render :partial => "responses/response", :collection => collection
+  
+      #reply-form.hidden
+        = heading "Quick Reply", :class => "small"
+        = render "responses/reply_form", :topic => resource
+    
+    / Sharing
+    #sharing
+      = heading "You've shared this with.."
+      .tabs
+        ul.buttons
+          li= link_to "All", "#all-shares"
+          li= link_to "Emails", "#email-shares"
+          li= link_to "Socials", "#social-shares"
+
+        #all-shares
+          ol.list.shares.concise
+            = placeholder shares_for_topic do |collection|
+              = render :partial => "shares/share", :collection => collection
+
+        #email-shares
+          ol.list.shares.concise
+            = placeholder shares_for_topic(false) do |collection|
+              = render :partial => "shares/share", :collection => collection
+
+        #social-shares
+          ol.list.shares.concise
+            = placeholder shares_for_topic(true) do |collection|
+              = render :partial => "shares/share", :collection => collection

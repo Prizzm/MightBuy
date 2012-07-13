@@ -1,0 +1,7 @@
+var responses = $(<%= e(render(collection, :partial => "responses/response")) %>)
+$('#responses').fadeOut(150, function () {
+  $('ol.list.responses').empty().append(responses);
+  $(this).fadeIn(150);
+  replies();
+  fbparse();
+});

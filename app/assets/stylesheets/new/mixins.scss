@@ -1,0 +1,122 @@
+/* Fonts */
+
+@font-face {
+    font-family: 'Museo300';
+    src: url('/fonts/museo/museo300-regular-webfont.eot');
+    src: url('/fonts/museo/museo300-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/museo/museo300-regular-webfont.woff') format('woff'),
+         url('/fonts/museo/museo300-regular-webfont.ttf') format('truetype'),
+         url('/fonts/museo/museo300-regular-webfont.svg#Museo300') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo500';
+    src: url('/fonts/museo/museo500-regular-webfont.eot');
+    src: url('/fonts/museo/museo500-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/museo/museo500-regular-webfont.woff') format('woff'),
+         url('/fonts/museo/museo500-regular-webfont.ttf') format('truetype'),
+         url('/fonts/museo/museo500-regular-webfont.svg#Museo500') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo700';
+    src: url('/fonts/museo/museo700-regular-webfont.eot');
+    src: url('/fonts/museo/museo700-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/museo/museo700-regular-webfont.woff') format('woff'),
+         url('/fonts/museo/museo700-regular-webfont.ttf') format('truetype'),
+         url('/fonts/museo/museo700-regular-webfont.svg#Museo700') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Mixins */
+
+@mixin font-museo ($style : "500") 
+{
+  font-family: "Museo#{$style}", "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: normal;
+}
+
+@mixin font-serif ()
+{
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+@mixin button ($from, $to) 
+{
+  cursor: pointer;
+	color: #ffffff;
+	font-weight: normal;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border: 1px solid $to;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.35);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.35);
+	text-shadow:
+		0px 1px 0px rgba(000,000,000,0.3);
+	text-decoration: none;
+	
+	@include background-gradient($from, $to);
+}
+
+@mixin hover-button ($from, $to)
+{
+  @include button($from, $to);
+  &:hover { @include button(lighten($from, 10%), $from) }
+}
+
+@mixin rounded-corners ($radius: 5px) {
+  -webkit-border-radius: $radius;
+  -khtml-border-radius:  $radius;	
+  -moz-border-radius:    $radius;
+  border-radius:         $radius;
+}
+
+@mixin rounded-corners-all ($topleft, $topright, $bottomright, $bottomleft) {
+  -webkit-border-top-left-radius:     $topleft;
+  -khtml-border-top-left-radius:      $topleft;	
+  -moz-border-top-left-radius:        $topleft;
+  border-top-left-radius:             $topleft;
+  -webkit-border-top-right-radius:    $topright;
+  -khtml-border-top-right-radius:     $topright;	
+  -moz-border-top-right-radius:       $topright;
+  border-top-right-radius:            $topright;
+  -webkit-border-bottom-left-radius:  $bottomleft;
+  -khtml-border-bottom-left-radius:   $bottomleft;	
+  -moz-border-bottom-left-radius:     $bottomleft;
+  border-bottom-left-radius:          $bottomleft;
+  -webkit-border-bottom-right-radius: $bottomright;
+  -khtml-border-bottom-right-radius:  $bottomright;	
+  -moz-border-bottom-right-radius:    $bottomright;
+  border-bottom-right-radius:         $bottomright;
+}
+
+@mixin drop-shadow ($distance: 1px, $blur: 3px, $alpha: 0.8) {
+  box-shadow:         0px $distance $blur rgba(0, 0, 0, $alpha);
+  -moz-box-shadow:    0px $distance $blur rgba(0, 0, 0, $alpha);
+  -webkit-box-shadow: 0px $distance $blur rgba(0, 0, 0, $alpha);
+}
+
+@mixin background-gradient ($start_color, $end_color) {
+  background: $start_color;
+  background: -webkit-gradient(linear, left top, left bottom, from($start_color), to($end_color));
+  background: -moz-linear-gradient(top,  $start_color,  $end_color);
+  filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#{$start_color}',endColorstr='#{$end_color}')";
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#{$start_color}', endColorstr='#{$end_color}')";
+}
+
+@mixin opacity ($alpha) {
+  $percent: $alpha * 100;
+  opacity: $alpha;
+  -moz-opacity: $alpha;
+  filter:alpha(opacity=$percent);
+}

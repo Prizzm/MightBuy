@@ -1,0 +1,59 @@
+# Topics
+
+topic:
+  image: file
+  owner: polymorphic
+  title: string
+  body: text
+  
+response:
+  topic: belongs_to
+  owner: polymorphic
+  body: text
+  
+invite -> response:
+  topic: belongs_to
+  inviter: polymorphic
+  invitee: polymorphic
+
+# Outline
+
+brand ->
+  name: string
+  products ->
+    name: string
+    product_image: string
+    - reviews
+
+invites ->
+  inviter -> polymorphic
+  invitee -> polymorphic
+  reference -> polymorphic
+  code: string
+  type: string
+  
+reviews ->
+  product ->
+  user ->
+  body: text
+  rating: integer
+
+user ->
+  reviews ->
+  
+deal ->
+  brand -> belongs
+  for -> polymorphic
+  title: string
+  description: text
+  low_cost: integer
+  low_value: decimal
+  high_cost: integer
+  high_value: decimal
+  value_type: (percent dollar etc)
+  
+redemption:
+  deal: belongs
+  user: belongs
+  cost: integer
+  value: integer

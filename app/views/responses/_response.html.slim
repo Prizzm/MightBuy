@@ -1,0 +1,47 @@
+li.has-actions
+  .response
+    - topic_view = %w(topics responses).include?(params[:controller])
+    - feature_url = response.topic.url.blank? ? topic_url(response.topic, :feature => response.id) : response.topic.url
+
+    - if params[:controller] == 'activity'
+      = image_link(response, image_url(response), :class => :thumb) { thumb('55x55#').jpg }
+      - unless response.body.blank?
+        .message
+            = link_to '"%s"' % response.body, topic_url(response.topic, :feature => response.id), :class => "quoted"
+      = render_recommend_type(response)
+      .notes
+        = said_this_in_response(response, true)  
+    - elsif topic_view
+      = image_link(response, image_url(response), :class => :thumb) { thumb('55x55#') }
+      - unless response.body.blank?
+        .message
+          = response.body
+      = render_recommend_type(response)
+      .notes
+        = said_this(response)
+    - else
+      = image_link(response.topic, feature_url, :class => :thumb) { thumb('55x55#') }
+      - unless response.body.blank?
+        = link_to '"%s"' % response.body, feature_url, :class => "quoted"
+      = render_recommend_type(response)
+      .notes
+        = said_this_in_response(response)
+    - if response.user == current_user
+      - if response.recommend_type == "recommend" || response.recommended
+        .social
+          = response_tweet(response, feature_url)
+          = response_like(response, feature_url)
+          .points-with-desc
+            = points_tag(:recommending)
+            = "Tweet or Share for %s points!" % Points.allocators[:recommending]
+    - if topic_view
+      .actions
+        = link_to image_tag("/images/icons/reply.png"), "#reply", :class => "reply", :data => { :action => "reply", :id => response.id }, :title => "Reply"
+      .clearfix
+  - if topic_view && !response.replies.blank?
+    .replies
+      = heading "Replies", :class => "small"
+      ol.list.responses
+        - response.replies.each do |reply|
+          = render reply
+  .clearfix

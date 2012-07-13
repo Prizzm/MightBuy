@@ -1,0 +1,5 @@
+= simple_form_for Response.new, :url => topic_responses_path(topic) do |form|
+  = form.input :reply_id, :as => :hidden
+  = form.input :body, :label => false
+  .buttons
+    = form.button :submit, "Say it!"

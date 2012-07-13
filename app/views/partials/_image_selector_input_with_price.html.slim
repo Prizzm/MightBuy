@@ -1,0 +1,39 @@
+/ Image Selector Input
+.image-selector-uploader.input
+  .image-holder
+    a href="javascript:void(0);" class="image blank"
+      = centered do
+        - unless form.object.send(field).blank?
+          = image_tag form.object.send(field).url
+    .controls
+      a href="#prev" class="prev" Previous
+      a href="#next" class="next" Next
+      a href="#cancel" class="cancel" Cancel
+  
+  #d1 class="hidden"
+    .tabs
+      ul
+        li= link_to "From the web..", "#web"
+        li= link_to "From your computer..", "#computer"
+
+      #web
+        .field
+          input type="text" placeholder="http://www.myshop.com/myproduct"
+          = link_to "Grab", "#get", :class => "button get"
+          .clearfix
+
+      #computer
+        .field
+          .file-uploader
+            .qq-upload-drop-area Drop files here!
+            noscript
+              = form.input field, :as => :file, :label => false
+          .clearfix
+
+    = form.input "#{field}_url", :as => :hidden, :input_html => { :class => "remote-url" }
+    = form.input "inherit_upload_id", :as => :hidden, :input_html => { :class => "upload-id" }
+
+  = form.input :price, :label => "Price $", :hint => "Price - as listed"
+  .collapsible
+    = link_to "Add your Price", "#", :class => "toggle"
+    = form.input :offer, :label => "Offer $", :hint => "What price would you buy it now for?"

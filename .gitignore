@@ -1,0 +1,12 @@
+.bundle
+.DS_Store
+db/*.sqlite3
+log/*.log
+tmp/
+doc/
+.sass-cache/
+public/uploads
+public/system
+*.swp
+.rvmrc
+routes.txt

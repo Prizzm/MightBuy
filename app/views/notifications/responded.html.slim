@@ -1,0 +1,7 @@
+table.responded
+  td.image
+    = link_to image_tag(url( image_url(@model) { thumb('100x100#') } || "/images/app/placeholder-image.png") ), @url
+  td.message
+    .subject= link_to @title, @url
+    .body= truncate(@message, :length => 160)
+    .goto= link_to image_tag(url("/images/email/view.png")), @url

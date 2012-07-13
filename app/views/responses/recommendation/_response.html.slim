@@ -1,0 +1,37 @@
+- feature_url = response.topic.url.blank? ? topic_url(response.topic, :feature => response.id) : response.topic.url
+- short_code = response.topic.shortcode
+- twitter_topic = response.topic.share_title
+- twitter_sender = response.topic.user.twitter
+
+= heading "Thanks! Your feedback:"
+
+ol.list.responses
+  li.has-actions
+    .response
+  
+      = image_link(response.topic, "javascript:void(0)", :class => :thumb) { thumb('55x55#') }
+    
+      - unless response.body.blank?
+        .quoted= '"%s"' %response.body
+    
+      = render_recommend_type(response)
+  
+      .notes
+        = ("In response to <strong>%s</strong> by <strong>%s</strong> %s." % [response.topic.subject, response.topic.user.name, shorthand(response.created_at).downcase]).html_safe
+  
+/- if response.recommend_type == "recommend"
+  
+  = heading "Make your recommendation count - share it!"
+	
+  .social
+     = facebook_share_button
+     = twitter_share_button
+     .points-with-desc
+      = "Please let your friends know what you recommend!!" % Points.allocators[:recommending]
+      
+	
+script 
+  | feature_url = '#{{feature_url}}';
+  | short_code = '#{{short_code}}';
+  | twitter_topic = '#{{twitter_topic}}';
+  | twitter_sender = '#{{twitter_sender}}';

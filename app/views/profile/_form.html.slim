@@ -1,0 +1,16 @@
+= heading "Your Photo / Logo"
+
+= render "partials/image_selector_input", :form => form, :field => :image
+
+= heading "General Details"
+
+= form.input :category, :label => "You Are A", :collection => User::Categories, :as => :radio
+= form.input :name, :label => "Your Name"
+= form.input :description, :label => "Description", :hint => "Tell everyone who you are & what you do!", :input_html => { :maxlength => 150 }
+
+= heading "Social Details"
+
+= form.input :url, :label => "Web"
+= form.input :facebook, :label => "Facebook", :hint => "E.x. http://facebook.com/yourname"
+= form.input :twitter, :label => "Twitter", :hint => "E.x. @yourname"
+= form.input :phone, :label => "Phone"

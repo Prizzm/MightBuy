@@ -1,0 +1,8 @@
+= app_page do
+
+  = simple_form_for resource, :url => collection_path do |form|
+    = render form_partial_for(resource), :form => form
+    /= form.input :form, :as => :hidden
+    .buttons
+      = form.button :submit, "Save!", :class => "hidden", :style => "float:right;"
+      /= points_tag(:starting_a_topic)

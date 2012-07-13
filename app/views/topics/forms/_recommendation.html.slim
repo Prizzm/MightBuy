@@ -1,0 +1,23 @@
+.get-product-form
+
+  = heading "Enter the URL for your Product.."
+
+  = form.input :url, :label => "Web Address", :placeholder => "http://www.something.com", :input_html => { :class => "url-input" }
+
+  = heading "Enter the Name of your Product"
+
+  = form.input :subject, :label => "Product Name", :placeholder => "White T-Shirt", :input_html => { :class => "name-input" }
+
+  = heading "Choose an Image for your Product.."
+
+  = render "partials/image_selector_input_with_price", :form => form, :field => :image
+
+  / Customers
+  = heading "Which Customers Should We Ask?"
+  
+  = render "share_with_customers", :form => form
+  
+  / Hidden fields
+  = form.input :recommendable, :as => :hidden, :input_html => { :value => 1 }
+  = form.input :access, :as => :hidden, :input_html => { :value => "private" }
+  = form.input :body, :as => :hidden, :input_html => { :value => "..." }
