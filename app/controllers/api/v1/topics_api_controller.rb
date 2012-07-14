@@ -4,7 +4,7 @@ class Api::V1::TopicsApiController < ApplicationController
   # GET /topics
   # GET /topics.xml
   def index
-    @topics = current_user.topics
+    @topics = User.find_by_authentication_token(params[:auth_token]).topics
   end
 
   # GET /topics/1
@@ -26,7 +26,13 @@ class Api::V1::TopicsApiController < ApplicationController
   # POST /topics
   # POST /topics.xml
   def create
-    @topic = current_user.topics.new(params[:topic])
+    @topic = Topic.new()
+    @topic.subject = params[:subject]
+    @topic.price = params[:price]
+    @topic.shortcode = Shortcode.new(40)
+    @topic.offer = params[:offer]
+    @topic.image = params[:image]
+    @topic.user = current_user
     @topic.save
   end
 

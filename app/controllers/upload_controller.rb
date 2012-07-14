@@ -12,6 +12,18 @@ class UploadController < ApplicationController
     end
   end
   
+  def acceptMobile
+    upload = Upload.create :image => params[:image]
+
+    respond_to do |wants|
+      wants.json { render :json => {
+        :success => true,
+        :id => upload.id,
+        :url => absolute_url(upload.image.url)
+      }}
+    end
+  end
+  
   private
   
     def absolute_url (*args)
