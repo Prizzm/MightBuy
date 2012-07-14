@@ -11,7 +11,7 @@ NewPrizzmCom::Application.routes.draw do
       resources :topics, :controller=>:topics_api
       match "/user/info" => "users_api#info"
       match "/topics/create" => "topics#create"
-      match "/uploads/acceptMobile" => "upload#acceptMobile"
+      post '/uploads/acceptMobile' => 'upload#acceptMobile'
     end
   end
 
