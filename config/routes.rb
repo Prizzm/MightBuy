@@ -10,6 +10,7 @@ NewPrizzmCom::Application.routes.draw do
       resources :tokens,:only => [:create, :destroy]
       resources :topics, :controller=>:topics_api
       match "/user/info" => "users_api#info"
+      match "/topics/create" => "topics#create"
     end
   end
 
@@ -82,6 +83,7 @@ NewPrizzmCom::Application.routes.draw do
   
   # Uploads
   post 'uploads/accept' => 'upload#accept'
+  post 'uploads/acceptMobile' => 'upload#acceptMobile'
   
   # Website
   get 'about'   => 'website#about'
