@@ -2,13 +2,18 @@
   = javascript_tag "var POINTS_ENABLED = %s" % (cookies[:disable_points].to_s != 'true')
 
 #app
-
+    
   #flashes
     /- flash.each do |key, message|
       - if key == :points
         = points_flash(message)
 
   #frame
+    .bookmarklet
+      span
+        = link_to "An easier way to add things you might buy.", bookmarklet_url, :onclick => "return false;"
+        .tip= "Drag this into your bookmarks!"
+    
     #sidebar
       .fixed
         h1.logo
@@ -49,7 +54,7 @@
     #footer
       #copyright Copyright &copy; 2012, Prizzm
       #links
-        = link_to "Prizzm Bookmarklet", bookmarklet_url, :onclick => "return false;"
+        = link_to "MightBuy Bookmarklet", bookmarklet_url, :onclick => "return false;"
         = link_to "About", about_path
         /= link_to "Contact", contact_path
         /= link_to "Privacy", privacy_path
