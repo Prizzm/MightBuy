@@ -43,3 +43,30 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+/*------------------------------------*\
+	$CLEARFIX
+\*------------------------------------*/
+/*
+Fix clearing issues as per: nicolasgallagher.com/micro-clearfix-hack/
+*/
+.cf,
+.grids,
+.media{
+	zoom:1;
+}
+.cf:before,
+.grids:before,
+.media:before,
+
+.cf:after,
+.grids:after,
+.media:after{
+	content:"";
+	display:table;
+}
+.cf:after,
+.grids:after,
+.media:after{
+	clear:both;
+}

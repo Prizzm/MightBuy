@@ -50,6 +50,18 @@ body
     }
 }
 
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+hr {
+  border: 1px dotted #ccc;
+}
+
 /* Text Selection */
 
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
@@ -511,6 +523,10 @@ body
             @include hover-button(#c5356a, darken(#c5356a, 5%));
           }
         }
+      }
+      
+      #sharemore {
+        margin-bottom: 10px;
       }
       
     }
@@ -1134,7 +1150,6 @@ body
   
   .tabs
   {
-    margin: 20px 0px;
     
     .ui-tabs-nav
     {
@@ -1202,7 +1217,7 @@ body
         li.ui-state-active a
         {
 
-          @include hover-button(#c5356a, darken(#c5356a, 5%));
+          @include hover-button(#3572c5, darken(#3572c5, 5%));
           font-weight: bold;
 
           &:hover { font-weight: bold; }
