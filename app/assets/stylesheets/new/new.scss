@@ -37,6 +37,19 @@ body
   }
 }
 
+.bookmarklet {
+    position: absolute;
+    top: -50px;
+    left: 100px;
+    width: 48%;
+    background: url(/images/app/arrow.png) no-repeat top right;
+    
+    span {
+        margin: 13px 0 1px;
+        display: block;
+    }
+}
+
 /* Text Selection */
 
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
