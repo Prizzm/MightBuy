@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     :email, :password, :password_confirmation, 
     :remember_me, :name, :image, :visitor_code,
     :url, :description, :facebook, :twitter, :phone, 
-    :email_address, :category, :image_url, :inherit_upload_id
+    :email_address, :category, :image_url, :inherit_upload_id, :authentication_token
     
   # Uploaders
   image_accessor :image
