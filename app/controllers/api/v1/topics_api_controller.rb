@@ -4,7 +4,7 @@ class Api::V1::TopicsApiController < ApplicationController
   # GET /topics
   # GET /topics.xml
   def index
-    @topics = User.find_by_authentication_token(params[:auth_token]).topics
+    @topics = current_user.topics
   end
 
   # GET /topics/1
