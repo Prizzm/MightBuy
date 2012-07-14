@@ -50,17 +50,6 @@ body
     }
 }
 
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
-}
-
-hr {
-  border: 1px dotted #ccc;
-}
 
 /* Text Selection */
 
@@ -91,7 +80,7 @@ hr {
     position: absolute;
     top: 0;
     width: 140px;
-    left: -250px;
+    left: -270px;
     text-align: center;
     
     a#brand
@@ -525,10 +514,10 @@ hr {
         }
       }
       
-      #sharemore {
-        margin-bottom: 10px;
-      }
-      
+    }
+    
+    #sharemore {
+      margin-bottom: 15px;
     }
     
     /* Attributes */
