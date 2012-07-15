@@ -1,5 +1,4 @@
 NewPrizzmCom::Application.routes.draw do
-  match "api/v1/uploads/acceptmobile" => "upload#acceptmobile"
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -82,7 +81,7 @@ NewPrizzmCom::Application.routes.draw do
   post 'join_beta' => 'router#join_beta', :as => :join_beta
   
   # Uploads
-  post 'uploads/accept' => 'upload#accept'
+  post 'uploads/accept' => 'upload#acceptmobile'
 
   
   # Website
