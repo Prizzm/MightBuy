@@ -81,7 +81,7 @@ NewPrizzmCom::Application.routes.draw do
   post 'join_beta' => 'router#join_beta', :as => :join_beta
   
   # Uploads
-  post 'uploads/accept' => 'upload#accept'
+  post 'uploads/accept' => 'upload#acceptmobile'
 
   
   # Website
