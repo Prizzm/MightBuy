@@ -85,7 +85,6 @@ NewPrizzmCom::Application.routes.draw do
   post 'uploads/accept' => 'upload#accept'
   post 'api/v1/uploads/acceptmobile' => 'upload#acceptmobile'
   
-  
   # Website
   get 'about'   => 'website#about'
   get 'contact' => redirect('/about#contact')
