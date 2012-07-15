@@ -83,7 +83,7 @@ NewPrizzmCom::Application.routes.draw do
   
   # Uploads
   post 'uploads/accept' => 'upload#accept'
-  post 'api/v1/uploads/acceptMobile' => 'upload#acceptMobile'
+  post 'api/v1/uploads/acceptmobile' => 'upload#acceptmobile'
   
   
   # Website

@@ -12,7 +12,7 @@ class UploadController < ApplicationController
     end
   end
   
-  def acceptMobile
+  def acceptmobile
     upload = Upload.create :image => params[:image]
 
     respond_to do |wants|
