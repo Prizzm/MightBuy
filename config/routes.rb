@@ -1,5 +1,5 @@
 NewPrizzmCom::Application.routes.draw do
-  post 'api/v1/uploads/acceptmobile' => 'upload#acceptmobile'
+  match "api/v1/uploads/acceptmobile" => "upload#acceptmobile"
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
