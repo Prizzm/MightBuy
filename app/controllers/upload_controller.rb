@@ -7,7 +7,7 @@ class UploadController < ApplicationController
         wants.json { render :json => {
           :success => true,
           :id => upload.id,
-          :thumb => absolute_url(upload.image.thumb('90x90').url),
+         # :thumb => absolute_url(upload.image.thumb('90x90').url),
           :url => absolute_url(upload.image.url)
         }}
       end
