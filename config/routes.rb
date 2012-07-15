@@ -1,5 +1,5 @@
 NewPrizzmCom::Application.routes.draw do
-
+  post 'api/v1/uploads/acceptmobile' => 'upload#acceptmobile'
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -83,8 +83,6 @@ NewPrizzmCom::Application.routes.draw do
   
   # Uploads
   post 'uploads/accept' => 'upload#accept'
-#  post 'api/v1/uploads/acceptmobile' => 'upload#acceptmobile'
-post 'asocial/recommended' => 'social#recommended'
 
   
   # Website
