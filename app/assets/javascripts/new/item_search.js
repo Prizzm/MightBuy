@@ -85,6 +85,7 @@ $(function(){
   $("#topic_url").bind("keypress", function(e){
     if ( e.which == 13 && $("#item_url_search").data("status") != "open" ) {
       $("#item_url_search").click();
+       e.preventDefault();
     }
   });
 
@@ -120,7 +121,15 @@ $(function(){
   // if URL is not blank show grab image dialog immediately
   // used in bookmarklet
   if ( $("#topic_url").val() ) {
-    $("#topic_url").trigger("complete");
+   	if ($("#item_image .image-holder img").length == 0) { // no image exists
+	      $("#topic_url").trigger("complete");
+	    } else {
+	      // set grab image URL
+	      $(".image-selector-uploader #web input").val($("#topic_url").val());
+	      $("#item_image").removeClass("hidden");
+	      $("#topic_body").closest(".hidden").removeClass("hidden");
+	      $("#new_topic .buttons .button").removeClass("hidden");
+	    }
   }
 
 });

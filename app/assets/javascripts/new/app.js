@@ -309,7 +309,7 @@ var selectoruploaders = function () {
     var remotefield       = uploader.find('input.remote-url');
     var idfield           = uploader.find('input.upload-id');
     var uploadfield       = uploader.find('.file-uploader');
-    var blank_image_html  = image.html();
+    var blank_image_html  = '<table class="centered" cellspacing="0" cellpadding="0"><tbody><tr><td></td></tr></tbody></table>';
     
     this.setimages = function (images) {
       success(images);

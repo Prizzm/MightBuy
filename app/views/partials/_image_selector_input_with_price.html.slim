@@ -1,7 +1,7 @@
 / Image Selector Input
 .image-selector-uploader.input
   .image-holder
-    a href="javascript:void(0);" class="image blank"
+    a href="javascript:void(0);" class="image #{ if form.object.send(field).blank? then "blank" end }"
       = centered do
         - unless form.object.send(field).blank?
           = image_tag form.object.send(field).url
