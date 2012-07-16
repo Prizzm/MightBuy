@@ -10,8 +10,8 @@ if Rails.env.production?
   app.configure do |c|
     c.datastore = Dragonfly::DataStorage::S3DataStore.new(
       :bucket_name => 'prizzm-invites',
-      :access_key_id => ENV['AKIAJATKGAWCCDNFZN6Q'],
-      :secret_access_key => ENV['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']
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],	
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     )
   end
 end
