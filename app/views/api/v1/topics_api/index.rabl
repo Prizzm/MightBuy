@@ -3,8 +3,8 @@ attributes :id, :shortcode, :subject, :body, :access, :type, :created_at, :updat
 
 node(:image_url) { |topic|
 if topic.image then
-"http://mightbuy.it#{topic.image.url}"
+topic.image.url
 else
-"http://mightbuy.it#{topic.image_url}"
+topic.image_url
 end
 }
