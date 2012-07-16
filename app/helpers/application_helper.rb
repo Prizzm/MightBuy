@@ -255,8 +255,10 @@ module ApplicationHelper
   def bookmarklet_url
     "javascript:(function() { (function(){ " +
     " window.__prizzm_host = '#{request.host+":"+request.port.to_s}'; " +
-    " window.__prizzm_popup = window.open(\"http://\"+ window.__prizzm_host + \"/topics/new?topic[subject]=\"+encodeURIComponent(document.title)+\"&topic[url]=\"+encodeURIComponent(window.location.href),\"mywindow\",\"menubar=1,resizable=1,width=990,height=680,left=100,top=50\");" + 
-    # actually not using bookmarklet.js but might have to use it
+    " var matches = document.body.innerText.match(/\\$[^\\d]*(\\d+(\\.\\d\\d?)?)/);" +
+     " window.__price = (matches && matches[1]) || ''; " +
+     " window.__prizzm_popup = window.open(\"http://\"+ window.__prizzm_host + \"/topics/new?topic[subject]=\"+encodeURIComponent(document.title)+\"&topic[url]=\"+encodeURIComponent(window.location.href)+\"&topic[price]=\"+encodeURIComponent(window.__price),\"mywindow\",\"menubar=1,resizable=1,width=990,height=680,left=100,top=50\");" +
+     # actually not using bookmarklet.js but might have to use it
     " var s=document.createElement('script'); s.src='http://#{request.host+":"+request.port.to_s}/assets/bookmarklet.js?rnd=' + Number(new Date()); s.type='text/javascript'; document.getElementsByTagName('head')[0].appendChild(s);})() })();"
   end
 

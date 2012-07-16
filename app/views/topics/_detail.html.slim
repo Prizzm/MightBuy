@@ -77,57 +77,57 @@
           = topic_fb_send(resource)
           .clear
     
-    .hr
-    
+        
     .tabs
-      ul.buttons
+        .hr
+
+        ul.buttons
             
           / - if featured_response
             li= link_to "Featured", "#featured"
-    
+        
           / - unless current_user && current_user.brand?
             li= link_to phrase_for(:respond), "#respond"
           
-    	  
+          
           / li= link_to phrase_for(:comments), "#responses"
           / li= link_to "View emails", '#sharing'
           
-          li= link_to "View Discussion", ""
-          li= link_to "View Statistics", ""
-    
-    .hr	 
-	
-
-    / Featured Response
-    - if featured_response
-
-      #featured
-  
-        = heading "Featured Response"
-    
-        ol.list.responses.highlight
-          = render featured_response
-
-    / Response
-    /- unless current_user && current_user.brand?
-    #respond
-      .group.respond
-        = heading phrase_for(:respond)
-        = render "responses/form", :topic => resource
-
-    / Responses
-    #responses
-      = heading phrase_for(:comments), :id => "comments"
-
-      ol.list.responses
-        = placeholder responses do |collection|
-          = render :partial => "responses/response", :collection => collection
-  
-      #reply-form.hidden
-        = heading "Quick Reply", :class => "small"
-        = render "responses/reply_form", :topic => resource
-    
-    / Sharing
+          li.active= link_to "View Discussion", "#discussion"
+          li= link_to "View Statistics", "#sharing"
+            
+        .hr	
+        #discussion
+            / Featured Response
+            - if featured_response
+        
+              #featured
+          
+                = heading "Featured Response"
+            
+                ol.list.responses.highlight
+                  = render featured_response
+        
+            / Response
+            /- unless current_user && current_user.brand?
+            #respond
+              .group.respond
+                = heading phrase_for(:respond)
+                = render "responses/form", :topic => resource
+        
+            / Responses
+            #responses
+              = heading phrase_for(:comments), :id => "comments"
+        
+              ol.list.responses
+                = placeholder responses do |collection|
+                  = render :partial => "responses/response", :collection => collection
+          
+              #reply-form.hidden
+                = heading "Quick Reply", :class => "small"
+                = render "responses/reply_form", :topic => resource
+        
+        / Sharing
         #sharing
           = heading "You've shared this with.."
           .tabs
@@ -173,5 +173,4 @@
                 label No
                 span= stats[:not_recommended]        	
 
-  	
-  
+	
