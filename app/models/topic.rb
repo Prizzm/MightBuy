@@ -32,7 +32,7 @@ class Topic < ActiveRecord::Base
     :reject_if => proc { |attributes| attributes["with"].blank? }
   
   # Attributes
-  attr_accessor :pass_visitor_code, :mobile_image_url
+  attr_accessor :pass_visitor_code
   
   def url
     url = attributes['url']

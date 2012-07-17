@@ -30,8 +30,6 @@ class Api::V1::TopicsApiController < ApplicationController
     @topic.subject = params[:subject]
     @topic.price = params[:price]
     @topic.shortcode = Shortcode.new(40)
-    @topic.offer = params[:offer]
-    @topic.image = params[:image]
     @topic.user = current_user
     @topic.save
   end
