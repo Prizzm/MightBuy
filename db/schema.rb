@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120712042346) do
+ActiveRecord::Schema.define(:version => 20120716190748) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -94,6 +94,11 @@ ActiveRecord::Schema.define(:version => 20120712042346) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
+  create_table "image_uploads", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "point_allocations", :force => true do |t|
     t.integer  "bank_id"
     t.integer  "allocatable_id"
@@ -153,13 +158,14 @@ ActiveRecord::Schema.define(:version => 20120712042346) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "recommendable", :default => false
+    t.boolean  "recommendable",    :default => false
     t.string   "form"
     t.string   "url"
     t.string   "share_title"
     t.string   "image_uid"
     t.integer  "price"
     t.integer  "offer"
+    t.string   "mobile_image_url"
   end
 
   add_index "topics", ["shortcode"], :name => "index_topics_on_shortcode", :unique => true
