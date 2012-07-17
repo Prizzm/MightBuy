@@ -9,22 +9,16 @@
 #item_url_search_autocomplete
 
 #item_image class="hidden"
-  /= heading "Image"
   = render "partials/image_selector_input_with_price", :form => form, :field => :image
 
-/= form.input :price, :label => "Price $", :hint => "Price - as listed", :wrapper_html => { :class => "hidden" }
-/= form.input :offer, :label => "Offer $", :hint => "What price would you buy it now for?", :wrapper_html => { :class => "hidden" }
 .collapsible class="hidden"
   = link_to "Add Notes", "#", :class => "toggle"
   = form.input :body, :label => "Notes", :hint => "Details on the item, or notes of why you want it"
 
 
-/= form.input :recommendable, :label => "Recommendations", :hint => "Would you like users to be able to recommend this?", :as => :radio
 
 
 
-/= form.input :share_title, :label => "Title", :hint => "When shared on facebook or twitter, what should the title be?"
-/	= form.input :access, :label => "Who can view?", :collection => Topic::Access, :as => :radio
 = form.input :access, :label => "Who can view?", :collection => Topic::Access, :as => :hidden , :input_html => { :value => "private" }
 = form.input :recommendable, :as => :hidden, :input_html => { :value => 1 }
 = form.input :form, :as=> :hidden, :input_html => { :value => "recommendation" }

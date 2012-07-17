@@ -30,7 +30,7 @@ module SocialHelper
   end
 
   def topic_fb_send(topic)
-    social_info_wrapper :recommend, topic, facebook.like(topic.url)
+    social_info_wrapper :recommend, topic, facebook.like(topic_url(topic))
   end
 
   def social_info_wrapper (type, object, content)
