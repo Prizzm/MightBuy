@@ -3,7 +3,8 @@
 .header
 
   - unless resource.url.blank?
-	.price= "$%s" % resource.price
+	- if resource.price
+      .price= "$%s" % resource.price
     = image_link(resource, resource.url, :class => "thumb", :target => "_blank") { thumb('125x125') }
     = link_to resource.subject, resource.url, :class => "title", :target => "_blank"
 
@@ -13,9 +14,8 @@
       
   .description= simple_format(resource.body)
 
-  .buyitnow= "You would pay: "
-  br 
-  .buyitnow= "$%s to buy it now" % resource.offer
+
+
 
   
 - if params[:responding]
