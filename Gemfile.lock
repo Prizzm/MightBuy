@@ -104,6 +104,7 @@ GEM
     guard-rspec (0.5.1)
       guard (>= 0.8.4)
     has_scope (0.5.1)
+    hashie (1.2.0)
     hike (1.2.1)
     hirefireapp (0.0.6)
     htmlentities (4.3.1)
@@ -145,6 +146,16 @@ GEM
       net-ssh (>= 1.99.1)
     net-ssh (2.1.4)
     nokogiri (1.5.0)
+    oa-core (0.3.2)
+    oauth (0.4.6)
+    omniauth (1.1.0)
+      hashie (~> 1.2)
+      rack
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-twitter (0.0.9)
+      omniauth-oauth (~> 1.0)
     orm_adapter (0.0.6)
     pg (0.11.0)
     polyamorous (0.5.0)
@@ -273,6 +284,8 @@ DEPENDENCIES
   meta_search (>= 1.1.0.pre)
   mini_magick
   nokogiri (= 1.5.0)
+  oa-core
+  omniauth-twitter
   pg (= 0.11.0)
   premailer-rails3 (= 1.0.0)
   rabl
