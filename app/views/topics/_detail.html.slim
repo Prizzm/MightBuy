@@ -17,7 +17,15 @@
     = link_to resource.subject, resource.url, :class => "title", :target => "_blank"
 
   - else
-    = image_link(resource, image_url(resource), :class => "thumb") { thumb('125x125') }
+	- if resource.mobile_image_url
+		a href=resource.url class="image topic present thumb" target="_blank"
+			table class="centered" cellspacing="0" cellpadding="0"
+				tbody
+					tr
+						td
+							img src=resource.mobile_image_url
+	- else
+    	= image_link(resource, image_url(resource), :class => "thumb") { thumb('125x125') }
     .title= resource.subject
       
   .description= simple_format(resource.body)

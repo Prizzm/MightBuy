@@ -94,11 +94,6 @@ ActiveRecord::Schema.define(:version => 20120716190748) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
-  create_table "image_uploads", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "point_allocations", :force => true do |t|
     t.integer  "bank_id"
     t.integer  "allocatable_id"
