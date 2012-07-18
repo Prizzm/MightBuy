@@ -17,11 +17,7 @@ module SharedHelper
   end
   
   def image_link (model, url, options = {}, &block)
-    if model.mobile_image_url then
-      image_url = model.mobile_image_url
-    else
-      image_url = image_url(model, &block)
-    end
+    image_url = image_url(model, &block)
     name    = model.class.to_s.downcase
     classes = ["image", name, image_url ? "present" : "blank", options[:class]].compact.join(" ")
     image   = image_url ? centered { image_tag(image_url) } : ""
