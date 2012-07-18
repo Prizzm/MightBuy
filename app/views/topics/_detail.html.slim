@@ -5,7 +5,15 @@
   - unless resource.url.blank?
 	- if resource.price
       .price= "$%s" % resource.price
-    = image_link(resource, resource.url, :class => "thumb", :target => "_blank") { thumb('125x125') }
+	- if resource.mobile_image_url
+		a href=resource.url class="image topic present thumb" target="_blank"
+			table class="centered" cellspacing="0" cellpadding="0"
+				tbody
+					tr
+						td
+							img src=resource.mobile_image_url
+	- else
+    	= image_link(resource, resource.url, :class => "thumb", :target => "_blank") { thumb('125x125') }
     = link_to resource.subject, resource.url, :class => "title", :target => "_blank"
 
   - else
