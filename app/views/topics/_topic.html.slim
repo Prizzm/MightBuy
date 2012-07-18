@@ -1,6 +1,9 @@
 li
   - if topic.price
     .price= "$%s" % topic.price
+  - if topic.mobile_image_url
+  = topic.mobile_image_url
+  - else
   = image_link(topic, topic_path(topic), :class => "thumb") { thumb('55x55#') }
   = link_to topic.subject, topic_path(topic), :class => "title"
   .notes= phrase_for(:said, topic)   
