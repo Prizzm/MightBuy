@@ -22,7 +22,8 @@ NewPrizzmCom::Application.routes.draw do
     },
     :controllers => {
       :sessions     => "sessions",
-      :registrations => "registrations"
+      :registrations => "registrations",
+      :omniauth_callbacks => "omniauth_callbacks"
     }
   
   devise_scope :user do
