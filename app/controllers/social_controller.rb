@@ -20,7 +20,7 @@ class SocialController < ApplicationController
       me = FbGraph::User.me(current_user.facebook_oauth_token)
       action = me.og_action!(
         "mightbuy:might_buy",
-        :product => "http://mightbuy.it/topics/#{params[:sc]}?r=t"
+        :product => "http://mightbuy.it/topics/#{params[:sc]}"
       )
       flash[:notice] = "Friends Asked"
       redirect_to "http://mightbuy.it/topics/#{params[:sc]}"
