@@ -16,6 +16,7 @@ gem 'rabl'
 # Authentication
 gem 'devise', '1.4.7'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'oa-core'
 
 # Layout
