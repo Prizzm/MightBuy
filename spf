@@ -1,6 +1,12 @@
+echo pulling
 git pull
+echo adding
 git add .
+echo commiting
 git commit -m "$1"
+echo pushing to github
 git push
+echo deploying
 git push heroku
+echo migrating database
 heroku run rake db:migrate
