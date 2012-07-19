@@ -93,7 +93,7 @@ head
 
 - else
 
-  - if current_user && current_user.brand?
+  - if current_user 
     #sharemore
           = heading "Ask Friends - should you buy it?", :id => "share"
           .email-friend
