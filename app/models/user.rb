@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
       u.image = app.fetch_url(auth.info.image)
       if auth.provider == "twitter" then
         u.twitter_uid = auth.uid
-      elsif auth.provider == "twitter" then
+      elsif auth.provider == "facebook" then
         u.facebook_uid = auth.uid
       end
       u.save
