@@ -24,22 +24,28 @@ class SocialController < ApplicationController
   end
   
   def recommended
-    
-    url   = CGI.unescape(params[:url])
-    topic = ShareTracker.get(url) || Topic.find_by_shortcode(params[:short_code])
-    
-    Shares::Recommend.create \
-      :topic => topic,
-      :user => current_user,
-      :visitor_code => visitor_code
-      
-    award_points
-    
-    @points_awarded = Points.allocators[:recommending]
-      
-    respond_to do |wants|
-      wants.js { render "points" }
+    if current_user.facebook_uid then
+      me = FbGraph::User.me("AAAGkC4pp4T0BAI1upGuC5CX7l0nRZA4QIocuUtlnGLMB0TFV5gUszMfeAAR4TzGWkt4MSedHfFiEKh4QduvnwPK1IdsA1B7od6WEA7AZDZD")
+      action = me.og_action!(
+        "mightbuy:might_buy",
+        :product => "http://mightbuy.it#{url_for(@topic)}"
+      )
     end
+    # url   = CGI.unescape(params[:url])
+    #     topic = ShareTracker.get(url) || Topic.find_by_shortcode(params[:short_code])
+    #     
+    #     Shares::Recommend.create \
+    #       :topic => topic,
+    #       :user => current_user,
+    #       :visitor_code => visitor_code
+    #       
+    #     award_points
+    #     
+    #     @points_awarded = Points.allocators[:recommending]
+    #       
+    #     respond_to do |wants|
+    #       wants.js { render "points" }
+    #     end
     
   end
   
