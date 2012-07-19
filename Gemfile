@@ -20,7 +20,7 @@ gem 'omniauth-facebook'
 gem 'oa-core'
 
 # Social
-gem 'koala'
+gem 'fb_graph'
 gem 'acts_as_opengraph'
 
 # Layout

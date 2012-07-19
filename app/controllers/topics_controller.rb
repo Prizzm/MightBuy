@@ -25,7 +25,7 @@ class TopicsController < RestfulController
   end
   
   def show
-    puts "session[:oauth_token]: ", session[:oauth_token] 
+    puts "session[:oauth_token]: ", session[:oauth_token]
     show! do |format|
       format.html do
         if params[:responding]
@@ -48,6 +48,13 @@ class TopicsController < RestfulController
     @topic.user = current_user
     @topic.pass_visitor_code = visitor_code
     create!
+    if current_user.facebook_uid then
+      me = FbGraph::User.me(session[:oauth_token])
+      action = me.og_action!(
+        app.og_action("mightbuy:mightbuy"), # or simply "APP_NAMESPACE:ACTION" as String
+        :product => url_for(@topic)
+      )
+    end
   end
   
   def update
