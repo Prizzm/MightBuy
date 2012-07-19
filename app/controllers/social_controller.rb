@@ -13,7 +13,7 @@ class SocialController < ApplicationController
         :consumer_key=>'LlSCGZ10wqQb96SSJQzw', :consumer_secret=>'nHsYOZwO0kuGMlkCsRIy80IIjYDr0cZqUzeXOOHro',
         :token=>current_user.twitter_oauth_token, :token_secret=>current_user.twitter_oauth_secret
       })
-      client.statuses.update! :status=>"I #mightbuy a #{Topic.find_by_shortcode(params[:sc]).subject}. Should I? http://mightbuy.it/topics/#{params[:sc]}"
+      client.statuses.update! :status=>"I #mightbuy a #{Topic.find_by_shortcode(params[:sc]).subject}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
     end
     if current_user.facebook_uid then
       puts "it is: http://mightbuy.it#{url_for(Topic.find_by_shortcode(params[:sc]))}"
