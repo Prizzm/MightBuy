@@ -49,6 +49,7 @@ NewPrizzmCom::Application.routes.draw do
   resources :topics do
     resources :responses
     get 'share' => 'topics#share'
+    get 'login' => 'topics#login'
     get 'thanks' => 'promotions#opinion'
     
     collection do

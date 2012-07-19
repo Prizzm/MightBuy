@@ -64,8 +64,18 @@ head
             .other-feedback
 
               = heading "More feedback please!"
-              = form.input :body, :label => false, :placeholder => "..additional comments", :required => false
-            
+			  - if !current_user
+			  	div style="width: 100%; text-align: center;"
+				  	a href='/users/login' Sign In
+				  	span  | 
+				  	a href='/users/auth/facebook' Sign In/Up With Facebook
+				  	span  | 
+				  	a href='/users/auth/twitter' Sign In/Up With Twitter
+				  	span  | 
+				  	a href='/users/join' Sign Up
+              	= form.input :body, :label => false, :placeholder => "You Must Login Before You Comment. If you want to just submit the rating click \"Submit Now!\" below.", :required => false, :disabled => true
+			  -else
+				= form.input :body, :label => false, :placeholder => "..additional comments", :required => false
             .group.footer
             
               .hr
@@ -93,7 +103,7 @@ head
 
 - else
 
-  - if current_user && current_user.brand?
+  - if current_user
     #sharemore
           = heading "Ask Friends - should you buy it?", :id => "share"
           .email-friend
