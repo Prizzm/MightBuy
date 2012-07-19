@@ -41,16 +41,11 @@
             #links
               = link_to 'Sign up!', new_user_registration_path
     
-    - if current_user && current_user.brand?
+    - if current_user 
       #header
         ol#menu
           li= active_link "Home", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
-          /li= active_link "I Have", topics_path(:user => current_user), "topics", "shares"
-          /li= active_link "feedback", activity_path(:user => current_user), "activity"
-          / = active_link "you", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
-          / = active_link "topics", topics_path, "topics", "shares", "activity"          
-          / = active_link "people", users_path, "users"
-          / = active_link "brands", brands_path, "brands"
+
           
         #search
           input type="text" placeholder="Search.."
@@ -66,5 +61,3 @@
         = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
 		|  (bookmarklet)
         = link_to "About", about_path
-        /= link_to "Contact", contact_path
-        /= link_to "Privacy", privacy_path
