@@ -12,8 +12,10 @@
 
 - if current_user.twitter_uid == nil
 	= link_to "Link with Twitter", user_omniauth_authorize_path(:twitter)
+	br
 - if current_user.facebook_uid == nil
 	= link_to "Link with Facebook", user_omniauth_authorize_path(:facebook)
+	br
 = form.input :url, :label => "Web"
 = form.input :facebook, :label => "Facebook", :hint => "E.x. http://facebook.com/yourname"
 = form.input :twitter, :label => "Twitter", :hint => "E.x. @yourname"

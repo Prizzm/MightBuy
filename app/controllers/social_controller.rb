@@ -3,16 +3,14 @@ class SocialController < ApplicationController
   skip_filter :award_points
   
   def askfriends
-    if current_user.facebook_uid then
       me = FbGraph::User.me("AAAGkC4pp4T0BAI1upGuC5CX7l0nRZA4QIocuUtlnGLMB0TFV5gUszMfeAAR4TzGWkt4MSedHfFiEKh4QduvnwPK1IdsA1B7od6WEA7AZDZD")
       action = me.og_action!(
         "mightbuy:might_buy",
         :product => "http://mightbuy.it#{url_for(Topic.find_by_shortcode(params[:sc]))}"
       )
+      puts "it is: http://mightbuy.it#{url_for(Topic.find_by_shortcode(params[:sc]))}"
       redirect_to "http://mightbuy.it#{url_for(Topic.find_by_shortcode(params[:sc]))}"
-    else
-      redirect_to "/users/auth/facebook"
-    end
+
   end
   
   def tweeted
