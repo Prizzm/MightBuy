@@ -83,6 +83,7 @@ class User < ActiveRecord::Base
       elsif auth.provider == "facebook" then
         u.facebook_uid = auth.uid
         u.email = auth.info.email
+        u.facebook = auth.urls.Facebook
       end
       u.save
       return u
