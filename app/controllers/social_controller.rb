@@ -10,6 +10,7 @@ class SocialController < ApplicationController
         "mightbuy:might_buy",
         :product => "http://mightbuy.it/topics/#{params[:sc]}"
       )
+      flash[:notice] = "Friends Asked"
       redirect_to "http://mightbuy.it/topics/#{params[:sc]}"
     else
       redirect_to "/users/auth/facebook"
