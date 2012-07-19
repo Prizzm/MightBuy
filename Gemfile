@@ -21,6 +21,7 @@ gem 'oa-core'
 
 # Social
 gem 'koala'
+gem 'acts_as_opengraph'
 
 # Layout
 gem 'slim-rails', '0.2.1'
