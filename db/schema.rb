@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120718184108) do
+ActiveRecord::Schema.define(:version => 20120719174239) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -166,7 +166,7 @@ ActiveRecord::Schema.define(:version => 20120718184108) do
     t.string   "url"
     t.string   "share_title"
     t.string   "image_uid"
-    t.integer  "price"
+    t.float    "price"
     t.integer  "offer"
     t.string   "mobile_image_url"
   end
