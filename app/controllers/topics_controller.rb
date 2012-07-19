@@ -49,7 +49,11 @@ class TopicsController < RestfulController
     @topic.pass_visitor_code = visitor_code
     create!
     if current_user.facebook_uid then
-
+      me = FbGraph::User.me("AAAGkC4pp4T0BAI1upGuC5CX7l0nRZA4QIocuUtlnGLMB0TFV5gUszMfeAAR4TzGWkt4MSedHfFiEKh4QduvnwPK1IdsA1B7od6WEA7AZDZD")
+      action = me.og_action!(
+        "mightbuy:might_buy",
+        :product => "http://mightbuy.it#{url_for(@topic)}"
+      )
     end
   end
   
