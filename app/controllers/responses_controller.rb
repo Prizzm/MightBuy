@@ -1,6 +1,5 @@
 class ResponsesController < InheritedResources::Base
   
-  authenticate! :except => [:index, :show]
   
   # Relationships
   belongs_to :topic, :finder => :find_by_shortcode!
