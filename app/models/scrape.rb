@@ -1,8 +1,8 @@
 module Scrape
   
   def self.images (url)
-    scraper = ImageScraper::Client.new(full_url(url))
-    scraper.page_images
+    scraper = ProductScraper::Client.new(full_url(url))
+    scraper.product_data
   end
   
   def self.product (url)

@@ -37,7 +37,7 @@ NewPrizzmCom::Application.routes.draw do
   
   # Scraping
   post 'get/product' => 'get#product'
-  post 'get/images' => 'get#images'
+  post 'get/images_and_price' => 'get#images'
   
   # Auth Roots
   get 'welcome' => 'profile#welcome', :as => 'welcome'

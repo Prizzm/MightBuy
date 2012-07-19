@@ -165,7 +165,7 @@ var scrolltotop = function () {
 // Recommend Something
 var recommend = function () {
   $('#respond .recommendation').each(function () {
-    
+
     var element   = $(this);
     var form      = element.find('form');
     var status    = element.find('.left');
@@ -180,7 +180,7 @@ var recommend = function () {
     var notrecommended = element.find('a.not_recommended');
     var footer = element.find('.group.footer');
     var pointsgiven = false;
-    
+
     var chosen = function (element, type) {
       if( !pointsgiven ){
         givepoints(40);
@@ -190,7 +190,7 @@ var recommend = function () {
       clicked(element, type);
       //pointshelper();
     }
-    
+
     $("#points").qtip({
 
       content: function () {
@@ -296,7 +296,7 @@ var pointshelper = function () {
 // Special Upload
 var selectoruploaders = function () {
   $('.image-selector-uploader').each(function (element) {
-    
+
     var uploader          = $(this);
     var position          = 0;
     var images            = [];
@@ -306,27 +306,31 @@ var selectoruploaders = function () {
     var prev              = uploader.find('a.prev');
     var cancel            = uploader.find('a.cancel');
     var webfield          = uploader.find('#web input');
+    var pricefield        = uploader.closest("form").find('#topic_price');
     var remotefield       = uploader.find('input.remote-url');
     var idfield           = uploader.find('input.upload-id');
     var uploadfield       = uploader.find('.file-uploader');
     var blank_image_html  = '<table class="centered" cellspacing="0" cellpadding="0"><tbody><tr><td></td></tr></tbody></table>';
-    
+
     this.setimages = function (images) {
       success(images);
     }
 
     var scrape = function (url) {
       showloader(image);
-      $.post('/get/images.json', { url: url }, success);
+      $.post('/get/images_and_price.json', { url: url }, success);
     }
-    
+
     var success = function (data) { 
       position = 0;
-      images   = data;
+      images   = data.images;
+      if ( pricefield.length > 0 ) {
+        pricefield.val(data.price);
+      }
       hideloader(image);
       change();
     }
-    
+
     var gonext = function () {
       position = position + 1 < images.length ? position + 1 : 0;
       return change();
