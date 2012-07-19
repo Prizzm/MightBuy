@@ -3,6 +3,10 @@ class SocialController < ApplicationController
   skip_filter :award_points
   
   def askfriends
+    puts "facebook_oauth", current_user.facebook_oauth_token
+    puts "facebook_secret", current_user.facebook_oauth_secret
+    puts "twitter_oauth", current_user.twitter_oauth_token
+    puts "twitter_secret", current_user.twitter_oauth_secret
     if current_user.twitter_uid then
       client = Grackle::Client.new(:auth=>{
         :type=>:oauth,
