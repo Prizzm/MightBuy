@@ -1,5 +1,7 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def all
+    puts "token: ", request.env["omniauth.auth"]['credentials']['token']
+    session[:oauth_token] = request.env["omniauth.auth"]['credentials']['token']
     if current_user then
       if request.env["omniauth.auth"].provider == "twitter" then
         u = current_user

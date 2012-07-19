@@ -19,6 +19,9 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'oa-core'
 
+# Social
+gem 'koala'
+
 # Layout
 gem 'slim-rails', '0.2.1'
 gem 'inherited_resources', '1.3.0'
