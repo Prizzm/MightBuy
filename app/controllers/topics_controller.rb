@@ -43,7 +43,6 @@ class TopicsController < RestfulController
   end
   
   def create
-    
     @topic = build_resource
     @topic.user = current_user
     @topic.pass_visitor_code = visitor_code
