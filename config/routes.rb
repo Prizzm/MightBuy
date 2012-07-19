@@ -74,6 +74,7 @@ NewPrizzmCom::Application.routes.draw do
   # Social
   post 'social/tweeted' => 'social#tweeted'
   post 'social/recommended' => 'social#recommended'
+  match 'social/:sc/askfriends' => 'social#askfriends'
   
   # Router
   get 'share/:shortcode' => "router#shared", :as => :shared

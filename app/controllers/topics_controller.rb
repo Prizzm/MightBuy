@@ -25,6 +25,7 @@ class TopicsController < RestfulController
   end
   
   def show
+    puts "session[:oauth_token]: ", session[:oauth_token]
     show! do |format|
       format.html do
         if params[:responding]
@@ -43,7 +44,6 @@ class TopicsController < RestfulController
   end
   
   def create
-    
     @topic = build_resource
     @topic.user = current_user
     @topic.pass_visitor_code = visitor_code

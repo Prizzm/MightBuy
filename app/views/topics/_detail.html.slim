@@ -99,7 +99,8 @@ head
           .email-friend
             = link_to "Email friends", topic_share_path(resource), :class => "button" 
           = topic_tweet(resource)
-          = topic_fb_send(resource)
+		  .email-friend
+            = link_to "Ask Friends", "/social/#{resource.shortcode}/askfriends", :class => "button"
           .clear
     
         
