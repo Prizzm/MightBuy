@@ -10,6 +10,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         u.facebook_uid = request.env["omniauth.auth"].uid
         u.save
       end
+      redirect_to '/me'
     else
       user = User.from_omniauth(request.env["omniauth.auth"])
       puts "returned user: ", user
