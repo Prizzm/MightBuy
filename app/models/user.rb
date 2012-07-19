@@ -76,7 +76,8 @@ class User < ActiveRecord::Base
       puts "no uid"
       u = User.new()
       u.name = auth.info.name
-      u.image = Dragonfly[:images].fetch_url(auth.info.image)
+      app = Dragonfly[:images]
+      u.image = app.fetch_url(auth.info.image)
       if auth.provider == "twitter" then
         u.twitter_uid = auth.uid
       elsif auth.provider == "twitter" then
