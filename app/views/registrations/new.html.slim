@@ -24,7 +24,8 @@
       = simple_form_for resource, :as => resource_name, :url => registration_path(resource_name) do |form|
         = form.input :name, :label => "Name", :hint => "What shall we call you?"
         = form.input :email, :label => "Email", :hint => "This is private. We will never spam your email address :)"
-        = form.input :password, :as => :password, :label => "Password"
+		- if session["devise.user_attributes"].uid
+        	= form.input :password, :as => :password, :label => "Password"
         = form.input "twitter_uid", :as => :hidden
         = form.input "facebook_uid", :as => :hidden
         .buttons
