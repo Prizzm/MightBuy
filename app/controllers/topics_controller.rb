@@ -28,7 +28,7 @@ class TopicsController < RestfulController
     puts "session[:oauth_token]: ", session[:oauth_token]
     show! do |format|
       format.html do
-        if params[:responding]
+        if params[:responding] || params[:r]
           case resource.form?
             when :recommendation
               render "responding"
