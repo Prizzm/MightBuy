@@ -3,7 +3,7 @@ git pull
 echo adding
 git add .
 echo commiting
-git commit -m "$1"
+git commit -m "$*"
 echo pushing to github
 git push
 echo deploying
