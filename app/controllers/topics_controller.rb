@@ -43,6 +43,7 @@ class TopicsController < RestfulController
   end
   
   def create
+    @graph = Koala::Facebook::API.new(session[:oauth_token])
     @topic = build_resource
     @topic.user = current_user
     @topic.pass_visitor_code = visitor_code
