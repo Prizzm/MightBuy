@@ -27,6 +27,14 @@ class Topic < ActiveRecord::Base
   # Uploaders
   image_accessor :image
   
+  # Social  
+  acts_as_opengraph :values => { :type => "mightbuy:product", :app_id => "461844450500925", :image => "" }
+
+
+  def opengraph_app_id
+    "461844450500925"
+  end
+  
   # Nested Attributes
   accepts_nested_attributes_for :shares,
     :reject_if => proc { |attributes| attributes["with"].blank? }

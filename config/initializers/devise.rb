@@ -207,5 +207,6 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
-  config.omniauth :twitter, ENV["LlSCGZ10wqQb96SSJQzw"], ENV["nHsYOZwO0kuGMlkCsRIy80IIjYDr0cZqUzeXOOHro"]
+  config.omniauth :twitter, "LlSCGZ10wqQb96SSJQzw", "nHsYOZwO0kuGMlkCsRIy80IIjYDr0cZqUzeXOOHro"
+  config.omniauth :facebook, "461844450500925", "4c9659082e85db5f8e0b8db4122060e9"
 end

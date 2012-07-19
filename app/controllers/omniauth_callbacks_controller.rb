@@ -1,13 +1,30 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def all
-    user = User.from_omniauth(request.env["omniauth.auth"])
-    if user.persisted?
-      flash.notice = "Signed in!"
-      sign_in_and_redirect user
+    puts "token: ", request.env["omniauth.auth"]['credentials']['token']
+    session[:oauth_token] = request.env["omniauth.auth"]['credentials']['token']
+    if current_user then
+      if request.env["omniauth.auth"].provider == "twitter" then
+        u = current_user
+        u.twitter_uid = request.env["omniauth.auth"].uid
+        u.save
+      elsif request.env["omniauth.auth"].provider == "facebook" then
+        u = current_user
+        u.facebook_uid = request.env["omniauth.auth"].uid
+        u.save
+      end
+      redirect_to '/me'
     else
-      session["devise.user_attributes"] = user.attributes
-      redirect_to new_user_registration_url
+      user = User.from_omniauth(request.env["omniauth.auth"])
+      puts "returned user: ", user
+      if user.persisted?
+        flash.notice = "Signed in!"
+        sign_in_and_redirect user
+      else
+        session["devise.user_attributes"] = user.attributes
+        redirect_to new_user_registration_url
+      end
     end
   end
   alias_method :twitter, :all
+  alias_method :facebook, :all
 end

@@ -42,6 +42,10 @@
             = form.input :category, :as => :hidden, :input_html => { :value => "brand" }, :label => false
             = form.button :submit, "Sign up for MightBuy!"
             .clearfix
+				br
+				= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+				br
+				= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
         - else
           
           / Beta Signup

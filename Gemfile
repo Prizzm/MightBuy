@@ -16,7 +16,12 @@ gem 'rabl'
 # Authentication
 gem 'devise', '1.4.7'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'oa-core'
+
+# Social
+gem 'koala'
+gem 'acts_as_opengraph'
 
 # Layout
 gem 'slim-rails', '0.2.1'

@@ -1,4 +1,13 @@
 / And the page content..
+head
+	meta property="fb:app_id" content="461844450500925"
+    meta property="og:title" content="#{resource.subject}"
+	- if resource.mobile_image_url
+    	meta property="og:image" content="#{resource.mobile_image_url}"
+	- else
+    	meta property="og:image" content="#{resource.image.url}"
+    meta property="og:url" content="http://samples.ogp.me/462482730437097"
+    meta property="og:type" content="mightbuy:product"
 
 .header
 

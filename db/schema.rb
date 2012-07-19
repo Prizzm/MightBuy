@@ -202,6 +202,8 @@ ActiveRecord::Schema.define(:version => 20120718184108) do
     t.string   "category",                              :default => "person"
     t.string   "image_uid"
     t.string   "authentication_token"
+    t.string   "facebook_uid"
+    t.string   "twitter_uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

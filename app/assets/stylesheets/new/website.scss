@@ -42,6 +42,10 @@ body
 
 /* Styles */
 
+a:visited{
+  color:blue;
+}
+
 #website
 {
   
@@ -222,7 +226,7 @@ body
       position: absolute;
       top: 0px;
       right: 0px;
-      @include block-with-image(271px, 302px, "/images/website/forms.png");
+      @include block-with-image(271px, 332px, "/images/website/forms.png");
       
       .badge
       {
@@ -297,7 +301,7 @@ body
       
       form#login
       {
-        top: 205px;
+        top: 235px;
         left: 14px;
         
         .password

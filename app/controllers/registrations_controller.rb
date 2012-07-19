@@ -1,5 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
-  
+  before_filter :logS
+  def logS
+    puts "session: ", session["devise.user_attributes"]
+  end
   private
   
     def build_resource(hash=nil)
