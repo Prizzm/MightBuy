@@ -1,8 +1,6 @@
-l.list.topics
+ol.list.topics
   = placeholder latest_posts do |collection|
     = render :partial => "topics/topic", :collection => collection
 
 = link_to "Add something you might buy", new_topic_path   
 /= link_to "More...", topics_path(:user => resource.id)
-
- 
