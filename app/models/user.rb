@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
       puts "no uid"
       u = User.new()
       u.name = auth.info.name
-      u.mobile_image_url = auth.info.image
+      u.image = app.fetch_url(auth.info.image)
       if auth.provider == "twitter" then
         u.twitter_uid = auth.uid
       elsif auth.provider == "twitter" then
