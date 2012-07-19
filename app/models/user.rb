@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     :email, :password, :password_confirmation, 
     :remember_me, :name, :image, :visitor_code,
     :url, :description, :facebook, :twitter, :phone, 
-    :email_address, :category, :image_url, :inherit_upload_id, :authentication_token
+    :email_address, :category, :image_url, :inherit_upload_id, :authentication_token, :facebook_uid, :twitter_uid
     
   # Uploaders
   image_accessor :image
@@ -69,11 +69,34 @@ class User < ActiveRecord::Base
   
   # Omniauth
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.username = auth.info.nickname
+    puts "auth: ", auth
+    puts "provider: ", auth.provider
+    puts "uid: ", auth.uid
+    if User.find_by_facebook_uid(auth.uid) == nil && User.find_by_twitter_uid(auth.uid) == nil then
+      puts "no uid"
+      u = User.new()
+      u.name = auth.info.name
+      if auth.provider == "twitter" then
+        u.twitter_uid = auth.uid
+      elsif auth.provider == "twitter" then
+        u.facebook_uid = auth.uid
+      end
+      u.save
+      return u
+    else
+      puts "uid"
+      if User.find_by_facebook_uid(auth.uid) == nil then
+        return User.find_by_twitter_uid(auth.uid)
+      elsif User.find_by_twitter_uid(auth.uid) == nil then
+        return User.find_by_facebook_uid(auth.uid)
+      end
+      return AuthProvider.find_by_uid(auth.uid).user
     end
+    # where(auth.slice(:provider, :uid)).first_or_create do |user|
+    #   user.provider = auth.provider
+    #   user.uid = auth.uid
+    #   user.username = auth.info.nickname
+    # end
   end
 
   def self.new_with_session(params, session)
@@ -88,7 +111,7 @@ class User < ActiveRecord::Base
   end
 
   def password_required?
-    super && provider.blank?
+    return false
   end
 
   def update_with_password(params, *options)

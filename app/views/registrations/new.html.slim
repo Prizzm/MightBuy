@@ -8,7 +8,8 @@
         = form.input :email, :label => "Email", :hint => "This is private. We will never spam your email address :)"
         = form.input :password, :as => :password, :label => "Password"
         = form.input :category, :as => :hidden, :input_html => { :value => "brand" }
-        
+        = form.input "twitter_uid", :as => :hidden
+        = form.input "facebook_uid", :as => :hidden
         input name="brand" type="hidden" value="true"
 
         .buttons
@@ -24,7 +25,8 @@
         = form.input :name, :label => "Name", :hint => "What shall we call you?"
         = form.input :email, :label => "Email", :hint => "This is private. We will never spam your email address :)"
         = form.input :password, :as => :password, :label => "Password"
-
+        = form.input "twitter_uid", :as => :hidden
+        = form.input "facebook_uid", :as => :hidden
         .buttons
           = form.button :submit, "Join!"
           = link_to "Have an account already?", new_user_session_path
