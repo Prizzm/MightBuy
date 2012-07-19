@@ -69,9 +69,6 @@ class User < ActiveRecord::Base
   
   # Omniauth
   def self.from_omniauth(auth)
-    puts "auth: ", auth
-    puts "provider: ", auth.provider
-    puts "uid: ", auth.uid
     if User.find_by_facebook_uid(auth.uid) == nil && User.find_by_twitter_uid(auth.uid) == nil then
       puts "no uid"
       u = User.new()
