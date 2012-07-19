@@ -21,6 +21,7 @@ gem 'oa-core'
 
 # Social
 gem 'fb_graph'
+gem 'grackle'
 gem 'acts_as_opengraph'
 
 # Layout
