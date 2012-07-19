@@ -10,7 +10,7 @@ class SocialController < ApplicationController
     if current_user.twitter_uid then
       client = Grackle::Client.new(:auth=>{
         :type=>:oauth,
-        :consumer_key=>'LlSCGZ10wqQb96SSJQzw', :consumer_secret=>'nHsYOZwO0kuGMlkCsRIy80IIjYDr0cZqUzeXOOHro',
+        :consumer_key=>'kLGDHfctWCOTax3IY0Nwig', :consumer_secret=>'vP2xNwMj4jpntS6qN8Z37fY1qUTSk1vDgJT8b1HSs',
         :token=>current_user.twitter_oauth_token, :token_secret=>current_user.twitter_oauth_secret
       })
       client.statuses.update! :status=>"I #mightbuy a #{Topic.find_by_shortcode(params[:sc]).subject}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
