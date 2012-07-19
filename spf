@@ -1,9 +1,9 @@
-echo pulling
-git pull
 echo adding
 git add .
 echo commiting
 git commit -m "$*"
+echo pulling
+git pull
 echo pushing to github
 git push
 echo deploying
