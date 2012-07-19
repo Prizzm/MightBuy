@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   before_filter :logS
   def logS
-    puts "session: ", session["user_attr"]
+    puts "session: ", session["devise.user_attributes"]
   end
   private
   
