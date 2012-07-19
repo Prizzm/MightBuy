@@ -77,10 +77,14 @@ class User < ActiveRecord::Base
       u.image = app.fetch_url(auth.info.image)
       if auth.provider == "twitter" then
         u.twitter_uid = auth.uid
+        u.twitter_oauth_token = auth['credentials']['token']
+        u.twitter_oauth_secret = auth['credentials']['secret']
       elsif auth.provider == "facebook" then
         u.facebook_uid = auth.uid
         u.email = auth.info.email
         u.facebook = auth.urls.Facebook
+        u.facebook_oauth_token = auth['credentials']['token']
+        u.facebook_oauth_secret = auth['credentials']['secret']
       end
       u.save
       return u
