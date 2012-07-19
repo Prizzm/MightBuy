@@ -25,6 +25,7 @@ class TopicsController < RestfulController
   end
   
   def show
+    puts "session[:oauth_token]: ", session[:oauth_token] 
     show! do |format|
       format.html do
         if params[:responding]
