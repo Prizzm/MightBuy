@@ -19,7 +19,7 @@ class SocialController < ApplicationController
             :token=>current_user.twitter_oauth_token, :token_secret=>current_user.twitter_oauth_secret
           })
           client.statuses.update! :status=>"I #mightbuy #{Topic.find_by_shortcode(params[:sc]).subject}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
-          rescue Grackle::TwitterError do |e|
+          rescue Grackle::TwitterError
             puts e.error
           end
    end
