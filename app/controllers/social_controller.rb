@@ -21,7 +21,6 @@ class SocialController < ApplicationController
             })
             client.statuses.update! :status=>"I #mightbuy #{Topic.find_by_shortcode(params[:sc]).subject}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
           rescue Grackle::TwitterError => e
-            puts e.error
           end
    end
    
