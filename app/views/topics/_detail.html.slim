@@ -134,7 +134,10 @@ head
 
   - if current_user
     #sharemore
-          = heading "Ask Friends - should you buy it?", :id => "share"
+		  - if !params[:af]
+          	= heading "Ask Friends - should you buy it?", :id => "share"
+		  - else
+			= heading "Ask Friends Again - should you buy it?", :id => "share"
           .email-friend
             = link_to "Email friends", topic_share_path(resource), :class => "button" 
           = topic_tweet(resource)

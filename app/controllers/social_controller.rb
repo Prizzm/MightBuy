@@ -9,7 +9,7 @@ class SocialController < ApplicationController
             "mightbuy:might_buy",
             :product => "http://mightbuy.it/topics/#{params[:sc]}"
           )
-     redirect_to "http://mightbuy.it/topics/#{params[:sc]}"
+     redirect_to "http://mightbuy.it/topics/#{params[:sc]}?af=t"
    end
    
    if current_user.twitter_uid && current_user.twitter_oauth_token && current_user.twitter_oauth_secret then
