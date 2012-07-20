@@ -5,7 +5,7 @@ echo commiting
 osascript 'tell application "Skype" send command "SET PROFILE MOOD_TEXT is commiting." script name "CogCurrentMusicSkypeStatus" end tell'
 git commit -m "$*"
 echo pulling
-osascript 'tell application "Skype" send command "SET PROFILE MOOD_TEXT is pulling from Github" script name "CogCurrentMusicSkypeStatus" end tell
+osascript 'tell application "Skype" send command "SET PROFILE MOOD_TEXT is pulling from Github" script name "CogCurrentMusicSkypeStatus" end tell'
 git pull
 echo pushing to github
 osascript 'tell application "Skype" send command "SET PROFILE MOOD_TEXT is pushing to Github" script name "CogCurrentMusicSkypeStatus" end tell'
