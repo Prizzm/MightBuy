@@ -323,6 +323,7 @@ DEPENDENCIES
   mini_magick
   nokogiri (= 1.5.0)
   oa-core
+  oauth
   omniauth-facebook
   omniauth-twitter
   pg (= 0.11.0)

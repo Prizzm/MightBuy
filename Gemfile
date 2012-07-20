@@ -23,6 +23,7 @@ gem 'oa-core'
 gem 'fb_graph'
 gem 'grackle'
 gem 'acts_as_opengraph'
+gem 'oauth'
 
 # Layout
 gem 'slim-rails', '0.2.1'
