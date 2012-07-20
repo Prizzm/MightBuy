@@ -25,7 +25,7 @@ module SocialHelper
   end
 
   def topic_tweet(topic)
-    title = "I might buy #{topic.share_title || topic.subject} #{topic_url(topic)}"
+    title = "I might buy #{topic.share_title || topic.subject} #{topic_url}"
     social_info_wrapper :tweet, topic, twitter.tweet(h(title), topic_url(topic))
   end
 
