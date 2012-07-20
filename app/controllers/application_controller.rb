@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
 
+  rescue Grackle::TwitterError do |exc|
+    
+  end
+
   # Forgery Protection
   protect_from_forgery
   
