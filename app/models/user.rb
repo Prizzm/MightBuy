@@ -82,7 +82,6 @@ class User < ActiveRecord::Base
       elsif auth.provider == "facebook" then
         u.facebook_uid = auth.uid
         u.email = auth.info.email
-        u.facebook = auth.urls.Facebook
         u.facebook_oauth_token = auth['credentials']['token']
         u.facebook_oauth_secret = auth['credentials']['secret']
       end
