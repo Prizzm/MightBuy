@@ -1,12 +1,18 @@
+echo setting skype status
 echo adding
 git add .
 echo commiting
+osascript ictg_skype.scpt
 git commit -m "$*"
 echo pulling
+osascript ipfg_skype.scpt
 git pull
 echo pushing to github
+osascript iptg_skype.scpt
 git push
 echo deploying
+osascript id_skype.scpt
 git push heroku
 echo migrating database
+osascript imtd_skype.scpt
 heroku run rake db:migrate
