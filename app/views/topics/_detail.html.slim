@@ -139,10 +139,10 @@ head
             = link_to "Email friends", topic_share_path(resource), :class => "button" 
           = topic_tweet(resource)
 		  .email-friend
-		  - if !params[:af]
-            	= link_to "Ask Friends", "/social/#{resource.shortcode}/askfriends", :class => "button"
-		  - else
-		  		= link_to "Ask Friends Again", "/social/#{resource.shortcode}/askfriends", :class => "button"
+		  	- if !params[:af]
+	            = link_to "Ask Friends", "/social/#{resource.shortcode}/askfriends", :class => "button"
+			  - else
+			  	= link_to "Ask Friends Again", "/social/#{resource.shortcode}/askfriends", :class => "button"
           .clear
     
         
