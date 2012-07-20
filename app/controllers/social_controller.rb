@@ -3,8 +3,8 @@ class SocialController < ApplicationController
   skip_filter :award_points
  
  def askfriends
-   if current_user.facebook_uid
-     me = FbGraph::User.me("AAAGkC4pp4T0BAJY5LiuWtfHTEUYnWPVNnmdqN0Nc38As0r3vVWhDlbsgDnOTNWiCGKzP1Pue523bEQ1rR6jmI7IW9QtF89Dn5oOYPgZDZD")
+   if current_user.facebook_uid && current_user.facebook_oauth_token
+     me = FbGraph::User.me(current_user.facebook_oauth_token)
      action = me.og_action!(
             "mightbuy:might_buy",
             :product => "http://mightbuy.it/topics/#{params[:sc]}"
