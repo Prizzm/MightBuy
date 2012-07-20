@@ -2,10 +2,12 @@ class SocialController < ApplicationController
   
   skip_filter :award_points
   
+  
   rescue Grackle::TwitterError
     puts "grackle error"
     redirect_to "http://mightbuy.it/topics/#{params[:sc]}"
   end
+  
   
   def askfriends
     puts "facebook_oauth", current_user.facebook_oauth_token
