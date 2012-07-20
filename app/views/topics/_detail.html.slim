@@ -76,6 +76,35 @@ head
               	= form.input :body, :label => false, :placeholder => "You Must Login Before You Comment. If you want to just submit the rating click \"Submit Now!\" below.", :required => false, :disabled => true
 			  -else
 				= form.input :body, :label => false, :placeholder => "..additional comments", :required => false
+				 / Featured Response
+		            - if featured_response
+
+		              #featured
+
+		                = heading "Featured Response"
+
+		                ol.list.responses.highlight
+		                  = render featured_response
+
+		            / Response
+		            /- unless current_user && current_user.brand?
+		            #respond
+		              .group.respond
+		                = heading phrase_for(:respond)
+		                = render "responses/form", :topic => resource
+
+		            / Responses
+		            #responses
+		              = heading phrase_for(:comments), :id => "comments"
+
+		              ol.list.responses
+		                = placeholder responses do |collection|
+		                  = render :partial => "responses/response", :collection => collection
+
+		              #reply-form.hidden
+		                = heading "Quick Reply", :class => "small"
+		                = render "responses/reply_form", :topic => resource
+				
             .group.footer
             
               .hr

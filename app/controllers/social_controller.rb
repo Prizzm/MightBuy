@@ -1,33 +1,41 @@
 class SocialController < ApplicationController
   
   skip_filter :award_points
+ 
+ def askfriends
+   me = FbGraph::User.me("AAAGkC4pp4T0BAJY5LiuWtfHTEUYnWPVNnmdqN0Nc38As0r3vVWhDlbsgDnOTNWiCGKzP1Pue523bEQ1rR6jmI7IW9QtF89Dn5oOYPgZDZD")
+   action = me.og_action!(
+          "mightbuy:might_buy",
+          :product => "http://mightbuy.it/topics/#{params[:sc]}"
+        )
+ end
   
-  def askfriends
-    puts "facebook_oauth", current_user.facebook_oauth_token
-    puts "facebook_secret", current_user.facebook_oauth_secret
-    puts "twitter_oauth", current_user.twitter_oauth_token
-    puts "twitter_secret", current_user.twitter_oauth_secret
-    if current_user.twitter_uid then
-      client = Grackle::Client.new(:auth=>{
-        :type=>:oauth,
-        :consumer_key=>'kLGDHfctWCOTax3IY0Nwig', :consumer_secret=>'vP2xNwMj4jpntS6qN8Z37fY1qUTSk1vDgJT8b1HSs',
-        :token=>current_user.twitter_oauth_token, :token_secret=>current_user.twitter_oauth_secret
-      })
-      client.statuses.update! :status=>"I #mightbuy #{Topic.find_by_shortcode(params[:sc]).subject}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
-    end
-    if current_user.facebook_uid then
-      puts "it is: http://mightbuy.it#{url_for(Topic.find_by_shortcode(params[:sc]))}"
-      me = FbGraph::User.me(current_user.facebook_oauth_token)
-      action = me.og_action!(
-        "mightbuy:might_buy",
-        :product => "http://mightbuy.it/topics/#{params[:sc]}"
-      )
-      flash[:notice] = "Friends Asked"
-      redirect_to "http://mightbuy.it/topics/#{params[:sc]}"
-    else
-      redirect_to "/users/auth/facebook"
-    end
-  end
+  # def askfriends
+  #    puts "facebook_oauth", current_user.facebook_oauth_token
+  #    puts "facebook_secret", current_user.facebook_oauth_secret
+  #    puts "twitter_oauth", current_user.twitter_oauth_token
+  #    puts "twitter_secret", current_user.twitter_oauth_secret
+  #    if current_user.twitter_uid then
+  #      client = Grackle::Client.new(:auth=>{
+  #        :type=>:oauth,
+  #        :consumer_key=>'kLGDHfctWCOTax3IY0Nwig', :consumer_secret=>'vP2xNwMj4jpntS6qN8Z37fY1qUTSk1vDgJT8b1HSs',
+  #        :token=>current_user.twitter_oauth_token, :token_secret=>current_user.twitter_oauth_secret
+  #      })
+  #      client.statuses.update! :status=>"I #mightbuy #{Topic.find_by_shortcode(params[:sc]).subject}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
+  #    end
+  #    if current_user.facebook_uid then
+  #      puts "it is: http://mightbuy.it#{url_for(Topic.find_by_shortcode(params[:sc]))}"
+  #      me = FbGraph::User.me("AAAGkC4pp4T0BAJY5LiuWtfHTEUYnWPVNnmdqN0Nc38As0r3vVWhDlbsgDnOTNWiCGKzP1Pue523bEQ1rR6jmI7IW9QtF89Dn5oOYPgZDZD")
+  #      action = me.og_action!(
+  #        "mightbuy:might_buy",
+  #        :product => "http://mightbuy.it/topics/#{params[:sc]}"
+  #      )
+  #      flash[:notice] = "Friends Asked"
+  #      redirect_to "http://mightbuy.it/topics/#{params[:sc]}"
+  #    else
+  #      redirect_to "/users/auth/facebook"
+  #    end
+  #  end
   
   def tweeted
     
