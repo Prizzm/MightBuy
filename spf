@@ -2,17 +2,18 @@ echo setting skype status
 echo adding
 git add .
 echo commiting
-osascript 'tell application "Skype" send command "SET PROFILE MOOD_TEXT is commiting." script name "CogCurrentMusicSkypeStatus" end tell'
+osascript skypeScripts/ictg.applescript
 git commit -m "$*"
 echo pulling
-osascript 'tell application "Skype" send command "SET PROFILE MOOD_TEXT is pulling from Github" script name "CogCurrentMusicSkypeStatus" end tell'
+osascript skypeScripts/icfg.applescript
 git pull
 echo pushing to github
-osascript 'tell application "Skype" send command "SET PROFILE MOOD_TEXT is pushing to Github" script name "CogCurrentMusicSkypeStatus" end tell'
+osascript skypeScripts/ictg.applescript
 git push
 echo deploying
-osascript 'tell application "Skype" send command "SET PROFILE MOOD_TEXT is deploying." script name "CogCurrentMusicSkypeStatus" end tell'
+osascript skypeScripts/id.applescript
 git push heroku
 echo migrating database
-osascript 'tell application "Skype" send command "SET PROFILE MOOD_TEXT is migrating the database." script name "CogCurrentMusicSkypeStatus" end tell'
+osascript skypeScripts/imdb.applescript
 heroku run rake db:migrate
+osascript skypeScripts/idd.applescript
