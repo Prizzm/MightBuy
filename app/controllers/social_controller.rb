@@ -4,11 +4,14 @@ class SocialController < ApplicationController
  
  def askfriends
    if current_user.facebook_uid && current_user.facebook_oauth_token
-     me = FbGraph::User.me(current_user.facebook_oauth_token)
-     action = me.og_action!(
-            "mightbuy:might_buy",
-            :product => "http://mightbuy.it/topics/#{params[:sc]}"
-          )
+     begin
+       me = FbGraph::User.me(current_user.facebook_oauth_token)
+       action = me.og_action!(
+              "mightbuy:might_buy",
+              :product => "http://mightbuy.it/topics/#{params[:sc]}"
+            )
+     rescue FbGraph::Unauthorized => e
+     end
      redirect_to "http://mightbuy.it/topics/#{params[:sc]}?af=t"
    end
    
