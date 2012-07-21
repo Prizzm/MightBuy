@@ -4,6 +4,7 @@ class SocialController < ApplicationController
  
  def askfriends
    if current_user.facebook_uid && current_user.facebook_oauth_token
+     error = nil
      begin
        me = FbGraph::User.me(current_user.facebook_oauth_token)
        action = me.og_action!(
@@ -18,8 +19,9 @@ class SocialController < ApplicationController
             :description => "Track stuff you mightbuy."
         )
      rescue FbGraph::Unauthorized => e
+       error = e
      end
-     redirect_to "http://mightbuy.it/topics/#{params[:sc]}?af=t"
+     redirect_to "http://mightbuy.it/topics/#{params[:sc]}?af=t", :flash => { :error => error }
    end
    
    if current_user.twitter_uid && current_user.twitter_oauth_token && current_user.twitter_oauth_secret then
