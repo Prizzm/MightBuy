@@ -15,8 +15,16 @@ head
     meta property="og:type" content="mightbuy:product"
 
 .header
-  = imageurl
-  = image_link(resource, imageurl, :class => "thumb", :target => "_blank") { thumb('125x125') }
+  - if resource.mobile_image_url
+		a href=resource.url class="image topic present thumb" target="_blank"
+			table class="centered" cellspacing="0" cellpadding="0"
+				tbody
+					tr
+						td
+							img src=resource.mobile_image_url
+  - else
+    = image_link(resource, imageurl, :class => "thumb", :target => "_blank") { thumb('125x125') }
+  
   .title= resource.subject 
   = link_to  "url", resource.url   
   - if resource.price
