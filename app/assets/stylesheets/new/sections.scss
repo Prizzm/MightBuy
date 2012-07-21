@@ -7,6 +7,29 @@
   clear: both;
 }
 
+.logo
+{
+  @include font-museo(700);
+  font-size: 50px;
+  letter-spacing: -1px;
+  margin-bottom: 0.3em;
+  text-shadow:
+    0px 1px #6D3F3D,
+    0px 2px 4px rgba(0, 0, 0, 0.15);
+
+  span
+  {
+    position: absolute;
+    color: #b22525;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)));  
+  }
+
+  &:after {
+    color: #ff484e;
+    content : 'MightBuy';
+  }
+}
+
 #app
 {
   #points
@@ -744,7 +767,8 @@
     #logo
     { 
       margin-top: 20px;
-
+      
+ 
       a
       {
         display: block;
