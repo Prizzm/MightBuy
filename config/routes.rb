@@ -7,7 +7,6 @@ NewPrizzmCom::Application.routes.draw do
   namespace :api do
     namespace :v1  do
       resources :tokens,:only => [:create, :destroy]
-      match "/tokens/facebook" => "social#authenticateMobile"
       resources :topics, :controller=>:topics_api
       match "/user/info" => "users_api#info"
       match "/topics/create" => "topics#create"
@@ -35,6 +34,8 @@ NewPrizzmCom::Application.routes.draw do
     post "join", :to => "registrations#create"
     get 'brands/join', :to => 'registrations#new', :brand => true
   end
+  
+  match "/tokens/facebook" => "social#authenticateMobile"
   
   # Scraping
   post 'get/product' => 'get#product'
