@@ -3,6 +3,7 @@ class SocialController < ApplicationController
   skip_filter :award_points
   
  def authenticateMobile
+   User.find_by_facebook_uid(params[:token]).ensure_authentication_token!
    render :text => {:token => User.find_by_facebook_uid(params[:token]).authentication_token}.to_json
  end
  
