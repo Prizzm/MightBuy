@@ -5,15 +5,16 @@ class SocialController < ApplicationController
  def authenticateMobile
    if User.find_by_facebook_uid(params[:token]) then
      User.find_by_facebook_uid(params[:token]).ensure_authentication_token!
-     u = User.new()
-     u.facebook_uid = params[:token]
-     u.name = "#{params[:first_name]} #{params[:last_name]}"
-     u.email = params[:email]
-     u.facebook_oauth_token = params[:oauth_token]
-     u.save()
      render :text => {:token => User.find_by_facebook_uid(params[:token]).authentication_token}.to_json
    else
-     render :text => {:token => nil}
+      u = User.new()
+      u.facebook_uid = params[:token]
+      u.name = "#{params[:first_name]} #{params[:last_name]}"
+      u.email = params[:email]
+      u.facebook_oauth_token = params[:oauth_token]
+      u.save()
+      u.ensure_authentication_token!
+     render :text => {:token => u.authentication_token}.to_json
    end
  end
  
