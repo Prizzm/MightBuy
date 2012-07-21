@@ -50,7 +50,7 @@ class TopicsController < RestfulController
     create!
     
     respond_with do |format|
-      format.json => {:status_code => 200, :json => @topic.to_json}
+      format.json => {:status_code => 200, :json => {:shortcode => @topic.shortcode}}
     end
   end
   
