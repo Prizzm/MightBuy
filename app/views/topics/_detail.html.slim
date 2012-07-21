@@ -1,45 +1,37 @@
 / And the page content..
+/ to test wether the resources has  a mobile_image_url or a resource.image.url, and handle errors
+- if resource.url.blank? && resource.mobile_image_url.blank?
+	- imageurl =  image_url(resource)
+- elsif resource.mobile_image_url.blank? 
+    - imageurl = image_url(resource)
+- else
+   - imageurl = resource.mobile_image_url
+
 head
 	meta property="fb:app_id" content="461844450500925"
     meta property="og:title" content="#{resource.subject}"
-	- if resource.mobile_image_url
-    	meta property="og:image" content="#{resource.mobile_image_url}"
-	- else
-    	meta property="og:image" content="#{resource.image.url}"
+    meta property="og:image" content="#{imageurl}"
     meta property="og:url" content="http://mightbuy.it/topics/#{resource.shortcode}"
     meta property="og:type" content="mightbuy:product"
 
 .header
-
-  - unless resource.url.blank?
-	- if resource.price
-      .price= "$%s" % resource.price
-	- if resource.mobile_image_url
+  - if resource.mobile_image_url
 		a href=resource.url class="image topic present thumb" target="_blank"
 			table class="centered" cellspacing="0" cellpadding="0"
 				tbody
 					tr
 						td
 							img src=resource.mobile_image_url
-	- else
-    	= image_link(resource, resource.url, :class => "thumb", :target => "_blank") { thumb('125x125') }
-    = link_to resource.subject, resource.url, :class => "title", :target => "_blank"
-
   - else
-	- if resource.mobile_image_url
-		a href=resource.url class="image topic present thumb" target="_blank"
-			table class="centered" cellspacing="0" cellpadding="0"
-				tbody
-					tr
-						td
-							img src=resource.mobile_image_url
-	- else
-    	= image_link(resource, image_url(resource), :class => "thumb") { thumb('125x125') }
-    .title= resource.subject
+    = image_link(resource, imageurl, :class => "thumb", :target => "_blank") { thumb('125x125') }
+  
+  .title= resource.subject
+  - if resource.url
+	= link_to  "url", resource.url   
+  - if resource.price
+	.price= "$%s" % resource.price
       
   .description= simple_format(resource.body)
-
-
 
 
   
