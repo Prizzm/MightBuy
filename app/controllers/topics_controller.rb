@@ -48,6 +48,10 @@ class TopicsController < RestfulController
     @topic.user = current_user
     @topic.pass_visitor_code = visitor_code
     create!
+    
+    respond_with do |format|
+      format.json => {:status_code => 200, :json => @topic.to_json}
+    end
   end
   
   def update
