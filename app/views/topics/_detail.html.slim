@@ -25,8 +25,9 @@ head
   - else
     = image_link(resource, imageurl, :class => "thumb", :target => "_blank") { thumb('125x125') }
   
-  .title= resource.subject 
-  = link_to  "url", resource.url   
+  .title= resource.subject
+  - if resource.url
+	= link_to  "url", resource.url   
   - if resource.price
 	.price= "$%s" % resource.price
       
