@@ -18,7 +18,7 @@ class SocialController < ApplicationController
             :name => "MightBuy",
             :description => "Track stuff you mightbuy."
         )
-     rescue FbGraph::Unauthorized => e
+     rescue [FbGraph::Unauthorized, FbGraph::InvalidRequest] => e
        error = e
      end
      redirect_to "http://mightbuy.it/topics/#{params[:sc]}?af=t", :flash => { :error => error }
