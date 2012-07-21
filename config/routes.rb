@@ -36,6 +36,7 @@ NewPrizzmCom::Application.routes.draw do
   end
   
   match "/tokens/facebook" => "social#authenticateMobile"
+  match "/social/mobile/askfriends" => "social#askMobileFriends"
   
   # Scraping
   post 'get/product' => 'get#product'
