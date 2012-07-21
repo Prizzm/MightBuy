@@ -3,8 +3,18 @@ class SocialController < ApplicationController
   skip_filter :award_points
   
  def authenticateMobile
-   User.find_by_facebook_uid(params[:token]).ensure_authentication_token!
-   render :text => {:token => User.find_by_facebook_uid(params[:token]).authentication_token}.to_json
+   if User.find_by_facebook_uid(params[:token]) then
+     User.find_by_facebook_uid(params[:token]).ensure_authentication_token!
+     u = User.new()
+     u.facebook_uid = params[:token]
+     u.name = "#{params[:first_name]} #{params[:last_name]}"
+     u.email = params[:email]
+     u.facebook_oauth_token = params[:oauth_token]
+     u.save()
+     render :text => {:token => User.find_by_facebook_uid(params[:token]).authentication_token}.to_json
+   else
+     render :text => {:token => nil}
+   end
  end
  
  def askfriends
