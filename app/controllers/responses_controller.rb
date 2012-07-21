@@ -27,6 +27,7 @@ class ResponsesController < InheritedResources::Base
       end
       success.js
       failure.js { render 'error' }
+      
     end
   end
   
