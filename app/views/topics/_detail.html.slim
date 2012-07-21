@@ -2,10 +2,10 @@
 / to test wether the resources has  a mobile_image_url or a resource.image.url, and handle errors
 - if resource.url.blank? && resource.mobile_image_url.blank?
 	- imageurl =  image_url(resource)
-- elsif  !resource.mobile_image_url.blank? 
-	- imageurl = resource.mobile_image_url
+- elsif resource.mobile_image_url.blank? 
+    - imageurl = image_url(resource)
 - else
-   - imageurl = resource.url
+   - imageurl = resource.mobile_image_url
 
 head
 	meta property="fb:app_id" content="461844450500925"
@@ -15,6 +15,7 @@ head
     meta property="og:type" content="mightbuy:product"
 
 .header
+  = imageurl
   = image_link(resource, imageurl, :class => "thumb", :target => "_blank") { thumb('125x125') }
   .title= resource.subject 
   = link_to  "url", resource.url   
@@ -22,8 +23,6 @@ head
 	.price= "$%s" % resource.price
       
   .description= simple_format(resource.body)
-
-
 
 
   
