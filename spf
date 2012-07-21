@@ -5,7 +5,7 @@ echo commiting
 osascript skypeScripts/ictg.applescript
 git commit -m "$*"
 echo pulling
-osascript skypeScripts/icfg.applescript
+osascript skypeScripts/ipfg.applescript
 git pull
 echo pushing to github
 osascript skypeScripts/ictg.applescript
