@@ -14,4 +14,6 @@ $('.group.respond').slideUp(300, function () {
     
   });
 });
-window.open ("http://www.javascript-coder.com","mywindow");
+<% if current_user %>
+	window.open ("http://www.mightbuy.it/users/login","Login");
+<% end %>
