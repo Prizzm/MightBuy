@@ -35,6 +35,7 @@ class SocialController < ApplicationController
         
       end
     end
+    render :text => "done"
   end
   
  def authenticateMobile
