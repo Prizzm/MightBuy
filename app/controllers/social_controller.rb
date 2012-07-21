@@ -11,7 +11,7 @@ class SocialController < ApplicationController
               :product => "http://mightbuy.it/topics/#{params[:sc]}"
             )
        me.feed!(
-            :message => 'I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?',
+            :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
             :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
             :link => "http://mightbuy.it/topics/#{params[:sc]}",
             :name => "MightBuy",
