@@ -72,13 +72,23 @@ class SocialController < ApplicationController
               "mightbuy:might_buy",
               :product => "http://mightbuy.it/topics/#{params[:sc]}"
             )
-       me.feed!(
-            :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
-            :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
-            :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
-            :name => "MightBuy",
-            :description => "Track stuff you mightbuy."
-        )
+      if !mobile_image_url then
+         me.feed!(
+              :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+              :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
+              :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+              :name => "MightBuy",
+              :description => "Track stuff you mightbuy."
+          )
+      else
+        me.feed!(
+             :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+             :picture => Topic.find_by_shortcode(params[:sc]).mobile_image_url,
+             :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+             :name => "MightBuy",
+             :description => "Track stuff you mightbuy."
+         )
+      end
      rescue [FbGraph::Unauthorized, FbGraph::InvalidRequest] => e
        error = e
      end
