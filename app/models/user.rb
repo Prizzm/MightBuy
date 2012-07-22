@@ -106,27 +106,36 @@ class User < ActiveRecord::Base
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"], without_protection: true) do |user|
+        h = Hash.new
         if params[:name] then
-          user.attributes.name = params[:name]
+           h[:name] = params[:name]
+          # user.attributes.name = params[:name]
         end
         if params[:email] then
-          user.attributes.email = params[:email]
+           h[:email] = params[:email]
+          # user.attributes.email = params[:email]
         end
         if params[:facebook_uid] then
-          user.attributes.facebook_uid = params[:facebook_uid]
+           h[:facebook_uid] = params[:facebook_uid]
+          # user.attributes.facebook_uid = params[:facebook_uid]
         end
         if params[:twitter_uid] then
-          user.attributes.twitter_uid = params[:twitter_uid]
+           h[:twitter_uid] = params[:twitter_uid]
+          # user.attributes.twitter_uid = params[:twitter_uid]
         end
         if params[:facebook_oauth_token] then
-          user.attributes.facebook_oauth_token = params[:facebook_oauth_token]
+           h[:facebook_oauth_token] = params[:facebook_oauth_token]
+          # user.attributes.facebook_oauth_token = params[:facebook_oauth_token]
         end
         if params[:twitter_oauth_token] then
-          user.attributes.twitter_oauth_token = params[:twitter_oauth_token]
+           h[:twitter_oauth_token] = params[:twitter_oauth_token]
+          # user.attributes.twitter_oauth_token = params[:twitter_oauth_token]
         end
         if params[:twitter_oauth_secret] then
-          user.attributes.twitter_oauth_secret = params[:twitter_oauth_secret]
+           h[:twitter_oauth_secret] = params[:twitter_oauth_secret]
+          # user.attributes.twitter_oauth_secret = params[:twitter_oauth_secret]
         end
+        user.attributes = h
         user.valid?
       end
     else
