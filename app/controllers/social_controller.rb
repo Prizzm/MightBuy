@@ -3,7 +3,7 @@ class SocialController < ApplicationController
   skip_filter :award_points
   
   def getShortCode
-    topic = topic.find_by_mobile_image_url(params[:miu])
+    topic = Topic.find_by_mobile_image_url(params[:miu])
     if topic
       render :text => topic.shortcode
     else
