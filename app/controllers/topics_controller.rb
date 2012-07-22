@@ -49,7 +49,7 @@ class TopicsController < RestfulController
     @topic.pass_visitor_code = visitor_code
     create!
     
-    respond_with(@topic, :status => :ok)
+    response.status = 200
   end
   
   def update
