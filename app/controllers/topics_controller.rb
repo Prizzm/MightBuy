@@ -51,7 +51,7 @@ class TopicsController < RestfulController
     
     
     respond_to do |format|
-      format.json {:status_code => 200, :json => {:shortcode => @topic.shortcode}}
+      format.json {render :json => {:shortcode => @topic.shortcode}.to_json}
     end
   end
   
