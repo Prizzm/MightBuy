@@ -2,6 +2,15 @@ class SocialController < ApplicationController
   
   skip_filter :award_points
   
+  def getShortCode
+    topic = topic.find_by_mobile_image_url(params[:miu])
+    if topic
+      render :text => topic.shortcode
+    else
+      
+    end
+  end
+  
   def askMobileFriends
     user = User.find_by_authentication_token(params[:auth_token])
     if user.facebook_uid && user.facebook_oauth_token
