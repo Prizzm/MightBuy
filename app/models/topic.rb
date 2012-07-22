@@ -28,7 +28,6 @@ class Topic < ActiveRecord::Base
   image_accessor :image
   
   # Social  
-  acts_as_opengraph :values => { :type => "mightbuy:product", :app_id => "461844450500925", :image => "" }
   
   # Nested Attributes
   accepts_nested_attributes_for :shares,
