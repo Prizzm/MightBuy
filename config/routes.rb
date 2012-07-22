@@ -35,6 +35,10 @@ NewPrizzmCom::Application.routes.draw do
     get 'brands/join', :to => 'registrations#new', :brand => true
   end
   
+  match "/tokens/facebook" => "social#authenticateMobile"
+  match "/topics/findByMIU" => "social#getShortCode"
+  match "/social/mobile/askfriends" => "social#askMobileFriends"
+  
   # Scraping
   post 'get/product' => 'get#product'
   post 'get/images_and_price' => 'get#images'

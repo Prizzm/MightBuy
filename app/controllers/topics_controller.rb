@@ -48,6 +48,8 @@ class TopicsController < RestfulController
     @topic.user = current_user
     @topic.pass_visitor_code = visitor_code
     create!
+    
+    response.status = 200
   end
   
   def update

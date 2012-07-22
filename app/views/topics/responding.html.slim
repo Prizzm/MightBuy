@@ -8,17 +8,17 @@
       - if key == :points
         = points_flash(message)
         
-  = link_to "Prizzm", root_path, :id => "brand"
+  /= link_to "Prizzm", root_path, :id => "brand"
+  h1.logo
+    span= "MightBuy"
 
   #frame
     #sidebar
       .fixed
-
         #logo
-          = image_link(resource.user, "javascript:void(0)") { thumb("150x100") }
-        
+          = image_link(resource.user, "javascript:void(0)") { thumb("150x100") }      
         .descriptor
-          = "Your friend %s is shopping with Prizzm and asking your opinion!" % resource.user.name 
+          = "%s is using MightBuy to ask your opinion! Please respond." % resource.user.name 
 
         /#points 0P
         
@@ -36,9 +36,5 @@
           = render "detail"
     
     #footer
-      #copyright Copyright &copy; 2012, Prizzm
       #links
         = link_to "about", "#about"
-        = link_to "contact", "#contact"
-        /= link_to "privacy", "#privacy"
-        = link_to "help", "#help"

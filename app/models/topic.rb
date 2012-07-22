@@ -30,14 +30,6 @@ class Topic < ActiveRecord::Base
   # Social  
   acts_as_opengraph :values => { :type => "mightbuy:product", :app_id => "461844450500925", :image => "" }
   
-  # After_Create
-  after_create :addDefaults
-  
-  def addDefaults
-    self.form = "recommendation"
-    self.recommendable = true
-  end
-  
   # Nested Attributes
   accepts_nested_attributes_for :shares,
     :reject_if => proc { |attributes| attributes["with"].blank? }

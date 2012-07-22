@@ -1,6 +1,67 @@
 class SocialController < ApplicationController
   
   skip_filter :award_points
+  
+  def getShortCode
+    topic = Topic.find_by_mobile_image_url(params[:miu])
+    if topic
+      render :text => topic.shortcode
+    else
+      
+    end
+  end
+  
+  def askMobileFriends
+    user = User.find_by_authentication_token(params[:auth_token])
+    if user.facebook_uid && user.facebook_oauth_token
+       begin
+         me = FbGraph::User.me(user.facebook_oauth_token)
+         action = me.og_action!(
+                "mightbuy:might_buy",
+                :product => "http://mightbuy.it/topics/#{params[:sc]}"
+              )
+         me.feed!(
+              :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+              :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
+              :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+              :name => "MightBuy",
+              :description => "Track stuff you mightbuy."
+          )
+        rescue [FbGraph::Unauthorized, FbGraph::InvalidRequest] => e
+          error = e
+        end
+    end
+    
+    if user.twitter_uid && user.twitter_oauth_token && user.twitter_oauth_secret then
+      begin
+        client = Grackle::Client.new(:auth=>{
+          :type=>:oauth,
+          :consumer_key=>'kLGDHfctWCOTax3IY0Nwig', :consumer_secret=>'vP2xNwMj4jpntS6qN8Z37fY1qUTSk1vDgJT8b1HSs',
+          :token=>user.twitter_oauth_token, :token_secret=>user.twitter_oauth_secret
+        })
+        client.statuses.update! :status=>"I #mightbuy #{Topic.find_by_shortcode(params[:sc]).subject}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
+      rescue Grackle::TwitterError => e
+        
+      end
+    end
+    render :text => "done"
+  end
+  
+ def authenticateMobile
+   if User.find_by_facebook_uid(params[:token]) then
+     User.find_by_facebook_uid(params[:token]).ensure_authentication_token!
+     render :text => {:token => User.find_by_facebook_uid(params[:token]).authentication_token}.to_json
+   else
+      u = User.new()
+      u.facebook_uid = params[:token]
+      u.name = "#{params[:first_name]} #{params[:last_name]}"
+      u.email = params[:email]
+      u.facebook_oauth_token = params[:oauth_token]
+      u.save()
+      u.ensure_authentication_token!
+     render :text => {:token => u.authentication_token}.to_json
+   end
+ end
  
  def askfriends
    if current_user.facebook_uid && current_user.facebook_oauth_token
@@ -11,13 +72,23 @@ class SocialController < ApplicationController
               "mightbuy:might_buy",
               :product => "http://mightbuy.it/topics/#{params[:sc]}"
             )
-       me.feed!(
-            :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
-            :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
-            :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
-            :name => "MightBuy",
-            :description => "Track stuff you mightbuy."
-        )
+      if !Topic.find_by_shortcode(params[:sc]).mobile_image_url then
+         me.feed!(
+              :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+              :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
+              :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+              :name => "MightBuy",
+              :description => "Track stuff you mightbuy."
+          )
+      else
+        me.feed!(
+             :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+             :picture => Topic.find_by_shortcode(params[:sc]).mobile_image_url,
+             :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+             :name => "MightBuy",
+             :description => "Track stuff you mightbuy."
+         )
+      end
      rescue [FbGraph::Unauthorized, FbGraph::InvalidRequest] => e
        error = e
      end
