@@ -106,7 +106,27 @@ class User < ActiveRecord::Base
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"], without_protection: true) do |user|
-        user.attributes = params
+        if params[:name] then
+          user.attributes.name = params[:name]
+        end
+        if params[:email] then
+          user.attributes.email = params[:email]
+        end
+        if params[:facebook_uid] then
+          user.attributes.facebook_uid = params[:facebook_uid]
+        end
+        if params[:twitter_uid] then
+          user.attributes.twitter_uid = params[:twitter_uid]
+        end
+        if params[:facebook_oauth_token] then
+          user.attributes.facebook_oauth_token = params[:facebook_oauth_token]
+        end
+        if params[:twitter_oauth_token] then
+          user.attributes.twitter_oauth_token = params[:twitter_oauth_token]
+        end
+        if params[:twitter_oauth_secret] then
+          user.attributes.twitter_oauth_secret = params[:twitter_oauth_secret]
+        end
         user.valid?
       end
     else
