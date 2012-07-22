@@ -49,10 +49,7 @@ class TopicsController < RestfulController
     @topic.pass_visitor_code = visitor_code
     create!
     
-    
-    respond_to do |format|
-      format.json {render :json => {:shortcode => @topic.shortcode}.to_json}
-    end
+    render :text => @topic.shortcode
   end
   
   def update
