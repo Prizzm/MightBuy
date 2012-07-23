@@ -4,9 +4,8 @@
 
 = heading "General Details"
 
-= form.input :category, :label => "You Are A", :collection => User::Categories, :as => :radio
 = form.input :name, :label => "Your Name"
-= form.input :description, :label => "Description", :hint => "Tell everyone who you are & what you do!", :input_html => { :maxlength => 150 }
+/= form.input :description, :label => "Description", :hint => "Tell everyone who you are & what you do!", :input_html => { :maxlength => 150 }
 
 = heading "Social Accounts"
 - if current_user.twitter_uid == nil
@@ -14,9 +13,11 @@
 	br
 - if current_user.facebook_uid == nil
 	= link_to "Link with Facebook", user_omniauth_authorize_path(:facebook)
+
+
 	br
-= heading "Social Details"
-= form.input :url, :label => "Web"
-= form.input :facebook, :label => "Facebook", :hint => "E.x. http://facebook.com/yourname"
-= form.input :twitter, :label => "Twitter", :hint => "E.x. @yourname"
-= form.input :phone, :label => "Phone"
+/= heading "Social Details"
+	= form.input :url, :label => "Web"
+	= form.input :facebook, :label => "Facebook", :hint => "E.x. http://facebook.com/yourname"
+	= form.input :twitter, :label => "Twitter", :hint => "E.x. @yourname"
+	= form.input :phone, :label => "Phone"
