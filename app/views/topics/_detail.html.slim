@@ -17,6 +17,11 @@ head
     meta property="og:url" content="http://mightbuy.it/topics/#{resource.shortcode}"
     meta property="og:type" content="mightbuy:product"
 
+	- if resource.mobile_image_url
+    	link rel="image_src" href=resource.mobile_image_url
+	- else
+    	link rel="image_src" href=resource.image.url
+
 .header
   - if resource.mobile_image_url
 		a href=resource.url class="image topic present thumb" target="_blank"
