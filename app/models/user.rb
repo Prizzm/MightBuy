@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
   scope :people, where(:category => "person")
   scope :brands, where(:category => "brand")
   
+  
   # Methods
 
   def visitor_code= (code)
