@@ -28,18 +28,7 @@ class Topic < ActiveRecord::Base
   image_accessor :image
   
   # Social  
-  def image(host = true)
-      if self.mobile_image_url.blank? then
-          return self.mobile_image_url
-      elsif self.image.url then
-          if host == true then
-              return self.image.url(:host => "http://mightbuy.it")
-   		else
-   			return self.image.url
-  		end
-  	end
-  end
-  
+
   # Nested Attributes
   accepts_nested_attributes_for :shares,
     :reject_if => proc { |attributes| attributes["with"].blank? }
