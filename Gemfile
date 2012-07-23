@@ -46,6 +46,7 @@ gem 'dragonfly', '~>0.9.10'
 gem 'activeadmin', '0.4.1'
 gem 'sass-rails', "~> 3.1.4"
 gem "meta_search",    '>= 1.1.0.pre'
+gem 'newrelic_rpm'
 
 # Server
 gem 'thin', '1.2.11'
