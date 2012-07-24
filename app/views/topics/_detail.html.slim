@@ -14,7 +14,14 @@ head
     meta property="og:url" content="http://mightbuy.it/topics/#{resource.shortcode}"
     meta property="og:type" content="mightbuy:product"
 
-    link rel="image_src" href=imageurl
+	- if resource.mobile_image_url
+		meta property="og:image" content="#{resource.mobile_image_url}"
+	- else
+    	meta property="og:image" content="#{resource.image.url}"
+
+
+
+
 
 
 .header
