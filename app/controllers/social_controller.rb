@@ -80,8 +80,15 @@ class SocialController < ApplicationController
               :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
               :name => "MightBuy",
               :description => "Track stuff you mightbuy."
-            )
-          end
+            ) else
+              me.feed!(
+                :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+                :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+                :name => "MightBuy",
+                :description => "Track stuff you mightbuy."
+              ) 
+          
+          end #post without pic since there is no image url
           
       else
         me.feed!(
