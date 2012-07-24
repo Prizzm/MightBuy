@@ -72,14 +72,17 @@ class SocialController < ApplicationController
               "mightbuy:might_buy",
               :product => "http://mightbuy.it/topics/#{params[:sc]}"
             )
-      if !Topic.find_by_shortcode(params[:sc]).mobile_image_url then
-         me.feed!(
+      if !Topic.find_by_shortcode(params[:sc]).mobile_image_url  then
+         if !Topic.find_by_shortcode(params[:sc]).image.blank? then 
+           me.feed!(
               :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
               :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
               :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
               :name => "MightBuy",
               :description => "Track stuff you mightbuy."
-          )
+            )
+          end
+          
       else
         me.feed!(
              :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
