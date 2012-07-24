@@ -8,18 +8,12 @@
    - imageurl = resource.mobile_image_url
 
 head
-	meta property="fb:app_id" content="461844450500925"
-    meta property="og:title" content="#{resource.subject}"
-    meta property="og:image" content="#{imageurl}"
-    meta property="og:url" content="http://mightbuy.it/topics/#{resource.shortcode}"
-    meta property="og:type" content="mightbuy:product"
-
-	- if resource.mobile_image_url
-		meta property="og:image" content="#{resource.mobile_image_url}"
-	- else
-    	meta property="og:image" content="#{resource.image.url}"
-
-
+	meta property="og:title" content="#{resource.subject}"
+	meta property="og:image" content="#{imageurl}"
+	meta property="og:url" content="http://mightbuy.it/topics/#{resource.shortcode}"
+	meta property="og:type" content="mightbuy:product"
+	link rel="image_src" href=imageurl
+	
 
 
 

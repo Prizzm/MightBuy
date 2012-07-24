@@ -2,12 +2,7 @@
 	- if Topic.find_by_shortcode(params[:id])
 		meta content="461844450500925" property="fb:app_id"
 		meta content="mightbuy:product" property="og:type"
-		meta content="#{Topic.find_by_shortcode(params[:id]).subject}" property="og:title"
-		meta content="http://mightbuy.it#{url_for(Topic.find_by_shortcode(params[:id]))}" property="og:url"
-		- if Topic.find_by_shortcode(params[:id]).image
-			meta content="#{Topic.find_by_shortcode(params[:id]).image.url(:host => "http://mightbuy.it")}" property="og:image"
-		- elsif Topic.find_by_shortcode(params[:id]).mobile_image_url
-			meta content="#{Topic.find_by_shortcode(params[:id]).mobile_image_url}" property="og:image"
+
 	= javascript_tag "var POINTS_ENABLED = %s" % (cookies[:disable_points].to_s != 'true')
 #app
     
