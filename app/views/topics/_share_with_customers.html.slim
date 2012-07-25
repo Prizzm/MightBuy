@@ -8,7 +8,7 @@
     = form.simple_fields_for :shares, new_shares.blank? ? form.object.shares.new : new_shares do |fields|
       = render "share_fields", :f => fields
     .links
-      = link_to_add_association 'Send to another customer..', form, :shares
+      = link_to_add_association 'Add email...', form, :shares
 
   #share-csv
     = form.input :share_csv, :as => :file, :label => "Choose file.."
