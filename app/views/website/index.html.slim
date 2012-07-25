@@ -10,52 +10,22 @@
       #sliders
       
         .holder
-        
-          - if brand?
-
-            / Add link to anything
             = render "slide", :image => "add-anything.png", :title => "Add link to anything", :desc => "..."
-        
-            / Track your ideal price
             = render "slide", :image => "track-price.png", :title => "Track your ideal price", :desc => "..."
-
-            / Get friends feedback
             = render "slide", :image => "feedback.png", :title => "Get friends feedback", :desc => "..."
-            
-          - else
-            
-            / Points
-            = render "slide", :image => "points.png", :title => "Get Recommended", :desc => "Store and publish recommendations. Ask your friends if you need their opinion, and rack up points!"
-            
-            / Get Rewarded
-            = render "slide", :image => "deals.jpg", :title => "Your opinion is valuable", :desc => "Store and publish recommendations. Ask your friends if you need their opinion, and rack up points!"
-      
+
       #forms
-        
-        - if brand?
-        
-          / Brand Signup
-          = simple_form_for User.new, :as => :user, :url => registration_path(:user), :html => { :id => "signup" } do |form|
-            = form.input :name, :placeholder => "Username", :label => false
-            = form.input :email, :placeholder => "Email", :label => false
-            = form.input :password, :as => :password, :placeholder => "Password", :label => false
-            = form.input :category, :as => :hidden, :input_html => { :value => "person" }, :label => false
-            = form.button :submit, "Sign up for MightBuy!"
-            .clearfix
-				br
-				= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
-				br
-				= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
-        - else
-          
-          / Beta Signup
-          = simple_form_for BetaSignup.new, :url => join_beta_path(:format => :js), :remote => true, :html => { :id => "signup" } do |form|
-            .join-the-beta
-              h4 Get On The List!
-              = form.input :email_address, :placeholder => "Email Address", :label => false
-              = form.button :submit, "Register for the Beta!"
-              .clearfix
-        
+        / Brand Signup
+        = simple_form_for User.new, :as => :user, :url => registration_path(:user), :html => { :id => "signup" } do |form|
+          = form.input :name, :placeholder => "Username", :label => false
+          = form.input :email, :placeholder => "Email", :label => false
+          = form.input :password, :as => :password, :placeholder => "Password", :label => false
+          = form.input :category, :as => :hidden, :input_html => { :value => "person" }, :label => false
+          = form.button :submit, "Sign up for MightBuy!"
+          .socialogins
+		    = link_to image_tag('/images/website/login-with-twitter.png'), user_omniauth_authorize_path(:twitter)
+		    = link_to image_tag('/images/website/fb-login-button.png'), user_omniauth_authorize_path(:facebook)
+
         / Login
         = simple_form_for User.new, :as => :user, :url => session_path(:user), :html => { :id => "login" } do |form|
           = form.input :email, :placeholder => "Email", :label => false

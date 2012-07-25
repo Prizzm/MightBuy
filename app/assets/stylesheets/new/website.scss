@@ -226,7 +226,7 @@ a:visited{
       position: absolute;
       top: 0px;
       right: 0px;
-      @include block-with-image(271px, 332px, "/images/website/forms.png");
+      @include block-with-image(271px, 400px, "/images/website/forms_b.png");
       
       .badge
       {
@@ -237,6 +237,12 @@ a:visited{
         @include hidden-text();
         @include block-with-image(121px, 123px, "/images/website/badge.png");
       }
+
+	  .socialogins
+	  {
+	    position: absolute;
+        top: 195px;
+	  }
       
       .string, .password
       { 
@@ -299,9 +305,10 @@ a:visited{
         }
       }
       
+
       form#login
       {
-        top: 235px;
+        top: 275px;
         left: 14px;
         
         .password
