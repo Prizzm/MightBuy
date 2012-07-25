@@ -80,6 +80,8 @@ NewPrizzmCom::Application.routes.draw do
   post 'social/tweeted' => 'social#tweeted'
   post 'social/recommended' => 'social#recommended'
   match 'social/:sc/askfriends' => 'social#askfriends'
+  match 'social/:sc/ask/twitter' => 'social#askTwitterFriends'
+  match 'social/:sc/ask/facebook' => 'social#askFacebookFriends'
   
   # Router
   get 'share/:shortcode' => "router#shared", :as => :shared

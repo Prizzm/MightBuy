@@ -63,6 +63,71 @@ class SocialController < ApplicationController
    end
  end
  
+ def askTwitterFriends
+   if current_user.twitter_uid && current_user.twitter_oauth_token && current_user.twitter_oauth_secret then
+          begin
+            client = Grackle::Client.new(:auth=>{
+              :type=>:oauth,
+              :consumer_key=>'kLGDHfctWCOTax3IY0Nwig', :consumer_secret=>'vP2xNwMj4jpntS6qN8Z37fY1qUTSk1vDgJT8b1HSs',
+              :token=>current_user.twitter_oauth_token, :token_secret=>current_user.twitter_oauth_secret
+            })
+            client.statuses.update! :status=>"I #mightbuy #{Topic.find_by_shortcode(params[:sc]).subject}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
+          rescue Grackle::TwitterError => e
+          end
+          redirect_to "http://mightbuy.it/topics/#{params[:sc]}?atf=t", :flash => { :error => error }
+   end
+   
+   if !current_user.twitter_uid then
+     redirect_to "/users/auth/twitter"
+   end
+ end
+ 
+ def askFacebookFriends
+   if current_user.facebook_uid && current_user.facebook_oauth_token
+     error = nil
+     begin
+       me = FbGraph::User.me(current_user.facebook_oauth_token)
+       action = me.og_action!(
+              "mightbuy:might_buy",
+              :product => "http://mightbuy.it/topics/#{params[:sc]}"
+            )
+      if !Topic.find_by_shortcode(params[:sc]).mobile_image_url  then
+         if !Topic.find_by_shortcode(params[:sc]).image.blank? then 
+           me.feed!(
+              :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+              :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
+              :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+              :name => "MightBuy",
+              :description => "Track stuff you mightbuy."
+            ) else
+              me.feed!(
+                :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+                :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+                :name => "MightBuy",
+                :description => "Track stuff you mightbuy."
+              ) 
+          
+          end #post without pic since there is no image url
+          
+      else
+        me.feed!(
+             :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+             :picture => Topic.find_by_shortcode(params[:sc]).mobile_image_url,
+             :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+             :name => "MightBuy",
+             :description => "Track stuff you mightbuy."
+         )
+      end
+     rescue [FbGraph::Unauthorized, FbGraph::InvalidRequest] => e
+       error = e
+     end
+     redirect_to "http://mightbuy.it/topics/#{params[:sc]}?aff=t", :flash => { :error => error }
+   end
+   if !current_user.facebook_uid then
+     redirect_to "/users/auth/facebook"
+   end
+ end
+ 
  def askfriends
    if current_user.facebook_uid && current_user.facebook_oauth_token
      error = nil
