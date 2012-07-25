@@ -74,7 +74,7 @@ class SocialController < ApplicationController
             client.statuses.update! :status=>"I #mightbuy #{Topic.find_by_shortcode(params[:sc]).subject}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
           rescue Grackle::TwitterError => e
           end
-          redirect_to "http://mightbuy.it/topics/#{params[:sc]}?atf=t", :flash => { :error => error }
+          redirect_to "http://mightbuy.it/topics/#{params[:sc]}?atf=t"
    end
    
    if !current_user.twitter_uid then
