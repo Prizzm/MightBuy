@@ -124,12 +124,19 @@ head
             = link_to "Email friends", topic_share_path(resource), :class => "button" 
           = topic_tweet(resource)
 		  - if !params[:af]
-	      	= link_to "Ask Friends", "/social/#{resource.shortcode}/askfriends", :class => "button"
+	      	= link_to "Ask All Friends", "/social/#{resource.shortcode}/askfriends", :class => "button"
 		  - else
-			= link_to "Ask Friends Again", "/social/#{resource.shortcode}/askfriends", :class => "button"
+			= link_to "Ask All Friends Again", "/social/#{resource.shortcode}/askfriends", :class => "button"
+		  - if !params[:atf]
+		  	= link_to "Ask Twitter Friends", "/social/#{resource.shortcode}/ask/twitter", :class => "button"
+		  - else
+			= link_to "Ask Twitter Friends Again", "/social/#{resource.shortcode}/ask/twitter", :class => "button"
+		  - if !params[:aff]
+		  	= link_to "Ask Facebook Friends", "/social/#{resource.shortcode}/ask/facebook", :class => "button"
+		  - else
+			= link_to "Ask Facebook Friends Again", "/social/#{resource.shortcode}/ask/facebook", :class => "button"
           .clear
     
-        
     .tabs
         .hr
 
