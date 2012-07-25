@@ -128,99 +128,48 @@ head
 		  - else
 			= link_to "Ask Friends Again", "/social/#{resource.shortcode}/askfriends", :class => "button"
           .clear
-    
-        
-    .tabs
-        .hr
 
-        ul.buttons
-            
-          / - if featured_response
-            li= link_to "Featured", "#featured"
-        
-          / - unless current_user && current_user.brand?
-            li= link_to phrase_for(:respond), "#respond"
-          
-          
-          / li= link_to phrase_for(:comments), "#responses"
-          / li= link_to "View emails", '#sharing'
-          
-          li.active= link_to "View Discussion", "#discussion"
-          li= link_to "View Statistics", "#stats"
-            
-        .hr	
-        #discussion
-            / Featured Response
-            - if featured_response
-        
-              #featured
-          
-                = heading "Featured Response"
-            
-                ol.list.responses.highlight
-                  = render featured_response
-        
-            / Response
-            /- unless current_user && current_user.brand?
-            #respond
-              .group.respond
-                = heading phrase_for(:respond)
-                = render "responses/form", :topic => resource
-        
-            / Responses
-            #responses
-              = heading phrase_for(:comments), :id => "comments"
-        
-              ol.list.responses
-                = placeholder responses do |collection|
-                  = render :partial => "responses/response", :collection => collection
-          
-              #reply-form.hidden
-                = heading "Quick Reply", :class => "small"
-                = render "responses/reply_form", :topic => resource
-  
-            
-            
-        / Stats
-        #stats
-          = heading "Votes", :id => "stats"
-           
-        .statistics
-          - stats = resource.stats
-          .section data-link=filter_url(:recommended)
-            .tip= "Percent of friends who said YES!"
-            label Yes
-            span= stats[:recommended]
-          .section data-link=filter_url(:undecided)
-            .tip= "Percent of friends who had no opinion."
-            label Undecided
-            span= stats[:undecided]
-          .section data-link=filter_url(:not_recommended)
-            .tip= "Percent of friends who said - don't buy it!"
-            label No
-            span= stats[:not_recommended]        	
+          - if (resource.responses.count > 0)    
+	        #stats
+	          = heading "Votes", :id => "stats"
 
+	        .statistics
+	          - stats = resource.stats
+	          .section data-link=filter_url(:recommended)
+	            .tip= "Percent of friends who said YES!"
+	            label Yes
+	            span= stats[:recommended]
+	          .section data-link=filter_url(:undecided)
+	            .tip= "Percent of friends who had no opinion."
+	            label Undecided
+	            span= stats[:undecided]
+	          .section data-link=filter_url(:not_recommended)
+	            .tip= "Percent of friends who said - don't buy it!"
+	            label No
+	            span= stats[:not_recommended]
 	
-        / Sharing
-        #sharing
-          = heading "You've shared this with.."
-          .tabs
-            ul.buttons
-              li= link_to "All", "#all-shares"
-              li= link_to "Emails", "#email-shares"
-              li= link_to "Socials", "#social-shares"
+		  #discussion
+	          - if featured_response
+	            #featured
+	              = heading "Featured Response"
+	              ol.list.responses.highlight
+	                = render featured_response
 
-            #all-shares
-              ol.list.shares.concise
-                = placeholder shares_for_topic do |collection|
-                  = render :partial => "shares/share", :collection => collection
+	          #respond
+	            .group.respond
+	              = heading phrase_for(:respond)
+	              = render "responses/form", :topic => resource
 
-            #email-shares
-              ol.list.shares.concise
-                = placeholder shares_for_topic(false) do |collection|
-                  = render :partial => "shares/share", :collection => collection
+	          / Responses
+	          #responses
+	            = heading phrase_for(:comments), :id => "comments"
 
-            #social-shares
-              ol.list.shares.concise
-                = placeholder shares_for_topic(true) do |collection|
-                  = render :partial => "shares/share", :collection => collection
+	            ol.list.responses
+	              = placeholder responses do |collection|
+	                = render :partial => "responses/response", :collection => collection
+
+	            #reply-form.hidden
+	              = heading "Quick Reply", :class => "small"
+	              = render "responses/reply_form", :topic => resource
+
+
