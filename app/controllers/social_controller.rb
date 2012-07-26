@@ -15,17 +15,17 @@ class SocialController < ApplicationController
       def facebook
         post_to_open_graph(true)
         post_to_facebook_feed(true)
-        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}", :only_path => true
+        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}?aff=t", :only_path => true
       end
       def twitter
         post_to_twitter(true)
-        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}", :only_path => true
+        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}?atf=t", :only_path => true
       end
       def askAll
         post_to_open_graph(false)
         post_to_facebook_feed(false)
         post_to_twitter(false)
-        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}"
+        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}?aaf=t"
       end
     # Accessible Methods (end)
         
