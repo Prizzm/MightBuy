@@ -25,6 +25,7 @@ class SocialController < ApplicationController
         post_to_open_graph(false)
         post_to_facebook_feed(false)
         post_to_twitter(false)
+        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}"
       end
     # Accessible Methods (end)
         
