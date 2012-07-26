@@ -22,9 +22,9 @@ class SocialController < ApplicationController
         redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}"
       end
       def askAll
-        post_to_open_graph(true)
-        post_to_facebook_feed(true)
-        post_to_twitter(true)
+        post_to_open_graph(false)
+        post_to_facebook_feed(false)
+        post_to_twitter(false)
       end
     # Accessible Methods (end)
         
