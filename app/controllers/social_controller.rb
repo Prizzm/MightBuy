@@ -79,13 +79,22 @@ class SocialController < ApplicationController
             begin
                 me = FbGraph::User.me(current_user.facebook_oauth_token)
                 # displayPrice = "for #{price}"
-                me.feed!(
-                  :message => "I MightBuy a #{@topic.subject} #{@topic.displayPrice}.  Should I?",
-                  :picture => @topic.iImage(),
-                  :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
-                  :name => "MightBuy",
-                  :description => "Track stuff you mightbuy."
-                )
+                if @topic.iImage() then
+                  me.feed!(
+                    :message => "I MightBuy a #{@topic.subject} #{@topic.displayPrice}.  Should I?",
+                    :picture => @topic.iImage(),
+                    :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+                    :name => "MightBuy",
+                    :description => "Track stuff you mightbuy."
+                  )
+                else
+                  me.feed!(
+                    :message => "I MightBuy a #{@topic.subject} #{@topic.displayPrice}.  Should I?",
+                    :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+                    :name => "MightBuy",
+                    :description => "Track stuff you mightbuy."
+                  )
+                end
            # Rescue from any exception
            rescue Exception => e
              puts "exception occured: ", e
