@@ -36,6 +36,14 @@ class Topic < ActiveRecord::Base
   # Attributes
   attr_accessor :pass_visitor_code
   
+  def displayPrice
+    if self.price then
+      return "for #{self.price}"
+    else
+      return ""
+    end
+  end
+  
   def iImage(host = true)
     # Check if mobile image exists
     if self.mobile_image_url then
