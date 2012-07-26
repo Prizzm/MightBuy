@@ -15,9 +15,11 @@ class SocialController < ApplicationController
       def facebook
         post_to_open_graph(true)
         post_to_facebook_feed(true)
+        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}"
       end
       def twitter
         post_to_twitter(true)
+        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}"
       end
       def askAll
         post_to_open_graph(true)
@@ -60,7 +62,6 @@ class SocialController < ApplicationController
               # Rescue code here
               puts "exception occured: ", e
             end
-          redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}"
           # If FB user doesn't exist
           else
             # Check if application should redirect (defined as param)
