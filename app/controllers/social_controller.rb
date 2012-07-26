@@ -68,9 +68,6 @@ class SocialController < ApplicationController
           if current_user.has_facebook? then
             # Begin rescue block
             begin
-              # Check if image url exists (mobile or web)
-              if @topic.iImage() != nil then
-                # If it does post to users feed (wall/timeline)
                 # displayPrice = "for #{price}"
                 me.feed!(
                   :message => "I MightBuy a #{@topic.subject} #{@topic.displayPrice}.  Should I?",
@@ -79,16 +76,6 @@ class SocialController < ApplicationController
                   :name => "MightBuy",
                   :description => "Track stuff you mightbuy."
                 )
-              else
-                # If it doesn't post to users feed (wall/timeline) without image
-                # displayPrice = "for #{price}"
-                me.feed!(
-                   :message => "I MightBuy a #{@topic.subject} #{@topic.displayPrice}.  Should I?",
-                   :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
-                   :name => "MightBuy",
-                   :description => "Track stuff you mightbuy."
-                 )
-              end
            # Rescue from any exception
            rescue Exception => e
              # Rescue code here
