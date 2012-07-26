@@ -45,7 +45,7 @@ class SocialController < ApplicationController
                 action = me.og_action!(
                   "mightbuy:might_buy",
                   :product => "http://mightbuy.it/topics/#{params[:sc]}",
-                  :price => Topic.find_by_shortcode(params[:sc]).price.to_str
+                  :price => Topic.find_by_shortcode(params[:sc]).price.to_s
                 )
                else
                  puts "price not ok"
