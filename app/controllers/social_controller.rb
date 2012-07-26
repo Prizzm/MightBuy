@@ -18,7 +18,8 @@ class SocialController < ApplicationController
          me = FbGraph::User.me(user.facebook_oauth_token)
          action = me.og_action!(
                 "mightbuy:might_buy",
-                :product => "http://mightbuy.it/topics/#{params[:sc]}"
+                :product => "http://mightbuy.it/topics/#{params[:sc]}",
+:price => "#{Topic.find_by_shortcode(params[:sc]).price}"
               )
          me.feed!(
               :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
@@ -71,7 +72,7 @@ class SocialController < ApplicationController
               :consumer_key=>'kLGDHfctWCOTax3IY0Nwig', :consumer_secret=>'vP2xNwMj4jpntS6qN8Z37fY1qUTSk1vDgJT8b1HSs',
               :token=>current_user.twitter_oauth_token, :token_secret=>current_user.twitter_oauth_secret
             })
-            client.statuses.update! :status=>"I #mightbuy #{Topic.find_by_shortcode(params[:sc]).subject}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
+            client.statuses.update! :status=>"I #mightbuy #{Topic.find_by_shortcode(params[:sc]).subject} for #{Topic.find_by_shortcode(params[:sc]).price}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
           rescue Grackle::TwitterError => e
           end
           redirect_to "http://mightbuy.it/topics/#{params[:sc]}?atf=t"
@@ -89,19 +90,20 @@ class SocialController < ApplicationController
        me = FbGraph::User.me(current_user.facebook_oauth_token)
        action = me.og_action!(
               "mightbuy:might_buy",
-              :product => "http://mightbuy.it/topics/#{params[:sc]}"
+              :product => "http://mightbuy.it/topics/#{params[:sc]}",
+:price => "#{Topic.find_by_shortcode(params[:sc]).price}"
             )
       if !Topic.find_by_shortcode(params[:sc]).mobile_image_url  then
-         if !Topic.find_by_shortcode(params[:sc]).image.blank? then 
+         if !Topic.find_by_shortcode(params[:sc]).image.blank? then
            me.feed!(
-              :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+              :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject} for #{Topic.find_by_shortcode(params[:sc]).price}.  Should I?",
               :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
               :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
               :name => "MightBuy",
               :description => "Track stuff you mightbuy."
             ) else
               me.feed!(
-                :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+                :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject} for #{Topic.find_by_shortcode(params[:sc]).price}.  Should I?",
                 :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
                 :name => "MightBuy",
                 :description => "Track stuff you mightbuy."
@@ -111,7 +113,7 @@ class SocialController < ApplicationController
           
       else
         me.feed!(
-             :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+             :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject} for #{Topic.find_by_shortcode(params[:sc]).price}.  Should I?",
              :picture => Topic.find_by_shortcode(params[:sc]).mobile_image_url,
              :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
              :name => "MightBuy",
@@ -135,19 +137,20 @@ class SocialController < ApplicationController
        me = FbGraph::User.me(current_user.facebook_oauth_token)
        action = me.og_action!(
               "mightbuy:might_buy",
-              :product => "http://mightbuy.it/topics/#{params[:sc]}"
+              :product => "http://mightbuy.it/topics/#{params[:sc]}",
+:price => "#{Topic.find_by_shortcode(params[:sc]).price}"
             )
       if !Topic.find_by_shortcode(params[:sc]).mobile_image_url  then
          if !Topic.find_by_shortcode(params[:sc]).image.blank? then 
            me.feed!(
-              :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+              :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject} for #{Topic.find_by_shortcode(params[:sc]).price}.  Should I?",
               :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
               :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
               :name => "MightBuy",
               :description => "Track stuff you mightbuy."
             ) else
               me.feed!(
-                :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+                :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject} for #{Topic.find_by_shortcode(params[:sc]).price}.  Should I?",
                 :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
                 :name => "MightBuy",
                 :description => "Track stuff you mightbuy."
@@ -157,7 +160,7 @@ class SocialController < ApplicationController
           
       else
         me.feed!(
-             :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+             :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject} for #{Topic.find_by_shortcode(params[:sc]).price}.  Should I?",
              :picture => Topic.find_by_shortcode(params[:sc]).mobile_image_url,
              :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
              :name => "MightBuy",
@@ -177,7 +180,7 @@ class SocialController < ApplicationController
               :consumer_key=>'kLGDHfctWCOTax3IY0Nwig', :consumer_secret=>'vP2xNwMj4jpntS6qN8Z37fY1qUTSk1vDgJT8b1HSs',
               :token=>current_user.twitter_oauth_token, :token_secret=>current_user.twitter_oauth_secret
             })
-            client.statuses.update! :status=>"I #mightbuy #{Topic.find_by_shortcode(params[:sc]).subject}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
+            client.statuses.update! :status=>"I #mightbuy #{Topic.find_by_shortcode(params[:sc]).subject}for #{Topic.find_by_shortcode(params[:sc]).price}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
           rescue Grackle::TwitterError => e
           end
    end
@@ -205,7 +208,8 @@ class SocialController < ApplicationController
   #      me = FbGraph::User.me("AAAGkC4pp4T0BAJY5LiuWtfHTEUYnWPVNnmdqN0Nc38As0r3vVWhDlbsgDnOTNWiCGKzP1Pue523bEQ1rR6jmI7IW9QtF89Dn5oOYPgZDZD")
   #      action = me.og_action!(
   #        "mightbuy:might_buy",
-  #        :product => "http://mightbuy.it/topics/#{params[:sc]}"
+  #        :product => "http://mightbuy.it/topics/#{params[:sc]}",
+:price => "#{Topic.find_by_shortcode(params[:sc]).price}"
   #      )
   #      flash[:notice] = "Friends Asked"
   #      redirect_to "http://mightbuy.it/topics/#{params[:sc]}"
