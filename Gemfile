@@ -88,3 +88,8 @@ group :production do
 end
 
 gem "therubyracer"
+gem 'rubber'
+gem 'open4'
+gem 'gelf'
+gem 'graylog2_exceptions', :git => 'git://github.com/wr0ngway/graylog2_exceptions.git'
+gem 'graylog2-resque'

@@ -15,11 +15,11 @@ class SocialController < ApplicationController
       def facebook
         post_to_open_graph(true)
         post_to_facebook_feed(true)
-        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}"
+        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}", :only_path => true
       end
       def twitter
         post_to_twitter(true)
-        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}"
+        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}", :only_path => true
       end
       def askAll
         post_to_open_graph(false)
@@ -86,7 +86,7 @@ class SocialController < ApplicationController
                 )
            # Rescue from any exception
            rescue Exception => e
-             # Rescue code here
+             puts "exception occured: ", e
            end
          # If current_user doesn't have a Facebook account linked ...
          else
