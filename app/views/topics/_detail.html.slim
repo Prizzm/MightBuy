@@ -12,13 +12,12 @@ head
 
 
 .header
-	a href=resource.url class="image topic present thumb" target="_blank"
+  a href=resource.url class="image topic present thumb" target="_blank"
 		table class="centered" cellspacing="0" cellpadding="0"
 			tbody
 				tr
 					td
-						img src=resource.iImage()
-							  
+						img src=resource.iImage()													  
   .title= resource.subject
   - if resource.url
 	= link_to  "url", resource.url   

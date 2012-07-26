@@ -65,7 +65,7 @@ class SocialController < ApplicationController
         end
         def post_to_facebook_feed(redirect = false)
           # Check if current_user has a Facebook account linked
-          if current_user.has_facebook? then
+          if current_user.hasFacebook? then
             # Begin rescue block
             begin
                 # displayPrice = "for #{price}"
