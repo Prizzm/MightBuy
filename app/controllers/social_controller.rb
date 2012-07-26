@@ -18,7 +18,7 @@ class SocialController < ApplicationController
         redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}?aff=t", :only_path => true
       end
       def twitter
-        post_to_twitter(true)
+        post_to_twitter(false)
         redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}?atf=t", :only_path => true
       end
       def askAll
