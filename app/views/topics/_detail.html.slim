@@ -126,22 +126,22 @@ head
           
 		  - if !params[:af]
 			  .email-friend
-		      	= link_to "Ask All Friends", "/social/#{resource.shortcode}/askfriends", :class => "button"
+		      	= link_to "Ask All Friends", "/social/#{resource.shortcode}/social/ask/all", :class => "button"
 		  - else
 			  .email-friend
-				= link_to "Ask All Friends Again", "/social/#{resource.shortcode}/askfriends", :class => "button"
+				= link_to "Ask All Friends Again", "/social/#{resource.shortcode}/social/ask/all", :class => "button"
 		  - if !params[:atf]
 			.email-friend
-			  	= link_to "Ask Twitter Friends", "/social/#{resource.shortcode}/ask/twitter", :class => "button"
+			  	= link_to "Ask Twitter Friends", "/social/#{resource.shortcode}/social/ask/twitter", :class => "button"
 		  - else
 			.email-friend
-				= link_to "Ask Twitter Friends Again", "/social/#{resource.shortcode}/ask/twitter", :class => "button"
+				= link_to "Ask Twitter Friends Again", "/social/#{resource.shortcode}/social/ask/twitter", :class => "button"
 		  - if !params[:aff]
 			.email-friend
-			  	= link_to "Ask Facebook Friends", "/social/#{resource.shortcode}/ask/facebook", :class => "button"
+			  	= link_to "Ask Facebook Friends", "/social/#{resource.shortcode}/social/ask/facebook", :class => "button"
 		  - else
 			.email-friend
-				= link_to "Ask Facebook Friends Again", "/social/#{resource.shortcode}/ask/facebook", :class => "button"
+				= link_to "Ask Facebook Friends Again", "/social/#{resource.shortcode}/social/ask/facebook", :class => "button"
           .clear
 
           - if (resource.responses.count > 0)    
