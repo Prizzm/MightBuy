@@ -91,7 +91,7 @@ class SocialController < ApplicationController
        action = me.og_action!(
               "mightbuy:might_buy",
               :product => "http://mightbuy.it/topics/#{params[:sc]}",
-:price => "#{Topic.find_by_shortcode(params[:sc]).price}"
+              :price => Topic.find_by_shortcode(params[:sc]).price.to_str
             )
       if !Topic.find_by_shortcode(params[:sc]).mobile_image_url  then
          if !Topic.find_by_shortcode(params[:sc]).image.blank? then
@@ -138,7 +138,7 @@ class SocialController < ApplicationController
        action = me.og_action!(
               "mightbuy:might_buy",
               :product => "http://mightbuy.it/topics/#{params[:sc]}",
-:price => "#{Topic.find_by_shortcode(params[:sc]).price}"
+              :price => Topic.find_by_shortcode(params[:sc]).price.to_str
             )
       if !Topic.find_by_shortcode(params[:sc]).mobile_image_url  then
          if !Topic.find_by_shortcode(params[:sc]).image.blank? then 
