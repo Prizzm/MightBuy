@@ -152,7 +152,7 @@ class SocialController < ApplicationController
             })
             puts "3"
             # Post a status update
-            client.statuses.update! :status=>"I #mightbuy #{@topic.subject} #{@topic.displayPrice}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
+            client.statuses.update.json! :status=>"I #mightbuy #{@topic.subject} #{@topic.displayPrice}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
           # Rescue from any exception
           puts "4"
           rescue Exception => e
