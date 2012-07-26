@@ -89,7 +89,7 @@ class SocialController < ApplicationController
               # displayPrice = "for #{price}"
               me.feed!(
                  :message => "I MightBuy a #{@topic.subject} #{@topic.displayPrice}.  Should I?",
-                 :picture => @topic.iImage()
+                 :picture => @topic.iImage(),
                  :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
                  :name => "MightBuy",
                  :description => "Track stuff you mightbuy."
