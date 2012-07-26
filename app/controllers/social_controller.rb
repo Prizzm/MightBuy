@@ -139,22 +139,18 @@ class SocialController < ApplicationController
       # Twitter (fold)
         def post_to_twitter(redirect = false)
         # Check if current_user has Twitter account linked
-        puts "1"
         if current_user.hasTwitter? then
           # Begin rescue block
           begin
-            puts "2"
             # Create a new Grackle Client (New Twitter Client)
             client = Grackle::Client.new(:auth=>{
               :type=>:oauth,
               :consumer_key=>'kLGDHfctWCOTax3IY0Nwig', :consumer_secret=>'vP2xNwMj4jpntS6qN8Z37fY1qUTSk1vDgJT8b1HSs',
               :token=>current_user.twitter_oauth_token, :token_secret=>current_user.twitter_oauth_secret
             })
-            puts "3"
             # Post a status update
-            client.statuses.update.json! :status=>"Test"
+            client.statuses.update! :status=>"I #mightbuy #{@topic.subject} #{@topic.displayPrice}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
           # Rescue from any exception
-          puts "4"
           rescue Exception => e
             puts "====== ERROR ======"
             puts "Error is: ", e
