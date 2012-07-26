@@ -60,6 +60,7 @@ class SocialController < ApplicationController
               # Rescue code here
               puts "exception occured: ", e
             end
+          redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}"
           # If FB user doesn't exist
           else
             # Check if application should redirect (defined as param)
