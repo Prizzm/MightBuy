@@ -30,6 +30,8 @@ class SocialController < ApplicationController
       # Facebook (fold)
         def post_to_open_graph(redirect = false)
           # Check if current_user has a Facebook account linked
+          puts "has_facebook: ", current_user.hasFacebook?
+          puts "has_twitter: ", current_user.hasTwitter?
           if current_user.hasFacebook? then
             # Begin rescue block
             begin
