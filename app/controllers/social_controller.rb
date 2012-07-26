@@ -31,51 +31,44 @@ class SocialController < ApplicationController
     
     def postToFacebookFeed
       begin
-        # If there is no
-        if !@topic.mobile_image_url  then
-           if !Topic.find_by_shortcode(params[:sc]).image.blank? then
-             if Topic.find_by_shortcode(params[:sc]).price then
-               me.feed!(
-                  :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject} for #{Topic.find_by_shortcode(params[:sc]).price}.  Should I?",
-                  :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
-                  :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
-                  :name => "MightBuy",
-                  :description => "Track stuff you mightbuy."
-                ) else
-                  me.feed!(
-                    :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject} for #{Topic.find_by_shortcode(params[:sc]).price}.  Should I?",
-                    :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
-                    :name => "MightBuy",
-                    :description => "Track stuff you mightbuy."
-                  ) 
-              else
-                me.feed!(
-                   :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
-                   :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
-                   :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
-                   :name => "MightBuy",
-                   :description => "Track stuff you mightbuy."
-                 ) else
-                   me.feed!(
-                     :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
-                     :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
-                     :name => "MightBuy",
-                     :description => "Track stuff you mightbuy."
-                   )
-                 end
+          if @topic.iImage() != nil then
+            if @topic.price then
+              me.feed!(
+                :message => "I MightBuy a #{@topic.subject} for #{@topic.price}.  Should I?",
+                :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
+                :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+                :name => "MightBuy",
+                :description => "Track stuff you mightbuy."
+              )
+            else
+              me.feed!(
+                :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+                :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+                :name => "MightBuy",
+                :description => "Track stuff you mightbuy."
+              )
+            end
+          else
+            if @topic.price then
+              me.feed!(
+                 :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject}.  Should I?",
+                 :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
+                 :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+                 :name => "MightBuy",
+                 :description => "Track stuff you mightbuy."
+               )
+            else
+              me.feed!(
+                 :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject} for #{Topic.find_by_shortcode(params[:sc]).price}.  Should I?",
+                 :picture => Topic.find_by_shortcode(params[:sc]).image.url(:host => "http://mightbuy.it"),
+                 :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+                 :name => "MightBuy",
+                 :description => "Track stuff you mightbuy."
+               )
+            end
                end
             end #post without pic since there is no image url
-
-        else
-          me.feed!(
-               :message => "I MightBuy a #{Topic.find_by_shortcode(params[:sc]).subject} for #{Topic.find_by_shortcode(params[:sc]).price}.  Should I?",
-               :picture => Topic.find_by_shortcode(params[:sc]).mobile_image_url,
-               :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
-               :name => "MightBuy",
-               :description => "Track stuff you mightbuy."
-           )
-        end
-       rescue [FbGraph::Unauthorized, FbGraph::InvalidRequest] => e
+       rescue Exception => e
          error = e
        end
     end
@@ -113,7 +106,7 @@ class SocialController < ApplicationController
               :name => "MightBuy",
               :description => "Track stuff you mightbuy."
           )
-        rescue [FbGraph::Unauthorized, FbGraph::InvalidRequest] => e
+        rescue Exception => e
           error = e
         end
     end
@@ -232,7 +225,7 @@ class SocialController < ApplicationController
              :description => "Track stuff you mightbuy."
          )
       end
-     rescue [FbGraph::Unauthorized, FbGraph::InvalidRequest] => e
+     rescue Exception => e
        error = e
      end
      redirect_to "http://mightbuy.it/topics/#{params[:sc]}?aff=t", :flash => { :error => error }
@@ -279,7 +272,7 @@ class SocialController < ApplicationController
              :description => "Track stuff you mightbuy."
          )
       end
-     rescue [FbGraph::Unauthorized, FbGraph::InvalidRequest] => e
+     rescue Exception => e
        error = e
      end
      redirect_to "http://mightbuy.it/topics/#{params[:sc]}?af=t", :flash => { :error => error }

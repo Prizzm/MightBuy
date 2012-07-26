@@ -36,11 +36,11 @@ class Topic < ActiveRecord::Base
   # Attributes
   attr_accessor :pass_visitor_code
   
-  def image(host = true)
+  def iImage(host = true)
     # Check if mobile image exists
     if self.mobile_image_url then
       # If a mobile image exists then return mobile_image_url
-      #
+      # https://s3.amazonaws.com/prizzm-invites/images/9271954A-0F0A-4579-AE5D-D53199B154C2.png
       return self.mobile_image_url
     # If not check if image exists
     elsif self.image then
