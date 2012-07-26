@@ -35,7 +35,8 @@ NewPrizzmCom::Application.routes.draw do
     get 'brands/join', :to => 'registrations#new', :brand => true
   end
   
-  match "/tokens/facebook" => "social#authenticateMobile"
+  # match "/tokens/facebook" => "social#authenticateMobile"
+  match "/tokens/facebook" => "social#socialAuthenticationAPI"
   match "/topics/findByMIU" => "social#getShortCode"
   match "/social/mobile/askfriends" => "social#askMobileFriends"
   

@@ -54,9 +54,16 @@ class Topic < ActiveRecord::Base
     elsif self.image then
       # Check if host is true
       if host == true then
-        # Return image.url with host
-        # http://mightbuy.it/topics/43P16H
-        return self.image.url(:host => "http://mightbuy.it")
+        # Check env 
+        if Rails.env.production? then
+          # Return image.url with host
+          # http://mightbuy.it/topics/43P16H (mightbuy.it)
+          return self.image.url(:host => "http://mightbuy.it")
+        else
+          # Return image.url with host
+          # http://localhost.it/topics/43P16H (localhost)
+          return self.image.url(:host => "http://localhost:3000")
+        end
       else
         # Other image.url without host (Path Only)
         # /topics/43P16H
