@@ -43,6 +43,22 @@ class User < ActiveRecord::Base
   
   # Methods
 
+  def hasTwitter?
+    if self.twitter_uid && self.twitter_oauth_token && self.twitter_oauth_secret then
+      return true
+    else
+      return false
+    end
+  end
+  
+  def hasFacebook?
+    if self.facebook_uid && self.facebook_oauth_token then
+      return true
+    else
+      return false
+    end
+  end
+  
   def visitor_code= (code)
     self.responses = Response.with_visitor_code(code)
     self.shares    = Shares::Share.with_visitor_code(code)

@@ -21,3 +21,6 @@
 	= form.input :facebook, :label => "Facebook", :hint => "E.x. http://facebook.com/yourname"
 	= form.input :twitter, :label => "Twitter", :hint => "E.x. @yourname"
 	= form.input :phone, :label => "Phone"
+
+/= heading "Unhappy With Your Account?"
+= link_to 'Delete Account', user_registration_path, :confirm => 'Are you sure you want to delete your account? All data will be lost.', :method => :delete

@@ -12,6 +12,7 @@ head
 	meta property="og:image" content="http://mightbuy.it/topics/#{imageurl}"
 	meta property="og:url" content="http://mightbuy.it/topics/#{resource.shortcode}"
 	meta property="og:type" content="mightbuy:product"
+	meta property="mightbuy:price" content="#{resource.price}"
 	link rel="image_src" href=imageurl
 	
 
@@ -124,17 +125,23 @@ head
             = link_to "Email friends", topic_share_path(resource), :class => "button" 
           
 		  - if !params[:af]
-	      	= link_to "Ask All Friends", "/social/#{resource.shortcode}/askfriends", :class => "button"
+			  .email-friend
+		      	= link_to "Ask All Friends", "/social/#{resource.shortcode}/askfriends", :class => "button"
 		  - else
-			= link_to "Ask All Friends Again", "/social/#{resource.shortcode}/askfriends", :class => "button"
+			  .email-friend
+				= link_to "Ask All Friends Again", "/social/#{resource.shortcode}/askfriends", :class => "button"
 		  - if !params[:atf]
-		  	= link_to "Ask Twitter Friends", "/social/#{resource.shortcode}/ask/twitter", :class => "button"
+			.email-friend
+			  	= link_to "Ask Twitter Friends", "/social/#{resource.shortcode}/ask/twitter", :class => "button"
 		  - else
-			= link_to "Ask Twitter Friends Again", "/social/#{resource.shortcode}/ask/twitter", :class => "button"
+			.email-friend
+				= link_to "Ask Twitter Friends Again", "/social/#{resource.shortcode}/ask/twitter", :class => "button"
 		  - if !params[:aff]
-		  	= link_to "Ask Facebook Friends", "/social/#{resource.shortcode}/ask/facebook", :class => "button"
+			.email-friend
+			  	= link_to "Ask Facebook Friends", "/social/#{resource.shortcode}/ask/facebook", :class => "button"
 		  - else
-			= link_to "Ask Facebook Friends Again", "/social/#{resource.shortcode}/ask/facebook", :class => "button"
+			.email-friend
+				= link_to "Ask Facebook Friends Again", "/social/#{resource.shortcode}/ask/facebook", :class => "button"
           .clear
 
           - if (resource.responses.count > 0)    
