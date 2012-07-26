@@ -77,6 +77,7 @@ class SocialController < ApplicationController
           if current_user.hasFacebook? then
             # Begin rescue block
             begin
+                me = FbGraph::User.me(current_user.facebook_oauth_token)
                 # displayPrice = "for #{price}"
                 me.feed!(
                   :message => "I MightBuy a #{@topic.subject} #{@topic.displayPrice}.  Should I?",
