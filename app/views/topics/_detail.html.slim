@@ -1,35 +1,24 @@
 / And the page content..
-/ to test wether the resources has  a mobile_image_url or a resource.image.url, and handle errors
-- if resource.url.blank? && resource.mobile_image_url.blank?
-	- imageurl =  image_url(resource)
-- elsif resource.mobile_image_url.blank? 
-    - imageurl = image_url(resource)
-- else
-   - imageurl = resource.mobile_image_url
-
 head
 	meta property="og:title" content="#{resource.subject}"
-	meta property="og:image" content="http://mightbuy.it/topics/#{imageurl}"
+	meta property="og:image" content="#{resource.iImage()}"
 	meta property="og:url" content="http://mightbuy.it/topics/#{resource.shortcode}"
 	meta property="og:type" content="mightbuy:product"
 	meta property="mightbuy:price" content="#{resource.price}"
-	link rel="image_src" href=imageurl
+	link rel="image_src" href="#{resource.iImage()}"
 	
 
 
 
 
 .header
-  - if resource.mobile_image_url
-		a href=resource.url class="image topic present thumb" target="_blank"
-			table class="centered" cellspacing="0" cellpadding="0"
-				tbody
-					tr
-						td
-							img src=resource.mobile_image_url
-  - else
-    = image_link(resource, imageurl, :class => "thumb", :target => "_blank") { thumb('125x125') }
-  
+	a href=resource.url class="image topic present thumb" target="_blank"
+		table class="centered" cellspacing="0" cellpadding="0"
+			tbody
+				tr
+					td
+						img src=resource.iImage()
+							  
   .title= resource.subject
   - if resource.url
 	= link_to  "url", resource.url   
