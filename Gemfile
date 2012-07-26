@@ -84,7 +84,7 @@ group :test, :development do
 end
 
 group :production do
-  gem 'mysql', '0.11.0'
+  gem 'mysql2'
 end
 
 gem "therubyracer"
