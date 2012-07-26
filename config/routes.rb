@@ -79,9 +79,6 @@ NewPrizzmCom::Application.routes.draw do
   # Social
   post 'social/tweeted' => 'social#tweeted'
   post 'social/recommended' => 'social#recommended'
-  # match 'social/:sc/askfriends' => 'social#askfriends'
-  # match 'social/:sc/ask/twitter' => 'social#askTwitterFriends'
-  # match 'social/:sc/ask/facebook' => 'social#askFacebookFriends'
   # Sharing
   match 'topics/:sc/social/ask/facebook' => 'social#facebook'
   match 'topics/:sc/social/ask/twitter' => 'social#twitter'
