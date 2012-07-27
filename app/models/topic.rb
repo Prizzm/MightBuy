@@ -72,7 +72,7 @@ class Topic < ActiveRecord::Base
     # If nothing exists return nil
     else
       # nil
-      return "http://localhost:3000/images/app/noimage.png"
+      return "/images/app/noimage.png"
     end
   end
   
