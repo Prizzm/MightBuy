@@ -11,7 +11,7 @@ module ProductScraper
       # get first non-zero price
       prices.each do |p|
         if p.to_f > 0
-          price = p
+          price = p.to_f
           break
         end
       end
