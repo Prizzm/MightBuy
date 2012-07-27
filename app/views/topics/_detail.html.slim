@@ -22,7 +22,7 @@ head
   - if resource.url
 	= link_to  "url", resource.url   
   - if resource.price
-	.price= "$%s" % resource.price
+	.price= number_to_currency(resource.price)
       
   .description= simple_format(resource.body)
 

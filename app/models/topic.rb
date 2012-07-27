@@ -38,7 +38,7 @@ class Topic < ActiveRecord::Base
   
   def displayPrice
     if self.price then
-      return " $#{self.price}."
+      return " #{number_to_currency(self.price)}."
     else
       return ""
     end
