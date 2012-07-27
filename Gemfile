@@ -27,7 +27,7 @@ gem 'oauth'
 
 # Layout
 gem 'slim-rails', '0.2.1'
-gem 'inherited_resources', '1.3.0'
+gem 'inherited_resources', '1.3.1'
 gem 'simple_form', '1.5.2'
 gem 'premailer-rails3', '1.0.0'
 gem 'nokogiri', '1.5.0'
@@ -43,7 +43,7 @@ gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.10'
 
 # Admin
-gem 'activeadmin', '0.4.1'
+gem 'activeadmin', '0.4.4'
 gem 'sass-rails', "~> 3.1.4"
 gem "meta_search",    '>= 1.1.0.pre'
 gem 'newrelic_rpm'
