@@ -1,12 +1,111 @@
 $(function(){
   
+  $(".show-google-search a").fancybox({
+    onComplete : function(){
+      var apiURL = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?';
+      $.getJSON(apiURL,{q:$("#topic_subject").val(),rsz:5,start:0},function(r){ // $("#topic_subject").val()
+        var res = r.responseData.results;
+        var result_elem = $("<ul></ul>");
+        if ( res.length ) {
+          res = $.each(res, function(i, r){
+
+            var new_item = $("<li class='g_result'>" + 
+                             "<a class='result_item' href='"+ r.unescapedUrl +"'>" +
+                             "<span class='r_title'>"+ r.titleNoFormatting +"</span><br />" +
+                             "<span class='r_desc'>"+ r.content +"</span><br />" +
+                             "<span class='r_vurl'>"+r.visibleUrl+"</span>" +
+                             "</a>" +
+                             "</li>")
+            
+            result_elem.append(new_item);
+          });
+          $("#gsearch-results").html(result_elem.html());
+        }
+        else
+        {
+          $("#gsearch-results").html("<br />No results found<br /><br />");
+        }
+        $.fancybox.resize();
+        $.fancybox.center();
+      });
+    }
+  });
+
+  $(document).on("click", ".g_result a", function(e){
+    $("#topic_url").val($(this).attr("href"));
+    $("#topic_url").trigger("complete");
+    e.preventDefault();
+    $.fancybox.close();
+  });
+
+  $("#item-more-options-more").click(function(e){
+    $(this).css({ display : "none" });
+    $("#item-more-options-content").css({ display : "block" });
+    e.preventDefault();
+  });
+
   // TODO : Supporting method possibly useful elsewhere as well
   $(".collapsible a.toggle").click(function(e){
     $(this).next(".input").css({"display":"block"});
     $(this).css({"display":"none"});
     e.preventDefault();
   });
+
+  $("#topic_subject").bind("keyup", function(){
+    var subject = $(this).val();
+    if ( $.trim(subject) == "" ) {
+      subject = "&lt;search term&gt;"
+    }
+    $(".show-google-search a").html("Search Google for </br> \"<name>\"".replace("<name>", subject));
+  });
+
+  $("#topic_subject").focusout(function(){
+    
+  });
+
+  $("#topic_url").bind("keypress", function(e){
+    if ( e.which == 13 ) {
+       e.preventDefault();
+    }
+  });
+
+  $("#topic_url").bind("change", function(){
+    if ( $(this).val() ) {
+      $("#topic_url").trigger("complete");
+    }
+  });
+
+  $("#topic_url").bind("paste", function(){
+    if ( $(this).val() ) {
+      setTimeout(function(){
+        $("#topic_url").trigger("complete");
+      }, 0);
+    }
+  });
+
+  $("#topic_url").bind("complete", function(){
+    // set grab image URL
+    $(".image-selector-uploader #web input").val($("#topic_url").val());
+    $(".image-selector-uploader #web .get").click();
+    $("#item-more-options-more").click();
+  });
+
+  // if URL is not blank show grab image dialog immediately
+  // used in bookmarklet
+  if ( $("#topic_url").val() ) {
+   	if ($("#item_image .image-holder img").length == 0) { // no image exists
+	      $("#topic_url").trigger("complete");
+	    } else {
+	      // set grab image URL
+	      $(".image-selector-uploader #web input").val($("#topic_url").val());
+	      $("#item-more-options-more").click();
+	    }
+  }
   
+  
+  // everything below is commented
+  return;
+
   // When user clicks search icon in item url
   $("#item_url_search").click(function(e){
     if ( $("#topic_subject").val() ) {
@@ -67,69 +166,5 @@ $(function(){
   };
 
   $("#topic_url").autocomplete({ disabled: true });
-
-  $("#topic_subject").bind("keyup", function(){
-    $("#item_url_hint").html("Paste URL - or search google for  \"<name>\"".replace("<name>", $(this).val()));
-  });
-
-  $("#topic_subject").focusout(function(){
-    
-  });
-
-  $("#topic_url").bind("focusin click", function(){
-    if ( !$(this).val() ) {
-      $("#item_url_search").click();
-    }
-  });
-  
-  $("#topic_url").bind("keypress", function(e){
-    if ( e.which == 13 && $("#item_url_search").data("status") != "open" ) {
-      $("#item_url_search").click();
-       e.preventDefault();
-    }
-  });
-
-  $("#topic_url").bind("keypress", function(){
-    if ( $(this).val() ) {
-      $("#item_image").removeClass("hidden");
-    }
-  });
-  
-  $("#topic_url").bind("change", function(){
-    if ( $(this).val() ) {
-      $(this).trigger("complete");
-    }
-  });
-
-  $("#topic_url").bind("paste", function(){
-    if ( $(this).val() ) {
-      setTimeout(function(){
-        $(this).trigger("complete");
-      }, 0);
-    }
-  });
-
-  $("#topic_url").bind("complete", function(){
-    // set grab image URL
-    $(".image-selector-uploader #web input").val($("#topic_url").val());
-    $(".image-selector-uploader #web .get").click();
-    $("#item_image").removeClass("hidden");
-    $("#topic_body").closest(".hidden").removeClass("hidden");
-    $("#new_topic .buttons .button").removeClass("hidden");
-  });
-
-  // if URL is not blank show grab image dialog immediately
-  // used in bookmarklet
-  if ( $("#topic_url").val() ) {
-   	if ($("#item_image .image-holder img").length == 0) { // no image exists
-	      $("#topic_url").trigger("complete");
-	    } else {
-	      // set grab image URL
-	      $(".image-selector-uploader #web input").val($("#topic_url").val());
-	      $("#item_image").removeClass("hidden");
-	      $("#topic_body").closest(".hidden").removeClass("hidden");
-	      $("#new_topic .buttons .button").removeClass("hidden");
-	    }
-  }
 
 });

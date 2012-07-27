@@ -125,6 +125,114 @@ a#item_url_search {
   background-color:White;
 }
 
+.g_result {
+
+  list-style:none;
+  padding:4px;
+  border:1px solid transparent;
+
+  * {
+    padding:0;
+    margin:0;
+  }
+
+  &:hover {
+    border:1px solid #ccc;
+  }
+
+  .result_item {
+
+    overflow:hidden;
+    display:block;
+    color:Black;
+    text-decoration: none;
+    margin-bottom:2px;
+    
+    .r_title {
+      display:inline-block;
+      font-weight:Bold;
+      text-overflow:ellipsis;
+      overflow:hidden;
+      white-space:nowrap;
+      padding:0 2px;
+      line-height:22px;
+      color:#667A80;
+    }
+
+    .r_desc {
+      display:inline-block;
+      padding-bottom:2px;
+      color:#888;
+    }
+
+    .r_vurl {
+      color:#0AF;
+    }
+
+  }
+
+}
+
+.item-extra-options {
+
+  div {
+    float:left;
+    padding:25px 15px;
+    text-align:center;
+  }
+
+  .show-google-search {
+    width:150px;
+  }
+  
+  .search-or-url {
+    vertical-align:center;
+    line-height:32px;
+  }
+  
+  .paste-url, .add-notes {
+    width:150px;
+    vertical-align:center;
+    margin-bottom:5px;
+    
+    label {
+      display:none !important;
+    }
+    
+    .input {
+      border:0;
+      padding:0;
+      margin:0 !important;
+    }
+    
+    .input input {
+      width:130px !important;
+      border:1px solid #888;
+    }
+    
+  }
+  
+  .url-or-notes {
+    vertical-align:center;
+    line-height:32px;
+  }
+
+  .add-notes {
+    width:100px;
+    line-height:32px;
+  }
+  
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+
+}
+
 /* TODO : Should probably shift this to common css file */
 .collapsible {
   .input {
