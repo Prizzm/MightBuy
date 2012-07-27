@@ -2,6 +2,7 @@ class Topic < ActiveRecord::Base
   
   # Includes
   include InheritUpload
+  include ActionView::Helpers::NumberHelper
   
   # Options
   Access = {
@@ -38,42 +39,52 @@ class Topic < ActiveRecord::Base
   
   def displayPrice
     if self.price then
-      return " $#{self.price}."
+      return " $#{number_to_currency(self.price)}."
     else
       return ""
     end
   end
   
   def iImage(host = true)
-    # Check if mobile image exists
+    # Check if mobile image exists - return
     if self.mobile_image_url then
       # If a mobile image exists then return mobile_image_url
       # https://s3.amazonaws.com/prizzm-invites/images/9271954A-0F0A-4579-AE5D-D53199B154C2.png
       return self.mobile_image_url
-    # If not check if image exists
-    elsif self.image then
-      # Check if host is true
+
+    else #handle non mobile images as no images
+      
       if host == true then
         # Check env 
         if Rails.env.production? then
-          # Return image.url with host
-          # http://mightbuy.it/topics/43P16H (mightbuy.it)
-          return self.image.url(:host => "http://mightbuy.it")
+          if self.image then 
+            # Return image.url with host
+            # http://mightbuy.it/topics/43P16H (mightbuy.it)
+            return self.image.url(:host => "http://mightbuy.it")
+          else
+            return "http://mightbuy.it/images/app/noimage.png"
+          end  
         else
-          # Return image.url with host
-          # http://localhost.it/topics/43P16H (localhost)
-          return self.image.url(:host => "http://localhost:3000")
+          if self.image then 
+            # Return image.url with host
+            # http://localhost.it/topics/43P16H (localhost)
+            return self.image.url(:host => "http://localhost:3000")
+          else 
+            return "http://localhost:3000/images/app/noimage.png"
+          end      
         end
-      else
+    
+      else #host is not true - handle blank and 
         # Other image.url without host (Path Only)
         # /topics/43P16H
-        return self.image.url
-      end
-    # If nothing exists return nil
-    else
-      # nil
-      return "/images/app/noimage.png"
-    end
+        if self.image then 
+          return self.image.url
+        else
+          return   "/images/app/noimage.png"
+        end
+      end  
+    end     
+    
   end
   
   def url
