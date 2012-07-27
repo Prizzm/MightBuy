@@ -13,19 +13,21 @@ class SocialController < ApplicationController
         post_to_twitter(false)
       end
       def facebook
-        post_to_open_graph(true)
-        post_to_facebook_feed(true)
-        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}?aff=t", :only_path => true
+        redirect_to_social_login(:facebook) and return if !current_user.hasFacebook?
+        post_to_open_graph(false)
+        post_to_facebook_feed(false)
+        redirect_to "/topics/#{@topic.shortcode}?aff=t", :only_path => true
       end
       def twitter
+        redirect_to_social_login(:twitter) if !current_user.hasTwitter?
         post_to_twitter(false)
-        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}?atf=t", :only_path => true
+        redirect_to "/topics/#{@topic.shortcode}?atf=t", :only_path => true
       end
       def askAll
         post_to_open_graph(false)
         post_to_facebook_feed(false)
         post_to_twitter(false)
-        redirect_to "http://mightbuy.it/topics/#{@topic.shortcode}?aaf=t"
+        redirect_to "/topics/#{@topic.shortcode}?aaf=t"
       end
     # Accessible Methods (end)
         
@@ -68,20 +70,22 @@ class SocialController < ApplicationController
             # Check if application should redirect (defined as param)
             if redirect == true then
               # If it should call redirect_to_social_login with the param of :facebook (redirect to facebook login)
-              redirect_to_social_login(:facebook)
+              redirect_to_social_login(:facebook) and return
             end
           end
         end
         def post_to_facebook_feed(redirect = false)
           # Check if current_user has a Facebook account linked
-          if current_user.hasFacebook? then
+          if current_user.hasFacebook? then 
             # Begin rescue block
             begin
                 me = FbGraph::User.me(current_user.facebook_oauth_token)
-                # displayPrice = "for #{price}"
-                if @topic.iImage() then
+                
+                #check for no images - which are returned from @topic.iImage with a noimage.png file
+                noimage = true if @topic.iImage()  =~ /noimage\.png/ 
+                if @topic.iImage() && !noimage
                   me.feed!(
-                    :message => "I MightBuy a #{@topic.subject} #{@topic.displayPrice}.  Should I?",
+                    :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
                     :picture => @topic.iImage(),
                     :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
                     :name => "MightBuy",
@@ -89,7 +93,7 @@ class SocialController < ApplicationController
                   )
                 else
                   me.feed!(
-                    :message => "I MightBuy a #{@topic.subject} #{@topic.displayPrice}.  Should I?",
+                    :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
                     :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
                     :name => "MightBuy",
                     :description => "Track stuff you mightbuy."
@@ -105,6 +109,7 @@ class SocialController < ApplicationController
            if redirect == true then
              # Redirect to facebook login
              redirect_to_social_login(:facebook)
+             
            end
          end
         end
@@ -149,7 +154,7 @@ class SocialController < ApplicationController
               :token=>current_user.twitter_oauth_token, :token_secret=>current_user.twitter_oauth_secret
             })
             # Post a status update
-            client.statuses.update! :status=>"I #mightbuy #{@topic.subject} #{@topic.displayPrice}. Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
+            client.statuses.update! :status=>"I #mightbuy #{@topic.subject}. #{@topic.displayPrice} Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
           # Rescue from any exception
           rescue Exception => e
             puts "====== ERROR ======"
@@ -169,9 +174,9 @@ class SocialController < ApplicationController
       # Universal (fold)
         def redirect_to_social_login(network)
           if network == :twitter || network == "twitter" then
-            redirect_to "/users/auth/twitter"
+            redirect_to "/users/auth/twitter" 
           elsif network == :facebook || network == "facebook" then
-            redirect_to "/users/auth/facebook"
+            redirect_to "/users/auth/facebook" 
           end
         end
         def findTopic
