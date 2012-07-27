@@ -38,7 +38,7 @@ class Topic < ActiveRecord::Base
   
   def displayPrice
     if self.price then
-      return " #{number_to_currency(self.price)}."
+      return " $#{self.price}."
     else
       return ""
     end
@@ -72,7 +72,7 @@ class Topic < ActiveRecord::Base
     # If nothing exists return nil
     else
       # nil
-      return "/images/app/noimage.png"
+      return "http://localhost:3000/images/app/noimage.png"
     end
   end
   
