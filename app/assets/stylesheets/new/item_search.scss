@@ -220,6 +220,13 @@ a#item_url_search {
   .add-notes {
     width:100px;
     line-height:32px;
+    padding:0;
+    
+    .input textarea.text.optional {
+      font-size:90% !important;
+      width:150px !important;
+      height:75px !important;
+    }
   }
   
   &:after {
