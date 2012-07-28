@@ -16,8 +16,7 @@ div.item-extra-options
     = form.input :body, :as => :string, :label => "", :hint => nil, :input_html => { :placeholder => "Add Notes" , 	:size => 40}
 
 div.item-more-options
-  = link_to "More >>", "#", :id => "item-more-options-more"
-  div#item-more-options-content style="display:none;"
+  div#item-more-options-content
     = render "partials/image_selector_input_with_price", :form => form, :field => :image
 
 .hidden
