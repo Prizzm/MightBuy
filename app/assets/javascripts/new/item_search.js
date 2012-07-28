@@ -52,6 +52,7 @@ $(function(){
     }
     $(".show-google-search a").html("Search Google for </br> \"<name>\"".replace("<name>", subject));
   });
+  $("#topic_subject").trigger("keyup");
 
   $("#topic_subject").focusout(function(){
     
@@ -86,12 +87,12 @@ $(function(){
   // if URL is not blank show grab image dialog immediately
   // used in bookmarklet
   if ( $("#topic_url").val() ) {
-   	if ($("#item_image .image-holder img").length == 0) { // no image exists
+   	if ($(".item-more-options .image-holder img").length == 0) { // no image exists
+        // no image
 	      $("#topic_url").trigger("complete");
 	    } else {
 	      // set grab image URL
 	      $(".image-selector-uploader #web input").val($("#topic_url").val());
-	      $("#item-more-options-more").click();
 	    }
   }
   

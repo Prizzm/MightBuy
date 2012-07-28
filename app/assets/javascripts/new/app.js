@@ -324,7 +324,7 @@ var selectoruploaders = function () {
     var success = function (data) { 
       position = 0;
       images   = data.images;
-      if ( pricefield.length > 0 ) {
+      if ( pricefield.length > 0 && !pricefield.val() ) {
         pricefield.val(data.price);
       }
       hideloader(image);
