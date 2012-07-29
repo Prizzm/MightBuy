@@ -12,20 +12,6 @@ class SocialController < ApplicationController
       def unlinkFacebookAccount
         unlink_facebook()
       end
-   
-    	def unlink_facebook(redirect = true)
-    			current_user.update_attribute("facebook_uid", nil)
-    			if redirect == true
-    			  redirect_to edit_profile_path
-    			end
-  		end
-		
-  		def unlink_twitter(redirect = true)
-      		current_user.update_attribute("twitter_uid", nil)
-      		if redirect == true
-      		  redirect_to edit_profile_path
-      		end
-      end
       
       def socialAuthenticationAPI
         authenticate_using_facebook_uid(params[:token])
@@ -162,6 +148,13 @@ class SocialController < ApplicationController
             render :text => {:token => u.authentication_token}.to_json
           end
         end
+        
+        def unlink_facebook(redirect = true)
+      			current_user.update_attribute("facebook_uid", nil)
+      			if redirect == true
+      			  redirect_to edit_profile_path
+      			end
+    		end
       # Facebook (end)
       
       # Twitter (fold)
@@ -191,6 +184,13 @@ class SocialController < ApplicationController
           # If so, redirect to Twitter login
           redirect_to_social_login(:twitter)
         end
+      end
+      
+      def unlink_twitter(redirect = true)
+      		current_user.update_attribute("twitter_uid", nil)
+      		if redirect == true
+      		  redirect_to edit_profile_path
+      		end
       end
       # Twitter (end)
       
