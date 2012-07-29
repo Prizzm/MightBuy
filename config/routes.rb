@@ -87,6 +87,10 @@ NewPrizzmCom::Application.routes.draw do
   # Authentication
   match 'users/auth/methods/facebook/uid' => 'social#socialAuthenticationAPI'
   
+  # Linking
+  match 'profile/unlink/facebook' => 'social#unlinkFacebookAccount'
+  match 'profile/unlink/twitter' => 'social#unlinkTwitterAccount'
+  
   # Router
   get 'share/:shortcode' => "router#shared", :as => :shared
   get 'invited/:shortcode' => "router#invited", :as => :invited

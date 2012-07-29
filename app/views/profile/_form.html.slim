@@ -5,22 +5,25 @@
 = heading "General Details"
 
 = form.input :name, :label => "Your Name"
+= form.input :email, :label => "Your Email"
 /= form.input :description, :label => "Description", :hint => "Tell everyone who you are & what you do!", :input_html => { :maxlength => 150 }
 
 = heading "Social Accounts"
 - if current_user.twitter_uid == nil
 	= link_to "Link with Twitter", user_omniauth_authorize_path(:twitter)
 	br
+-else
+	= link_to "Unlink Twitter", "/profile/unlink/twitter"
+	br
+	
 - if current_user.facebook_uid == nil
 	= link_to "Link with Facebook", user_omniauth_authorize_path(:facebook)
-
-
 	br
-/= heading "Social Details"
-	= form.input :url, :label => "Web"
-	= form.input :facebook, :label => "Facebook", :hint => "E.x. http://facebook.com/yourname"
-	= form.input :twitter, :label => "Twitter", :hint => "E.x. @yourname"
-	= form.input :phone, :label => "Phone"
+-else
+	= link_to "Unlink Facebook", "/profile/unlink/facebook"
+	br
+	
+
 
 /= heading "Unhappy With Your Account?"
 = link_to 'Delete Account', user_registration_path, :confirm => 'Are you sure you want to delete your account? All data will be lost.', :method => :delete

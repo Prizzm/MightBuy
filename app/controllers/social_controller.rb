@@ -4,8 +4,31 @@ class SocialController < ApplicationController
   before_filter :findTopic
   
     # Accessible Methods (fold)
+    
+      def unlinkTwitterAccount
+        unlink_twitter()
+      end
+    
+      def unlinkFacebookAccount
+        unlink_facebook()
+      end
+   
+    	def unlink_facebook(redirect = true)
+    			current_user.update_attribute("facebook_uid", nil)
+    			if redirect == true
+    			  redirect_to edit_profile_path
+    			end
+  		end
+		
+  		def unlink_twitter(redirect = true)
+      		current_user.update_attribute("twitter_uid", nil)
+      		if redirect == true
+      		  redirect_to edit_profile_path
+      		end
+      end
+      
       def socialAuthenticationAPI
-        authenticate_using_facebook_uid(params[:uid])
+        authenticate_using_facebook_uid(params[:token])
       end      
       def askAllAPI
         post_to_open_graph(false)
