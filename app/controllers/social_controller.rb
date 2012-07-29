@@ -121,7 +121,7 @@ class SocialController < ApplicationController
             # Be sure user has a authentication token.  If they don't, generate one
             user.ensure_authentication_token!
             # render token as json
-            render :text => {:token => User.find_by_facebook_uid(params[:token]).authentication_token}.to_json
+            render :text => {:token => user.authentication_token}.to_json
           # If user doesn't exist
           else
              # Create a new user
