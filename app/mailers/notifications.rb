@@ -1,5 +1,5 @@
 class Notifications < ActionMailer::Base
-  default from: "notify@prizzm.com"
+  default from: "notify@mightbuy.it"
   
   layout "notification"
   
@@ -11,7 +11,7 @@ class Notifications < ActionMailer::Base
     @homeurl = @topic.url
       
     @to_email   = share.with
-    @from_email = "notify@prizzm.com"
+    @from_email = "notify@mightbuy.it"
     @heading    = @topic.subject
       
     @topic_url = invited_url(share.shortcode);
@@ -28,7 +28,7 @@ class Notifications < ActionMailer::Base
       (response.user ? response.user.name : "Someone")
     
     @to_email   = response.reply_to_email
-    @from_email = "notify@prizzm.com"
+    @from_email = "notify@mightbuy.it"
     @url        = topic_url(response.topic, :feature => response.id)
     
     @title      = response.topic.subject
@@ -36,7 +36,7 @@ class Notifications < ActionMailer::Base
     
     mail \
       :to => @to_email,
-      :from => "Prizzm <%s>" % @from_email,
+      :from => "MightBuy <%s>" % @from_email,
       :subject => @heading
     
   end
