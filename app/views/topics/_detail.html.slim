@@ -26,8 +26,8 @@ head
       
   .description= simple_format(resource.body)
 
-  = heading "Deals"
   - if resource.product
+  	= heading "Deals"
 	  - for bargin in resource.product.bargins do
 	  	.bargin
 			.description = bargin.description
@@ -53,7 +53,7 @@ head
               = respond_button :undecided, 'Not Sure..'
               = respond_button :not_recommended, "NO!", :icon => 'thumbdown.png'
               = form.input :recommend_type, :as => :hidden, :input_html => { :class => "recommend-type" }
-            
+            	
             .other-feedback
 
               = heading "More feedback please!"
