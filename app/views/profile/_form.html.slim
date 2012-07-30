@@ -4,9 +4,12 @@
 
 = heading "General Details"
 
+= form.label  "email:   "
+= current_user.email
 = form.input :name, :label => "Your Name"
-= form.input :email, :label => "Your Email"
-/= form.input :description, :label => "Description", :hint => "Tell everyone who you are & what you do!", :input_html => { :maxlength => 150 }
+/= form.input :description, :label => "About you", :hint => "Anything you'd like to share..", :input_html => { :maxlength => 150 }
+= link_to 'Delete Account', user_registration_path, :confirm => 'Are you sure you want to delete your account? All data will be lost.', :method => :delete
+
 
 = heading "Social Accounts"
 - if current_user.twitter_uid == nil
@@ -24,6 +27,3 @@
 	br
 	
 
-
-/= heading "Unhappy With Your Account?"
-= link_to 'Delete Account', user_registration_path, :confirm => 'Are you sure you want to delete your account? All data will be lost.', :method => :delete

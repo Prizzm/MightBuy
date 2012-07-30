@@ -19,8 +19,8 @@ head
 					td
 						img src=resource.iImage()													  
   .title= resource.subject
-  - if resource.url
-	= link_to  "url", resource.url   
+  - unless resource.url.blank?
+	= link_to  "url", resource.url, :target => "_blank"   
   - if resource.price
 	.price= number_to_currency(resource.price)
       
@@ -109,29 +109,35 @@ head
   - if current_user
     #sharemore
           = heading "Ask Friends - should you buy it?", :id => "share"
+		  
+		  .div 
+		    b Vote URL: 
+		    = link_to "http://www.mightbuy.it/#{topic_path(resource)}?r=t", "#{topic_path(resource)}?r=t"
+            p
+  
           .email-friend
-            = link_to "Email friends", topic_share_path(resource), :class => "button" 
-          
-		  - if !params[:af]
-			  .email-friend
-		      	= link_to "Ask All Friends", "/topics/#{resource.shortcode}/social/ask/all", :class => "button"
-		  - else
-			  .email-friend
-				= link_to "Ask All Friends Again", "/topics/#{resource.shortcode}/social/ask/all", :class => "button"
+         
+          = link_to "Email friends", topic_share_path(resource), :class => "button"           
 		  - if !params[:atf]
 			.email-friend
-			  	= link_to "Ask Twitter Friends", "/topics/#{resource.shortcode}/social/ask/twitter", :class => "button"
+			  	= link_to "Ask Twitter", "/topics/#{resource.shortcode}/social/ask/twitter", :class => "button"
 		  - else
 			.email-friend
-				= link_to "Ask Twitter Friends Again", "/topics/#{resource.shortcode}/social/ask/twitter", :class => "button"
+				= link_to "Ask Twitter Again", "/topics/#{resource.shortcode}/social/ask/twitter", :class => "button"
 		  - if !params[:aff]
 			.email-friend
-			  	= link_to "Ask Facebook Friends", "/topics/#{resource.shortcode}/social/ask/facebook", :class => "button"
+			  	= link_to "Ask Facebook", "/topics/#{resource.shortcode}/social/ask/facebook", :class => "button"
 		  - else
 			.email-friend
-				= link_to "Ask Facebook Friends Again", "/topics/#{resource.shortcode}/social/ask/facebook", :class => "button"
+				= link_to "Ask Facebook Again", "/topics/#{resource.shortcode}/social/ask/facebook", :class => "button"
+		  - if !params[:af]
+			  .email-friend
+		      	= link_to "Ask Fb & Twitter", "/topics/#{resource.shortcode}/social/ask/all", :class => "button"
+		  - else
+			  .email-friend
+				= link_to "Ask F&T Again", "/topics/#{resource.shortcode}/social/ask/all", :class => "button"
           .clear
-
+	
           - if (resource.responses.count > 0)    
 	        #stats
 	          = heading "Votes", :id => "stats"

@@ -26,7 +26,7 @@ class Response < ActiveRecord::Base
     
   # Validations  
   validates :body, :presence => true, :unless => :recommendation?
-  validates :recommend_type, :presence => true, :if => :recommendation?
+  #validates :recommend_type, :presence => true, :if => :recommendation?
     
   # Uploaders
   image_accessor :image
