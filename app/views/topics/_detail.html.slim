@@ -27,12 +27,13 @@ head
   .description= simple_format(resource.body)
 
   = heading "Deals"
-  - for bargin in resource.product.bargins do
-  	.bargin
-		.description = bargin.description
-		input class="button_buy" name="commit" type="submit" value="Buy It!" onClick="window.location.href = '#{bargin.url}'"
-		br
-		br
+  - if resource.product
+	  - for bargin in resource.product.bargins do
+	  	.bargin
+			.description = bargin.description
+			input class="button_buy" name="commit" type="submit" value="Buy It!" onClick="window.location.href = '#{bargin.url}'"
+			br
+			br
 
   
 - if params[:responding] || params[:r] || params[:fb_action_ids]
