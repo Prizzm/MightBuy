@@ -4,6 +4,7 @@ FactoryGirl.define do
     sequence(:email) { |i| "user-#{i}@prizzm.com" }
     password "asdfasdf"
     password_confirmation "asdfasdf"
+    name "Joe Doe"
   end
   
   factory :bank, :class => "Points::Bank" do

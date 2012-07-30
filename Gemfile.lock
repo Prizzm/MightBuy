@@ -67,6 +67,15 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    capybara (1.1.2)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (~> 2.0)
+      xpath (~> 0.1.4)
+    childprocess (0.3.4)
+      ffi (~> 1.0, >= 1.0.6)
     choice (0.1.6)
     cocoon (1.0.14)
     coffee-rails (3.1.1)
@@ -169,6 +178,8 @@ GEM
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
     libv8 (3.3.10.4)
+    libwebsocket (0.1.5)
+      addressable
     listen (0.4.7)
       rb-fchange (~> 0.0.5)
       rb-fsevent (~> 0.9.1)
@@ -316,6 +327,7 @@ GEM
       nettica
     ruby-graphviz (1.0.8)
     ruby-hmac (0.4.0)
+    rubyzip (0.9.9)
     sass (3.1.20)
     sass-rails (3.1.4)
       actionpack (~> 3.1.0)
@@ -323,6 +335,11 @@ GEM
       sass (>= 3.1.4)
       sprockets (~> 2.0.0)
       tilt (~> 1.3.2)
+    selenium-webdriver (2.25.0)
+      childprocess (>= 0.2.5)
+      libwebsocket (~> 0.1.3)
+      multi_json (~> 1.0)
+      rubyzip
     shoulda-matchers (1.0.0)
     simple_form (1.5.2)
       actionpack (~> 3.0)
@@ -363,6 +380,8 @@ GEM
     warden (1.0.6)
       rack (>= 1.0)
     xml-simple (1.1.1)
+    xpath (0.1.4)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -370,6 +389,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (= 0.4.4)
   acts_as_opengraph
+  capybara
   cocoon (= 1.0.14)
   coffee-rails (~> 3.1.0)
   daemons

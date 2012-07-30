@@ -81,6 +81,7 @@ group :test, :development do
   gem 'rspec-rails', "~> 2.6"
   gem 'shoulda-matchers', '1.0.0'
   gem 'guard-rspec', "0.5.1"
+  gem 'capybara'
 end
 
 group :production do
