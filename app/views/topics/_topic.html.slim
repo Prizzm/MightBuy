@@ -9,7 +9,14 @@ li
 				td
 					img src=topic.mobile_image_url
   - else
-  	=	image_link(topic, topic_path(topic), :class => "thumb") { thumb('55x55#') }
+  	- if topic.product 
+		- if topic.product.bargins
+			span data-notifications="#{topic.product.bargins.count}"
+	  			=	image_link(topic, topic_path(topic), :class => "thumb") { thumb('55x55#') }
+		- else
+			=	image_link(topic, topic_path(topic), :class => "thumb") { thumb('55x55#') }
+  	- else 
+		=	image_link(topic, topic_path(topic), :class => "thumb") { thumb('55x55#') }
   = link_to topic.subject, topic_path(topic), :class => "title"
   .notes= phrase_for(:said, topic)   
   br
