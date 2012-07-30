@@ -14,6 +14,7 @@ class Topic < ActiveRecord::Base
   has_many :responses
   has_many :shares, :class_name => "Shares::Share", :inverse_of => :topic
   belongs_to :user
+  belongs_to :product
   
   # Scopes
   scope :publics, where(:access => "public")
@@ -29,6 +30,16 @@ class Topic < ActiveRecord::Base
   image_accessor :image
   
   # Social  
+  
+  # Methods
+  after_create :find_product
+  
+  def find_product
+    p = Product.find_by_url(url)
+    if p then
+      self.update_attribute("product_id", p)
+    end
+  end
 
   # Nested Attributes
   accepts_nested_attributes_for :shares,

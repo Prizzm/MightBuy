@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120719180659) do
+ActiveRecord::Schema.define(:version => 20120730172958) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(:version => 20120719180659) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bargins", :force => true do |t|
+    t.string   "name"
+    t.string   "offer"
+    t.string   "type"
+    t.text     "description"
+    t.string   "url"
+    t.string   "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -124,6 +135,13 @@ ActiveRecord::Schema.define(:version => 20120719180659) do
     t.datetime "updated_at"
   end
 
+  create_table "products", :force => true do |t|
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
   create_table "responses", :force => true do |t|
     t.integer  "topic_id"
     t.integer  "user_id"
@@ -169,6 +187,7 @@ ActiveRecord::Schema.define(:version => 20120719180659) do
     t.float    "price"
     t.integer  "offer"
     t.string   "mobile_image_url"
+    t.integer  "product_id"
   end
 
   add_index "topics", ["shortcode"], :name => "index_topics_on_shortcode", :unique => true
