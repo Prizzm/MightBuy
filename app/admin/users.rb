@@ -1,4 +1,4 @@
-ActiveAdmin.register User do
+ ActiveAdmin.register User do
   
   index do
     column "ID" do |user|
