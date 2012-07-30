@@ -6,7 +6,7 @@ class CreateBargins < ActiveRecord::Migration
       t.string :type
       t.text :description
       t.string :url
-      t.string :product_id
+      t.integer :product_id
 
       t.timestamps
     end
