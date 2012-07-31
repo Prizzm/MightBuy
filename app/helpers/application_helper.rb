@@ -107,7 +107,7 @@ module ApplicationHelper
       when :edit
         link_to label || "Edit", edit_resource_path, :class => "button"
       when :back
-        link_to label || "Go Back", collection_path, :class => "dark button"
+          link_to label || "Go Back", "/me", :class => "dark button"
       when :delete
         link_to label || "Delete", resource_path, :confirm => "Are you sure?", :method => :delete, :class => "button"
     end
