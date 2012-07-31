@@ -6,7 +6,9 @@ ActiveAdmin.register Topic do
     end
     
     column "User" do |topic|
-      link_to topic.user.name, admin_user_path(topic.user)
+      unless topic.user.blank?
+        link_to topic.user.name, admin_user_path(topic.user)
+      end
     end
     
     column :subject
