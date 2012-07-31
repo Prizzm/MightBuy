@@ -108,7 +108,7 @@ module TopicsHelper
           #link_to("Invite Others", topic_share_path(resource), :class => "button")
         end
       when :share
-        link_for(:back, "Go Back")
+        link_for("/me", "Go Back")
       else super
     end
   end
