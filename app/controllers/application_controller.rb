@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   
   # Filters
   
+  before_filter :update_last_seen
   before_filter do
     cookies[:visitor_code] ||= {
       :value => Shortcode.new(40),
@@ -61,6 +62,12 @@ class ApplicationController < ActionController::Base
         flash[name] = nil;
       end
       return fl
+    end
+    
+    def update_last_seen
+      if current_user then
+        current_user.update_attribute("last_seen", DateTime.now)
+      end
     end
     
   
