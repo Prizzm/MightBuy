@@ -89,7 +89,7 @@ class SocialController < ApplicationController
             # Begin rescue block
             begin
                 me = FbGraph::User.me(current_user.facebook_oauth_token)
-                
+                desctext = @topic.body || "Track stuff you mightbuy."
                 #check for no images - which are returned from @topic.iImage with a noimage.png file
                 noimage = true if @topic.iImage()  =~ /noimage\.png/ 
                 if @topic.iImage() 
@@ -98,14 +98,14 @@ class SocialController < ApplicationController
                     :picture => @topic.iImage(),
                     :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
                     :name => "MightBuy",
-                    :description => "Track stuff you mightbuy."
+                    :description => desctext
                   )
                 else
                   me.feed!(
                     :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
                     :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
                     :name => "MightBuy",
-                    :description => "Track stuff you mightbuy."
+                    :description => desctext
                   )
                 end
            # Rescue from any exception
