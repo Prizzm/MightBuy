@@ -8,8 +8,8 @@
     
   #flashes
 	flash_helper
-    /- flash.each do |key, message|
-      - if key == :points
+    - flash.each do |key, message|
+      - if key != :points
         = points_flash(message)
 
   #frame

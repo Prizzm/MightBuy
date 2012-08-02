@@ -163,10 +163,12 @@ class User < ActiveRecord::Base
   def password_required?
     if self.facebook_uid || self.twitter_uid then
       return false
+    elsif self.new_record?
+        return true
     else
-      return true
+      return false
     end
-  end
+   end
 
   def update_with_password(params, *options)
     if encrypted_password.blank?

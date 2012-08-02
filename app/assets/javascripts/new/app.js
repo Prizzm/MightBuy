@@ -45,7 +45,7 @@ var placeholders = function () {
 var flashes = function () {
   $("#flashes > div").hide().each(function (i) {
     if( $(this).hasClass("points"))
-      $.sound.play("/sounds/cha-ching.mp3")
+      // $.sound.play("/sounds/cha-ching.mp3")
     $(this).delay(i*4600).slideDown(400).delay(4000).slideUp(200);
   });
 }

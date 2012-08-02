@@ -135,7 +135,7 @@ module SharedHelper
   
   def points_flash (message)
     content_tag :div, :class => "points" do
-      content_tag( :div, '*Cha-Ching!*', :class => "onomatopoeia" ) +
+#      content_tag( :div, '*Cha-Ching!*', :class => "onomatopoeia" ) +
       content_tag( :div, message.html_safe, :class => "bar" )
     end
   end
