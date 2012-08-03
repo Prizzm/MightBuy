@@ -73,4 +73,6 @@ NewPrizzmCom::Application.configure do
     :host => 'www.mightbuy.it'
   }
 
+  config.middleware.use("Rack::GoogleAnalytics", :web_property_id => "UA-33864065-1")  
+
 end

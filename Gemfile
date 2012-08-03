@@ -86,6 +86,7 @@ end
 
 group :production do
   gem 'pg', '0.11.0'
+  gem 'rack-google_analytics'
 end
 
 gem "therubyracer"
