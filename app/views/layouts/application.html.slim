@@ -8,11 +8,9 @@ html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb=
     = csrf_meta_tags
     = javascript_include_tag "//platform.twitter.com/widgets.js"
 	- if params[:id]
-		meta property="fb:app_id"      content="461844450500925" /> 
 		meta property="og:title" content="#{Topic.find_by_shortcode(params[:id]).subject}"
 		meta property="og:image" content="#{Topic.find_by_shortcode(params[:id]).iImage()}"
 		meta property="og:url" content="http://mightbuy.it/topics/#{Topic.find_by_shortcode(params[:id]).shortcode}"
-		meta property="og:type" content="mightbuy:product"
 		meta property="mightbuy:price" content="#{Topic.find_by_shortcode(params[:id]).price}"
     = yield(:head)
   
