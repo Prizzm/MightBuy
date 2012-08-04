@@ -44,9 +44,14 @@ class TopicsController < RestfulController
   end
   
   def create
+    debugger
     @topic = build_resource
     @topic.user = current_user
     @topic.pass_visitor_code = visitor_code
+    if params["topic"]["mobile_image_url"] then
+      dragon = Dragonfly[:images]
+      @topic.image = dragon.fetch_url(params["topic"]["mobile_image_url"])
+    end
     create!
     
     response.status = 302
