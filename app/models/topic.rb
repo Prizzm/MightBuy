@@ -57,45 +57,34 @@ class Topic < ActiveRecord::Base
   end
   
   def iImage(host = true)
-    # Check if mobile image exists - return
-    if self.mobile_image_url then
-      # If a mobile image exists then return mobile_image_url
-      # https://s3.amazonaws.com/prizzm-invites/images/9271954A-0F0A-4579-AE5D-D53199B154C2.png
-      return self.mobile_image_url
-
-    else #handle non mobile images as no images
-      
-      if host == true then
-        # Check env 
-        if Rails.env.production? then
-          if self.image then 
-            # Return image.url with host
-            # http://mightbuy.it/topics/43P16H (mightbuy.it)
-            return self.image.url(:host => "http://mightbuy.it")
-          else
-            return "http://mightbuy.it/images/app/noimage.png"
-          end  
-        else
-          if self.image then 
-            # Return image.url with host
-            # http://localhost.it/topics/43P16H (localhost)
-            return self.image.url(:host => "http://localhost:3000")
-          else 
-            return "http://localhost:3000/images/app/noimage.png"
-          end      
-        end
-    
-      else #host is not true - handle blank and 
-        # Other image.url without host (Path Only)
-        # /topics/43P16H
+    if host == true then
+      # Check env 
+      if Rails.env.production? then
         if self.image then 
-          return self.image.url
+          # Return image.url with host
+          # http://mightbuy.it/topics/43P16H (mightbuy.it)
+          return self.image.url(:host => "http://mightbuy.it")
         else
-          return   "/images/app/noimage.png"
-        end
-      end  
-    end     
-    
+          return "http://mightbuy.it/assets/no_image.png"
+        end  
+      else
+        if self.image then 
+          # Return image.url with host
+          # http://localhost.it/topics/43P16H (localhost)
+          return self.image.url(:host => "http://localhost:3000")
+        else 
+          return "http://mightbuy.it/assets/no_image.png"
+        end      
+      end
+    else #host is not true - handle blank and 
+      # Other image.url without host (Path Only)
+      # /topics/43P16H
+      if self.image then 
+        return self.image.url
+      else
+          return "http://mightbuy.it/assets/no_image.png"
+      end
+    end
   end
   
   def url

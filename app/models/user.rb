@@ -42,7 +42,16 @@ class User < ActiveRecord::Base
   
   
   # Methods
-
+  after_create :checkForImage
+  after_update :checkForImage
+  
+  def checkForImage
+    if !self.image then
+      dragon = Dragonfly[:images]
+      self.image = dragon.fetch_url("http://mightbuy.it/assets/no_image.png")
+    end
+  end
+  
   def hasTwitter?
     if self.twitter_uid && self.twitter_oauth_token && self.twitter_oauth_secret then
       return true
@@ -113,6 +122,39 @@ class User < ActiveRecord::Base
       end
       return AuthProvider.find_by_uid(auth.uid).user
     end
+  end
+    
+    def self.from_omniauth(auth)
+      if User.find_by_facebook_uid(auth.uid) == nil && User.find_by_twitter_uid(auth.uid) == nil then
+        # Create new user
+        u = User.new()
+        # Get the users name from social provider and set it on the user model
+        u.name = auth.info.name
+        # Get dragonfly
+        app = Dragonfly[:images]
+        # Set the social image to the profile pic
+        u.image = app.fetch_url(auth.info.image)
+        if auth.provider == "twitter" then
+          u.twitter_uid = auth.uid
+          u.twitter_oauth_token = auth['credentials']['token']
+          u.twitter_oauth_secret = auth['credentials']['secret']
+        elsif auth.provider == "facebook" then
+          u.facebook_uid = auth.uid
+          u.email = auth.info.email
+          u.facebook_oauth_token = auth['credentials']['token']
+          u.facebook_oauth_secret = auth['credentials']['secret']
+        end
+        u.save
+        return u
+      else
+        puts "uid"
+        if User.find_by_facebook_uid(auth.uid) == nil then
+          return User.find_by_twitter_uid(auth.uid)
+        elsif User.find_by_twitter_uid(auth.uid) == nil then
+          return User.find_by_facebook_uid(auth.uid)
+        end
+        return AuthProvider.find_by_uid(auth.uid).user
+      end
     # where(auth.slice(:provider, :uid)).first_or_create do |user|
     #   user.provider = auth.provider
     #   user.uid = auth.uid
@@ -177,5 +219,4 @@ class User < ActiveRecord::Base
       super
     end
   end
-  
 end
