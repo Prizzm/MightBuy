@@ -89,7 +89,8 @@ class SocialController < ApplicationController
             # Begin rescue block
             begin
                 me = FbGraph::User.me(current_user.facebook_oauth_token)
-                desctext = @topic.body || "Track stuff you mightbuy."
+                desctext = @topic.body.blank? ? "Track stuff you mightbuy" :  @topic.body
+
                 #check for no images - which are returned from @topic.iImage with a noimage.png file
                 noimage = true if @topic.iImage()  =~ /noimage\.png/ 
                 if @topic.iImage() 
