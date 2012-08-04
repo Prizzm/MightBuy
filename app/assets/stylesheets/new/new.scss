@@ -44,8 +44,18 @@ body
     width: 18%;
     background: url(/images/app/arrow.png) no-repeat top right;
     
+	a
+    {
+      color: #666;
+      font-size: 28px;
+      font-weight: normal;
+      text-decoration: underline;
+      
+      &:hover { color: #333; }
+    }
+
     span {
-        margin: 13px 0 1px;
+        margin: 25px 0 1px;
         display: block;
 		
     }

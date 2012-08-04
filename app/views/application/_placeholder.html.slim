@@ -1,5 +1,12 @@
 - if name == :profile_show_topics
-  = stars "Looks like you *haven't posted anything* yet."
+  p= stars "Welcome!"
+  = stars "*PLEASE!!!* - add the " 
+  = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
+  = stars " *bookmarklet* " 
+  = "to your browser bookmarks. "
+  p= stars "Then you can add items *to* Mightbuy from *ANY WEB SITE*. "
+  = "Amazing. But true."
+
   
 - if name == :profile_show_responses
   = stars "Looks like you *haven't been involved in any conversations* yet."
