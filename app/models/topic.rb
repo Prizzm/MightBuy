@@ -37,7 +37,9 @@ class Topic < ActiveRecord::Base
   def find_product
     p = Product.find_by_url(url)
     if p then
-      self.update_attribute("product_id", p)
+      t = self
+      t.product = p
+      t.save
     end
   end
 

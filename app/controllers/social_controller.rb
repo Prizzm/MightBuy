@@ -91,8 +91,8 @@ class SocialController < ApplicationController
                 me = FbGraph::User.me(current_user.facebook_oauth_token)
                 desctext = @topic.body || "Track stuff you mightbuy."
                 #check for no images - which are returned from @topic.iImage with a noimage.png file
-                noimage = true if @topic.iImage()  =~ /noimage\.png/ 
-                if @topic.iImage() 
+                noimage = true if @topic.iImage()  =~ "http://mightbuy.it/assets/no_image.png"
+                if @topic.iImage() != "http://mightbuy.it/assets/no_image.png" then
                   me.feed!(
                     :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
                     :picture => @topic.iImage(),
