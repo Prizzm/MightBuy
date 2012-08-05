@@ -10,12 +10,13 @@
       a href="#next" class="next" Next
   .tabs
     ul
-      li= link_to "From the web..", "#web"
-      li= link_to "From your computer..", "#computer"
+      li= link_to "Upload File", "#computer"
+      li= link_to "Add Pic from web", "#web"
+
       
     #web
       .field
-        input type="text" placeholder="http://www.myshop.com/myproduct"
+        input type="text" placeholder="http://www.mywebsitewithpicture.com"
         = link_to "Grab", "#get", :class => "button get"
         .clearfix
     

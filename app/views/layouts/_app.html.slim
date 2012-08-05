@@ -16,7 +16,7 @@
     .bookmarklet
       span
         = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
-        .tip= "Drag this into your bookmarks!"
+        .tip= "Add this into your bookmarks! (drag or right click to add)"
 		
     
     #sidebar
@@ -43,7 +43,7 @@
           li= active_link "Home", user_root_path, "profile", "devise/sessions", "registrations", "promotions"
 
           
-        #search
+        /#search 
           input type="text" placeholder="Search.."
         
     #page.cf

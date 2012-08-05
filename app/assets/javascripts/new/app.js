@@ -318,7 +318,7 @@ var selectoruploaders = function () {
 
     var scrape = function (url) {
       showloader(image);
-      $.post('/get/images_and_price.json', { url: url }, success);
+      $.getJSON('http://mightbuy-scraper.herokuapp.com/?url='+ encodeURIComponent(url) +'&callback=?', success);
     }
 
     var success = function (data) { 
@@ -328,7 +328,12 @@ var selectoruploaders = function () {
         pricefield.val(data.price);
       }
       hideloader(image);
-      change();
+      if ( images.length > 0 ) {
+        change();
+      }
+      else {
+        gocancel();
+      }
     }
 
     var gonext = function () {
