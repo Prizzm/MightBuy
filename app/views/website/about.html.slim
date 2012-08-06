@@ -10,6 +10,7 @@
         li= link_to "Privacy Policy", "#privacy"
         li= link_to "Terms of Use", "#tos"
         li= link_to "Blog", "http://blog.mightbuy.it"
+		li= link_to "Help", "#help"
 
       #intro
        h1 Mightbuy - track things you might buy!
@@ -57,3 +58,61 @@
         h1 Terms of Use
 
         p When you create a MightBuy profile, you grant license to MightBuy to display content, including advertisements and offers to you based on your stated preferences - if you actively choose to look at the content. The license you grant is transactional: you allow a program such as mightbuy.it or a web partner who implements the MightBuy API, to display content at the time you ask for it, but your  data will never be used to give you an advertisement at a time that you don’t ask for it (such as email spam, junkmail, or selling data to partners for non transactional use).
+
+      #help
+        h1 What is a bookmarklet?
+
+        p A bookmarklet is stored in your browser bookmarks, just like any other bookmark.  You can then use it on any site, to add things *to* mightbuy. 
+        p 
+		b Step 1: 
+		| Add the link to 
+		= link_to " MightBuy.it", bookmarklet_url, :onclick => "return false;" 
+		|  to your browser bookmarks.
+        p 
+		b Step 2: 
+		| While on 
+		u any site
+		| , you can use your Mightbuy.it bookmark to add to MightBuy 
+		p
+		= image_tag("addURL_sm2.png")
+		p
+		/.howhelp
+ 
+  			 	
+        h1 How to add Mightbuy bookmarklet
+		p
+		= image_tag("chrome.png", :size=>"24x24")
+		b   Chrome
+		p  Make sure you can "Always see bookmark bar"
+		p
+		= image_tag("always_show_bookmarks_chrome.png")
+		p
+		| Then you can just drag this
+        = link_to " MightBuy.it", bookmarklet_url, :onclick => "return false;" 
+        |  into you Chrome bookmark bar- and wala! It's there.
+		p
+		p
+		= image_tag("safari.png", :size=>"24x24")
+		b   Safari
+		p  Make sure "show bookmark bar" is selected
+		p
+		= image_tag("safari_show_bookmarks.png")
+		p
+		| Then you can just drag this
+        = link_to " MightBuy.it", bookmarklet_url, :onclick => "return false;" 
+        |  into you Safari bookmark bar- and wala! It's there.
+		p
+		p
+		= image_tag("firefox.png", :size=>"24x24")
+		b Firefox
+		p
+		= image_tag("firefox_show_bookmarks.png")
+		p
+		| On Firefox, you can right click on this link 
+        = link_to " MightBuy.it", bookmarklet_url, :onclick => "return false;" 
+        |  or drag it to your bar- and wala! It's there.
+		p
+
+
+
+
