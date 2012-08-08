@@ -6,7 +6,10 @@ class Api::V1::TopicsApiController < ApplicationController
   def index
     @topics = current_user.topics
   end
-
+  
+  def search
+    @topics = current_user.topics.where("lower(subject) = ?", params[:q].downcase)
+  end
   # GET /topics/1
   # GET /topics/1.xml
   def show
@@ -32,6 +35,8 @@ class Api::V1::TopicsApiController < ApplicationController
     @topic.shortcode = Shortcode.new(40)
     @topic.user = current_user
     @topic.save
+    
+    render :text => @topic.to_json
   end
 
   # PUT /topics/1

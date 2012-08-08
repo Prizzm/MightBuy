@@ -42,15 +42,6 @@ class User < ActiveRecord::Base
   
   
   # Methods
-  after_create :checkForImage
-  after_update :checkForImage
-  
-  def checkForImage
-    if !self.image then
-      dragon = Dragonfly[:images]
-      self.image = dragon.fetch_url("http://mightbuy.it/assets/no_image.png")
-    end
-  end
   
   def hasTwitter?
     if self.twitter_uid && self.twitter_oauth_token && self.twitter_oauth_secret then
