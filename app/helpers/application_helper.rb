@@ -257,7 +257,7 @@ module ApplicationHelper
     " window.__prizzm_host = '#{request.host+":"+request.port.to_s}'; " +
     " window.__prizzm_popup = window.open(\"http://\"+ window.__prizzm_host + \"/topics/new?topic[subject]=\"+encodeURIComponent(document.title)+\"&topic[url]=\"+encodeURIComponent(window.location.href),\"mywindow\",\"menubar=1,resizable=1,width=990,height=680,left=100,top=50\");" +
     # actually not using bookmarklet.js but might have to use it
-    " var s=document.createElement('script'); s.src='http://#{request.host+":"+request.port.to_s}/assets/bookmarklet.js?rnd=' + Number(new Date()); s.type='text/javascript'; document.getElementsByTagName('head')[0].appendChild(s);})() })();"
+    " var s=document.createElement('script'); s.src='http://#{request.host+":"+request.port.to_s}/bookmarklet.js?rnd=' + Number(new Date()); s.type='text/javascript'; document.getElementsByTagName('head')[0].appendChild(s);})() })();"
   end
 
 end

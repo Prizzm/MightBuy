@@ -1,4 +1,6 @@
 NewPrizzmCom::Application.routes.draw do
+  get "search/public"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -114,7 +116,10 @@ NewPrizzmCom::Application.routes.draw do
   
   # Brands / Shoppers
   get '/shoppers' => 'website#index', :shopper => true
-  
+
+  # Search
+  get "/search", :to => "search#public"
+
   # Root
   root :to => "website#index"
   
