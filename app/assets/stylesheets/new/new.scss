@@ -60,6 +60,22 @@ body
         display: block;
 		
     }
+
+}
+
+.help {
+ 	position: absolute;
+ 	top: -58px;
+    right: 0;
+ 	width: 18%;
+}
+
+.howhelp
+{
+ a
+  {
+    font-size: 40px;
+  }
 }
 
 
@@ -160,6 +176,9 @@ body
         margin: 5px auto;
       }
     }
+   
+ 
+
   }
   
   #header

@@ -1,11 +1,10 @@
 - if name == :profile_show_topics
-  p= stars "Welcome!"
-  = stars "*PLEASE!!!* - add the " 
+  p= stars "Welcome! You haven't added anything yet."
+  = stars "*1.* Use the " 
   = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
-  = stars " *bookmarklet* " 
-  = "to your browser bookmarks. "
-  p= stars "Then you can add items *to* Mightbuy from *ANY WEB SITE*. "
-  = "Amazing. But true."
+  = stars " *bookmarklet* to add from any website "
+  = link_to "(instructions)", "/about#help"
+  p= stars "*2.* Or press Add to add from this site"
 
   
 - if name == :profile_show_responses

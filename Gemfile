@@ -10,6 +10,9 @@ gem 'rails', '3.1.1'
 gem 'jquery-rails'
 gem 'fancybox-rails', '0.1.4'
 
+# Console
+gem 'hirb'
+
 # API
 gem 'rabl'
 
