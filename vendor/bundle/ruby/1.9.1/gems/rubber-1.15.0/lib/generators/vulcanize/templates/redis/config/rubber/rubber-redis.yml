@@ -1,0 +1,13 @@
+redis_server_version: 2.2.13
+
+redis_db_dir: /mnt/redis
+
+gems: [redis]
+
+role_dependencies:
+  redis_master: [redis]
+  redis_slave: [redis]
+
+roles:
+  redis:
+    packages: [redis-server]

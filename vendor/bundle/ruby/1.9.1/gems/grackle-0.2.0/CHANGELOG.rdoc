@@ -1,0 +1,53 @@
+== 0.2.0 (2012-6-10)
+* New auto_append_format attribute (thanks @jcsalterego) for specifying whether or not to automatically add .json, etc to a request URI
+* New response attribute which captures raw info about the response from the most recent request. This permits access to response headers with rate limit information. Thanks to @mandoescamilla.
+* Added Twitter's media upload endpoint. Thanks @jbrennon.
+* Modernized the code a bit with better test running and a new gemspec
+* Now testing in 1.8.6, 1.8.7, 1.9.2 and 1.9.3
+
+== 0.1.10 (2010-6-13)
+* Changed :v1 (api.twitter.com/1) to be the default API instead of REST. :rest is now deprecated
+* Fixed issue with DELETE requests not being able to have form encoded body parameters. This was causing the list membership delete method to fail. As a side note, it appears that Twitter is actually violating the HTTP 1.1 spec on this one since RFC 2616 states that a DELETE "requests that the origin server delete the resource identified by the Request-URI" (note no mention of any "enclosed entity").
+
+== 0.1.9 (2010-2-28)
+* Added support for a boolean option called auto_append_ids that controls whether parameters named "id" are automatically appended to the URL or used as request parameters. It's true by default so there's no change to existing behavior unless you explicitly set it to false.
+* Updated the README with changes describing how to use custom handlers (thanks akahn!)
+
+== 0.1.8 (2010-2-2)
+* Added proxy support to Grackle::Transport via proxy attribute. Can specify a Proc that returns a Net::HTTP subclass or a Net::HTTP subclass directly. Typically this will be from Net::HTTP.Proxy.
+
+== 0.1.7 (2009-12-13)
+* Fixed a bug in Ruby 1.9 where the client was incorrectly handling request method parameters
+* Fixed a bug in the _ method that wasn't correctly appending numeric path elements
+* Provided a way to specify SSL Certificate Authority certs for correct SSL validation
+* The only thing that doesn't work in 1.9 in this version is OAuth because that gem is not up to date
+
+== 0.1.6 (2009-10-29)
+* Added support for HTTP methods beside GET and POST using block syntax
+* Added method for appending to the request path something that's not a valid ruby method
+
+== 0.1.5 (2009-10-28)
+Added support for the Twitter version 1 API as a API symbol :v1
+
+== 0.1.4 (2009-08-09)
+Added additional check for 3xx responses that don't have location headers. 
+
+== 0.1.3 (2009-08-09)
+Merged in changes from gotwalt for timeouts and redirects. Revised 30x 
+redirect handling to support a limit that prevents infinite redirects. 
+
+== 0.1.2 (2009-05-11)
+Changed :site param used by OAuth to be determined dynamically unless 
+explicitly specified as part of the :auth param to the Client constructor. 
+This param needs to match the scheme and authority of the request using 
+OAuth or the signing will not validate.
+
+== 0.1.1 (2009-05-10)
+Fixed issue where SSL setting wasn't being applied correctly to Net:HTTP 
+which was preventing SSL-enabled requests from working correctly.
+
+== 0.1.0 (2009-04-12)
+* Added OAuth authentication
+* Deprecated :username and :password Grackle::Client constructor params
+* Changed multipart upload implementation and removed dependency on httpclient gem
+* Added dependency on mime-types gem

@@ -1,0 +1,6 @@
+.yardoc
+.DS_Store
+.bundle
+.rvmrc
+doc
+pkg
