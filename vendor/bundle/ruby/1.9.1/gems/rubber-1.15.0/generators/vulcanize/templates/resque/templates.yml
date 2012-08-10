@@ -1,3 +1,0 @@
-description: The resque background queue system
-dependent_templates:
-  - redis

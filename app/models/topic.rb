@@ -64,10 +64,10 @@ class Topic < ActiveRecord::Base
       if Rails.env.production? then
         if self.image then 
           # Return image.url with host
-          # https://mightbuy.it.it/topics/43P16H (mightbuy.it)
-          return self.image.url(:host => "https://mightbuy.it.it")
+          # https://mightbuy.it/topics/43P16H (mightbuy.it)
+          return self.image.url(:host => "https://mightbuy.it")
         else
-          return "https://mightbuy.it.it/assets/no_image.png"
+          return "https://mightbuy.it/assets/no_image.png"
         end  
       else
         if self.image then 
@@ -75,7 +75,7 @@ class Topic < ActiveRecord::Base
           # http://localhost.it/topics/43P16H (localhost)
           return self.image.url(:host => "http://localhost:3000")
         else 
-          return "https://mightbuy.it.it/assets/no_image.png"
+          return "https://mightbuy.it/assets/no_image.png"
         end      
       end
     else #host is not true - handle blank and 
@@ -84,7 +84,7 @@ class Topic < ActiveRecord::Base
       if self.image then 
         return self.image.url
       else
-          return "https://mightbuy.it.it/assets/no_image.png"
+          return "https://mightbuy.it/assets/no_image.png"
       end
     end
   end

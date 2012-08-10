@@ -1,4 +1,0 @@
-description: A fairly complete and scalable mysql deployment setup
-dependent_templates:
-  - complete_passenger
-  - mysql

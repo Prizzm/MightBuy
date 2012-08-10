@@ -1,9 +1,0 @@
-description: A fairly complete and scalable deployment setup
-dependent_templates:
-  - base
-  - haproxy
-  - apache
-  - passenger
-  - monit
-  - munin
-  - memcached

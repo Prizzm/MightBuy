@@ -1,6 +1,0 @@
-gems: []
-
-roles:
-  sphinx:
-    packages: [bzr-builddeb, autotools-dev, dpatch, libpq-dev, autoconf,
-               libtool, automake, gawk, libmysqlclient15-dev]
