@@ -49,6 +49,9 @@ GEM
       multi_json (~> 1.0)
     acts_as_opengraph (0.0.5)
     addressable (2.3.2)
+    airbrake (3.1.2)
+      activesupport
+      builder
     amazon-ec2 (0.9.17)
       xml-simple (>= 1.0.12)
     arel (2.2.3)
@@ -392,6 +395,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (= 0.4.4)
   acts_as_opengraph
+  airbrake
   capybara
   cocoon (= 1.0.14)
   coffee-rails (~> 3.1.0)

@@ -6,7 +6,7 @@ function updateScraperInfo($elem){
   $elem.css({ "display" : "block" });
 
   (function($elem, $next){
-    $.getJSON("http://mightbuy-scraper.herokuapp.com/?callback=?",{url:$elem.data("url")},function(r){
+    $.getJSON("https://mightbuy.it-scraper.herokuapp.com/?callback=?",{url:$elem.data("url")},function(r){
       if(r.price) {
         $elem.find(".price").html("$ " + r.price);
       }

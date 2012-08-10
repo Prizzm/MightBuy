@@ -58,7 +58,7 @@ class SocialController < ApplicationController
                 # If so, pass price into Open Graph
                 action = me.og_action!(
                   "mightbuy:might_buy",
-                  :product => "http://mightbuy.it/topics/#{params[:sc]}",
+                  :product => "https://mightbuy.it.it/topics/#{params[:sc]}",
                   :price => Topic.find_by_shortcode(params[:sc]).price.to_s
                 )
                else
@@ -66,7 +66,7 @@ class SocialController < ApplicationController
                 # If not, don't pass price into Open Graph
                 action = me.og_action!(
                   "mightbuy:might_buy",
-                  :product => "http://mightbuy.it/topics/#{params[:sc]}"
+                  :product => "https://mightbuy.it.it/topics/#{params[:sc]}"
                 )
                end
             # If a exception occurs, rescue
@@ -91,19 +91,19 @@ class SocialController < ApplicationController
                 me = FbGraph::User.me(current_user.facebook_oauth_token)
                 desctext = @topic.body.blank? ? "Track stuff you mightbuy" :  @topic.body
                 #check for no images - which are returned from @topic.iImage with a noimage.png file
-                noimage = true if @topic.iImage()  == "http://mightbuy.it/assets/no_image.png"
-                if @topic.iImage() != "http://mightbuy.it/assets/no_image.png" then
+                noimage = true if @topic.iImage()  == "https://mightbuy.it.it/assets/no_image.png"
+                if @topic.iImage() != "https://mightbuy.it.it/assets/no_image.png" then
                   me.feed!(
                     :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
                     :picture => @topic.iImage(),
-                    :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+                    :link => "https://mightbuy.it.it/topics/#{params[:sc]}?r=t",
                     :name => "MightBuy",
                     :description => desctext
                   )
                 else
                   me.feed!(
                     :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
-                    :link => "http://mightbuy.it/topics/#{params[:sc]}?r=t",
+                    :link => "https://mightbuy.it.it/topics/#{params[:sc]}?r=t",
                     :name => "MightBuy",
                     :description => desctext
                   )
@@ -170,7 +170,7 @@ class SocialController < ApplicationController
               :token=>current_user.twitter_oauth_token, :token_secret=>current_user.twitter_oauth_secret
             })
             # Post a status update
-            client.statuses.update! :status=>"I #mightbuy #{@topic.subject}. #{@topic.displayPrice} Should I? http://mightbuy.it/topics/#{params[:sc]}?r=t"
+            client.statuses.update! :status=>"I #mightbuy #{@topic.subject}. #{@topic.displayPrice} Should I? https://mightbuy.it.it/topics/#{params[:sc]}?r=t"
           # Rescue from any exception
           rescue Exception => e
             puts "====== ERROR ======"
