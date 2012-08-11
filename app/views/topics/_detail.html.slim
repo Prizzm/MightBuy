@@ -38,6 +38,7 @@ head
     .group.respond
       
       - if [:recommendation, :business_recommendation].include?(resource.form?)
+
         .recommendation
           = heading "Should %s Buy This?" % resource.user.name 
         
@@ -70,17 +71,17 @@ head
 		                = heading phrase_for(:respond)
 		                = render "responses/form", :topic => resource
 
-		            / Responses
-		            #responses
-		              = heading phrase_for(:comments), :id => "comments"
+	            / Responses
+	            #responses
+	              = heading phrase_for(:comments), :id => "comments"
 
-		              ol.list.responses
-		                = placeholder responses do |collection|
-		                  = render :partial => "responses/response", :collection => collection
+	              ol.list.responses
+	                = placeholder responses do |collection|
+	                  = render :partial => "responses/response", :collection => collection
 
-		              #reply-form.hidden
-		                = heading "Quick Reply", :class => "small"
-		                = render "responses/reply_form", :topic => resource
+	              #reply-form.hidden
+	                = heading "Quick Reply", :class => "small"
+	                = render "responses/reply_form", :topic => resource
 				
             .group.footer
             
