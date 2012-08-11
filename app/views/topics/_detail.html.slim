@@ -41,7 +41,18 @@ head
 
         .recommendation
           = heading "Should %s Buy This?" % resource.user.name 
-        
+          / Responses
+          #responses
+            = heading phrase_for(:comments), :id => "comments"
+
+            ol.list.responses
+              = placeholder responses do |collection|
+                = render :partial => "responses/response", :collection => collection
+
+            #reply-form.hidden
+              = heading "Quick Reply", :class => "small"
+              = render "responses/reply_form", :topic => resource
+          
           = simple_form_for Response.new, :url => topic_responses_path(resource, :format => :js), :html => { "data-remote" => true } do |form|
         
             .recommend-or-not
@@ -70,19 +81,7 @@ head
 		              .group.respond
 		                = heading phrase_for(:respond)
 		                = render "responses/form", :topic => resource
-
-	            / Responses
-	            #responses
-	              = heading phrase_for(:comments), :id => "comments"
-
-	              ol.list.responses
-	                = placeholder responses do |collection|
-	                  = render :partial => "responses/response", :collection => collection
-
-	              #reply-form.hidden
-	                = heading "Quick Reply", :class => "small"
-	                = render "responses/reply_form", :topic => resource
-				
+						
             .group.footer
             
               .hr
