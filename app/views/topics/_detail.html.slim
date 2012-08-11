@@ -41,26 +41,14 @@ head
 
         .recommendation
           = heading "Should %s Buy This?" % resource.user.name 
-          / Responses
-          #responses
-            = heading phrase_for(:comments), :id => "comments"
+		  = simple_form_for Response.new, :url => topic_responses_path(resource, :format => :js), :html => { "data-remote" => true } do |form|
 
-            ol.list.responses
-              = placeholder responses do |collection|
-                = render :partial => "responses/response", :collection => collection
-
-            #reply-form.hidden
-              = heading "Quick Reply", :class => "small"
-              = render "responses/reply_form", :topic => resource
-          
-          = simple_form_for Response.new, :url => topic_responses_path(resource, :format => :js), :html => { "data-remote" => true } do |form|
-        
             .recommend-or-not
               = respond_button :recommended, 'Yes!', :icon => 'thumbup.png'
               = respond_button :undecided, 'Not Sure..'
               = respond_button :not_recommended, "NO!", :icon => 'thumbdown.png'
               = form.input :recommend_type, :as => :hidden, :input_html => { :class => "recommend-type" }
-	
+
             .other-feedback
 
               = heading "More feedback please!"
@@ -81,11 +69,11 @@ head
 		              .group.respond
 		                = heading phrase_for(:respond)
 		                = render "responses/form", :topic => resource
-						
+
             .group.footer
-            
+
               .hr
-            
+
               .buttons
                 .left
                   = link_to "Have more feedback? Click here!", 'javascript:void(0);', :class => 'give-feedback'
@@ -94,6 +82,17 @@ head
                   = form.button :submit, "Submit now" 
 /                  = points_tag(:responding)
 /                  = form.button :submit, "Send now to %s" % resource.user.name
+          / Responses
+          #responses
+            = heading phrase_for(:comments), :id => "comments"
+
+            ol.list.responses
+              = placeholder responses do |collection|
+                = render :partial => "responses/response", :collection => collection
+
+            #reply-form.hidden
+              = heading "Quick Reply", :class => "small"
+              = render "responses/reply_form", :topic => resource
       			  	
       - else
     
