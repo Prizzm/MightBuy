@@ -38,7 +38,17 @@ head
     .group.respond
       
       - if [:recommendation, :business_recommendation].include?(resource.form?)
-      
+      	#responses
+            = heading phrase_for(:comments), :id => "comments"
+
+            ol.list.responses
+              = placeholder responses do |collection|
+                = render :partial => "responses/response", :collection => collection
+
+            #reply-form.hidden
+              = heading "Quick Reply", :class => "small"
+              = render "responses/reply_form", :topic => resource
+
         .recommendation
           = heading "Should %s Buy This?" % resource.user.name 
         
@@ -49,17 +59,6 @@ head
               = respond_button :undecided, 'Not Sure..'
               = respond_button :not_recommended, "NO!", :icon => 'thumbdown.png'
               = form.input :recommend_type, :as => :hidden, :input_html => { :class => "recommend-type" }
-            
-			#responses
-	            = heading phrase_for(:comments), :id => "comments"
-
-	            ol.list.responses
-	              = placeholder responses do |collection|
-	                = render :partial => "responses/response", :collection => collection
-
-	            #reply-form.hidden
-	              = heading "Quick Reply", :class => "small"
-	              = render "responses/reply_form", :topic => resource
 	
             .other-feedback
 
