@@ -33,7 +33,17 @@ head
 
   
 - if params[:responding] || params[:r] || params[:fb_action_ids]
+  / Responses
+  #responses
+    = heading phrase_for(:comments), :id => "comments"
 
+    ol.list.responses
+      = placeholder responses do |collection|
+        = render :partial => "responses/response", :collection => collection
+
+    #reply-form.hidden
+      = heading "Quick Reply", :class => "small"
+      = render "responses/reply_form", :topic => resource
   #respond
     .group.respond
       
@@ -82,17 +92,6 @@ head
                   = form.button :submit, "Submit now" 
 /                  = points_tag(:responding)
 /                  = form.button :submit, "Send now to %s" % resource.user.name
-       / Responses
-       #responses
-         = heading phrase_for(:comments), :id => "comments"
-
-         ol.list.responses
-           = placeholder responses do |collection|
-             = render :partial => "responses/response", :collection => collection
-
-         #reply-form.hidden
-           = heading "Quick Reply", :class => "small"
-           = render "responses/reply_form", :topic => resource
       			  	
       - else
     
