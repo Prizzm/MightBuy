@@ -318,7 +318,7 @@ var selectoruploaders = function () {
 
     var scrape = function (url) {
       showloader(image);
-      $.getJSON('https://mightbuy.it-scraper.herokuapp.com/?url='+ encodeURIComponent(url) +'&callback=?', success);
+      $.getJSON('http://mightbuy-scraper.herokuapp.com/?url='+ encodeURIComponent(url) +'&callback=?', success);
     }
 
     var success = function (data) { 
