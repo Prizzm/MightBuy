@@ -174,20 +174,20 @@ javascript:
   $(".share_button.facebook").click(function() {
 	$.post("/topics/" + shortcode + "/social/ask/facebook", function(data) {
 		alert("Data Loaded: " + data);
-		$(this).remove();
+		$(".share_button.facebook").remove();
 		$(".share_button.askall").remove();
 	});
   });
   $(".share_button.askall").click(function() {
 	$.post("/topics/" + shortcode + "/social/ask/all", function(data) {
 		alert("Data Loaded: " + data);
-		$(this).remove();
+		$(".share_button.askall").remove();
 	});
   });
   $(".share_button.twitter").click(function() {
 	$.post("/topics/" + shortcode + "/social/ask/twitter", function(data) {
 		alert("Data Loaded: " + data);
-		$(this).remove();
+		$(".share_button.twitter").remove();
 		$(".share_button.askall").remove();
 	});
   });
