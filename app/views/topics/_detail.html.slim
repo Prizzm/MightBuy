@@ -127,7 +127,7 @@ head
 				= link_to "Ask Twitter Again", "/topics/#{resource.shortcode}/social/ask/twitter", :class => "button"
 		  - if !params[:aff]
 			.email-friend
-			  	= link_to "Ask Facebook", "/topics/#{resource.shortcode}/social/ask/facebook", :class => "button"
+			  	= link_to "Ask Facebook", "#facebook", :class => "button share_button facebook"
 		  - else
 			.email-friend
 				= link_to "Ask Facebook Again", "/topics/#{resource.shortcode}/social/ask/facebook", :class => "button"
