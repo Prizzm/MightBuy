@@ -117,24 +117,12 @@ head
           .email-friend
          
           = link_to "Email friends", topic_share_path(resource), :class => "button"           
-		  - if !params[:atf]
-			.email-friend
-		  		= link_to "Ask Twitter", "#twitter", :class => "button share_button twitter"
-		  - else
-			.email-friend
-				= link_to "Ask Twitter Again", "/topics/#{resource.shortcode}/social/ask/twitter", :class => "button"
-		  - if !params[:aff]
-			.email-friend
-			  	= link_to "Ask Facebook", "#facebook", :class => "button share_button facebook"
-		  - else
-			.email-friend
-				= link_to "Ask Facebook Again", "/topics/#{resource.shortcode}/social/ask/facebook", :class => "button"
-		  - if !params[:af]
-			  .email-friend
-		      	= link_to "Ask Fb & Twitter", "/topics/#{resource.shortcode}/social/ask/all", :class => "button"
-		  - else
-			  .email-friend
-				= link_to "Ask F&T Again", "/topics/#{resource.shortcode}/social/ask/all", :class => "button"
+          .email-friend
+	  	  	= link_to "Ask Twitter", "#twitter", :class => "button share_button twitter"
+		  .email-friend
+		  	= link_to "Ask Facebook", "#facebook", :class => "button share_button facebook"
+		  .email-friend
+	      	= link_to "Ask Fb & Twitter", "#askall", :class => "button share_button askall"
           .clear
 	
           - if (resource.responses.count > 0)    
@@ -186,11 +174,21 @@ javascript:
   $(".share_button.facebook").click(function() {
 	$.post("/topics/" + shortcode + "/social/ask/facebook", function(data) {
 		alert("Data Loaded: " + data);
+		$(this).remove();
+		$(".share_button.askall").remove();
+	});
+  });
+  $(".share_button.askall").click(function() {
+	$.post("/topics/" + shortcode + "/social/ask/all", function(data) {
+		alert("Data Loaded: " + data);
+		$(this).remove();
 	});
   });
   $(".share_button.twitter").click(function() {
 	$.post("/topics/" + shortcode + "/social/ask/twitter", function(data) {
 		alert("Data Loaded: " + data);
+		$(this).remove();
+		$(".share_button.askall").remove();
 	});
   });
   });	
