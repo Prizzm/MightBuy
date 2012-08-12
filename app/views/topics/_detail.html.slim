@@ -1,15 +1,6 @@
 / And the page content..
 head
 	link rel="image_src" href="#{resource.iImage()}"
-	
-	javascript:
-	  var shortcode = "#{resource.shortcode}";
-	  // Share
-	  $(".share_button.facebook").click(function() {
-		$.post("/topics/" + shortcode + "/social/ask/facebook", function(data) {
-			alert("Data Loaded: " + data);
-		});
-	  });
 
 
 
@@ -188,5 +179,13 @@ head
 	            #reply-form.hidden
 	              = heading "Quick Reply", :class => "small"
 	              = render "responses/reply_form", :topic => resource
+javascript:
+  var shortcode = "#{resource.shortcode}";
+  // Share
+  $(".share_button.facebook").click(function() {
+	$.post("/topics/" + shortcode + "/social/ask/facebook", function(data) {
+		alert("Data Loaded: " + data);
+	});
+  });	
 
 
