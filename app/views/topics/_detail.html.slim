@@ -2,7 +2,10 @@
 head
 	link rel="image_src" href="#{resource.iImage()}"
 	
-
+	= capture :javascript do
+	  $.post("/topics/#{resource.shortcode}/social/ask/facebook", function(data) {
+		alert("Data Loaded: " + data);
+	  });
 
 
 
