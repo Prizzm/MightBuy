@@ -119,7 +119,7 @@ head
           = link_to "Email friends", topic_share_path(resource), :class => "button"           
 		  - if !params[:atf]
 			.email-friend
-			  	= link_to "Ask Twitter", "/topics/#{resource.shortcode}/social/ask/twitter", :class => "button"
+		  		= link_to "Ask Twitter", "#twitter", :class => "button share_button twitter"
 		  - else
 			.email-friend
 				= link_to "Ask Twitter Again", "/topics/#{resource.shortcode}/social/ask/twitter", :class => "button"
@@ -181,10 +181,18 @@ head
 	              = render "responses/reply_form", :topic => resource
 javascript:
   var shortcode = "#{resource.shortcode}";
-  function postToFacebook() {
+  $(document).ready(function() {
+  // Share
+  $(".share_button.facebook").click(function() {
 	$.post("/topics/" + shortcode + "/social/ask/facebook", function(data) {
 		alert("Data Loaded: " + data);
 	});
-  }
+  });
+  $(".share_button.twitter").click(function() {
+	$.post("/topics/" + shortcode + "/social/ask/twitter", function(data) {
+		alert("Data Loaded: " + data);
+	});
+  });
+  });	
 
 
