@@ -400,13 +400,6 @@ var selectoruploaders = function () {
   });
 };
 
-// Share
-$(".share_button .facebook").click(function() {
-	$.post("/topics/" + shortcode + "/social/ask/facebook", function(data) {
-		alert("Data Loaded: " + data);
-	});
-});
-
 // Register for beta..
 
 var register = function () {
