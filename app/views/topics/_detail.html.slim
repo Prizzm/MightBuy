@@ -173,20 +173,20 @@ javascript:
   // Share
   $(".share_button.facebook").click(function() {
 	$.post("/topics/" + shortcode + "/social/ask/facebook", function(data) {
-		$(".share_button.facebook").fadeOut(1000).delay(1000).remove();
-		$(".share_button.askall").fadeOut(1000).delay(1000).remove();
 	});
+	$(".share_button.facebook").fadeOut(1000).delay(1000).remove();
+	$(".share_button.askall").fadeOut(1000).delay(1000).remove();
   });
   $(".share_button.askall").click(function() {
 	$.post("/topics/" + shortcode + "/social/ask/all", function(data) {
-		$(".share_button.askall").fadeOut(1000).delay(1000).remove();
 	});
+	$(".share_button.askall").fadeOut(1000).delay(1000).remove();
   });
   $(".share_button.twitter").click(function() {
 	$.post("/topics/" + shortcode + "/social/ask/twitter", function(data) {
-		$(".share_button.twitter").fadeOut(1000).delay(1000).remove();
-		$(".share_button.askall").fadeOut(1000).delay(1000).remove();
 	});
+	$(".share_button.twitter").fadeOut(1000).delay(1000).remove();
+	$(".share_button.askall").fadeOut(1000).delay(1000).remove();
   });
   });	
 
