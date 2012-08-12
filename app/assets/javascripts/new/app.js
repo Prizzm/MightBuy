@@ -402,7 +402,7 @@ var selectoruploaders = function () {
 
 // Share
 $(".share_button .facebook").click(function() {
-	$.post("social/ask/facebook", function(data) {
+	$.post("/topics/" + shortcode + "/social/ask/facebook", function(data) {
 		alert("Data Loaded: " + data);
 	});
 });
