@@ -7,4 +7,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require vendor/jquery.qtip.js
-// = require_tree .
+//= require_tree .
