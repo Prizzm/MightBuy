@@ -32,6 +32,8 @@
           = form.input :password, :as => :password, :placeholder => "Password", :label => false
           = form.button :submit, "Sign in!"
           .clearfix
+        div.forgot-password
+          = link_to "Forgot your password?", new_password_path(:user)
 
     #markers
           
