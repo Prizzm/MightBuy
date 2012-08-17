@@ -36,7 +36,7 @@ $(function(){
     $("#public-search-form #q").val(q);
 
     // fetch some search results
-    var apiURL = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?';
+    var apiURL = window.location.protocol + '//ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?';
     $.getJSON(apiURL,{q:q,rsz:2,start:0},function(r){
       var res = r.responseData.results;
       var result_elem = $("<ul></ul>");
