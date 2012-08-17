@@ -48,7 +48,7 @@ $(function(){
                                 '<a class="title" target="_blank" href="'+ r.unescapedUrl +'">'+ r.titleNoFormatting +'</a>' +
                                 '<div class="description">'+ r.content +'</div>' +
                                 '<div class="url">'+ r.visibleUrl +'</div>' +
-                                '<button>Might Buy</button>' +
+                                '<a href="/topics/new?topic[subject]='+ encodeURIComponent(r.titleNoFormatting) +'&topic[url]='+ encodeURIComponent(r.unescapedUrl) +'">Might Buy</a>' +
                               '</div>' +
                               '<div class="public-search-result-scraper-info" style="display:none;float:left;width:180px;border-left:1px solid #444;padding:10px;">' +
                                 '<div class="thumb" ><img src="/assets/noimage.png" style="max-width:50px;max-height:50px;"></div>' +
