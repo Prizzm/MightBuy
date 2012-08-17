@@ -45,6 +45,9 @@ class TopicsController < RestfulController
   
   def create
     debugger
+    # avoid bad URI error for non-standard URLs
+    # https://www.pivotaltracker.com/story/show/34470735
+    params[:topic][:image_url] = URI.parse(URI.encode(params[:topic][:image_url])).to_s
     @topic = build_resource
     @topic.user = current_user
     @topic.pass_visitor_code = visitor_code
