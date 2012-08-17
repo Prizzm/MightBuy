@@ -430,4 +430,12 @@ a:visited{
   {
     clear: both;
   }
+  .forgot-password {
+    position: absolute;
+    top: 360px;
+    left: 50px;
+    a {
+      color: white;
+    }
+  }
 }
