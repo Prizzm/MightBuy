@@ -50,8 +50,8 @@ $(function(){
                                 '<div class="url">'+ r.visibleUrl +'</div>' +
                                 '<a href="/topics/new?topic[subject]='+ encodeURIComponent(r.titleNoFormatting) +'&topic[url]='+ encodeURIComponent(r.unescapedUrl) +'">Might Buy</a>' +
                               '</td>' +
-                              '<td class="public-search-result-scraper-info" style="visibility:hidden;">' +
-                                '<div class="thumb" ><img src="/assets/noimage.png" style="max-width:50px;max-height:50px;"></div>' +
+                              '<td class="public-search-result-scraper-info" style="">' +
+                                '<div class="thumb" ><img src="/assets/noimage.png" style="max-width:70px;max-height:70px;"></div>' +
                                 '<div class="price"><i>Price not available</i></div>' +
                               '</td>' +
                            '</tr>');

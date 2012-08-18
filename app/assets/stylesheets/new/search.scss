@@ -39,6 +39,10 @@
       width:800px;
       text-align:left;
 
+      td {
+        padding:20px;
+      }
+
 
       .public-search-result-google-info {
       }
@@ -46,7 +50,7 @@
       .public-search-result-scraper-info {
         width:150px;
         padding-left:10px;
-        vertical-align:center;
+        vertical-align:middle;
       }
 
     }
