@@ -6,3 +6,50 @@
   clear: both; 
   height: 0; 
 }
+
+#search-page {
+
+  text-align:Center;
+  padding:20px;
+
+  #public-search-form {
+
+    input {
+      font-size:1em;
+      padding:10px;
+      margin:20px auto;
+      border:1px solid #888;
+      width:500px;
+      display:block;
+    }
+
+    button {
+      font-size:1em;
+      padding:10px;
+    }
+  }
+
+  .public-search-results {
+    margin:0 auto;
+    margin-top:30px;
+    width:700px;
+    
+    .public-search-result {
+
+      width:800px;
+      text-align:left;
+
+
+      .public-search-result-google-info {
+      }
+
+      .public-search-result-scraper-info {
+        width:150px;
+        padding-left:10px;
+        vertical-align:center;
+      }
+
+    }
+  }
+
+}
