@@ -3,6 +3,6 @@ attributes :email, :remember_me, :name, :visitor_code, :url, :description, :face
 
 node(:image_url) do |user|
 	if user.image then
-		user.image.url(:host => "https://mightbuy.it")
+		user.image.url(:host => "https://www.mightbuy.it")
 	end
 end
