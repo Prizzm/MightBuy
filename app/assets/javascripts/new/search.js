@@ -3,7 +3,7 @@ var POINTS_ENABLED = null;
 
 function updateScraperInfo($elem){
 
-  $elem.css({ "visibility" : "visible" });
+  $elem.css({ "display" : "table-row" });
 
   (function($elem, $next){
     $.getJSON("http://mightbuy-scraper.herokuapp.com/?callback=?",{url:$elem.data("url")},function(r){
@@ -47,18 +47,18 @@ $(function(){
 
     // fetch some search results
     var apiURL = window.location.protocol + '//ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?';
-    $.getJSON(apiURL,{q:q,rsz:2,start:0},function(r){
+    $.getJSON(apiURL,{q:q,rsz:5,start:0},function(r){
       var res = r.responseData.results;
       var result_elem = $("<table></table>");
       if ( res.length ) {
         res = $.each(res, function(i, r){
 
-          var new_item = $('<tr class="public-search-result" style="visibility:hidden;" data-url="'+ r.unescapedUrl +'" >' + 
+          var new_item = $('<tr class="public-search-result" style="display:none;" data-url="'+ r.unescapedUrl +'" >' + 
                               '<td class="public-search-result-google-info" >' +
                                 '<a class="title" target="_blank" href="'+ r.unescapedUrl +'">'+ r.titleNoFormatting +'</a>' +
                                 '<div class="description">'+ r.content +'</div>' +
                                 '<div class="url">'+ r.visibleUrl +'</div>' +
-                                '<a class="btn mightbuy-button" href="/topics/new?topic[subject]='+ encodeURIComponent(r.titleNoFormatting) +'&topic[url]='+ encodeURIComponent(r.unescapedUrl) +'">Add to Might Buy</a>' +
+                                '<a class="mightbuy-button" href="/topics/new?topic[subject]='+ encodeURIComponent(r.titleNoFormatting) +'&topic[url]='+ encodeURIComponent(r.unescapedUrl) +'">Add to Might Buy</a>' +
                               '</td>' +
                               '<td class="public-search-result-scraper-info" style="">' +
                                 '<span class="loading">&nbsp;</span>' +
@@ -72,7 +72,7 @@ $(function(){
         });
 
         $(".public-search-results").html(result_elem.html());
-        $(".public-search-results .public-search-result:first").css({"visibility":"visible"});
+        $(".public-search-results .public-search-result:first").css({"display":"table-row"});
         updateScraperInfo($(".public-search-results .public-search-result:first"));
 
       }
