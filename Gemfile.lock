@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/frozon/passbook.git
+  revision: 3191da9dfd9af86eba063875d77d8ae079e10d84
+  specs:
+    passbook (0.0.2)
+      rubyzip
+
+GIT
   remote: git://github.com/wr0ngway/graylog2_exceptions.git
   revision: 797924acd1aa89852605230812d8cfd27da90969
   specs:
@@ -424,6 +431,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-twitter
   open4
+  passbook!
   pg (= 0.11.0)
   premailer-rails3 (= 1.0.0)
   rabl

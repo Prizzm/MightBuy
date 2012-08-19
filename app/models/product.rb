@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   has_many :bargins
   has_many :topics
+  has_many :anti_forge_tokens
   after_create :find_topics
   
   # Methods

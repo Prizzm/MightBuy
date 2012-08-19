@@ -38,6 +38,10 @@ NewPrizzmCom::Application.routes.draw do
     get 'brands/join', :to => 'registrations#new', :brand => true
   end
   
+  # Passbook
+  match '/passbook/passes/generate' => "passbook#generate"
+  match '/passbook/passes/:passid' => "passbook#pass"
+  
   # match "/tokens/facebook" => "social#authenticateMobile"
   match "/tokens/facebook" => "social#socialAuthenticationAPI"
   match "/topics/findByMIU" => "social#getShortCode"
