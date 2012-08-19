@@ -25,7 +25,8 @@
     #sidebar
       .fixed
         h1.logo
-          span= "MightBuy"
+          = link_to "/" do
+            span= "MightBuy"
 
         / Sidebar
         = override(:sidebar) do

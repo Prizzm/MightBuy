@@ -4,3 +4,20 @@ table
 {
   td { vertical-align: middle; }
 }
+
+.forgot-password-form {
+  font-size: 20px;
+  margin: 20px auto 20px auto;
+  width: 80%;
+  input[type=email] {
+    height: 24px;
+    margin-left: 20px;
+    font-size: 20px;
+  }
+
+  input[type=submit] {
+    font-size: 20px;
+    margin-left: 72px;
+    margin-top: 13px;
+  }
+}

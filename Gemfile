@@ -16,6 +16,9 @@ gem 'hirb'
 # API
 gem 'rabl'
 
+# Passbook
+gem 'passbook', :git => "git://github.com/frozon/passbook.git"
+
 # Authentication
 gem 'devise', '1.4.7'
 gem 'omniauth-twitter'
