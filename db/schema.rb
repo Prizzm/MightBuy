@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20120819032352) do
     t.string   "type"
     t.text     "description"
     t.string   "url"
-    t.integer  "product_id"
+    t.integer  "product_id",  :limit => 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "value"

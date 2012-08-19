@@ -58,7 +58,7 @@ $(function(){
                                 '<a class="title" target="_blank" href="'+ r.unescapedUrl +'">'+ r.titleNoFormatting +'</a>' +
                                 '<div class="description">'+ r.content +'</div>' +
                                 '<div class="url">'+ r.visibleUrl +'</div>' +
-                                '<a class="btn mightbuy-button" href="/topics/new?topic[subject]='+ encodeURIComponent(r.titleNoFormatting) +'&topic[url]='+ encodeURIComponent(r.unescapedUrl) +'">Might Buy</a>' +
+                                '<a class="btn mightbuy-button" href="/topics/new?topic[subject]='+ encodeURIComponent(r.titleNoFormatting) +'&topic[url]='+ encodeURIComponent(r.unescapedUrl) +'">Add to Might Buy</a>' +
                               '</td>' +
                               '<td class="public-search-result-scraper-info" style="">' +
                                 '<span class="loading">&nbsp;</span>' +
@@ -78,7 +78,7 @@ $(function(){
       }
       else
       {
-        $(".public-search-results").html("<br />No results found<br /><br />");
+        $(".public-search-results").html("<br /><br /><br />");
       }
     });
   };

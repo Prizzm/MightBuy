@@ -13,7 +13,7 @@ head
 						img src=resource.iImage()													  
   .title= resource.subject
   - unless resource.url.blank?
-	= link_to  "url", resource.url, :target => "_blank"   
+	= link_to  resource.url, resource.url, :target => "_blank"   
   - if resource.price
 	.price= number_to_currency(resource.price)
       
@@ -150,8 +150,8 @@ head
 	              = heading "Featured Response"
 	              ol.list.responses.highlight
 	                = render featured_response
-
-	          #respond
+	
+	          /#respond (commented - don't show comment box on your own topics, confusing)
 	            .group.respond
 	              = heading phrase_for(:respond)
 	              = render "responses/form", :topic => resource
