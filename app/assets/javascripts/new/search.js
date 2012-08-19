@@ -10,9 +10,19 @@ function updateScraperInfo($elem){
       if(r.price) {
         $elem.find(".price").html("$ " + r.price);
       }
+      else
+      {
+        $elem.find(".price").html("<i>Price not available</i>");
+      }
       if(r.images[0]) {
         $elem.find(".thumb img").attr("src", r.images[0]);
       }
+      else
+      {
+        $elem.find(".thumb img").attr("src", "/assets/noimage.png");
+      }
+
+      $elem.find(".loading").css({ "display" : "none" });
 
       $elem.find(".public-search-result-scraper-info").css({ "visibility" : "visible" });
 
@@ -48,11 +58,12 @@ $(function(){
                                 '<a class="title" target="_blank" href="'+ r.unescapedUrl +'">'+ r.titleNoFormatting +'</a>' +
                                 '<div class="description">'+ r.content +'</div>' +
                                 '<div class="url">'+ r.visibleUrl +'</div>' +
-                                '<a href="/topics/new?topic[subject]='+ encodeURIComponent(r.titleNoFormatting) +'&topic[url]='+ encodeURIComponent(r.unescapedUrl) +'">Might Buy</a>' +
+                                '<a class="btn mightbuy-button" href="/topics/new?topic[subject]='+ encodeURIComponent(r.titleNoFormatting) +'&topic[url]='+ encodeURIComponent(r.unescapedUrl) +'">Might Buy</a>' +
                               '</td>' +
                               '<td class="public-search-result-scraper-info" style="">' +
-                                '<div class="thumb" ><img src="/assets/noimage.png" style="max-width:70px;max-height:70px;"></div>' +
-                                '<div class="price"><i>Price not available</i></div>' +
+                                '<span class="loading">&nbsp;</span>' +
+                                '<div class="thumb" ><img src="" style="max-width:70px;max-height:70px;"></div>' +
+                                '<div class="price"><i></i></div>' +
                               '</td>' +
                            '</tr>');
 

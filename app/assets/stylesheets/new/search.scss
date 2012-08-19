@@ -9,6 +9,10 @@
 
 #search-page {
 
+  .logo {
+    text-decoration:none;
+  }
+
   text-align:Center;
   padding:20px;
 
@@ -36,6 +40,8 @@
     
     .public-search-result {
 
+
+
       width:800px;
       text-align:left;
 
@@ -45,12 +51,45 @@
 
 
       .public-search-result-google-info {
+        .title {
+          display:inline-block;
+          padding-bottom:4px;
+        }
+        .description {
+          font-size:13px;
+          display:inline-block;
+          padding-bottom:4px;
+        }
+        .url {
+          font-size:13px;
+          color:#586;
+          display:block;
+          padding-bottom:4px;
+        }
+        .mightbuy-button {
+          display:inline-block;
+          margin-top:5px;
+          padding:5px;
+          text-decoration:none;
+          border:1px solid #bbb;
+          color:#444;
+          background-color:#eee;
+        }
       }
 
       .public-search-result-scraper-info {
         width:150px;
         padding-left:10px;
         vertical-align:middle;
+        text-align:center;
+        border-left:1px dotted #777;
+
+        .loading {
+          display:inline-block;
+          width:20px;
+          height:20px;
+        }
+
       }
 
     }
