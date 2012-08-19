@@ -40,7 +40,7 @@ NewPrizzmCom::Application.routes.draw do
   
   # Passbook
   match '/passbook/passes/generate' => "passbook#generate"
-  match '/passbook/passes/:passid' => "passbook#pass"
+  match '/passbook/passes/:aftoken' => "passbook#pass"
   
   # match "/tokens/facebook" => "social#authenticateMobile"
   match "/tokens/facebook" => "social#socialAuthenticationAPI"

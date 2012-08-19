@@ -2,7 +2,7 @@ class PassbookController < ApplicationController
   before_filter :verify_anti_forge_token
   
   def pass
-    send_file "/var/folders/8c/z76qmwln5n57d6wyf5_ht_zc0000gn/T/pass.pkpass#{params[:passid]}", type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
+    send_file @token.pass_path, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
   end
   
   def generate
@@ -13,7 +13,7 @@ class PassbookController < ApplicationController
 puts pass
     pkpass_path = pass.create
     
-    puts pkpass_path
+    @token.update_attribute("pass_path", pkpass_path)
     
     if params[:d] == "t" then
       send_file pkpass_path, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
