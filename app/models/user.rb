@@ -10,12 +10,9 @@ class User < ActiveRecord::Base
   include Points::Has
   include InheritUpload
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable, :omniauthable
 
-  # Setup accessible (or protected) attributes for your model
   attr_accessible \
     :email, :password, :password_confirmation,
     :remember_me, :name, :image, :visitor_code,
@@ -87,32 +84,28 @@ class User < ActiveRecord::Base
 
   # Omniauth
   def self.from_omniauth(auth)
-    if User.find_by_facebook_uid(auth.uid) == nil && User.find_by_twitter_uid(auth.uid) == nil then
-      puts "no uid"
+    if User.find_by_facebook_uid(auth.uid) == nil && User.find_by_twitter_uid(auth.uid) == nil
       u = User.new()
       u.name = auth.info.name
-      app = Dragonfly[:images]
-      u.image = app.fetch_url(auth.info.image)
-      if auth.provider == "twitter" then
+      u.image_url = auth.info.image
+      if auth.provider == "twitter"
         u.twitter_uid = auth.uid
         u.twitter_oauth_token = auth['credentials']['token']
         u.twitter_oauth_secret = auth['credentials']['secret']
-      elsif auth.provider == "facebook" then
+      elsif auth.provider == "facebook"
         u.facebook_uid = auth.uid
         u.email = auth.info.email
         u.facebook_oauth_token = auth['credentials']['token']
         u.facebook_oauth_secret = auth['credentials']['secret']
       end
       u.save
-      return u
     else
-      puts "uid"
-      if User.find_by_facebook_uid(auth.uid) == nil then
+      if User.find_by_facebook_uid(auth.uid) == nil
         return User.find_by_twitter_uid(auth.uid)
-      elsif User.find_by_twitter_uid(auth.uid) == nil then
+      elsif User.find_by_twitter_uid(auth.uid) == nil
         return User.find_by_facebook_uid(auth.uid)
       end
-      return AuthProvider.find_by_uid(auth.uid).user
+      AuthProvider.find_by_uid(auth.uid).user
     end
   end
 
