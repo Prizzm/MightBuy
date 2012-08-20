@@ -2,18 +2,18 @@ class PassbookController < ApplicationController
   before_filter :verify_anti_forge_token
   
   def pass
-    send_file "/var/folders/8c/z76qmwln5n57d6wyf5_ht_zc0000gn/T/pass.pkpass#{params[:passid]}", type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
+    send_file @token.pass_path, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
   end
   
   def generate
-    pass = Passbook::PKPass.new(passContents("Google").to_json)
+    pass = Passbook::PKPass.new(passContents("Joe's Clothes").to_json)
 
     pass.addFiles ["passbook/assets/icon.png", "passbook/assets/icon@2x.png", "passbook/assets/logo.png", "passbook/assets/logo@2x.png"]
 
-puts pass
+    puts pass
     pkpass_path = pass.create
     
-    puts pkpass_path
+    @token.update_attribute("pass_path", pkpass_path)
     
     if params[:d] == "t" then
       send_file pkpass_path, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
@@ -38,10 +38,10 @@ puts pass
       info[:description] = "Desc Here"
       info[:storeLocations] = [
         # Example
-        # {
-        #   :longitude => -122.3748889,
-        #   :latitude => 37.6189722
-        # }
+        {
+          :longitude => -122.406417,
+          :latitude => 37.785834
+        }
       ]
       
       # Barcode Setup
@@ -51,8 +51,8 @@ puts pass
       
       # Company Setup
       company[:name] = company_name
-      company[:color][:foreground] = "rgb(255, 255, 255)"
-      company[:color][:background] = "rgb(150, 0, 0)"
+      company[:color][:foreground] = "rgb(250, 250, 250)"
+      company[:color][:background] = "rgb(25, 25, 250)"
       
       # Discount
 #      discount[:type] = "percentage"
@@ -69,7 +69,7 @@ puts pass
       discount[:expiration][:date][:value] = "1980-05-07T10:00-05:00"
       discount[:expiration][:date][:format] = "PKDateStyleShort"
       
-      user[:username] = "sbaumgarten"
+      user[:username] = @token.user.name
       
       product[:sku] = "42903"
       

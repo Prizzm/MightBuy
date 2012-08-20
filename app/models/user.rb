@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   has_many :topic_shares, :through => :topics, :source => :shares
   has_many :shares, :class_name => "Shares::Share"
   has_many :auth_providers
+  has_many :antiForgeTokens
   
   # Validations
   validates :name, :presence => true

@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  belongs_to :business
   has_many :bargins
   has_many :topics
   has_many :anti_forge_tokens
