@@ -51,8 +51,8 @@ class PassbookController < ApplicationController
       
       # Company Setup
       company[:name] = company_name
-      company[:color][:foreground] = "rgb(0, 0, 0)"
-      company[:color][:background] = "rgb(250, 250, 250)"
+      company[:color][:foreground] = "rgb(250, 250, 250)"
+      company[:color][:background] = "rgb(25, 25, 250)"
       
       # Discount
 #      discount[:type] = "percentage"
