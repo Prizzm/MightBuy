@@ -13,14 +13,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable, :omniauthable
 
+  # Uploaders
+  image_accessor :image
+
   attr_accessible \
     :email, :password, :password_confirmation,
     :remember_me, :name, :image, :visitor_code,
     :url, :description, :facebook, :twitter, :phone,
     :email_address, :category, :image_url, :inherit_upload_id, :authentication_token, :facebook_uid, :twitter_uid, :last_seen
 
-  # Uploaders
-  image_accessor :image
 
   # Relationships
   has_many :responses
@@ -84,29 +85,32 @@ class User < ActiveRecord::Base
 
   # Omniauth
   def self.from_omniauth(auth)
-    if User.find_by_facebook_uid(auth.uid) == nil && User.find_by_twitter_uid(auth.uid) == nil
-      u = User.new()
-      u.name = auth.info.name
-      u.image_url = auth.info.image
+    user = nil
+    unless User.find_with_auth_id(auth.uid)
+      user = User.new()
+      user.name = auth.info.name
+      user.image_url = auth.info.image
       if auth.provider == "twitter"
-        u.twitter_uid = auth.uid
-        u.twitter_oauth_token = auth['credentials']['token']
-        u.twitter_oauth_secret = auth['credentials']['secret']
+        user.twitter_uid = auth.uid
+        user.twitter_oauth_token = auth['credentials']['token']
+        user.twitter_oauth_secret = auth['credentials']['secret']
       elsif auth.provider == "facebook"
-        u.facebook_uid = auth.uid
-        u.email = auth.info.email
-        u.facebook_oauth_token = auth['credentials']['token']
-        u.facebook_oauth_secret = auth['credentials']['secret']
+        user.facebook_uid = auth.uid
+        user.email = auth.info.email
+        user.facebook_oauth_token = auth['credentials']['token']
+        user.facebook_oauth_secret = auth['credentials']['secret']
       end
-      u.save
+      user.save
     else
-      if User.find_by_facebook_uid(auth.uid) == nil
-        return User.find_by_twitter_uid(auth.uid)
-      elsif User.find_by_twitter_uid(auth.uid) == nil
-        return User.find_by_facebook_uid(auth.uid)
-      end
-      AuthProvider.find_by_uid(auth.uid).user
+      user = User.find_with_auth_id(auth.uid)
+      user.image_url = auth.info.image
+      user.save
     end
+    user
+  end
+
+  def self.find_with_auth_id(auth_id)
+    User.find_by_facebook_uid(auth_id) || User.find_by_twitter_uid(auth_id)
   end
 
   def self.new_with_session(params, session)

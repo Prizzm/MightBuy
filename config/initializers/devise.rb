@@ -208,5 +208,5 @@ Devise.setup do |config|
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
   config.omniauth :twitter, "kLGDHfctWCOTax3IY0Nwig", "vP2xNwMj4jpntS6qN8Z37fY1qUTSk1vDgJT8b1HSs"
-  config.omniauth :facebook, "453848267979693", "d98f7e515ae042d5241b4799cfe4d9c1", {:scope => "offline_access, publish_stream"}
+  config.omniauth :facebook, "453848267979693", "d98f7e515ae042d5241b4799cfe4d9c1", {:scope => "offline_access, publish_stream,email"}
 end
