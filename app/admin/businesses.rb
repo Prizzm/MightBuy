@@ -1,3 +1,3 @@
-ActiveAdmin.register Busines do
+ActiveAdmin.register Business do
   
 end
