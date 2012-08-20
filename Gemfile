@@ -73,6 +73,7 @@ group :development do
   gem 'rails-dev-tweaks', '~> 0.5.1'
   gem 'ffaker', '1.10.1'
   gem "rails-erd"
+  gem 'pry-rails'
 end
 
 # Gems used only for assets and not required
