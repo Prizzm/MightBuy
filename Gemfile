@@ -1,8 +1,6 @@
 # Sources
 source 'http://rubygems.org'
 
-
-
 # Rails
 gem 'rails', '3.1.1'
 
@@ -66,13 +64,12 @@ gem 'hirefireapp'
 gem 'image_scraper', '0.1.7'
 
 group :development do
-  # gem 'unicorn'
   gem 'sqlite3'
   gem 'rb-fsevent'
   #gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'rails-dev-tweaks', '~> 0.5.1'
   gem 'ffaker', '1.10.1'
   gem "rails-erd"
+  gem 'pry-rails'
 end
 
 # Gems used only for assets and not required
