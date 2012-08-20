@@ -10,6 +10,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       elsif request.env["omniauth.auth"].provider == "facebook"
         u = current_user
         u.image_url = request.env["omniauth.auth"].info.image
+        puts "URL is #{image_url}"
         u.facebook_uid = request.env["omniauth.auth"].uid
         u.facebook_oauth_token = request.env["omniauth.auth"]['credentials']['token']
         u.facebook_oauth_secret = request.env["omniauth.auth"]['credentials']['secret']
