@@ -40,6 +40,16 @@ class Topic < ActiveRecord::Base
       t = self
       t.product = p
       t.save
+    else
+      t = self   
+      pn = Product.new()
+      
+      pn.name = t.name
+      pn.url = t.url
+      pn.save
+      
+      t.product = pn
+      t.save
     end
   end
 
