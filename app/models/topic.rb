@@ -44,7 +44,7 @@ class Topic < ActiveRecord::Base
       t = self   
       pn = Product.new()
       
-      pn.name = t.name
+      pn.name = t.subject
       pn.url = t.url
       pn.save
       

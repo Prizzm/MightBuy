@@ -1,0 +1,19 @@
+li
+  - if topic.price
+    .price= number_to_currency(topic.price)
+  a href=url_for(topic) class="image topic present thumb"
+	table class="centered" cellspacing="0" cellpadding="0"
+		tbody
+			tr
+				td
+					img src=topic.iImage()
+  - if topic.product
+	-if topic.product.bargins
+  		= link_to topic.subject, topic_path(topic), :class => "title", "data-notifications" => "#{topic.product.bargins.count}"
+	-else
+  		= link_to topic.subject, topic_path(topic), :class => "title"
+  - else
+  	= link_to topic.subject, topic_path(topic), :class => "title"
+  .notes= phrase_for(:said, topic)   
+  br
+  
