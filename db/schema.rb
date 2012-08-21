@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120819032352) do
+ActiveRecord::Schema.define(:version => 20120821033124) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20120819032352) do
     t.integer  "bargin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "pass_path"
+    t.integer  "user_id"
   end
 
   create_table "auth_providers", :force => true do |t|
@@ -70,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20120819032352) do
     t.string   "type"
     t.text     "description"
     t.string   "url"
-    t.integer  "product_id",  :limit => 255
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "value"
@@ -81,6 +83,23 @@ ActiveRecord::Schema.define(:version => 20120819032352) do
   create_table "beta_signups", :force => true do |t|
     t.string   "email_address"
     t.string   "visitor_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "business_products", :force => true do |t|
+    t.integer  "business_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "businesses", :force => true do |t|
+    t.string   "name"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.string   "foreground"
+    t.string   "background"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -153,6 +172,7 @@ ActiveRecord::Schema.define(:version => 20120819032352) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.integer  "business_id"
   end
 
   create_table "responses", :force => true do |t|
