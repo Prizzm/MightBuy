@@ -35,17 +35,17 @@ class PassbookController < ApplicationController
       # Main Info
       info[:serial] = SecureRandom.hex(20)
       info[:authentication_token] = SecureRandom.hex(20)
-      info[:description] = "Desc Here"
+      info[:description] = @token.product.business.description
       info[:storeLocations] = [
         # Example
         {
-          :longitude => -122.406417,
-          :latitude => 37.785834
+          :longitude => @token.product.business.longitude.to_f,
+          :latitude => @token.product.business.latitude.to_f
         }
       ]
       
       # Barcode Setup
-      barcode[:value] = "123456789"
+      barcode[:value] = @token.bargin.barcode
       barcode[:format] = "PKBarcodeFormatPDF417"
       barcode[:encoding] = "iso-8859-1"
       
