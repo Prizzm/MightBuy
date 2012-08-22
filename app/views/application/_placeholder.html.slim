@@ -5,9 +5,10 @@
   = stars " *bookmarklet* to add from any website "
   = link_to "(instructions)", "/about#help"
   p= stars "*2.* Or press Add to add from this site"
+  iframe width="420" height="315" src="http://www.youtube.com/embed/9riCsmyrW3g" 
+  p
 
-  
-- if name == :profile_show_responses
+- if name = :profile_show_responses
   = stars "Looks like you *haven't been involved in any conversations* yet."
 
 - if name == :brands_show_topics || name == :users_show_topics
