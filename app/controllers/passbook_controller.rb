@@ -1,4 +1,6 @@
-class PassbookController < PassbookManager  
+class PassbookController < PassbookManager
+  before_filter :verify_anti_forge_token
+   
   def pass
     send_file @token.pass_path, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
   end
