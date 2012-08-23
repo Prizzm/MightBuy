@@ -6,7 +6,7 @@ class PassbookController < PassbookManager
   end
   
   def register_device
-    Token.find_by_serial_number(params[:serialnumber]).update_attribute("device_id", params[:devid])
+    AntiForgeToken.find_by_serial_number(params[:serialnumber]).update_attribute("device_id", params[:pushToken])
   end
   
   def generate
