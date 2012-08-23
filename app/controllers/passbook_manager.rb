@@ -65,7 +65,7 @@ class PassbookManager < ApplicationController
         :passTypeIdentifier => "pass.mightbuy.bargin",
         :serialNumber => info[:serial],
         :teamIdentifier => "DK9N2M2GK6",
-        :webServiceURL => "https://www.mightbuy.it/passbook/passes/",
+        :webServiceURL => "https://mightbuy.it/passbook/passes/",
         :authenticationToken => info[:authentication_token],
         :description => info[:description],
         :locations => info[:storeLocations],
