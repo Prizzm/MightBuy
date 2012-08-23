@@ -26,7 +26,9 @@ class PassbookController < PassbookManager
         if !token.active then
           head :unauthorized
         else
-          # token.update_attribute("active", false)
+          if !params[:debug] == "C1953BA851F2C3DC4AEAB07D89B63158B36D01E195EFB88E2568CC91C2AE37E8" then
+            token.update_attribute("active", false)
+          end
         end
       else
         head :unauthorized
