@@ -5,8 +5,10 @@ class PassbookController < PassbookManager
     send_file @token.pass_path, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
   end
   
-  def generate    
-    @token.update_attribute("pass_path", generatePass(@token))
+  def generate
+    pkpass_path = generatePass(@token)
+    
+    @token.update_attribute("pass_path", pkpass_path)
     
     if params[:d] == "t" then
       send_file pkpass_path, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
