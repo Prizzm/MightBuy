@@ -2,6 +2,7 @@ class PassbookManager < ApplicationController
   before_filter :verify_anti_forge_token
   
   def generatePass(token)
+    puts passContents(token).to_json
     pass = Passbook::PKPass.new(passContents(token).to_json)
     pass.addFiles ["passbook/assets/icon.png", "passbook/assets/icon@2x.png", "passbook/assets/logo.png", "passbook/assets/logo@2x.png"]
     pass.create
