@@ -7,10 +7,6 @@ class PassbookController < PassbookManager
   
   def generate
     pkpass_path = generatePass(@token)
-<<<<<<< HEAD
-    @token.update_attribute("pass_path", pkpass_path)
-=======
->>>>>>> beee975eb7874222a38ae3a348f534bb208d4297
     
     @token.update_attribute("pass_path", pkpass_path)
     
