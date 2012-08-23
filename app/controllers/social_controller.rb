@@ -174,7 +174,7 @@ class SocialController < ApplicationController
   # Twitter (fold)
   def post_to_twitter(redirect = false)
     # Check if current_user has Twitter account linked
-    if current_user.hasTwitter? then
+    if current_user.hasTwitter?
       # Begin rescue block
       begin
         # Create a new Grackle Client (New Twitter Client)
@@ -190,9 +190,7 @@ class SocialController < ApplicationController
         puts "====== ERROR ======"
         puts "Error is: ", e
       end
-    end
-      # If current_user doesn't have a Twitter account linked ...
-  else
+    else
     # Check if redirect is true (redirect defined as param)
     if redirect == true then
       # If so, redirect to Twitter login
