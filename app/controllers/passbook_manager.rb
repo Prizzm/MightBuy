@@ -62,7 +62,7 @@ class PassbookManager < ApplicationController
     
       {
         :formatVersion => 1,
-        :passTypeIdentifier => "pass.com.mightbuy.bargin",
+        :passTypeIdentifier => "pass.mightbuy.bargin",
         :serialNumber => info[:serial],
         :teamIdentifier => "DK9N2M2GK6",
         :webServiceURL => "https://example.com/passes/",
