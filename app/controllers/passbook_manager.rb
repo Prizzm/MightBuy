@@ -78,7 +78,7 @@ class PassbookManager < ApplicationController
         :logoText => company[:name],
         :foregroundColor => company[:color][:foreground],
         :backgroundColor => company[:color][:background],
-        :storeCard => {
+        :coupon => {
             :primaryFields => [
               discount[:field]
             ],
@@ -107,7 +107,7 @@ class PassbookManager < ApplicationController
               {
                     "key" : "terms",
                     "label" : "TERMS",
-                    "value" : "We make no express or implied warranties or representations with respect to the Program or any products sold through the Program (including, without limitation, warranties of fitness, merchantability, non-infringement, or any implied warranties arising out of a course of performance, dealing, or trade usage). In addition, we make no representation that the operation of our site will be uninterrupted or error-free, and we will not be liable for the consequences of any interruptions or errors. We may change, restrict access to, suspend or discontinued the site or any part of it at anytime. The information, content and services on the site are provided on an “as is” basis. When you use the site and or participate therein, you understand and agree that you participate at your own risk."
+                    "value" : "We make no express or implied warranties or representations with respect to the Program or any products sold through the Program (including, without limitation, warranties of fitness, merchantability, non-infringement, or any implied warranties arising out of a course of performance, dealing, or trade usage). In addition, we make no representation that the operation of our site will be uninterrupted or error-free, and we will not be liable for the consequences of any interruptions or errors. We may change, restrict access to, suspend or discontinued the site or any part of it at anytime. The information, content and services on the site are provided on an \“as is\” basis. When you use the site and or participate therein, you understand and agree that you participate at your own risk."
               }
             ]
           }
