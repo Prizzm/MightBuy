@@ -59,6 +59,9 @@ class PassbookManager < ApplicationController
       user[:username] = token.user.name
     
       product[:sku] = "42903"
+      
+      # Setup Token
+      token.update_attribute("serial_number", info[:serial])
     
       {
         :formatVersion => 1,
@@ -71,6 +74,7 @@ class PassbookManager < ApplicationController
         :locations => info[:storeLocations],
         :barcode => {
           :message => barcode[:value],
+          :alttext => barcode[:value],
           :format => barcode[:format],
           :messageEncoding => barcode[:encoding]
         },
