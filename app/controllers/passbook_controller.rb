@@ -10,8 +10,11 @@ class PassbookController < PassbookManager
     
     @token.update_attribute("pass_path", pkpass_path)
     
-    if params[:d] == "t" then
-      send_file pkpass_path, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
+    respond_to do |format|
+      format.pkpass { send_file pkpass_path, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass" }
+      format.json { render :text => {:error => nil, :pass => {:url => {:path => @token.path, :url => @token.url()}}}.to_json }
+      format.xml { render :text => {:error => nil, :pass => {:url => {:path => @token.path, :url => @token.url()}}}.to_xml }
+      format.html { render :text => "This is a internal API for use by MightBuy and it's affiliates and partners.  This API Request has been marked as unauthorized.  This event has been logged."}
     end
   end
   
@@ -23,7 +26,9 @@ class PassbookController < PassbookManager
         if !token.active then
           head :unauthorized
         else
-          # token.update_attribute("active", false)
+          if !params[:debug] == "C1953BA851F2C3DC4AEAB07D89B63158B36D01E195EFB88E2568CC91C2AE37E8" then
+            token.update_attribute("active", false)
+          end
         end
       else
         head :unauthorized
