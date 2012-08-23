@@ -24,16 +24,22 @@ class SocialController < ApplicationController
   end
 
   def facebook
-    redirect_to_social_login(:facebook) and return if !current_user.hasFacebook?
-    post_to_open_graph(false)
-    post_to_facebook_feed(false)
-    redirect_to "/topics/#{@topic.shortcode}?aff=t", :only_path => true
+    unless current_user.hasFacebook?
+      redirect_to_social_login(:facebook)
+    else
+      post_to_open_graph(false)
+      post_to_facebook_feed(false)
+      redirect_to "/topics/#{@topic.shortcode}?aff=t", :only_path => true
+    end
   end
 
   def twitter
-    redirect_to_social_login(:twitter) if !current_user.hasTwitter?
-    post_to_twitter(false)
-    redirect_to "/topics/#{@topic.shortcode}?atf=t", :only_path => true
+    unless current_user.hasTwitter?
+      redirect_to_social_login(:twitter)
+    else
+      post_to_twitter(false)
+      redirect_to "/topics/#{@topic.shortcode}?atf=t", :only_path => true
+    end
   end
 
   def askAll
