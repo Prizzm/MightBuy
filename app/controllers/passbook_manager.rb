@@ -38,8 +38,8 @@ class PassbookManager < ApplicationController
     
       # Company Setup
       company[:name] = token.product.business.name
-      company[:color][:foreground] = "rgb(250, 250, 250)"
-      company[:color][:background] = "rgb(25, 25, 250)"
+      company[:color][:foreground] = "rgb(#{token.product.business.foreground_color[0]}, #{token.product.business.foreground_color[1]}, #{token.product.business.foreground_color[2]})"
+      company[:color][:background] = "rgb(#{token.product.business.background_color[0]}, #{token.product.business.background_color[1]}, #{token.product.business.background_color[2]})"
     
       # Discount
   #      discount[:type] = "percentage"

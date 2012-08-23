@@ -4,7 +4,7 @@ class Business < ActiveRecord::Base
   # has_many :products, :through => :business_products
   
   def foreground_color
-    self.forground.split(',')
+    self.foreground.split(',')
   end
   
   def background_color
