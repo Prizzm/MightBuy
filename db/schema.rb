@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822041319) do
+ActiveRecord::Schema.define(:version => 20120823191506) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -56,6 +56,9 @@ ActiveRecord::Schema.define(:version => 20120822041319) do
     t.datetime "updated_at"
     t.string   "pass_path"
     t.integer  "user_id"
+    t.string   "serial_number"
+    t.string   "device_id"
+    t.string   "authorization_token"
   end
 
   create_table "auth_providers", :force => true do |t|

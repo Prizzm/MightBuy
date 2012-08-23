@@ -62,6 +62,7 @@ class PassbookManager < ApplicationController
       
       # Setup Token
       token.update_attribute("serial_number", info[:serial])
+      token.update_attribute("authorization_token", info[:authentication_token])
     
       {
         :formatVersion => 1,
