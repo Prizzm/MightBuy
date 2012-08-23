@@ -1,14 +1,16 @@
 - if name == :profile_show_topics
-  p= stars "Welcome! You haven't added anything yet."
-  = stars "*1.* Use the " 
+  p
+  b Welcome! 
+  p 
+  | Make sure to add the  
   = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
-  = stars " *bookmarklet* to add from any website "
-  = link_to "(instructions)", "/about#help"
-  p= stars "*2.* Or press Add to add from this site"
+  = stars " *bookmarklet* to your browser"
+  p
+  iframe width="420" height="315" src="http://www.youtube.com/embed/9riCsmyrW3g" 
+  p
 
-  
-- if name == :profile_show_responses
-  = stars "Looks like you *haven't been involved in any conversations* yet."
+- if name = :profile_show_responses
+  = stars ""
 
 - if name == :brands_show_topics || name == :users_show_topics
   = stars "Looks like they *haven't posted anything* yet."
