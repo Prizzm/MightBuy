@@ -25,8 +25,8 @@ class PassbookManager < ApplicationController
       info[:storeLocations] = [
         # Example
         {
-          :longitude => token.product.business.longitude.to_f,
-          :latitude => token.product.business.latitude.to_f
+          :longitude => -122.406417,
+          :latitude => 37.785834
         }
       ]
     
