@@ -24,6 +24,10 @@ class TopicsController < RestfulController
     edit!
   end
   
+  def new
+  	super
+  end
+  
   def show
     puts "session[:oauth_token]: ", session[:oauth_token]
     show! do |format|
