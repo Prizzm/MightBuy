@@ -9,11 +9,15 @@ class PassbookController < PassbookManager
     puts "headers: ", request.authorization
     token = AntiForgeToken.find_by_serial_number(params[:serialnumber])
     render :text => ""
-    if token.device_id ==  params[:pushToken]
-      response.status = 200
+    if "ApplePass #{token.authorization_token}" == request.authorization
+      if token.device_id ==  params[:pushToken]
+        response.status = 200
+      else
+        token.update_attribute("device_id", params[:pushToken])
+        response.status = 201
+      end
     else
-      token.update_attribute("device_id", params[:pushToken])
-      response.status = 201
+      response.status = 401
     end
   end
   
