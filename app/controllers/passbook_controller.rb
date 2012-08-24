@@ -8,6 +8,7 @@ class PassbookController < PassbookManager
   def register_device
     puts "headers: ", request.authorization
     token = AntiForgeToken.find_by_serial_number(params[:serialnumber])
+    render :text => ""
     if token.device_id ==  params[:pushToken]
       response.status = 200
     else
