@@ -7,6 +7,7 @@ class PassbookManager < ApplicationController
     pass.addFiles ["passbook/assets/icon.png", "passbook/assets/icon@2x.png", "passbook/assets/logo.png", "passbook/assets/logo@2x.png"]
     pass.create
   end
+  
   private
     def passContents(token)
       # Arrays
