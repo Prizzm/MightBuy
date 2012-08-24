@@ -20,6 +20,10 @@ class TopicsController < RestfulController
     new!
   end
 
+  def index
+    @topics = Topic.order("created_at desc").page(params[:page]).per(10)
+  end
+
   def share
     edit!
   end

@@ -191,10 +191,11 @@ class SocialController < ApplicationController
         puts "Error is: ", e
       end
     else
-    # Check if redirect is true (redirect defined as param)
-    if redirect == true then
-      # If so, redirect to Twitter login
-      redirect_to_social_login(:twitter)
+      # Check if redirect is true (redirect defined as param)
+      if redirect == true then
+        # If so, redirect to Twitter login
+        redirect_to_social_login(:twitter)
+      end
     end
   end
 
@@ -246,7 +247,6 @@ class SocialController < ApplicationController
   end
 
   def recommended
-
     url = CGI.unescape(params[:url])
     topic = ShareTracker.get(url) || Topic.find_by_shortcode(params[:short_code])
 
@@ -266,6 +266,4 @@ class SocialController < ApplicationController
   end
   # Other (end)
   # Backend Methods (end)
-
-
 end
