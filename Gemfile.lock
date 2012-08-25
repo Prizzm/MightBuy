@@ -83,7 +83,6 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.4)
       ffi (~> 1.0, >= 1.0.6)
-    choice (0.1.6)
     cocoon (1.0.14)
     coderay (1.0.7)
     coffee-rails (3.1.1)
@@ -310,11 +309,6 @@ GEM
       activesupport (= 3.1.1)
       bundler (~> 1.0)
       railties (= 3.1.1)
-    rails-erd (1.0.0)
-      activerecord (>= 3.0)
-      activesupport (>= 3.0)
-      choice (~> 0.1.6)
-      ruby-graphviz (~> 1.0.4)
     railties (3.1.1)
       actionpack (= 3.1.1)
       activesupport (= 3.1.1)
@@ -358,7 +352,6 @@ GEM
       aws-s3
       capistrano (>= 2.4.0)
       nettica
-    ruby-graphviz (1.0.8)
     ruby-hmac (0.4.0)
     rubyzip (0.9.9)
     sass (3.1.20)
@@ -473,7 +466,6 @@ DEPENDENCIES
   rack-cache
   rack-google_analytics
   rails (= 3.1.1)
-  rails-erd
   rb-fsevent
   rspec-rails (~> 2.6)
   rubber

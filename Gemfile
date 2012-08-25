@@ -8,8 +8,6 @@ gem 'rails', '3.1.1'
 gem 'jquery-rails'
 gem 'fancybox-rails', '0.1.4'
 
-# Console
-gem 'hirb'
 # API
 gem 'rabl'
 
@@ -49,7 +47,7 @@ gem 'dragonfly', '~>0.9.10'
 gem 'activeadmin', '0.4.4'
 gem 'sass-rails', "3.1.4"
 gem "meta_search",    '>= 1.1.0.pre'
-gem 'newrelic_rpm'
+
 
 # Server
 gem 'thin', '1.2.11'
@@ -63,11 +61,12 @@ gem 'hirefireapp'
 gem 'image_scraper', '0.1.7'
 
 group :development do
+  # Console
+  gem 'hirb'
   gem 'sqlite3'
   gem 'rb-fsevent'
   #gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'ffaker', '1.10.1'
-  gem "rails-erd"
   gem 'pry-rails'
   gem "quiet_assets"
 end
@@ -88,8 +87,13 @@ group :test, :development do
 end
 
 group :production do
+  gem 'newrelic_rpm'
   gem 'pg', '0.11.0'
   gem 'rack-google_analytics'
+  gem "therubyracer"
+  gem 'gelf'
+  gem 'graylog2_exceptions', :git => 'git://github.com/wr0ngway/graylog2_exceptions.git'
+  gem 'graylog2-resque'
 end
 
 group :test do
@@ -100,10 +104,5 @@ group :test do
   gem 'database_cleaner'
 end
 
-
-gem "therubyracer"
 gem 'rubber'
 gem 'open4'
-gem 'gelf'
-gem 'graylog2_exceptions', :git => 'git://github.com/wr0ngway/graylog2_exceptions.git'
-gem 'graylog2-resque'
