@@ -25,7 +25,7 @@ NewPrizzmCom::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  
+  config.active_record.auto_explain_threshold_in_seconds = 0.5
   # Action Mailer default url
   config.action_mailer.smtp_settings = { :host => "localhost", :port => 1025 }
   config.action_mailer.default_url_options = {host: "localhost:3000"}

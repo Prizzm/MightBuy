@@ -1,0 +1,4 @@
+ol.list.topics data-pages=@topics.num_pages
+  - @topics.each do |topic|
+    = render :partial => "topic", :object => topic
+

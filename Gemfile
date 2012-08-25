@@ -1,11 +1,19 @@
-# Sources
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-# Rails
-gem 'rails', '3.1.1'
+gem 'rails', '3.2.8'
 
-# Asset Gems
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  # gem 'therubyracer', :platforms => :ruby
+
+  gem 'uglifier', '>= 1.0.3'
+end
+
 gem 'jquery-rails'
+
 gem 'fancybox-rails', '0.1.4'
 
 # API
@@ -27,26 +35,24 @@ gem 'acts_as_opengraph'
 gem 'oauth'
 
 # Layout
-gem 'slim-rails', '0.2.1'
-gem 'inherited_resources', '1.3.1'
-gem 'simple_form', '1.5.2'
-gem 'premailer-rails3', '1.0.0'
-gem 'nokogiri', '1.5.0'
-gem 'meta-tags', '1.2.4', :require => 'meta_tags'
-gem 'cocoon', '1.0.14'
+gem 'slim-rails'
+gem 'inherited_resources'
+gem 'simple_form'
+gem 'premailer-rails3'
+gem 'meta-tags'
+gem 'cocoon'
 
 # AWS
-gem 'fog', '1.0.0'
+gem 'fog'
 
 # Uploads
 gem 'mini_magick'
 gem 'rack-cache', :require => 'rack/cache'
-gem 'dragonfly', '~>0.9.10'
+gem 'dragonfly'
 
 # Admin
-gem 'activeadmin', '0.4.4'
-gem 'sass-rails', "3.1.4"
-gem "meta_search",    '>= 1.1.0.pre'
+gem 'activeadmin'
+gem "meta_search"
 
 
 # Server
@@ -71,19 +77,8 @@ group :development do
   gem "quiet_assets"
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'coffee-rails', "~> 3.1.0"
-  gem 'uglifier'
-end
-
-group :test, :development do
-  gem 'factory_girl_rails', '1.3.0'
+group :development do
   gem 'rspec-rails', "~> 2.6"
-  gem 'shoulda-matchers', '1.0.0'
-  gem 'guard-rspec', "0.5.1"
-  gem 'capybara'
 end
 
 group :production do
@@ -97,6 +92,10 @@ group :production do
 end
 
 group :test do
+  gem 'factory_girl_rails', '1.3.0'
+  gem 'shoulda-matchers', '1.0.0'
+  gem 'guard-rspec', "0.5.1"
+  gem 'capybara'
   gem 'cucumber-rails', :require => false
   gem 'email_spec'
   gem 'simplecov', :require => false
