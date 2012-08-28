@@ -17,10 +17,9 @@ function updateScraperInfo($elem){
       
       $elem.find(".image-selector").imageSelector({
         change : function(image){
-          //alert("Changed image to " + image);
           var orig_href = $elem.find(".mightbuy-button").attr("href");
-          var new_href = orig_href.replace
-          //$elem.find(".mightbuy-button").attr("href", new_href);
+          var new_href = orig_href.split("#")[0] + "#" + encodeURIComponent(image);
+          $elem.find(".mightbuy-button").attr("href", new_href);
         },
         images : r.	images
       });

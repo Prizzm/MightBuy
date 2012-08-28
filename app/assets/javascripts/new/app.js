@@ -324,6 +324,22 @@ var selectoruploaders = function () {
     var success = function (data) { 
       position = 0;
       images   = data.images;
+      
+      // when user is coming from search page
+      // URL will have image URL in hash
+      // use this url to set current image
+      var hash_part = window.location.href.split("#")[1];
+      if ( hash_part ) { // there is already an image
+        // find the index of image
+        var image_position = images.indexOf(decodeURIComponent(hash_part));
+        if ( image_position != -1 ) {
+          position = image_position;
+          
+          // change hash so sub-sequent requests don't fail
+          window.location.hash = "";
+        }        
+      }
+      
       if ( pricefield.length > 0 && !pricefield.val() ) {
         pricefield.val(data.price);
       }
