@@ -1,28 +1,17 @@
-= heading "Details"
 
-= form.input :subject, :label => "Name", :hint => "What might you buy, pray tell."
-div.item-extra-options
-  .show-google-search
-     = link_to "Search Google for <br />\"&lt;search term&gt;\"".html_safe, "#gsearch-results"
-  .search-or-url
-    | or
-  .paste-url
-    = form.input :url, :label => "", :hint => nil, :input_html => { :placeholder => "Paste URL" }
-    /!
-      | <input placeholder="Paste URL"></input>
-  .url-or-notes
-    | or
-  .add-notes
-    = form.input :body, :as => :text, :label => "", :hint => nil, :input_html => { :style => "", :placeholder => "Add Notes" , 	:size => 40}
+div{id="topic_fields"}
+  = form.input :subject, :label => "What might you buy?", :hint => ""
+  = form.input :subject, :label => "What might you buy?", :hint => "", :wrapper_html => { :class => "string" }, :wrapper => :append \
+    do \
+      form.input_field(:url) + \
+      link_to(image_tag("/images/app/search-icon.png", :style => "padding:0px;vertical-align:middle;max-height:16px;"), "#", style: "display:inline-block;margin-left:-24px;padding:3px;") \
+    end
+  = form.input :url, :label => "or Paste a URL", :hint => nil
+  = form.input :price, :label => "Price $"
+  = form.input :body, :as => :text, :label => "Add Notes", :hint => nil, :input_html => { :size => 40}
+  = form.input :tags, :label => "Add Tags"
 
-div.item-more-options
-  div#item-more-options-content
-    = render "partials/image_selector_input_with_price", :form => form, :field => :image
+div{id="topic_right_panel"}
+  Show something here
 
-.hidden
-  #gsearch-results style="width:450px;"
-    | Loading Google search results
-
-= form.input :access, :label => "Who can view?", :collection => Topic::Access, :as => :hidden , :input_html => { :value => "private" }
-= form.input :recommendable, :as => :hidden, :input_html => { :value => 1 }
-= form.input :form, :as=> :hidden, :input_html => { :value => "recommendation" }
+div{style="clear:both;"}

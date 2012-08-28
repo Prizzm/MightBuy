@@ -1295,4 +1295,34 @@ body
     }
   }
   
+  #topic_fields
+  {
+  
+  	float:left;
+  	width:280px;
+  	height:600px;
+
+    label
+    {
+      width:240px;
+      font-weight:Bold;
+      text-align:left;
+      
+      abbr { display:none; }
+    }
+
+    input.string, textarea
+    {
+      width:240px;
+    }
+
+  }
+  
+  #topic_right_panel
+  {
+    float:left;
+    width:340px;
+    height:600px;
+  }
+
 }

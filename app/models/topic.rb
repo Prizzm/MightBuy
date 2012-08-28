@@ -60,6 +60,8 @@ class Topic < ActiveRecord::Base
   # Attributes
   attr_accessor :pass_visitor_code
   
+  attr_accessor :tags # TODO : Remove it, temporary
+  
   def displayPrice
     if self.price then
       return " #{number_to_currency(self.price)}."
