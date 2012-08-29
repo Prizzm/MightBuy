@@ -128,8 +128,8 @@ a#item_url_search {
 .g_result {
 
   list-style:none;
-  padding:4px;
-  border:1px solid transparent;
+  padding:3px;
+  border-bottom:1px solid #ccc;
 
   * {
     padding:0;
@@ -137,7 +137,7 @@ a#item_url_search {
   }
 
   &:hover {
-    border:1px solid #ccc;
+    border-bottom:1px solid #ccc;
   }
 
   .result_item {
@@ -147,9 +147,11 @@ a#item_url_search {
     color:Black;
     text-decoration: none;
     margin-bottom:2px;
+    text-overflow:ellipsis;
+    font-size:12px;
     
     .r_title {
-      display:inline-block;
+      display:block;
       font-weight:Bold;
       text-overflow:ellipsis;
       overflow:hidden;
@@ -163,14 +165,26 @@ a#item_url_search {
       display:inline-block;
       padding-bottom:2px;
       color:#888;
+      
+      b {
+        font-weight:normal;
+      }
     }
 
     .r_vurl {
       color:#0AF;
     }
+    
+    &:hover {
+      text-decoration:none !important;
+    }
 
   }
 
+}
+
+.g_result:last-child {
+  border-bottom:1px solid transparent;
 }
 
 .item-extra-options {

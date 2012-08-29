@@ -1,34 +1,37 @@
 $(function(){
   
-  $(".show-google-search a").fancybox({
-    onComplete : function(){
-      var apiURL = window.location.protocol + '//ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?';
-      $.getJSON(apiURL,{q:$("#topic_subject").val(),rsz:5,start:0},function(r){ // $("#topic_subject").val()
-        var res = r.responseData.results;
-        var result_elem = $("<ul></ul>");
-        if ( res.length ) {
-          res = $.each(res, function(i, r){
+  
+  
+  $(".show-google-search").click(function(){
+    var apiURL = window.location.protocol + '//ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?';
+    $.getJSON(apiURL,{q:$("#topic_subject").val(),rsz:3,start:0},function(r){ // $("#topic_subject").val()
+      var res = r.responseData.results;
+      var result_elem = $("<ul></ul>");
+      if ( res.length ) {
+        res = $.each(res, function(i, r){
 
-            var new_item = $("<li class='g_result'>" + 
-                             "<a class='result_item' href='"+ r.unescapedUrl +"'>" +
-                             "<span class='r_title'>"+ r.titleNoFormatting +"</span><br />" +
-                             "<span class='r_desc'>"+ r.content +"</span><br />" +
-                             "<span class='r_vurl'>"+r.visibleUrl+"</span>" +
-                             "</a>" +
-                             "</li>")
-            
-            result_elem.append(new_item);
-          });
-          $("#gsearch-results").html(result_elem.html());
-        }
-        else
-        {
-          $("#gsearch-results").html("<br />No results found<br /><br />");
-        }
-        $.fancybox.resize();
-        $.fancybox.center();
-      });
-    }
+          var new_item = $("<li class='g_result'>" + 
+                           "<a class='result_item' href='"+ r.unescapedUrl +"'>" +
+                           "<span class='r_title'>"+ r.titleNoFormatting +"</span>" +
+                           "<span class='r_desc'>"+ r.content +"</span><br />" +
+                           "<span class='r_vurl'>"+r.url+"</span>" +
+                           "</a>" +
+                           "</li>")
+           
+          result_elem.append(new_item);
+        });
+        $("#gsearch-results").html(result_elem.html());
+      }
+      else
+      {
+        $("#gsearch-results").html("<br />No results found<br /><br />");
+      }
+      $.fancybox.resize();
+      $.fancybox.center();
+    });
+    
+    return false;
+    
   });
 
   $(document).on("click", ".g_result a", function(e){

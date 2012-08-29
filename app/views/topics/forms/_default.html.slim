@@ -1,10 +1,9 @@
 
 div{id="topic_fields"}
-  = form.input :subject, :label => "What might you buy?", :hint => ""
   = form.input :subject, :label => "What might you buy?", :hint => "", :wrapper_html => { :class => "string" }, :wrapper => :append \
     do \
-      form.input_field(:url) + \
-      link_to(image_tag("/images/app/search-icon.png", :style => "padding:0px;vertical-align:middle;max-height:16px;"), "#", style: "display:inline-block;margin-left:-24px;padding:3px;") \
+      form.input_field(:subject) + \
+      link_to("Go", "#", class: "show-google-search", style: "display:inline-block;font-weight:Bold;text-decoration:none;text-align:center;width:20px;margin-left:-31px;padding:3px 4px;color:#eee;background-color:#666;") \
     end
   = form.input :url, :label => "or Paste a URL", :hint => nil
   = form.input :price, :label => "Price $"
@@ -12,6 +11,6 @@ div{id="topic_fields"}
   = form.input :tags, :label => "Add Tags"
 
 div{id="topic_right_panel"}
-  Show something here
+  #gsearch-results
 
 div{style="clear:both;"}
