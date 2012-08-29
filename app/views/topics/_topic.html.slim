@@ -8,7 +8,7 @@ li
           td
             img src=topic.iImage()
   - if topic.product
-	-if topic.product.bargins
+	-if topic.product.bargins.count != 0
   		= link_to topic.subject, topic_path(topic), :class => "title", "data-notifications" => "#{topic.product.bargins.count}"
 	-else
   		= link_to topic.subject, topic_path(topic), :class => "title"

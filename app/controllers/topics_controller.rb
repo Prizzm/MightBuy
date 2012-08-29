@@ -22,9 +22,9 @@ class TopicsController < RestfulController
 
   def index
     @topics = Topic.order("created_at desc").page(params[:page]).per(10)
-    respond_to do |format|
-      format.html
-      format.js { render :partial => "topic_list" }
+    if request.xhr?
+      render :partial => "topic_list"
+      return
     end
   end
 
