@@ -14,6 +14,17 @@ function updateScraperInfo($elem){
       {
         $elem.find(".price").html("<i>Price not available</i>");
       }
+      
+      $elem.find(".image-selector").imageSelector({
+        change : function(image){
+          //alert("Changed image to " + image);
+          var orig_href = $elem.find(".mightbuy-button").attr("href");
+          var new_href = orig_href.replace
+          //$elem.find(".mightbuy-button").attr("href", new_href);
+        },
+        images : r.	images
+      });
+      
       if(r.images[0]) {
         $elem.find(".thumb img").attr("src", r.images[0]);
       }
@@ -62,7 +73,7 @@ $(function(){
                               '</td>' +
                               '<td class="public-search-result-scraper-info" style="">' +
                                 '<span class="loading">&nbsp;</span>' +
-                                '<div class="thumb" ><img src="" style="max-width:70px;max-height:70px;"></div>' +
+                                '<div class="image-selector"></div>' +
                                 '<div class="price"><i></i></div>' +
                               '</td>' +
                            '</tr>');

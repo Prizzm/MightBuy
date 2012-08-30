@@ -10,7 +10,6 @@ gem 'fancybox-rails', '0.1.4'
 
 # Console
 gem 'hirb'
-
 # API
 gem 'rabl'
 
@@ -70,6 +69,7 @@ group :development do
   gem 'ffaker', '1.10.1'
   gem "rails-erd"
   gem 'pry-rails'
+  gem "quiet_assets"
 end
 
 # Gems used only for assets and not required
@@ -91,6 +91,15 @@ group :production do
   gem 'pg', '0.11.0'
   gem 'rack-google_analytics'
 end
+
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'email_spec'
+  gem 'simplecov', :require => false
+  gem 'simplecov-rcov', :require => false
+  gem 'database_cleaner'
+end
+
 
 gem "therubyracer"
 gem 'rubber'

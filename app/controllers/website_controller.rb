@@ -4,6 +4,12 @@ class WebsiteController < ApplicationController
     render :layout => "application"
   end
   
+  def index
+    if current_user
+      redirect_to "/me"
+    end
+  end
+  
   private
     
     helper_method :brand?

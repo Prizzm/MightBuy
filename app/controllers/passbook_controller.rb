@@ -1,8 +1,24 @@
 class PassbookController < PassbookManager
-  before_filter :verify_anti_forge_token
+  before_filter :verify_anti_forge_token, :except => [:register_device]
    
   def pass
     send_file @token.pass_path, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
+  end
+  
+  def register_device
+    puts "headers: ", request.authorization
+    token = AntiForgeToken.find_by_serial_number(params[:serialnumber])
+    render :text => ""
+    if "ApplePass #{token.authorization_token}" == request.authorization
+      if token.device_id ==  params[:pushToken]
+        response.status = 200
+      else
+        token.update_attribute("device_id", params[:pushToken])
+        response.status = 201
+      end
+    else
+      response.status = 401
+    end
   end
   
   def generate
