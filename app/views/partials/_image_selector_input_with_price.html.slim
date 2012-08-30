@@ -4,7 +4,7 @@
     a href="javascript:void(0);" class="image #{ if form.object.send(field).blank? then "blank" end }"
       = centered do
         - unless form.object.send(field).blank?
-          = image_tag form.object.send(field).url
+          = image_tag "http://images.apple.com/macmini/images/overview_hero_hdtv.png" || form.object.send(field).url
     .controls
       a href="#prev" class="prev" Previous
       a href="#next" class="next" Next

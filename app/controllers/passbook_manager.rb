@@ -2,10 +2,12 @@ class PassbookManager < ApplicationController
   before_filter :verify_anti_forge_token
   
   def generatePass(token)
+    puts passContents(token).to_json
     pass = Passbook::PKPass.new(passContents(token).to_json)
     pass.addFiles ["passbook/assets/icon.png", "passbook/assets/icon@2x.png", "passbook/assets/logo.png", "passbook/assets/logo@2x.png"]
     pass.create
   end
+  
   private
     def passContents(token)
       # Arrays
@@ -25,8 +27,8 @@ class PassbookManager < ApplicationController
       info[:storeLocations] = [
         # Example
         {
-          :longitude => token.product.business.longitude.to_f,
-          :latitude => token.product.business.latitude.to_f
+          :longitude => -122.406417,
+          :latitude => 37.785834
         }
       ]
     
@@ -37,8 +39,8 @@ class PassbookManager < ApplicationController
     
       # Company Setup
       company[:name] = token.product.business.name
-      company[:color][:foreground] = "rgb(250, 250, 250)"
-      company[:color][:background] = "rgb(25, 25, 250)"
+      company[:color][:foreground] = "rgb(#{token.product.business.foreground_color[0]}, #{token.product.business.foreground_color[1]}, #{token.product.business.foreground_color[2]})"
+      company[:color][:background] = "rgb(#{token.product.business.background_color[0]}, #{token.product.business.background_color[1]}, #{token.product.business.background_color[2]})"
     
       # Discount
   #      discount[:type] = "percentage"
@@ -58,18 +60,23 @@ class PassbookManager < ApplicationController
       user[:username] = token.user.name
     
       product[:sku] = "42903"
+      
+      # Setup Token
+      token.update_attribute("serial_number", info[:serial])
+      token.update_attribute("authorization_token", info[:authentication_token])
     
       {
         :formatVersion => 1,
-        :passTypeIdentifier => "pass.com.mightbuy.bargin",
+        :passTypeIdentifier => "pass.mightbuy.bargin",
         :serialNumber => info[:serial],
         :teamIdentifier => "DK9N2M2GK6",
-        :webServiceURL => "https://example.com/passes/",
+        :webServiceURL => "https://mightbuy.it/passbook/passes/",
         :authenticationToken => info[:authentication_token],
         :description => info[:description],
         :locations => info[:storeLocations],
         :barcode => {
           :message => barcode[:value],
+          :alttext => barcode[:value],
           :format => barcode[:format],
           :messageEncoding => barcode[:encoding]
         },
@@ -77,7 +84,7 @@ class PassbookManager < ApplicationController
         :logoText => company[:name],
         :foregroundColor => company[:color][:foreground],
         :backgroundColor => company[:color][:background],
-        :storeCard => {
+        :coupon => {
             :primaryFields => [
               discount[:field]
             ],
@@ -104,47 +111,9 @@ class PassbookManager < ApplicationController
             ],
             :backFields => [
               {
-                :numberStyle => "PKNumberStyleSpellOut",
-                :label => "spelled out",
-                :key => "numberStyle",
-                :value => 200
-              },
-              {
-                :key => "loc",
-                :label => "localized to french",
-                :value => "Oh my stars."
-              },
-              {
-                :label => "in reals",
-                :key => "currency",
-                :value => 200,
-                :currencyCode => "BRL"
-              },
-              {
-                :dateStyle => "PKDateStyleFull",
-                :label => "date full",
-                :key => "dateFull",
-                :value => "1980-05-07T10:00-05:00"
-              },
-              {
-                :label => "time full",
-                :key => "timeFull",
-                :value => "1980-05-07T10:00-05:00",
-                :timeStyle => "PKDateStyleFull"
-              },
-              {
-                :dateStyle => "PKDateStyleShort",
-                :label => "dateTime",
-                :key => "dateTime",
-                :value => "1980-05-07T10:00-05:00",
-                :timeStyle => "PKDateStyleShort"
-              },
-              {
-                :dateStyle => "PKDateStyleShort",
-                :label => "rel style",
-                :key => "relStyle",
-                :value => "2012-04-24T10:00-05:00",
-                :isRelative => true
+                :key => "terms",
+                :label => "TERMS",
+                :value => 'We make no express or implied warranties or representations with respect to the Program or any products sold through the Program (including, without limitation, warranties of fitness, merchantability, non-infringement, or any implied warranties arising out of a course of performance, dealing, or trade usage). In addition, we make no representation that the operation of our site will be uninterrupted or error-free, and we will not be liable for the consequences of any interruptions or errors. We may change, restrict access to, suspend or discontinued the site or any part of it at anytime. The information, content and services on the site are provided on an "as is" basis. When you use the site and or participate therein, you understand and agree that you participate at your own risk.'
               }
             ]
           }
