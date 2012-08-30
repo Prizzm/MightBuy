@@ -36,6 +36,7 @@ module NewPrizzmCom
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
     config.action_controller.include_all_helpers = false
+    config.assets.precompile += ['new.js', 'new.css', 'website.js', 'website.css']
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
