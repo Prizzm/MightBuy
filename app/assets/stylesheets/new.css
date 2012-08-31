@@ -5,8 +5,10 @@
  *= require_self
  *= require fancybox
  *= require vendor/jquery.qtip
+ *= require zocial
  *= require new/new
  *= require new/sections
+ *= require topics
 */
 
 .button_buy {

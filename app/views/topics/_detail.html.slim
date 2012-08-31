@@ -107,23 +107,30 @@ head
 
   - if current_user
     #sharemore
-          = heading "Ask Friends - should you buy it?", :id => "share"
-		  
-		  .div 
-		    b Vote URL: 
-		    = link_to "http://www.mightbuy.it/#{topic_path(resource)}?r=t", "#{topic_path(resource)}?r=t"
-            p
-  
-          .email-friend
-         
-          = link_to "Email friends", topic_share_path(resource), :class => "button"           
-          .email-friend
-	  	  	= link_to "Ask Twitter", "#twitter", :class => "button share_button twitter"
-		  .email-friend
-		  	= link_to "Ask Facebook", "#facebook", :class => "button share_button facebook"
-		  .email-friend
-	      	= link_to "Ask Fb & Twitter", "#askall", :class => "button share_button askall"
-          .clear
+      = heading "Ask Friends - should you buy it?", :id => "share"
+
+      .div
+        b Vote URL:
+        = link_to "http://www.mightbuy.it/#{topic_path(resource)}?r=t", "#{topic_path(resource)}?r=t"
+        p
+
+      div class="share-topic-link"
+        span.share-msg.fleft
+          | Socialize and Share:
+        ul
+          li
+            = link_to topic_share_path(resource), :class => "button" do
+              .zocial.email.icon
+          li
+            = link_to "#twitter", :class => "button share_button" do
+              .zocial.twitter.icon
+          li
+            = link_to "#facebook", :class => "button share_button" do
+              .zocial.facebook.icon
+          li
+            = link_to "#askall", :class => "button share_button" do
+              .zocial.steam.icon
+      .clear
 	
           - if (resource.responses.count > 0)    
 	        #stats
