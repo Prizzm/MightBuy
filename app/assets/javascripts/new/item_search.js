@@ -89,13 +89,12 @@ $(function(){
   
   if ( $("#topic_image_url").val() ) {
     initial_images.push($("#topic_image_url").val());
+    $("#item-form-image-selector").imageSelector({
+      change : function(image){
+      },
+      images : initial_images
+    });
   }
-
-  $("#item-form-image-selector").imageSelector({
-    change : function(image){
-    },
-    images : initial_images
-  });
 
   // TODO : Supporting method possibly useful elsewhere as well
   $(".collapsible a.toggle").click(function(e){
