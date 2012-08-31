@@ -13,8 +13,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
 gem 'fancybox-rails', '0.1.4'
+gem 'css-social-buttons-rails'
 
 # API
 gem 'rabl'

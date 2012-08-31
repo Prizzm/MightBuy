@@ -1,0 +1,22 @@
+.fleft { float: left; }
+
+.share-topic-link {
+  margin: 20px 0px 80px 0px;
+
+  .share-msg {
+    margin-top: 5px;
+  }
+
+  ul {
+    display: inline;
+
+    li {
+      float: left;
+      margin: 0px 10px;
+
+      &:first-child {
+        margin-left: 20px;
+      }
+    }
+  }
+}
