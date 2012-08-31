@@ -1,7 +1,7 @@
 = app_page :header => "Hey! Welcome Back!" do
   #login
     = simple_form_for resource, :as => resource_name, :url => session_path(resource_name) do |form|
-      = form.input :email, :label => "Email"
+      = form.input :email, :label => "Email", :wrapper_html => {:class => "string"}
       = form.input :password, :as => :password, :label => "Password"
       - if devise_mapping.rememberable?
         = form.input :remember_me, :as => :boolean, :label => "Remember Me?"
@@ -9,9 +9,9 @@
       .buttons.inset
         = form.button :submit, "Login!"
         = link_to "Don't have an account?", new_user_registration_path
-		br
-		span   
-		  = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
-		br
-	  	span   
-		  = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+        br
+        span
+          = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+        br
+        span
+          = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
