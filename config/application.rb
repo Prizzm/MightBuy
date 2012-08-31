@@ -33,6 +33,10 @@ module NewPrizzmCom
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    # Enable escaping HTML in JSON.
+    config.active_support.escape_html_entities_in_json = true
+    config.action_controller.include_all_helpers = false
+    config.assets.precompile += ['new.js', 'new.css', 'website.js', 'website.css']
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -45,18 +49,12 @@ module NewPrizzmCom
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    
-    # Don't automatically load all helpers.
-    config.action_controller.include_all_helpers = false
-    
-    # Precompile these assets..
-    config.assets.precompile += ['new.js', 'new.css', 'website.js', 'website.css'];
-    
+
     # Don't access the DB or load models when precompiling your assets.
     config.assets.initialize_on_precompile = false
-    
+
     # Dragonfly middleware.
     config.middleware.insert 1, 'Dragonfly::Middleware', :images
-    
+
   end
 end

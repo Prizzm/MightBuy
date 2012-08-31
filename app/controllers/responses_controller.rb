@@ -1,6 +1,4 @@
 class ResponsesController < InheritedResources::Base
-  
-  
   # Relationships
   belongs_to :topic, :finder => :find_by_shortcode!
   
@@ -27,7 +25,6 @@ class ResponsesController < InheritedResources::Base
       end
       success.js
       failure.js { render 'error' }
-      
     end
   end
   

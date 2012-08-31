@@ -1,5 +1,4 @@
 #website class="#{ brand? ? 'brands' : 'shoppers' }"
-  / = link_to "Prizzm - Rewarding Feedback", root_url, :id => "logo"
   #content
     h1.logo
       span= brand? ? "MightBuy." : "track stuff you might buy"
@@ -18,7 +17,7 @@
         / Brand Signup
         = simple_form_for User.new, :as => :user, :url => registration_path(:user), :html => { :id => "signup" } do |form|
           = form.input :name, :placeholder => "Username", :label => false
-          = form.input :email, :placeholder => "Email", :label => false
+          = form.input :email, :placeholder => "Email", :label => false, :wrapper_html => {:class => "string"}
           = form.input :password, :as => :password, :placeholder => "Password", :label => false
           = form.input :category, :as => :hidden, :input_html => { :value => "person" }, :label => false
           = form.button :submit, "Sign up for MightBuy!"
@@ -28,7 +27,7 @@
 
         / Login
         = simple_form_for User.new, :as => :user, :url => session_path(:user), :html => { :id => "login" } do |form|
-          = form.input :email, :placeholder => "Email", :label => false
+          = form.input :email, :placeholder => "Email", :label => false, :wrapper_html => {:class => "string"}
           = form.input :password, :as => :password, :placeholder => "Password", :label => false
           = form.button :submit, "Sign in!"
           .clearfix

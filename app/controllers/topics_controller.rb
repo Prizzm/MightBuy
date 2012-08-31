@@ -22,6 +22,10 @@ class TopicsController < RestfulController
 
   def index
     @topics = Topic.order("created_at desc").page(params[:page]).per(10)
+    if request.xhr?
+      render :partial => "topic_list"
+      return
+    end
   end
 
   def share
