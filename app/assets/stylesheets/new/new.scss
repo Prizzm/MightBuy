@@ -613,7 +613,8 @@ body
     div.select,
     div.integer,
     div.numeric,
-    div.radio
+    div.radio,
+    div.input
     {
       > label
       {
@@ -630,7 +631,7 @@ body
       }
     }
     
-    div.string, div.password, div.text, div.numeric
+    div.string, div.password, div.text, div.numeric, div.input
     {
       input, textarea
       {
