@@ -119,14 +119,14 @@ head
           | Socialize and Share:
         ul
           li
-            = link_to topic_share_path(resource), :class => "button" do
+            = link_to topic_share_path(resource), :class => "button share_button" do
               .zocial.email.icon
           li
-            = link_to "#twitter", :class => "button share_button" do
-              .zocial.twitter.icon
+            = link_to "#twitter", :class => "button share_button twitter" do
+              .zocial.twitter.icon.share_button.twitter
           li
-            = link_to "#facebook", :class => "button share_button" do
-              .zocial.facebook.icon
+            = link_to "#facebook", :class => "" do
+              .zocial.facebook.icon.share_button.facebook
       .clear
 	
           - if (resource.responses.count > 0)    
@@ -178,19 +178,14 @@ javascript:
   $(".share_button.facebook").click(function() {
 	$.post("/topics/" + shortcode + "/social/ask/facebook", function(data) {
 	});
-	$(".share_button.facebook").fadeOut(1000).delay(1000).remove();
-	$(".share_button.askall").fadeOut(1000).delay(1000).remove();
   });
   $(".share_button.askall").click(function() {
 	$.post("/topics/" + shortcode + "/social/ask/all", function(data) {
 	});
-	$(".share_button.askall").fadeOut(1000).delay(1000).remove();
   });
   $(".share_button.twitter").click(function() {
 	$.post("/topics/" + shortcode + "/social/ask/twitter", function(data) {
 	});
-	$(".share_button.twitter").fadeOut(1000).delay(1000).remove();
-	$(".share_button.askall").fadeOut(1000).delay(1000).remove();
   });
   });	
 
