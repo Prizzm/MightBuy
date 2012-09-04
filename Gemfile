@@ -60,7 +60,7 @@ gem 'thin', '1.2.11'
 gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'hirefireapp'
-
+gem 'configatron'
 # Others
 gem 'image_scraper', '0.1.7'
 
