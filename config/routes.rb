@@ -126,7 +126,8 @@ NewPrizzmCom::Application.routes.draw do
   # Search
   get "/search", :to => "search#public"
 
+  resources :welcomes, only: :index
+
   # Root
-  root :to => "website#index"
-  
+  root :to => "welcomes#index"
 end
