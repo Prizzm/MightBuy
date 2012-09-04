@@ -53,9 +53,6 @@ gem 'activeadmin'
 gem "meta_search"
 
 
-# Server
-gem 'thin', '1.2.11'
-
 # Background Jobs
 gem 'daemons'
 gem 'delayed_job_active_record'
