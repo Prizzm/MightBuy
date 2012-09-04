@@ -171,6 +171,7 @@ GEM
       thor (>= 0.14.6)
     guard-rspec (0.5.1)
       guard (>= 0.8.4)
+    haml (3.1.7)
     has_scope (0.5.1)
     hashie (1.2.0)
     highline (1.6.14)
@@ -438,6 +439,7 @@ DEPENDENCIES
   graylog2-resque
   graylog2_exceptions!
   guard-rspec (= 0.5.1)
+  haml
   hirb
   hirefireapp
   image_scraper (= 0.1.7)
