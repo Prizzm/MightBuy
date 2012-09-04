@@ -1,0 +1,57 @@
+.header
+  .row
+    .span4
+      = image_tag("mightbuy-logo.png", id: "mightbuy-logo")
+      %p.caption
+        Track stuff you might buy
+    .span2.offset6
+      = link_to(new_user_session_path) do
+        = image_tag("signin-ribbon.png")
+
+.content
+  .row
+    .span5
+      .welcome-description
+        %h2
+          Add a link to anything.
+        %h2
+          Get your friends feedback.
+        %p
+          Add to your list from any website, or on your
+          mobile. Share items when you need friends advice.
+          It's almost as fun as actually buying things!
+
+        %p
+          Watch the video to see
+          = link_to "how it works.", "javascript:void(0);"
+
+      = link_to(new_user_registration_path) do
+        .joinus-today
+
+
+    .span7
+      .mac-iphone-image
+        = image_tag("iphone-bubble.png", id: "iphone-bubble")
+        .clear
+        %ul.slider-links
+          %li= image_tag("slider.png")
+          %li= image_tag("slider.png")
+          %li= image_tag("slider-highlight.png")
+          %li= image_tag("slider.png")
+          %li= image_tag("slider.png")
+
+.footer
+  .row
+    .span10
+      %ul.footer-links
+        %li About Us
+        %li How it Works
+        %li Contact Us
+        %li Jobs
+        %li Privacy Policy
+        %li Terms of Use
+        %li Blog
+        %li Help
+    .span2
+      .prizzm-inc
+        &copy; 2012 Prizzm, Inc.

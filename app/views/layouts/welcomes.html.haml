@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title MightBuy
+    = stylesheet_link_tag "landing", :media => "all"
+    = csrf_meta_tags
+
+  %body
+    .container
+      = yield
