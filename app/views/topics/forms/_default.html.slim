@@ -1,13 +1,12 @@
-
 div{id="topic_fields"}
 
   div.input
     = form.label(:subject, "What might you buy?") + \
       form.input_field(:subject) + \
-      link_to("Go", "#", class: "show-google-search", style: "display:inline-block;font-weight:Bold;text-decoration:none;text-align:center;width:20px;margin-left:-31px;padding:3px 4px;color:#eee;background-color:#666;")
+      link_to("Go", "#", class: "topic-go-link show-google-search")
   #item_subject_search_autocomplete
   = form.input :url, :label => "or Paste a URL", :hint => nil
-  = form.input :image_url, :as => :hidden, :input_html => { :value => form.object.image && form.object.image.url, :class => "remote-url" }
+  = form.input :image_url, :as => :hidden, :input_html => { :value => form.object.image && form.object.iImage(true), :class => "remote-url" }
   = form.input :price, :label => "Price $"
   = form.input :body, :as => :text, :label => "Add Notes", :hint => nil, :input_html => { :size => 40}
   /= form.input :tags, :label => "Add Tags"
