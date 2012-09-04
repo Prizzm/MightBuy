@@ -5,7 +5,8 @@
       %p.caption
         Track stuff you might buy
     .span2.offset6
-      = image_tag("signin-ribbon.png")
+      = link_to(new_user_session_path) do
+        = image_tag("signin-ribbon.png")
 
 .content
   .row
@@ -22,9 +23,9 @@
 
         %p
           Watch the video to see
-          = link_to "how it works.", "#"
+          = link_to "how it works.", "javascript:void(0);"
 
-      = link_to("#") do
+      = link_to(new_user_registration_path) do
         .joinus-today
 
 
