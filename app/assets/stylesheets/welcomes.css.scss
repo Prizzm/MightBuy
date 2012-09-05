@@ -51,11 +51,14 @@
       margin-top: 20px;
       font-size: 18px;
       color: #6B5244;
+      width: 430px;             /* hack to make content look better! */
+      line-height: 24px;
     }
 
     a {
       text-decoration: none;
-      color: black;
+      color: #4E3227;
+      font-weight: bold;
     }
   }
 
