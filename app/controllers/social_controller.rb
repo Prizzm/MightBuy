@@ -105,7 +105,7 @@ class SocialController < ApplicationController
     if current_user.hasFacebook? then
       # Begin rescue block
       begin
-        p me = FbGraph::User.me(current_user.facebook_oauth_token)
+        me = FbGraph::User.me(current_user.facebook_oauth_token)
         desctext = @topic.body.blank? ? "Track stuff you mightbuy" : @topic.body
         #check for no images - which are returned from @topic.iImage with a noimage.png file
         noimage = true if @topic.iImage() == "https://www.mightbuy.it/assets/no_image.png"
