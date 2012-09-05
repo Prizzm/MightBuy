@@ -17,6 +17,8 @@
       span
         = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
         .tip= "Add this into your bookmarks! (drag or right click to add)"
+        br
+		= link_to "Download Safari Extension", "/assets/MightBuy.safariextz", :style => "font-size: 10px"
     p
 	.help
       = link_to "help", "/about#help"
@@ -60,5 +62,6 @@
       #links
         = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
 		|  (bookmarklet)
+		= link_to "Download Safari Extension", "/assets/MightBuy.safariextz"
         = link_to "About", about_path
         = link_to "Blog", "http://blog.mightbuy.it"
