@@ -1,4 +1,5 @@
 - content_for :head do
+	meta name="apple-itunes-app" content="app-id=548123429
 	- if Topic.find_by_shortcode(params[:id])
 		meta content="461844450500925" property="fb:app_id"
 		meta content="mightbuy:product" property="og:type"
