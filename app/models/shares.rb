@@ -15,6 +15,8 @@ module Shares
       
     scope :social, where(:type => [ "Shares::Recommend", "Shares::Tweet" ])
     scope :email, where(:type => "Shares::Email")
+    scope :tweets, where(type: "Shares::Tweet")
+    scope :recommends, where(type: "Shares::Recommend")
       
     # Validations
     validates :shortcode, :presence => true, :uniqueness => true
