@@ -1,0 +1,23 @@
+.share-topic-link
+  %span.share-msg.fleft
+    Socialize and Share:
+  %ul
+    %li
+      = link_to topic_share_path(topic) do
+        .zocial.email.icon
+    %li
+      - if current_user.hasTwitter?
+        = link_to social_ask_twitter_path(topic.shortcode), remote: true do
+          .zocial.twitter.icon{id: topic.tweeted_by?(current_user) ? "tweeted" : ""}
+      - else
+        = link_to user_omniauth_authorize_path(:twitter) do
+          .zocial.twitter.icon
+
+    %li
+      - if current_user.hasFacebook?
+        = link_to social_ask_facebook_path(topic.shortcode), remote: true do
+          .zocial.facebook.icon{id: topic.recommended_by?(current_user) ? "recommended" : ""}
+      - else
+        = link_to user_omniauth_authorize_path(:facebook) do
+          .zocial.facebook.icon
+  .clear

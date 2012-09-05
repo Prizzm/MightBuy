@@ -1,0 +1,4 @@
+<%- if @share.errors.empty? -%>
+    $(".share-topic-link").remove();
+    $("#social-share").after("<%= escape_javascript(render partial: 'topics/social_share_topic', locals: { topic: @share.topic }) -%>");
+<% end -%>
