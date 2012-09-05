@@ -90,8 +90,8 @@ NewPrizzmCom::Application.routes.draw do
   post 'social/tweeted' => 'social#tweeted'
   post 'social/recommended' => 'social#recommended'
   # Sharing
-  match 'topics/:sc/social/ask/facebook' => 'social#facebook'
-  match 'topics/:sc/social/ask/twitter' => 'social#twitter'
+  match 'topics/:sc/social/ask/facebook' => 'social#facebook', as: :social_ask_facebook
+  match 'topics/:sc/social/ask/twitter' => 'social#twitter',   as: :social_ask_twitter
   match 'topics/:sc/social/ask/all' => 'social#askAll'
   # Authentication
   match 'users/auth/methods/facebook/uid' => 'social#socialAuthenticationAPI'
