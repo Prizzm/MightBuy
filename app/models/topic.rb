@@ -138,5 +138,12 @@ class Topic < ActiveRecord::Base
   def stats
     @stats ||= Statistics.for(self)
   end
-  
+
+  def tweeted_by?(user)
+    !!shares.tweets.find_by_user_id(user.id)
+  end
+
+  def recommended_by?(user)
+    !!shares.recommends.find_by_user_id(user.id)
+  end
 end

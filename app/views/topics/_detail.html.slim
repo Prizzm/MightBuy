@@ -112,23 +112,9 @@ head
       .div
         b Vote URL:
         = link_to "http://www.mightbuy.it/#{topic_path(resource)}?r=t", "#{topic_path(resource)}?r=t"
-        p
+        p id="social-share"
+          = render partial: "topics/social_share_topic", locals: { topic: resource }
 
-      div class="share-topic-link"
-        span.share-msg.fleft
-          | Socialize and Share:
-        ul
-          li
-            = link_to topic_share_path(resource), :class => "button share_button" do
-              .zocial.email.icon
-          li
-            = link_to "#twitter", :class => "button share_button twitter" do
-              .zocial.twitter.icon.share_button.twitter
-          li
-            = link_to "#facebook", :class => "" do
-              .zocial.facebook.icon.share_button.facebook
-      .clear
-	
           - if (resource.responses.count > 0)    
 	        #stats
 	          = heading "Votes", :id => "stats"

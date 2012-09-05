@@ -2,6 +2,7 @@ class SocialController < ApplicationController
 
   skip_filter :award_points
   before_filter :findTopic
+  respond_to :html, :js
 
   # Accessible Methods (fold)
 
@@ -28,8 +29,8 @@ class SocialController < ApplicationController
       redirect_to_social_login(:facebook)
     else
       post_to_open_graph(false)
-      post_to_facebook_feed(false)
-      redirect_to "/topics/#{@topic.shortcode}?aff=t", :only_path => true
+      @share = post_to_facebook_feed(false)
+      respond_with(@share, location: topics_path(@topic.shortcode, aff: 't'))
     end
   end
 
@@ -37,8 +38,8 @@ class SocialController < ApplicationController
     unless current_user.hasTwitter?
       redirect_to_social_login(:twitter)
     else
-      post_to_twitter(false)
-      redirect_to "/topics/#{@topic.shortcode}?atf=t", :only_path => true
+      @share = post_to_twitter(false)
+      respond_with(@share, location: topics_path(@topic.shortcode, atf: 't'))
     end
   end
 
@@ -80,10 +81,14 @@ class SocialController < ApplicationController
               :product => "https://www.mightbuy.it/topics/#{params[:sc]}"
           )
         end
+
+        @topic.shares.recommends.create!(user: current_user)
           # If a exception occurs, rescue
       rescue Exception => e
         # Rescue code here
         puts "exception occured: ", e
+
+        nil
       end
       # If FB user doesn't exist
     else
@@ -104,7 +109,7 @@ class SocialController < ApplicationController
         desctext = @topic.body.blank? ? "Track stuff you mightbuy" : @topic.body
         #check for no images - which are returned from @topic.iImage with a noimage.png file
         noimage = true if @topic.iImage() == "https://www.mightbuy.it/assets/no_image.png"
-        if @topic.iImage() != "https://www.mightbuy.it/assets/no_image.png" then
+        fb_response = if @topic.iImage() != "https://www.mightbuy.it/assets/no_image.png" then
           me.feed!(
             :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
               :picture => @topic.iImage(),
@@ -120,6 +125,9 @@ class SocialController < ApplicationController
               :description => desctext
           )
         end
+
+        # create a shares item
+        @topic.shares.recommends.create!(user: current_user, with: fb_response.identifier)
           # Rescue from any exception
       rescue Exception => e
         puts "exception occured: ", e
@@ -184,11 +192,15 @@ class SocialController < ApplicationController
           :token => current_user.twitter_oauth_token, :token_secret => current_user.twitter_oauth_secret
         })
         # Post a status update
-        client.statuses.update! :status => "I #mightbuy #{@topic.subject}. #{@topic.displayPrice} Should I? https://www.mightbuy.it/topics/#{params[:sc]}?r=t"
+        twitter_response = client.statuses.update! :status => "I #mightbuy #{@topic.subject}. #{@topic.displayPrice} Should I? https://www.mightbuy.it/topics/#{params[:sc]}?r=t"
+
+        @topic.shares.tweets.create!(user: current_user, with: twitter_response.id_str)
           # Rescue from any exception
       rescue Exception => e
         puts "====== ERROR ======"
         puts "Error is: ", e
+
+        nil
       end
     else
       # Check if redirect is true (redirect defined as param)
