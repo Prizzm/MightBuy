@@ -69,19 +69,45 @@ class Topic < ActiveRecord::Base
       return ""
     end
   end
-
+  
   def iImage(host = true)
-    if host
-      if Rails.env.production?
-        return image.url(:host => "https://www.mightbuy.it") if image
-        "https://www.mightbuy.it/assets/no_image.png"
+    if host == true then
+      # Check env 
+      if Rails.env.production? then
+        if self.image then 
+          # Return image.url with host
+          # https://www.mightbuy.it/topics/43P16H (mightbuy.it)
+          return self.image.url(:host => "https://www.mightbuy.it")
+        else
+          return "https://www.mightbuy.it/assets/no_image.png"
+        end  
       else
-        return image.url(:host => "http://localhost:3000") if image
-        "https://www.mightbuy.it/assets/no_image.png"
+        if self.image then 
+          # Return image.url with host
+          # http://localhost.it/topics/43P16H (localhost)
+          return self.image.url(:host => "http://localhost:3000")
+        else 
+          return "https://www.mightbuy.it/assets/no_image.png"
+        end      
       end
-    else
-      image ? image.url : "https://www.mightbuy.it/assets/no_image.png"
+    else #host is not true - handle blank and 
+      # Other image.url without host (Path Only)
+      # /topics/43P16H
+      if self.image then 
+        return self.image.url
+      else
+          return "https://www.mightbuy.it/assets/no_image.png"
+      end
     end
+  end
+
+  def update_topic_with_image(params)
+    if params[:image_url] && URI.parse(URI.encode(params[:image_url])).host
+      params[:image_url] = URI.parse(URI.encode(params[:image_url])).to_s
+    else
+      params.delete(:image_url)
+    end
+    update_attributes!(params)
   end
   
   def url
@@ -112,5 +138,12 @@ class Topic < ActiveRecord::Base
   def stats
     @stats ||= Statistics.for(self)
   end
-  
+
+  def tweeted_by?(user)
+    !!shares.tweets.find_by_user_id(user.id)
+  end
+
+  def recommended_by?(user)
+    !!shares.recommends.find_by_user_id(user.id)
+  end
 end

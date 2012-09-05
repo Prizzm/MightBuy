@@ -14,3 +14,4 @@
 //= require new/app.js
 //= require new/item_search.js
 //= require new/search.js
+//= require ajax_notifier.js

@@ -1,7 +1,7 @@
 .fleft { float: left; }
 
 .share-topic-link {
-  margin: 20px 0px 80px 0px;
+  margin: 20px 0px;
 
   .share-msg {
     margin-top: 5px;
@@ -18,5 +18,26 @@
         margin-left: 20px;
       }
     }
+  }
+}
+
+
+#tweeted, #recommended {
+  background-color: grey;
+}
+
+
+#ajax-loading {
+  display: none;
+  position: fixed;
+  border-radius: 0px 0px 4px 4px;
+  border: 1px solid black;
+  border-top: none;
+  margin: 0px 50%;
+  padding: 5px;
+  width: 90px;
+
+  span {
+    margin: auto 5px;
   }
 }
