@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
-# Server
-gem 'thin', '1.2.11'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -80,10 +78,11 @@ group :development do
 end
 
 group :production do
+  # Server
+  gem 'thin', '1.2.11'
   gem 'newrelic_rpm'
   gem 'pg', '0.11.0'
   gem 'rack-google_analytics'
-  gem "therubyracer"
   gem 'gelf'
   gem 'graylog2_exceptions', :git => 'git://github.com/wr0ngway/graylog2_exceptions.git'
   gem 'graylog2-resque'
