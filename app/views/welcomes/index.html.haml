@@ -31,7 +31,8 @@
 
     .span7
       .mac-iphone-image
-        = image_tag("iphone-bubble.png", id: "iphone-bubble")
+        = link_to("http://itunes.apple.com/app/mightbuy/id548123429?mt=8") do
+          = image_tag("iphone-bubble.png", id: "iphone-bubble")
         .clear
         %ul.slider-links
           %li= image_tag("slider.png")
