@@ -72,13 +72,8 @@ class Topic < ActiveRecord::Base
 
   def iImage(host = true)
     if host
-      if Rails.env.production?
-        return image.url(:host => "https://www.mightbuy.it") if image
-        "https://www.mightbuy.it/assets/no_image.png"
-      else
-        return image.url(:host => "http://localhost:3000") if image
-        "https://www.mightbuy.it/assets/no_image.png"
-      end
+      image.url(:host => MB.config.app_url) if image
+      "https://www.mightbuy.it/assets/no_image.png"
     else
       image ? image.url : "https://www.mightbuy.it/assets/no_image.png"
     end
