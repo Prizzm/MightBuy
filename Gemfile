@@ -52,7 +52,7 @@ gem 'dragonfly'
 # Admin
 gem 'activeadmin'
 gem "meta_search"
-
+gem 'airbrake'
 
 # Background Jobs
 gem 'daemons'
@@ -61,7 +61,6 @@ gem 'hirefireapp'
 gem 'configatron'
 # Others
 gem 'image_scraper', '0.1.7'
-gem 'thin', '1.2.11'
 
 group :development do
   # Console
@@ -80,6 +79,7 @@ end
 
 group :production do
   # Server
+  gem 'thin', '1.2.11'
   gem 'newrelic_rpm'
   gem 'pg', '0.11.0'
   gem 'rack-google_analytics'
