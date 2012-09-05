@@ -33,7 +33,6 @@ class TopicsController < RestfulController
   end
 
   def show
-    puts "session[:oauth_token]: ", session[:oauth_token]
     show! do |format|
       format.html do
         if params[:responding] || params[:r]
@@ -71,6 +70,11 @@ class TopicsController < RestfulController
   end
 
   def update
+    if params[:topic][:image_url] && URI.parse(URI.encode(params[:topic][:image_url])).host
+      params[:topic][:image_url] = URI.parse(URI.encode(params[:topic][:image_url])).to_s
+    else
+      params[:topic].delete(:image_url)
+    end
     @topic = resource
     @topic.pass_visitor_code = visitor_code
     update!

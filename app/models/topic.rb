@@ -100,6 +100,15 @@ class Topic < ActiveRecord::Base
       end
     end
   end
+
+  def update_topic_with_image(params)
+    if params[:image_url] && URI.parse(URI.encode(params[:image_url])).host
+      params[:image_url] = URI.parse(URI.encode(params[:image_url])).to_s
+    else
+      params.delete(:image_url)
+    end
+    update_attributes!(params)
+  end
   
   def url
     url = attributes['url']
