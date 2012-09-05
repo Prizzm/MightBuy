@@ -15,4 +15,7 @@ html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb=
 		meta property="mightbuy:price" content="#{Topic.find_by_shortcode(params[:id]).price}"
     = yield(:head)
   body class=classes
+    #ajax-loading
+      span Loading..
+      = image_tag("loading.gif")
     = yield
