@@ -21,6 +21,10 @@ class PassbookController < PassbookManager
     end
   end
   
+  def get_current_pass
+    send_file @token.pass_path, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
+  end
+  
   def generate
     pkpass_path = generatePass(@token)
     
@@ -36,7 +40,11 @@ class PassbookController < PassbookManager
   
   private
     def verify_anti_forge_token
-      @token = AntiForgeToken.find_by_value(params[:aftoken])
+      if params[:serialnumber]
+        @token = AntiForgeToken.find_by_serial_number(params[:serialnumber])
+      else
+        @token = AntiForgeToken.find_by_value(params[:aftoken])
+      end
       token = @token
       if token then
         if !token.active then
