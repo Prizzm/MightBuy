@@ -6,7 +6,7 @@ div{id="topic_fields"}
       link_to("Go", "#", class: "topic-go-link show-google-search")
   #item_subject_search_autocomplete
   = form.input :url, :label => "or Paste a URL", :hint => nil
-  = form.input :image_url, :as => :hidden, :input_html => { :value => form.object.image && form.object.iImage(true), :class => "remote-url" }
+  = form.input :image_url, :as => :hidden, :input_html => { :value => form.object.image && form.object.url, :class => "remote-url" }
   = form.input :price, :label => "Price $"
   = form.input :body, :as => :text, :label => "Add Notes", :hint => nil, :input_html => { :size => 40}
   /= form.input :tags, :label => "Add Tags"
