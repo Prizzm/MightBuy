@@ -8,6 +8,7 @@
  *= require zocial
  *= require new/new
  *= require new/sections
+ *= require global
  *= require topics
 */
 
