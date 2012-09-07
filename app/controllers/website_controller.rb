@@ -11,11 +11,11 @@ class WebsiteController < ApplicationController
   end
   
   private
-    
-    helper_method :brand?
   
-    def brand?
-      params[:shopper] != true
-    end
+  helper_method :brand?
+  
+  def brand?
+    params[:shopper] != true
+  end
   
 end
