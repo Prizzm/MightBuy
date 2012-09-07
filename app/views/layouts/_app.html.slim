@@ -21,7 +21,7 @@
 		= link_to "Download Safari Extension", "/assets/MightBuy.safariextz", :style => "font-size: 10px"
     p
 	.help
-      = link_to "help", "/about#help"
+      = link_to "help", page_path("help")
 		
     
     #sidebar
@@ -63,5 +63,5 @@
         = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
 		|  (bookmarklet)
 		= link_to "Download Safari Extension", "/assets/MightBuy.safariextz"
-        = link_to "About", about_path
+        = link_to "About", page_path("about")
         = link_to "Blog", "http://blog.mightbuy.it"

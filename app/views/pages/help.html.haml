@@ -1,0 +1,57 @@
+%div#intro
+  %h1 What is a bookmarklet?
+
+  %p 
+    A bookmarklet is stored in your browser bookmarks, just like any other bookmark.  You can then use it on any site, to add things *to* mightbuy. 
+  %p 
+    %b Step 1: 
+    Add the link to 
+    = link_to " MightBuy.it", bookmarklet_url, :onclick => "return false;" 
+    to your browser bookmarks.
+  %p 
+    %b Step 2: 
+    While on 
+    u any site
+    , you can use your Mightbuy.it bookmark to add to MightBuy 
+    %p
+      = image_tag("addURL_sm2.png")
+    %p
+      /.howhelp
+
+  %h1 How to add Mightbuy bookmarklet
+  %br
+  %p
+    = image_tag("chrome.png", :size=>"24x24")
+    %b Chrome
+  %br
+  %p  Make sure you can "Always see bookmark bar"
+  %p
+    = image_tag("always_show_bookmarks_chrome.png")
+  %p
+    Then you can just drag this
+    = link_to " MightBuy.it", bookmarklet_url, :onclick => "return false;" 
+    into you Chrome bookmark bar- and wala! It's there.
+  %p
+  %p
+    = image_tag("safari.png", :size=>"24x24")
+    %b Safari
+  %p Make sure "show bookmark bar" is selected
+  %p
+    = image_tag("safari_show_bookmarks.png")
+  %p
+    Then you can just drag this
+    = link_to " MightBuy.it", bookmarklet_url, :onclick => "return false;" 
+    into you Safari bookmark bar- and wala! It's there.
+  %p
+  %p
+    = image_tag("firefox.png", :size=>"24x24")
+    %b Firefox
+  %p
+    = image_tag("firefox_show_bookmarks.png")
+    %p
+      On Firefox, you can right click on this link 
+      = link_to " MightBuy.it", bookmarklet_url, :onclick => "return false;" 
+      or drag it to your bar- and wala! It's there.
+  %p
+
+
