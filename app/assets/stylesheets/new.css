@@ -6,9 +6,9 @@
  *= require fancybox
  *= require vendor/jquery.qtip
  *= require zocial
+ *= require global
  *= require new/new
  *= require new/sections
- *= require global
  *= require topics
 */
 
