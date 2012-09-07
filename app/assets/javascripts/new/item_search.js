@@ -37,12 +37,17 @@ $(function(){
       var result_elem = $("<ul></ul>");
       if ( res.length ) {
         res = $.each(res, function(i, r){
-
+		  if (/shopbryna.com/.test(r.url) == true) {
+		  	var verified_text = "<span style='color: rgb(150,150,200);' class='r_title'>"+ "√ Verified Site" +"</span>";
+		  } else {
+			var verified_text = "";
+		  }
           var new_item = $("<li class='g_result'>" + 
                            "<a class='result_item' href='"+ r.unescapedUrl +"'>" +
                            "<span class='r_title'>"+ r.titleNoFormatting +"</span>" +
                            "<span class='r_desc'>"+ r.content +"</span><br />" +
                            "<span class='r_vurl'>"+r.url+"</span>" +
+						   verified_text +
                            "</a>" +
                            "</li>")
            
