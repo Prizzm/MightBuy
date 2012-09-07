@@ -61,6 +61,7 @@ gem 'hirefireapp'
 gem 'configatron'
 # Others
 gem 'image_scraper', '0.1.7'
+gem 'high_voltage'
 
 group :development do
   # Console
