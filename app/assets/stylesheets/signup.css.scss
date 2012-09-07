@@ -1,0 +1,148 @@
+// Place all the styles related to the welcomes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-join {
+  font-family: Museo500;
+  margin-top: 55px;
+  text-shadow: 1px 2px 0px #FCF8F5;
+  padding-bottom: 10px;
+
+  p {
+    font-size: 24px;
+    color: #4E3227;
+  }
+
+  #new_user {
+    margin-top: 40px;
+
+    label {
+      font-size: 18px;
+      text-align: left;
+      width: 100px;
+      margin-top: 5px;
+    }
+
+    .controls {
+      margin-left: 110px;
+
+      input {
+        font-family: Museo500;
+        height: 28px;
+        width: 80%;
+        font-size: 18px;
+        padding-left: 10px;
+      }
+    }
+
+    .new-user-form-submit {
+      margin-top: 30px;
+      padding-left: 45%;
+
+      input {
+        background: image-url("get-started.jpg");
+        width: 230px;
+        height: 56px;
+        border: none;
+
+        &:hover {
+          background: image-url("get-started-hover.jpg");
+        }
+      }
+    }
+  }
+
+  .social-login {
+    margin-left: 19px;
+
+    p {
+      margin: 0px 0px 15px 10px;
+    }
+
+    a {
+      margin: 0px 0px 15px 10px;
+      display: block;
+    }
+
+    #facebook-signin {
+      margin-top: 30px;
+    }
+  }
+}
+
+
+.user-signin {
+  font-family: Museo500;
+  margin-top: 55px;
+  margin-bottom: 60px;
+  text-shadow: 1px 2px 0px #FCF8F5;
+  padding-bottom: 10px;
+
+  p {
+    font-size: 24px;
+    color: #4E3227;
+  }
+
+  #new_user {
+    margin-top: 35px;
+
+    label {
+      font-size: 18px;
+      text-align: left;
+      width: 100px;
+      margin-top: 5px;
+    }
+
+    .controls {
+      margin-left: 110px;
+
+      input {
+        font-family: Museo500;
+        height: 28px;
+        width: 80%;
+        font-size: 18px;
+        padding-left: 10px;
+      }
+    }
+
+    .user-signin-form-submit {
+      margin-top: 30px;
+      padding-left: 52%;
+
+      input {
+        background: image-url("signin.jpg");
+        width: 190px;
+        height: 56px;
+        border: none;
+
+        &:hover {
+          background: image-url("signin-hover.jpg");
+        }
+      }
+    }
+  }
+
+  .social-login {
+    margin-left: 19px;
+
+    p {
+      margin: 0px 0px 15px 10px;
+    }
+
+    #social-buttons {
+      margin: 35px 6px 45px 10px;
+    }
+
+    .join-us-today {
+      height: 56px;
+      width: 230px;
+      background: image-url("joinus.jpg");
+      margin-top: 15px;
+      float: right;
+
+      &:hover {
+        background: image-url("joinus-hover.jpg");
+      }
+    }
+  }
+}
