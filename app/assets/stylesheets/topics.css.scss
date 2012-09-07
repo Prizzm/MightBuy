@@ -22,8 +22,53 @@
 }
 
 
-#tweeted, #recommended {
-  background-color: grey;
+.email-icon {
+  width: 39px;
+  height: 37px;
+  background: image-url("social/email.jpg");
+  &:hover {
+    background: image-url("social/email-hover.jpg");
+  }
+}
+
+.twitter-icon {
+  width: 39px;
+  height: 37px;
+  background: image-url("social/twitter.jpg");
+  &:hover {
+    background: image-url("social/twitter-hover.jpg");
+  }
+}
+
+.facebook-icon {
+  width: 39px;
+  height: 37px;
+  background: image-url("social/facebook.jpg");
+  &:hover {
+    background: image-url("social/facebook-hover.jpg");
+  }
+}
+
+
+#emailed {
+  background: image-url("social/email-marked.jpg");
+  &:hover {
+    background: image-url("social/email-marked-hover.jpg");
+  }
+}
+
+#tweeted {
+  background: image-url("social/twitter-marked.jpg");
+  &:hover {
+    background: image-url("social/twitter-marked-hover.jpg");
+  }
+}
+
+#recommended {
+  background: image-url("social/facebook-marked.jpg");
+  &:hover {
+    background: image-url("social/facebook-marked-hover.jpg");
+  }
 }
 
 
