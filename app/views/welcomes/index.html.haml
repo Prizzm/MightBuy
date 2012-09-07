@@ -1,12 +1,4 @@
-.header
-  .row
-    .span4
-      = image_tag("mightbuy-logo.png", id: "mightbuy-logo")
-      %p.caption
-        Track stuff you might buy
-    .span2.offset6
-      = link_to(new_user_session_path) do
-        = image_tag("signin-ribbon.png")
+= render :partial => "/shares/landing_header"
 
 .content
   .row
@@ -44,18 +36,4 @@
           %li= image_tag("slider.png")
           %li= image_tag("slider.png")
 
-.footer
-  .row
-    .span10
-      %ul.footer-links
-        %li= link_to("About Us", about_path)
-        %li How it Works
-        %li Contact Us
-        %li Jobs
-        %li Privacy Policy
-        %li Terms of Use
-        %li= link_to("Blog", "http://blog.mightbuy.it")
-        %li Help
-    .span2
-      .prizzm-inc
-        &copy; 2012 Prizzm, Inc.
+= render :partial => "/shares/footer"

@@ -110,11 +110,6 @@ NewPrizzmCom::Application.routes.draw do
   post 'uploads/accept' => 'upload#accept'
 
 
-  # Website
-  get 'about'   => 'website#about'
-  get 'contact' => redirect('/about#contact')
-  get 'privacy' => redirect('/about#privacy')
-
   # Sandbox
   get 'sandbox' => "website#sandbox"
 
@@ -128,6 +123,8 @@ NewPrizzmCom::Application.routes.draw do
   get "/search", :to => "search#public"
 
   resources :welcomes, only: :index
+  # in config/routes.rb
+  match "/pages/*id" => 'pages#show', :as => :page, :format => false
 
   # Root
   root :to => "welcomes#index"

@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title MightBuy
+    %meta{'name'=>"apple-itunes-app", 'content'=>"app-id=548123429"}
+    = stylesheet_link_tag "landing", :media => "all"
+    = csrf_meta_tags
+
+  %body
+    .container
+      = render :partial => "/shares/landing_header"
+      = yield
+      = render :partial => "/shares/footer"
