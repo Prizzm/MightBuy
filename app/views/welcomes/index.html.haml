@@ -12,21 +12,24 @@
   .row
     .span5
       .welcome-description
-        %h2
-          Add a link to anything.
-        %h2
-          Get your friends feedback.
+        %h2 Add a link to anything.
+        %h2 Get your friends feedback.
+        %p.first-point
+          = image_tag("check-mark.png")
+          Add to your list from any website
         %p
-          Add to your list from any website, or on your
-          mobile. Share items when you need friends advice.
-          It's almost as fun as actually buying things!
+          = image_tag("check-mark.png")
+          Or on your mobile.
+        %p.last-point
+          = image_tag("check-mark.png")
+          Share items when you need friends advice.
 
-        %p
-          Watch the video to see
-          = link_to "how it works.", "javascript:void(0);"
+        It's almost as fun as actually buying things!
 
-      = link_to(new_user_registration_path) do
-        .joinus-today
+      .row
+        .span3
+          = link_to(new_user_registration_path) do
+            .tryitnow
 
 
     .span7

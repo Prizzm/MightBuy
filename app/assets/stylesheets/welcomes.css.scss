@@ -38,38 +38,43 @@
   padding-bottom: 10px;
 
   .welcome-description {
-    margin-bottom: 50px;
+    margin-bottom: 35px;
+    font-size: 18px;
+    color: #4E3227;
 
     h2 {
       font-family: Museo700;
       font-size: 28px;
       font-weight: 300;
-      color: #4E3227;
     }
 
     p {
-      margin-top: 20px;
-      font-size: 18px;
-      color: #6B5244;
-      width: 430px;             /* hack to make content look better! */
+      width: 430px;
       line-height: 24px;
+      margin: 10px 0px;
+
+      img {
+        margin: -10px 5px 0px 0px;
+      }
     }
 
-    a {
-      text-decoration: none;
-      color: #4E3227;
-      font-weight: bold;
+    p.first-point {
+      margin-top: 20px;
+    }
+
+    p.last-point {
+      margin-bottom: 20px;
     }
   }
 
-  .joinus-today {
+  .tryitnow {
     height: 56px;
-    width: 270px;
+    width: 250px;
     margin-left: -10px;
-    background: image-url("joinus-today.png") no-repeat;
+    background: image-url("tryitnow.png") no-repeat;
 
     &:hover {
-      background: image-url("joinus-today-highlight.png") no-repeat;
+      background: image-url("tryitnow-hover.png") no-repeat;
     }
   }
 
