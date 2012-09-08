@@ -1,0 +1,9 @@
+.header
+  .row
+    .span4
+      = image_tag("mightbuy-logo.png", id: "mightbuy-logo")
+      %p.caption
+        Track stuff you might buy
+    .span2.offset6
+      = link_to(new_user_session_path) do
+        = image_tag("signin-ribbon.png")
