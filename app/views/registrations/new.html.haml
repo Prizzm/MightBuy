@@ -1,0 +1,23 @@
+.user-join
+  .row
+    .span7.bevel-line-vertical-right
+      %p
+        Join us today!
+
+      = simple_form_for @user, html: { class: 'form-horizontal' } do |f|
+        = f.input :name, label: "Username", required: false
+        = f.input :password
+        = f.input :email
+        .new-user-form-submit
+          = f.submit ""
+
+    .span5.social-login
+      %p
+        Or you could also join us with
+      %p
+        Facebook & Twitter!
+
+      = link_to user_omniauth_authorize_path(:facebook), id: "facebook-signin" do
+        = image_tag("facebook-signin.jpg");
+      = link_to user_omniauth_authorize_path(:twitter), id: "twitter-signin" do
+        = image_tag("twitter-signin.jpg");

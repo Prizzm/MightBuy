@@ -1,5 +1,7 @@
 /*
  *= require bootstrap_overrides
+ *= require global
  *= require welcomes
+ *= require signup
  *= require pages
 */
