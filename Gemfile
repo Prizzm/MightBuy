@@ -94,9 +94,13 @@ group :test do
   gem 'shoulda-matchers', '1.0.0'
   gem 'guard-rspec', "0.5.1"
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'cucumber-rails', :require => false
   gem 'email_spec'
-  gem 'simplecov', :require => false
+  gem 'launchy'
+  gem 'headless'
+  gem "ci_reporter"
+  gem 'simplecov', :platform => :mri_19
   gem 'simplecov-rcov', :require => false
   gem 'database_cleaner'
 end

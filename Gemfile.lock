@@ -81,8 +81,13 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    capybara-webkit (0.12.1)
+      capybara (>= 1.0.0, < 1.2)
+      json
     childprocess (0.3.5)
       ffi (~> 1.0, >= 1.0.6)
+    ci_reporter (1.7.1)
+      builder (>= 2.1.2)
     clamp (0.4.0)
     cocoon (1.0.22)
     coderay (1.0.7)
@@ -179,6 +184,7 @@ GEM
     haml (3.1.7)
     has_scope (0.5.1)
     hashie (1.2.0)
+    headless (0.3.1)
     high_voltage (1.2.0)
     highline (1.6.14)
     hike (1.2.1)
@@ -209,6 +215,8 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
+    launchy (2.1.2)
+      addressable (~> 2.3)
     libwebsocket (0.1.5)
       addressable
     listen (0.5.0)
@@ -424,6 +432,8 @@ DEPENDENCIES
   airbrake
   bootstrap-sass
   capybara
+  capybara-webkit
+  ci_reporter
   cocoon
   coffee-rails (~> 3.2.1)
   configatron
@@ -446,12 +456,14 @@ DEPENDENCIES
   graylog2_exceptions!
   guard-rspec (= 0.5.1)
   haml
+  headless
   high_voltage
   hirb
   hirefireapp
   image_scraper (= 0.1.7)
   inherited_resources
   jquery-rails
+  launchy
   meta-tags
   meta_search
   mini_magick
