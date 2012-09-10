@@ -86,6 +86,22 @@ div.bookmarklet-help {
   margin-bottom: 0px;
 }
 
+.topic-tabs li.active a {
+  border: 1px solid #fff;
+  border-bottom-color: transparent;
+}
+
+.topic-tabs li a:hover {
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-bottom-color: transparent;
+}
+
+.topic-tabs li.active a:hover {
+  border: 1px solid #fff;
+  border-bottom-color: transparent;
+}
+
 #details {
   background: #fff;
 }
