@@ -6,6 +6,7 @@ FactoryGirl.define do
   factory :topic do
     subject "Jeans"
     access "private"
+    form   "recommendation"
     shortcode  { FactoryGirl.generate(:shortcode) }
   end
 end

@@ -70,4 +70,9 @@ class ApplicationController < ActionController::Base
   def self.authenticate! (options = {})
     before_filter :authenticate_user!, options
   end
+
+  def after_sign_in_path_for(user)
+    redirect_path = session.delete(:redirect_path)
+    redirect_path ? redirect_path : user_root_path
+  end
 end

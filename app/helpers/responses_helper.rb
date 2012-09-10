@@ -16,9 +16,9 @@ module ResponsesHelper
     end
   end
   
-  def recommendation_points_earned
+  def recommendation_points_earned(response)
     points = Points.allocators[:responding]
-    unless resource.body.blank?
+    unless response.body.blank?
       points += Points.allocators[:giving_more_feedback]
     end
     points

@@ -116,7 +116,7 @@ class TopicsController < RestfulController
   end
 
   def responses
-    @responses ||= resource.responses.includes(:replies).where(:reply_id => nil)
+    @responses ||= resource.responses.joins(:user).includes(:replies).where(:reply_id => nil)
   end
 
 end
