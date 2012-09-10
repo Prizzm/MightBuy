@@ -91,7 +91,7 @@ $(function(){
   });
 
   var initial_images = [];
-  
+
   if ( $("#topic_image_url").val() ) {
     initial_images.push($("#topic_image_url").val());
     $("#item-form-image-selector").imageSelector({
@@ -139,11 +139,29 @@ $(function(){
     $.getJSON(window.location.protocol + '//mightbuy-scraper.herokuapp.com/?url='+ encodeURIComponent(url) +'&callback=?', function(data){
       var images = data.images;
       
+      position = 0;
+
+      // when user is coming from search page
+      // URL will have image URL in hash
+      // use this url to set current image
+      var hash_part = window.location.href.split("#")[1];
+      if ( hash_part ) { // there is already an image
+        // find the index of image
+        var image_position = images.indexOf(decodeURIComponent(hash_part));
+        if ( image_position != -1 ) {
+          position = image_position;
+          
+          // change hash so sub-sequent requests don't fail
+          window.location.hash = "";
+        }        
+      }
+      
       $("#item-form-image-selector").imageSelector({
         change : function(image){
           $("#topic_image_url").val(image);
         },
-        images : images
+        images : images,
+        position : position
       });
       
       if ( data.price ) { $("#topic_price").val(data.price); }
