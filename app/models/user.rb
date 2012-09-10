@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   has_many :shares, :class_name => "Shares::Share"
   has_many :auth_providers
   has_many :antiForgeTokens
+
+  has_many :deals, :class_name => "Deals::Deal"
   
   # Validations
   validates :name, :presence => true

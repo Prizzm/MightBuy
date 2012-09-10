@@ -57,7 +57,7 @@ module Deals
   
   class Redemption < ActiveRecord::Base
     
-    set_table_name "deal_redemptions"
+    self.table_name = "deal_redemptions"
     
     belongs_to :deal
     belongs_to :bank, :class_name => "Points::Bank"
