@@ -1,10 +1,12 @@
 %li
   .span2.item-list-image
-    = image_tag(topic.iImage)
+    = image_tag(topic.iImage, :size => "187x137")
   .span7
-    .span4.topic-description
+    .span5.topic-description
       .topic-title
-        = link_to(topic.subject.capitalize, topic.url)
+        = link_to(topic.subject.capitalize, topic_path(topic))
+      .topic-url
+        = link_to(topic.url, "#{topic.url}")
       .topic-listing-tag
         = link_to("shoes")
         ,
@@ -13,7 +15,7 @@
         %span
           = topic.user.name
           added this #{time_ago_in_words(topic.created_at)} ago
-    .span2.pull-right
+    .span1.pull-right.topic-list-actions
       .topic-actions
         = image_tag("delete.jpg")
       .clear
