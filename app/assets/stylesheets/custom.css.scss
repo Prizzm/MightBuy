@@ -45,11 +45,86 @@ div.bookmarklet-help {
   }
 }
 
+.avatar {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.app-content {
+  margin-top: 38px;
+}
 
 .topic-tabs {
   li {
     width: 150px;
     text-align: center;
-    background-color: #de686f;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 6px;
+    margin-left: 3px;
+    background: #df646c; /* Old browsers */
+    background: -moz-linear-gradient(top, #df646c 0%, #aa383c 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #df646c), color-stop(100%, #aa383c)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #df646c 0%, #aa383c 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #df646c 0%, #aa383c 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #df646c 0%, #aa383c 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #df646c 0%, #aa383c 100%); /* W3C */
+    a {
+      font-size: 1.1em;
+      color: #fff;
+    }
+    a:hover {
+      color: #4e3227;
+    }
+  }
+  li.active {
+    background: #fff;
+  }
+  li:hover {
+    background: #fff;
+  }
+  margin-left: -4px;
+  margin-bottom: 0px;
+}
+
+#details {
+  background: #fff;
+}
+
+ol.topics {
+  padding-top: 50px;
+  li {
+    display: block;
+    border-bottom: 1px solid #9d9d9d;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    margin-left: -10px;
+    img {
+      border: 1px solid #d1d1d1;
+      padding: 5px;
+    }
+  }
+  .topic-title {
+    color: #4e3227;
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+  .topic-description {
+    margin-left: 10px;
+  }
+  .topic-url {
+    margin: 4px 0px 14px 0px;
+  }
+
+  .topic-listing-tag {
+    topic: 15px 0px 15px 0px;
+  }
+  .topic-meta > span{
+      color: brown;
+  }
+  .topic-meta span.price {
+    color: #879d6c;
+    font-size: 2.8em;
+    float: right;
   }
 }

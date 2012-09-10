@@ -1,0 +1,21 @@
+%li
+  .span2
+    = image_tag(topic.iImage)
+  .span6
+    .topic-description
+      .topic-title
+        = topic.subject.capitalize
+      .topic-url
+        = link_to(topic.url, topic.url)
+      .topic-listing-tag
+        = link_to("shoes")
+        ,
+        = link_to("dress")
+      .topic-meta
+        %span
+          = topic.user.name
+          added this #{time_ago_in_words(topic.created_at)} ago
+        %span.price
+          = number_to_currency(topic.price)
+
+  .clear
