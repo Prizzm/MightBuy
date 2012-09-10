@@ -1,4 +1,5 @@
 class ProfileController < InheritedResources::Base
+  layout 'logged_user'
 
   # Authenticate
   before_filter :authenticate_user!

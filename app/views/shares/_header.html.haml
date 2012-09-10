@@ -1,0 +1,13 @@
+.logged-user-header
+  .row
+    .span5
+      = link_to("/") do
+        = image_tag("mightbuy-logo.png", id: "mightbuy-logo")
+      %p.caption
+        Track stuff you might buy
+    .span3.offset4
+      .bookmarkelet-button
+        = image_tag("bookmarklet.png")
+      .bookmarklet-help
+        Drag me to your
+        %b Bookmarks Bar!
