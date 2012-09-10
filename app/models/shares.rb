@@ -2,7 +2,7 @@ module Shares
   class Share < ActiveRecord::Base
     
     # Table
-    set_table_name "shares"
+    self.table_name ="shares"
     
     # Relationships
     has_many :responeses

@@ -3,4 +3,6 @@ class TopicTag < ActiveRecord::Base
 
   belongs_to :topic
   belongs_to :tag
+
+  validate :topic_id, :tag_id, presence: true
 end

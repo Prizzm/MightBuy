@@ -45,9 +45,8 @@ module Points
   class Bank < ActiveRecord::Base
     
     include Deals::Model
+    self.table_name = "point_banks"
 
-    set_table_name "point_banks"
-    
     has_many :allocations, :class_name => "Points::Allocation", :after_add => :increment_awarded!
     belongs_to :bankable, :polymorphic => true
     
@@ -94,8 +93,7 @@ module Points
   end
   
   class Allocation < ActiveRecord::Base
-
-    set_table_name "point_allocations"
+    self.table_name = "point_allocations"
     
     # Relationships
     belongs_to :bank, :class_name => "Points::Bank"
