@@ -66,10 +66,18 @@ class Topic < ActiveRecord::Base
   attr_accessor :tags # TODO : Remove it, temporary
   
   def displayPrice
-    if self.price then
+    if self.price
       return " #{number_to_currency(self.price)}."
     else
       return ""
+    end
+  end
+
+  def thumbnail_image
+    if image
+      image.thumb("187x137").url
+    else
+      "/assets/no_image.png"
     end
   end
   
@@ -97,9 +105,9 @@ class Topic < ActiveRecord::Base
       # Other image.url without host (Path Only)
       # /topics/43P16H
       if self.image then 
-        return self.image.url
+        self.image.url
       else
-          return "https://www.mightbuy.it/assets/no_image.png"
+        "https://www.mightbuy.it/assets/no_image.png"
       end
     end
   end
