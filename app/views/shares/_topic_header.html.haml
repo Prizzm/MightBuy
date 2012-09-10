@@ -1,11 +1,13 @@
+= javascript_tag "Mightbuy.selectedMainTab = '#{@selected_tab}'"
 %ul.nav.nav-tabs.topic-tabs
-  %li
+  %li{'tab-name' => "everybody"}
     %a{:href => topics_path}
       Everybody
-  %li.active
-    %a{:href => ""}
+  %li{'tab-name' => "mightbuy"}
+    %a{:href => profile_path }
       I might buy
 
-  %li
+  %li{'tab-name' => "ihave"}
     %a{:href => ""}
       I Have
+

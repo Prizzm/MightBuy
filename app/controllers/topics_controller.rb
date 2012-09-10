@@ -118,6 +118,15 @@ class TopicsController < RestfulController
     current_user ? 'logged_user' : 'anonymous'
   end
 
+  def set_selected_tab
+    if current_user
+      @selected_tab = 'everybody'
+    else
+      @selected_tab = 'mightbuy'
+    end
+  end
+
+
   def responses
     @responses ||= resource.responses.joins(:user).includes(:replies).where(:reply_id => nil)
   end
