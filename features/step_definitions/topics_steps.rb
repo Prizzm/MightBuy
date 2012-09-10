@@ -3,7 +3,7 @@ Given /^I am logged in a user$/ do
   visit "/users/login"
   fill_in "user[email]", with: @user.email
   fill_in "user[password]", with: "asdfasdf"
-  click_button "Login!"
+  page.find("#sign-in-submit-button").click()
 end
 
 And /^I visit topic page$/ do
