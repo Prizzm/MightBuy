@@ -2,11 +2,9 @@
   .span2
     = image_tag(topic.iImage)
   .span6
-    .topic-description
+    .span4.topic-description
       .topic-title
-        = topic.subject.capitalize
-      .topic-url
-        = link_to(topic.url, topic.url)
+        = link_to(topic.subject.capitalize, topic.url)
       .topic-listing-tag
         = link_to("shoes")
         ,
@@ -15,7 +13,8 @@
         %span
           = topic.user.name
           added this #{time_ago_in_words(topic.created_at)} ago
-        %span.price
-          = number_to_currency(topic.price)
+    .span2.pull-right
+      %span.price
+        = number_to_currency(topic.price)
 
   .clear

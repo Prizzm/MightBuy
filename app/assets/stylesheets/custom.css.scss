@@ -112,19 +112,16 @@ ol.topics {
   .topic-description {
     margin-left: 10px;
   }
-  .topic-url {
-    margin: 4px 0px 14px 0px;
-  }
 
   .topic-listing-tag {
-    topic: 15px 0px 15px 0px;
+    margin: 10px 0px 10px 0px;
   }
+
   .topic-meta > span{
       color: brown;
   }
-  .topic-meta span.price {
+  span.price {
     color: #879d6c;
     font-size: 2.8em;
-    float: right;
   }
 }
