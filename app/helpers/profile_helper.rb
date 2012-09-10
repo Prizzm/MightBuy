@@ -16,10 +16,7 @@ module ProfileHelper
     end
   end
 
-  def avatar_image
-    current_user.image ? current_user.image.url : "/assets/default_avatar.png"
-  end
-  
+
   def latest_posts
     resource.topics.order("created_at desc").limit(10)
   end

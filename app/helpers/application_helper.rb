@@ -34,7 +34,11 @@ module ApplicationHelper
   def stars (text)
     text.gsub(/\*([^\*]+)\*/i, content_tag('strong', '\1')).html_safe
   end
-  
+
+  def avatar_image
+    current_user.image ? current_user.image.url : "/assets/default_avatar.png"
+  end
+
   # Image Helper
   def image (uploader, options = {}, &block)
     if uploader.blank?

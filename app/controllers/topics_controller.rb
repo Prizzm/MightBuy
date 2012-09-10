@@ -7,7 +7,7 @@ class TopicsController < RestfulController
 
   # Custom Actions
   custom_actions :collection => :feedback, :resource => :share
-  layout 'logged_user'
+  layout :choose_layout
 
   # Verify Owner
   before_filter :only => [:edit, :update, :destroy] do
@@ -112,6 +112,10 @@ class TopicsController < RestfulController
     unless params[:feature].blank?
       @response ||= resource.responses.find_by_id(params[:feature])
     end
+  end
+
+  def choose_layout
+    current_user ? 'logged_user' : 'anonymous'
   end
 
   def responses

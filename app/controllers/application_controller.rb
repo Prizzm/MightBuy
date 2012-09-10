@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   # Filters
 
   before_filter :update_last_seen
+  before_filter :set_selected_tab
+
   before_filter do
     cookies[:visitor_code] ||= {
       :value => Shortcode.new(40),
@@ -66,6 +68,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_selected_tab
+    @selected_tab = 'everybody'
+  end
 
   def self.authenticate! (options = {})
     before_filter :authenticate_user!, options
