@@ -8,11 +8,48 @@ body {
 }
 p.caption {
   font-size: 1.7em;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+  margin-top:  5px;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
 }
 
 .clear {
   clear: both;
 }
 
+div.bookmarklet-help {
+  margin-top: -7px;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+}
 
+
+.logged-user-header {
+  margin-bottom: 10px;
+}
+
+.profile-actions {
+  .edit-profile{
+    margin-bottom: 5px;
+    background: url("/assets/edit_profile.png") no-repeat 5px 1px;
+    padding-left: 35px;
+  }
+
+  .logout {
+    background: url("/assets/sign_out.png") no-repeat 5px 1px;
+    padding-left: 35px;
+  }
+
+  .edit-profile, .logout {
+    a {
+      color: #4e3227;
+    }
+  }
+}
+
+
+.topic-tabs {
+  li {
+    width: 150px;
+    text-align: center;
+    background-color: #de686f;
+  }
+}

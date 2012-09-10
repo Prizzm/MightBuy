@@ -1,2 +1,8 @@
-adasdas
-dadas
+%div.avatar
+  = image_link(current_user, user_root_path) { thumb('100x100#') }
+
+.profile-actions
+  .edit-profile
+    = link_to "Edit Profile", edit_profile_path
+  .logout
+    = link_to "Sign out", destroy_user_session_path, :method => :delete
