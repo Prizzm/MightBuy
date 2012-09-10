@@ -15,6 +15,9 @@ class Topic < ActiveRecord::Base
   has_many :shares, :class_name => "Shares::Share", :inverse_of => :topic
   belongs_to :user
   belongs_to :product
+
+  has_many :topic_tags
+  has_many :tags, :through => :topic_tags
   
   # Scopes
   scope :publics, where(:access => "public")
