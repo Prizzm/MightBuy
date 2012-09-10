@@ -12,3 +12,4 @@ public/system
 routes.txt
 /vendor/ruby
 reports/
+/coverage
