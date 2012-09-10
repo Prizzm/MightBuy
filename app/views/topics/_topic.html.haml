@@ -1,7 +1,7 @@
 %li
-  .span2
+  .span2.item-list-image
     = image_tag(topic.iImage)
-  .span6
+  .span7
     .span4.topic-description
       .topic-title
         = link_to(topic.subject.capitalize, topic.url)
@@ -14,7 +14,10 @@
           = topic.user.name
           added this #{time_ago_in_words(topic.created_at)} ago
     .span2.pull-right
-      %span.price
+      .topic-actions
+        = image_tag("delete.jpg")
+      .clear
+      %div.price
         = number_to_currency(topic.price)
-
+      .clear
   .clear

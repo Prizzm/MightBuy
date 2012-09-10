@@ -36,6 +36,7 @@ div.bookmarklet-help {
   .logout {
     background: url("/assets/sign_out.png") no-repeat 5px 1px;
     padding-left: 35px;
+    margin-top: 10px;
   }
 
   .edit-profile, .logout {
@@ -52,6 +53,10 @@ div.bookmarklet-help {
 
 .app-content {
   margin-top: 38px;
+}
+
+.app-content .span10 {
+  margin-left: 0px;
 }
 
 .topic-tabs {
@@ -115,10 +120,6 @@ ol.topics {
     margin-top: 20px;
     padding-bottom: 20px;
     margin-left: -10px;
-    img {
-      border: 1px solid #d1d1d1;
-      padding: 5px;
-    }
   }
   .topic-title {
     color: #4e3227;
@@ -136,8 +137,23 @@ ol.topics {
   .topic-meta > span{
       color: brown;
   }
-  span.price {
+  div.price {
+    margin-top: 10px;
     color: #879d6c;
+    float:right;
     font-size: 2.8em;
   }
 }
+.span2.item-list-image {
+  img {
+    border: 1px solid #d1d1d1;
+    padding: 5px;
+  }
+}
+
+.topic-actions{
+  float: right;
+  margin-bottom: 20px;
+}
+
+
