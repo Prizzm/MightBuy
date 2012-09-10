@@ -1,0 +1,4 @@
+%div#details
+  %ol.list.topics
+    - @topics.each do |topic|
+      = render :partial => "topic", :object => topic

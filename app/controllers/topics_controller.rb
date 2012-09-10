@@ -1,5 +1,4 @@
 class TopicsController < RestfulController
-
   # Pageless
   index_with_xhr
 
@@ -8,6 +7,7 @@ class TopicsController < RestfulController
 
   # Custom Actions
   custom_actions :collection => :feedback, :resource => :share
+  layout 'logged_user'
 
   # Verify Owner
   before_filter :only => [:edit, :update, :destroy] do
@@ -15,7 +15,6 @@ class TopicsController < RestfulController
       redirect_to login_path
     end
   end
-
   def feedback
     new!
   end

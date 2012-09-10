@@ -1,8 +1,9 @@
-%div.avatar
-  = image_tag(avatar_image)
+- if current_user
+  %div.avatar
+    = image_tag(avatar_image)
 
-.profile-actions
-  .edit-profile
-    = link_to "Edit Profile", edit_profile_path
-  .logout
-    = link_to "Sign out", destroy_user_session_path, :method => :delete
+  .profile-actions
+    .edit-profile
+      = link_to "Edit Profile", edit_profile_path
+    .logout
+      = link_to "Sign out", destroy_user_session_path, :method => :delete

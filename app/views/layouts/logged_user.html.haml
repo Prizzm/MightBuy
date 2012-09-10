@@ -9,12 +9,12 @@
 
   %body
     .container.logged_user
-      = render partial: "shares/header"
+      = render partial: "/shares/header"
       .app-content
         .span2
-          = render :partial => "shares/shared_sidebar"
+          = render :partial => "/shares/shared_sidebar"
         .span10.pull-right
-          = render :partial => "shares/topic_header"
+          = render :partial => "/shares/topic_header"
           = yield
         .clear
-      = render partial: "shares/footer"
+      = render partial: "/shares/footer"
