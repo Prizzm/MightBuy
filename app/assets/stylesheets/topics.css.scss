@@ -95,16 +95,40 @@
     ul {
       list-style: none;
       padding-left: 40px;
+      margin-top: 0px;
     }
 
     li {
-      display: inline;
+      float: left;
       margin: 0px 5px;
     }
 
     #home-link {
-      padding-left: 40px;
-      border-radius: 5px;
+      margin-left: 40px;
+      height: 32px;
+      width: 88px;
+      background: image-url("details-page-buttons.jpg") no-repeat scroll -21px -17px;
+      &:hover {
+        background-position: -110px -17px;
+      }
+    }
+
+    #edit-topic {
+      height: 32px;
+      width: 88px;
+      background: image-url("details-page-buttons.jpg") no-repeat scroll -199px -17px;
+      &:hover {
+        background-position: -288px -17px;
+      }
+    }
+
+    #delete-topic {
+      height: 32px;
+      width: 88px;
+      background: image-url("details-page-buttons.jpg") no-repeat scroll -377px -17px;
+      &:hover {
+        background-position: -466px -17px;
+      }
     }
   }
 }

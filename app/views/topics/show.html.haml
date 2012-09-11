@@ -1,14 +1,14 @@
 .show-topic
-  .row.topic-links.ptop30
+  .row.topic-links.ptop30.pbot
     - if current_user
       .span2
         = link_to profile_path do
-          = image_tag("home.jpg", id: "home-link")
+          #home-link
       .span4.offset4
         %ul
           %li
             = link_to edit_topic_path(@topic.shortcode) do
-              = image_tag("update.jpg", id: "edit-topic")
+              #edit-topic
           %li
             = link_to topic_path(@topic.shortcode), method: :delete do
-              = image_tag("remove.jpg", id: "edit-topic")
+              #delete-topic
