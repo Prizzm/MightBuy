@@ -104,7 +104,6 @@
     }
 
     #home-link {
-      margin-left: 40px;
       height: 32px;
       width: 88px;
       background: image-url("details-page-buttons.jpg") no-repeat scroll -21px -17px;
@@ -130,5 +129,29 @@
         background-position: -466px -17px;
       }
     }
+  }
+
+  .topic-image {
+    height: 303px;
+    width: 258px;
+
+    img {
+      display: block;
+      margin: auto;
+    }
+  }
+
+  .topic-subject {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .topic-url, .topic-tags {
+    color: #0185CD;
+  }
+
+  .topic-price {
+    color: #849C60;
+    font-size: 40px;
   }
 }

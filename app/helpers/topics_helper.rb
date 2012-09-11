@@ -144,4 +144,8 @@ module TopicsHelper
     share ? share.with : nil
   end
 
+
+  def topic_image(topic)
+    topic.image ? topic.image.url : "no_image.png"
+  end
 end

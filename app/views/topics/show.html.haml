@@ -1,9 +1,9 @@
 .show-topic
   .row.topic-links.ptop30.pbot
+    .span2
+      = link_to profile_path do
+        #home-link.mleft40
     - if current_user
-      .span2
-        = link_to profile_path do
-          #home-link
       .span4.offset4
         %ul
           %li
@@ -12,3 +12,15 @@
           %li
             = link_to topic_path(@topic.shortcode), method: :delete do
               #delete-topic
+
+  .row.mtop50
+    .span4
+      .topic-image.mleft40
+        = image_tag topic_image(@topic)
+    .span6
+      .mleft30
+        .topic-subject= @topic.subject
+        .topic-url.mtop10= @topic.url
+        .topic-tags.mtop25= @topic.tags.collect(&:name).join(",")
+        .topic-body.mtop35= @topic.body
+        .topic-price.fright.mright40.mtop50= number_to_currency(@topic.price)
