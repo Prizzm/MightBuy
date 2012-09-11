@@ -86,3 +86,25 @@
     margin: auto 5px;
   }
 }
+
+
+.show-topic {
+  background-color: white;
+
+  .topic-links {
+    ul {
+      list-style: none;
+      padding-left: 40px;
+    }
+
+    li {
+      display: inline;
+      margin: 0px 5px;
+    }
+
+    #home-link {
+      padding-left: 40px;
+      border-radius: 5px;
+    }
+  }
+}

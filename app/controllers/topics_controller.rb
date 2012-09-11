@@ -1,4 +1,4 @@
-class TopicsController < RestfulController
+class TopicsController < ApplicationController
   # Pageless
   index_with_xhr
 
@@ -6,7 +6,6 @@ class TopicsController < RestfulController
   authenticate! :except => [:index, :show]
 
   # Custom Actions
-  custom_actions :collection => :feedback, :resource => :share
   layout :choose_layout
 
   # Verify Owner
@@ -32,22 +31,8 @@ class TopicsController < RestfulController
   end
 
   def show
-    show! do |format|
-      format.html do
-        if params[:responding] || params[:r]
-          case resource.form?
-          when :recommendation
-            render "responding"
-          when :business_recommendation
-            render "responding"
-          else
-            render "show"
-          end
-        else
-          render "show"
-        end
-      end
-    end
+    @topic = Topic.find_by_shortcode(params[:id])
+    @selected_tab = 'mightbuy'
   end
 
   def create

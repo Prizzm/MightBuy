@@ -6,4 +6,5 @@
  *= require_self
  *= require custom
  *= require global
+ *= require topics
 */
