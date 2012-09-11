@@ -1,93 +1,3 @@
-.fleft { float: left; }
-
-.share-topic-link {
-  margin: 20px 0px;
-
-  .share-msg {
-    margin-top: 5px;
-  }
-
-  ul {
-    display: inline;
-
-    li {
-      float: left;
-      margin: 0px 10px;
-
-      &:first-child {
-        margin-left: 20px;
-      }
-    }
-  }
-}
-
-
-.email-icon {
-  width: 39px;
-  height: 37px;
-  background: image-url("social/email.jpg");
-  &:hover {
-    background: image-url("social/email-hover.jpg");
-  }
-}
-
-.twitter-icon {
-  width: 39px;
-  height: 37px;
-  background: image-url("social/twitter.jpg");
-  &:hover {
-    background: image-url("social/twitter-hover.jpg");
-  }
-}
-
-.facebook-icon {
-  width: 39px;
-  height: 37px;
-  background: image-url("social/facebook.jpg");
-  &:hover {
-    background: image-url("social/facebook-hover.jpg");
-  }
-}
-
-
-#emailed {
-  background: image-url("social/email-marked.jpg");
-  &:hover {
-    background: image-url("social/email-marked-hover.jpg");
-  }
-}
-
-#tweeted {
-  background: image-url("social/twitter-marked.jpg");
-  &:hover {
-    background: image-url("social/twitter-marked-hover.jpg");
-  }
-}
-
-#recommended {
-  background: image-url("social/facebook-marked.jpg");
-  &:hover {
-    background: image-url("social/facebook-marked-hover.jpg");
-  }
-}
-
-
-#ajax-loading {
-  display: none;
-  position: fixed;
-  border-radius: 0px 0px 4px 4px;
-  border: 1px solid black;
-  border-top: none;
-  margin: 0px 50%;
-  padding: 5px;
-  width: 90px;
-
-  span {
-    margin: auto 5px;
-  }
-}
-
-
 .show-topic {
   background-color: white;
 
@@ -107,27 +17,21 @@
       height: 32px;
       width: 88px;
       background: image-url("details-page-buttons.jpg") no-repeat scroll -21px -17px;
-      &:hover {
-        background-position: -110px -17px;
-      }
+      &:hover { background-position: -110px -17px; }
     }
 
     #edit-topic {
       height: 32px;
       width: 88px;
       background: image-url("details-page-buttons.jpg") no-repeat scroll -199px -17px;
-      &:hover {
-        background-position: -288px -17px;
-      }
+      &:hover { background-position: -288px -17px; }
     }
 
     #delete-topic {
       height: 32px;
       width: 88px;
       background: image-url("details-page-buttons.jpg") no-repeat scroll -377px -17px;
-      &:hover {
-        background-position: -466px -17px;
-      }
+      &:hover { background-position: -466px -17px; }
     }
   }
 
@@ -143,7 +47,8 @@
 
   .topic-subject {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 17px;
+    color: #4F3127;
   }
 
   .topic-url, .topic-tags {
@@ -154,4 +59,46 @@
     color: #849C60;
     font-size: 40px;
   }
+
+  .share-topic-link {
+    font-size: 17px;
+    color: #4F3127;
+  }
+}
+
+
+.email-icon, .twitter-icon, .facebook-icon {
+  width: 37px;
+  height: 37px;
+}
+
+.email-icon {
+  background: image-url("details-page-buttons.jpg") no-repeat scroll -1104px -16px;
+  &:hover { background-position: -1218px -16px; }
+}
+
+.twitter-icon {
+  background: image-url("details-page-buttons.jpg") no-repeat scroll -1142px -16px;
+  &:hover { background-position: -1256px -16px; }
+}
+
+.facebook-icon {
+  background: image-url("details-page-buttons.jpg") no-repeat scroll -1181px -16px;
+  &:hover { background-position: -1295px -16px; }
+}
+
+
+#emailed {
+  background: image-url("details-page-buttons.jpg") no-repeat scroll -1333px -16px;
+  &:hover { background-position: -1447px -16px; }
+}
+
+#tweeted {
+  background: image-url("details-page-buttons.jpg") no-repeat scroll -1371px -16px;
+  &:hover { background-position: -1485px -16px; }
+}
+
+#recommended {
+  background: image-url("details-page-buttons.jpg") no-repeat scroll -1409px -16px;
+  &:hover { background-position: -1523px -16px; }
 }

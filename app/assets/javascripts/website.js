@@ -6,3 +6,4 @@
 //= require vendor/jquery.placeholder.js
 //= require new/website.js
 //= require mightbuy
+//= require ajax_notifier

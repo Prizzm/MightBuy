@@ -61,6 +61,23 @@
   }
 }
 
+
+#ajax-loading {
+  display: none;
+  position: fixed;
+  border-radius: 0px 0px 4px 4px;
+  border: 1px solid black;
+  border-top: none;
+  margin: -20px 50%;
+  padding: 5px;
+  width: 90px;
+
+  span {
+    margin: auto 5px;
+  }
+}
+
+
 .bevel-line {
   border-top: 1px solid #C1B4AB;
   border-bottom: 1px solid #F2EAE2;
@@ -76,6 +93,20 @@
   outline-left: 1px solid #F2EAE2;
 }
 
+
+.horizontal-list {
+  list-style: none;
+  margin: 0px;
+
+  li {
+    float: left;
+    margin: 0px 10px;
+
+    &:first-child {
+      margin-left: 0px;
+    }
+  }
+}
 
 
 .fleft  { float: left; }

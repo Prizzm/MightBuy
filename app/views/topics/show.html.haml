@@ -1,5 +1,5 @@
 .show-topic
-  .row.topic-links.ptop30.pbot
+  .row.topic-links.ptop30
     .span2
       = link_to profile_path do
         #home-link.mleft40
@@ -24,3 +24,9 @@
         .topic-tags.mtop25= @topic.tags.collect(&:name).join(",")
         .topic-body.mtop35= @topic.body
         .topic-price.fright.mright40.mtop50= number_to_currency(@topic.price)
+
+  .row
+    .span4
+      #social-sharing.mleft40
+        = render partial: "topics/social_share_topic", locals: { topic: @topic }
+    .span6

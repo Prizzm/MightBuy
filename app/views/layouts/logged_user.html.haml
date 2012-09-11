@@ -8,6 +8,9 @@
     = csrf_meta_tags
 
   %body
+    #ajax-loading
+      %span Loading..
+      = image_tag("loading.gif")
     .container.logged_user
       = render partial: "/shares/header"
       .app-content
