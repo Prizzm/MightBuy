@@ -18,6 +18,7 @@ node(:topics) do |user|
 		ta[:price] = topic.price
 		ta[:shortcode] = topic.shortcode
 		ta[:subject] = topic.subject
+		ta[:image_url] = topic.iImage()
 		topics << ta
 	end
 	topics
