@@ -47,8 +47,17 @@ div.bookmarklet-help {
 }
 
 .avatar {
-  margin-top: 50px;
-  margin-bottom: 10px;
+  border: 4px solid #D4C7BE;
+  height: 110px;
+  width: 110px;
+
+  display: table-cell;
+  vertical-align: middle;
+
+  img {
+    display: block;
+    margin: auto;
+  }
 }
 
 .app-content {
