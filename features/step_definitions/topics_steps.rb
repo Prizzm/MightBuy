@@ -60,3 +60,28 @@ Then /^I should see vote "(.*?)" with "(.*?)" immediately$/ do |vote, comment|
   topic_response.should have_content(vote)
   topic_response.should have_content(comment)
 end
+
+
+When /^I visit the topic path to vote$/ do
+  visit topic_path(@topic)
+end
+
+When /^I vote "(.*?)"$/ do |vote|
+  lis = page.all(".topic-votes li a")
+  vote == "Yes!" ? lis.first.click : lis.last.click
+  wait_for_ajax_call_to_finish
+end
+
+Then /^I should be on the topic path to vote$/ do
+  current_path.should == topic_path(@topic)
+end
+
+Then /^I should see my vote as "(.*?)"$/ do |vote|
+  if vote == "Yes!"
+    page.should have_css("#topic-voted-yes")
+    page.should_not have_css("#topic-voted-no")
+  else
+    page.should_not have_css("#topic-voted-yes")
+    page.should have_css("#topic-voted-no")
+  end
+end

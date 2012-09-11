@@ -32,6 +32,9 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find_by_shortcode(params[:id])
+    if current_user && @topic
+      @vote = @topic.votes.find_by_user_id(current_user.id)
+    end
     @selected_tab = 'mightbuy'
   end
 

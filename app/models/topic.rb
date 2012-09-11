@@ -157,4 +157,13 @@ class Topic < ActiveRecord::Base
   def recommended_by?(user)
     !!shares.recommends.find_by_user_id(user.id)
   end
+
+  def vote(user, buyit)
+    vote = user ? votes.find_by_user_id(user.id) : nil
+    vote ||= votes.build(user: user)
+
+    vote.buyit = buyit
+    vote.save
+    vote
+  end
 end

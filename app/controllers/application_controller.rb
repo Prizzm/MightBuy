@@ -77,7 +77,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
+    session_actions
     redirect_path = session.delete(:redirect_path)
     redirect_path ? redirect_path : user_root_path
+  end
+
+  def session_actions
+    Vote.update_user session.delete(:vote_id), current_user
+    Comment.update_user session.delete(:comment_id), current_user
   end
 end

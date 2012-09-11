@@ -60,7 +60,7 @@
     font-size: 40px;
   }
 
-  .share-topic-link {
+  .share-topic-link, .topic-votes {
     font-size: 17px;
     color: #4F3127;
   }
@@ -101,4 +101,20 @@
 #recommended {
   background: image-url("details-page-buttons.jpg") no-repeat scroll -1409px -16px;
   &:hover { background-position: -1523px -16px; }
+}
+
+
+.topic-vote-yes-icon, .topic-vote-no-icon {
+  width: 90px;
+  height: 34px;
+}
+
+.topic-vote-yes-icon {
+  background: image-url("details-page-buttons.jpg") no-repeat scroll -923px -15px;
+  &:hover { background-position: -1014px -15px; }
+}
+
+.topic-vote-no-icon {
+  background: image-url("details-page-buttons.jpg") no-repeat scroll -741px -15px;
+  &:hover { background-position: -832px -15px; }
 }

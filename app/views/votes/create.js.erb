@@ -1,0 +1,5 @@
+<%- if current_user -%>
+  $("#topic-voting").html("<%= escape_javascript(render partial: 'topics/topic_votes', locals: { topic: @vote.topic, vote: @vote }) -%>");
+<% else -%>
+  window.location = "<%= new_user_session_path -%>";
+<% end -%>
