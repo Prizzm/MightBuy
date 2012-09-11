@@ -1,0 +1,5 @@
+<%- if current_user -%>
+  $(".topic-comments").append("<%= escape_javascript(render partial: 'topics/comment_entry', locals: { comment: @comment }) -%>");
+<% else -%>
+  window.location = "<%= new_user_session_path -%>";
+<% end -%>

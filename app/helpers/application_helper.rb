@@ -35,8 +35,8 @@ module ApplicationHelper
     text.gsub(/\*([^\*]+)\*/i, content_tag('strong', '\1')).html_safe
   end
 
-  def avatar_image
-    current_user.image ? current_user.image.url : "/assets/default_avatar.png"
+  def avatar_image(user = current_user)
+    (user && user.image) ? user.image.url : "/assets/default_avatar.png"
   end
 
   # Image Helper

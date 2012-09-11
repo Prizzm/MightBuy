@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
 
   # Authenticate
   authenticate! :except => [:index, :show]
+  before_filter :find_topic!, only: :show
 
   # Custom Actions
   layout :choose_layout
@@ -31,10 +32,10 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find_by_shortcode(params[:id])
-    if current_user && @topic
-      @vote = @topic.votes.find_by_user_id(current_user.id)
-    end
+    @vote = @topic.votes.find_by_user_id(current_user.id) if current_user
+    @comments = @topic.comments.joins(:user).where(parent_id: nil).includes(:user)
+    @comment = @topic.comments.build
+
     @selected_tab = 'mightbuy'
   end
 
@@ -119,4 +120,10 @@ class TopicsController < ApplicationController
     @responses ||= resource.responses.joins(:user).includes(:replies).where(:reply_id => nil)
   end
 
+  private
+  def find_topic!
+    unless @topic = Topic.find_by_shortcode(params[:id])
+      respond_with(@topic, location: root_path)
+    end
+  end
 end

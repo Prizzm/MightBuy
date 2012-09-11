@@ -16,20 +16,6 @@ Then /^I should see all topics people are sharing$/ do
 end
 
 
-When /^I visit the topic path to comment$/ do
-  visit topic_path(@topic, r: :t)
-  wait_for_ajax_call_to_finish
-end
-
-When /^I vote "(.*?)" commenting "(.*?)"$/ do |vote, comment|
-  click_link(vote)
-  wait_for_ajax_call_to_finish
-
-  fill_in("response_body", with: comment)
-  click_button("Submit now")
-  wait_for_ajax_call_to_finish
-end
-
 Then /^I should be asked to login$/ do
   current_path.should == new_user_session_path
 end
@@ -45,24 +31,7 @@ Then /^I login as "(.*?)"$/ do |name|
   end
 end
 
-Then /^I should be on the topic path to comment$/ do
-  current_path.should == topic_path(@topic)
-end
-
-Then /^I should see vote "(.*?)" with "(.*?)"$/ do |vote, comment|
-  topic_responses = page.find("#responses")
-  topic_responses.should have_content(vote)
-  topic_responses.should have_content(comment)
-end
-
-Then /^I should see vote "(.*?)" with "(.*?)" immediately$/ do |vote, comment|
-  topic_response = page.find("#respond")
-  topic_response.should have_content(vote)
-  topic_response.should have_content(comment)
-end
-
-
-When /^I visit the topic path to vote$/ do
+When /^I visit the topic path$/ do
   visit topic_path(@topic)
 end
 
@@ -72,7 +41,7 @@ When /^I vote "(.*?)"$/ do |vote|
   wait_for_ajax_call_to_finish
 end
 
-Then /^I should be on the topic path to vote$/ do
+Then /^I should be on the topic path$/ do
   current_path.should == topic_path(@topic)
 end
 
@@ -84,4 +53,10 @@ Then /^I should see my vote as "(.*?)"$/ do |vote|
     page.should_not have_css("#topic-voted-yes")
     page.should have_css("#topic-voted-no")
   end
+end
+
+When /^I comment "(.*?)"$/ do |description|
+  fill_in("comment_description", with: description)
+  page.find(".new-comment-form-submit input").click
+  wait_for_ajax_call_to_finish
 end

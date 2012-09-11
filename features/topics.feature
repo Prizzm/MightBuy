@@ -12,13 +12,13 @@ Feature: As a user
   Scenario: Login to Comment on Topics
     Given a confirmed user "Tyler"
     Given a confirmed user "Bob" with a topic
-    When I visit the topic path to vote
+    When I visit the topic path
     And I vote "Yes!"
     Then I should be asked to login
     And I login as "Tyler"
-    Then I should be on the topic path to vote
+    Then I should be on the topic path
     And I should see my vote as "Yes!"
-    And I visit the topic path to vote
+    And I visit the topic path
     And I vote "NO!"
     Then I should see my vote as "No!"
 
@@ -26,12 +26,12 @@ Feature: As a user
   Scenario: Login to Comment on Topics
     Given a confirmed user "Tyler"
     Given a confirmed user "Bob" with a topic
-    When I visit the topic path to comment
+    When I visit the topic path
     And I comment "Go for it"
     Then I should be asked to login
     And I login as "Tyler"
-    Then I should be on the topic path to comment
-    And I should see comment "Go for it"
-    And I visit the topic path to comment
+    Then I should be on the topic path
+    And I should see "Go for it"
+    And I visit the topic path
     And I comment "Please Avoid"
-    Then I should see comment "Please Avoid" immediately
+    Then I should see "Please Avoid"

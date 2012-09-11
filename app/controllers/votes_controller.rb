@@ -14,11 +14,4 @@ class VotesController < ApplicationController
     location_path = current_user ? topic_path(@topic) : new_user_session_path
     respond_with(@vote, location: location_path)
   end
-
-  private
-  def find_topic!
-    unless @topic = Topic.find_by_shortcode(params[:topic_id])
-      respond_with(@topic, location: root_path)
-    end
-  end
 end

@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  respond_to :html, :js
+
   # Forgery Protection
   protect_from_forgery
 
@@ -85,5 +87,11 @@ class ApplicationController < ActionController::Base
   def session_actions
     Vote.update_user session.delete(:vote_id), current_user
     Comment.update_user session.delete(:comment_id), current_user
+  end
+
+  def find_topic!
+    unless @topic = Topic.find_by_shortcode(params[:topic_id])
+      respond_with(@topic, location: root_path)
+    end
   end
 end
