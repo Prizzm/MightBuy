@@ -34,31 +34,8 @@ var hideloader = function (selector) {
   $(selector).delay(500).qtip('destroy');
 }
 
-var showblank = function (selector) {
-  //$(selector).delay(500).
-}
-
 var placeholders = function () {
   $('input[placeholder], textarea[placeholder]').placeholder();
-}
-
-var flashes = function () {
-  $("#flashes > div").hide().each(function (i) {
-    if( $(this).hasClass("points"))
-      // $.sound.play("/sounds/cha-ching.mp3")
-    $(this).delay(i*4600).slideDown(400).delay(4000).slideUp(200);
-  });
-}
-
-var givepoints = function (points) {
-  //var text = f("You just earned <strong>%1</strong> points!", points);
-  //var flash = $('<div class="points"><div class="onomatopoeia">*Cha-Ching!*</div></div>');
-  //var message = $('<div class="bar" />').html(text);
-  //    flash.append(message);
-      
-  $('#points').text( f('%1P', parseInt($('#points').text()) + parseInt(points)) );    
-  //$('#flashes').empty().append(flash);
-  //flashes();
 }
 
 var hints = function () {
@@ -179,7 +156,6 @@ var recommend = function () {
     var undecided   = element.find('a.undecided');
     var notrecommended = element.find('a.not_recommended');
     var footer = element.find('.group.footer');
-    var pointsgiven = false;
 
     var chosen = function (element, type) {
       if( !pointsgiven ){
@@ -448,14 +424,6 @@ var pointstips = function () {
   });
 }
 
-var pointsdisabler = function () {
-  if(!POINTS_ENABLED)
-  {
-    $('.points-with-desc, .worth-points, .recommending, #points, .register-for-beta a').hide();
-    givepoints = null
-  }
-}
-
 // Facebook
 
 var facebook = function () {
@@ -561,12 +529,6 @@ var initialize = function () {
   // Data Links
   datalinks();
   
-  // Points Disabler..
-  pointsdisabler();
-  
-  // Add tooltips to anything worth points.
-  pointstips();
-    
   // Facebook
   facebook();
   
