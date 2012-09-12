@@ -2,8 +2,8 @@ development: &local
   email:
     sender: noreply@mightbuy.it
   facebook:
-    appid: "461844450500925"
-    token: 4c9659082e85db5f8e0b8db4122060e9
+    appid: "361205880625409"
+    token: 6ee39bb339038cc00fee44c336f4b029
 
   twitter:
     appid: kLGDHfctWCOTax3IY0Nwig
