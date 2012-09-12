@@ -15,8 +15,14 @@ class TopicsController < ApplicationController
       redirect_to login_path
     end
   end
+
   def feedback
     new!
+  end
+
+  def new
+    @topic = Topic.new()
+    @selected_tab = 'mightbuy'
   end
 
   def index
