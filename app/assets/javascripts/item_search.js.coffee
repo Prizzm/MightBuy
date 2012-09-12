@@ -32,14 +32,13 @@ class @Mightbuy.ItemSearch
         )
       response res
 
-  googleSearch: (queryString) ->
+  googleSearch: =>
     queryParams = {
-      q: queryString
+      q: $("#topic_subject").val()
       rsz: 4
       start: 0
     }
-
-    $.getJSON(Mightbuy.searchApiURL,queryParams, (r) ->
+    $.getJSON(Mightbuy.searchApiURL,queryParams, (r) =>
       resultData = r.responseData.results
       @renderSearchResult(resultData)
     )
@@ -48,10 +47,6 @@ class @Mightbuy.ItemSearch
     resultElement = $("<ul></ul>")
     unless _.isEmpty(searchResult)
       for result in searchResult
-        if(/shopbryna.com/.test(result.url))
-          verifiedText = "<span style='color: rgb(150,150,200);' class='r_title'>"+ "√ Verified Site" +"</span>";
-        else
-          verifiedText = ""
 
         newItem = $(@getResultRow(result))
 
@@ -60,8 +55,15 @@ class @Mightbuy.ItemSearch
         $("#gsearch-results").html(resultElement.html())
     else
       $("#gsearch-results").html("<br />No results found<br /><br />");
+    $("#gsearch-results").css("display" : "")
+    $("#item-form-image-selector").css("display" : "none")
 
   getResultRow: (result) ->
+    verifiedText = if /shopbryna.com/.test(result.url)
+      "<span style='color: rgb(150,150,200);' class='r_title'> √ Verified Site </span>"
+    else
+      ""
+
     "<li class='g_result'><a class='result_item' href='#{result.unescapedUrl}'
       <span class='r_title'>#{result.titleNoFormatting}</span>
       <span class='r_desc'>#{result.content}</span>
