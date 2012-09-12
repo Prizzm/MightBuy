@@ -141,3 +141,44 @@
   background: image-url("details-page-buttons.jpg") no-repeat scroll -741px -15px;
   &:hover { background-position: -832px -15px; }
 }
+
+.topic-form-wrapper {
+  padding: 20px;
+  margin: 60px 0px 20px 20px;
+  label,input,button,select,textarea {
+    font-size: 18px;
+    color: #4e3227;
+  }
+
+  label {
+    margin-bottom: 10px;
+  }
+
+  input[type='text'],input[type='url'] {
+    width: 300px;
+    height: 25px;
+  }
+
+  input[type='number'] {
+    height: 25px;
+    width: 80px;
+  }
+
+  textarea {
+    width: 300px;
+    height: 100px;
+  }
+  div.control-group {
+    margin: 32px 0px 20px 0px;
+  }
+}
+
+.topic-subject {
+  position: relative;
+}
+
+.topic-search-link {
+  position: absolute;
+  top: 30px;
+  right: 12px;
+}
