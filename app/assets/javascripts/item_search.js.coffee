@@ -5,6 +5,10 @@ class @Mightbuy.ItemSearch
 
   enableGoogleSearch: ->
     $(".show-google-search").click(@googleSearch)
+    $("#topic_subject").keypress (event) ->
+      if event.which == 13
+        $(".show-google-search").click()
+        event.preventDefault()
 
   enableAutoComplete: ->
     $("#topic_subject").autocomplete
@@ -15,10 +19,6 @@ class @Mightbuy.ItemSearch
         $(".show-google-search").click()
       appendTo : "#item_subject_search_autocomplete"
 
-    $("#topic_subject").keypress (event) ->
-      if event.which == 13
-        $(".show-google-search").click();
-        e.preventDefault();
 
 
   searchAutoComplete: (request,response) =>
