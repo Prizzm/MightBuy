@@ -77,3 +77,5 @@ class @Mightbuy.ItemSearch
 
   fetchImages: ->
 
+jQuery ->
+  new Mightbuy.ItemSearch()

@@ -7,4 +7,5 @@
  *= require custom
  *= require global
  *= require topics
+ *= require topic_search/item_search
 */

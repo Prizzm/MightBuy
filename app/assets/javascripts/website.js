@@ -4,6 +4,6 @@
 //= require selectivizr.js
 //= require jquery.qtip.js
 //= require jquery.placeholder.js
-//= require new/website.js
 //= require mightbuy
+//= require item_search
 //= require ajax_notifier
