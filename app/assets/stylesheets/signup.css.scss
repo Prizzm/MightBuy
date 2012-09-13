@@ -110,13 +110,12 @@
       padding-left: 52%;
 
       input {
-        background: image-url("signin.jpg");
+        background: image-url("login_buttons.png");
         width: 190px;
         height: 56px;
         border: none;
-
         &:hover {
-          background: image-url("signin-hover.jpg");
+          background-position: -190px 0px;
         }
       }
     }
@@ -136,12 +135,13 @@
     .join-us-today {
       height: 56px;
       width: 230px;
-      background: image-url("joinus.jpg");
+      background: image-url("login_buttons.png");
       margin-top: 15px;
       float: right;
-
+      background-position: -385px 0px;
       &:hover {
-        background: image-url("joinus-hover.jpg");
+        background: image-url("login_buttons.png");
+        background-position: -616px 0px;
       }
     }
   }

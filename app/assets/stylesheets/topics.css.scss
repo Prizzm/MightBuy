@@ -192,13 +192,10 @@
   background-position: 0px 31px;
   width: 81px;
   height: 31px;
-}
-
-.topic-search-link:hover {
-  background: url("/assets/search_button.png");
-  background-position: 81px 31px;
-  width: 81px;
-  height: 31px;
+  &:hover {
+    background: url("/assets/search_button.png");
+    background-position: 81px 31px;
+  }
 }
 
 .topic-tabs {
