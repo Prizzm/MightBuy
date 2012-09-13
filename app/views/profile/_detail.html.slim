@@ -1,6 +1,7 @@
 ol.list.topics
-  .row
-    = link_to("Add topic",new_topic_path)
+  .row.add-topic-link.btn.btn-large
+    = link_to("Add an item",new_topic_path)
+  .clear
   = placeholder latest_posts do |collection|
     = render :partial => "topics/topic", :collection => collection
 
