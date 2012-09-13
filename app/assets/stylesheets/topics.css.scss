@@ -36,9 +36,11 @@
   }
 
   .topic-image {
-    height: 303px;
-    width: 258px;
-
+    width: 256px;
+    height: 219px;
+    padding: 15px;
+    border: 3px solid #d3c8bd;
+    margin-bottom: 30px;
     img {
       display: block;
       margin: auto;
@@ -48,21 +50,26 @@
   .topic-subject {
     font-weight: bold;
     font-size: 17px;
-    color: #4F3127;
+    color: #4e3227;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
   }
 
   .topic-url, .topic-tags {
+    word-wrap: break-word;
     color: #0185CD;
   }
 
   .topic-price {
     color: #849C60;
     font-size: 40px;
+    float: right;
+    margin-right: 18px;
   }
 
   .share-topic-link, .topic-votes {
     font-size: 17px;
-    color: #4F3127;
+    color: #4e3227;
   }
 
   .topic-comment-entry {
@@ -185,7 +192,8 @@
 
 .topic-tabs {
   li {
-    width: 150px;
+    height: 45px;
+    width: 180px;
     text-align: center;
     border-top-left-radius: 7px;
     border-top-right-radius: 6px;
@@ -198,8 +206,9 @@
     background: -ms-linear-gradient(top, #df646c 0%, #aa383c 100%); /* IE10+ */
     background: linear-gradient(to bottom, #df646c 0%, #aa383c 100%); /* W3C */
     a {
-      font-size: 1.1em;
+      font-size: 18px;
       color: #fff;
+      margin-top: 6px;
     }
     a:hover {
       color: #4e3227;
@@ -233,7 +242,6 @@
 
 #details {
   background: #fff;
-  border-top-right-radius: 10px;
   margin-left: -1px;
 }
 
@@ -255,6 +263,7 @@ ol.topics {
     }
   }
   .topic-url {
+    word-wrap: break-word;
     margin-top: 10px;
   }
   .topic-description {
@@ -274,6 +283,11 @@ ol.topics {
     float: right;
     font-size: 2.8em;
   }
+}
+
+.topic-details {
+  margin-right: 24px;
+  margin-left: 46px;
 }
 
 .span2.item-list-image {
