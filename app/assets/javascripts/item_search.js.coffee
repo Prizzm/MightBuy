@@ -19,7 +19,21 @@ class @Mightbuy.ItemSearch
         $(".show-google-search").click()
       appendTo : "#item_subject_search_autocomplete"
 
+    $(document).on "click", ".g_result a", (e) =>
+      $("#topic_url").val($(e.currentTarget).attr("href"))
+      $("#topic_url").attr("old_val", "_BLANK")
+      @fetchImages()
+      @closeSearchResults()
+      e.preventDefault()
 
+    $(document).on "mouseenter", ".g_result a", (e) ->
+      $("#topic_url").attr("old_val", $("#topic_url").val())
+      $("#topic_url").val($(this).attr("href"))
+      e.preventDefault()
+    .on "mouseleave", ".g_result a", (e) ->
+      if ( $("#topic_url").attr("old_val") != "_BLANK" )
+        $("#topic_url").val($("#topic_url").attr("old_val"))
+        $("#topic_url").attr("old_val", "")
 
   searchAutoComplete: (request,response) =>
     queryParams = {q: request.term}
@@ -72,12 +86,26 @@ class @Mightbuy.ItemSearch
     </a></li>"
 
   closeSearchResults: ->
-    $("#gsearch-results").on("close", ->
-      $(this).css("display": 'none')
-      $("#item-form-image-selector").css("display": "")
-    )
+    $("#gsearch-results").css("display": 'none')
+    $("#item-form-image-selector").css("display": "")
 
   fetchImages: ->
+    url = $("#topic_url").val()
+    $.getJSON(window.location.protocol + "//mightbuy-scraper.herokuapp.com/?url=" + encodeURIComponent(url) + "&callback=?", (data) ->
+      images = data.images
+      
+      alert $("#item-form-image-selector").imageSelector
+
+      $("#item-form-image-selector").imageSelector({
+        change : (image) ->
+          $("#topic_image_url").val(image)
+        ,
+        images : images
+      });
+
+      if data.price
+        $("#topic_price").val(data.price)
+    )
 
 jQuery ->
   new Mightbuy.ItemSearch()

@@ -7,4 +7,5 @@
 //= require jquery.placeholder.js
 //= require mightbuy
 //= require item_search
+//= require image_selector
 //= require ajax_notifier
