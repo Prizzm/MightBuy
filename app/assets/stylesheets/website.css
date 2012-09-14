@@ -8,4 +8,5 @@
  *= require global
  *= require topics
  *= require topic_search/item_search
+ *= require topic_search/image_selector
 */

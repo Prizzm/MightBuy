@@ -2,6 +2,7 @@ class @Mightbuy.ItemSearch
   constructor: ->
     @enableAutoComplete()
     @enableGoogleSearch()
+    #@enableProductScrape()
 
   enableGoogleSearch: ->
     $(".show-google-search").click(@googleSearch)
@@ -9,15 +10,6 @@ class @Mightbuy.ItemSearch
       if event.which == 13
         $(".show-google-search").click()
         event.preventDefault()
-
-  enableAutoComplete: ->
-    $("#topic_subject").autocomplete
-      source : @searchAutoComplete
-      open : (event, ui) ->
-      close : (event, ui) ->
-      select : (event, ui) ->
-        $(".show-google-search").click()
-      appendTo : "#item_subject_search_autocomplete"
 
     $(document).on "click", ".g_result a", (e) =>
       $("#topic_url").val($(e.currentTarget).attr("href"))
@@ -34,6 +26,49 @@ class @Mightbuy.ItemSearch
       if ( $("#topic_url").attr("old_val") != "_BLANK" )
         $("#topic_url").val($("#topic_url").attr("old_val"))
         $("#topic_url").attr("old_val", "")
+    
+    $("#topic_url").focus () =>
+      @closeSearchResults()
+
+    initial_images = []
+
+    if ( $("#topic_image_url").val() )
+      initial_images.push($("#topic_image_url").val());
+      $("#item-form-image-selector").imageSelector(
+        change : (image) ->
+          $("#topic_image_url").val(image)
+        images : initial_images
+      )
+    
+    $("#topic_url").bind "keypress", (e) =>
+      if ( e.which == 13 )
+        @fetchImages()
+        e.preventDefault()
+
+    $("#topic_url").bind "change", () =>
+      if ( $(this).val() )
+        @fetchImages()
+
+    $("#topic_url").bind "paste", (e) =>
+      if ( $(e.currentTarget).val() )
+        setTimeout( () =>
+          @fetchImages()
+        , 0)
+
+    # if URL is not blank show grab image dialog immediately
+    # used in bookmarklet
+    if $("#topic_url").val()
+      if $("#item-form-image-selector .image-holder img").length == 0
+        @fetchImages()
+
+  enableAutoComplete: ->
+    $("#topic_subject").autocomplete
+      source : @searchAutoComplete
+      open : (event, ui) ->
+      close : (event, ui) ->
+      select : (event, ui) ->
+        $(".show-google-search").click()
+      appendTo : "#item_subject_search_autocomplete"
 
   searchAutoComplete: (request,response) =>
     queryParams = {q: request.term}
@@ -94,14 +129,28 @@ class @Mightbuy.ItemSearch
     $.getJSON(window.location.protocol + "//mightbuy-scraper.herokuapp.com/?url=" + encodeURIComponent(url) + "&callback=?", (data) ->
       images = data.images
       
-      alert $("#item-form-image-selector").imageSelector
+      position = 0
+
+      # when user is coming from search page
+      # URL will have image URL in hash
+      # use this url to set current image
+      hash_part = window.location.href.split("#")[1]
+      if ( hash_part )
+        # find the index of image
+        image_position = images.indexOf(decodeURIComponent(hash_part))
+        if ( image_position != -1 )
+          position = image_position
+          
+          # change hash so sub-sequent requests don't check
+          window.location.hash = ""
 
       $("#item-form-image-selector").imageSelector({
         change : (image) ->
           $("#topic_image_url").val(image)
         ,
-        images : images
-      });
+        images : images,
+        position : position
+      })
 
       if data.price
         $("#topic_price").val(data.price)
