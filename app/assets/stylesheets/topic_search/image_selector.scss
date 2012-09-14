@@ -92,5 +92,20 @@
         background-position: -40px 0px; 
         &:hover { background-position: -40px -20px; }
       }
+      
+      a.image
+      {
+        overflow: hidden;
+    
+        &.blank
+        {
+          background: #f7f7f7 url("/images/app/placeholder.png") no-repeat center;
+      
+          &.thumb
+          {
+            background-image: url("/images/app/placeholder-thumb.png");
+          }
+        }
+      }
     }
 }

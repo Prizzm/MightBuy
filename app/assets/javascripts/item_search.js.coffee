@@ -2,7 +2,7 @@ class @Mightbuy.ItemSearch
   constructor: ->
     @enableAutoComplete()
     @enableGoogleSearch()
-    #@enableProductScrape()
+    @enableProductScrape()
 
   enableGoogleSearch: ->
     $(".show-google-search").click(@googleSearch)
@@ -11,22 +11,23 @@ class @Mightbuy.ItemSearch
         $(".show-google-search").click()
         event.preventDefault()
 
-    $(document).on "click", ".g_result a", (e) =>
-      $("#topic_url").val($(e.currentTarget).attr("href"))
+    $(document).on "click", ".g_result a", (event) =>
+      $("#topic_url").val($(event.currentTarget).attr("href"))
       $("#topic_url").attr("old_val", "_BLANK")
       @fetchImages()
       @closeSearchResults()
-      e.preventDefault()
+      event.preventDefault()
 
-    $(document).on "mouseenter", ".g_result a", (e) ->
+    $(document).on "mouseenter", ".g_result a", (event) ->
       $("#topic_url").attr("old_val", $("#topic_url").val())
       $("#topic_url").val($(this).attr("href"))
-      e.preventDefault()
-    .on "mouseleave", ".g_result a", (e) ->
+      event.preventDefault()
+    .on "mouseleave", ".g_result a", (event) ->
       if ( $("#topic_url").attr("old_val") != "_BLANK" )
         $("#topic_url").val($("#topic_url").attr("old_val"))
         $("#topic_url").attr("old_val", "")
-    
+
+  enableProductScrape: ->
     $("#topic_url").focus () =>
       @closeSearchResults()
 
@@ -40,20 +41,19 @@ class @Mightbuy.ItemSearch
         images : initial_images
       )
     
-    $("#topic_url").bind "keypress", (e) =>
-      if ( e.which == 13 )
+    $("#topic_url").bind "keypress", (event) =>
+      if ( event.which == 13 )
         @fetchImages()
-        e.preventDefault()
+        event.preventDefault()
 
     $("#topic_url").bind "change", () =>
       if ( $(this).val() )
         @fetchImages()
 
-    $("#topic_url").bind "paste", (e) =>
-      if ( $(e.currentTarget).val() )
-        setTimeout( () =>
-          @fetchImages()
-        , 0)
+    $("#topic_url").bind "paste", (event) =>
+      setTimeout( () =>
+        @fetchImages()
+      , 0)
 
     # if URL is not blank show grab image dialog immediately
     # used in bookmarklet
@@ -75,9 +75,9 @@ class @Mightbuy.ItemSearch
     $.getJSON Mightbuy.suggestApiURL,queryParams, (result) ->
       res = result[1]
       if res.length
-        res = $.map(res.slice(0, 4), (n, i) ->
-          label: n[0]
-          value: n[0]
+        res = $.map(res.slice(0, 4), (suggestion, index) ->
+          label: suggestion[0]
+          value: suggestion[0]
         )
       response res
 
