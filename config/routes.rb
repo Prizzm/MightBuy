@@ -45,7 +45,8 @@ NewPrizzmCom::Application.routes.draw do
   match "/passbook/passes/v1/passes/:typeid/:serialnumber" => "passbook#get_current_pass", :constraints => { :typeid => /[^\/]+/ }
 
   # match "/tokens/facebook" => "social#authenticateMobile"
-  match "/tokens/facebook" => "social#socialAuthenticationAPI"
+  match "/tokens/facebook" => "social#socialAuthenticationAPIFacebook"
+  match "/tokens/twitter" => "social#socialAuthenticationAPITwitter"
   match "/topics/findByMIU" => "social#getShortCode"
   match "/social/mobile/askfriends" => "social#askMobileFriends"
 
