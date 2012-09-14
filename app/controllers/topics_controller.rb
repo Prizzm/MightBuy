@@ -34,7 +34,7 @@ class TopicsController < ApplicationController
   end
 
   def share
-    edit!
+    @topic = current_user.topics.find_by_shortcode(params[:topic_id])
   end
 
   def show
@@ -87,22 +87,9 @@ class TopicsController < ApplicationController
     end
   end
 
-  def collection
-    @topics ||= search.order("created_at desc")
-  end
-
-  def resource
-    @topic ||= end_of_association_chain.find_by_shortcode!(params[:id] || params[:topic_id])
-  end
-
   private
 
-  helper_method :share, :featured_response, :responses
-
-  def share
-    @share ||= Shares::Share.find_by_shortcode(cookies[:share_code])
-  end
-
+  helper_method :featured_response, :responses
   def featured_response
     unless params[:feature].blank?
       @response ||= resource.responses.find_by_id(params[:feature])
@@ -121,12 +108,10 @@ class TopicsController < ApplicationController
     end
   end
 
-
   def responses
     @responses ||= resource.responses.joins(:user).includes(:replies).where(:reply_id => nil)
   end
 
-  private
   def find_topic!
     unless @topic = Topic.find_by_shortcode(params[:id])
       respond_with(@topic, location: root_path)

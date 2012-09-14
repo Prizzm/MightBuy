@@ -1,13 +1,11 @@
-= app_page do
+ol.list.topics
+  = render @topic
 
-  ol.list.topics
-    = render resource
+= simple_form_for @topic do |form|
 
-  = simple_form_for resource, :url => resource_path do |form|
-  
-    = heading "Share Via.."
-    
-    = render "share_with_customers", :form => form
-    
-    .buttons
-      = form.button :submit, "Send emails"
+  = heading "Share Via.."
+
+  = render "share_with_customers", :form => form
+
+  .buttons
+    = form.button :submit, "Send emails"
