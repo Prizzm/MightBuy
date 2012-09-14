@@ -96,11 +96,8 @@ class @Mightbuy.ItemSearch
     resultElement = $("<ul></ul>")
     unless _.isEmpty(searchResult)
       for result in searchResult
-
         newItem = $(@getResultRow(result))
-
         resultElement.append(newItem)
-
         $("#gsearch-results").html(resultElement.html())
     else
       $("#gsearch-results").html("<br />No results found<br /><br />");
