@@ -7,7 +7,10 @@
         Track stuff you might buy
     .span3.offset4
       .bookmarkelet-button
-        = image_tag("bookmarklet.png")
+        = link_to(bookmarklet_url) do
+          =image_tag("bookmarklet.png")
       .bookmarklet-help
         Drag me to your
         %b Bookmarks Bar!
+      .safari-link
+        = link_to "Download Safari Extension", "/assets/MightBuy.safariextz"

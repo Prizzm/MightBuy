@@ -20,7 +20,12 @@ div.bookmarklet-help {
   margin-top: -7px;
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
 }
-
+.safari-link {
+  margin-left: 19px;
+  a {
+    color: #d53d3f;
+  }
+}
 
 .logged-user-header {
   margin-bottom: 10px;
