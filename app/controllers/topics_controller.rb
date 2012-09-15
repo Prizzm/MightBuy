@@ -42,7 +42,6 @@ class TopicsController < ApplicationController
     @vote = @topic.votes.find_by_user_id(current_user.id) if current_user
     @comments = @topic.comments.joins(:user).where(parent_id: nil).includes(:user)
     @comment = @topic.comments.build
-
     @selected_tab = 'mightbuy'
   end
 
@@ -97,14 +96,6 @@ class TopicsController < ApplicationController
 
   def choose_layout
     current_user ? 'logged_user' : 'anonymous'
-  end
-
-  def set_selected_tab
-    if current_user
-      @selected_tab = 'everybody'
-    else
-      @selected_tab = 'mightbuy'
-    end
   end
 
   def responses
