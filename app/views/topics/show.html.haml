@@ -17,14 +17,14 @@
     = render :partial => "topic_detail"
 
   .row
-    .span4
+    .span5
       - if current_user == @topic.user
         #social-sharing.mleft40
           = render partial: "topics/social_share_topic", locals: { topic: @topic }
       - elsif current_user
         #add-to-mightbuy.mleft40
           = link_to "Add to MightBuy"
-    .span6{class: current_user ? "" : "offset4"}
+    .span5{class: current_user ? "" : "offset4"}
       #topic-voting.pleft40
         = render partial: "topics/topic_votes", locals: { topic: @topic, vote: @vote }
 

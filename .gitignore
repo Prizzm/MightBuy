@@ -13,3 +13,5 @@ routes.txt
 /vendor/ruby
 reports/
 /coverage
+.project
+

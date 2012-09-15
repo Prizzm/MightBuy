@@ -2,22 +2,20 @@
 
 .image-selector {
     position: relative;
-    height: 130px;
-    padding-left: 140px;
-    width:0;
 
     .image-holder
     {
       position: absolute;
-      left: 20px;
+      right: 40px;
+      top:50px;
       
       a.image
       {
         display: block;
-        width: 90px;
-        height: 90px;
-        border: 3px solid #fff;
-        @include drop-shadow(1px, 2px, 0.6);
+        width: 290px;
+        height: 290px;
+        border: 3px solid #d9d1cf;
+        background-color:#d9d1cf;
         
         table {
           width: 100%;
@@ -38,8 +36,8 @@
         
         img
         {
-          max-width: 90px;
-          max-height: 90px;
+          max-width: 290px;
+          max-height: 290px;
           text-align: center;
           vertical-align:middle;
         }
@@ -47,50 +45,41 @@
       
       .controls
       {
-        @include rounded-corners(15px);
-        
         overflow: hidden;
-        width: 70px;
         margin: 8px auto;
-        padding: 3px 5px;
-        padding-left:10px;
-        background: #efefef;
       }
       
       .next, .prev, .cancel
       {
+        float: left;
         display: block;
         overflow: hidden;
         text-indent: -9999em;
-        width: 18px;
-        height: 18px;
-        background: url("/images/icons/sprite.png");
+        width: 29px;
+        height: 28px;
+        background: url("/images/icons/sprite-icons.png");
       }
       
       .select { cursor: pointer; }
       
-      .next 
-      { 
-        float: left;
-        background-position: -20px 0px;
-        margin-left:5px;
-        &:hover { background-position: -20px -20px; }
+      .next { 
+        background-position: -1px -31px; 
+        &:hover { background-position: -31px -31px; }
+        &:active { background-position: -61px -31px; }
       }
       
       .prev {
-        float: left; 
-        background-position: 0px 0px; 
-        &:hover { background-position: 0px -20px; }
+        margin-right:5px;
+        background-position: -1px -1px;
+        &:hover { background-position: -31px -1px; }
+        &:active { background-position: -61px -1px; }
       }
 
       .cancel {
-        float: left;
-        margin:1px;
-        margin-left:10px;
-        width: 15px;
-        height: 15px;
-        background-position: -40px 0px; 
-        &:hover { background-position: -40px -20px; }
+        float: right;
+        background-position: -1px -61px; 
+        &:hover { background-position: -31px -61px; }
+        &:active { background-position: -61px -61px; }
       }
       
       a.image

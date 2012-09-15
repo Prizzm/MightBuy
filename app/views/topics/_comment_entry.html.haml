@@ -1,7 +1,8 @@
 .row
-  .topic-comment-entry.mleft40
+  .topic-comment-entry.mleft40.mright40
     .span1= image_tag avatar_image(comment.user)
     .span8
       %p.username= comment.user.name
       %p= comment.description
-      %hr.mtop15.mbot15
+    .clear
+    %hr.mleft20.mtop15.mbot15.comment-hr

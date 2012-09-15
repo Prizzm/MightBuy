@@ -58,7 +58,7 @@
     var change_handler = options.change || function(){};
 
     this.addClass("image-selector");
-    this.html('<div class="image-holder"><a class="image blank" href="javascript:void(0);"><table class="centered" cellspacing="0" cellpadding="0"><tr><td></td></tr></table></a><div class="controls"><a class="prev" href="#prev">Previous</a><a class="next" href="#next">Next</a><a class="cancel" href="#cancel">Cancel</a></div></div>');
+    this.html('<div class="reset-btn"><a class="btn btn-red pull-right" href="#">Reset</a></div><div class="image-holder"><a class="image blank" href="javascript:void(0);"><table class="centered" cellspacing="0" cellpadding="0"><tr><td></td></tr></table></a><div class="controls"><a class="prev" href="#prev">Previous</a><a class="next" href="#next">Next</a><a class="cancel" href="#cancel">Cancel</a></div></div>');
 
     var position          = options.position || 0;
     var images            = [];

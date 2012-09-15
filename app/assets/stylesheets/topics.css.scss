@@ -1,3 +1,4 @@
+@import "style";
 .show-topic {
   background-color: white;
 
@@ -49,10 +50,10 @@
 
   .topic-subject {
     font-weight: bold;
-    font-size: 17px;
+    font-size: 27px;
     color: #4e3227;
     letter-spacing: -1px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .topic-url, .topic-tags {
@@ -78,11 +79,14 @@
       font-weight: bold;
     }
   }
-
+  .comment-hr{
+    border-top-color:#e5d6c6;
+  }
   #new_comment {
     textarea {
       width: 98%;
-      border: 4px solid #F7F4EF;
+      @include box-shadow(0 0 0 4px #f6f3ee);
+      resize:none;
     }
 
     input[type='submit'] {
@@ -252,6 +256,7 @@
   background: #fff;
   margin-left: -1px;
   padding-bottom: 20px;
+  position:relative;
 }
 
 ol.topics {
@@ -316,8 +321,10 @@ ol.topics {
 }
 
 #gsearch-results {
-  margin: 77px 0px 5px 0px;
+  margin: 77px 30px 5px 0px;
   padding: 0px 20px 5px 0px;
+  height:455px;
+  overflow-y:auto;
 }
 
 .add-topic-link {
@@ -325,7 +332,116 @@ ol.topics {
   margin: 10px 33px 20px 0px;
 }
 
+
+
+/* Topic Input Type Style */
+.topic-form-wrapper{
+
+  input[type="text"], input[type="number"], input[type="url"], select, textarea{
+    @include box-shadow(0 0 0 4px #f6f3ee);
+  }
+  textarea{
+    resize:none;
+  }
+}
+
+@mixin brand-btn {
+  color: #fff;
+  @include gradient(#e26b71, #aa373c);
+  @include text-shadow(none);
+  border-style: solid;
+  border-width: 1px; 
+  border-color: #cd383e #ba2f34 #a9262c #ba2f34;
+}
+
+@mixin brand-btn-hover {
+  color: #ffffff;
+  @include gradient(#e26b71, #a9262c);
+}
+
+.btn-red {
+  @include brand-btn;
+  font:15px/100% 'Museo500', arial;
+  padding: 8px 10px;
+  min-width:60px;
+}
+
+.btn-red:hover,
+.btn-red:active,
+.btn-red.active,
+.btn-red.disabled,
+.btbtn-redn[disabled] {
+  @include brand-btn-hover;
+}
+  
+.btn-red:active,
+.btn-red.active {
+  background: #a9262c \9;
+}
+
+.reset-btn{
+  margin:0 40px 60px 0;
+}
+
+.btn-red-large{
+  position:absolute;
+  right:40px;
+  bottom:85px;
+  
+  .btn {
+    @include brand-btn;
+    font:300 23px/1 'Museo500', arial;
+    text-transform: uppercase;
+    padding: 8px 11px 9px 11px;
+    display: block;
+    width: 120px;
+  }
+  
+  .btn:hover,
+  .btn:active,
+  .btn.active,
+  .btn.disabled,
+  .btn[disabled] {
+    @include brand-btn-hover;
+  }
+  
+  .btn:active,
+  .btn.active {
+    background: #a9262c \9;
+  }
+}
+
+/* CSS For Right Container*/
+
+.wraptocenter {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+}
+.wraptocenter * {
+    vertical-align: middle;
+}
+.wraptocenter span {
+    *display: inline-block;
+    *height: 100%;
+}
 #topic_tags {
   margin: 0px 0px 20px 0px;
   border: none;
+}
+.clear {
+  clear:both;
+}
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
 }

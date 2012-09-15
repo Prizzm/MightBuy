@@ -1,5 +1,5 @@
 /* UI Autocomplete mark-up */
-
+@import "../style";
 #item_url_search_autocomplete, #item_subject_search_autocomplete {
 
   .ui-autocomplete { position: absolute; cursor: default; }	
@@ -138,33 +138,33 @@ a#item_url_search {
 
   &:hover {
     border-bottom:1px solid #ccc;
+    @include gradient( #fff,#f6f3ee);
   }
 
   .result_item {
 
     overflow:hidden;
     display:block;
-    color:Black;
     text-decoration: none;
     margin-bottom:2px;
+    font:12px arial;
     text-overflow:ellipsis;
-    font-size:12px;
     
     .r_title {
       display:block;
-      font-weight:Bold;
       text-overflow:ellipsis;
       overflow:hidden;
       white-space:nowrap;
-      padding:0 2px;
-      line-height:22px;
-      color:#667A80;
+      line-height:24px;
+      font-weight:700;
+      color:#657982;
     }
 
     .r_desc {
       display:inline-block;
       padding-bottom:2px;
       color:#888;
+      font-weight:normal;
       
       b {
         font-weight:normal;
@@ -173,10 +173,12 @@ a#item_url_search {
 
     .r_vurl {
       color:#0AF;
+      font-weight:normal;
     }
     
     &:hover {
       text-decoration:none !important;
+      color:#00f;
     }
 
   }
@@ -252,65 +254,6 @@ a#item_url_search {
     height: 0;
   }
 
-}
-
-#item-form-image-selector {
-  /* override styling */
-  margin-top:20px;
-  height: 330px;
-  padding-left: 340px;
-  
-  .image-holder
-    {
-      
-      a.image
-      {
-        width: 290px;
-        height: 290px;
-        
-        table {
-          
-        }
-        
-        &.present
-        {
-          
-        }
-        
-        td {
-          
-        }
-        
-        img
-        {
-          max-width: 290px;
-          max-height: 290px;
-        }
-      }
-      
-      .controls
-      {
-        padding-left:210px;
-      }
-      
-      .next, .prev, .cancel
-      {
-        
-      }
-      
-      .select {  }
-      
-      .next 
-      { 
-        
-      }
-      
-      .prev {
-      }
-
-      .cancel {
-      }
-    }
 }
 
 /* TODO : Should probably shift this to common css file */

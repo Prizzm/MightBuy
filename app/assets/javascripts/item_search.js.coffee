@@ -110,10 +110,11 @@ class @Mightbuy.ItemSearch
     else
       ""
 
-    "<li class='g_result'><a class='result_item' href='#{result.unescapedUrl}'
-      <span class='r_title'>#{result.titleNoFormatting}</span>
-      <span class='r_desc'>#{result.content}</span>
-      <span class='r_vurl'>#{result.url}</span>
+    "<li class='g_result'>
+      <a class='result_item' href='#{result.unescapedUrl}'>
+        <span class='r_title'>#{result.titleNoFormatting}</span>
+        <span class='r_desc'>#{result.content}</span>
+        <span class='r_vurl'>#{result.url}</span>
       #{verifiedText}
     </a></li>"
 

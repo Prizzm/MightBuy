@@ -1,0 +1,63 @@
+$btn-start-color:#e36c72;
+$btn-stop-color:#a8353a;
+
+@mixin opacity ($eval) {
+  -webkit-opacity: $eval;
+     -moz-opacity: $eval;
+          opacity: $eval;
+// example: @include opacity(1);
+}
+
+@mixin transition-property ($eval) {
+  -webkit-transition-property: $eval;
+     -moz-transition-property: $eval;
+          transition-property: $eval;
+// example: @include transition(background);
+}
+
+@mixin text-shadow ($eval: 5px) {
+  -webkit-text-shadow: $eval;
+     -moz-text-shadow: $eval;
+          text-shadow: $eval;
+// example: @include text-shadow(#355782 0 1px 2px);
+}
+
+@mixin box-shadow ($eval: 5px) {
+  -webkit-box-shadow: $eval;
+     -moz-box-shadow: $eval;
+          box-shadow: $eval;
+// example: @include box-shadow(0 2px rgba(0, 0, 0, 0.05));
+}
+
+@mixin box-shadow-2values ($x , $y){
+  -webkit-box-shadow: $x, $y;
+     -moz-box-shadow: $x, $y;
+          box-shadow: $x, $y;
+// example: @include box-shadow-2values(0 2px rgba(0, 0, 0, 0.05), 0 -2px rgba(0, 0, 0, 0.05) inset);
+}
+
+@mixin border-radius($radius: 0px){  
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+// example: @include border-radius(6px);
+}
+
+@mixin border-radius-multi($a, $b, $c, $d){  
+      -moz-border-radius-topleft: $a;
+     -moz-border-radius-topright: $b;
+  -moz-border-radius-bottomright: $c;
+   -moz-border-radius-bottomleft: $d;
+           -webkit-border-radius: $a $b $c $d;
+                   border-radius: $a $b $c $d;
+// example: @include border-radius-multi(6px,6px,0px,0px);
+}
+
+@mixin gradient($x:0, $y:0){
+  background-color: $x; // Old browsers
+        background: linear-gradient(top, $x 0%,$y 100%); // W3C
+        background: -moz-linear-gradient(top, $x 0%, $y 100%); // FF3.6+
+        background: -webkit-linear-gradient(top, $x 0%,$y 100%); // Chrome10+,Safari5.1+
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$x), color-stop(100%,$y)); // Chrome,Safari4+
+// example: @include gradient(#61a7f2, #5591d3);
+}
