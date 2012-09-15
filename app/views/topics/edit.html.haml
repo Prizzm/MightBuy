@@ -1,0 +1,13 @@
+%div#details
+  .row
+    .span5
+      .topic-form-wrapper
+        = simple_form_for @topic do |form|
+          = render "/topics/forms/default", :form => form
+          .buttons
+            = form.button :submit, "Save!"
+    %div#topic_right_panel.span5
+      %div#gsearch-results
+      %div#item-form-image-selector
+
+    .clear
