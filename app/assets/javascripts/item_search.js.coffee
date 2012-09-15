@@ -40,7 +40,7 @@ class @Mightbuy.ItemSearch
           $("#topic_image_url").val(image)
         images : initial_images
       )
-    
+
     $("#topic_url").bind "keypress", (event) =>
       if ( event.which == 13 )
         @fetchImages()
@@ -125,7 +125,7 @@ class @Mightbuy.ItemSearch
     url = $("#topic_url").val()
     $.getJSON(window.location.protocol + "//mightbuy-scraper.herokuapp.com/?url=" + encodeURIComponent(url) + "&callback=?", (data) ->
       images = data.images
-      
+
       position = 0
 
       # when user is coming from search page
@@ -137,7 +137,7 @@ class @Mightbuy.ItemSearch
         image_position = images.indexOf(decodeURIComponent(hash_part))
         if ( image_position != -1 )
           position = image_position
-          
+
           # change hash so sub-sequent requests don't check
           window.location.hash = ""
 

@@ -6,7 +6,6 @@ class @Mightbuy.TopicTagging
     $("#topic_tags").tagit({
       select: true,
       tagSource: @fetchExistingTags(),
-      sortable: false,
       triggerKeys: ['enter','comma','space']
     })
 

@@ -46,22 +46,9 @@ class TopicsController < ApplicationController
   end
 
   def create
-    # avoid bad URI error for non-standard URLs
-    # https://www.pivotaltracker.com/story/show/34470735
-    if params[:topic][:image_url] then
-      params[:topic][:image_url] = URI.parse(URI.encode(params[:topic][:image_url])).to_s
-    end
-    params[:topic].delete(:tags)
-    @topic = Topic.new(params[:topic])
-    @topic.access = 'public'
-    @topic.user = current_user
-    @topic.pass_visitor_code = visitor_code
-    if params["topic"]["mobile_image_url"]
-      dragon = Dragonfly[:images]
-      @topic.image = dragon.fetch_url(params["topic"]["mobile_image_url"])
-    end
+    @topic = Topic.create_from_from_data(params['topic'],current_user,visitor_code)
     @topic.save
-    respond_with @topic
+    respond_with(@topic)
   end
 
   def edit

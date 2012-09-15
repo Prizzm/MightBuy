@@ -1,15 +1,15 @@
 class Topic < ActiveRecord::Base
-  
+
   # Includes
   include InheritUpload
   include ActionView::Helpers::NumberHelper
-  
+
   # Options
   Access = {
     "Anyone." => "public",
     "Only by Invite." => "private"
   }
-  
+
   # Relationships
   has_many :responses
   has_many :shares, :class_name => "Shares::Share", :inverse_of => :topic
@@ -20,25 +20,56 @@ class Topic < ActiveRecord::Base
   has_many :tags, :through => :topic_tags
   has_many :votes
   has_many :comments
-  
+
   # Scopes
   scope :publics, where(:access => "public")
   scope :privates, where(:access => "private")
-  
+
   # Validations
   validates :access, :presence => { :message => "Please select one of the above :)" }
   validates :shortcode, :presence => true, :uniqueness => true
   validates :subject, :presence => true
   #validates :body, :presence => true
-  
+
   # Uploaders
   image_accessor :image
-  
-  # Social  
-  
+
+  # Nested Attributes
+  accepts_nested_attributes_for :shares,
+  :reject_if => proc { |attributes| attributes["with"].blank? }
+
+  # Attributes
+  attr_accessor :pass_visitor_code
+
   # Methods
   after_create :find_product
-  
+
+  def self.create_from_from_data(topic_details,current_user,visitor_code)
+    if topic_details['image_url']
+      topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url'])).to_s
+    end
+    if topic_details['tags']
+      tag_string = topic_details.delete('tags')
+    end
+
+    topic = Topic.new(topic_details)
+    topic.access = 'public'
+    topic.user = current_user
+    topic.pass_visitor_code = visitor_code
+    if topic_details["mobile_image_url"]
+      dragon = Dragonfly[:images]
+      topic.image = dragon.fetch_url(topic_details["mobile_image_url"])
+    end
+    topic.add_tags(tag_string)
+    topic
+  end
+
+  def add_tags(tag_array)
+    !tag_array.blank? && tag_array.each do |tag_name|
+      self.tags << Tag.new(:name => tag_name)
+    end
+  end
+
   def find_product
     p = Product.find_by_url(url)
     if p then
@@ -46,24 +77,18 @@ class Topic < ActiveRecord::Base
       t.product = p
       t.save
     else
-      t = self   
+      t = self
       pn = Product.new()
-      
+
       pn.name = t.subject
       pn.url = t.url
       pn.save
-      
+
       t.product = pn
       t.save
     end
   end
 
-  # Nested Attributes
-  accepts_nested_attributes_for :shares,
-    :reject_if => proc { |attributes| attributes["with"].blank? }
-  
-  # Attributes
-  attr_accessor :pass_visitor_code
 
   def displayPrice
     if self.price
@@ -80,31 +105,31 @@ class Topic < ActiveRecord::Base
       "/assets/no_image.png"
     end
   end
-  
+
   def iImage(host = true)
     if host == true then
-      # Check env 
+      # Check env
       if Rails.env.production? then
-        if self.image then 
+        if self.image then
           # Return image.url with host
           # https://www.mightbuy.it/topics/43P16H (mightbuy.it)
           return self.image.url(:host => "https://www.mightbuy.it")
         else
           return "https://www.mightbuy.it/assets/no_image.png"
-        end  
+        end
       else
-        if self.image then 
+        if self.image then
           # Return image.url with host
           # http://localhost.it/topics/43P16H (localhost)
           return self.image.url(:host => "http://localhost:3000")
-        else 
+        else
           return "https://www.mightbuy.it/assets/no_image.png"
-        end      
+        end
       end
-    else #host is not true - handle blank and 
+    else #host is not true - handle blank and
       # Other image.url without host (Path Only)
       # /topics/43P16H
-      if self.image then 
+      if self.image then
         self.image.url
       else
         "https://www.mightbuy.it/assets/no_image.png"
@@ -120,32 +145,32 @@ class Topic < ActiveRecord::Base
     end
     update_attributes!(params)
   end
-  
+
   def url
     url = attributes['url']
     url.blank? ? url : Scrape.full_url(url)
   end
-  
+
   def post?
     !question?
   end
-  
+
   def question?
     subject[/\?\s*$/i] ? true : false
   end
-  
+
   def form?
     form.to_s.to_sym
   end
-  
+
   def to_param
     shortcode
   end
-  
+
   def share_csv= (file)
     Importer.csv(file, self)
   end
-  
+
   def stats
     @stats ||= Statistics.for(self)
   end

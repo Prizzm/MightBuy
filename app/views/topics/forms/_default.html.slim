@@ -9,5 +9,6 @@ div{id="topic_fields"}
   = form.input :image_url, :as => :hidden, :input_html => { :value => form.object.image && form.object.image.url, :class => "remote-url" }
   = form.input :price, :label => "Price $"
   = form.input :body, :as => :text, :label => "Add Notes", :hint => nil, :input_html => { :size => 40}
-  = form.input :tags, label: 'Tags', as: :string, input_html: {value: '', placeholder: 'Comma separated tags'}
+  h3 Tags
+  ul type="text" id="topic_tags" name="topic[tags][]"
 
