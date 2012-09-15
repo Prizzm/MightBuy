@@ -5,7 +5,10 @@
 //= require selectivizr.js
 //= require jquery.qtip.js
 //= require jquery.placeholder.js
+//= require tagit/tagit.js
+//= require tagit/tagit-themeroller.js
 //= require mightbuy
 //= require item_search
 //= require image_selector
 //= require ajax_notifier
+//= require topic_tagging

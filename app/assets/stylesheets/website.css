@@ -7,6 +7,7 @@
  *= require custom
  *= require global
  *= require topics
+ *= require tagit/tagit-simple-grey.css
  *= require topic_search/item_search
  *= require topic_search/image_selector
 */

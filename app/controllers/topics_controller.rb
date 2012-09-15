@@ -64,6 +64,10 @@ class TopicsController < ApplicationController
     respond_with @topic
   end
 
+  def edit
+    render 'new'
+  end
+
   def update
     if params[:topic][:image_url] && URI.parse(URI.encode(params[:topic][:image_url])).host
       params[:topic][:image_url] = URI.parse(URI.encode(params[:topic][:image_url])).to_s
