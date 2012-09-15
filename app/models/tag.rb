@@ -5,4 +5,8 @@ class Tag < ActiveRecord::Base
   has_many :topics, :through => :topic_tags
 
   validates_presence_of :name
+
+  def self.popular_tags
+    Tag.join(:topic_tags)
+  end
 end

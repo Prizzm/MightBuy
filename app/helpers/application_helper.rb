@@ -1,10 +1,10 @@
 module ApplicationHelper
-  
+
   include SharedHelper
   include JavascriptHelper
-  
+
   # Controller Helpers
-  
+
   def action_name
     params[:action].to_sym
   end
@@ -16,27 +16,31 @@ module ApplicationHelper
   def classes
     "#{controller_name}-section #{action_name}-page"
   end
-  
+
   def action? (*actions)
     actions.include?(action_name)
   end
-  
+
   def heading (label, options = {})
     content_tag :h3, options do
       content_tag :span, label
     end
   end
-  
+
   def describe (text)
     content_tag :div, stars(text), :class => "description"
   end
-  
+
   def stars (text)
     text.gsub(/\*([^\*]+)\*/i, content_tag('strong', '\1')).html_safe
   end
 
   def avatar_image(user = current_user)
     (user && user.image) ? user.image.url : "/assets/default_avatar.png"
+  end
+
+  def popular_tags
+    Tag.popular_tags
   end
 
   # Image Helper
@@ -55,13 +59,13 @@ module ApplicationHelper
       end
     end
   end
-  
+
   # Others
 
   def image? (uploader)
     !uploader.blank?
   end
-  
+
   def detail_image (uploader, style, options = {})
     if image?(uploader)
       content_tag :div, :class => "detail-image" do
@@ -82,7 +86,7 @@ module ApplicationHelper
     content = capture(&block)
     render( :layout => "layouts/app", :locals => locals ) { content }
   end
-  
+
   def header
     name = resource_class.to_s
     case action_name
@@ -92,7 +96,7 @@ module ApplicationHelper
       when :show then "Viewing a %s" % name
     end
   end
-  
+
   def quick_links
     case action_name
       when :show
@@ -103,7 +107,7 @@ module ApplicationHelper
         link_for(:add)
     end
   end
-  
+
   def link_for (action, label = nil)
     case action
       when :add
@@ -116,30 +120,30 @@ module ApplicationHelper
         link_to label || "Delete", resource_path, :confirm => "Are you sure?", :method => :delete, :class => "button"
     end
   end
-  
+
   def attr (label, value = nil, &block)
     content_tag(:div, :class => "attr") do
       value = capture(&block) if block_given?
       content_tag(:label, label) << value.to_s
     end
   end
-  
+
   def active_link (label, path, *args)
     active = args.include?(params[:controller]) || args.any? { |value| value == true }
     link_to label, path, :class => active ? "active" : ""
   end
-  
+
   def centered (&block)
     ('<table class="centered" cellspacing="0" cellpadding="0"><tr><td>%s</td></tr></table>' % capture(&block)).html_safe
   end
-  
+
   def formatted (value)
     case value
       when Time then value.strftime("%m/%d/%Y at %I:%M%p").downcase
       else "-"
     end
   end
-  
+
   def shorthand (value, options = {})
     case value
       when Time then ("%s ago" % time_ago_in_words(value)).capitalize
@@ -149,7 +153,7 @@ module ApplicationHelper
       else "-"
     end
   end
-  
+
   def list_for (*headers, &block)
 
     options      = headers.extract_options!
@@ -163,19 +167,19 @@ module ApplicationHelper
         link_to("Delete", resource_path(object), :confirm => "Are you sure?", :method => :delete )
       ].compact.join(" ").html_safe
     end
-    
+
     # If we should include actions, then push the name to the header.
     headers.push("Actions") if with_actions
-    
+
     # If not empty, create the table.
     content_tag :table, table_html do
-    
+
       content_tag(:thead) do
         headers.map do |label|
           content_tag :th, label
         end.join.html_safe
       end <<
-  
+
       content_tag(:tbody) do
         objects.map do |object|
           content_tag(:tr) do
@@ -185,17 +189,17 @@ module ApplicationHelper
           end
         end.join.html_safe
       end
-    
+
     end
-    
+
   end
-  
+
   def go_back (path)
     link_to "Go Back", path, :class => "button dark"
   end
-  
+
   # Meta
-  
+
   def like (url)
     code = <<-EOF
       <div id="fb-root"></div>
@@ -209,10 +213,10 @@ module ApplicationHelper
 
       <div class="fb-like" data-href="#{url}" data-send="true" data-width="450" data-show-faces="false"></div>
     EOF
-    
+
     code.html_safe
   end
-  
+
   def meta (options = {})
     image = options[:image]
     url   = options[:url] || root_url
@@ -233,7 +237,7 @@ module ApplicationHelper
         :image => image
       }
   end
-  
+
   # Gaug.es helper :)
   def gaug
     script = <<-EOF

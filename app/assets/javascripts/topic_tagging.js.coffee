@@ -12,6 +12,5 @@ class @Mightbuy.TopicTagging
   fetchExistingTags : ->
     ["Ruby", "Python"]
 
-
 jQuery ->
   new Mightbuy.TopicTagging()

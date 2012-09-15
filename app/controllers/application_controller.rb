@@ -94,4 +94,5 @@ class ApplicationController < ActionController::Base
       respond_with(@topic, location: root_path)
     end
   end
+
 end
