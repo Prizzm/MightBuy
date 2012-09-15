@@ -256,6 +256,12 @@ a#item_url_search {
 
 }
 
+#topic_tags .tagit-new .tagit-input[type="text"] {
+  border: 1px solid #ccc !important;
+  padding: 4px !important;
+  width: 295px !important;
+}
+
 /* TODO : Should probably shift this to common css file */
 .collapsible {
   .input {

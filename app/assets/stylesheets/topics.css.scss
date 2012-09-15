@@ -335,6 +335,38 @@ ol.topics {
 
 
 /* Topic Input Type Style */
+
+.share-view{
+  margin:0 40px 40px 40px;
+  
+  h3{
+    font-size:25px;
+    border-bottom:1px solid #ccc;
+    padding-bottom:10px;
+    margin:0 0 20px 0;
+  }
+}
+.nav-tabs > li > a {
+  font-size:14px;
+  line-height:30px;
+}
+.mini .nav-tabs {
+  margin-bottom:0
+}
+#share-csv, #share-list{
+ border:1px solid #ddd;
+ border-top:none;
+ padding:20px;
+ margin-bottom:20px;
+
+  label{
+    font-size:14px;
+    float:left;
+    margin-top:5px;
+    margin-right:10px;
+  }
+}
+
 .topic-form-wrapper{
 
   input[type="text"], input[type="number"], input[type="url"], select, textarea{
@@ -359,7 +391,7 @@ ol.topics {
   @include gradient(#e26b71, #a9262c);
 }
 
-.btn-red {
+.btn-red, .remove_fields, .add_fields {
   @include brand-btn;
   font:15px/100% 'Museo500', arial;
   padding: 8px 10px;
@@ -370,20 +402,60 @@ ol.topics {
 .btn-red:active,
 .btn-red.active,
 .btn-red.disabled,
-.btbtn-redn[disabled] {
+.btn-red[disabled],
+.remove_fields:hover,
+.remove_fields:active,
+.remove_fields.active,
+.remove_fields.disabled,
+.remove_fields[disabled],
+.add_fields:hover,
+.add_fields:active,
+.add_fields.active,
+.add_fields.disabled,
+.add_fields[disabled] {
   @include brand-btn-hover;
 }
   
-.btn-red:active,
-.btn-red.active {
+.remove_fields:active,
+.remove_fields.active,  
+.add_fields:active,
+.add_fields.active {
   background: #a9262c \9;
 }
-
-.reset-btn{
-  margin:0 40px 60px 0;
+#share-list .nested-fields{
+  height: 85px;
 }
 
-.btn-red-large{
+.remove_fields{
+  margin-left:48px;
+}
+.remove_fields, .add_fields {
+  @include border-radius(3px);
+  padding: 4px 10px;
+  min-width:95px;
+  
+  &:hover{
+    text-decoration:none;
+    @include gradient(#e26b71, #a9262c);
+  }
+  &:active{
+    text-decoration:none;
+    @include box-shadow(inset 0 0 5px 0 rgba(0,0,0,0.5));
+  }
+}
+#share-list .links{
+  position: relative;
+  top: -39px;
+  left: 135px;
+}
+.reset-btn{
+  margin:30px 40px 40px 0;
+}
+
+
+
+
+.btn-red-large, .btn-red-l{
   position:absolute;
   right:40px;
   bottom:85px;
@@ -392,9 +464,19 @@ ol.topics {
     @include brand-btn;
     font:300 23px/1 'Museo500', arial;
     text-transform: uppercase;
+    min-width: 120px;
+  }
+  
+}
+
+.btn-red-large, .btn-red-l, .remove_fields, #share-list a{ 
+  
+  .btn {
+    @include brand-btn;
+    font:normal 16px/1 'Museo500', arial;
     padding: 8px 11px 9px 11px;
     display: block;
-    width: 120px;
+    min-width: 70px;
   }
   
   .btn:hover,
@@ -409,6 +491,9 @@ ol.topics {
   .btn.active {
     background: #a9262c \9;
   }
+}
+.btn-red-l{
+  position:static;
 }
 
 /* CSS For Right Container*/

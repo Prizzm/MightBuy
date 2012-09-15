@@ -1,11 +1,12 @@
-.show-topic
+.show-topic.prel
   .row.topic-links.ptop30
     = render :partial => "topic_detail"
 
   .row.mtop20
     .span10
       = simple_form_for @topic do |form|
-        = heading "Share Via.."
-        = render "share_with_customers", :form => form
-        .buttons
-          = form.button :submit, "Send emails"
+        .share-view
+          = heading "Share Via.."
+          = render "share_with_customers", :form => form
+          .buttons.btn-red-l
+            = form.button :submit, "Send emails"

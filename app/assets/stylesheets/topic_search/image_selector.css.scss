@@ -5,9 +5,7 @@
 
     .image-holder
     {
-      position: absolute;
-      right: 40px;
-      top:50px;
+      margin-left:44px;
       
       a.image
       {
@@ -77,6 +75,7 @@
 
       .cancel {
         float: right;
+        margin-right:40px;
         background-position: -1px -61px; 
         &:hover { background-position: -31px -61px; }
         &:active { background-position: -61px -61px; }
