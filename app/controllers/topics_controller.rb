@@ -4,14 +4,14 @@ class TopicsController < ApplicationController
 
   # Authenticate
   authenticate! :except => [:index, :show]
-  before_filter :find_topic!, only: :show
+  before_filter :find_topic!, only: [:show, :update, :edit]
 
   # Custom Actions
   layout :choose_layout
 
   # Verify Owner
   before_filter :only => [:edit, :update, :destroy] do
-    unless resource.user == current_user
+    unless @topic.user == current_user
       redirect_to login_path
     end
   end
@@ -52,17 +52,17 @@ class TopicsController < ApplicationController
     if params[:topic][:image_url] then
       params[:topic][:image_url] = URI.parse(URI.encode(params[:topic][:image_url])).to_s
     end
-    @topic = build_resource
+    params[:topic].delete(:tags)
+    @topic = Topic.new(params[:topic])
+    @topic.access = 'public'
     @topic.user = current_user
     @topic.pass_visitor_code = visitor_code
-
     if params["topic"]["mobile_image_url"]
       dragon = Dragonfly[:images]
       @topic.image = dragon.fetch_url(params["topic"]["mobile_image_url"])
     end
-    create!
-
-    response.status = 302
+    @topic.save
+    respond_with @topic
   end
 
   def update
@@ -71,13 +71,11 @@ class TopicsController < ApplicationController
     else
       params[:topic].delete(:image_url)
     end
-    @topic = resource
     @topic.pass_visitor_code = visitor_code
-    update!
+    respond_with @topic
   end
 
   protected
-
   def search
     if params[:user]
       owner = current_user.id == params[:user].to_i
@@ -93,7 +91,7 @@ class TopicsController < ApplicationController
   helper_method :featured_response, :responses
   def featured_response
     unless params[:feature].blank?
-      @response ||= resource.responses.find_by_id(params[:feature])
+      @response ||= @topic.responses.find_by_id(params[:feature])
     end
   end
 
@@ -110,12 +108,10 @@ class TopicsController < ApplicationController
   end
 
   def responses
-    @responses ||= resource.responses.joins(:user).includes(:replies).where(:reply_id => nil)
+    @responses ||= @topic.responses.joins(:user).includes(:replies).where(:reply_id => nil)
   end
 
   def find_topic!
-    unless @topic = Topic.find_by_shortcode(params[:id])
-      respond_with(@topic, location: root_path)
-    end
+    @topic = Topic.find_by_shortcode(params[:id])
   end
 end
