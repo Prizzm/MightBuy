@@ -1,0 +1,10 @@
+.span4
+  .topic-image.mleft40
+    = image_tag topic_image(@topic), :size => "254x216"
+.span6
+  .topic-details
+    .topic-subject= @topic.subject.capitalize
+    .topic-url.mtop10= @topic.url
+    .topic-tags.mtop25= @topic.tags.collect(&:name).join(",")
+    .topic-body.mtop35= @topic.body
+    .topic-price.mtop50= number_to_currency(@topic.price)

@@ -35,6 +35,7 @@ class TopicsController < ApplicationController
 
   def share
     @topic = current_user.topics.find_by_shortcode(params[:topic_id])
+    @selected_tab = 'mightbuy'
   end
 
   def show
