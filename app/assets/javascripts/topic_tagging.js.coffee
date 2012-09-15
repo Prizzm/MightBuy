@@ -3,14 +3,16 @@ class @Mightbuy.TopicTagging
     @enableTaggingField()
 
   enableTaggingField: ->
-    $("#topic_tags").tagit(
+    $("#topic_tags").tagit({
       select: true,
-      tagSource: ['emacs','vim'],
-      sortable: false
-    )
+      tagSource: @fetchExistingTags(),
+      sortable: false,
+      triggerKeys: ['enter','comma','space']
+    })
 
-  fetchExistingTags: ->
-    ['emacs','vim']
+  fetchExistingTags : ->
+    ["Ruby", "Python"]
+
 
 jQuery ->
   new Mightbuy.TopicTagging()
