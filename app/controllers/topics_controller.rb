@@ -26,10 +26,10 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.order("created_at desc").page(params[:page]).per(10)
+    page = params[:page] || 1
+    @topics = Topic.order("created_at desc").page(page).per(10)
     if request.xhr?
-      render :partial => "topic_list"
-      return
+      render :partial => "/topics/topic_list"
     end
   end
 

@@ -1,5 +1,4 @@
 %div#details
-  %ol.list.topics
-    - @topics.each do |topic|
-      = render partial: "/shares/topic_list_partial", locals: {topic: topic}
+  %ol.list.topics#pageless-topic-listing
+    = render :partial => "topic_list"
 

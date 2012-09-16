@@ -11,7 +11,7 @@
         = tag_links(topic)
       .topic-meta
         %span
-          = topic.user.name
+          = topic.poster_name
           added this #{time_ago_in_words(topic.created_at)} ago
     .span1.pull-right.topic-list-actions
       %div.price

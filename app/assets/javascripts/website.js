@@ -5,6 +5,7 @@
 //= require selectivizr.js
 //= require jquery.qtip.js
 //= require jquery.placeholder.js
+//= require jquery.pageless
 //= require tagit/tagit.js
 //= require tagit/tagit-themeroller.js
 //= require mightbuy

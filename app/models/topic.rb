@@ -74,6 +74,10 @@ class Topic < ActiveRecord::Base
     end
   end
 
+  def poster_name
+    user ? user.name : "anonymous"
+  end
+
   def update_from_form_data(topic_details,visitor_code)
     if topic_details['image_url'] && URI.parse(URI.encode(topic_details['image_url'])).host
       topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url'])).to_s
