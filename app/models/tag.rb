@@ -6,7 +6,10 @@ class Tag < ActiveRecord::Base
 
   validates_presence_of :name
 
+  validates_uniqueness_of :name
+
   def self.popular_tags
-    Tag.join(:topic_tags)
+    Tag.joins{topic_tags}.select{count(topic_tags.tag_id).as('tag_count')}.
+      select{"tags.*"}.group{topic_tags.tag_id}.order("tag_count desc").limit(20)
   end
 end

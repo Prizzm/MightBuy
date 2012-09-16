@@ -35,5 +35,18 @@ describe Topic do
       topic.tags.should_not be_empty
       topic.tags.map(&:name).should == ["emacs","vim"]
     end
+
+    it "should not create new tags for existing ones" do
+      tag = FactoryGirl.create(:tag, name: "emacs")
+      topic_details_with_tags = @topic_data.update('tags' => ['emacs','vim'])
+      Tag.count.should == 1
+
+      topic = Topic.create_from_from_data(topic_details_with_tags,current_user,'hello')
+
+      topic.should_not be_nil
+      topic.save.should be_true
+      topic.tags.should have(2).tags
+      Tag.count.should == 2
+    end
   end
 end

@@ -40,7 +40,7 @@ gem 'simple_form'
 gem 'premailer-rails3'
 gem 'meta-tags'
 gem 'cocoon'
-
+gem "squeel"
 # AWS
 gem 'fog'
 

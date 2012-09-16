@@ -66,7 +66,7 @@ class Topic < ActiveRecord::Base
 
   def add_tags(tag_array)
     !tag_array.blank? && tag_array.each do |tag_name|
-      self.tags << Tag.new(:name => tag_name)
+      self.tags << Tag.find_or_initialize_by_name(tag_name)
     end
   end
 
