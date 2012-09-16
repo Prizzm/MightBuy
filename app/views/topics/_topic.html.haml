@@ -14,8 +14,8 @@
           = topic.user.name
           added this #{time_ago_in_words(topic.created_at)} ago
     .span1.pull-right.topic-list-actions
-      .topic-actions
-        = image_tag("delete.jpg")
+      %a.topic-actions{:href => topic_path(topic), 'data-method' => :delete }
+        \&nbsp;
       .clear
       %div.price
         = number_to_currency(topic.price)

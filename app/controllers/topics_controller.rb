@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
 
   # Authenticate
   authenticate! :except => [:index, :show]
-  before_filter :find_topic!, only: [:show, :update, :edit]
+  before_filter :find_topic!, only: [:show, :update, :edit, :destroy]
 
   # Custom Actions
   layout :choose_layout
@@ -64,6 +64,11 @@ class TopicsController < ApplicationController
     end
     @topic.pass_visitor_code = visitor_code
     respond_with @topic
+  end
+
+  def destroy
+    @topic.destroy
+    redirect_to profile_path()
   end
 
   protected

@@ -317,6 +317,13 @@ ol.topics {
 .topic-actions {
   float: right;
   margin-bottom: 20px;
+  background: url("/assets/close_buttons.png");
+  background-position: 28px 0px;
+  width: 28px;
+  height: 28px;
+  &:hover {
+    background-position: 0px 0px;
+  }
 }
 
 .topic-list-actions {
