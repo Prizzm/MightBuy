@@ -1,6 +1,18 @@
 @import "style";
-.show-topic {
+.show-topic, .bg-white, .edit-page {
   background-color: white;
+}
+
+.edit-page {
+  background-color: white;
+  padding:30px;
+  
+  h3{
+    margin-bottom:10px;
+  }
+}
+
+.show-topic {
 
   .topic-links {
     ul {
@@ -203,7 +215,7 @@
 }
 
 .topic-tabs {
-  margin-left: -4px;
+  margin-left: -3px;
   margin-bottom: 0px;
   
   li {
@@ -375,11 +387,7 @@ ol.topics {
   margin-bottom:0
 }
 
-#share-csv, #share-list{
- border:1px solid #ddd;
- border-top:none;
- padding:20px;
- margin-bottom:20px;
+@mixin label-group{
 
   label{
     font-size:14px;
@@ -389,6 +397,54 @@ ol.topics {
   }
 }
 
+#share-csv, #share-list, .mini-container{
+  border:1px solid #ddd;
+  border-top:none;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+#share-csv, #share-list, .mini-container, .gen-detail{ 
+  @include label-group;
+}
+
+.gen-detail{ 
+  @include label-group;
+  
+  label{
+    width:90px;
+  }
+  
+  .btn-marg{
+    margin-left:150px;
+  }
+  
+  .control-group{
+    clear:both;  
+  }
+}
+
+
+
+.drop-files{
+  background-color: #F5F5CD;
+  border: 2px dashed #D4C7BE;
+  height: 80px;
+  margin-top: 10px;
+  
+  h1, p{
+    font:bold 14px arial;
+    text-align:center; 
+  }
+  h1{
+    font-size:20px;
+    margin-top:20px;
+  }
+}
+.upload-files{
+  text-align: center;
+  padding: 35px 0 45px 0;
+}
 .topic-form-wrapper{
 
   input[type="text"], input[type="number"], input[type="url"], select, textarea{
@@ -415,7 +471,9 @@ ol.topics {
 
 .btn-red, .remove_fields, .add_fields {
   @include brand-btn;
+  text-decoration:none;
   font:15px/100% 'Museo500', arial;
+  @include border-radius(5px);
   padding: 8px 10px;
   min-width:60px;
 }
@@ -423,6 +481,7 @@ ol.topics {
 .btn-red:hover, .btn-red:active, .btn-red.active, .btn-red.disabled, .btn-red[disabled],
 .remove_fields:hover, .remove_fields:active, .remove_fields.active, .remove_fields.disabled, .remove_fields[disabled],
 .add_fields:hover, .add_fields:active, .add_fields.active, .add_fields.disabled,.add_fields[disabled] {
+  text-decoration:none;
   @include gradient(#bf3c42, #841c21);
   @include box-shadow( inset 0 1px 0 rgba(255,255,255,0.25));
   border:1px solid #b73d44;
@@ -433,6 +492,14 @@ ol.topics {
 .remove_fields:active,  
 .add_fields:active {
   background: #841c21;
+}
+
+.btn-red.small{
+  padding: 4px 10px;
+}
+
+.input.m-all0{
+  margin:0;
 }
 
 #share-list .nested-fields{

@@ -1,5 +1,9 @@
-%div#details
+%div#details.edit-page
   = simple_form_for resource, :url => resource_path do |form|
     = render "form", :form => form
-    .buttons
+    
+    .mtop25
+    
+    .buttons.btn-red-l
       = form.button :submit, "Save Changes!"
+  .clear
