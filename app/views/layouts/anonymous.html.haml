@@ -8,6 +8,8 @@
     = csrf_meta_tags
 
   %body
+    = render  partial: "shares/flash_notice"
+
     .container
       = render partial: "/shares/landing_header"
       .app-content

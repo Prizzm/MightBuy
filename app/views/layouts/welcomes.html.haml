@@ -4,9 +4,12 @@
     %title MightBuy
     %meta{'name'=>"apple-itunes-app", 'content'=>"app-id=548123429"}
     = stylesheet_link_tag "landing", :media => "all"
+    = javascript_include_tag "website"
     = csrf_meta_tags
 
   %body
+    = render  partial: "shares/flash_notice"
+
     .container
       = render partial: "shares/landing_header"
       = yield
