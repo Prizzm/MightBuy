@@ -10,3 +10,10 @@
 
 .topic-tag-list
   %h2 Tags
+  %ul
+    - popular_tags.each do |tag|
+      %li
+        = tag.name
+
+
+    
