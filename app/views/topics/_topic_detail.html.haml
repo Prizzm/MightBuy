@@ -5,6 +5,7 @@
   .topic-details
     .topic-subject= @topic.subject.capitalize
     .topic-url.mtop10= @topic.url
-    .topic-tags.mtop10= @topic.tags.collect(&:name).join(",")
+    .topic-tags.mtop10
+      = tag_links(@topic)
     .topic-body.mtop15= @topic.body
     .topic-price.mtop50= number_to_currency(@topic.price)

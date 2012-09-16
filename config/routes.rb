@@ -126,6 +126,12 @@ NewPrizzmCom::Application.routes.draw do
   get "/search", :to => "search#public"
 
   resources :welcomes, only: :index
+  resources :tags, :only => :index do
+    member do
+      get :topics
+    end
+  end
+
   # in config/routes.rb
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
 

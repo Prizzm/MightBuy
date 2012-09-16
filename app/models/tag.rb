@@ -12,4 +12,8 @@ class Tag < ActiveRecord::Base
     Tag.joins{topic_tags}.select{count(topic_tags.tag_id).as('tag_count')}.
       select{"tags.*"}.group{topic_tags.tag_id}.order("tag_count desc").limit(20)
   end
+
+  def to_param
+    name
+  end
 end

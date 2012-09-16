@@ -14,10 +14,8 @@
           = topic.user.name
           added this #{time_ago_in_words(topic.created_at)} ago
     .span1.pull-right.topic-list-actions
-      .topic-actions
-        = image_tag("delete.jpg")
-      .clear
       %div.price
         = number_to_currency(topic.price)
       .clear
   .clear
+

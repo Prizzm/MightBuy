@@ -1,25 +1,5 @@
 %div#details
   %ol.list.topics
     - @topics.each do |topic|
-      %li
-        .span2.item-list-image
-          = image_tag(topic.thumbnail_image)
-        .span7
-          .span5.topic-description
-            .topic-title
-              = link_to(topic.subject.capitalize, topic_path(topic))
-            .topic-url
-              = link_to(topic.url, "#{topic.url}")
-            .topic-listing-tag
-              = link_to("shoes")
-              ,
-              = link_to("dress")
-            .topic-meta
-              %span
-                = topic.user.name
-                added this #{time_ago_in_words(topic.created_at)} ago
-          .span1.pull-right.topic-list-actions
-            %div.price
-              = number_to_currency(topic.price)
-            .clear
-        .clear
+      = render partial: "/shares/topic_list_partial", locals: {topic: topic}
+

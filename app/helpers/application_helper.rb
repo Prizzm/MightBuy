@@ -43,6 +43,12 @@ module ApplicationHelper
     Tag.popular_tags
   end
 
+  def tag_links(topic)
+    topic.tags.map do |tag|
+      content_tag(:a,tag.name,href: topics_tag_path(tag)).html_safe
+    end.join(",").html_safe
+  end
+
   # Image Helper
   def image (uploader, options = {}, &block)
     if uploader.blank?
