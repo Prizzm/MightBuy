@@ -2,6 +2,7 @@
 //= require underscore.js
 //= require jquery_ujs
 //= require jquery-ui
+//= require bootstrap
 //= require selectivizr.js
 //= require jquery.qtip.js
 //= require jquery.placeholder.js
