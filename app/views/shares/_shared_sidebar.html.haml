@@ -13,7 +13,7 @@
   %ul
     - popular_tags.each do |tag|
       %li
-        = tag.name
+        = link_to(tag.name,topics_tag_path(tag))
         ,
 
 

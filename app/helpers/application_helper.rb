@@ -45,7 +45,7 @@ module ApplicationHelper
 
   def tag_links(topic)
     topic.tags.map do |tag|
-      content_tag(:a,tag.name,href: topics_tag_path(tag)).html_safe
+      content_tag(:a,tag.name,href: topics_tag_path(tag))
     end.join(",").html_safe
   end
 
