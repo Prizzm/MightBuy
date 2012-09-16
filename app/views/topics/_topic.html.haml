@@ -1,23 +1,24 @@
 %li
-  .span2.item-list-image
-    = image_tag(topic.thumbnail_image)
-  .span7
-    .span5.topic-description
-      .topic-title
-        = link_to(topic.subject.capitalize, topic_path(topic))
-      .topic-url
-        = link_to(topic.url, "#{topic.url}")
-      .topic-listing-tag
-        = tag_links(topic)
-      .topic-meta
-        %span
-          = topic.user.name
-          added this #{time_ago_in_words(topic.created_at)} ago
-    .span1.pull-right.topic-list-actions
-      %a.topic-actions{:href => topic_path(topic), 'data-method' => :delete }
-        \&nbsp;
-      .clear
-      %div.price
-        = number_to_currency(topic.price)
-      .clear
-  .clear
+  .row
+    .span2.item-list-image
+      = image_tag(topic.thumbnail_image)
+    .span7.pull-right
+      .span5.topic-description
+        .topic-title
+          = link_to(topic.subject.capitalize, topic_path(topic))
+        .topic-url
+          = link_to(topic.url, "#{topic.url}")
+        .topic-listing-tag
+          = tag_links(topic)
+        .topic-meta
+          %span
+            = topic.user.name
+            added this #{time_ago_in_words(topic.created_at)} ago
+      .span1.pull-right.topic-list-actions
+        %a.topic-actions{:href => topic_path(topic), 'data-method' => :delete }
+          \&nbsp;
+        .clear
+        %div.price
+          = number_to_currency(topic.price)
+        .clear
+    .clear

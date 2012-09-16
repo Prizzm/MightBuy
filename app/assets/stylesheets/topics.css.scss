@@ -1,4 +1,5 @@
 @import "style";
+
 .show-topic, .bg-white, .edit-page {
   background-color: white;
 }
@@ -9,6 +10,18 @@
   
   h3{
     margin-bottom:10px;
+  }
+  
+  .image-holder{
+    margin-left:0 !important;
+  }
+  .image-holder  a.image{
+    width:100px !important;
+    height:100px !important;
+  }
+  
+  .image-selector .image-holder .next{
+    margin-left:45px
   }
 }
 
@@ -278,17 +291,18 @@
   margin-left: -1px;
   padding-bottom: 20px;
   position:relative;
+  min-height:400px;
 }
 
 ol.topics {
-  padding-top: 50px;
+  padding-top: 30px;
+  margin:0;
+  
   li {
     display: block;
     border-bottom: 1px solid #cacaca;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin: 20px 35px;
     padding-bottom: 20px;
-    width: 98%;
   }
   .topic-title {
     font-size: 1.3em;
@@ -339,11 +353,13 @@ ol.topics {
   float: right;
   margin-bottom: 20px;
   background: url("/assets/close_buttons.png");
-  background-position: 28px 0px;
-  width: 28px;
+  background-position: right top;
+  width: 26px;
   height: 28px;
+  
   &:hover {
-    background-position: 0px 0px;
+    background-position: left top;
+    text-decoration:none;
   }
 }
 
@@ -629,5 +645,21 @@ ol.topics {
         color: #4e3227;
       }
     }
+  }
+}
+
+abbr[title] {
+cursor: default;
+border-bottom: none;
+}
+
+.topic-page{
+  
+ .topic-tabs{
+   display:none
+ }
+  
+  .topics{
+    padding-top:20px
   }
 }

@@ -11,10 +11,12 @@
     .container
       = render partial: "/shares/landing_header"
       .app-content
-        .span2
-          = render :partial => "/shares/shared_sidebar"
-        .span10.pull-right
-          = render :partial => "/shares/anonymous_topic_header"
-          = yield
+        .row.topic-page
+          .span2
+            = render :partial => "/shares/shared_sidebar"
+          .span10.mtop40.pull-right
+            = render :partial => "/shares/anonymous_topic_header"
+            = yield
+          .clear
         .clear
       = render partial: "/shares/footer"
