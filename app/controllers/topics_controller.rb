@@ -52,6 +52,7 @@ class TopicsController < ApplicationController
   end
 
   def edit
+    @selected_tab = 'mightbuy'
     render 'new'
   end
 
