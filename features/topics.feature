@@ -35,3 +35,10 @@ Feature: As a user
     And I visit the topic path
     And I comment "Please Avoid"
     Then I should see "Please Avoid"
+
+  @javascript
+  Scenario: Deleting a topics
+    Given I am logged in a user
+    When I visit profile page
+    Then I should be able to delete a topic
+

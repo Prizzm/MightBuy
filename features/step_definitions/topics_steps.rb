@@ -11,6 +11,14 @@ And /^I visit topic page$/ do
   visit "/topics"
 end
 
+And /^I visit profile page$/ do
+  visit "I might buy"
+end
+
+Then /^I should be able to delete a topic$/ do
+
+end
+
 Then /^I should see all topics people are sharing$/ do
   page.should have_content(@topic.subject)
 end
