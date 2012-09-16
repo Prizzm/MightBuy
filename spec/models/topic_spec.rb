@@ -49,4 +49,24 @@ describe Topic do
       Tag.count.should == 2
     end
   end
+
+  describe "updating a topic" do
+    before do
+      @topic = FactoryGirl.create(:topic, user: current_user)
+      @tag = FactoryGirl.create(:tag, name: 'dell')
+      @topic.tags << @tag
+
+      @new_topic_details = {
+        "subject" => "ips monitor", "url" => "http://www.dell.com/content/topics/topic.aspx/global/products/monitors/includes/en/ultrasharpmonitor_ips?c=us&l=en&cs=04", "image_url" => "/media/BAhbBlsHOgZmSSI5MjAxMi8wOS8xNi8wOV81MF8xNl83MzdfbW9uaXRvcl91bHRyYXNoYXJwX2lwc180LmpwZwY6BkVU",
+        "price" => "9.0", "body" => "IPS monitors", "tags" => ["dell", "apple", "ruby"]
+      }
+    end
+
+    it "should update topic without tags" do
+      return_value = @topic.update_from_form_data(@new_topic_details,'hello_world')
+      return_value.should be_true
+      @topic.should have(3).tags
+      @topic.subject.should == "ips monitor"
+    end
+  end
 end

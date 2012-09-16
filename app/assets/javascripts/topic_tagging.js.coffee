@@ -6,11 +6,16 @@ class @Mightbuy.TopicTagging
     $("#topic_tags").tagit({
       select: true,
       tagSource: @fetchExistingTags(),
+      initialTags: @fetchInitialTags(),
       triggerKeys: ['enter','comma','space']
     })
 
   fetchExistingTags : ->
-    ["Ruby", "Python"]
+    Mightbuy.suggestedTags
+
+  fetchInitialTags: ->
+    Mightbuy.initialTags
+
 
 jQuery ->
   new Mightbuy.TopicTagging()

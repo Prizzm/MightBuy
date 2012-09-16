@@ -53,16 +53,10 @@ class TopicsController < ApplicationController
 
   def edit
     @selected_tab = 'mightbuy'
-    render 'new'
   end
 
   def update
-    if params[:topic][:image_url] && URI.parse(URI.encode(params[:topic][:image_url])).host
-      params[:topic][:image_url] = URI.parse(URI.encode(params[:topic][:image_url])).to_s
-    else
-      params[:topic].delete(:image_url)
-    end
-    @topic.pass_visitor_code = visitor_code
+    @topic.update_from_form_data(params['topic'],visitor_code)
     respond_with @topic
   end
 

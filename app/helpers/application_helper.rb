@@ -43,6 +43,10 @@ module ApplicationHelper
     Tag.popular_tags
   end
 
+  def popular_tag_array
+    popular_tags.map(&:name)
+  end
+
   def tag_links(topic)
     topic.tags.map do |tag|
       content_tag(:a,tag.name,href: topics_tag_path(tag))

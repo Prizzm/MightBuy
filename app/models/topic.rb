@@ -66,8 +66,28 @@ class Topic < ActiveRecord::Base
 
   def add_tags(tag_array)
     !tag_array.blank? && tag_array.each do |tag_name|
-      self.tags << Tag.find_or_initialize_by_name(tag_name)
+      if persisted? && tags.find_by_name(tag_name)
+        next
+      else
+        self.tags << Tag.find_or_initialize_by_name(tag_name)
+      end
     end
+  end
+
+  def update_from_form_data(topic_details,visitor_code)
+    if topic_details['image_url'] && URI.parse(URI.encode(topic_details['image_url'])).host
+      topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url'])).to_s
+    else
+      topic_details.delete('image_url')
+    end
+    tag_string = topic_details.delete('tags') || []
+    self.pass_visitor_code = visitor_code
+    self.add_tags(tag_string)
+    self.update_attributes(topic_details)
+  end
+
+  def tag_array
+    self.tags ? self.tags.map(&:name) : []
   end
 
   def find_product

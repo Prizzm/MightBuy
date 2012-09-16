@@ -1,3 +1,4 @@
+= javascript_tag "Mightbuy.initialTags = #{@topic.tag_array}"
 %div#details
   .row
     .span5
@@ -7,6 +8,6 @@
           .buttons.btn-red-large
             = form.button :submit, "Save"
     %div#topic_right_panel.span5
-      %div#gsearch-results
+      %div#gsearch-results{style: "display:none;"}
       %div#item-form-image-selector
     .clear
