@@ -1,7 +1,6 @@
 .tabs.mini
   ul.nav.nav-tabs
     li.active= link_to "Enter them yourself..", "#share-list"
-    li= link_to "Upload a CSV..", "#share-csv"
 
   #share-list
     - new_shares = form.object.shares.select(&:new_record?)
@@ -10,5 +9,3 @@
     .links
       = link_to_add_association 'Add email...', form, :shares
 
-  #share-csv
-    = form.input :share_csv, :as => :file, :label => "Choose file.."
