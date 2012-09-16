@@ -1,5 +1,6 @@
 /* UI Autocomplete mark-up */
 @import "../style";
+
 #item_url_search_autocomplete, #item_subject_search_autocomplete {
 
   .ui-autocomplete { position: absolute; cursor: default; }	
@@ -18,10 +19,12 @@
    */
   .ui-menu {
     list-style:none;
-    padding: 2px;
+    padding: 0;
     margin: 0;
     display:block;
     float: left;
+    @include border-radius(0);
+    @include box-shadow(0 2px 5px 0px #999);
   }
   .ui-menu .ui-menu {
     margin-top: -3px;
@@ -37,14 +40,16 @@
   .ui-menu .ui-menu-item a {
     text-decoration:none;
     display:block;
-    padding:.2em .4em;
-    line-height:1.5;
+    padding:2px 10px;
+    line-height:2;
     zoom:1;
   }
   .ui-menu .ui-menu-item a.ui-state-hover,
   .ui-menu .ui-menu-item a.ui-state-active {
     font-weight: normal;
-    margin: -1px;
+    line-height:2.2;
+    background:#E5D6C6;
+    @include border-radius(0);
   }
 
   /* Component containers
@@ -61,7 +66,7 @@
   ----------------------------------*/
   .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #d3d3d3/*{borderColorDefault}*/; background: #e6e6e6/*{bgColorDefault}*/ url(/images/jqueryui/ui-bg_glass_75_e6e6e6_1x400.png)/*{bgImgUrlDefault}*/ 50%/*{bgDefaultXPos}*/ 50%/*{bgDefaultYPos}*/ repeat-x/*{bgDefaultRepeat}*/; font-weight: normal/*{fwDefault}*/; color: #555555/*{fcDefault}*/; }
   .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #555555/*{fcDefault}*/; text-decoration: none; }
-  .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #999999/*{borderColorHover}*/; background: #dadada/*{bgColorHover}*/ url(/images/jqueryui/ui-bg_glass_75_dadada_1x400.png)/*{bgImgUrlHover}*/ 50%/*{bgHoverXPos}*/ 50%/*{bgHoverYPos}*/ repeat-x/*{bgHoverRepeat}*/; font-weight: normal/*{fwDefault}*/; color: #212121/*{fcHover}*/; }
+  .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {}
   .ui-state-hover a, .ui-state-hover a:hover { color: #212121/*{fcHover}*/; text-decoration: none; }
   .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #aaaaaa/*{borderColorActive}*/; background: #ffffff/*{bgColorActive}*/ url(/images/jqueryui/ui-bg_glass_65_ffffff_1x400.png)/*{bgImgUrlActive}*/ 50%/*{bgActiveXPos}*/ 50%/*{bgActiveYPos}*/ repeat-x/*{bgActiveRepeat}*/; font-weight: normal/*{fwDefault}*/; color: #212121/*{fcActive}*/; }
   .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #212121/*{fcActive}*/; text-decoration: none; }
@@ -93,10 +98,10 @@
 
 
   /* Corner radius */
-  .ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl { -moz-border-radius-topleft: 4px/*{cornerRadius}*/; -webkit-border-top-left-radius: 4px/*{cornerRadius}*/; -khtml-border-top-left-radius: 4px/*{cornerRadius}*/; border-top-left-radius: 4px/*{cornerRadius}*/; }
-  .ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr { -moz-border-radius-topright: 4px/*{cornerRadius}*/; -webkit-border-top-right-radius: 4px/*{cornerRadius}*/; -khtml-border-top-right-radius: 4px/*{cornerRadius}*/; border-top-right-radius: 4px/*{cornerRadius}*/; }
-  .ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl { -moz-border-radius-bottomleft: 4px/*{cornerRadius}*/; -webkit-border-bottom-left-radius: 4px/*{cornerRadius}*/; -khtml-border-bottom-left-radius: 4px/*{cornerRadius}*/; border-bottom-left-radius: 4px/*{cornerRadius}*/; }
-  .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br { -moz-border-radius-bottomright: 4px/*{cornerRadius}*/; -webkit-border-bottom-right-radius: 4px/*{cornerRadius}*/; -khtml-border-bottom-right-radius: 4px/*{cornerRadius}*/; border-bottom-right-radius: 4px/*{cornerRadius}*/; }
+  .ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {}
+  .ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {}
+  .ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {}
+  .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {}
 
 }
 
