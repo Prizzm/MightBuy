@@ -67,7 +67,6 @@ NewPrizzmCom::Application.routes.draw do
     resources :email_shares, only: [:new, :create]
 
     resources :responses
-    get 'share' => 'topics#share'
     get 'login' => 'topics#login'
     get 'thanks' => 'promotions#opinion'
 
