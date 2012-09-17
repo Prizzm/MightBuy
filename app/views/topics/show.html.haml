@@ -28,8 +28,14 @@
       #topic-voting.pleft40
         = render partial: "topics/topic_votes", locals: { topic: @topic, vote: @vote }
 
+  - unless @topic.votes.empty?
+    .row
+      .span10.mleft40
+        %h3.mtop60.mleft20 Votes
+        %hr.mleft20.mtop15.width90p
+
   .row
-    .span10
+    .span6
       %h3.mleft40.mtop60.mbot30 Write Responses
 
   .topic-comments
