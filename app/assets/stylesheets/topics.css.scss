@@ -79,6 +79,7 @@
     color: #4e3227;
     letter-spacing: -1px;
     margin-bottom: 10px;
+    line-height: 27px;
   }
 
   .topic-url, .topic-tags {
@@ -673,6 +674,7 @@ border-bottom: none;
   }
 }
 
+
 .vote-percentages > span {
   padding-top: 45px;
   padding-bottom: 45px;
@@ -716,3 +718,17 @@ span.no-votes {
   margin-left: 40px;
   width: 90%
 }
+
+
+#email-share-fields {
+  .btn-red {
+    padding: 6px 10px;
+  }
+
+  .remove-email {
+    i {
+      margin-top: 5px;
+    }
+  }
+}
+

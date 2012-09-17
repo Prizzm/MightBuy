@@ -83,4 +83,25 @@ describe Topic do
       @topic.percentage_votes[:no].should == 0
     end
   end
+
+  describe "Interface" do
+    it "should return short url properly" do
+      topic = FactoryGirl.build(:topic, url: "http://helloworld.com")
+      topic.short_url.should_not be_empty
+      topic.short_url.should == topic.url + "..."
+    end
+
+    it "should truncate url to first 40 characters" do
+      long_url = "http://" + "wiki"*10 + "remainder.com"
+      topic = FactoryGirl.build(:topic, url: long_url)
+      topic.short_url.size.should == 43
+      topic.short_url.should_not match(/remainder/)
+    end
+
+    it "should return empty string if url is not present" do
+      topic = FactoryGirl.build(:topic, url: nil)
+      topic.short_url.should_not be_nil
+      topic.short_url.should be_empty
+    end
+  end
 end
