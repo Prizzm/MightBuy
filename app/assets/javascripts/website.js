@@ -14,3 +14,4 @@
 //= require image_selector
 //= require ajax_notifier
 //= require topic_tagging
+//= require profile

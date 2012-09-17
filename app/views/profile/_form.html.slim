@@ -2,7 +2,7 @@
 
 = render "partials/image_selector_input", :form => form, :field => :image
 
-.mtop60
+.mtop40
 .row
   .span5.bor-right
     .gen-detail
@@ -11,9 +11,6 @@
       = current_user.email
       = form.input :name, :label => "Your Name"
       /= form.input :description, :label => "About you", :hint => "Anything you'd like to share..", :input_html => { :maxlength => 150 }
-      .mtop20
-      = link_to 'Delete Account', user_registration_path, :confirm => 'Are you sure you want to delete your account? All data will be lost.', :method => :delete, :class =>"btn-red small"
-  
   .span3.mleft40
     = heading "Social Accounts"
     - if current_user.twitter_uid == nil

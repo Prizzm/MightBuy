@@ -4,11 +4,12 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require bootstrap_overrides
  *= require jquery-ui-1.8.23.custom
+ *= require tagit/tagit-simple-grey.css
  *= require_self
  *= require custom
  *= require global
  *= require topics
- *= require tagit/tagit-simple-grey.css
+ *= require profile
  *= require topic_search/item_search
  *= require topic_search/image_selector
 */

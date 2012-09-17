@@ -1,23 +1,19 @@
 / Image Selector Input
 .image-selector-uploader.input.image-selector
-  .image-holder
+  .span2.image-holder
     a href="javascript:void(0);" class="image blank"
       = centered do
         - unless form.object.send(field).blank?
           = image_tag form.object.send(field).url
-    .controls
-      a href="#prev" class="prev" Previous
-      a href="#next" class="next" Next
-  
-  .mtop25
-  
-  .tabs.mini
+  .span6.tabs.mini
     ul.nav.nav-tabs
-      li.active= link_to "Upload File", "#computer"
-      li= link_to "Add Pic from web", "#web"
+      li.active
+        = link_to "Upload File", "#upload-from-computer"
+      li
+        = link_to "Add Pic from web", "#upload-from-web"
 
       
-    #computer.mini-container
+    #upload-from-computer.mini-container
       .field
         .file-uploader
           .qq-upload-drop-area Drop files here!
@@ -28,12 +24,12 @@
             = form.input field, :as => :file, :label => false
         .clearfix
 
-    #web.mini-container.upload-files
+    #upload-from-web.mini-container.upload-files
       .field
         input type="text" class="span5 input m-all0" placeholder="http://www.mywebsitewithpicture.com"
         = link_to "Grab", "#get", :class => "button get mleft10 btn-red small"
         .clearfix
     
-    
+  .clear
   = form.input "#{field}_url", :as => :hidden, :input_html => { :class => "remote-url" }
   = form.input "inherit_upload_id", :as => :hidden, :input_html => { :class => "upload-id" }
