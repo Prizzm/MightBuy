@@ -16,3 +16,4 @@
 //= require ajax_notifier
 //= require topic_tagging
 //= require profile
+//= require email_share

@@ -84,6 +84,10 @@ module ApplicationHelper
     end
   end
 
+  def topic_image(topic)
+    topic.image ? topic.image.url : "no_image.png"
+  end
+
   def link (model)
     case model
       when Product then link_to model.name, product_path(model)

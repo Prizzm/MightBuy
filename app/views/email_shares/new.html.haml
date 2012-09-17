@@ -1,0 +1,14 @@
+.show-topic.prel
+  .row.topic-links.ptop30
+    = render :partial => "topics/topic_detail"
+
+  .row.mtop20
+    .span10
+      = simple_form_for @topic, url: topic_email_shares_path(@topic), method: :post do |f|
+        .share-view
+          = heading "Share Via.."
+          %ul.nav.nav-tabs
+            %li.active= link_to "Enter them yourself.."
+
+          #email-share-fields
+          = f.submit "Send Emails", class: "btn btn-red btn-large"

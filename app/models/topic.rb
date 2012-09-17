@@ -13,6 +13,7 @@ class Topic < ActiveRecord::Base
   # Relationships
   has_many :responses
   has_many :shares, :class_name => "Shares::Share", :inverse_of => :topic
+  has_many :email_shares, :class_name => "Shares::Email", :inverse_of => :topic
   belongs_to :user
   belongs_to :product
 
@@ -35,8 +36,9 @@ class Topic < ActiveRecord::Base
   image_accessor :image
 
   # Nested Attributes
-  accepts_nested_attributes_for :shares,
-  :reject_if => proc { |attributes| attributes["with"].blank? }
+  accepts_nested_attributes_for :shares, :reject_if => proc { |attributes| attributes["with"].blank? }
+  accepts_nested_attributes_for :email_shares
+  attr_accessible :email_shares_attributes
 
   # Attributes
   attr_accessor :pass_visitor_code
