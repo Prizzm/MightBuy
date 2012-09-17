@@ -28,8 +28,8 @@
       #topic-voting.pleft40
         = render partial: "topics/topic_votes", locals: { topic: @topic, vote: @vote }
 
-  - unless @topic.votes.empty?
-    .row#topic-percentage-row
+  .row#topic-percentage-row
+    - unless @topic.votes.empty?
       = render :partial => "vote_percentage", locals: {topic: @topic}
 
   .row

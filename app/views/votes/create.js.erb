@@ -1,7 +1,7 @@
 <%- if current_user -%>
   $("#topic-voting").html("<%= escape_javascript(render partial: 'topics/topic_votes', locals: { topic: @vote.topic, vote: @vote }) -%>");
-  <% unless @vote.topic.votes.empty? -%>
-    $("#topic-percentage-row").html("<%= escape_javascript(render partial: 'topics/vote_percentage', locals: {topic: @vote.topic}) -%>");
+  <% unless @topic.votes.empty? -%>
+    $("#topic-percentage-row").html("<%= escape_javascript(render partial: 'topics/vote_percentage', locals: {topic: @topic}) -%>");
   <% end -%>
 <% else -%>
   window.location = "<%= new_user_session_path -%>";

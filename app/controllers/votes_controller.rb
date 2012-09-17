@@ -5,7 +5,7 @@ class VotesController < ApplicationController
   def create
     buyit = params[:vote] == "yes"
     @vote = @topic.vote(current_user, buyit)
-
+    @topic.reload
     if @vote.errors.empty? && current_user.nil?
       session[:vote_id] = @vote.id
       session[:redirect_path] = topic_path(@topic)
