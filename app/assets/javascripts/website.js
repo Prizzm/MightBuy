@@ -6,6 +6,7 @@
 //= require selectivizr.js
 //= require jquery.qtip.js
 //= require jquery.placeholder.js
+//= require fileuploader
 //= require jquery.pageless
 //= require tagit/tagit.js
 //= require tagit/tagit-themeroller.js

@@ -16,6 +16,9 @@
         loaderMsg : 'Loading more results'
       )
 
+  csrfToken: ->
+    $('meta[name="csrf-token"]').attr('content')
+
   setSelectedTab : ->
     $(".topic-tabs > li").removeClass('active')
     $(".topic-tabs > li[tab-name='#{Mightbuy.selectedMainTab}']").addClass('active')
