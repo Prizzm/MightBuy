@@ -116,6 +116,10 @@ class Topic < ActiveRecord::Base
     url ? url.first(40) + "..." : ""
   end
 
+  def has_bargin?
+    product && !product.bargins.blank?
+  end
+
   def find_product
     p = Product.find_by_url(url)
     if p then

@@ -28,9 +28,15 @@
       #topic-voting.pleft40
         = render partial: "topics/topic_votes", locals: { topic: @topic, vote: @vote }
 
-  .row#topic-percentage-row
-    - unless @topic.votes.empty?
-      = render :partial => "vote_percentage", locals: {topic: @topic}
+  .row
+    .topic-votes-and-deals
+      %hr
+      #topic-percentage-row
+        - unless @topic.votes.empty?
+          = render :partial => "vote_percentage", locals: {topic: @topic}
+      - if @topic.has_bargin?
+        = render :partial => "deals", locals: {topic: @topic}
+      .clear
 
   .row
     .span6

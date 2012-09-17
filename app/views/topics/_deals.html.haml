@@ -1,0 +1,13 @@
+#topic-deals
+  .span4
+    %h3 Deals
+    - for bargin in @topic.product.bargins do
+      .bargin
+        .description
+          = bargin.description
+        %input{:class => "button_buy", :name => "commit",
+          :type => "submit", :value => "Buy It!",
+          :class => "btn-large btn-danger",
+          :onClick => "window.location.href = '#{bargin.url}'"}
+        %br
+        %br
