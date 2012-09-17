@@ -31,7 +31,8 @@ class @Mightbuy.EmailShare
     @share_fields.find('.add-email').live "click", (e) =>
       remove_email_link =
         $("<a>").attr("class", "remove-email").
-          attr("href", 'javascript:void(0);').html("x")
+          attr("href", 'javascript:void(0);').
+          html $("<i>").attr("class", "icon-remove")
 
       $(e.target).parent().html remove_email_link
       @addEmailShareEntry()
@@ -41,7 +42,7 @@ class @Mightbuy.EmailShare
     @share_fields.find('.remove-email').live "click", (e) =>
       console.info "removing"
       console.info $(e.target).parent().parent()
-      $(e.target).parent().parent().remove()
+      $(e.target).parent().parent().parent().remove()
       true
 
 jQuery ->
