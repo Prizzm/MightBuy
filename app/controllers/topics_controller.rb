@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new()
+    @topic = Topic.new(params[:topic])
     @selected_tab = 'mightbuy'
   end
 

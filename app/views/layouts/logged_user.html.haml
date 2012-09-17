@@ -8,6 +8,8 @@
     = csrf_meta_tags
 
   %body
+    = render  partial: "shares/flash_notice"
+
     #ajax-loading
       %span Loading..
       = image_tag("loading.gif")
