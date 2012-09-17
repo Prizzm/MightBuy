@@ -113,7 +113,7 @@ class Topic < ActiveRecord::Base
   end
 
   def short_url
-    url.first(40) + "..."
+    url ? url.first(40) + "..." : ""
   end
 
   def find_product
