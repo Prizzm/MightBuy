@@ -9,8 +9,7 @@ class Tag < ActiveRecord::Base
   validates_uniqueness_of :name
 
   def self.popular_tags
-    Tag.joins{topic_tags}.select{count(topic_tags.tag_id).as('tag_count')}.
-      select{"tags.*"}.group{topic_tags.tag_id}.order("tag_count desc").limit(20)
+    Tag.select("tags.*, c.tag_count").joins("JOIN (select topic_tags.tag_id, count(*) as tag_count from topic_tags group by tag_id) c on tags.id = c.tag_id")
   end
 
   def to_param
