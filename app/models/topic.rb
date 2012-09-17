@@ -38,7 +38,6 @@ class Topic < ActiveRecord::Base
   # Nested Attributes
   accepts_nested_attributes_for :shares, :reject_if => proc { |attributes| attributes["with"].blank? }
   accepts_nested_attributes_for :email_shares, :reject_if => proc { |attributes| attributes["with"].blank? }
-  attr_accessible :email_shares_attributes
 
   # Attributes
   attr_accessor :pass_visitor_code

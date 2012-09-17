@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe ShareObserver do
+  before (:each) do
+    Notifications.deliveries.clear
+  end
+
   after (:each) do
     Notifications.deliveries.clear
   end
