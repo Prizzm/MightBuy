@@ -5,6 +5,8 @@
  *= require bootstrap_overrides
  *= require jquery-ui-1.8.23.custom
  *= require tagit/tagit-simple-grey.css
+ *= require fileuploader.css
+ *= require jquery.qtip.css
  *= require_self
  *= require custom
  *= require global
