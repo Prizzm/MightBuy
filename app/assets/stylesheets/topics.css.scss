@@ -671,3 +671,37 @@ border-bottom: none;
     padding-top:20px
   }
 }
+
+.vote-percentages > span {
+  padding-top: 45px;
+  padding-bottom: 45px;
+  padding-left: 12px;
+  padding-right: 12px;
+
+  background-color: #F7F7F7;
+  cursor: pointer;
+  width: 98px;
+  text-align: center;
+  float: left;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: 5px 20px 5px 0px;
+  &:hover {
+    background-color: #eeeeee;
+  }
+}
+
+div.percentage {
+  margin-top: 10px;
+  font-size: 2em;
+}
+
+span.yes-votes {
+  color: #167f07;
+}
+
+span.no-votes {
+  color: #b35158;
+}

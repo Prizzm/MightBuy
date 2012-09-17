@@ -10,7 +10,6 @@ class VotesController < ApplicationController
       session[:vote_id] = @vote.id
       session[:redirect_path] = topic_path(@topic)
     end
-
     location_path = current_user ? topic_path(@topic) : new_user_session_path
     respond_with(@vote, location: location_path)
   end

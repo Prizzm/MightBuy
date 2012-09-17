@@ -94,6 +94,24 @@ class Topic < ActiveRecord::Base
     self.tags ? self.tags.map(&:name) : []
   end
 
+  def percentage_votes
+    return @vote_percentage if @vote_percentage
+
+    if votes.empty?
+      @vote_percentage = {yes: 0, no: 0}
+    else
+      vote_count = votes.inject(yes: 0, no: 0) do |mem, vote|
+        vote.buyit ? mem[:yes] += 1 : mem[:no] += 1
+        mem
+      end
+      total_votes = votes.count
+      @vote_percentage = {
+        yes: (vote_count[:yes]*100)/total_votes,
+        no: (vote_count[:no]*100)/total_votes
+      }
+    end
+  end
+
   def short_url
     url.first(40) + "..."
   end

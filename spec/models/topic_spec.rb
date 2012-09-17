@@ -69,4 +69,18 @@ describe Topic do
       @topic.subject.should == "ips monitor"
     end
   end
+
+  describe "computing votes" do
+    before do
+      @topic = FactoryGirl.create(:topic, user: current_user)
+    end
+
+    it "should return percentage votes" do
+      another_user = FactoryGirl.create(:user)
+      @topic.vote(another_user,true)
+      @topic.percentage_votes.should_not be_empty
+      @topic.percentage_votes[:yes].should == 100
+      @topic.percentage_votes[:no].should == 0
+    end
+  end
 end
