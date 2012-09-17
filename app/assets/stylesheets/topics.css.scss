@@ -83,7 +83,9 @@
 
   .topic-url, .topic-tags {
     word-wrap: break-word;
-    color: #0185CD;
+    span {
+      font-size: 1.1em;
+    }
   }
 
   .topic-price {

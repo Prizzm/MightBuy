@@ -62,6 +62,7 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic.destroy
+    flash[:notice] = "The item has been removed"
     redirect_to profile_path()
   end
 
