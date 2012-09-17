@@ -33,11 +33,6 @@ class TopicsController < ApplicationController
     end
   end
 
-  def share
-    @topic = current_user.topics.find_by_shortcode(params[:topic_id])
-    @selected_tab = 'mightbuy'
-  end
-
   def show
     @vote = @topic.votes.find_by_user_id(current_user.id) if current_user
     @comments = @topic.comments.joins(:user).where(parent_id: nil).includes(:user)
