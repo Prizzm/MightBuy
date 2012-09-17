@@ -86,7 +86,7 @@ GEM
       json
     childprocess (0.3.5)
       ffi (~> 1.0, >= 1.0.6)
-    ci_reporter (1.7.1)
+    ci_reporter (1.7.2)
       builder (>= 2.1.2)
     clamp (0.4.0)
     cocoon (1.0.22)

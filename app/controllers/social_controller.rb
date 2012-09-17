@@ -14,8 +14,12 @@ class SocialController < ApplicationController
     unlink_facebook()
   end
 
-  def socialAuthenticationAPI
+  def socialAuthenticationAPIFacebook
     authenticate_using_facebook_uid(params[:token])
+  end
+  
+  def socialAuthenticationAPITwitter
+    authenticate_using_twitter_uid(params[:token])
   end
 
   def askAllAPI
@@ -161,6 +165,34 @@ class SocialController < ApplicationController
       u.name = "#{params[:first_name]} #{params[:last_name]}"
       u.email = params[:email]
       u.facebook_oauth_token = params[:oauth_token]
+      # Save user
+      u.save()
+      # Be sure user has a authentication token.  If they don't, generate one
+      u.ensure_authentication_token!
+      # render token as json
+      render :text => {:token => u.authentication_token}.to_json
+    end
+  end
+  
+  def authenticate_using_twitter_uid(uid)
+    # Define user as the user with uid (uid as param)
+    user = User.find_by_twitter_uid(uid)
+    # Check if user exists with uid
+    if user then
+      # Be sure user has a authentication token.  If they don't, generate one
+      user.ensure_authentication_token!
+      # render token as json
+      render :text => {:token => user.authentication_token}.to_json
+      # If user doesn't exist
+    else
+      # Create a new user
+      u = User.new()
+      # define attributes
+      u.twitter_uid = params[:token]
+      u.name = "#{params[:first_name]} #{params[:last_name]}"
+      u.email = "#{auth.uid}@twitter.com"
+      u.twitter_oauth_token = params[:oauth_token]
+      u.twitter_oauth_secret = params[:oauth_secret]
       # Save user
       u.save()
       # Be sure user has a authentication token.  If they don't, generate one
