@@ -3,14 +3,18 @@ class EmailSharesController < ApplicationController
   layout "logged_user"
 
   def new
-    @topic.email_shares.build
-    @topic.email_shares.build
-
     @selected_tab = 'mightbuy'
   end
 
   def create
-    render "new"
+    email_attributes = params[:topic] && params[:topic][:email_shares_attributes]
+    if @topic.update_attributes(email_shares_attributes: email_attributes)
+      flash[:notice] = "Sending Mails in Process"
+      redirect_to topic_path(@topic.shortcode)
+    else
+      flash[:error] = "Failed to Send Mails"
+      render "new"
+    end
   end
 
   private

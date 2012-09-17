@@ -11,4 +11,12 @@
             %li.active= link_to "Enter them yourself.."
 
           #email-share-fields
+            = f.simple_fields_for :email_shares, include_id: false do |email_share_form|
+              - unless email_share_form.object.errors.empty?
+                .row.add-email-entry
+                  .span3
+                    = email_share_form.input :with, label: false
+                  .span2
+                    = link_to "javascript:void(0);", class: "remove-email" do
+                      %i.icon-remove
           = f.submit "Send Emails", class: "btn btn-red btn-large"

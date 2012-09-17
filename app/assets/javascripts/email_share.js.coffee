@@ -17,7 +17,7 @@ Mightbuy.add_email_share = _.template("
 class @Mightbuy.EmailShare
   constructor: ->
     @share_fields = $("#email-share-fields")
-    @count = 0
+    @count = @share_fields.find(".add-email-entry").length
 
     @liveBindAddEmailLink()
     @liveBindRemoveEmailLink()
@@ -40,8 +40,6 @@ class @Mightbuy.EmailShare
 
   liveBindRemoveEmailLink: ->
     @share_fields.find('.remove-email').live "click", (e) =>
-      console.info "removing"
-      console.info $(e.target).parent().parent()
       $(e.target).parent().parent().parent().remove()
       true
 
