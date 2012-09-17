@@ -86,6 +86,9 @@
     span {
       font-size: 1.1em;
     }
+    a {
+      padding: 0px 3px 0px 3px;
+    }
   }
 
   .topic-price {
@@ -323,6 +326,9 @@ ol.topics {
 
   .topic-listing-tag {
     margin: 10px 0px 10px 0px;
+    a{
+      padding: 0px 3px 0px 3px;
+    }
   }
 
   .topic-meta > span {
