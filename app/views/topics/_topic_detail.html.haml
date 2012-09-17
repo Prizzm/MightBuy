@@ -7,9 +7,10 @@
     .topic-url.mtop10
       =link_to(@topic.short_url,@topic.url)
     .topic-tags.mtop10
-      %span
-        Tags :&nbsp;
-      = tag_links(@topic)
+      - unless @topic.tags.empty?
+        %span
+          Tags :&nbsp;
+        = tag_links(@topic)
     .topic-body.mtop15= @topic.body
     - if @topic.product
       - if(@topic.product.bargins != nil && @topic.product.bargins != [])
