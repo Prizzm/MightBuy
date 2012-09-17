@@ -4,7 +4,8 @@
 .span6
   .topic-details
     .topic-subject= @topic.subject.capitalize
-    .topic-url.mtop10= @topic.url
+    .topic-url.mtop10
+      =link_to(@topic.short_url,@topic.url)
     .topic-tags.mtop10
       = tag_links(@topic)
     .topic-body.mtop15= @topic.body

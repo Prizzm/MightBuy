@@ -94,6 +94,10 @@ class Topic < ActiveRecord::Base
     self.tags ? self.tags.map(&:name) : []
   end
 
+  def short_url
+    url.first(40) + "..."
+  end
+
   def find_product
     p = Product.find_by_url(url)
     if p then
