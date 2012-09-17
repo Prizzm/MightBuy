@@ -9,4 +9,13 @@
     .topic-tags.mtop10
       = tag_links(@topic)
     .topic-body.mtop15= @topic.body
+    - if @topic.product
+      - if(@topic.product.bargins != nil && @topic.product.bargins != [])
+        = heading "Deals" do
+          - for bargin in @topic.product.bargins do
+            .bargin
+              .description= bargin.description
+              %input{:class => "button_buy", :name => "commit", :type => "submit", :value => "Buy It!", :onClick => "window.location.href = '#{bargin.url}'"}
+              %br
+              %br
     .topic-price.mtop50= number_to_currency(@topic.price)
