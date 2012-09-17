@@ -233,8 +233,9 @@
 }
 
 .topic-tabs {
-  margin-left: -3px;
+  margin-left: -4px;
   margin-bottom: 0px;
+  border-bottom: none;
   
   li {
     height: 45px;
@@ -294,13 +295,13 @@
 #details {
   background: #fff;
   margin-left: -1px;
-  padding-bottom: 20px;
+  padding-bottom:20px;
   position:relative;
   min-height:400px;
 }
 
 ol.topics {
-  padding-top: 30px;
+  padding: 30px 0 0 0;
   margin:0;
   
   li {

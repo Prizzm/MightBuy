@@ -1,25 +1,26 @@
 - if name == :profile_show_topics
-  p
-  b Welcome! 
-  p 
-  | Make sure to add the  
-  = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
-  = stars " *bookmarklet* to your browser"
-  p
-  iframe width="420" height="315" src="http://www.youtube.com/embed/9riCsmyrW3g" 
-  p
+  .mleft30
+    p
+    b Welcome! 
+    p 
+    | Make sure to add the  
+    = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
+    = stars " *bookmarklet* to your browser"
+    p
+    iframe width="420" height="315" src="http://www.youtube.com/embed/9riCsmyrW3g" 
+    p
 
-- if name == :profile_show_responses
-  = stars ""
+  - if name == :profile_show_responses
+    = stars ""
 
-- if name == :brands_show_topics || name == :users_show_topics
-  = stars "Looks like they *haven't posted anything* yet."
-  
-- if name == :topics_show_responses
-  = stars "Looks like *no one has responded* yet."
-  
-- if name == :topics_show_shares_shares
-  = stars "You *haven't shared this with anyone* yet."
-  
-- if name == :users_show_responses || name == :brands_show_responses
-  = stars "Looks like they haven't *been involved in any conversations* yet."
+  - if name == :brands_show_topics || name == :users_show_topics
+    = stars "Looks like they *haven't posted anything* yet."
+
+  - if name == :topics_show_responses
+    = stars "Looks like *no one has responded* yet."
+
+  - if name == :topics_show_shares_shares
+    = stars "You *haven't shared this with anyone* yet."
+
+  - if name == :users_show_responses || name == :brands_show_responses
+    = stars "Looks like they haven't *been involved in any conversations* yet."
