@@ -273,9 +273,7 @@ module ApplicationHelper
   def bookmarklet_url
     "javascript:(function() { (function(){ " +
     " window.__prizzm_host = '#{request.host+":"+request.port.to_s}'; " +
-    " window.__prizzm_popup = window.open(\"http://\"+ window.__prizzm_host + \"/topics/new?topic[subject]=\"+encodeURIComponent(document.title)+\"&topic[url]=\"+encodeURIComponent(window.location.href));"  +
-    # actually not using bookmarklet.js but might have to use it
-    " var s=document.createElement('script'); s.src='http://#{request.host+":"+request.port.to_s}/bookmarklet.js?rnd=' + Number(new Date()); s.type='text/javascript'; document.getElementsByTagName('head')[0].appendChild(s);})() })();"
+    " window.__prizzm_popup = window.open(\"http://\"+ window.__prizzm_host + \"/topics/new?topic[subject]=\"+encodeURIComponent(document.title)+\"&topic[url]=\"+encodeURIComponent(window.location.href)); })() })();"
   end
 
 end
