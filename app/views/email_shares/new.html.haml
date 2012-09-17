@@ -12,7 +12,7 @@
 
           #email-share-fields
             = f.simple_fields_for :email_shares, include_id: false do |email_share_form|
-              - unless email_share_form.object.errors.empty?
+              - if email_share_form.object.id.nil?
                 .row.add-email-entry
                   .span3
                     = email_share_form.input :with, label: false
