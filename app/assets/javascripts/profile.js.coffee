@@ -1,6 +1,6 @@
 class @Mightbuy.Profile
   constructor: ->
-    @tabSwitcher() unless _.isEmpty($(".mini .nav-tabs > li"))
+    @tabSwitcher() if($(".mini .nav-tabs > li").length > 0)
     @selectoruploaders()
 
   tabSwitcher: ->

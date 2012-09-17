@@ -9,7 +9,7 @@
   pagelessUrl: "/topics"
 
   enablePageLess: ->
-    unless _.isEmpty($("#pageless-topic-listing"))
+    if $("#pageless-topic-listing").length > 0
       $('#pageless-topic-listing').pageless(
         totalPages : 10
         url : "#{Mightbuy.pagelessUrl}"
