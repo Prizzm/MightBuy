@@ -101,7 +101,7 @@ class @Mightbuy.ItemSearch
         $("#gsearch-results").html(resultElement.html())
     else
       $("#gsearch-results").html("<br />No results found<br /><br />");
-    $("#gsearch-results").css("display" : "")
+    $("#gsearch-results").show()
     $("#item-form-image-selector").css("display" : "none")
 
   getResultRow: (result) ->
