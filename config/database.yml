@@ -8,7 +8,7 @@ development:
   database: mightbuy_development
   pool: 5
   timeout: 5000
-  username: hemant
+  username: prizzm
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -18,7 +18,7 @@ test: &test
   database: mightbuy_test
   pool: 5
   timeout: 5000
-  username: hemant
+  username: prizzm
 
 production:
   adapter: postgresql
