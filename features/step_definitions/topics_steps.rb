@@ -68,3 +68,25 @@ When /^I comment "(.*?)"$/ do |description|
   page.find(".new-comment-form-submit input").click
   wait_for_ajax_call_to_finish
 end
+
+And /^I have bunch of topics$/ do
+  @user_topic = FactoryGirl.create(:topic, user: @user)
+end
+
+And /^system has topics added by other users as well$/ do
+  @another_user = FactoryGirl.create(:user)
+  @another_topic = FactoryGirl.create(:topic, user: @another_user)
+end
+
+When /^I visit one of my topics$/ do
+  visit "/topics/#{@user_topic.shortcode}"
+end
+
+Then /^"([^"]*)" tab should be highlighted$/ do |selected_tab|
+  page.find("ul.topic-tabs li.active").has_content?(selected_tab).should be_true
+end
+
+When /^I visit one of other topics$/ do
+  visit "/topics/#{@another_topic.shortcode}"
+end
+

@@ -333,9 +333,6 @@ ol.topics {
     }
   }
 
-  .topic-meta > span {
-    color: #ABABAB;
-  }
   div.price {
     margin-top: 30px;
     color: #879d6c;
@@ -346,6 +343,11 @@ ol.topics {
     color: #4e3227;
   }
 }
+
+.topic-meta > span {
+  color: #ABABAB;
+}
+
 
 .topic-details {
   margin-right: 24px;
