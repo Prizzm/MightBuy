@@ -75,8 +75,12 @@ class Topic < ActiveRecord::Base
     end
   end
 
-  def poster_name
-    user ? user.name : "anonymous"
+  def poster_name(current_user = nil)
+    if current_user && user == current_user
+      "You"
+    else
+      user ? user.name : "anonymous"
+    end
   end
 
   def update_from_form_data(topic_details,visitor_code)
