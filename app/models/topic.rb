@@ -149,6 +149,10 @@ class Topic < ActiveRecord::Base
     end
   end
 
+  def owner?(p_user)
+    user == p_user
+  end
+
   def thumbnail_image
     if image
       image.thumb("187x137").url

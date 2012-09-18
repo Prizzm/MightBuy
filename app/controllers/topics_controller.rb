@@ -37,7 +37,7 @@ class TopicsController < ApplicationController
     @vote = @topic.votes.find_by_user_id(current_user.id) if current_user
     @comments = @topic.comments.joins(:user).where(parent_id: nil).includes(:user)
     @comment = @topic.comments.build
-    @selected_tab = 'mightbuy'
+    @selected_tab = @topic.owner?(current_user) ? 'mightbuy' : 'everybody'
   end
 
   def create
