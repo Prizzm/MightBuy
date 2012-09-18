@@ -42,3 +42,16 @@ Feature: As a user
     When I visit profile page
     Then I should be able to delete a topic
 
+  @javascript
+  Scenario: Visiting particular topic
+    Given I am logged in a user
+    And I have bunch of topics
+    And system has topics added by other users as well
+    When I visit one of my topics
+    Then "I might buy" tab should be highlighted
+    And I should see "You added"
+    When I visit one of other topics
+    Then "Everybody" tab should be highlighted
+
+    
+
