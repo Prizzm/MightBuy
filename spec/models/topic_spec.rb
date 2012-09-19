@@ -108,6 +108,8 @@ describe Topic do
   describe "copying topics to my own list" do
     before {
       @topic = FactoryGirl.create(:topic, user: current_user)
+      @tag = FactoryGirl.create(:tag)
+      @topic.tags << @tag
     }
 
     it "should let me copy the topic" do
@@ -115,6 +117,7 @@ describe Topic do
       new_topic = @topic.copy(another_user)
       new_topic.subject.should == @topic.subject
       new_topic.user.should == another_user
+      new_topic.tags.should include(@tag)
     end
   end
 

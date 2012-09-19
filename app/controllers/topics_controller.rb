@@ -40,6 +40,12 @@ class TopicsController < ApplicationController
     @selected_tab = @topic.owner?(current_user) ? 'mightbuy' : 'everybody'
   end
 
+  def copy
+    @old_topic = Topic.find_by_shortcode(params[:id])
+    @topic = @old_topic.copy(current_user)
+    redirect_to topic_path(@topic)
+  end
+
   def create
     @topic = Topic.create_from_from_data(params['topic'],current_user,visitor_code)
     @topic.save

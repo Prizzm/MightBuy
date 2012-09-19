@@ -159,10 +159,14 @@ class Topic < ActiveRecord::Base
 
   def thumbnail_image
     if image
-      image.thumb("187x137").url
+      image.thumb("187x137#").url
     else
       "/assets/no_image.png"
     end
+  end
+
+  def copy(another_user)
+
   end
 
   def iImage(host = true)

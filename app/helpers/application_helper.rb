@@ -85,7 +85,7 @@ module ApplicationHelper
   end
 
   def topic_image(topic)
-    topic.image ? topic.image.thumb("254x216#ne").url : "no_image.png"
+    topic.image ? topic.image.thumb("254x216").url : "no_image.png"
   end
 
   def link (model)
