@@ -104,4 +104,18 @@ describe Topic do
       topic.short_url.should be_empty
     end
   end
+
+  describe "copying topics to my own list" do
+    before {
+      @topic = FactoryGirl.create(:topic, user: current_user)
+    }
+
+    it "should let me copy the topic" do
+      another_user = FactoryGirl.create(:user)
+      new_topic = @topic.copy(another_user)
+      new_topic.subject.should == @topic.subject
+      new_topic.user.should == another_user
+    end
+  end
+
 end
