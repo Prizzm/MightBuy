@@ -115,6 +115,8 @@ describe Topic do
     it "should let me copy the topic" do
       another_user = FactoryGirl.create(:user)
       new_topic = @topic.copy(another_user)
+      t = new_topic.save
+      t.should be_true
       new_topic.subject.should == @topic.subject
       new_topic.user.should == another_user
       new_topic.tags.should include(@tag)

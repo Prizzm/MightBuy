@@ -23,7 +23,7 @@
           = render partial: "topics/social_share_topic", locals: { topic: @topic }
       - elsif current_user
         #add-to-mightbuy.mleft40
-          = link_to("I may buy as well",copy_topic_path(@topic))
+          = link_to("I may buy as well",copy_topic_path(@topic), class: "btn-red")
     .span5{class: current_user ? "" : "offset4"}
       #topic-voting.pleft40
         = render partial: "topics/topic_votes", locals: { topic: @topic, vote: @vote }

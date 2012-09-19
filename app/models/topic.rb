@@ -166,7 +166,11 @@ class Topic < ActiveRecord::Base
   end
 
   def copy(another_user)
-
+    another_topic = Topic.new()
+    another_topic.attributes = self.attributes.except('shortcode', 'id', 'type', 'created_at', 'updated_at')
+    another_topic.tags = self.tags
+    another_topic.user = another_user
+    another_topic
   end
 
   def iImage(host = true)

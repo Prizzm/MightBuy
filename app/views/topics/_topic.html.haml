@@ -12,8 +12,7 @@
           = tag_links(topic)
         .topic-meta
           %span
-            = topic.user.name
-            added this #{time_ago_in_words(topic.created_at)} ago
+            You added this #{time_ago_in_words(topic.created_at)} ago
       .span1.pull-right.topic-list-actions
         %a.topic-actions{:href => topic_path(topic), 'data-method' => :delete }
           \&nbsp;
