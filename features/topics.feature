@@ -51,7 +51,7 @@ Feature: As a user
     Then "I might buy" tab should be highlighted
     And I should see "You added"
     When I visit one of other topics
-    Then "Everybody" tab should be highlighted
+    Then "Browse" tab should be highlighted
 
     
 
