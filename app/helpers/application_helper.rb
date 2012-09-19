@@ -276,8 +276,9 @@ module ApplicationHelper
 
   def bookmarklet_url
     "javascript:(function() { (function(){ " +
-    " window.__prizzm_host = '#{request.host+":"+request.port.to_s}'; " +
-    " window.__prizzm_popup = window.open(\"http://\"+ window.__prizzm_host + \"/topics/new?topic[subject]=\"+encodeURIComponent(document.title)+\"&topic[url]=\"+encodeURIComponent(window.location.href)); })() })();"
+    "window.open(\"#{request.base_url}\" +
+     \"/topics/new?topic[subject]=\"+encodeURIComponent(document.title) +
+     \"&topic[url]=\"+encodeURIComponent(window.location.href)); })() })();"
   end
 
 end
