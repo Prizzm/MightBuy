@@ -40,6 +40,18 @@ class TopicsController < ApplicationController
     @selected_tab = @topic.owner?(current_user) ? 'mightbuy' : 'everybody'
   end
 
+  def copy
+    @old_topic = Topic.find_by_shortcode(params[:id])
+    @topic = @old_topic.copy(current_user)
+    if @topic.save
+      flash[:notice] = "Item copied to your list"
+      redirect_to topic_path(@topic)
+    else
+      flash[:error] = "Failed to copy item"
+      redirect_to topic_path(@old_topic)
+    end
+  end
+
   def create
     @topic = Topic.create_from_from_data(params['topic'],current_user,visitor_code)
     @topic.save

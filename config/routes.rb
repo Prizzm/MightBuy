@@ -75,6 +75,9 @@ NewPrizzmCom::Application.routes.draw do
       get 'business/recommendation' => 'topics#new', :topic => { :form => :business_recommendation }
       get 'recommend' => 'topics#new', :topic => { :form => :recommend }
     end
+    member do
+      get 'copy'
+    end
   end
 
   get 'activity' => 'activity#index'
