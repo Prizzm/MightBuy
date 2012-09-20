@@ -107,3 +107,5 @@ end
 
 gem 'rubber'
 gem 'open4'
+
+gem 'ejs'
