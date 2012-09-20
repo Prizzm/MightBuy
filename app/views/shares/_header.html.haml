@@ -6,9 +6,9 @@
       %p.caption
         Track stuff you might buy
     .span3.offset4
-      .bookmarkelet-button
-        = link_to(bookmarklet_url) do
-          =image_tag("bookmarklet.png")
+      .bookmarklet-button
+        = link_to bookmarklet_url, :onclick => "return false;" do
+          = image_tag("bookmarklet.png", alt: "Mightbuy.it")
       .bookmarklet-help
         Drag me to your
         %b Bookmarks Bar!
