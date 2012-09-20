@@ -124,7 +124,7 @@ class @Mightbuy.ItemSearch
 
   fetchImages: ->
     url = $("#topic_url").val()
-    $.getJSON(window.location.protocol + "//mightbuy-scraper.herokuapp.com/?url=" + encodeURIComponent(url) + "&callback=?", (data) ->
+    $.getJSON(Mightbuy.scrapeApiURL, {url:url}, (data) ->
       images = data.images
 
       position = 0
@@ -150,6 +150,8 @@ class @Mightbuy.ItemSearch
         position : position
       })
 
+      if data.title && !$("#topic_subject").val()
+        $("#topic_subject").val(data.title)
       if data.price
         $("#topic_price").val(data.price)
     )
