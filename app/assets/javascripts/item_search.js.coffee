@@ -150,6 +150,8 @@ class @Mightbuy.ItemSearch
         position : position
       })
 
+      if data.title && !$("#topic_subject").val()
+        $("#topic_subject").val(data.title)
       if data.price
         $("#topic_price").val(data.price)
     )
