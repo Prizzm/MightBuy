@@ -4,7 +4,8 @@
   initialTags: []
   suggestedTags: []
   suggestApiURL: "http://suggestqueries.google.com/complete/search?hl=en&client=youtube&hjson=t&cp=1&key=&format=5&alt=json&callback=?"
-  searchApiURL: "#{window.location.protocol}//ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?"
+  searchApiURL: "//ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?"
+  scrapeApiURL: "#{window.location.protocol}//mightbuy-scraper.herokuapp.com/?callback=?"
 
   pagelessUrl: "/topics"
 

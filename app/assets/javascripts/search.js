@@ -3,7 +3,7 @@ function updateScraperInfo($elem){
   $elem.css({ "display" : "table-row" });
 
   (function($elem, $next){
-    $.getJSON(window.location.protocol + "//mightbuy-scraper.herokuapp.com/?callback=?",{url:$elem.data("url")},function(r){
+    $.getJSON(Mightbuy.scrapeApiURL,{url:$elem.data("url")},function(r){
       if(r.price) {
         $elem.find(".price").html("$ " + r.price);
       }
@@ -11,7 +11,7 @@ function updateScraperInfo($elem){
       {
         $elem.find(".price").html("<i>Price not available</i>");
       }
-      
+
       $elem.find(".image-selector").imageSelector({
         change : function(image){
           var orig_href = $elem.find(".mightbuy-button").attr("href");
@@ -53,26 +53,14 @@ $(function(){
     $("#public-search-form #q").val(q);
 
     // fetch some search results
-    var apiURL = window.location.protocol + '//ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?';
-    $.getJSON(apiURL,{q:q,rsz:5,start:0},function(r){
+    var apiURL = Mightbuy.searchApiURL;
+    $.getJSON(apiURL,{q:q,rsz:4,start:0},function(r){
       var res = r.responseData.results;
       var result_elem = $("<table></table>");
       if ( res.length ) {
         res = $.each(res, function(i, r){
 
-          var new_item = $('<tr class="public-search-result" style="display:none;" data-url="'+ r.unescapedUrl +'" >' + 
-                              '<td class="public-search-result-google-info" >' +
-                                '<a class="title" target="_blank" href="'+ r.unescapedUrl +'">'+ r.titleNoFormatting +'</a>' +
-                                '<div class="description">'+ r.content +'</div>' +
-                                '<div class="url">'+ r.visibleUrl +'</div>' +
-                                '<a class="mightbuy-button" href="/topics/new?topic[subject]='+ encodeURIComponent(r.titleNoFormatting) +'&topic[url]='+ encodeURIComponent(r.unescapedUrl) +'">Add to Might Buy</a>' +
-                              '</td>' +
-                              '<td class="public-search-result-scraper-info" style="">' +
-                                '<span class="loading">&nbsp;</span>' +
-                                '<div class="image-selector"></div>' +
-                                '<div class="price"><i></i></div>' +
-                              '</td>' +
-                           '</tr>');
+          var new_item = $(JST["templates/public-search-result"]({ result_data: r }));
 
           result_elem.append(new_item);
 

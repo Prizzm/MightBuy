@@ -128,6 +128,7 @@ GEM
     diff-lcs (1.1.3)
     dragonfly (0.9.12)
       rack
+    ejs (1.1.1)
     email_spec (1.2.1)
       mail (~> 2.2)
       rspec (~> 2.0)
@@ -448,6 +449,7 @@ DEPENDENCIES
   delayed_job_active_record
   devise (= 1.4.7)
   dragonfly
+  ejs
   email_spec
   factory_girl_rails (= 1.3.0)
   fancybox-rails (= 0.1.4)
