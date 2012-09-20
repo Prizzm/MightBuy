@@ -17,3 +17,4 @@
 //= require topic_tagging
 //= require profile
 //= require email_share
+//= require search

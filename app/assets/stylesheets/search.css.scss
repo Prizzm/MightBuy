@@ -1,3 +1,98 @@
-// Place all the styles related to the search controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#search-page {
+
+  .logo {
+    text-decoration:none;
+  }
+
+  text-align:Center;
+  padding:20px;
+
+  #public-search-form {
+
+    input {
+      font-size:1em;
+      padding:10px;
+      margin:20px auto;
+      border:1px solid #888;
+      width:500px;
+      display:block;
+    }
+
+    button {
+      font-size:1em;
+      padding:10px;
+    }
+  }
+
+  .public-search-results {
+    margin:0 auto;
+    margin-top:30px;
+    width:700px;
+    
+    .public-search-result {
+
+
+
+      width:800px;
+      text-align:left;
+
+      td {
+        padding:20px;
+      }
+
+
+      .public-search-result-google-info {
+        .title {
+          display:inline-block;
+          padding-bottom:4px;
+        }
+        .description {
+          font-size:13px;
+          display:inline-block;
+          padding-bottom:4px;
+        }
+        .url {
+          font-size:13px;
+          color:#586;
+          display:block;
+          padding-bottom:4px;
+        }
+        .mightbuy-button {
+          display:inline-block;
+          margin-top:5px;
+          padding:5px;
+          text-decoration:none;
+          border:1px solid #bbb;
+          color:#444;
+          background-color:#eee;
+        }
+      }
+
+      .public-search-result-scraper-info {
+        width:150px;
+        padding-left:10px;
+        vertical-align:middle;
+        text-align:center;
+        border-left:1px dotted #777;
+
+        .loading {
+          display:inline-block;
+          width:20px;
+          height:20px;
+        }
+
+      }
+      
+      &:after { 
+        visibility: hidden; 
+        display: block; 
+        font-size: 0; 
+        content: " "; 
+        clear: both; 
+        height: 0; 
+      }
+
+    }
+  }
+
+}
