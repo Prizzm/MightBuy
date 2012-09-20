@@ -1,9 +1,9 @@
 function updateScraperInfo($elem){
 
-  $elem.css({ "visibility" : "visible" });
+  $elem.css({ "display" : "table-row" });
 
   (function($elem, $next){
-    $.getJSON("http://mightbuy-scraper.herokuapp.com/?callback=?",{url:$elem.data("url")},function(r){
+    $.getJSON(window.location.protocol + "//mightbuy-scraper.herokuapp.com/?callback=?",{url:$elem.data("url")},function(r){
       if(r.price) {
         $elem.find(".price").html("$ " + r.price);
       }
@@ -11,6 +11,16 @@ function updateScraperInfo($elem){
       {
         $elem.find(".price").html("<i>Price not available</i>");
       }
+      
+      $elem.find(".image-selector").imageSelector({
+        change : function(image){
+          var orig_href = $elem.find(".mightbuy-button").attr("href");
+          var new_href = orig_href.split("#")[0] + "#" + encodeURIComponent(image);
+          $elem.find(".mightbuy-button").attr("href", new_href);
+        },
+        images : r.	images
+      });
+      
       if(r.images[0]) {
         $elem.find(".thumb img").attr("src", r.images[0]);
       }
@@ -44,22 +54,22 @@ $(function(){
 
     // fetch some search results
     var apiURL = window.location.protocol + '//ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?';
-    $.getJSON(apiURL,{q:q,rsz:4,start:0},function(r){
+    $.getJSON(apiURL,{q:q,rsz:5,start:0},function(r){
       var res = r.responseData.results;
       var result_elem = $("<table></table>");
       if ( res.length ) {
         res = $.each(res, function(i, r){
 
-          var new_item = $('<tr class="public-search-result" style="visibility:hidden;" data-url="'+ r.unescapedUrl +'" >' + 
+          var new_item = $('<tr class="public-search-result" style="display:none;" data-url="'+ r.unescapedUrl +'" >' + 
                               '<td class="public-search-result-google-info" >' +
                                 '<a class="title" target="_blank" href="'+ r.unescapedUrl +'">'+ r.titleNoFormatting +'</a>' +
                                 '<div class="description">'+ r.content +'</div>' +
                                 '<div class="url">'+ r.visibleUrl +'</div>' +
-                                '<a class="btn mightbuy-button" href="/topics/new?topic[subject]='+ encodeURIComponent(r.titleNoFormatting) +'&topic[url]='+ encodeURIComponent(r.unescapedUrl) +'">Might Buy</a>' +
+                                '<a class="mightbuy-button" href="/topics/new?topic[subject]='+ encodeURIComponent(r.titleNoFormatting) +'&topic[url]='+ encodeURIComponent(r.unescapedUrl) +'">Add to Might Buy</a>' +
                               '</td>' +
                               '<td class="public-search-result-scraper-info" style="">' +
                                 '<span class="loading">&nbsp;</span>' +
-                                '<div class="thumb" ><img src="" style="max-width:70px;max-height:70px;"></div>' +
+                                '<div class="image-selector"></div>' +
                                 '<div class="price"><i></i></div>' +
                               '</td>' +
                            '</tr>');
@@ -69,13 +79,13 @@ $(function(){
         });
 
         $(".public-search-results").html(result_elem.html());
-        $(".public-search-results .public-search-result:first").css({"visibility":"visible"});
+        $(".public-search-results .public-search-result:first").css({"display":"table-row"});
         updateScraperInfo($(".public-search-results .public-search-result:first"));
 
       }
       else
       {
-        $(".public-search-results").html("<br />No results found<br /><br />");
+        $(".public-search-results").html("<br /><br /><br />");
       }
     });
   };
