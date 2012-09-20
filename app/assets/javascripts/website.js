@@ -10,6 +10,7 @@
 //= require jquery.pageless
 //= require tagit/tagit.js
 //= require tagit/tagit-themeroller.js
+//= require jquery.facebox
 //= require mightbuy
 //= require item_search
 //= require image_selector
