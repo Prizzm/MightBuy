@@ -94,9 +94,9 @@ class ApplicationController < ActionController::Base
   def update_vote
     if vote_id = session.delete(:vote_id)
       if Vote.update_user(vote_id, current_user)
-        flash[:notice] = "Voted Successfully"
+        flash[:notice] = t("voting.success")
       else
-        flash[:error]  = "Failed to Vote"
+        flash[:error]  = t("voting.failed")
       end
     end
   end
@@ -104,9 +104,9 @@ class ApplicationController < ActionController::Base
   def update_comment
     if comment_id = session.delete(:comment_id)
       if Comment.update_user(comment_id, current_user)
-        flash[:notice] = "Commented Successfully"
+        flash[:notice] = t("commenting.success")
       else
-        flash[:error]  = "Failed to Comment"
+        flash[:error]  = t("commenting.failed")
       end
     end
   end

@@ -12,9 +12,9 @@ class CommentsController < ApplicationController
     end
 
     if @comment.errors.empty?
-      flash[:notice] = "Commented Successfully"
+      flash[:notice] = t("commenting.success")
     else
-      flash[:error]  = "Failed to Comment"
+      flash[:error]  = t("commenting.failed")
     end
 
     location_path = current_user ? topic_path(@topic) : new_user_session_path

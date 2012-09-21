@@ -3,3 +3,12 @@
 
 en:
   hello: "Hello world"
+
+
+  voting:
+    success: "Voted Successfully"
+    failed:  "Failed to Vote"
+
+  commenting:
+    success: "Commented Successfully"
+    failed:  "Failed to Comment"

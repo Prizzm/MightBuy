@@ -13,9 +13,9 @@ class VotesController < ApplicationController
     end
 
     if @vote.errors.empty?
-      flash[:notice] = "Voted Successfully"
+      flash[:notice] = t("voting.success")
     else
-      flash[:error]  = "Failed to Vote"
+      flash[:error]  = t("voting.failed")
     end
 
     location_path = current_user ? topic_path(@topic) : new_user_session_path
