@@ -93,7 +93,7 @@ end
 
 group :test do
   gem 'factory_girl_rails', '1.3.0'
-  gem 'shoulda-matchers', '1.0.0'
+  gem 'shoulda'
   gem 'guard-rspec', "0.5.1"
   gem 'capybara'
   gem 'capybara-webkit'
