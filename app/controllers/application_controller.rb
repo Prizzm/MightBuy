@@ -80,13 +80,35 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(user)
     session_actions
-    redirect_path = session.delete(:redirect_path)
-    redirect_path ? redirect_path : user_root_path
+    @session_redirect_path ||= session.delete(:redirect_path)
+    @session_redirect_path ||= user_root_path
   end
+  attr_reader :session_redirect_path
+  helper_method :session_redirect_path
 
   def session_actions
-    Vote.update_user session.delete(:vote_id), current_user
-    Comment.update_user session.delete(:comment_id), current_user
+    update_vote
+    update_comment
+  end
+
+  def update_vote
+    if vote_id = session.delete(:vote_id)
+      if Vote.update_user(vote_id, current_user)
+        flash[:notice] = "Voted Successfully"
+      else
+        flash[:error]  = "Failed to Vote"
+      end
+    end
+  end
+
+  def update_comment
+    if comment_id = session.delete(:comment_id)
+      if Comment.update_user(comment_id, current_user)
+        flash[:notice] = "Commented Successfully"
+      else
+        flash[:error]  = "Failed to Comment"
+      end
+    end
   end
 
   def find_topic!
