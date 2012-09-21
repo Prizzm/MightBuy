@@ -1,46 +1,64 @@
 #login-lightbox
   .container
     .row
-      Thanks for voting or commenting!
-      You need to log in to save your vote or comment
+      .span12
+        %p.caption
+          Thanks for voting or commenting!
+          %br
+          You need to log in to save your vote or comment
     .row
-      .span6
-        Already a member? Sign-in
+      .span1
+        &nbsp;
+      .span5
+        %p
+          Already a member? Sign-in
 
         = simple_form_for :user, url: new_user_session_path, remote: true, html: { id: "signin_user" } do |f|
           - if params[:controller] == "sessions"
             = f.input :email
           - else
             = f.input :email, input_html: { value: "" }
-
+          
           = f.input :password
+          %a{:href=>"#"} Forgot your password?
           .user-signin-form-submit
-            = f.submit "Sign in!", class: "btn btn-red"
+            = f.submit "Sign in!", class: "btn btn-red pull-right"
+          .clear
 
         .row
-          .span4
-            Or you could sign in with Facebook & Twitter!
-          .span2
-            = link_to user_omniauth_authorize_path(:facebook) do
-              .facebook-icon
-            = link_to user_omniauth_authorize_path(:twitter) do
-              .twitter-icon
+          .span5.font18.mtop-leftcol
+            .pull-right.mright40
+              = link_to user_omniauth_authorize_path(:facebook) do
+                .facebook-icon.pull-left
+              = link_to user_omniauth_authorize_path(:twitter) do
+                .twitter-icon.pull-left
+            
+            Or you could sign in with
+            %br
+            Facebook & Twitter!
+          .clear
 
 
-      .span6
-        Join us today!
+      .span5.col-right
+        %p
+          Join us today!
         = simple_form_for user, remote: true do |f|
           = f.input :name, label: "Username", required: false
           = f.input :password
           = f.input :email
           .new-user-form-submit
-            = f.submit "Get Started!", class: "btn btn-red"
+            = f.submit "Get Started!", class: "btn btn-red pull-right"
+          .clear
 
         .row
-          .span4
-            Or you could also join us with Facebook & Twitter!
-          .span2
-            = link_to user_omniauth_authorize_path(:facebook) do
-              .facebook-icon
-            = link_to user_omniauth_authorize_path(:twitter) do
-              .twitter-icon
+          .span5.font18.mtop-rightcol
+            .pull-right.mright40
+              = link_to user_omniauth_authorize_path(:facebook) do
+                .facebook-icon.pull-left
+              = link_to user_omniauth_authorize_path(:twitter) do
+                .twitter-icon.pull-left
+            
+            Or you could also join us
+            %br
+            with Facebook & Twitter!
+          .clear
