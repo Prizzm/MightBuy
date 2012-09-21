@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/code-mancers/ministry_of_state.git
+  revision: 1ab001546961fc9b0ea65f1ad7bc5d17bb16fc8f
+  specs:
+    ministry_of_state (0.0.1)
+      rails (>= 3.0.3)
+
+GIT
   remote: git://github.com/frozon/passbook.git
   revision: 3191da9dfd9af86eba063875d77d8ae079e10d84
   specs:
@@ -477,6 +484,7 @@ DEPENDENCIES
   meta-tags
   meta_search
   mini_magick
+  ministry_of_state!
   newrelic_rpm
   oa-core
   oauth

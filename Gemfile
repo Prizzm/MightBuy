@@ -63,6 +63,7 @@ gem 'configatron'
 gem 'image_scraper', '0.1.7'
 gem 'high_voltage'
 gem 'facebox-rails'
+gem 'ministry_of_state', git: "git://github.com/code-mancers/ministry_of_state.git"
 
 group :development do
   # Console
