@@ -10,6 +10,8 @@ class Topic < ActiveRecord::Base
     "Only by Invite." => "private"
   }
 
+  STATUSES = ["mightbuy", "have"]
+
   # Relationships
   has_many :responses
   has_many :shares, :class_name => "Shares::Share", :inverse_of => :topic
@@ -30,6 +32,7 @@ class Topic < ActiveRecord::Base
   validates :access, :presence => { :message => "Please select one of the above :)" }
   validates :shortcode, :presence => true, :uniqueness => true
   validates :subject, :presence => true
+  validates :status, presence: true, inclusion: { in: STATUSES }
   #validates :body, :presence => true
 
   # Uploaders
