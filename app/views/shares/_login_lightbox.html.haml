@@ -7,7 +7,7 @@
       .span6
         Already a member? Sign-in
 
-        = simple_form_for :user, url: new_user_session_path, remote: true do |f|
+        = simple_form_for :user, url: new_user_session_path, remote: true, html: { id: "signin_user" } do |f|
           - if params[:controller] == "sessions"
             = f.input :email
           - else
