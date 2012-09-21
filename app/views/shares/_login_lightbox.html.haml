@@ -1,0 +1,46 @@
+#login-lightbox
+  .container
+    .row
+      Thanks for voting or commenting!
+      You need to log in to save your vote or comment
+    .row
+      .span6
+        Already a member? Sign-in
+
+        = simple_form_for :user, url: new_user_session_path, remote: true do |f|
+          - if params[:controller] == "sessions"
+            = f.input :email
+          - else
+            = f.input :email, input_html: { value: "" }
+
+          = f.input :password
+          .user-signin-form-submit
+            = f.submit "Sign in!", class: "btn btn-red"
+
+        .row
+          .span4
+            Or you could sign in with Facebook & Twitter!
+          .span2
+            = link_to user_omniauth_authorize_path(:facebook) do
+              .facebook-icon
+            = link_to user_omniauth_authorize_path(:twitter) do
+              .twitter-icon
+
+
+      .span6
+        Join us today!
+        = simple_form_for user, remote: true do |f|
+          = f.input :name, label: "Username", required: false
+          = f.input :password
+          = f.input :email
+          .new-user-form-submit
+            = f.submit "Get Started!", class: "btn btn-red"
+
+        .row
+          .span4
+            Or you could also join us with Facebook & Twitter!
+          .span2
+            = link_to user_omniauth_authorize_path(:facebook) do
+              .facebook-icon
+            = link_to user_omniauth_authorize_path(:twitter) do
+              .twitter-icon
