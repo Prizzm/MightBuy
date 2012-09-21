@@ -1,5 +1,8 @@
 <%- if current_user -%>
   $("#topic-voting").html("<%= escape_javascript(render partial: 'topics/topic_votes', locals: { topic: @vote.topic, vote: @vote }) -%>");
+  $(".flash-notice").remove();
+  $("body").prepend("<%= escape_javascript(render partial: 'shares/flash_notice') -%>");
+
   <% unless @topic.votes.empty? -%>
     $("#topic-percentage-row").html("<%= escape_javascript(render partial: 'topics/vote_percentage', locals: {topic: @topic}) -%>");
   <% end -%>

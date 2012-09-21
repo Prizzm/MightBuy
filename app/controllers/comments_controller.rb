@@ -11,6 +11,12 @@ class CommentsController < ApplicationController
       session[:redirect_path] = topic_path(@topic)
     end
 
+    if @comment.errors.empty?
+      flash[:notice] = "Commented Successfully"
+    else
+      flash[:error]  = "Failed to Comment"
+    end
+
     location_path = current_user ? topic_path(@topic) : new_user_session_path
     respond_with(@comment, location: location_path)
   end

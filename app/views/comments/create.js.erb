@@ -1,6 +1,9 @@
 <%- if current_user -%>
   $(".topic-comments").append("<%= escape_javascript(render partial: 'topics/comment_entry', locals: { comment: @comment }) -%>");
   $("#comment_description").val("");
+
+  $(".flash-notice").remove();
+  $("body").prepend("<%= escape_javascript(render partial: 'shares/flash_notice') -%>");
 <% else -%>
   window.location = "<%= new_user_session_path -%>";
 <% end -%>
