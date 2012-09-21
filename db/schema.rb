@@ -237,8 +237,8 @@ ActiveRecord::Schema.define(:version => 20120921101740) do
     t.text     "body"
     t.string   "access"
     t.string   "type"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.boolean  "recommendable",    :default => false
     t.string   "form"
     t.string   "url"
@@ -248,7 +248,7 @@ ActiveRecord::Schema.define(:version => 20120921101740) do
     t.integer  "offer"
     t.string   "mobile_image_url"
     t.integer  "product_id"
-    t.string   "status",           :default => "mightbuy"
+    t.string   "status",           :default => "imightbuy"
   end
 
   add_index "topics", ["shortcode"], :name => "index_topics_on_shortcode", :unique => true
