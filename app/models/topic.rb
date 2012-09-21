@@ -10,7 +10,7 @@ class Topic < ActiveRecord::Base
     "Only by Invite." => "private"
   }
 
-  STATUSES = ["mightbuy", "have"]
+  STATUSES = ["imightbuy", "ihave"]
 
   # Relationships
   has_many :responses

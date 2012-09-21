@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Topic do
-  it {
-    should validate_presence_of(:subject)
-  }
+  it { should validate_presence_of(:subject) }
+  it { should validate_presence_of(:status) }
+  it { should ensure_inclusion_of(:status).in_array(["imightbuy", "ihave"]) }
+
   let(:current_user) { FactoryGirl.create(:user) }
 
   describe "returning topic image thumbnail" do
@@ -123,4 +124,18 @@ describe Topic do
     end
   end
 
+  describe "State Transitions" do
+    before (:each) do
+      @topic = FactoryGirl.create(:topic)
+    end
+
+    it "should be in i mightbuy state by default" do
+      @topic.imightbuy?.should be_true
+    end
+
+    it "should transition to i have when bought" do
+      @topic.bought!.should be_true
+      @topic.ihave?.should be_true
+    end
+  end
 end

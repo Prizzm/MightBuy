@@ -8,6 +8,7 @@ FactoryGirl.define do
     access "private"
     form   "recommendation"
     shortcode  { FactoryGirl.generate(:shortcode) }
+    status "imightbuy"
     after_build {|topic|
       topic.user ||= FactoryGirl.create(:user)
     }
