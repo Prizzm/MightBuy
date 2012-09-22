@@ -22,13 +22,13 @@ describe Topic do
       }
     end
     it "should create new topics from forms without image" do
-      topic = Topic.create_from_from_data(@topic_data, current_user,"hello")
+      topic = Topic.build_from_form_data(@topic_data, current_user,"hello")
       topic.should_not be_nil
       topic.save.should be_true
     end
 
     it "shoudlc create topic with tags" do
-      topic = Topic.create_from_from_data(@topic_data.update('tags' => ["emacs","vim"]),current_user, 'hello')
+      topic = Topic.build_from_form_data(@topic_data.update('tags' => ["emacs","vim"]),current_user, 'hello')
 
       topic.should_not be_nil
       topic.save.should be_true
@@ -41,7 +41,7 @@ describe Topic do
       topic_details_with_tags = @topic_data.update('tags' => ['emacs','vim'])
       Tag.count.should == 1
 
-      topic = Topic.create_from_from_data(topic_details_with_tags,current_user,'hello')
+      topic = Topic.build_from_form_data(topic_details_with_tags,current_user,'hello')
 
       topic.should_not be_nil
       topic.save.should be_true

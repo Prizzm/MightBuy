@@ -37,7 +37,7 @@ class TopicsController < ApplicationController
     @vote = @topic.votes.find_by_user_id(current_user.id) if current_user
     @comments = @topic.comments.joins(:user).where(parent_id: nil).includes(:user)
     @comment = @topic.comments.build
-    if @topic.owner?(current_user)
+    if current_user && @topic.owner?(current_user)
       @selected_tab = "mightbuy"
     else
       @selected_tab = "everybody"
@@ -58,7 +58,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.create_from_from_data(params['topic'],current_user,visitor_code)
+    @topic = Topic.build_from_form_data(params['topic'],current_user,visitor_code)
     @topic.save
     respond_with(@topic)
   end
