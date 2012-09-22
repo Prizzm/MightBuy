@@ -9,9 +9,6 @@
           | Make sure to add the  
           = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
           = stars " *bookmarklet* to your browser, as shown below."
-      .span6.mtop15
-        iframe width="420" frameborder="none" height="315" src="http://www.youtube.com/embed/9riCsmyrW3g"
-        
       .span3.mtop15
         =image_tag("bookmark-snap.png")
         p.mtop25
@@ -23,13 +20,15 @@
       h3.mtop25.span1 Then:
       br.clear
       .span4.mtop15 align="center"
-        =image_tag("add-an-item-snap.png")
+        = link_to(new_topic_path) do
+          =image_tag("add-an-item-snap.png")
         br
         p.mtop15 You can search google and add from Mightbuy. 
       .span1
         div style="padding: 70px 0 0 8px" OR
       .span4.mtop15 align="center"
-        =image_tag("browse-snap.png")
+        = link_to(topics_path) do
+          =image_tag("browse.png")
         br
         p.mtop15 Need inspiration? See what others are posting.
         
