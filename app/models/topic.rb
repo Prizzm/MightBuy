@@ -27,6 +27,8 @@ class Topic < ActiveRecord::Base
   # Scopes
   scope :publics, where(:access => "public")
   scope :privates, where(:access => "private")
+  scope :have, where(status: "ihave")
+  scope :mightbuy, where(status: "imightbuy")
 
   # Validations
   validates :access, :presence => { :message => "Please select one of the above :)" }
