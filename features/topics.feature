@@ -52,28 +52,3 @@ Feature: As a user
     And I should see "You added"
     When I visit one of other topics
     Then "Browse" tab should be highlighted
-
-  @javascript @create-have-topic
-  Scenario: I should add an item to I have list automatically
-    Given a confirmed user "Tyler"
-    And I login as "Tyler"
-    And I click "I Have"
-    And I click "Add an item"
-    And I create a topic by filling the form
-    Then I should not see the topic in mightbuy
-    Then I should see the topic in have
-
-  @javascript @update-have-topic
-  Scenario: I should add an item to I have list automatically
-    Given a confirmed user "Tyler" with a topic
-    And I login as "Tyler"
-    Then I should not see the topic in have
-    Then I should see the topic in mightbuy
-    And I visit the topic path
-    And I mark the topic as i have
-    Then I should not see the topic in mightbuy
-    Then I should see the topic in have
-    And I visit the topic path
-    And I mark the topic as i dont have
-    Then I should not see the topic in have
-    Then I should see the topic in mightbuy
