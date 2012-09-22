@@ -10,6 +10,8 @@ class Topic < ActiveRecord::Base
     "Only by Invite." => "private"
   }
 
+  STATUSES = ["imightbuy", "ihave"]
+
   # Relationships
   has_many :responses
   has_many :shares, :class_name => "Shares::Share", :inverse_of => :topic
@@ -25,11 +27,14 @@ class Topic < ActiveRecord::Base
   # Scopes
   scope :publics, where(:access => "public")
   scope :privates, where(:access => "private")
+  scope :have, where(status: "ihave")
+  scope :mightbuy, where(status: "imightbuy")
 
   # Validations
   validates :access, :presence => { :message => "Please select one of the above :)" }
   validates :shortcode, :presence => true, :uniqueness => true
   validates :subject, :presence => true
+  validates :status, presence: true, inclusion: { in: STATUSES }
   #validates :body, :presence => true
 
   # Uploaders
@@ -257,5 +262,9 @@ class Topic < ActiveRecord::Base
     vote.buyit = buyit
     vote.save
     vote
+  end
+
+  def ihave?
+    status == "ihave"
   end
 end

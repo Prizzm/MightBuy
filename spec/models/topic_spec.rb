@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Topic do
-  it {
-    should validate_presence_of(:subject)
-  }
+  it { should validate_presence_of(:subject) }
+  it { should validate_presence_of(:status) }
+  it { should ensure_inclusion_of(:status).in_array(["imightbuy", "ihave"]) }
+
   let(:current_user) { FactoryGirl.create(:user) }
 
   describe "returning topic image thumbnail" do
@@ -122,5 +123,4 @@ describe Topic do
       new_topic.tags.should include(@tag)
     end
   end
-
 end

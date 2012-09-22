@@ -63,6 +63,7 @@ gem 'configatron'
 gem 'image_scraper', '0.1.7'
 gem 'high_voltage'
 gem 'facebox-rails'
+gem 'ministry_of_state', git: "git://github.com/code-mancers/ministry_of_state.git"
 
 group :development do
   # Console
@@ -92,7 +93,7 @@ end
 
 group :test do
   gem 'factory_girl_rails', '1.3.0'
-  gem 'shoulda-matchers', '1.0.0'
+  gem 'shoulda'
   gem 'guard-rspec', "0.5.1"
   gem 'capybara'
   gem 'capybara-webkit'

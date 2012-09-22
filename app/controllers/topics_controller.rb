@@ -5,6 +5,10 @@ class TopicsController < ApplicationController
   # Authenticate
   authenticate! :except => [:index, :show]
   before_filter :find_topic!, only: [:show, :update, :edit, :destroy]
+  before_filter :authenticate_user!, :find_current_user_topic!, only: [:recommend, :ihave]
+  before_filter :authenticate_user!, only: :haves
+
+  respond_to :html, :js
 
   # Custom Actions
   layout :choose_layout
@@ -22,7 +26,7 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new(params[:topic])
-    @selected_tab = 'mightbuy'
+    @selected_tab = @topic.ihave? ? 'ihave' : 'mightbuy'
   end
 
   def index
@@ -37,8 +41,9 @@ class TopicsController < ApplicationController
     @vote = @topic.votes.find_by_user_id(current_user.id) if current_user
     @comments = @topic.comments.joins(:user).where(parent_id: nil).includes(:user)
     @comment = @topic.comments.build
+
     if current_user && @topic.owner?(current_user)
-      @selected_tab = "mightbuy"
+      @selected_tab = @topic.ihave? ? 'ihave' : 'mightbuy'
     else
       @selected_tab = "everybody"
       render template: "/topics/other_user_topic"
@@ -65,6 +70,34 @@ class TopicsController < ApplicationController
 
   def edit
     @selected_tab = 'mightbuy'
+  end
+
+  def recommend
+    recommendable = params[:recommend] == "yes"
+    if @topic.update_attributes(recommendable: recommendable)
+      flash[:notice] = "Recommendation Updated"
+    else
+      flash[:error]  = "Failed to Update Recommendation"
+    end
+
+    respond_with(@topic)
+  end
+
+  def haves
+    @topics = current_user.topics.have
+    @selected_tab = "ihave"
+  end
+
+  def ihave
+    status = (params[:ihave] == "yes" ? "ihave" : "imightbuy")
+    if @topic.update_attributes(status: status)
+      flash[:notice] = "Topic Updated"
+    else
+      flash[:error]  = "Failed to Update Topic"
+    end
+
+    @selected_tab = @topic.ihave? ? 'ihave' : 'mightbuy'
+    respond_with(@topic)
   end
 
   def update
@@ -108,5 +141,11 @@ class TopicsController < ApplicationController
 
   def find_topic!
     @topic = Topic.find_by_shortcode(params[:id])
+  end
+
+  def find_current_user_topic!
+    unless @topic = current_user.topics.find_by_shortcode(params[:id])
+      redirect_to root_path
+    end
   end
 end
