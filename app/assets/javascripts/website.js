@@ -18,6 +18,5 @@
 //= require topic_tagging
 //= require profile
 //= require email_share
-//= require topic_show
 //= require search
 //= require templates/public-search-result
