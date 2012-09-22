@@ -6,10 +6,11 @@
     .topic-subject= @topic.subject.capitalize
     .topic-url.mtop10
       =link_to(@topic.short_url,@topic.url)
-    .topic-meta.mtop10
-      %span
-        = @topic.poster_name(current_user)
-        added this #{time_ago_in_words(@topic.created_at)} ago
+    - if @topic.owner?(current_user)
+      .topic-meta.mtop10
+        %span
+          = @topic.poster_name(current_user)
+          added this #{time_ago_in_words(@topic.created_at)} ago
     .topic-tags.mtop10
       - unless @topic.tags.empty?
         %span
