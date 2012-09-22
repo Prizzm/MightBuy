@@ -157,9 +157,14 @@
 .mtop50 { margin-top: 50px; }
 .ptop25 { padding-top: 25px; }
 .ptop30 { padding-top: 30px; }
+.pleft25 { padding-left: 25px; }
 .pleft40 { padding-left: 40px; }
 .width90p { width: 90%; }
 
+
+.flash-notice {
+  z-index: 1050;
+}
 
 .msg{
   margin:50px 0 20px 0;
