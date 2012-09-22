@@ -1,9 +1,9 @@
 $(document).ready(function() {
     $("#ajax-loading").
         ajaxStart(function() {
-            $(this).show();
+            $(this).fadeIn('slow');
         }).ajaxStop(function() {
-            $(this).hide();
+            $(this).fadeOut('slow');
         });
 });
 
