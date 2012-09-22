@@ -259,6 +259,7 @@
     }
     
     a {
+      font-weight: 700;
       font-size: 18px;
       color: #fff;
       margin-top: 6px;
@@ -499,7 +500,7 @@ ol.topics {
 .btn-red, .remove_fields, .add_fields {
   @include brand-btn;
   text-decoration:none;
-  font:15px/100% 'Museo500', arial;
+  font:15px/100% 'museo-slab', arial;
   @include border-radius(5px);
   padding: 8px 10px;
   min-width:60px;
@@ -569,7 +570,7 @@ ol.topics {
   
   .btn {
     @include brand-btn;
-    font:300 23px/1 'Museo500', arial;
+    font:300 23px/1 'museo-slab', arial;
     text-transform: uppercase;
     min-width: 120px;
   }
@@ -580,7 +581,7 @@ ol.topics {
   
   .btn {
     @include brand-btn;
-    font:normal 16px/1 'Museo500', arial;
+    font:normal 16px/1 'museo-slab', arial;
     padding: 8px 11px 9px 11px;
     display: block;
     min-width: 70px;

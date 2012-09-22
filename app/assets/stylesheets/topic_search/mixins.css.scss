@@ -1,44 +1,9 @@
 /* Fonts */
 
 @font-face {
-    font-family: 'Museo300';
-    src: url('/fonts/museo/museo300-regular-webfont.eot');
-    src: url('/fonts/museo/museo300-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/museo/museo300-regular-webfont.woff') format('woff'),
-         url('/fonts/museo/museo300-regular-webfont.ttf') format('truetype'),
-         url('/fonts/museo/museo300-regular-webfont.svg#Museo300') format('svg');
+    font-family: 'museo-slab';
     font-weight: normal;
     font-style: normal;
-}
-
-@font-face {
-    font-family: 'Museo500';
-    src: url('/fonts/museo/museo500-regular-webfont.eot');
-    src: url('/fonts/museo/museo500-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/museo/museo500-regular-webfont.woff') format('woff'),
-         url('/fonts/museo/museo500-regular-webfont.ttf') format('truetype'),
-         url('/fonts/museo/museo500-regular-webfont.svg#Museo500') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Museo700';
-    src: url('/fonts/museo/museo700-regular-webfont.eot');
-    src: url('/fonts/museo/museo700-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/museo/museo700-regular-webfont.woff') format('woff'),
-         url('/fonts/museo/museo700-regular-webfont.ttf') format('truetype'),
-         url('/fonts/museo/museo700-regular-webfont.svg#Museo700') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* Mixins */
-
-@mixin font-museo ($style : "500") 
-{
-  font-family: "Museo#{$style}", "Helvetica Neue", Helvetica, sans-serif;
-  font-weight: normal;
 }
 
 @mixin font-serif ()
