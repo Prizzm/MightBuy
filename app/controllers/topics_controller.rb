@@ -4,10 +4,7 @@ class TopicsController < ApplicationController
 
   # Authenticate
   authenticate! :except => [:index, :show]
-  before_filter :find_topic!, only: [:show, :update, :edit, :destroy, :bought]
-  before_filter :authenticate_user!, :find_current_user_topic!, only: :recommend
-
-  respond_to :html, :js
+  before_filter :find_topic!, only: [:show, :update, :edit, :destroy]
 
   # Custom Actions
   layout :choose_layout
@@ -48,13 +45,6 @@ class TopicsController < ApplicationController
     end
   end
 
-  def bought
-    @vote = @topic.votes.find_by_user_id(current_user.id) if current_user
-    @comments = @topic.comments.joins(:user).where(parent_id: nil).includes(:user)
-    @comment = @topic.comments.build
-    @selected_tab = @topic.owner?(current_user) ? 'mightbuy' : 'everybody'
-  end
-
   def copy
     @old_topic = Topic.find_by_shortcode(params[:id])
     @topic = @old_topic.copy(current_user)
@@ -75,17 +65,6 @@ class TopicsController < ApplicationController
 
   def edit
     @selected_tab = 'mightbuy'
-  end
-
-  def recommend
-    recommendable = params[:recommend] == "yes"
-    if @topic.update_attributes(recommendable: recommendable)
-      flash[:notice] = "Recommendation Updated"
-    else
-      flash[:error]  = "Failed to Update Recommendation"
-    end
-
-    respond_with(@topic)
   end
 
   def update
@@ -129,11 +108,5 @@ class TopicsController < ApplicationController
 
   def find_topic!
     @topic = Topic.find_by_shortcode(params[:id])
-  end
-
-  def find_current_user_topic!
-    unless @topic = current_user.topics.find_by_shortcode(params[:id])
-      redirect_to root_path
-    end
   end
 end
