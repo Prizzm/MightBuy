@@ -3,6 +3,7 @@
   %head
     %title MightBuy
     %meta{'name'=>"apple-itunes-app", 'content'=>"app-id=548123429"}
+    = render :partial => "/shares/javascript"
     = stylesheet_link_tag "website", :media => "all"
     = javascript_include_tag "website"
     = csrf_meta_tags
@@ -10,6 +11,9 @@
   %body
     = render  partial: "shares/flash_notice"
 
+    #ajax-loading
+      %span Loading..
+      = image_tag("loading.gif")
     .container
       = render partial: "/shares/landing_header"
       .app-content
