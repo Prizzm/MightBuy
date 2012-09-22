@@ -1,0 +1,5 @@
+<%- if resource.errors.empty? -%>
+  window.location = "<%= session_redirect_path -%>";
+<% else -%>
+  $.facebox("<%= escape_javascript(render partial: 'shares/login_lightbox', locals: {user: resource}) -%>");
+<% end -%>

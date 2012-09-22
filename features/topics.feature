@@ -14,8 +14,8 @@ Feature: As a user
     Given a confirmed user "Bob" with a topic
     When I visit the topic path
     And I vote "Yes!"
-    Then I should be asked to login
-    And I login as "Tyler"
+    Then I should be asked to login via lightbox
+    And I login as "Tyler" via lightbox
     Then I should be on the topic path
     And I should see my vote as "Yes!"
     And I visit the topic path
@@ -28,13 +28,13 @@ Feature: As a user
     Given a confirmed user "Bob" with a topic
     When I visit the topic path
     And I comment "Go for it"
-    Then I should be asked to login
-    And I login as "Tyler"
+    Then I should be asked to login via lightbox
+    And I login as "Tyler" via lightbox
     Then I should be on the topic path
-    And I should see "Go for it"
+    And I should see my comment as "Go for it"
     And I visit the topic path
     And I comment "Please Avoid"
-    Then I should see "Please Avoid"
+    Then I should see my comment as "Please Avoid"
 
   @javascript
   Scenario: Deleting a topics
@@ -42,7 +42,7 @@ Feature: As a user
     When I visit profile page
     Then I should be able to delete a topic
 
-  @javascript
+  @javascript @visiting-topic
   Scenario: Visiting particular topic
     Given I am logged in a user
     And I have bunch of topics
@@ -52,6 +52,3 @@ Feature: As a user
     And I should see "You added"
     When I visit one of other topics
     Then "Browse" tab should be highlighted
-
-    
-

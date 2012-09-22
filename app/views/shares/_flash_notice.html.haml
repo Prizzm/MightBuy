@@ -1,6 +1,6 @@
 .flash-notice.fixed-top
-  - unless flash[:notice].blank? && flash[:error].blank?
-    .alert.alert-flash.fade.in{ class: flash[:error].blank? ? "alert-success" : "alert-error" }
+  - unless flash[:notice].blank? && flash[:error].blank? && flash[:alert].blank?
+    .alert.alert-flash.fade.in{ class: flash[:notice].blank? ? "alert-error" : "alert-success" }
       %button{type: "button", class: "close", :"data-dismiss" => "alert"}
         ×
       .container
@@ -8,3 +8,4 @@
           %strong
             = flash[:notice] unless flash[:notice].blank?
             = flash[:error]  unless flash[:error].blank?
+            = flash[:alert]  unless flash[:alert].blank?
