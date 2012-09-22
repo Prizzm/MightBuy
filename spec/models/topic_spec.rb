@@ -123,4 +123,19 @@ describe Topic do
       new_topic.tags.should include(@tag)
     end
   end
+
+  describe "State Transitions" do
+    before (:each) do
+      @topic = FactoryGirl.create(:topic)
+    end
+
+    it "should be in i mightbuy state by default" do
+      @topic.imightbuy?.should be_true
+    end
+
+    it "should transition to i have when bought" do
+      @topic.bought!.should be_true
+      @topic.ihave?.should be_true
+    end
+  end
 end

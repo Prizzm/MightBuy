@@ -78,7 +78,6 @@ NewPrizzmCom::Application.routes.draw do
     member do
       get 'copy'
       put 'recommend'
-      put 'ihave'
     end
   end
 
