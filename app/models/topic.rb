@@ -45,7 +45,7 @@ class Topic < ActiveRecord::Base
   # Methods
   after_create :find_product
 
-  def self.create_from_from_data(topic_details,current_user,visitor_code)
+  def self.build_from_form_data(topic_details,current_user,visitor_code)
     if topic_details['image_url']
       topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url'])).to_s
     end

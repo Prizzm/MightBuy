@@ -1,0 +1,18 @@
+.show-topic
+  .row.ptop30
+    .span6.topic-poster-prompt
+      #{@topic.poster_name} Mightbuy:
+    .span3.may-buy.pull-right
+      = link_to("I may buy as well",copy_topic_path(@topic), class: "btn-red")
+
+  .row.mtop50
+    = render :partial => "topic_detail"
+
+  .row
+    .span5
+      \&nbsp;
+    .span5{class: current_user ? "" : "offset4"}
+      #topic-voting.pleft40
+        = render partial: "topics/topic_votes", locals: { topic: @topic, vote: @vote }
+
+  = render :partial => "topic_meta_information"
