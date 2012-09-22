@@ -26,6 +26,7 @@
 }
 
 .show-topic {
+  border-top-right-radius: 7px;
 
   .topic-links {
     ul {
@@ -297,6 +298,7 @@
   padding-bottom:20px;
   position:relative;
   min-height:400px;
+  border-top-right-radius: 7px;
 }
 
 ol.topics {
