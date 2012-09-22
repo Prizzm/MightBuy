@@ -62,6 +62,7 @@ gem 'configatron'
 # Others
 gem 'image_scraper', '0.1.7'
 gem 'high_voltage'
+gem 'facebox-rails'
 
 group :development do
   # Console

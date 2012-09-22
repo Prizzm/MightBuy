@@ -5,7 +5,14 @@ class Vote < ActiveRecord::Base
 
   def self.update_user(vote_id, user)
     if vote_id && vote = Vote.find_by_id(vote_id)
-      vote.update_attributes(user_id: user.id)
+      if existing_vote = Vote.find_by_topic_id_and_user_id(vote.topic.id, user.id)
+        existing_vote.update_attributes(buyit: vote.buyit)
+        vote.destroy
+      else
+        vote.update_attributes(user_id: user.id)
+      end
+    else
+      false
     end
   end
 end

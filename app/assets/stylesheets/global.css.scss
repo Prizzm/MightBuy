@@ -148,7 +148,11 @@
 
 .fleft  { float: left; }
 .fright { float: right; }
-.fixed-top { top: 0px; }
+.fixed-top {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
 
 .prel{position:relative}
 .mtop1 { margin-top: 1px; }
@@ -186,4 +190,77 @@
 }
 .hr{
   border-top-color:#ccc
+}
+
+#login-lightbox {
+
+  font-family: Museo500;
+  
+  .caption {
+    color: #4E3227;
+    text-align: center;
+    line-height: 120%;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 50px 0 60px 0;
+    text-shadow: 1px 2px 0 #fff;
+  }
+  
+  p {
+    color: #4E3227;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+  
+  label {
+    font-size: 15px;
+    color: #4E3227;
+    margin-bottom: 3px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  input[type="text"], input[type="email"], input[type="password"]{
+    width:330px;
+  }
+  
+  a{
+    color:#b84349
+  }
+  
+  .user-signin-form-submit{
+    margin: 0 40px 0 0;
+  }
+  
+  .new-user-form-submit{
+    margin: 20px 40px 0 0;
+  }
+  
+  .mright40{
+    margin: 0 34px 0 0;
+  }
+    
+  .control-group {
+    margin-bottom: 0;
+  }
+  
+  .font18{
+    font-size:18px;
+    font-weight: bold;
+  }
+  
+  .col-right{
+    border-left: 1px #CCC solid;
+    padding: 0 0 0 55px;
+    margin-bottom: 50px;
+  }
+  
+  .mtop-rightcol{
+    margin-top:15px;
+  }
+  
+  .mtop-leftcol{
+    margin-top: 75px;
+  }
 }
