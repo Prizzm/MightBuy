@@ -1,0 +1,272 @@
+// Place all the styles related for all global definitions here
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@font-face {
+  font-family: Museo500;
+  src: font-url("Museo500-Regular.otf");
+}
+
+@font-face {
+  font-family: Museo700;
+  src: font-url("Museo700-Regular.otf");
+}
+
+.header {
+  font-family: Museo700;
+
+  #mightbuy-logo {
+    margin-top: 60px;
+  }
+
+  .caption {
+    margin-top: 12px;
+    font-size: 24px;
+    font-weight: 300;
+    color: #4E3227;
+    text-shadow: 1px 2px 0px #FCF8F5;
+  }
+}
+
+.footer {
+  font-family: Museo500;
+  font-size: 12px;
+  margin-bottom: 30px;
+  color: #4E3227;
+  .footer-links {
+    list-style: none;
+    margin-left: 0px;
+
+    li {
+      display: inline;
+      padding: 0px 5px;
+      border-right: 1px solid #6B5244;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: #4E3227;
+      }
+    }
+  }
+
+  .prizzm-inc {
+    float: right;
+  }
+}
+
+
+#ajax-loading {
+  display: none;
+  position: fixed;
+  border-radius: 0px 0px 4px 4px;
+  border: 1px solid black;
+  border-top: none;
+  margin: -20px 50%;
+  padding: 5px;
+  width: 90px;
+  background-color: white;
+
+  span {
+    margin: auto 5px;
+  }
+}
+
+
+.bevel-line {
+  border-top: 1px solid #C1B4AB;
+  border-bottom: 1px solid #F2EAE2;
+}
+
+.bevel-line-vertical-right {
+  border-right: 1px solid #C1B4AB;
+  outline-right: 1px solid #F2EAE2;
+}
+
+.bevel-line-vertical-left {
+  border-left: 1px solid #C1B4AB;
+  outline-left: 1px solid #F2EAE2;
+}
+
+
+.horizontal-list {
+  list-style: none;
+  margin: 0px;
+
+  li {
+    float: left;
+    margin: 0px 10px;
+
+    &:first-child {
+      margin-left: 0px;
+    }
+  }
+}
+
+
+@mixin bg-reddish {
+  background: #df646c;
+  background: -moz-linear-gradient(top, #df646c 0%, #aa383c 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #df646c), color-stop(100%, #aa383c));
+  background: -webkit-linear-gradient(top, #df646c 0%, #aa383c 100%);
+  background: -o-linear-gradient(top, #df646c 0%, #aa383c 100%);
+  background: -ms-linear-gradient(top, #df646c 0%, #aa383c 100%);
+  background: linear-gradient(to bottom, #df646c 0%, #aa383c 100%);
+}
+
+@mixin bg-greenish {
+  background: #98b676;
+  background: -moz-linear-gradient(top, #98b676 0%, #799545 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #98b676), color-stop(100%, #799545));
+  background: -webkit-linear-gradient(top, #98b676 0%, #799545 100%);
+  background: -o-linear-gradient(top, #98b676 0%, #799545 100%);
+  background: -ms-linear-gradient(top, #98b676 0%, #799545 100%);
+  background: linear-gradient(to bottom, #98b676 0%, #799545 100%);
+}
+
+
+.alert-flash {
+  color: black;
+  text-align: center;
+  font-family: Museo500;
+  font-size: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 0px;
+}
+
+.alert-error {
+  @include bg-reddish;
+}
+
+.alert-success {
+  @include bg-greenish;
+}
+
+.fleft  { float: left; }
+.fright { float: right; }
+.fixed-top {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+.prel{position:relative}
+.mtop1 { margin-top: 1px; }
+
+.mtop10 { margin-top: 10px; }
+.mtop15 { margin-top: 15px; }
+.mtop25 { margin-top: 25px; }
+.mtop35 { margin-top: 35px; }
+.mtop60 { margin-top: 60px; }
+.mleft10 { margin-left: 10px; }
+.mleft20 { margin-left: 20px; }
+.mleft30 { margin-left: 30px; }
+.mleft40 { margin-left: 40px; }
+.mright40 { margin-right: 40px }
+.mbot10 { margin-bottom: 10px; }
+.mbot15 { margin-bottom: 15px; }
+.mbot20 { margin-bottom: 20px; }
+.mbot30 { margin-bottom: 30px; }
+.mtop20 { margin-top: 20px; }
+.mtop25 { margin-top: 25px; }
+.mtop40 { margin-top: 40px; }
+.mtop50 { margin-top: 50px; }
+.ptop25 { padding-top: 25px; }
+.ptop30 { padding-top: 30px; }
+.pleft25 { padding-left: 25px; }
+.pleft40 { padding-left: 40px; }
+.width90p { width: 90%; }
+
+
+.flash-notice {
+  z-index: 1050;
+}
+
+.msg{
+  margin:50px 0 20px 0;
+  color:#666 !important
+}
+.bor-right{
+  border-right:1px solid #ccc;
+}
+.hr{
+  border-top-color:#ccc
+}
+
+#login-lightbox {
+
+  font-family: Museo500;
+  
+  .caption {
+    color: #4E3227;
+    text-align: center;
+    line-height: 120%;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 50px 0 60px 0;
+    text-shadow: 1px 2px 0 #fff;
+  }
+  
+  p {
+    color: #4E3227;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+  
+  label {
+    font-size: 15px;
+    color: #4E3227;
+    margin-bottom: 3px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  input[type="text"], input[type="email"], input[type="password"]{
+    width:330px;
+  }
+  
+  a{
+    color:#b84349
+  }
+  
+  .user-signin-form-submit{
+    margin: 0 40px 0 0;
+  }
+  
+  .new-user-form-submit{
+    margin: 20px 40px 0 0;
+  }
+  
+  .mright40{
+    margin: 0 34px 0 0;
+  }
+    
+  .control-group {
+    margin-bottom: 0;
+  }
+  
+  .font18{
+    font-size:18px;
+    font-weight: bold;
+  }
+  
+  .col-right{
+    border-left: 1px #CCC solid;
+    padding: 0 0 0 55px;
+    margin-bottom: 50px;
+  }
+  
+  .mtop-rightcol{
+    margin-top:15px;
+  }
+  
+  .mtop-leftcol{
+    margin-top: 75px;
+  }
+}

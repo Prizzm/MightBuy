@@ -21,9 +21,8 @@ module Deals
   end
   
   class Deal < ActiveRecord::Base
-    
-    set_table_name "deal_deals"
-    
+    self.table_name = "deal_deals"
+
     has_many :redemptions, :class_name => "Deals::Redemption"
     belongs_to :user
     belongs_to :for, :polymorphic => true
@@ -58,7 +57,7 @@ module Deals
   
   class Redemption < ActiveRecord::Base
     
-    set_table_name "deal_redemptions"
+    self.table_name = "deal_redemptions"
     
     belongs_to :deal
     belongs_to :bank, :class_name => "Points::Bank"

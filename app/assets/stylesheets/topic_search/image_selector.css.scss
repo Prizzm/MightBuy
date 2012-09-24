@@ -1,0 +1,99 @@
+@import "mixins";
+
+.image-selector {
+    position: relative;
+
+    .image-holder
+    {
+      margin-left:44px;
+      
+      a.image
+      {
+        display: block;
+        width: 290px;
+        height: 290px;
+        border: 3px solid #d9d1cf;
+        background-color:#d9d1cf;
+        
+        table {
+          width: 100%;
+          height: 100%;
+          text-align: center;
+        }
+        
+        &.present
+        {
+          background: #fff;
+        }
+        
+        td {
+          text-align:center !important;
+          vertical-align:middle !important;
+          padding:0 !important;
+        }
+        
+        img
+        {
+          max-width: 290px;
+          max-height: 290px;
+          text-align: center;
+          vertical-align:middle;
+        }
+      }
+      
+      .controls
+      {
+        overflow: hidden;
+        margin: 8px auto;
+      }
+      
+      .next, .prev, .cancel
+      {
+        float: left;
+        display: block;
+        overflow: hidden;
+        text-indent: -9999em;
+        width: 29px;
+        height: 28px;
+        background: url("/images/icons/sprite-icons.png");
+      }
+      
+      .select { cursor: pointer; }
+      
+      .next { 
+        background-position: -1px -31px; 
+        &:hover { background-position: -31px -31px; }
+        &:active { background-position: -61px -31px; }
+      }
+      
+      .prev {
+        margin-right:5px;
+        background-position: -1px -1px;
+        &:hover { background-position: -31px -1px; }
+        &:active { background-position: -61px -1px; }
+      }
+
+      .cancel {
+        float: right;
+        margin-right:40px;
+        background-position: -1px -61px; 
+        &:hover { background-position: -31px -61px; }
+        &:active { background-position: -61px -61px; }
+      }
+      
+      a.image
+      {
+        overflow: hidden;
+    
+        &.blank
+        {
+          background: #f7f7f7 url("/images/app/placeholder.png") no-repeat center;
+      
+          &.thumb
+          {
+            background-image: url("/images/app/placeholder-thumb.png");
+          }
+        }
+      }
+    }
+}

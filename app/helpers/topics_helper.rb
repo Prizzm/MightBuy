@@ -143,5 +143,4 @@ module TopicsHelper
   def invited_email_address
     share ? share.with : nil
   end
-
 end

@@ -1,0 +1,12 @@
+= javascript_tag "Mightbuy.selectedMainTab = '#{@selected_tab}'"
+= javascript_tag "Mightbuy.suggestedTags = #{popular_tag_array}"
+.row
+  .span10
+    %ul.nav.nav-tabs.topic-tabs
+      %li{'tab-name' => "mightbuy"}
+        %a{:href => profile_path }
+          I might buy
+      %li{'tab-name' => "everybody"}
+        %a{:href => topics_path}
+          Browse
+

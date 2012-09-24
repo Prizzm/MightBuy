@@ -1,5 +1,8 @@
 class SearchController < ApplicationController
-  def public
-  end
 
+  #layout ""
+
+  def public
+
+  end
 end

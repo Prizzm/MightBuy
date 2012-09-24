@@ -6,3 +6,20 @@ node(:image_url) do |user|
 		user.image.url(:host => "https://www.mightbuy.it")
 	end
 end
+
+node(:topics) do |user|
+	topics = []
+	user.topics.each do |topic|
+		ta = {}
+		ta[:id] = topic.id.to_s
+		ta[:access] = topic.access
+		ta[:body] = topic.body
+		ta[:created_at] = topic.created_at
+		ta[:price] = topic.price
+		ta[:shortcode] = topic.shortcode
+		ta[:subject] = topic.subject
+		ta[:image_url] = topic.iImage()
+		topics << ta
+	end
+	topics
+end

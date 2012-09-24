@@ -1,0 +1,21 @@
+%li
+  .row
+    .span2.item-list-image
+      = image_tag(topic.thumbnail_image)
+    .span7.pull-right
+      .span5.topic-description
+        .topic-title
+          = link_to(topic.subject.capitalize, topic_path(topic))
+        .topic-url
+          = link_to(topic.short_url, topic.url)
+        .topic-listing-tag
+          = tag_links(topic)
+        .topic-meta
+          %span
+            = topic.poster_name(current_user)
+            added this #{time_ago_in_words(topic.created_at)} ago
+      .span1.pull-right.topic-list-actions
+        %div.price
+          = number_to_currency(topic.price)
+        .clear
+    .clear

@@ -41,5 +41,32 @@ class Response < ActiveRecord::Base
   def recommendation?
     [:recommendation, :business_recommendation].include?(topic.form?) && !reply_id?
   end
-  
+
+  # interface to translate responses into votes and comments
+  def create_vote!
+    return nil if topic.nil? || user.nil?
+
+    vote = Vote.create!(topic: topic, user: user, buyit: recommend_type == 'recommend')
+    vote.update_attributes!(created_at: created_at, updated_at: updated_at)
+    vote
+  end
+
+  def create_nested_comments!(parent = nil)
+    return nil if topic.nil? || user.nil? || body.blank?
+
+    comment = Comment.create!(topic: topic, user: user, parent: parent, description: body)
+    comment.update_attributes!(created_at: created_at, updated_at: updated_at)
+
+    replies.each { |r| r.create_nested_comments!(comment) }
+    comment
+  end
+
+  def self.create_votes!
+    values = ['recommend', 'not_recommended']
+    Response.joins(:topic, :user).where(recommend_type: values).map(&:create_vote!)
+  end
+
+  def self.create_comments!
+    Response.joins(:topic, :user).where(reply_id: nil).map(&:create_nested_comments!)
+  end
 end

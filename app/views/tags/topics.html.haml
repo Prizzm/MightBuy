@@ -1,0 +1,6 @@
+= javascript_tag "Mightbuy.pagelessUrl = '/tags/#{@tag.name}/topics'"
+%div#details
+  %ol.list.topics#pageless-topic-listing
+    %h2.mleft30 All items in #{@tag.name}
+    - @topics.each do |topic|
+      = render partial: "/shares/topic_list_partial", locals: {topic: topic}

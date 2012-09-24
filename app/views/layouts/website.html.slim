@@ -6,5 +6,7 @@ html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb=
     = javascript_include_tag "website"
     = stylesheet_link_tag "website"
     = csrf_meta_tags
+    = script type="text/javascript" src="//use.typekit.net/zum4xss.js"
+    = javascript_tag "try { Typekit.load(); } catch (e) { }"
   body
     = yield

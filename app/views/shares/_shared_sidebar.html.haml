@@ -1,0 +1,19 @@
+- if current_user
+  .avatar.mtop40
+    = image_tag(avatar_image)
+
+  .profile-actions
+    .edit-profile
+      = link_to "Edit Profile", edit_profile_path
+    .logout
+      = link_to "Sign out", destroy_user_session_path, :method => :delete
+
+.topic-tag-list
+  %h2 Tags
+  %ul
+    - popular_tags.each do |tag|
+      %li
+        = link_to(tag.name,topics_tag_path(tag))
+
+
+    

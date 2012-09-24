@@ -2,6 +2,18 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require bootstrap_overrides
+ *= require jquery-ui-1.8.23.custom
+ *= require tagit/tagit-simple-grey.css
+ *= require fileuploader.css
+ *= require jquery.qtip.css
+ *= require jquery.facebox
  *= require_self
- *= require new/website
+ *= require custom
+ *= require global
+ *= require topics
+ *= require profile
+ *= require topic_search/item_search
+ *= require topic_search/image_selector
+ * *= require search
 */

@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   has_many :shares, :class_name => "Shares::Share"
   has_many :auth_providers
   has_many :antiForgeTokens
+
+  has_many :deals, :class_name => "Deals::Deal"
   
   # Validations
   validates :name, :presence => true
@@ -95,6 +97,15 @@ class User < ActiveRecord::Base
       user.save
     else
       user = User.find_with_auth_id(auth.uid)
+      if auth.provider == "twitter"
+        user.twitter_uid = auth.uid
+        user.twitter_oauth_token = auth['credentials']['token']
+        user.twitter_oauth_secret = auth['credentials']['secret']
+      elsif auth.provider == "facebook"
+        user.facebook_uid = auth.uid
+        user.facebook_oauth_token = auth['credentials']['token']
+        user.facebook_oauth_secret = auth['credentials']['secret']
+      end
       user.image_url = auth.info.image
       user.save
     end

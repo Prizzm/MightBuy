@@ -1,0 +1,16 @@
+%table.share
+  %td.image
+    = link_to image_tag(url( image_url(@topic) { thumb('100x100#') } || "/images/app/placeholder-image.png") ), @topic_url
+  %td.message
+    .subject
+      #{@name.capitalize} wants yo buy
+      = link_to @topic.subject.first(30), @topic_url
+      , and is asking for your opinion. 
+      %br
+      %br
+      Click reply button below
+      and let him/her know your thoughts.
+    .body
+      = truncate(@topic.body, :length => 160)
+    .goto
+      = link_to image_tag(url("/images/email/button.png")), @topic_url

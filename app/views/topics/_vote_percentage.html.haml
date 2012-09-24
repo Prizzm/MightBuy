@@ -1,0 +1,17 @@
+.span5
+  %h3 Votes
+  %div.vote-percentages
+    %span.yes-votes
+      .yes-no-flag
+        Yes
+      .percentage
+        = topic.percentage_votes[:yes]
+        \%
+
+    %span.no-votes
+      .yes-no-flag
+        No
+      .percentage
+        = topic.percentage_votes[:no]
+        \%
+  .clear

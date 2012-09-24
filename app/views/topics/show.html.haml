@@ -1,0 +1,26 @@
+.show-topic
+  .row.topic-links.ptop30
+    .span2
+      = link_to profile_path do
+        #home-link.mleft40
+    .span4.offset4
+      %ul
+        %li
+          = link_to edit_topic_path(@topic.shortcode) do
+            #edit-topic
+        %li
+          = link_to topic_path(@topic.shortcode), method: :delete, confirm: "Are you sure, you want to delete?" do
+            #delete-topic
+
+  .row.mtop50.mbot30
+    = render :partial => "topic_detail"
+
+  .row
+    .span5
+      #social-sharing.mleft40
+        = render partial: "topics/social_share_topic", locals: { topic: @topic }
+    .span5{class: current_user ? "" : "offset4"}
+      #topic-voting.pleft40
+        = render partial: "topics/topic_votes", locals: { topic: @topic, vote: @vote }
+
+  = render :partial => "topic_meta_information"

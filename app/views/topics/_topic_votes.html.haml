@@ -1,0 +1,10 @@
+.topic-votes
+  Vote - should #{@topic.poster_name} buy it?
+
+  %ul.horizontal-list.mtop20
+    %li
+      = link_to topic_votes_path(@topic, vote: "yes"), method: :post, remote: true do
+        .topic-vote-yes-icon{id: vote && vote.buyit ? "topic-voted-yes" : ""}
+    %li
+      = link_to topic_votes_path(@topic, vote: "no"), method: :post, remote: true do
+        .topic-vote-no-icon{id: vote && !vote.buyit ? "topic-voted-no" : ""}

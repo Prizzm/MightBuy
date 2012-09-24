@@ -15,7 +15,8 @@ module ProfileHelper
       else super
     end
   end
-  
+
+
   def latest_posts
     resource.topics.order("created_at desc").limit(10)
   end

@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %title MightBuy
+    %meta{'name'=>"apple-itunes-app", 'content'=>"app-id=548123429"}
+    = stylesheet_link_tag "website", :media => "all"
+    = javascript_include_tag "website"
+    = csrf_meta_tags
+
+  %body
+    = render  partial: "shares/flash_notice"
+
+    .container
+      = render partial: "/shares/landing_header"
+      .app-content
+        .row.topic-page
+          .span2
+            = render :partial => "/shares/shared_sidebar"
+          .span10.mtop40.pull-right
+            = render :partial => "/shares/anonymous_topic_header"
+            = yield
+          .clear
+        .clear
+      = render partial: "/shares/footer"

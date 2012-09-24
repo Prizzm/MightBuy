@@ -1,9 +1,9 @@
 .share-topic-link
-  %span.share-msg.fleft
-    Ask Friends:
-  %ul
+  Ask Friends - should you buy it?
+
+  %ul.horizontal-list.mtop20
     %li
-      = link_to topic_share_path(topic) do
+      = link_to new_topic_email_share_path(topic) do
         .email-icon
 
     %li
@@ -21,5 +21,4 @@
       - else
         = link_to user_omniauth_authorize_path(:facebook) do
           .facebook-icon
-
   .clear

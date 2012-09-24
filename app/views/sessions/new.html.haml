@@ -1,0 +1,28 @@
+.user-signin
+  .row
+    .span7.bevel-line-vertical-right
+      %p
+        Sign in to MightBuy!
+
+      = simple_form_for resource, url: new_user_session_path, html: { class: 'form-horizontal' } do |f|
+        = f.input :email
+        = f.input :password
+        .user-signin-form-submit
+          = f.submit "", id: 'sign-in-submit-button'
+
+    .span5.social-login
+      %p
+        Sign in with Facebook & Twitter!
+
+      #social-buttons
+        = link_to user_omniauth_authorize_path(:facebook), id: "facebook-signin" do
+          = image_tag("facebook-signin.jpg");
+        = link_to user_omniauth_authorize_path(:twitter), id: "twitter-signin" do
+          = image_tag("twitter-signin.jpg");
+
+      %p
+        Don't have an account yet?
+
+      = link_to(new_user_registration_path) do
+        .join-us-today
+

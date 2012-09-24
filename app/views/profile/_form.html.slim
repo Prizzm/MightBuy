@@ -1,29 +1,32 @@
-= heading "Your Photo / Logo"
+.ptop30
+	= heading "Your Photo / Logo"
 
 = render "partials/image_selector_input", :form => form, :field => :image
 
-= heading "General Details"
-
-= form.label  "email:   "
-= current_user.email
-= form.input :name, :label => "Your Name"
-/= form.input :description, :label => "About you", :hint => "Anything you'd like to share..", :input_html => { :maxlength => 150 }
-= link_to 'Delete Account', user_registration_path, :confirm => 'Are you sure you want to delete your account? All data will be lost.', :method => :delete
-
-
-= heading "Social Accounts"
-- if current_user.twitter_uid == nil
-	= link_to "Link with Twitter", user_omniauth_authorize_path(:twitter)
-	br
--else
-	= link_to "Unlink Twitter", "/profile/unlink/twitter"
-	br
-	
-- if current_user.facebook_uid == nil
-	= link_to "Link with Facebook", user_omniauth_authorize_path(:facebook)
-	br
--else
-	= link_to "Unlink Facebook", "/profile/unlink/facebook"
-	br
-	
-
+.mtop40
+.row
+  .span5.bor-right
+    .gen-detail
+      = heading "General Details"  
+      = form.label  "email:   "
+      = current_user.email
+      = form.input :name, :label => "Your Name"
+      /= form.input :description, :label => "About you", :hint => "Anything you'd like to share..", :input_html => { :maxlength => 150 }
+  .span3.mleft40
+    = heading "Social Accounts"
+    - if current_user.twitter_uid == nil
+    	= link_to "Link with Twitter", user_omniauth_authorize_path(:twitter)
+    	br
+    -else
+    	= link_to "Unlink Twitter", "/profile/unlink/twitter"
+    	br
+    	
+    - if current_user.facebook_uid == nil
+    	= link_to "Link with Facebook", user_omniauth_authorize_path(:facebook)
+    	br
+    -else
+    	= link_to "Unlink Facebook", "/profile/unlink/facebook"
+    	br
+.clear
+.mtop40
+hr.hr

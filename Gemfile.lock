@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/code-mancers/ministry_of_state.git
+  revision: 1ab001546961fc9b0ea65f1ad7bc5d17bb16fc8f
+  specs:
+    ministry_of_state (0.0.1)
+      rails (>= 3.0.3)
+
+GIT
   remote: git://github.com/frozon/passbook.git
   revision: 3191da9dfd9af86eba063875d77d8ae079e10d84
   specs:
@@ -81,8 +88,13 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    capybara-webkit (0.12.1)
+      capybara (>= 1.0.0, < 1.2)
+      json
     childprocess (0.3.5)
       ffi (~> 1.0, >= 1.0.6)
+    ci_reporter (1.7.2)
+      builder (>= 2.1.2)
     clamp (0.4.0)
     cocoon (1.0.22)
     coderay (1.0.7)
@@ -123,6 +135,7 @@ GEM
     diff-lcs (1.1.3)
     dragonfly (0.9.12)
       rack
+    ejs (1.1.1)
     email_spec (1.2.1)
       mail (~> 2.2)
       rspec (~> 2.0)
@@ -131,6 +144,9 @@ GEM
     excon (0.16.2)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    facebox-rails (0.1.2)
+      railties (~> 3.0)
+      thor (~> 0.14)
     factory_girl (2.2.0)
       activesupport
     factory_girl_rails (1.3.0)
@@ -179,6 +195,7 @@ GEM
     haml (3.1.7)
     has_scope (0.5.1)
     hashie (1.2.0)
+    headless (0.3.1)
     high_voltage (1.2.0)
     highline (1.6.14)
     hike (1.2.1)
@@ -209,6 +226,8 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
+    launchy (2.1.2)
+      addressable (~> 2.3)
     libwebsocket (0.1.5)
       addressable
     listen (0.5.0)
@@ -364,7 +383,12 @@ GEM
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
       rubyzip
-    shoulda-matchers (1.0.0)
+    shoulda (3.1.1)
+      shoulda-context (~> 1.0)
+      shoulda-matchers (~> 1.2)
+    shoulda-context (1.0.0)
+    shoulda-matchers (1.3.0)
+      activesupport (>= 3.0.0)
     simple_form (2.0.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -392,6 +416,10 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.6)
+    squeel (1.0.11)
+      activerecord (~> 3.0)
+      activesupport (~> 3.0)
+      polyamorous (~> 0.5.0)
     subexec (0.2.2)
     temple (0.4.0)
     thin (1.2.11)
@@ -424,6 +452,8 @@ DEPENDENCIES
   airbrake
   bootstrap-sass
   capybara
+  capybara-webkit
+  ci_reporter
   cocoon
   coffee-rails (~> 3.2.1)
   configatron
@@ -434,7 +464,9 @@ DEPENDENCIES
   delayed_job_active_record
   devise (= 1.4.7)
   dragonfly
+  ejs
   email_spec
+  facebox-rails
   factory_girl_rails (= 1.3.0)
   fancybox-rails (= 0.1.4)
   fb_graph
@@ -446,15 +478,18 @@ DEPENDENCIES
   graylog2_exceptions!
   guard-rspec (= 0.5.1)
   haml
+  headless
   high_voltage
   hirb
   hirefireapp
   image_scraper (= 0.1.7)
   inherited_resources
   jquery-rails
+  launchy
   meta-tags
   meta_search
   mini_magick
+  ministry_of_state!
   newrelic_rpm
   oa-core
   oauth
@@ -474,11 +509,12 @@ DEPENDENCIES
   rspec-rails (~> 2.6)
   rubber
   sass-rails (~> 3.2.3)
-  shoulda-matchers (= 1.0.0)
+  shoulda
   simple_form
   simplecov
   simplecov-rcov
   slim-rails
   sqlite3
+  squeel
   thin (= 1.2.11)
   uglifier (>= 1.0.3)

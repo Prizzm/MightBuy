@@ -40,7 +40,7 @@ gem 'simple_form'
 gem 'premailer-rails3'
 gem 'meta-tags'
 gem 'cocoon'
-
+gem "squeel"
 # AWS
 gem 'fog'
 
@@ -62,6 +62,8 @@ gem 'configatron'
 # Others
 gem 'image_scraper', '0.1.7'
 gem 'high_voltage'
+gem 'facebox-rails'
+gem 'ministry_of_state', git: "git://github.com/code-mancers/ministry_of_state.git"
 
 group :development do
   # Console
@@ -91,15 +93,21 @@ end
 
 group :test do
   gem 'factory_girl_rails', '1.3.0'
-  gem 'shoulda-matchers', '1.0.0'
+  gem 'shoulda'
   gem 'guard-rspec', "0.5.1"
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'cucumber-rails', :require => false
   gem 'email_spec'
-  gem 'simplecov', :require => false
+  gem 'launchy'
+  gem 'headless'
+  gem "ci_reporter"
+  gem 'simplecov', :platform => :mri_19
   gem 'simplecov-rcov', :require => false
   gem 'database_cleaner'
 end
 
 gem 'rubber'
 gem 'open4'
+
+gem 'ejs'

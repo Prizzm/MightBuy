@@ -1,6 +1,7 @@
-var response = $(<%= e(render("responses/recommendation/response", :response => resource)) %>);
+<%- if current_user -%>
+var response = $(<%= e(render("responses/recommendation/response", :response => @topic_response)) %>);
 
-givepoints(<%= recommendation_points_earned %>);
+givepoints(<%= recommendation_points_earned(@topic_response) %>);
 //$('.group.respond').after(<%= e(render('topics/register')) %>);
 
 $('.group.respond').slideUp(300, function () {
@@ -14,3 +15,7 @@ $('.group.respond').slideUp(300, function () {
     
   });
 });
+
+<% else -%>
+  window.location = "<%= new_user_session_path -%>";
+<% end -%>

@@ -1,0 +1,20 @@
+.span4
+  .topic-image.mleft40
+    = image_tag topic_image(@topic)
+.span6
+  .topic-details
+    .topic-subject= @topic.subject.capitalize
+    .topic-url.mtop10
+      =link_to(@topic.short_url,@topic.url)
+    - if @topic.owner?(current_user)
+      .topic-meta.mtop10
+        %span
+          = @topic.poster_name(current_user)
+          added this #{time_ago_in_words(@topic.created_at)} ago
+    .topic-tags.mtop10
+      - unless @topic.tags.empty?
+        %span
+          Tags :&nbsp;
+        = tag_links(@topic)
+    .topic-body.mtop15= @topic.body.try(:capitalize)
+    .topic-price.mtop50= number_to_currency(@topic.price)

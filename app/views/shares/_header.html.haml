@@ -1,0 +1,16 @@
+.logged-user-header
+  .row
+    .span5
+      = link_to("/") do
+        = image_tag("mightbuy-logo.png", id: "mightbuy-logo")
+      %p.caption
+        Track stuff you might buy
+    .span3.offset4
+      .bookmarklet-button
+        = link_to bookmarklet_url, :onclick => "return false;" do
+          = image_tag("bookmarklet.png", alt: "Mightbuy.it")
+      .bookmarklet-help
+        Drag me to your
+        %b Bookmarks Bar!
+      .safari-link
+        = link_to "Download Safari Extension", "/assets/MightBuy.safariextz"

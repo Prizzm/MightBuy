@@ -49,7 +49,7 @@ Devise.setup do |config|
   # config.http_authenticatable = false
 
   # If http headers should be returned for AJAX requests. True by default.
-  # config.http_authenticatable_on_xhr = true
+  config.http_authenticatable_on_xhr = false
 
   # The realm used in Http Basic Authentication. "Application" by default.
   # config.http_authentication_realm = "Application"
@@ -208,5 +208,9 @@ Devise.setup do |config|
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
   config.omniauth :twitter, MB.config.twitter_appid, MB.config.twitter_token
-  config.omniauth :facebook, MB.config.facebook_appid, MB.config.facebook_token, {:scope => "offline_access, publish_stream,email"}
+  config.omniauth(:facebook,
+    MB.config.facebook_appid,
+    MB.config.facebook_token,
+    {:scope => "offline_access, publish_stream,email", image_size: 'normal'}
+  )
 end

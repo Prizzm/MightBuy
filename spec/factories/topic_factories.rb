@@ -6,6 +6,11 @@ FactoryGirl.define do
   factory :topic do
     subject "Jeans"
     access "private"
+    form   "recommendation"
     shortcode  { FactoryGirl.generate(:shortcode) }
+    status "imightbuy"
+    after_build {|topic|
+      topic.user ||= FactoryGirl.create(:user)
+    }
   end
 end

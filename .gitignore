@@ -11,3 +11,17 @@ public/system
 .rvmrc
 routes.txt
 /vendor/ruby
+reports/
+/coverage
+.project
+
+.idea/.name
+.idea/MightBuy.iml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+/public/assets
+/config/database.yml
+

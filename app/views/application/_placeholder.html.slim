@@ -1,25 +1,52 @@
 - if name == :profile_show_topics
-  p
-  b Welcome! 
-  p 
-  | Make sure to add the  
-  = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
-  = stars " *bookmarklet* to your browser"
-  p
-  iframe width="420" height="315" src="http://www.youtube.com/embed/9riCsmyrW3g" 
-  p
-
-- if name == :profile_show_responses
-  = stars ""
-
-- if name == :brands_show_topics || name == :users_show_topics
-  = stars "Looks like they *haven't posted anything* yet."
-  
-- if name == :topics_show_responses
-  = stars "Looks like *no one has responded* yet."
-  
-- if name == :topics_show_shares_shares
-  = stars "You *haven't shared this with anyone* yet."
-  
-- if name == :users_show_responses || name == :brands_show_responses
-  = stars "Looks like they haven't *been involved in any conversations* yet."
+  .mleft30
+    h1 Welcome!
+    hr
+    .row
+      h3.span1 First:
+      .span9
+        p
+          | Make sure to add the  
+          = link_to "MightBuy.it", bookmarklet_url, :onclick => "return false;"
+          = stars " *bookmarklet* to your browser, as shown below."
+      .span9.mtop15
+        = link_to bookmarklet_url, :onclick => "return false;", class: "pleft25" do
+          =image_tag("bookmark-snap.png",alt: "Mightbuy.it")
+        p.mtop25
+          | Once you have the mightbuy bookmarklet, you can add items to mightbuy from any website you are browsing!
+        p.mtop15
+          | know how to 
+          = link_to("add a bookmark?", page_path("help"), :target=>"_blank")
+    .row
+      h3.mtop25.span1 Then:
+      br.clear
+      .span4.mtop15 align="center"
+        = link_to(new_topic_path) do
+          =image_tag("add-an-item-snap.png")
+        br
+        p.mtop15 You can search google and add from Mightbuy. 
+      .span1
+        div style="padding: 70px 0 0 8px" OR
+      .span4.mtop15 align="center"
+        = link_to(topics_path) do
+          =image_tag("browse.png")
+        br
+        p.mtop15 Need inspiration? See what others are posting.
+        
+          
+        
+    div
+      - if name == :profile_show_responses
+        = stars ""
+    
+      - if name == :brands_show_topics || name == :users_show_topics
+        = stars "Looks like they *haven't posted anything* yet."
+    
+      - if name == :topics_show_responses
+        = stars "Looks like *no one has responded* yet."
+    
+      - if name == :topics_show_shares_shares
+        = stars "You *haven't shared this with anyone* yet."
+    
+      - if name == :users_show_responses || name == :brands_show_responses
+        = stars "Looks like they haven't *been involved in any conversations* yet."

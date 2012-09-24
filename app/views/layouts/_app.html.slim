@@ -5,7 +5,7 @@
 		meta content="mightbuy:product" property="og:type"
 	= javascript_tag "var POINTS_ENABLED = %s" % (cookies[:disable_points].to_s != 'true')
 #app
-    
+
   #flashes
 	flash_helper
     - flash.each do |key, message|
