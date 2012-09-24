@@ -23,6 +23,10 @@ ActiveAdmin::Dashboards.build do
       h2 Product.all.count
   end
   
+  section "Users Added" do
+      h2 User.all.count
+  end
+  
   # == Simple Dashboard Section
   # Here is an example of a simple dashboard section
   #
