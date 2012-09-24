@@ -189,8 +189,8 @@ class SocialController < ApplicationController
       u = User.new()
       # define attributes
       u.twitter_uid = params[:token]
-      u.name = "#{params[:first_name]} #{params[:last_name]}"
-      u.email = "#{auth.uid}@twitter.com"
+      u.name = "#{params[:name]}"
+      u.email = "#{params[:uid]}@twitter.com"
       u.twitter_oauth_token = params[:oauth_token]
       u.twitter_oauth_secret = params[:oauth_secret]
       # Save user
