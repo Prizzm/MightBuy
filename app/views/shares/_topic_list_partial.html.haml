@@ -10,10 +10,12 @@
           = link_to(topic.short_url, topic.url)
         .topic-listing-tag
           = tag_links(topic)
-        .topic-meta
+        .topic-meta.mtop15
           %span
             = topic.poster_name(current_user)
-            added this #{time_ago_in_words(topic.created_at)} ago
+            Mightbuy this
+            = link_to(copy_topic_path(topic)) do
+              = image_tag("add_icon.png")
       .span1.pull-right.topic-list-actions
         %div.price
           = number_to_currency(topic.price)
