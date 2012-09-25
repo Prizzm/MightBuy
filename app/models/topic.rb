@@ -68,6 +68,11 @@ class Topic < ActiveRecord::Base
     topic
   end
 
+  def self.except_user_topics(page_number,current_user = nil)
+    topic_scope = current_user ? Topic.where("user_id != ?",current_user.id) : Topic
+    topic_scope.order("created_at desc").page(page_number).per(10)
+  end
+
   def add_tags(tag_array)
     !tag_array.blank? && tag_array.each do |tag_name|
       if persisted? && tags.find_by_name(tag_name)

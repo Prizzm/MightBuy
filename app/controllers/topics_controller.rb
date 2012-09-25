@@ -27,7 +27,7 @@ class TopicsController < ApplicationController
 
   def index
     page = params[:page] || 1
-    @topics = Topic.order("created_at desc").page(page).per(10)
+    @topics = Topic.except_user_topics(page,current_user)
     if request.xhr?
       render :partial => "/topics/topic_list"
     end

@@ -123,4 +123,23 @@ describe Topic do
       new_topic.tags.should include(@tag)
     end
   end
+
+  describe "fetching public topics" do
+    before do
+      @topic = FactoryGirl.create(:topic, user: current_user)
+      @another_topic = FactoryGirl.create(:topic)
+    end
+
+    it "given a user it should fetch all topics not belonging to him" do
+      topics = Topic.except_user_topics(1,current_user)
+      topics.should_not include(@topic)
+      topics.should include(@another_topic)
+    end
+
+    it "should return all topics if not given a user" do
+      topics = Topic.except_user_topics(1)
+      topics.should include(@topic)
+      topics.should include(@another_topic)
+    end
+  end
 end
