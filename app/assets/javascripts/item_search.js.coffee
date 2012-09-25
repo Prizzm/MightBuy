@@ -124,6 +124,14 @@ class @Mightbuy.ItemSearch
 
   fetchImages: ->
     url = $("#topic_url").val()
+
+    $("#item-form-image-selector").imageSelector(
+      change : (image) ->
+        $("#topic_image_url").val(image)
+      images : []
+      showloader : true
+    )
+
     $.getJSON(Mightbuy.scrapeApiURL, {url:url}, (data) ->
       images = data.images
 
