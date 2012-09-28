@@ -48,6 +48,10 @@ class Topic < ActiveRecord::Base
   # Methods
   after_create :find_product
 
+  def self.find_by_shortcode(shortcode)
+    super(shortcode.split("-")[0])
+  end
+
   def self.build_from_form_data(topic_details,current_user,visitor_code)
     if topic_details['image_url']
       topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url'])).to_s
@@ -239,7 +243,7 @@ class Topic < ActiveRecord::Base
   end
 
   def to_param
-    shortcode
+    shortcode + "-" + "#{subject}".parameterize
   end
 
   def share_csv= (file)
