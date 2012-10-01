@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_filter :find_tag, :only => [:show, :topics]
+  before_filter :find_tag, :only => [:show, :topics, :update]
   layout :choose_layout
   respond_to :html, :js
 
@@ -9,6 +9,10 @@ class TagsController < ApplicationController
     if request.xhr?
       render :partial => "/topics/topic_list"
     end
+  end
+
+  def update_tags
+    
   end
 
   private

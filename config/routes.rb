@@ -134,6 +134,9 @@ NewPrizzmCom::Application.routes.draw do
     member do
       get :topics
     end
+    collection do
+      post :update_tags
+    end
   end
 
   # in config/routes.rb

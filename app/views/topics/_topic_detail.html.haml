@@ -15,6 +15,10 @@
       - unless @topic.tags.empty?
         %span
           Tags :&nbsp;
-        = tag_links(@topic)
+          = form_for(@topic,:url => update_tags_tags_path(@topic)) do 
+            %ul{:type => "text", :id => "topic_tags", :name => "topic[tags][]"}
+            = submit_tag "Save"
+
+
     .topic-body.mtop15= @topic.body.try(:capitalize)
     .topic-price.mtop50= number_to_currency(@topic.price)
