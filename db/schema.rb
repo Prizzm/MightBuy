@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(:version => 20120921101740) do
     t.boolean  "active"
     t.integer  "product_id"
     t.integer  "bargin_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "pass_path"
     t.integer  "user_id"
     t.string   "serial_number"
@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(:version => 20120921101740) do
   create_table "business_products", :force => true do |t|
     t.integer  "business_id"
     t.integer  "product_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "businesses", :force => true do |t|
@@ -104,8 +104,8 @@ ActiveRecord::Schema.define(:version => 20120921101740) do
     t.string   "longitude"
     t.string   "foreground"
     t.string   "background"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.text     "description"
   end
 
