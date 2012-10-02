@@ -39,6 +39,7 @@ end
 
 VCR.configure do |c|
   c.default_cassette_options = {:record => :new_episodes, :erb => true}
+  c.allow_http_connections_when_no_cassette = true
   c.cassette_library_dir = File.join(File.dirname(__FILE__), "fixtures/vcr_cassettes")
   c.hook_into :webmock
 end
