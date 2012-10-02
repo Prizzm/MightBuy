@@ -220,7 +220,7 @@ class SocialController < ApplicationController
         # Create a new Grackle Client (New Twitter Client)
         client = Grackle::Client.new(:auth => {
           :type => :oauth,
-          :consumer_key => 'kLGDHfctWCOTax3IY0Nwig', :consumer_secret => 'vP2xNwMj4jpntS6qN8Z37fY1qUTSk1vDgJT8b1HSs',
+          :consumer_key => MB.config.twitter_appid, :consumer_secret => MB.config.twitter_token,
           :token => current_user.twitter_oauth_token, :token_secret => current_user.twitter_oauth_secret
         })
         # Post a status update
@@ -231,7 +231,6 @@ class SocialController < ApplicationController
       rescue Exception => e
         puts "====== ERROR ======"
         puts "Error is: ", e
-
         nil
       end
     else
