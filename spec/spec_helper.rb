@@ -4,6 +4,8 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require "vcr"
+
 OmniAuth.config.test_mode = true
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -19,6 +21,7 @@ RSpec.configure do |config|
   config.mock_with :rspec
   config.include OAuthSpecHelper
   config.include TopicSpecHelper
+  config.extend VCR::RSpec::Macros
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -32,4 +35,10 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
+end
+
+VCR.configure do |c|
+  c.default_cassette_options = {:record => :new_episodes, :erb => true}
+  c.cassette_library_dir = File.join(File.dirname(__FILE__), "fixtures/vcr_cassettes")
+  c.hook_into :webmock
 end

@@ -107,6 +107,7 @@ group :test do
   gem 'simplecov', :platform => :mri_19
   gem 'simplecov-rcov', :require => false
   gem 'database_cleaner'
+  gem "vcr"
 end
 
 gem 'rubber'
