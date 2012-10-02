@@ -108,6 +108,7 @@ group :test do
   gem 'simplecov-rcov', :require => false
   gem 'database_cleaner'
   gem "vcr"
+  gem "webmock"
 end
 
 gem 'rubber'

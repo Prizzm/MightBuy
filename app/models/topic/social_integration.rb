@@ -1,13 +1,8 @@
 module Topic::SocialIntegration
   def post_to_twitter(current_user)
-    # Create a new Grackle Client (New Twitter Client)
     client = twitter_client(current_user)
-
-    # Post a status update
     twitter_response = client.statuses.update! :status => compose_twitter_status(current_user)
-
     self.shares.tweets.create!(user: current_user, with: twitter_response.id_str)
-      # Rescue from any exception
   rescue Exception => e
     nil
   end
