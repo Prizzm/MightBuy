@@ -4,7 +4,7 @@ class @Mightbuy.TopicTagging
     @enableShowPagTagEditing()
 
   enableShowPagTagEditing: ->
-    $(".topic-tags").tagit(
+    $("#topic_tags_show").tagit(
       select: true
       tagSource: @fetchExistingTags(),
       initialTags: @fetchInitialTags(),
@@ -13,9 +13,9 @@ class @Mightbuy.TopicTagging
     )
 
   changedTags: (tagValue,action,element) =>
-    console.info(tagValue)
-    console.info(action)
-    console.info(element)
+    currentTags = {tags: $(".tagit-hiddenSelect").val()}
+    updateUrl = $("#topic_add_tag_form").attr("action")
+    $.post(updateUrl,currentTags)
 
   enableTaggingField: ->
     $("#topic_tags").tagit({

@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_filter :find_tag, :only => [:show, :topics, :update]
+  before_filter :find_tag, :only => [:show, :topics]
   layout :choose_layout
   respond_to :html, :js
 
@@ -12,7 +12,13 @@ class TagsController < ApplicationController
   end
 
   def update_tags
-    
+    @topic = Topic.find_by_shortcode(params["topic_id"])
+    if @topic && @topic.owner?(current_user)
+      @topic.update_tags(params["tags"])
+      head :accepted
+    else
+      head :bad_request
+    end
   end
 
   private

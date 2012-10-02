@@ -87,6 +87,12 @@ class Topic < ActiveRecord::Base
     end
   end
 
+  def update_tags(tag_array)
+    incoming_tags = tag_array.map {|tag_name| Tag.find_or_create_by_name(tag_name) }
+    self.tags = incoming_tags
+    self
+  end
+
   def poster_name(current_user = nil)
     if current_user && user == current_user
       "You"
