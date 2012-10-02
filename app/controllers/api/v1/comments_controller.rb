@@ -11,8 +11,4 @@ class Api::V1::CommentsController < Api::V1::ApiController
     @topic = Topic.find(params[:topic_id])
   end
 
-  def present(api_response, options = {})
-    body_hash = options[:with].represent(api_response)
-    render :json => body_hash, :status => options[:status]
-  end
 end

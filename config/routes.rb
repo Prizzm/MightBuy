@@ -9,9 +9,8 @@ NewPrizzmCom::Application.routes.draw do
   namespace :api do
     namespace :v1  do
       resources :tokens,:only => [:create, :destroy]
-      resources :topics, :controller=>:topics_api do
-        resources :comments
-      end
+      resources :topics, :controller=>:topics_api
+      resources :comments
       get 'search', :to => "topics_api#search"
       match "/user/info" => "users_api#info"
       match "/topics/create" => "topics#create"
