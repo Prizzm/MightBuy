@@ -1,4 +1,4 @@
-class Api::V1::TopicsApiController < ApplicationController
+class Api::V1::TopicsApiController < Api::V1::ApiController
   before_filter :find_topic, :only => [:show, :edit, :update, :destroy]
 
   # GET /topics

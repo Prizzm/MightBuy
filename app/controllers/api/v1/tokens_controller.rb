@@ -1,4 +1,4 @@
-class Api::V1::TokensController < ApplicationController
+class Api::V1::TokensController < Api::V1::ApiController
   skip_before_filter :verify_authenticity_token
   respond_to :json
 
