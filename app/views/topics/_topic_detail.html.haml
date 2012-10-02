@@ -15,6 +15,8 @@
       - unless @topic.tags.empty?
         %span
           Tags :&nbsp;
-        = tag_links(@topic)
+          = render :partial => "tags"
+
+
     .topic-body.mtop15= @topic.body.try(:capitalize)
     .topic-price.mtop50= number_to_currency(@topic.price)

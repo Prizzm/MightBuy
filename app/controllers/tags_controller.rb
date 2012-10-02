@@ -11,6 +11,16 @@ class TagsController < ApplicationController
     end
   end
 
+  def update_tags
+    @topic = Topic.find_by_shortcode(params["topic_id"])
+    if @topic && @topic.owner?(current_user)
+      @topic.update_tags(params["tags"])
+      head :accepted
+    else
+      head :bad_request
+    end
+  end
+
   private
   def find_tag
     @tag = Tag.find_by_name(params[:id])
