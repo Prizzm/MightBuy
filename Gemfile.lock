@@ -184,6 +184,12 @@ GEM
       json
       mime-types
       oauth
+    grape (0.2.1)
+      hashie (~> 1.2)
+      multi_json
+      multi_xml
+      rack
+      rack-mount
     graylog2-resque (0.5.1)
       gelf
       resque
@@ -247,6 +253,7 @@ GEM
     mini_magick (3.4)
       subexec (~> 0.2.1)
     multi_json (1.3.6)
+    multi_xml (0.5.1)
     multipart-post (1.1.5)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -308,6 +315,8 @@ GEM
       rack (>= 0.4)
     rack-google_analytics (1.0.2)
       rack
+    rack-mount (0.8.3)
+      rack (>= 1.0.0)
     rack-oauth2 (0.14.9)
       activesupport (>= 2.3)
       attr_required (>= 0.0.5)
@@ -474,6 +483,7 @@ DEPENDENCIES
   fog
   gelf
   grackle
+  grape
   graylog2-resque
   graylog2_exceptions!
   guard-rspec (= 0.5.1)

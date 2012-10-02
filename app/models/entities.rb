@@ -1,0 +1,23 @@
+module Entity
+  class User < Grape::Entity
+    expose :id
+    expose :email
+    expose :name
+  end
+
+  class Topic < Grape::Entity
+    expose :id
+    expose :subject
+    expose :shortcode
+    expose :user_id
+    expose :body
+    expose :url
+    expose(:thumbnail) {|tp| tp.thumbnail_image }
+  end
+
+  class Comment < Grape::Entity
+    expose :id
+    expose :topic
+    expose :user
+  end
+end
