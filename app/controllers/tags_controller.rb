@@ -5,7 +5,7 @@ class TagsController < ApplicationController
 
   def topics
     page = params[:page] || 1
-    @topics = @tag.topics.page(page).per(10)
+    @topics = @tag.topics.order("created_at desc").page(page).per(10)
     if request.xhr?
       render :partial => "/topics/topic_list"
     end
