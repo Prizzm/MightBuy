@@ -1,0 +1,52 @@
+--- 
+http_interactions: 
+- request: 
+    method: post
+    uri: http://api.twitter.com/1/statuses/update.json
+    body: 
+      encoding: US-ASCII
+      string: status=I+%23mightbuy+Jeans.++Should+I%3F+http%3A%2F%2Flocalhost%3A3000%2Ftopics%2Fhell1
+    headers: 
+      Accept: 
+      - "*/*"
+      User-Agent: 
+      - Grackle/0.2.1 (OAuth gem v0.4.6)
+      Content-Type: 
+      - application/x-www-form-urlencoded
+      Authorization: 
+      - OAuth oauth_consumer_key="kLGDHfctWCOTax3IY0Nwig", oauth_nonce="cRW1aGEXh61SzZTe0JwCUV9KxITdSWDSfU1VMg1g0LQ", oauth_signature="%2F5tm94miiNk74C1AmeahhSAPStA%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1349155485", oauth_version="1.0"
+  response: 
+    status: 
+      code: 401
+      message: Unauthorized
+    headers: 
+      Date: 
+      - Tue, 02 Oct 2012 05:24:46 GMT
+      Status: 
+      - 401 Unauthorized
+      Www-Authenticate: 
+      - OAuth realm="http://api.twitter.com"
+      Content-Type: 
+      - application/json; charset=utf-8
+      X-Runtime: 
+      - "0.00634"
+      Content-Length: 
+      - "85"
+      Cache-Control: 
+      - no-cache, max-age=300
+      Set-Cookie: 
+      - _twitter_sess=BAh7CDoPY3JlYXRlZF9hdGwrCOX67h86AToHaWQiJTcyMWM5MDQ3OTcwMjFi%250AZGFmZjQ2NzExMTllZmIwODcyIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVy%250AOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsA--9c2073e8b2fabb25483a0c496658f758a5afcc09; domain=.twitter.com; path=/; HttpOnly
+      - guest_id=v1%3A134915548643297193; domain=.twitter.com; path=/; expires=Thu, 02-Oct-2014 17:24:46 GMT
+      - k=10.36.60.137.1349155486427515; path=/; expires=Tue, 09-Oct-12 05:24:46 GMT; domain=.twitter.com
+      Expires: 
+      - Tue, 02 Oct 2012 05:29:46 GMT
+      Vary: 
+      - Accept-Encoding
+      Server: 
+      - tfe
+    body: 
+      encoding: US-ASCII
+      string: "{\"error\":\"Could not authenticate with OAuth.\",\"request\":\"\\/1\\/statuses\\/update.json\"}"
+    http_version: 
+  recorded_at: Tue, 02 Oct 2012 05:24:46 GMT
+recorded_with: VCR 2.2.5
