@@ -69,6 +69,14 @@ describe Topic do
       @topic.should have(3).tags
       @topic.subject.should == "ips monitor"
     end
+
+    it "should replace tags when updating" do
+      @topic.tags.should include(@tag)
+      @topic.update_tags(["emacs"])
+      @topic.reload
+      @topic.tags.should_not include(@tag)
+      @topic.tags.map(&:name).should include("emacs")
+    end
   end
 
   describe "computing votes" do

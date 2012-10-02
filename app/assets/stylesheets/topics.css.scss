@@ -633,7 +633,25 @@ ol.topics {
 #topic_tags {
   margin: 0px 0px 20px 0px;
   border: none;
+  li {
+    font-family: "Museo500";
+  }
+  input {
+    font-family: "Museo500";
+  }
 }
+
+#topic_tags_show {
+  margin: 0px 0px 20px 0px;
+  border: none;
+  li {
+    font-family: "Museo500";
+  }
+  input {
+    font-family: "Museo500";
+  }
+}
+
 .clear {
   clear:both;
 }
