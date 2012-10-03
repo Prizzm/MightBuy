@@ -17,7 +17,8 @@ module Entity
 
   class Comment < Grape::Entity
     expose :id
-    expose :topic
-    expose :user
+    expose :topic_id
+    expose :user_id
+    expose :description
   end
 end

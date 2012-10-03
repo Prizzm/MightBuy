@@ -1,4 +1,5 @@
 class Api::V1::CommentsController < Api::V1::ApiController
+  respond_to :json
   before_filter :find_topic
 
   def index
