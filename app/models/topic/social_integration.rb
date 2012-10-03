@@ -8,7 +8,7 @@ module Topic::SocialIntegration
   end
 
   def compose_twitter_status(current_user)
-    "I #mightbuy #{subject.first(45)}. #{displayPrice} Should I? #{MB.config.app_url}/topics/#{shortcode}"
+    "I #mightbuy #{subject.first(45)}.. #{displayPrice} Should I? #{MB.config.app_url}/topics/#{shortcode}"
   end
 
   def twitter_client(current_user)
