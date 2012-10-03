@@ -1,7 +1,7 @@
 class SocialController < ApplicationController
 
   skip_filter :award_points
-  before_filter :findTopic
+  before_filter :findTopic, :except => [:socialAuthenticationAPIFacebook]
   respond_to :html, :js
 
   # Accessible Methods (fold)
