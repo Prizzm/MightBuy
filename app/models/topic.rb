@@ -50,7 +50,7 @@ class Topic < ActiveRecord::Base
   after_create :find_product
 
   def self.find_by_shortcode(shortcode)
-    super(shortcode.split("-")[0])
+    super(shortcode && shortcode.split("-")[0])
   end
 
   def self.build_from_form_data(topic_details,current_user,visitor_code)
