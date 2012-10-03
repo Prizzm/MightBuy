@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
   end
 
   def update_last_seen
-    if current_user then
+    if current_user
       current_user.update_attribute("last_seen", DateTime.now)
     end
   end

@@ -44,6 +44,8 @@ gem "squeel"
 # AWS
 gem 'fog'
 
+gem 'grape'
+
 # Uploads
 gem 'mini_magick'
 gem 'rack-cache', :require => 'rack/cache'
