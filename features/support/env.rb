@@ -5,6 +5,7 @@
 # files.
 
 require 'cucumber/rails'
+require "vcr"
 
 Capybara.javascript_driver = :webkit
 
@@ -58,6 +59,14 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
+
+VCR.configure do |c|
+  c.default_cassette_options = {:record => :new_episodes, :erb => true}
+  c.allow_http_connections_when_no_cassette = true
+  c.cassette_library_dir = File.join(File.dirname(__FILE__), "fixtures/vcr_cassettes")
+  c.hook_into :webmock
+end
+
 
 # for CI server
 if ENV['HEADLESS'] == 'true'

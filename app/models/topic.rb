@@ -3,6 +3,7 @@ class Topic < ActiveRecord::Base
   # Includes
   include InheritUpload
   include ActionView::Helpers::NumberHelper
+  include Topic::SocialIntegration
 
   # Options
   Access = {
