@@ -1,15 +1,9 @@
-class UsersController < RestfulController
+class UsersController < ApplicationController
+  layout 'logged_user'
 
-  actions :index, :show
-
-  protected
-
-  def end_of_association_chain
-    super.people
+  # Authenticate
+  before_filter :authenticate_user!
+  def show
+    
   end
-
-  def collection
-    @users ||= end_of_association_chain.order(:name)
-  end
-
 end
