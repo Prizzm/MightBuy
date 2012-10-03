@@ -25,7 +25,7 @@ class SocialController < ApplicationController
   def askAllAPI
     post_to_open_graph(false)
     post_to_facebook_feed(false)
-    post_to_twitter(false)
+    @topic.post_to_twitter(current_user)
   end
 
   def facebook
@@ -42,7 +42,7 @@ class SocialController < ApplicationController
     unless current_user.hasTwitter?
       redirect_to_social_login(:twitter)
     else
-      @share = post_to_twitter(false)
+      @share = @topic.post_to_twitter(current_user)
       respond_with(@share, location: topics_path(@topic.shortcode, atf: 't'))
     end
   end
@@ -50,7 +50,7 @@ class SocialController < ApplicationController
   def askAll
     post_to_open_graph(false)
     post_to_facebook_feed(false)
-    post_to_twitter(false)
+    @topic.post_to_twitter(current_user)
     redirect_to "/topics/#{@topic.shortcode}?aaf=t"
   end
 
@@ -210,37 +210,6 @@ class SocialController < ApplicationController
   end
 
   # Facebook (end)
-
-  # Twitter (fold)
-  def post_to_twitter(redirect = false)
-    # Check if current_user has Twitter account linked
-    if current_user.hasTwitter?
-      # Begin rescue block
-      begin
-        # Create a new Grackle Client (New Twitter Client)
-        client = Grackle::Client.new(:auth => {
-          :type => :oauth,
-          :consumer_key => MB.config.twitter_appid, :consumer_secret => MB.config.twitter_token,
-          :token => current_user.twitter_oauth_token, :token_secret => current_user.twitter_oauth_secret
-        })
-        # Post a status update
-        twitter_response = client.statuses.update! :status => "I #mightbuy #{@topic.subject}. #{@topic.displayPrice} Should I? https://www.mightbuy.it/topics/#{params[:sc]}?r=t"
-
-        @topic.shares.tweets.create!(user: current_user, with: twitter_response.id_str)
-          # Rescue from any exception
-      rescue Exception => e
-        puts "====== ERROR ======"
-        puts "Error is: ", e
-        nil
-      end
-    else
-      # Check if redirect is true (redirect defined as param)
-      if redirect == true then
-        # If so, redirect to Twitter login
-        redirect_to_social_login(:twitter)
-      end
-    end
-  end
 
   def unlink_twitter(redirect = true)
     current_user.update_attribute("twitter_uid", nil)
