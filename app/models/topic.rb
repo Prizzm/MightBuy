@@ -50,7 +50,7 @@ class Topic < ActiveRecord::Base
   # Methods
   after_create :find_product
 
-  has_many :timeline_events, :as => :subject
+  has_many :timeline_events, :as => :subject, :dependent => :destroy
 
   fires 'new_topic', on: :create, actor: :user
   fires 'modified_topic', on: :update, actor: :user

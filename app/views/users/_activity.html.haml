@@ -1,6 +1,8 @@
 .activity-feed
   %ul
     - @timeline_events.each do |timeline_event|
-      %li
-        = timeline_event.activity_line
+      - if timeline_event.subject && timeline_event.actor
+        %li
+          = timeline_event.activity_line
+          
 
