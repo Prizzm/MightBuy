@@ -13,6 +13,13 @@ GIT
       rubyzip
 
 GIT
+  remote: git://github.com/styx/timeline_fu.git
+  revision: d5476a0fc5f666fa410d232faf7a63d9280b7a05
+  specs:
+    timeline_fu (0.4.5)
+      activerecord
+
+GIT
   remote: git://github.com/wr0ngway/graylog2_exceptions.git
   revision: 797924acd1aa89852605230812d8cfd27da90969
   specs:
@@ -532,6 +539,7 @@ DEPENDENCIES
   sqlite3
   squeel
   thin (= 1.2.11)
+  timeline_fu!
   uglifier (>= 1.0.3)
   vcr
   webmock

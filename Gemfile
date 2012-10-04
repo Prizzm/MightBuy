@@ -67,6 +67,8 @@ gem 'high_voltage'
 gem 'facebox-rails'
 gem 'ministry_of_state', git: "git://github.com/code-mancers/ministry_of_state.git"
 
+gem "timeline_fu", git: "git://github.com/styx/timeline_fu.git"
+
 group :development do
   # Console
   gem 'hirb'
@@ -76,9 +78,6 @@ group :development do
   gem 'ffaker', '1.10.1'
   gem 'pry-rails'
   gem "quiet_assets"
-end
-
-group :development do
   gem 'rspec-rails', "~> 2.6"
 end
 
