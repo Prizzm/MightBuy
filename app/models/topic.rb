@@ -52,8 +52,8 @@ class Topic < ActiveRecord::Base
 
   has_many :timeline_events, :as => :subject
 
-  fires :new_topic, on: :create, actor: :user
-  fires :modified_topic, on: :update, actor: :user
+  fires 'new_topic', on: :create, actor: :user
+  fires 'modified_topic', on: :update, actor: :user
 
   def self.find_by_shortcode(shortcode)
     super(shortcode && shortcode.split("-")[0])
@@ -242,8 +242,13 @@ class Topic < ActiveRecord::Base
     !!shares.recommends.find_by_user_id(user.id)
   end
 
-  def activity_line(actor,secondary_subject)
-    "#{actor.name} added <a href='/topics/#{id}'>#{subject.first(45)}..</a> to his mightbuy list".html_safe
+  def activity_line(timeline_event)
+    actor = timeline_event.actor
+    if timeline_event.event_type == 'modified_topic'
+      "#{actor.name} updated <a href='/topics/#{id}'>#{subject.first(45)}..</a> in his mightbuy list".html_safe
+    else
+      "#{actor.name} added <a href='/topics/#{id}'>#{subject.first(45)}..</a> to his mightbuy list".html_safe
+    end
   end
 
   def vote(user, buyit)

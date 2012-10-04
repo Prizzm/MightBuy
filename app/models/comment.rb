@@ -18,7 +18,8 @@ class Comment < ActiveRecord::Base
     end
   end
 
-  def activity_line(actor, topic)
+  def activity_line(timeline_event)
+    actor,topic = timeline_event.actor, timeline_event.secondary_subject
     "#{actor.name} commented on <a href='/users/#{topic.user.id}'>#{topic.user.name}'s</a> <a href='/topics/#{topic.id}'>#{topic.subject.first(45)}..</a> on mightbuy".html_safe
   end
 end
