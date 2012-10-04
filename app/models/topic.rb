@@ -242,7 +242,7 @@ class Topic < ActiveRecord::Base
     !!shares.recommends.find_by_user_id(user.id)
   end
 
-  def activity_line(actor)
+  def activity_line(actor,secondary_subject)
     "#{actor.name} added #{subject.first(45)}.. item to his mightbuy list"
   end
 
