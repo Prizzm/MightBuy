@@ -9,7 +9,11 @@ class Api::V1::CommentsController < Api::V1::ApiController
 
   private
   def find_topic
-    @topic = Topic.find(params[:topic_id])
+    if params[:topic_shortcode]
+      @topic = Topic.find_by_shortcode(params[:topic_shortcode])
+    else
+      @topic = Topic.find(params[:topic_id])
+    end
   end
 
 end
