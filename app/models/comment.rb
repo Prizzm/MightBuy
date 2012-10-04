@@ -19,6 +19,6 @@ class Comment < ActiveRecord::Base
   end
 
   def activity_line(actor, topic)
-    "#{actor.name} commented on #{topic.user.name}'s #{topic.subject.first(45)}.. on mightbuy"
+    "#{actor.name} commented on <a href='/users/#{topic.user.id}'>#{topic.user.name}'s</a> <a href='/topics/#{topic.id}'>#{topic.subject.first(45)}..</a> on mightbuy".html_safe
   end
 end

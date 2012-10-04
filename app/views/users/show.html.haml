@@ -14,7 +14,7 @@
     .span3
       %h2 My wants
       %table
-        - @user.topics.each_slice(3) do |topics|
+        - @topics.each_slice(3) do |topics|
           %tr
             - topics.each do |topic|
               %td

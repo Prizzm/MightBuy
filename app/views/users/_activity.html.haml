@@ -1,6 +1,6 @@
 .activity-feed
   %ul
-    - @user.timeline_events.each do |timeline_event|
+    - @timeline_events.each do |timeline_event|
       %li
         = timeline_event.activity_line
 

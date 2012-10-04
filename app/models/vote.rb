@@ -24,6 +24,6 @@ class Vote < ActiveRecord::Base
   end
 
   def activity_line(actor, topic)
-    "#{actor.name} #{like_dislike_text} #{topic.user.name}'s #{topic.subject.first(45)}.. on mightbuy."
+    "#{actor.name} #{like_dislike_text} <a href='/users/#{topic.user.id}'>#{topic.user.name}'s</a> <a href='/topics/#{topic.id}'>#{topic.subject.first(45)}..</a> on mightbuy.".html_safe
   end
 end
