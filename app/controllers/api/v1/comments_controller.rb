@@ -9,7 +9,13 @@ class Api::V1::CommentsController < Api::V1::ApiController
 
   private
   def find_topic
-    @topic = Topic.find(params[:topic_id])
+    if params[:topic_shortcode]
+      @topic = Topic.find_by_shortcode(params[:topic_shortcode])
+    elsif params[:topic_id]
+      @topic = Topic.find(params[:topic_id])
+    else
+      render :text => {:error => {:description => "No Topic Specified"}}.to_json
+    end
   end
 
 end
