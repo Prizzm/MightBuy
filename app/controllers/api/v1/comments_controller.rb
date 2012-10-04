@@ -15,6 +15,7 @@ class Api::V1::CommentsController < Api::V1::ApiController
       @topic = Topic.find(params[:topic_id])
     else
       render :text => {:error => {:description => "No Topic Specified"}}.to_json
+    end
   end
 
 end
