@@ -11,13 +11,14 @@
         ago
   %hr.mleft20
   .row.mleft20
-    .span4
+    .span3
       %h2 My wants
       %table
         - @user.topics.each_slice(3) do |topics|
           %tr
             - topics.each do |topic|
               %td
-                = image_tag(topic.icon_image, size: "64x64", alt: "icon")
-    .span5
+                = link_to(topic_path(topic)) do 
+                  = image_tag(topic.icon_image, size: "64x64", alt: "icon")
+    .span6
       %h2 My Activity feed
