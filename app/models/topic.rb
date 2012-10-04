@@ -49,6 +49,8 @@ class Topic < ActiveRecord::Base
   # Methods
   after_create :find_product
 
+  fires :new_topic, on: :create, actor: :user
+
   def self.find_by_shortcode(shortcode)
     super(shortcode && shortcode.split("-")[0])
   end
