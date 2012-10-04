@@ -243,7 +243,7 @@ class Topic < ActiveRecord::Base
   end
 
   def activity_line(actor,secondary_subject)
-    "#{actor.name} added <a href='/topics/#{id}'>#{subject.first(45)}..</a> item to his mightbuy list".html_safe
+    "#{actor.name} added <a href='/topics/#{id}'>#{subject.first(45)}..</a> to his mightbuy list".html_safe
   end
 
   def vote(user, buyit)
