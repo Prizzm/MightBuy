@@ -184,6 +184,14 @@ class Topic < ActiveRecord::Base
     end
   end
 
+  def icon_image
+    if image
+      image.thumb("64x64#").url
+    else
+      "/assets/no_image.png"
+    end
+  end
+
   def copy(another_user)
     another_topic = Topic.new()
     another_topic.attributes = self.attributes.except('shortcode', 'id', 'type', 'created_at', 'updated_at')

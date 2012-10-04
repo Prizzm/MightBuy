@@ -1,0 +1,23 @@
+%div#details
+  .row.user-details
+    .span2
+      = image_tag(avatar_image(@user))
+    .span7
+      %h1 
+        = @user.name
+      %span
+        Hemant Kumar joined
+        = time_ago_in_words(@user.created_at)
+        ago
+  %hr.mleft20
+  .row.mleft20
+    .span4
+      %h2 My wants
+      %table
+        - @user.topics.each_slice(3) do |topics|
+          %tr
+            - topics.each do |topic|
+              %td
+                = image_tag(topic.icon_image, size: "64x64", alt: "icon")
+    .span5
+      %h2 My Activity feed
