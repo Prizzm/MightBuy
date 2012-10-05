@@ -265,4 +265,8 @@ class Topic < ActiveRecord::Base
     vote.save
     vote
   end
+
+  def ihave?
+    status == "ihave"
+  end
 end
