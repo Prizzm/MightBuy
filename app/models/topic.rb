@@ -79,7 +79,7 @@ class Topic < ActiveRecord::Base
   end
 
   def self.latest_posts(page_number = 1)
-    self.page(page_number).per(10)
+    self.order("created_at desc").page(page_number).per(10)
   end
 
   def self.total_pages
