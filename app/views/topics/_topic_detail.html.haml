@@ -1,6 +1,6 @@
 .span4
   .topic-image.mleft40
-    = image_tag topic_image(@topic)
+    = image_tag topic_image(@topic), alt: @topic.subject
 .span6
   .topic-details
     .topic-subject= @topic.subject.capitalize
