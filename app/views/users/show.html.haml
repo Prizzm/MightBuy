@@ -9,17 +9,17 @@
         Hemant Kumar joined
         = time_ago_in_words(@user.created_at)
         ago
-  %hr.mleft20
-  .row.mleft20
-    .span3
+  %hr.hr.mleft20.mright20
+  .row.mleft20.mtop40
+    .span4.user-item-list
       %h2 My wants
-      %table
+      %table.table
         - @topics.each_slice(3) do |topics|
           %tr
             - topics.each do |topic|
               %td
                 = link_to(topic_path(topic)) do 
                   = image_tag(topic.icon_image, size: "64x64", alt: "icon")
-    .span6
+    .span5.user-activity-feed
       %h2 My Activity feed
       = render :partial => "activity"
