@@ -253,6 +253,10 @@ class Topic < ActiveRecord::Base
     end
   end
 
+  def ihave?
+    status == "ihave"
+  end
+
   def vote(user, buyit)
     vote = user ? votes.find_by_user_id(user.id) : nil
     vote ||= votes.build(user: user)
