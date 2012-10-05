@@ -55,7 +55,7 @@ class Topic < ActiveRecord::Base
 
   def self.build_from_form_data(topic_details,current_user,visitor_code)
     if topic_details['image_url']
-      topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url'])).to_s
+      topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url']).gsub("[","%5B").gsub("]","%5D")).to_s
     end
     if topic_details['tags']
       tag_string = topic_details.delete('tags')
@@ -76,6 +76,18 @@ class Topic < ActiveRecord::Base
   def self.except_user_topics(page_number,current_user = nil)
     topic_scope = current_user ? Topic.where("user_id != ?",current_user.id) : Topic
     topic_scope.order("created_at desc").page(page_number).per(10)
+  end
+
+  def self.latest_posts(page_number = 1)
+    self.order("created_at desc").page(page_number).per(10)
+  end
+
+  def self.total_pages
+    if self.count > 0
+      self.count / 10 + 1
+    else
+      0
+    end
   end
 
   def add_tags(tag_array)

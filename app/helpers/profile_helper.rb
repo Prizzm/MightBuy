@@ -18,7 +18,7 @@ module ProfileHelper
 
 
   def latest_posts
-    resource.topics.order("created_at desc").limit(10)
+    resource.topics.latest_posts
   end
   
   def latest_activity
