@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
 
   validates  :topic, :description, presence: true
 
-  has_many :timeline_events, as: :subject
+  has_many :timeline_events, as: :subject, dependent: :destroy
 
   fires :new_comment, on: :create, actor: :user, secondary_subject: :topic
 

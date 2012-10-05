@@ -3,8 +3,9 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   validates  :topic, presence: true
 
-  has_many :timeline_events, as: :subject
-  fires :new_comment, on: :create, actor: :user, secondary_subject: :topic
+  has_many :timeline_events, as: :subject, dependent: :destroy
+
+  fires :new_vote, on: :create, actor: :user, secondary_subject: :topic
 
   def self.update_user(vote_id, user)
     if vote_id && vote = Vote.find_by_id(vote_id)
