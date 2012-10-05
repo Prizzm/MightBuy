@@ -78,6 +78,18 @@ class Topic < ActiveRecord::Base
     topic_scope.order("created_at desc").page(page_number).per(10)
   end
 
+  def self.latest_posts(page_number = 1)
+    self.page(page_number).per(10)
+  end
+
+  def self.total_pages
+    if self.count > 0
+      self.count / 10 + 1
+    else
+      0
+    end
+  end
+
   def add_tags(tag_array)
     !tag_array.blank? && tag_array.each do |tag_name|
       if persisted? && tags.find_by_name(tag_name)
