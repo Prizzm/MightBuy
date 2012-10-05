@@ -169,17 +169,17 @@
 }
 
 
-.topic-vote-yes-icon, .topic-vote-no-icon {
+.topic-vote-yes-icon, .topic-vote-no-icon, .topic-recommend-yes-icon, .topic-recommend-no-icon {
   width: 90px;
   height: 34px;
 }
 
-.topic-vote-yes-icon {
+.topic-vote-yes-icon, .topic-recommend-yes-icon {
   background: image-url("details-page-buttons.jpg") no-repeat scroll -923px -15px;
   &:hover { background-position: -1014px -15px; }
 }
 
-.topic-vote-no-icon {
+.topic-vote-no-icon, .topic-recommend-no-icon {
   background: image-url("details-page-buttons.jpg") no-repeat scroll -741px -15px;
   &:hover { background-position: -832px -15px; }
 }
