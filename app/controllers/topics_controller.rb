@@ -99,6 +99,7 @@ class TopicsController < ApplicationController
     @selected_tab = @topic.ihave? ? 'ihave' : 'mightbuy'
     respond_with(@topic)
   end
+
   def update
     @topic.update_from_form_data(params['topic'],visitor_code)
     respond_with @topic
