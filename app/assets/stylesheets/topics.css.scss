@@ -776,21 +776,4 @@ span.no-votes {
   margin-right: -32px;
 }
 
-#ihave_edit_topic {
-  @include bg-reddish;
-  border: 1px solid #CD383F;
-  border-radius: 5px;
-  margin-top: 1px;
-  padding: 5px 12px;
 
-  #ihave {
-    margin-top: -1px;
-  }
-
-  label {
-    display: inline;
-    color: white;
-    font-size: 1.1em;
-    padding-left: 4px;
-  }
-}

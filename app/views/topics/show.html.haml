@@ -6,12 +6,8 @@
       = link_to profile_path do
         #home-link.mleft40
     - if current_user == @topic.user
-      .span5.offset3
+      .span4.offset4
         %ul
-          %li
-            = form_for @topic, url: ihave_topic_path(@topic), method: :put, remote: true, html: { id: "ihave_edit_topic" } do |f|
-              = check_box_tag :ihave, "yes", @topic.ihave?
-              = label_tag :ihave, "I Have"
           %li
             = link_to edit_topic_path(@topic.shortcode) do
               #edit-topic
