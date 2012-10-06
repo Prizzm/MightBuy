@@ -185,9 +185,7 @@ class Topic < ActiveRecord::Base
         end
       else
         if self.image then
-          # Return image.url with host
-          # http://localhost.it/topics/43P16H (localhost)
-          return self.image.url(:host => "http://localhost:3000")
+          return self.image.url(:host => MB.config.app_url)
         else
           return "https://www.mightbuy.it/assets/no_image.png"
         end
