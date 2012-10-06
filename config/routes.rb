@@ -60,6 +60,7 @@ NewPrizzmCom::Application.routes.draw do
   get 'me' => 'profile#show', :as => 'user_root'
   #get 'me' => 'topics#index', :as => 'user_root'
   resource :profile, :controller => "profile"
+  resources :haves
 
   # Topics
   resources :topics do
@@ -75,7 +76,6 @@ NewPrizzmCom::Application.routes.draw do
       get 'recommendation' => 'topics#new', :topic => { :form => :recommendation }
       get 'business/recommendation' => 'topics#new', :topic => { :form => :business_recommendation }
       get 'recommend' => 'topics#new', :topic => { :form => :recommend }
-      get 'haves'
     end
 
     member do

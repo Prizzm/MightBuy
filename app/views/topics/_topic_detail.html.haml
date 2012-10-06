@@ -15,7 +15,7 @@
       - unless @topic.tags.empty?
         %span
           Tags :&nbsp;
-          = render :partial => "tags"
+          = render :partial => "/shares/tags", :locals => {:topic => @topic }
 
 
     .topic-body.mtop15= @topic.body.try(:capitalize)

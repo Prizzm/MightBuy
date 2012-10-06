@@ -1,0 +1,7 @@
+#details
+  %ol.list.topics
+    .row
+      .add-topic-link
+        = link_to("Add an item", new_have_path, :class=>"btn btn-red")
+    .row
+      = render partial: "have", collection: @haves

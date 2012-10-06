@@ -87,14 +87,7 @@ class TopicsController < ApplicationController
     else
       flash[:error]  = "Failed to Update Recommendation"
     end
-
     respond_with(@topic)
-  end
-
-
-  def haves
-    @topics = current_user.topics.have
-    @selected_tab = "ihave"
   end
 
   def ihave
