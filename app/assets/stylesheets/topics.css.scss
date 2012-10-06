@@ -168,7 +168,6 @@
   &:hover { background-position: -1523px -16px; }
 }
 
-
 .topic-vote-yes-icon, .topic-vote-no-icon {
   width: 90px;
   height: 34px;
@@ -284,7 +283,6 @@
       }
     }
   }
-  
 }
 
 .topic-tabs li.active:hover {
@@ -674,7 +672,7 @@ ol.topics {
     text-shadow: 1px 2px 0px rgba(255,255,255,0.8);
   }
   ul {
-    margin: 1px 0px 0px 5px;
+    margin: 1px 0px 40px 5px;
     li {
       list-style: none;
       margin: 9px 0px 0px 0px;
@@ -792,4 +790,8 @@ span.no-votes {
     font-size: 1.1em;
     padding-left: 4px;
   }
+}
+
+.image-border{
+  border: 3px solid #D9D1CF;
 }
