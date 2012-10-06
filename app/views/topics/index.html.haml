@@ -1,4 +1,4 @@
 %div#details
-  %ol.list.topics#pageless-topic-listing{:"data-total-pages"=>"#{@topics.total_pages}"}
+  %ol.list.topics#pageless-topic-listing{:"data-total-pages"=>"#{@topics.num_pages}"}
     = render :partial => "topic_list"
 
