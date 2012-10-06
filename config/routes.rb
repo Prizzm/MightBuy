@@ -60,7 +60,9 @@ NewPrizzmCom::Application.routes.draw do
   get 'me' => 'profile#show', :as => 'user_root'
   #get 'me' => 'topics#index', :as => 'user_root'
   resource :profile, :controller => "profile"
-  resources :haves
+  resources :haves do
+    get :copy, on: :member
+  end
 
   # Topics
   resources :topics do

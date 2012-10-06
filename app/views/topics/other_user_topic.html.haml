@@ -1,9 +1,15 @@
 .show-topic
-  .row.ptop30
+  .row.ptop60
     .span6.topic-poster-prompt
-      #{@topic.poster_name} Mightbuy:
+      #{@topic.poster_name} #{@topic.human_status}:
     .span3.may-buy.pull-right
-      = link_to("I may buy as well",copy_topic_path(@topic), class: "btn-red")
+      .btn-group
+        %a{:href => copy_topic_path(@topic), :class => "btn btn-large btn-danger"} I may buy
+        %button.btn.btn-large.btn-danger.dropdown-toggle{"data-toggle" => "dropdown"}
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            %a{:href => copy_have_path(id: @topic.shortcode)} I have it
 
   .row.mtop50
     = render :partial => "topic_detail"

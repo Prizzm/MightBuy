@@ -9,7 +9,7 @@
       .span6.offset2
         %ul
           %li
-            = link_to(new_have_path(id: @topic.shortcode), :class => "btn btn-success boughtit-button") do
+            = link_to(copy_have_path(id: @topic.shortcode), :class => "btn btn-success boughtit-button") do
               %i{class: "icon-plus icon-white"}
               I Bought it
           %li

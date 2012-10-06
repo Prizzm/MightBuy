@@ -1,0 +1,13 @@
+= javascript_tag "Mightbuy.initialTags = #{@topic.tag_array}"
+%div#details
+  .row
+    .span5
+      .topic-form-wrapper
+        = simple_form_for @have do |form|
+          = render "form", :form => form
+          .buttons.btn-red-large
+            = form.button :submit, "Save"
+    %div#topic_right_panel.span5
+      %div#gsearch-results.hide
+      %div#item-form-image-selector
+    .clear

@@ -3,18 +3,23 @@ class HavesController < ApplicationController
 
   def index
     @haves = current_user.topics.have
-    @selected_tab = "ihave"
   end
 
   def show
     @have = current_user.haves.find_by_shortcode(params[:id])
-    @selected_tab = "ihave"
+  end
+
+  def copy
+    @topic = Topic.find_by_shortcode(params[:id])
+    @have = Topic.new(@topic.attributes)
+  end
+
+  def create
+    @have = Topic.new(params[:have])
   end
 
   def new
-    @topic = Topic.find_by_shortcode(params[:id])
-    @have = Topic.new(@topic.attributes)
-    @selected_tab = "ihave"
+    @have = Topic.new()
   end
 
   def edit
@@ -30,5 +35,9 @@ class HavesController < ApplicationController
   private
   def choose_layout
     current_user ? 'logged_user' : 'anonymous'
+  end
+
+  def set_selected_tab
+    @selected_tab = 'ihave'
   end
 end
