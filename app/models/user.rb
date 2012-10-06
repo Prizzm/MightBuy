@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   has_many :antiForgeTokens
 
   has_many :deals, :class_name => "Deals::Deal"
-  
+
   # Validations
   validates :name, :presence => true
 
@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
   scope :people, where(:category => "person")
   scope :brands, where(:category => "brand")
 
+  has_many :timeline_events, :as => :actor
 
   # Methods
 

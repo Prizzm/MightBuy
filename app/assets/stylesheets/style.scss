@@ -61,3 +61,24 @@ $btn-stop-color:#a8353a;
         background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$x), color-stop(100%,$y)); // Chrome,Safari4+
 // example: @include gradient(#61a7f2, #5591d3);
 }
+
+
+@mixin bg-reddish {
+  background: #df646c;
+  background: -moz-linear-gradient(top, #df646c 0%, #aa383c 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #df646c), color-stop(100%, #aa383c));
+  background: -webkit-linear-gradient(top, #df646c 0%, #aa383c 100%);
+  background: -o-linear-gradient(top, #df646c 0%, #aa383c 100%);
+  background: -ms-linear-gradient(top, #df646c 0%, #aa383c 100%);
+  background: linear-gradient(to bottom, #df646c 0%, #aa383c 100%);
+}
+
+@mixin bg-greenish {
+  background: #98b676;
+  background: -moz-linear-gradient(top, #98b676 0%, #799545 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #98b676), color-stop(100%, #799545));
+  background: -webkit-linear-gradient(top, #98b676 0%, #799545 100%);
+  background: -o-linear-gradient(top, #98b676 0%, #799545 100%);
+  background: -ms-linear-gradient(top, #98b676 0%, #799545 100%);
+  background: linear-gradient(to bottom, #98b676 0%, #799545 100%);
+}

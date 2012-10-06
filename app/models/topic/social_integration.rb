@@ -18,5 +18,10 @@ module Topic::SocialIntegration
       token: current_user.twitter_oauth_token, token_secret: current_user.twitter_oauth_secret
     })
   end
+
+  def tweeted_by?(user)
+    !!shares.tweets.find_by_user_id(user.id)
+  end
+
 end
 
