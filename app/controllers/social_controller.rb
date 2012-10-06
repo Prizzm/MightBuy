@@ -60,17 +60,13 @@ class SocialController < ApplicationController
   # Facebook (fold)
   def post_to_open_graph(redirect = false)
     # Check if current_user has a Facebook account linked
-    puts "has_facebook: ", current_user.hasFacebook?
-    puts "has_twitter: ", current_user.hasTwitter?
     if current_user.hasFacebook? then
-      puts "has Facebook"
       # Begin rescue block
       begin
         # Create FB User Object
         me = FbGraph::User.me(current_user.facebook_oauth_token)
         # Check if topic has a price
         if @topic.price then
-          puts "price ok"
           # If so, pass price into Open Graph
           action = me.og_action!(
             "mightbuy:might_buy",
@@ -78,7 +74,6 @@ class SocialController < ApplicationController
               :price => Topic.find_by_shortcode(params[:sc]).price.to_s
           )
         else
-          puts "price not ok"
           # If not, don't pass price into Open Graph
           action = me.og_action!(
             "mightbuy:might_buy",
