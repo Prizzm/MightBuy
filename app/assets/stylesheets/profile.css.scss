@@ -17,15 +17,38 @@
 }
 
 .user-activity-feed {
+  
   h2 {
     color: #4f3129;
     margin-bottom: 15px;
   }
-  ul {
+  
+  ul{
+    list-style-image: image-url('list-icon.png');
+    margin-left: 13px;
+
     li {
-      list-style-type: none;
-      margin-top: 10px;
+      margin-bottom: 20px;
+      padding-left: 10px;
+    }
+
+    li:last-child {
+      margin-bottom: 0;
     }
   }
 }
 
+.activity-feed{
+  height:400px;
+  margin-top: 20px;
+  overflow-y:auto;
+}
+
+.table-border-less{
+  width:auto;
+  
+  td{
+    border:none;
+    padding:16px 16px 0 0;
+  }
+}

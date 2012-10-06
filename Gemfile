@@ -72,6 +72,7 @@ group :development do
   gem 'pry-rails'
   gem "quiet_assets"
   gem 'rspec-rails', "~> 2.6"
+  gem "sqlite3"
 end
 
 group :production do
