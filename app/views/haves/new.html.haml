@@ -1,12 +1,22 @@
 %div#details
   .row
-    .span5
-      .topic-form-wrapper
-        = simple_form_for @have do |form|
-          = render "form", :form => form
-          .buttons.btn-red-large
-            = form.button :submit, "Save"
-    %div#topic_right_panel.span5
-      %div#gsearch-results.hide
-      %div#item-form-image-selector
-    .clear
+    = simple_form_for @have do |form|
+      .span10.mleft40.ptop25
+        %ul.nav.nav-tabs
+          %li.active
+            %a{:href => "#"} Enter the details
+
+          %li
+            %a{:href => "#"} Get from internet
+
+      #custom-form
+        = render :partial => "custom_form", locals: {form: form }
+      #internet-form.hide
+        = render :partial => "internet_form", locals: {form: form }
+
+      .common-fields
+        = form.input :price, :label => "Price $"
+        = form.input :body, :as => :text, :label => "Add Notes", :hint => nil, :input_html => { :size => 40}
+        = form.hidden_field :status
+        %h3 Tags
+        %ul{:type => "text", :id => "topic_tags", :name => "topic[tags][]"}
