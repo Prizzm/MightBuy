@@ -1,6 +1,7 @@
 - if current_user
   .avatar.mtop40
-    = image_tag(avatar_image)
+    = link_to(user_path(current_user)) do 
+      = image_tag(avatar_image)
 
   .profile-actions
     .edit-profile

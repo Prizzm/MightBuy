@@ -7,7 +7,7 @@
         .topic-title
           = link_to(topic.subject.capitalize, topic_path(topic))
         .topic-url
-          = link_to(topic.short_url, "#{topic.url}")
+          = link_to(topic.short_url, "#{topic.url}", :target=>"_blank")
         .topic-listing-tag
           = tag_links(topic)
         .topic-meta
