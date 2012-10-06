@@ -1,3 +1,51 @@
 .custom-i-have-form, .common-fields {
   margin-left: 50px;
 }
+
+.have-price {
+  float: left;
+}
+
+.have-note {
+  margin-right: 40px;
+  float: right;
+}
+
+.have-tags {
+  float: left;
+}
+
+#internet-form {
+  display: none;
+}
+
+.have-form-wrapper {
+  padding: 20px;
+  margin: 10px 0px 20px 20px;
+  label, input, button, select, textarea {
+    font-size: 18px;
+    color: #4e3227;
+  }
+
+  label {
+    margin-bottom: 10px;
+  }
+
+  input[type='text'], input[type='url'] {
+    width: 300px;
+    height: 25px;
+  }
+
+  input[type='number'] {
+    height: 25px;
+    width: 80px;
+  }
+
+  textarea {
+    width: 300px;
+    height: 100px;
+  }
+  div.control-group {
+    margin: 32px 0px 20px 0px;
+  }
+}
