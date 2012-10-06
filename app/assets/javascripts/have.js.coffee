@@ -12,11 +12,13 @@ class @Mightbuy.IHave
       return true
 
   triggerFileUpload: ->
-    uploader = new qq.FileUploader({
-      element : $(".ihave-image-upload")[0],
-      params : { authenticity_token : Mightbuy.csrfToken() }
-      action : '/uploads/accept.json'
-    });
+    $("#topic_image").change ->
+      if !_.isEmpty(this.files)
+        reader = new FileReader()
+        reader.onload = (e) ->
+          $("#preview-photo").attr("src", e.target.result).width(260).height 150
+
+        reader.readAsDataURL this.files[0]
 
 jQuery ->
   new Mightbuy.IHave()
