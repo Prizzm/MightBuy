@@ -107,3 +107,5 @@ gem 'rubber'
 gem 'open4'
 
 gem 'ejs'
+
+gem 'friendly_id'
