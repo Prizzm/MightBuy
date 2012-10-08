@@ -55,7 +55,7 @@ class Topic < ActiveRecord::Base
 
   def self.build_from_form_data(topic_details,current_user,visitor_code)
     if topic_details['image_url']
-      topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url']).gsub("[","%5B").gsub("]","%5D")).to_s
+      topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url'], " []{}")).to_s
     end
     if topic_details['tags']
       tag_string = topic_details.delete('tags')
