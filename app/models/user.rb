@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   # Includes
   include Points::Has
   include InheritUpload
+  extend FriendlyId
+
+  friendly_id :name, use: :slugged
 
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable, :omniauthable
