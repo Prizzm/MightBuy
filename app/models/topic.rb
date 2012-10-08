@@ -4,6 +4,7 @@ class Topic < ActiveRecord::Base
   include InheritUpload
   include ActionView::Helpers::NumberHelper
   include Topic::SocialIntegration
+  include Topic::FormEndPoints
 
   # Options
   Access = {
@@ -21,9 +22,9 @@ class Topic < ActiveRecord::Base
   belongs_to :product
 
   has_many :topic_tags
-  has_many :tags, :through => :topic_tags
-  has_many :votes
-  has_many :comments
+  has_many :tags, through: :topic_tags
+  has_many :votes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   # Scopes
   scope :publics, where(:access => "public")
@@ -49,33 +50,13 @@ class Topic < ActiveRecord::Base
   # Methods
   after_create :find_product
 
+  has_many :timeline_events, :as => :subject, :dependent => :destroy
+
+  fires 'new_topic', on: :create, actor: :user
+  fires 'modified_topic', on: :update, actor: :user
+
   def self.find_by_shortcode(shortcode)
     super(shortcode && shortcode.split("-")[0])
-  end
-
-  def self.build_from_form_data(topic_details,current_user,visitor_code)
-    if topic_details['image_url']
-      topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url'], " []{}")).to_s
-    end
-    if topic_details['tags']
-      tag_string = topic_details.delete('tags')
-    end
-
-    topic = Topic.new(topic_details)
-    topic.access = 'public'
-    topic.user = current_user
-    topic.pass_visitor_code = visitor_code
-    if topic_details["mobile_image_url"]
-      dragon = Dragonfly[:images]
-      topic.image = dragon.fetch_url(topic_details["mobile_image_url"])
-    end
-    topic.add_tags(tag_string)
-    topic
-  end
-
-  def self.except_user_topics(page_number,current_user = nil)
-    topic_scope = current_user ? Topic.where("user_id != ?",current_user.id) : Topic
-    topic_scope.order("created_at desc").page(page_number).per(10)
   end
 
   def self.latest_posts(page_number = 1)
@@ -104,18 +85,6 @@ class Topic < ActiveRecord::Base
     else
       user ? user.name : "anonymous"
     end
-  end
-
-  def update_from_form_data(topic_details,visitor_code)
-    if topic_details['image_url'] && URI.parse(URI.encode(topic_details['image_url'])).host
-      topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url'])).to_s
-    else
-      topic_details.delete('image_url')
-    end
-    tag_string = topic_details.delete('tags') || []
-    self.pass_visitor_code = visitor_code
-    self.add_tags(tag_string)
-    self.update_attributes(topic_details)
   end
 
   def tag_array
@@ -183,6 +152,14 @@ class Topic < ActiveRecord::Base
   def thumbnail_image
     if image
       image.thumb("187x137#").url
+    else
+      "/assets/no_image.png"
+    end
+  end
+
+  def icon_image
+    if image
+      image.thumb("64x64#").url
     else
       "/assets/no_image.png"
     end
@@ -265,12 +242,17 @@ class Topic < ActiveRecord::Base
     @stats ||= Statistics.for(self)
   end
 
-  def tweeted_by?(user)
-    !!shares.tweets.find_by_user_id(user.id)
-  end
-
   def recommended_by?(user)
     !!shares.recommends.find_by_user_id(user.id)
+  end
+
+  def activity_line(timeline_event)
+    actor = timeline_event.actor
+    if timeline_event.event_type == 'modified_topic'
+      "#{actor.name} updated <a href='/topics/#{to_param}'>#{subject.first(45)}..</a> in his mightbuy list".html_safe
+    else
+      "#{actor.name} added <a href='/topics/#{to_param}'>#{subject.first(45)}..</a> to his mightbuy list".html_safe
+    end
   end
 
   def vote(user, buyit)

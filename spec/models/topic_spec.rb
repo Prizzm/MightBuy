@@ -26,6 +26,8 @@ describe Topic do
       topic = Topic.build_from_form_data(@topic_data, current_user,"hello")
       topic.should_not be_nil
       topic.save.should be_true
+      topic.timeline_events.should_not be_empty
+      current_user.timeline_events.should_not be_empty
     end
 
     it "should create topic with partially invalid image URLs" do

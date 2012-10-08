@@ -1,11 +1,11 @@
 .span4
   .topic-image.mleft40
-    = image_tag topic_image(@topic)
+    = image_tag topic_image(@topic), alt: @topic.subject
 .span6
   .topic-details
     .topic-subject= @topic.subject.capitalize
     .topic-url.mtop10
-      =link_to(@topic.short_url,@topic.url)
+      =link_to(@topic.short_url,@topic.url, :target=>"_blank")
     - if @topic.owner?(current_user)
       .topic-meta.mtop10
         %span

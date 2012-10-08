@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
-
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -67,19 +66,13 @@ gem 'high_voltage'
 gem 'facebox-rails'
 gem 'ministry_of_state', git: "git://github.com/code-mancers/ministry_of_state.git"
 
-group :development do
-  # Console
-  gem 'hirb'
-  gem 'sqlite3'
-  gem 'rb-fsevent'
-  #gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'ffaker', '1.10.1'
-  gem 'pry-rails'
-  gem "quiet_assets"
-end
+gem "timeline_fu", git: "git://github.com/styx/timeline_fu.git"
 
 group :development do
+  gem 'pry-rails'
+  gem "quiet_assets"
   gem 'rspec-rails', "~> 2.6"
+  gem "sqlite3"
 end
 
 group :production do
@@ -96,7 +89,6 @@ end
 group :test do
   gem 'factory_girl_rails', '1.3.0'
   gem 'shoulda'
-  gem 'guard-rspec', "0.5.1"
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'cucumber-rails', :require => false

@@ -1,5 +1,5 @@
 .ptop30
-	= heading "Your Photo / Logo"
+  = heading "Your Photo / Logo"
 
 = render "partials/image_selector_input", :form => form, :field => :image
 
@@ -7,7 +7,7 @@
 .row
   .span5.bor-right
     .gen-detail
-      = heading "General Details"  
+      = heading "General Details"
       = form.label  "email:   "
       = current_user.email
       = form.input :name, :label => "Your Name"
@@ -15,18 +15,19 @@
   .span3.mleft40
     = heading "Social Accounts"
     - if current_user.twitter_uid == nil
-    	= link_to "Link with Twitter", user_omniauth_authorize_path(:twitter)
-    	br
+        = link_to "Link with Twitter", user_omniauth_authorize_path(:twitter)
+        br
     -else
-    	= link_to "Unlink Twitter", "/profile/unlink/twitter"
-    	br
-    	
+        = link_to "Unlink Twitter", "/profile/unlink/twitter"
+        br
+
     - if current_user.facebook_uid == nil
-    	= link_to "Link with Facebook", user_omniauth_authorize_path(:facebook)
-    	br
+        = link_to "Link with Facebook", user_omniauth_authorize_path(:facebook)
+        br
     -else
-    	= link_to "Unlink Facebook", "/profile/unlink/facebook"
-    	br
+        = link_to "Unlink Facebook", "/profile/unlink/facebook"
+        br
 .clear
 .mtop40
 hr.hr
+  

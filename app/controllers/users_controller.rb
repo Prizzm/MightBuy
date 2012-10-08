@@ -1,15 +1,17 @@
-class UsersController < RestfulController
+class UsersController < ApplicationController
+  layout 'logged_user'
 
-  actions :index, :show
-
-  protected
-
-  def end_of_association_chain
-    super.people
+  # Authenticate
+  before_filter :authenticate_user!
+  def show
+    @user = User.find(params[:id])
+    @topics = @user.topics.order("created_at desc").limit(12)
+    @timeline_events = @user.timeline_events.order("created_at desc").limit(50)
   end
 
-  def collection
-    @users ||= end_of_association_chain.order(:name)
+  private
+  def set_selected_tab
+    @selected_tab = 'mightbuy'
   end
-
 end
+

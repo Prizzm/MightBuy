@@ -7,14 +7,14 @@ module UsersHelper
       else super
     end
   end
-  
+
   def quick_links
     if action_name == :show
       links = connect_links
       ("<span>Get in Touch..</span> %s" % links).html_safe unless links.blank?
     end
   end
-  
+
   def connect_links
     resource.attributes.map do |attr, value|
       unless value.blank?
@@ -26,18 +26,18 @@ module UsersHelper
       end
     end.compact.join("\n")
   end
-  
+
   def icon_link (path, url)
     link_to image_tag("/images/icons/%s" % path), url, :class => "icon", :target => "_blank"
   end
-  
+
   def last_active (user)
     ("%s was last active %s." % [
       link_to(user.name, user_path(user), :class => "user"),
       shorthand(user.updated_at).downcase
     ]).html_safe
   end
-  
+
   def phrase_for (subject, object = nil)
     object ||= resource
 
@@ -49,19 +49,19 @@ module UsersHelper
       when :activity
         "%s's Latest Activity.." % resource.name
       when :no_description
-        (object.brand? ? "%s hasn't described what they do yet." : 
+        (object.brand? ? "%s hasn't described what they do yet." :
                          "I haven't said anything about myself yet :)") % resource.name
-          
+
       else super
     end
   end
-  
+
   def latest_posts
     resource.topics.order("created_at desc").limit(2)
   end
-  
+
   def latest_activity
     resource.responses.order("created_at desc").limit(2)
   end
-  
+
 end

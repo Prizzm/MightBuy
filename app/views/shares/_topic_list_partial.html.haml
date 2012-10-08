@@ -7,12 +7,12 @@
         .topic-title
           = link_to(topic.subject.capitalize, topic_path(topic))
         .topic-url
-          = link_to(topic.short_url, topic.url)
+          = link_to(topic.short_url, topic.url, :target=>"_blank")
         .topic-listing-tag
           = tag_links(topic)
         .topic-meta-all.mtop15
           %span
-            = topic.poster_name(current_user)
+            = link_to(topic.poster_name(current_user), user_path(topic.user))
             Mightbuy this
             = link_to(copy_topic_path(topic)) do
               = image_tag("add_icon.png")
