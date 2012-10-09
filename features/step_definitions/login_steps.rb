@@ -11,6 +11,26 @@ Then /^I should be asked to login via lightbox$/ do
   page.has_css?("#login-lightbox").should be_true
 end
 
+def signin_user(user)
+  temp = FactoryGirl.build(:user)
+
+  visit login_path
+  fill_in "user[email]", with: @user.email
+  fill_in "user[password]", with: temp.password
+  page.find("#sign-in-submit-button").click()
+end
+
+Given /^I am logged in a user$/ do
+  @user = FactoryGirl.create(:user)
+  signin_user(@user)
+end
+
+
+Then /^I login as "(.*?)"$/ do |name|
+  @user = User.find_by_name(name)
+  signin_user(@user)
+end
+
 Then /^I login as "(.*?)" via lightbox$/ do |name|
   temp = FactoryGirl.build(:user)
   @user = User.find_by_name(name)
@@ -20,4 +40,13 @@ Then /^I login as "(.*?)" via lightbox$/ do |name|
     fill_in("user_password", with: temp.password)
     click_button "Sign in!"
   end
+end
+
+Given /^I visit my profile$/ do
+  visit user_path(@user)
+end
+
+Then /^I visit profile of "(.*?)"$/ do |name|
+  user = User.find_by_name(name)
+  visit user_path(user)
 end
