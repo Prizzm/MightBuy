@@ -38,6 +38,14 @@ module UsersHelper
     ]).html_safe
   end
 
+  def user_wants_title_helper(user)
+    user == current_user ? "My wants" : "#{user.name.capitalize}'s wants"
+  end
+
+  def user_activity_feed_title_helper(user)
+    user == current_user ? "My Activity feed" : "#{user.name.capitalize}'s Activity feed"
+  end
+
   def phrase_for (subject, object = nil)
     object ||= resource
 
