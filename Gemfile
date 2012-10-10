@@ -49,6 +49,7 @@ gem 'grape'
 gem 'mini_magick'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly'
+gem 'jquery-fileupload-rails'
 
 # Admin
 gem 'activeadmin'
