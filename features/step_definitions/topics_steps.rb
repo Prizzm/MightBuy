@@ -73,11 +73,10 @@ When /^I visit one of other topics$/ do
   visit "/topics/#{@another_topic.shortcode}"
 end
 
-Given /^I create a topic by filling the form$/ do
+Given /^I create a have topic by filling the form$/ do
   topic = FactoryGirl.build(:topic)
   fill_in("topic_subject", with: topic.subject)
-  fill_in("topic_price", with: topic.price)
-  fill_in("topic_body", with: topic.body)
+  fill_in("topic_body", with: "Cool Review")
   click_button("Save")
   page.should have_content(topic.subject)
 
