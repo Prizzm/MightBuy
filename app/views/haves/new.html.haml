@@ -1,29 +1,16 @@
 %div#details
   .row
-    = simple_form_for @have do |form|
-      .span10.mleft40.ptop25
-        %ul.nav.nav-tabs.have-tabs
-          %li.active
-            %a{:href => "#custom-form"} Enter the details
-
-          %li
-            %a{:href => "#internet-form"} Get from internet
-
-      #custom-form.have-container
-        = render :partial => "custom_form", locals: {form: form }
-      #internet-form.have-container
-        = render :partial => "internet_form", locals: {form: form }
-
-      .common-fields
-        = form.input :price, :label => "Price $", wrapper_html: {class: 'have-price'}
-        = form.input :body, :as => :text,
-          :label => "Add Notes", :hint => nil,
-          :input_html => { :cols => 40, :rows => "6"}, :wrapper_html => {:class => "have-note"}
-        = form.hidden_field :status
-        %div.have-tags
-          %label Tags
-          %ul{:type => "text", :id => "topic_tags", :name => "topic[tags][]"}
-        .clear
-      .span10
-        .btn-red-large
-          = form.button :submit, "Save"
+    .span5
+      .topic-form-wrapper
+        = simple_form_for @have, html: { multipart: true } do |form|
+          = render partial: "form", locals: { :form => form }
+          = form.input :image, as: :file, wrapper_html: { class: "hide" }
+          = form.hidden_field :retained_image
+          .buttons.btn-red-large
+            = form.button :submit, "Save"
+    #topic_right_panel.span5
+      #gsearch-results.hide
+      #item-form-image-selector
+      #choose-image
+        %button.btn.btn-red.btn-large Choose Picture
+    .clear

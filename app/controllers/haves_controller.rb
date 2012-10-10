@@ -25,7 +25,7 @@ class HavesController < ApplicationController
   end
 
   def new
-    @have = Topic.new()
+    @have = current_user.haves.build()
   end
 
   def edit

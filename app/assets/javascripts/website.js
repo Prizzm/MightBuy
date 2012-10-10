@@ -11,9 +11,12 @@
 //= require tagit/tagit.js
 //= require tagit/tagit-themeroller.js
 //= require jquery.facebox
+//= require jquery-fileupload/jquery.fileupload
+//= require jquery-fileupload/vendor/load-image
 //= require mightbuy
 //= require item_search
 //= require image_selector
+//= require image_uploader
 //= require ajax_notifier
 //= require topic_tagging
 //= require profile
