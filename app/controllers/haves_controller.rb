@@ -11,7 +11,13 @@ class HavesController < ApplicationController
 
   def copy
     @topic = Topic.find_by_shortcode(params[:id])
-    @have = Topic.new(@topic.attributes)
+    @have = @topic.copy(current_user)
+    @have.status = "ihave"
+
+    unless @have.save
+      flash[:error] = "Unable to add to list"
+      redirect :back
+    end
   end
 
   def create

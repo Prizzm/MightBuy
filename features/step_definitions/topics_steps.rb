@@ -123,3 +123,7 @@ Then /^I mark the topic as i dont have$/ do
   end
   page.should have_content("Topic Updated")
 end
+
+Given /^I visit a topic page$/ do
+  visit topic_path(@topic)
+end
