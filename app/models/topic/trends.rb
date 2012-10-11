@@ -3,17 +3,18 @@ module Topic::Trends
 
   module ClassMethods
     def trending_topics
-      busiest_products = Product.busiest_products(20)
+      busiest_product_ids = Product.busiest_product_ids(20)
 
-      busiest_topics = busiest_products.map { |product| product.topics.first }
+      busiest_topics = Product.includes(:topics).where(:id => busiest_product_ids).map { |product| product.topics.first }
 
       topic_with_most_comments = with_most_comments(30)
 
       selected_topics_with_comments = []
+
       topic_with_most_comments.each do |topic|
-        unless busiest_products.include?(topic.product)
+        unless busiest_product_ids.include?(topic.product_id)
           selected_topics_with_comments << topic
-          busiest_products << topic.product
+          busiest_product_ids << topic.product_id
         end
       end
 

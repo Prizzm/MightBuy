@@ -17,10 +17,10 @@ class Product < ActiveRecord::Base
     end
   end
 
-  def self.busiest_products(count = 20)
+  def self.busiest_product_ids(count = 20)
     Topic.group(:product_id).
       select("count(product_id) as product_count,product_id").
       limit(count).
-      order("product_count desc").map(&:product)
+      order("product_count desc").map(&:product_id)
   end
 end
