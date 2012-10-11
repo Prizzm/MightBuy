@@ -16,6 +16,10 @@ class Api::V1::TopicsApiController < Api::V1::ApiController
     
   end
 
+  def trending
+    @topics = Topic.trending_topics()
+  end
+
   # GET /topics/new
   # GET /topics/new.xml
   def new
