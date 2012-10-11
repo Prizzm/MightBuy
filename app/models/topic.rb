@@ -5,6 +5,7 @@ class Topic < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include Topic::SocialIntegration
   include Topic::FormEndPoints
+  include Topic::Trends
 
   # Options
   Access = {
