@@ -21,6 +21,9 @@ gem 'rabl'
 # Passbook
 gem 'passbook', :git => "git://github.com/frozon/passbook.git"
 
+#Stripe
+gem 'stripe'
+
 # Authentication
 gem 'devise', '1.4.7'
 gem 'omniauth-twitter'

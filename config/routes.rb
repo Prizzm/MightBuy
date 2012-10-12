@@ -45,6 +45,9 @@ NewPrizzmCom::Application.routes.draw do
   match "/passbook/passes/v1/devices/:devid/registrations/:bundleid/:serialnumber" => "passbook#register_device", :constraints => { :bundleid => /[^\/]+/ }
   match "/passbook/passes/v1/passes/:typeid/:serialnumber" => "passbook#get_current_pass", :constraints => { :typeid => /[^\/]+/ }
 
+  # Payments
+  match '/topics/:topic_shortcode/payments/process' => 'payments#processP'
+
   # match "/tokens/facebook" => "social#authenticateMobile"
   match "/tokens/facebook" => "social#socialAuthenticationAPIFacebook"
   match "/tokens/twitter" => "social#socialAuthenticationAPITwitter"
