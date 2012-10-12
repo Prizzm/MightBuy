@@ -16,7 +16,8 @@
         %span
           Tags :&nbsp;
           = render :partial => "/shares/tags", locals: {topic: topic}
-    .topic-share-links.mtop20
-      = render partial: "haves/social_share_links", locals: {topic: topic}
-    #topic-recommend.mtop20
-      = render partial: "haves/topic_recommend", locals: {topic: topic}
+    - if topic.owner?(current_user)
+      .topic-share-links.mtop20
+        = render partial: "haves/social_share_links", locals: {topic: topic}
+      #topic-recommend.mtop20
+        = render partial: "haves/topic_recommend", locals: {topic: topic}
