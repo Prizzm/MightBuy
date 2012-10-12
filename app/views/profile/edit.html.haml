@@ -1,10 +1,8 @@
 %div#details.edit-page
   = simple_form_for resource, :url => resource_path do |form|
     = render "form", :form => form
-    
     .mtop25
-    
-    .profile-actions
+    .profile-actions.row
       .span2.buttons.btn-red-l
         = form.button :submit, "Save Changes!"
       .span4.mtop10.mleft40
