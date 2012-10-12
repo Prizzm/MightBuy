@@ -5,7 +5,7 @@
   .topic-details
     .topic-subject= topic.subject.capitalize
     .topic-url.mtop10
-      =link_to(topic.short_url,topic.url)
+      =link_to(topic.short_url,topic.url, :target=>"_blank")
     - if topic.owner?(current_user)
       .topic-meta.mtop10
         %span
