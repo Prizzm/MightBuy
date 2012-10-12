@@ -7,6 +7,12 @@ Given /^a confirmed user "(.*?)" with a topic$/ do |name|
   @topic = FactoryGirl.create(:topic, user: @user)
 end
 
+Given /^a confirmed user "(.*?)" with a have topic$/ do |name|
+  step %Q{a confirmed user "#{name}"}
+  @topic = FactoryGirl.create(:topic, user: @user, status: "ihave")
+  @have_topic = @topic
+end
+
 Then /^I should be asked to login via lightbox$/ do
   page.has_css?("#login-lightbox").should be_true
 end

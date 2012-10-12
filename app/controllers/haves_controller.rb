@@ -1,5 +1,7 @@
 class HavesController < ApplicationController
   layout :choose_layout
+  before_filter :authenticate_user!, only: [:copy, :recommend, :edit, :create]
+  before_filter :find_current_user_topic!, only: :recommend
 
   def index
     @haves = current_user.topics.have
@@ -32,6 +34,16 @@ class HavesController < ApplicationController
 
   end
 
+  def recommend
+    recommendable = params[:recommend] == "yes"
+    if @topic.update_attributes(recommendable: recommendable)
+      flash[:notice] = "Recommendation Updated"
+    else
+      flash[:error]  = "Failed to Update Recommendation"
+    end
+    respond_with(@topic)
+  end
+
   def destroy
     @topic.destroy
     flash[:notice] = "The item has been removed"
@@ -45,5 +57,11 @@ class HavesController < ApplicationController
 
   def set_selected_tab
     @selected_tab = 'ihave'
+  end
+
+  def find_current_user_topic!
+    unless @topic = current_user.topics.find_by_shortcode(params[:id])
+      redirect_to root_path
+    end
   end
 end

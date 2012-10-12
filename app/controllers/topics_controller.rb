@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
   authenticate! :except => [:index, :show]
 
   before_filter :find_topic!, only: [:show, :update, :edit, :destroy, :bought]
-  before_filter :authenticate_user!, :find_current_user_topic!, only: [:recommend, :ihave]
+  before_filter :authenticate_user!, :find_current_user_topic!, only: :ihave
   before_filter :authenticate_user!, only: :haves
 
   respond_to :html, :js
@@ -80,16 +80,6 @@ class TopicsController < ApplicationController
 
   def edit
     @selected_tab = 'mightbuy'
-  end
-
-  def recommend
-    recommendable = params[:recommend] == "yes"
-    if @topic.update_attributes(recommendable: recommendable)
-      flash[:notice] = "Recommendation Updated"
-    else
-      flash[:error]  = "Failed to Update Recommendation"
-    end
-    respond_with(@topic)
   end
 
   def ihave

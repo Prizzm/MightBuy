@@ -182,6 +182,10 @@
 }
 
 .topic-vote-yes-icon, .topic-recommend-yes-icon {
+  margin-right: 2px;
+}
+
+.topic-vote-yes-icon, .topic-recommend-yes-icon {
   background: image-url("details-page-buttons.jpg") no-repeat scroll -923px -15px;
   &:hover { background-position: -1014px -15px; }
 }
@@ -189,6 +193,19 @@
 .topic-vote-no-icon, .topic-recommend-no-icon {
   background: image-url("details-page-buttons.jpg") no-repeat scroll -741px -15px;
   &:hover { background-position: -832px -15px; }
+}
+
+#topic-recommended {
+  width:  92px;
+  height: 40px;
+  margin-right: 0px;
+  background: image-url("yes-marked.jpg") no-repeat
+}
+
+#topic-not-recommend {
+  width:  92px;
+  height: 40px;
+  background: image-url("no-marked.jpg") no-repeat
 }
 
 .topic-form-wrapper {

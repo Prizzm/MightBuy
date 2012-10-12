@@ -62,3 +62,11 @@ Feature: As a user
     And I create a have topic by filling the form
     Then I should not see the topic in mightbuy
     Then I should see the topic in have
+
+  @javascript @recommend-have-topic
+  Scenario: I should add an item to I have list automatically
+    Given a confirmed user "Tyler" with a have topic
+    And I login as "Tyler"
+    And I visit my have topic
+    Then I should be able to recommend the topic
+    Then I should be able to not recommend the topic
