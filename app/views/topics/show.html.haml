@@ -6,14 +6,14 @@
       = link_to profile_path do
         #home-link.mleft40
     - if current_user == @topic.user
-      .span6.offset2
+      .span6.offset2.topic-right-navbar
         %ul
           %li
             = link_to(copy_have_path(id: @topic.shortcode), :class => "btn btn-success boughtit-button") do
               %i{class: "icon-plus icon-white"}
               I Bought it
           %li
-            = link_to edit_topic_path(@topic.shortcode, ) do
+            = link_to edit_topic_path(@topic.shortcode) do
               #edit-topic
           %li
             = link_to topic_path(@topic.shortcode), method: :delete, confirm: "Are you sure, you want to delete?" do

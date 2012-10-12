@@ -1,15 +1,13 @@
 = javascript_tag "Mightbuy.initialTags = #{@have.tag_array}"
 
-.show-topic
+.show-topic.pbot30
   .row.topic-links.ptop30
     .span2
       = link_to profile_path do
         #home-link.mleft40
     - if @have.owner?(current_user)
-      .span5.offset2
+      .span6.offset2.topic-right-navbar
         %ul
-          %li
-            %span I have
           %li
             = link_to edit_have_path(@have.shortcode) do
               #edit-topic
@@ -17,6 +15,9 @@
             = link_to have_path(@have.shortcode), method: :delete, confirm: "Are you sure, you want to delete?" do
               #delete-topic
 
-  .row.mtop50.mbot30
-    = render :partial => "have_detail"
+  .row.mtop50
+    = render :partial => "have_detail", locals: { topic: @have }
 
+  .row.mleft40
+    %h2 Review
+    %p= @have.body

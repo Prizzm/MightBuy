@@ -60,6 +60,14 @@
       background: image-url("details-page-buttons.jpg") no-repeat scroll -377px -17px;
       &:hover { background-position: -466px -17px; }
     }
+
+    .topic-right-navbar {
+      ul {
+        float: right;
+        padding-left:  0px;
+        padding-right: 40px;
+      }
+    }
   }
 
   .topic-image {

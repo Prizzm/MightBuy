@@ -1,22 +1,22 @@
 .span4
   .topic-image.mleft40
-    = image_tag topic_image(@have), alt: @have.subject
+    = image_tag topic_image(topic), alt: topic.subject
 .span6
   .topic-details
-    .topic-subject= @have.subject.capitalize
+    .topic-subject= topic.subject.capitalize
     .topic-url.mtop10
-      =link_to(@have.short_url,@have.url)
-    - if @have.owner?(current_user)
+      =link_to(topic.short_url,topic.url)
+    - if topic.owner?(current_user)
       .topic-meta.mtop10
         %span
-          = @have.poster_name(current_user)
-          added this #{time_ago_in_words(@have.created_at)} ago
+          = topic.poster_name(current_user)
+          added this #{time_ago_in_words(topic.created_at)} ago
     .topic-tags.mtop10
-      - unless @have.tags.empty?
+      - unless topic.tags.empty?
         %span
           Tags :&nbsp;
-          = render :partial => "/shares/tags", locals: {topic: @have}
-
-
-    .topic-body.mtop15= @have.body.try(:capitalize)
-    .topic-price.mtop50= number_to_currency(@have.price)
+          = render :partial => "/shares/tags", locals: {topic: topic}
+    .topic-share-links
+      = render partial: "social_share_links", locals: {topic: topic}
+    .topic-recommend-links.mtop10
+      = render partial: "haves/topic_recommend", locals: {topic: topic}

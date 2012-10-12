@@ -73,7 +73,9 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.build_from_form_data(params['topic'],current_user,visitor_code)
     @topic.save
-    respond_with(@topic)
+
+    redirect_path = @topic.ihave? ? have_path(@topic) : topic_path(@topic)
+    respond_with(@topic, location: redirect_path)
   end
 
   def edit
@@ -104,7 +106,9 @@ class TopicsController < ApplicationController
 
   def update
     @topic.update_from_form_data(params['topic'],visitor_code)
-    respond_with @topic
+
+    redirect_path = @topic.ihave? ? have_path(@topic) : topic_path(@topic)
+    respond_with(@topic, location: redirect_path)
   end
 
   def destroy
