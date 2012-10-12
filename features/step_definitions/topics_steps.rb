@@ -82,6 +82,7 @@ Given /^I create a have topic by filling the form$/ do
 
   @topic = Topic.first
   @topic.should_not be_nil
+  @have_topic = @topic
 end
 
 
@@ -144,4 +145,17 @@ Then /^I should be able to not recommend the topic$/ do
   wait_for_ajax_call_to_finish
   page.should_not have_css("#topic-recommended")
   page.should have_css("#topic-not-recommended")
+end
+
+Then /^I should be able to edit topic review to "(.*?)"$/ do |review|
+  page.find(".topic-right-navbar a").click
+  fill_in("topic_body", with: review)
+  click_button("Save")
+
+  page.should have_content(review)
+end
+
+Then /^I should able to destroy the topic$/ do
+  page.all(".topic-right-navbar a").last.click
+  page.should have_content("The item has been removed")
 end

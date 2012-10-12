@@ -1,7 +1,7 @@
 class HavesController < ApplicationController
   layout :choose_layout
-  before_filter :authenticate_user!, only: [:copy, :recommend, :edit, :create]
-  before_filter :find_current_user_topic!, only: :recommend
+  before_filter :authenticate_user!, only: [:copy, :recommend, :edit, :create, :destroy]
+  before_filter :find_current_user_topic!, only: [:edit, :recommend, :destroy]
 
   def index
     @haves = current_user.topics.have
@@ -31,7 +31,6 @@ class HavesController < ApplicationController
   end
 
   def edit
-
   end
 
   def recommend
@@ -45,9 +44,8 @@ class HavesController < ApplicationController
   end
 
   def destroy
-    @topic.destroy
     flash[:notice] = "The item has been removed"
-    redirect_to profile_path()
+    respond_with(@topic.destroy, location: haves_path)
   end
 
   private

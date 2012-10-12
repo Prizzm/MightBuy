@@ -53,7 +53,7 @@ Feature: As a user
     When I visit one of other topics
     Then "Browse" tab should be highlighted
 
-  @javascript @create-have-topic
+  @javascript @have-topic-crud
   Scenario: I should add an item to I have list automatically
     Given a confirmed user "Tyler"
     And I login as "Tyler"
@@ -62,6 +62,9 @@ Feature: As a user
     And I create a have topic by filling the form
     Then I should not see the topic in mightbuy
     Then I should see the topic in have
+    And I visit my have topic
+    Then I should be able to edit topic review to "just go for it!"
+    And I should able to destroy the topic
 
   @javascript @recommend-have-topic
   Scenario: I should add an item to I have list automatically
