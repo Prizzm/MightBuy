@@ -5,6 +5,10 @@
       .bargin
         .description
           = bargin.description
+          - if bargin.accept_payments == true && bargin.bargin_type == "percentage"
+            %form{:action => "/topics/#{@topic.shortcode}/payments/process", :method => "post", :style => "margin-left: 40px;"}
+              %script.stripe-button{"data-address" => "", "data-amount" => ((@topic.product.price*100.0)*bargin.value.to_f/100).to_i, "data-description" => @topic.product.name, "data-key" => "pk_LdHsiwROde1xSfRJxlblt2gNiCD8m", :src => "https://button.stripe.com/v1/button.js"}
+
         %input{:class => "button_buy", :name => "commit",
           :type => "submit", :value => "Buy It!",
           :class => "btn-large btn-danger",
