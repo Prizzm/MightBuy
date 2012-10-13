@@ -9,33 +9,29 @@ module Topic::SocialIntegration
 
   def post_to_facebook(current_user)
     me = FbGraph::User.me(current_user.facebook_oauth_token)
-    desctext = @topic.body.blank? ? "Track stuff you mightbuy" : @topic.body
-
-    noimage = true if @topic.iImage() == "https://www.mightbuy.it/assets/no_image.png"
-
-    fb_response = if @topic.iImage() != "https://www.mightbuy.it/assets/no_image.png"
-                    me.feed!(
-                      :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
-                      :picture => @topic.iImage(),
-                      :link => "https://www.mightbuy.it/topics/#{params[:sc]}?r=t",
-                      :name => "MightBuy",
-                      :description => desctext
-                    )
-                  else
-                    me.feed!(
-                      :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
-                      :link => "https://www.mightbuy.it/topics/#{params[:sc]}?r=t",
-                      :name => "MightBuy",
-                      :description => desctext
-                    )
-                  end
-
-    # create a shares item
-    @topic.shares.recommends.create!(user: current_user, with: fb_response.identifier)
-      # Rescue from any exception
+    fb_response = me.feed!(compose_facebook_message)
+    shares.recommends.create!(user: current_user, with: fb_response.identifier)
   rescue Exception => e
+    Rails.logger.fatal(e.message)
+    Rails.logger.fatal(e.backtrace.join("\n"))
     nil
+  end
 
+  def compose_facebook_message
+    desctext = body.blank? ? "Track stuff you mightbuy" : body
+
+    message = {
+      message: "I MightBuy a #{subject}. #{displayPrice} Should I?",
+      link: "https://www.mightbuy.it/topics/#{to_param}",
+      name: "MightBuy",
+      description: desctext
+    }
+
+    if iImage() != "https://www.mightbuy.it/assets/no_image.png"
+      message.update(picture: iImage())
+    end
+
+    message
   end
 
   def compose_twitter_status(current_user)
