@@ -15,6 +15,7 @@ class Topic < ActiveRecord::Base
   }
 
   STATUSES = ["imightbuy", "ihave"]
+  RECOMMENDATIONS = ["undecided", "recommended", "not-recommended"]
 
   # Relationships
   has_many :responses
@@ -39,7 +40,7 @@ class Topic < ActiveRecord::Base
   validates :shortcode, :presence => true, :uniqueness => true
   validates :subject, :presence => true
   validates :status, presence: true, inclusion: { in: STATUSES }
-  #validates :body, :presence => true
+  validates :recommendation, presence: true, inclusion: { in: RECOMMENDATIONS }
 
   # Uploaders
   image_accessor :image
@@ -242,6 +243,14 @@ class Topic < ActiveRecord::Base
 
   def stats
     @stats ||= Statistics.for(self)
+  end
+
+  def recommended?
+    recommendation == "recommended"
+  end
+
+  def not_recommended?
+    recommendation == "not-recommended"
   end
 
   def recommended_by?(user)

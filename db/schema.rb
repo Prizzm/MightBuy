@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121008105144) do
+ActiveRecord::Schema.define(:version => 20121013082628) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.integer  "author_id"
     t.string   "author_type"
     t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "namespace"
   end
 
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "bargins", :force => true do |t|
@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.text     "description"
     t.string   "url"
     t.integer  "product_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "value"
     t.string   "application"
     t.string   "bargin_type"
@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
   create_table "beta_signups", :force => true do |t|
     t.string   "email_address"
     t.string   "visitor_code"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "business_products", :force => true do |t|
@@ -129,8 +129,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.decimal  "low_value",   :precision => 8, :scale => 2
     t.decimal  "high_value",  :precision => 8, :scale => 2
     t.string   "value_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "photo"
   end
 
@@ -139,8 +139,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.integer  "bank_id"
     t.integer  "cost"
     t.decimal  "value",      :precision => 8, :scale => 2
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -153,8 +153,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.datetime "failed_at"
     t.string   "locked_by"
     t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
@@ -166,8 +166,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.string   "allocator"
     t.integer  "points",                         :default => 0
     t.string   "lookup",           :limit => 40
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
   add_index "point_allocations", ["lookup"], :name => "index_point_allocations_on_lookup", :unique => true
@@ -177,14 +177,14 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.string   "bankable_type"
     t.integer  "total",         :default => 0
     t.integer  "available",     :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "products", :force => true do |t|
     t.string   "url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "name"
     t.integer  "business_id"
   end
@@ -193,8 +193,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.integer  "topic_id"
     t.integer  "user_id"
     t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "visitor_code"
     t.boolean  "recommended"
     t.integer  "share_id"
@@ -208,8 +208,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.integer  "user_id"
     t.string   "with"
     t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "visitor_code"
     t.string   "shortcode"
     t.boolean  "registered",   :default => false
@@ -253,8 +253,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.text     "body"
     t.string   "access"
     t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.boolean  "recommendable",    :default => false
     t.string   "form"
     t.string   "url"
@@ -265,14 +265,15 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.string   "mobile_image_url"
     t.integer  "product_id"
     t.string   "status",           :default => "imightbuy"
+    t.string   "recommendation",   :default => "undecided"
   end
 
   add_index "topics", ["shortcode"], :name => "index_topics_on_shortcode", :unique => true
 
   create_table "uploads", :force => true do |t|
     t.string   "image_uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -287,8 +288,8 @@ ActiveRecord::Schema.define(:version => 20121008105144) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
     t.string   "url"
     t.text     "description"
     t.string   "facebook"
