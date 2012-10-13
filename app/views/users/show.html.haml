@@ -15,13 +15,17 @@
   .row.mleft20.mtop40
     .span4.user-item-list
       %h3= user_wants_title_helper(@user)
-      %table.table.table-border-less
-        - @topics.each_slice(3) do |topics|
-          %tr
-            - topics.each do |topic|
-              %td
-                = link_to(topic_path(topic)) do 
-                  = image_tag(topic.icon_image, size: "64x64", alt: "icon")
+      - if @topics.empty?
+        %br
+        User has not added any item
+      - else
+        %table.table.table-border-less
+          - @topics.each_slice(3) do |topics|
+            %tr
+              - topics.each do |topic|
+                %td
+                  = link_to(topic_path(topic)) do 
+                    = image_tag(topic.icon_image, size: "64x64", alt: "icon")
     .span5.user-activity-feed
       %h3= user_activity_feed_title_helper(@user)
       = render :partial => "activity"
