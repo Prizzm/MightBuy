@@ -4,7 +4,7 @@
     .span5
       .topic-form-wrapper
         = simple_form_for @have do |form|
-          = render "form", :form => form
+          = render "haves/form", :form => form
           = form.input :image, as: :file, wrapper_html: { class: "hide" }
           = form.hidden_field :retained_image
           .buttons.btn-red-large

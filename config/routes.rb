@@ -88,7 +88,7 @@ NewPrizzmCom::Application.routes.draw do
 
     member do
       get 'copy'
-      put 'ihave'
+      get 'bought'
     end
   end
 

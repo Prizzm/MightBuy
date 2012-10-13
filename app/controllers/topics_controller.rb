@@ -5,8 +5,8 @@ class TopicsController < ApplicationController
   # Authenticate
   authenticate! :except => [:index, :show]
 
-  before_filter :find_topic!, only: [:show, :update, :edit, :destroy, :bought]
-  before_filter :authenticate_user!, :find_current_user_topic!, only: :ihave
+  before_filter :find_topic!, only: [:show, :update, :edit, :destroy]
+  before_filter :authenticate_user!, :find_current_user_topic!, only: :bought
   before_filter :authenticate_user!, only: :haves
 
   respond_to :html, :js
@@ -52,10 +52,9 @@ class TopicsController < ApplicationController
   end
 
   def bought
-    @vote = @topic.votes.find_by_user_id(current_user.id) if current_user
-    @comments = @topic.comments.joins(:user).where(parent_id: nil).includes(:user)
-    @comment = @topic.comments.build
-    @selected_tab = @topic.owner?(current_user) ? 'mightbuy' : 'everybody'
+    @topic.status = "ihave"
+    @have = @topic
+    render file: "haves/copy"
   end
 
   def copy
@@ -80,18 +79,6 @@ class TopicsController < ApplicationController
 
   def edit
     @selected_tab = 'mightbuy'
-  end
-
-  def ihave
-    status = (params[:ihave] == "yes" ? "ihave" : "imightbuy")
-    if @topic.update_attributes(status: status)
-      flash[:notice] = "Topic Updated"
-    else
-      flash[:error]  = "Failed to Update Topic"
-    end
-
-    @selected_tab = @topic.ihave? ? 'ihave' : 'mightbuy'
-    respond_with(@topic)
   end
 
   def update

@@ -53,6 +53,15 @@ Feature: As a user
     When I visit one of other topics
     Then "Browse" tab should be highlighted
 
+  @javascript @buying-topic
+  Scenario: Buying an Item
+    Given a confirmed user "Bob" with a topic
+    And I login as "Bob"
+    And I visit the topic path
+    And I buy the topic
+    Then I should see the topic in have
+    And I should not see the topic in mightbuy
+
   @javascript @have-topic-crud
   Scenario: I should add an item to I have list automatically
     Given a confirmed user "Tyler"

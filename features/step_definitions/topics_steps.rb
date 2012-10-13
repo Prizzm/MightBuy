@@ -107,6 +107,14 @@ Then /^I should not see the topic in have$/ do
   tab_has_topic?("I Have", @topic).should be_false
 end
 
+Given /^I buy the topic$/ do
+  click_link "I Bought it"
+  fill_in("topic_body", with: "Cool Review")
+  click_button("Save")
+
+  page.should have_content(@topic.subject)
+  step %Q{"I Have" tab should be highlighted}
+end
 
 Then /^I mark the topic as i have$/ do
   page.within("#ihave_edit_topic") do
