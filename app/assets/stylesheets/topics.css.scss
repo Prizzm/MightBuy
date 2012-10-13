@@ -74,7 +74,6 @@
     width: 256px;
     height: 256px;
     margin-bottom: 30px;
-    @include box-shadow(0 0 0 5px #D4C7BE);
     
     img {
       display: block;
@@ -386,10 +385,6 @@ ol.topics {
 
 .span2.item-list-image {
   text-align: center;
-  
-  img {
-    @include box-shadow(0 0 0 5px #D4C7BE);
-  }
 }
 
 .topic-actions {

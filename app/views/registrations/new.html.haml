@@ -5,9 +5,9 @@
         Join us today!
 
       = simple_form_for @user, html: { class: 'form-horizontal' } do |f|
-        = f.input :name, label: "Username", required: false
-        = f.input :password
         = f.input :email
+        = f.input :password
+        = f.input :name, label: "Full name", required: false
         .new-user-form-submit
           = f.submit ""
 
