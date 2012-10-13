@@ -1,0 +1,24 @@
+.share-topic-link
+  %h4 Share
+
+  %ul.horizontal-list.mtop5
+    %li
+      = link_to new_topic_email_share_path(topic) do
+        .email-icon
+
+    %li
+      - if current_user.hasTwitter?
+        = link_to social_ask_twitter_path(topic.shortcode), remote: true do
+          .twitter-icon
+      - else
+        = link_to user_omniauth_authorize_path(:twitter) do
+          .twitter-icon
+
+    %li
+      - if current_user.hasFacebook?
+        = link_to social_ask_facebook_path(topic.shortcode), remote: true do
+          .facebook-icon
+      - else
+        = link_to user_omniauth_authorize_path(:facebook) do
+          .facebook-icon
+  .clear

@@ -15,5 +15,6 @@
  *= require profile
  *= require topic_search/item_search
  *= require topic_search/image_selector
+ *= require have
  * *= require search
 */

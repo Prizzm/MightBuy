@@ -1,5 +1,0 @@
-- if @topic.owner?(current_user)
-  = form_for(@topic,url: update_tags_tags_path(:topic_id => @topic), html: {id: "topic_add_tag_form"}) do
-    %ul{:type => "text", :id => "topic_tags_show", :name => "topic[tags][]"}
-- else
-  = tag_links(@topic)

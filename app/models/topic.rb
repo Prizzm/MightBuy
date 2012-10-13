@@ -5,6 +5,7 @@ class Topic < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include Topic::SocialIntegration
   include Topic::FormEndPoints
+  include Topic::Have
   include Topic::Trends
 
   # Options
@@ -14,6 +15,7 @@ class Topic < ActiveRecord::Base
   }
 
   STATUSES = ["imightbuy", "ihave"]
+  RECOMMENDATIONS = ["undecided", "recommended", "not-recommended"]
 
   # Relationships
   has_many :responses
@@ -30,13 +32,15 @@ class Topic < ActiveRecord::Base
   # Scopes
   scope :publics, where(:access => "public")
   scope :privates, where(:access => "private")
+  scope :have, where(status: "ihave")
+  scope :mightbuy, where(status: "imightbuy")
 
   # Validations
   validates :access, :presence => { :message => "Please select one of the above :)" }
   validates :shortcode, :presence => true, :uniqueness => true
   validates :subject, :presence => true
   validates :status, presence: true, inclusion: { in: STATUSES }
-  #validates :body, :presence => true
+  validates :recommendation, presence: true, inclusion: { in: RECOMMENDATIONS }
 
   # Uploaders
   image_accessor :image
@@ -187,9 +191,7 @@ class Topic < ActiveRecord::Base
         end
       else
         if self.image
-          # Return image.url with host
-          # http://localhost.it/topics/43P16H (localhost)
-          return self.image.url(:host => "http://localhost:3000")
+          return self.image.url(:host => MB.config.app_url)
         else
           return "https://www.mightbuy.it/assets/no_image.png"
         end
@@ -241,6 +243,14 @@ class Topic < ActiveRecord::Base
 
   def stats
     @stats ||= Statistics.for(self)
+  end
+
+  def recommended?
+    recommendation == "recommended"
+  end
+
+  def not_recommended?
+    recommendation == "not-recommended"
   end
 
   def recommended_by?(user)

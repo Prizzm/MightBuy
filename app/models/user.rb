@@ -52,6 +52,10 @@ class User < ActiveRecord::Base
     twitter_uid && twitter_oauth_token && twitter_oauth_secret
   end
 
+  def haves
+    topics.have
+  end
+
   def hasFacebook?
     facebook_uid && facebook_oauth_token
   end

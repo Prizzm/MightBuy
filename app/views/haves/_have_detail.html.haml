@@ -1,0 +1,23 @@
+.span4
+  .topic-image.mleft40
+    = image_tag topic_image(topic), alt: topic.subject
+.span6
+  .topic-details
+    .topic-subject= topic.subject.capitalize
+    .topic-url.mtop10
+      =link_to(topic.short_url,topic.url, :target=>"_blank")
+    - if topic.owner?(current_user)
+      .topic-meta.mtop10
+        %span
+          = topic.poster_name(current_user)
+          added this #{time_ago_in_words(topic.created_at)} ago
+    .topic-tags.mtop10
+      - unless topic.tags.empty?
+        %span
+          Tags :&nbsp;
+          = render :partial => "/shares/tags", locals: {topic: topic}
+    - if topic.owner?(current_user)
+      .topic-share-links.mtop20
+        = render partial: "haves/social_share_links", locals: {topic: topic}
+      #topic-recommend.mtop20
+        = render partial: "haves/topic_recommend", locals: {topic: topic}

@@ -125,6 +125,9 @@ class @Mightbuy.ItemSearch
   fetchImages: ->
     url = $("#topic_url").val()
 
+    # clear input field..
+    $("#topic_image").val("")
+
     $("#item-form-image-selector").imageSelector(
       change : (image) ->
         $("#topic_image_url").val(image)

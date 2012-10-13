@@ -8,7 +8,7 @@ development: &local
   twitter:
     appid: kLGDHfctWCOTax3IY0Nwig
     token: vP2xNwMj4jpntS6qN8Z37fY1qUTSk1vDgJT8b1HSs
-  app_url: "http://localhost:3000"
+  app_url: "http://mightbuy.dev"
 
 test:
   <<: *local
