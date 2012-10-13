@@ -28,10 +28,14 @@ module Topic::SocialIntegration
     }
 
     if iImage() != "https://www.mightbuy.it/assets/no_image.png"
-      message.update(picture: iImage())
+      message.update(picture: facebook_image_url)
     end
 
     message
+  end
+
+  def facebook_image_url
+    iImage().gsub(/~/,'%7E')
   end
 
   def compose_twitter_status(current_user)
