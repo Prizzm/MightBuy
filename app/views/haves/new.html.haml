@@ -1,0 +1,16 @@
+%div#details
+  .row
+    .span5
+      .topic-form-wrapper
+        = simple_form_for @have, html: { multipart: true } do |form|
+          = render partial: "form", locals: { :form => form }
+          = form.input :image, as: :file, wrapper_html: { class: "hide" }
+          = form.hidden_field :retained_image
+          .buttons.btn-red-large
+            = form.button :submit, "Save"
+    #topic_right_panel.span5
+      #gsearch-results.hide
+      #item-form-image-selector
+      #choose-image
+        %button.btn.btn-red.btn-large Choose Picture
+    .clear

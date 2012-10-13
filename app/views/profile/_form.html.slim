@@ -10,8 +10,9 @@
       = heading "General Details"
       = form.label  "email:   "
       = current_user.email
-      = form.input :name, :label => "Your Name"
-      /= form.input :description, :label => "About you", :hint => "Anything you'd like to share..", :input_html => { :maxlength => 150 }
+      .mtop20 
+        = form.input :name, :label => "Your Name:"
+        /= form.input :description, :label => "About you", :hint => "Anything you'd like to share..", :input_html => { :maxlength => 150 }
   .span3.mleft40
     = heading "Social Accounts"
     - if current_user.twitter_uid == nil
@@ -22,11 +23,11 @@
         br
 
     - if current_user.facebook_uid == nil
-        = link_to "Link with Facebook", user_omniauth_authorize_path(:facebook)
-        br
+        .mtop10 
+          = link_to "Link with Facebook", user_omniauth_authorize_path(:facebook)
     -else
-        = link_to "Unlink Facebook", "/profile/unlink/facebook"
-        br
+        .mtop10 
+          = link_to "Unlink Facebook", "/profile/unlink/facebook"
 .clear
 .mtop40
 hr.hr

@@ -14,3 +14,16 @@ Feature: As a user
     And I visit profile of "Bob"
     Then "Browse" tab should be highlighted
     Then I should see "Bob" feeds
+
+  @javascript @add-to-list
+  Scenario: Adding an item to i mightbuy or i have while browsing
+    Given a confirmed user "Tyler"
+    Given a confirmed user "Bob" with a topic
+    Given a confirmed user "Marla" with a topic
+    And I visit a topic page
+    Then I should not see "Add to list"
+    And I login as "Tyler"
+    And I browse for a topic
+    Then I should be able to add the topic to might buy list
+    And I browse for a topic
+    Then I should be able to add the topic to have list

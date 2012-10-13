@@ -15,8 +15,9 @@
       - unless @topic.tags.empty?
         %span
           Tags :&nbsp;
-          = render :partial => "topics/tags"
+          = render :partial => "/shares/tags", :locals => {:topic => @topic }
 
 
-    .topic-body.mtop15= @topic.body.try(:capitalize)
+    .topic-body.mtop15.pright20
+      = @topic.body.try(:capitalize)
     .topic-price.mtop50= number_to_currency(@topic.price)

@@ -1,0 +1,4 @@
+$(".flash-notice").remove();
+$("body").prepend("<%= escape_javascript(render partial: 'shares/flash_notice') -%>");
+<%= flash.clear -%>
+$("#topic-recommend").html("<%= escape_javascript(render partial: 'haves/topic_recommend', locals: { topic: @topic }) -%>");

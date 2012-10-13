@@ -3,7 +3,10 @@ require 'spec_helper'
 describe Topic do
   it { should validate_presence_of(:subject) }
   it { should validate_presence_of(:status) }
+  it { should validate_presence_of(:recommendation) }
   it { should ensure_inclusion_of(:status).in_array(["imightbuy", "ihave"]) }
+  it { should ensure_inclusion_of(:recommendation).
+    in_array(["undecided", "recommended", "not-recommended"]) }
 
   let(:current_user) { FactoryGirl.create(:user) }
 
@@ -164,6 +167,32 @@ describe Topic do
       topics = Topic.except_user_topics(1)
       topics.should include(@topic)
       topics.should include(@another_topic)
+    end
+  end
+
+  describe "recommendation states on topics" do
+    before (:each) do
+      @topic = FactoryGirl.create(:topic)
+    end
+
+    it "should have undecided as default state" do
+      @topic.recommendation.should == "undecided"
+      @topic.recommended?.should be_false
+      @topic.not_recommended?.should be_false
+    end
+
+    it "should be able to recommend the topic" do
+      @topic.update_attributes(recommendation: "recommended").should be_true
+
+      @topic.recommended?.should be_true
+      @topic.not_recommended?.should be_false
+    end
+
+    it "should be able to not recommend the topic" do
+      @topic.update_attributes(recommendation: "not-recommended").should be_true
+
+      @topic.recommended?.should be_false
+      @topic.not_recommended?.should be_true
     end
   end
 end

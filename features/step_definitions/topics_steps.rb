@@ -73,3 +73,102 @@ When /^I visit one of other topics$/ do
   visit "/topics/#{@another_topic.shortcode}"
 end
 
+Given /^I create a have topic by filling the form$/ do
+  topic = FactoryGirl.build(:topic)
+  fill_in("topic_subject", with: topic.subject)
+  fill_in("topic_body", with: "Cool Review")
+  click_button("Save")
+  page.should have_content(topic.subject)
+
+  @topic = Topic.first
+  @topic.should_not be_nil
+  @have_topic = @topic
+end
+
+
+def tab_has_topic?(tab, topic)
+  click_link(tab)
+  page.has_content?(topic.subject)
+end
+
+Then /^I should see the topic in mightbuy$/ do
+  tab_has_topic?("I might buy", @topic).should be_true
+end
+
+Then /^I should not see the topic in mightbuy$/ do
+  tab_has_topic?("I might buy", @topic).should be_false
+end
+
+Then /^I should see the topic in have$/ do
+  tab_has_topic?("I Have", @topic).should be_true
+end
+
+Then /^I should not see the topic in have$/ do
+  tab_has_topic?("I Have", @topic).should be_false
+end
+
+Given /^I buy the topic$/ do
+  click_link "I Bought it"
+  fill_in("topic_body", with: "Cool Review")
+  click_button("Save")
+
+  page.should have_content(@topic.subject)
+  step %Q{"I Have" tab should be highlighted}
+end
+
+Then /^I mark the topic as i have$/ do
+  page.within("#ihave_edit_topic") do
+    check("ihave")
+    wait_for_ajax_call_to_finish
+  end
+  page.should have_content("Topic Updated")
+end
+
+Then /^I mark the topic as i dont have$/ do
+  page.within("#ihave_edit_topic") do
+    uncheck("ihave")
+    wait_for_ajax_call_to_finish
+  end
+  page.should have_content("Topic Updated")
+end
+
+Given /^I visit a topic page$/ do
+  visit topic_path(@topic)
+end
+
+
+Given /^I visit my have topic$/ do
+  visit have_path(@have_topic)
+end
+
+Then /^I should not see any topic recommendation$/ do
+  page.should_not have_css("#topic-recommended")
+  page.should_not have_css("#topic-not-recommended")
+end
+
+Then /^I should be able to recommend the topic$/ do
+  page.find(".topic-recommend li a").click
+  wait_for_ajax_call_to_finish
+  page.should have_css("#topic-recommended")
+  page.should_not have_css("#topic-not-recommended")
+end
+
+Then /^I should be able to not recommend the topic$/ do
+  page.all(".topic-recommend li a").last.click
+  wait_for_ajax_call_to_finish
+  page.should_not have_css("#topic-recommended")
+  page.should have_css("#topic-not-recommended")
+end
+
+Then /^I should be able to edit topic review to "(.*?)"$/ do |review|
+  page.find(".topic-right-navbar a").click
+  fill_in("topic_body", with: review)
+  click_button("Save")
+
+  page.should have_content(review)
+end
+
+Then /^I should able to destroy the topic$/ do
+  page.all(".topic-right-navbar a").last.click
+  page.should have_content("The item has been removed")
+end
