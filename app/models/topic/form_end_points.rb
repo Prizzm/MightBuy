@@ -4,7 +4,11 @@ module Topic::FormEndPoints
   module ClassMethods
     def build_from_form_data(topic_details,current_user,visitor_code)
       if topic_details['image_url']
-        topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url'])).to_s
+        topic_details['image_url'] = begin
+          URI.parse(topic_details['image_url']).to_s
+        rescue URI::InvalidURIError
+          URI.parse(URI.encode(topic_details['image_url']).gsub("[","%5B").gsub("]","%5D")).to_s
+        end
       end
       if topic_details['tags']
         tag_string = topic_details.delete('tags')
@@ -30,7 +34,11 @@ module Topic::FormEndPoints
 
   def update_from_form_data(topic_details,visitor_code)
     if topic_details['image_url'] && URI.parse(URI.encode(topic_details['image_url'])).host
-      topic_details['image_url'] = URI.parse(URI.encode(topic_details['image_url'])).to_s
+      topic_details['image_url'] = begin
+        URI.parse(topic_details['image_url']).to_s
+      rescue URI::InvalidURIError
+        URI.parse(URI.encode(topic_details['image_url']).gsub("[","%5B").gsub("]","%5D")).to_s
+      end
     else
       topic_details.delete('image_url')
     end

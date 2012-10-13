@@ -6,6 +6,13 @@ class ProfileController < InheritedResources::Base
 
   # Defaults
   defaults :resource_class => User, :collection_name => 'users', :instance_name => 'user'
+  
+  def show
+    @user = current_user
+    if request.xhr?
+      render :partial => "topics/topic", :collection => resource.topics.latest_posts(params[:page] || 1)
+    end
+  end
 
   def resource
     current_user

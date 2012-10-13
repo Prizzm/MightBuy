@@ -6,6 +6,7 @@ class Topic < ActiveRecord::Base
   include Topic::SocialIntegration
   include Topic::FormEndPoints
   include Topic::Have
+  include Topic::Trends
 
   # Options
   Access = {
@@ -60,6 +61,10 @@ class Topic < ActiveRecord::Base
 
   def self.find_by_shortcode(shortcode)
     super(shortcode && shortcode.split("-")[0])
+  end
+
+  def self.latest_posts(page_number = 1)
+    self.order("created_at desc").page(page_number).per(10)
   end
 
   def add_tags(tag_array)

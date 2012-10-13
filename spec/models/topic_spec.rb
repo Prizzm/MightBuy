@@ -30,7 +30,21 @@ describe Topic do
       current_user.timeline_events.should_not be_empty
     end
 
-    it "shoudlc create topic with tags" do
+    it "should create topic with partially invalid image URLs" do
+      partially_invalid_urls = [
+        "http://www.motorola.com/staticfiles/Consumers/Products/Mobile%20Phones/DROID-RAZR-by-Motorola/_Promotions/_Images/_Staticfiles/feature_brick_availability_A.png",
+        "http://s7d4.scene7.com/is/image/roomandboard/?src=ir{roomandboardrender/sanna_chr_20?obj=main&sharp=1&src=rpt_cambridgegrey&illum=0&obj=material&src=drape_material_cc}&$truvu0$&wid=307",
+        "http://rubyliving.com/catalog/images/products/marison-diningtable[1].jpg"
+      ]
+
+      partially_invalid_urls.each do |image_url|
+        topic = Topic.build_from_form_data(@topic_data.update('image_url' => image_url), current_user,"hello")
+        topic.should_not be_nil
+        topic.save.should be_true
+      end
+    end
+
+    it "should create topic with tags" do
       topic = Topic.build_from_form_data(@topic_data.update('tags' => ["emacs","vim"]),current_user, 'hello')
 
       topic.should_not be_nil

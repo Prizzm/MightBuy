@@ -10,10 +10,11 @@
   pagelessUrl: "/topics"
 
   enablePageLess: ->
-    if $("#pageless-topic-listing").length > 0
-      $('#pageless-topic-listing').pageless(
-        totalPages : 10
-        url : "#{Mightbuy.pagelessUrl}"
+    pageless_topic_listing = $("#pageless-topic-listing")
+    if pageless_topic_listing.length > 0
+      pageless_topic_listing.pageless(
+        totalPages : pageless_topic_listing.data("total-pages") || 10
+        url : pageless_topic_listing.data("pageless-url") || "#{Mightbuy.pagelessUrl}"
         loaderMsg : 'Loading more results'
       )
 
