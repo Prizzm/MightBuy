@@ -23,7 +23,6 @@ class SocialController < ApplicationController
   end
 
   def askAllAPI
-    post_to_open_graph(false)
     post_to_facebook_feed(false)
     @topic.post_to_twitter(current_user)
   end
@@ -32,7 +31,6 @@ class SocialController < ApplicationController
     unless current_user.hasFacebook?
       redirect_to_social_login(:facebook)
     else
-      post_to_open_graph(false)
       @share = post_to_facebook_feed(false)
       respond_with(@share, location: topics_path(@topic.shortcode, aff: 't'))
     end
@@ -48,96 +46,17 @@ class SocialController < ApplicationController
   end
 
   def askAll
-    post_to_open_graph(false)
     post_to_facebook_feed(false)
     @topic.post_to_twitter(current_user)
     redirect_to "/topics/#{@topic.shortcode}?aaf=t"
   end
 
-  # Accessible Methods (end)
-
-  # Backend Methods (fold)
-  # Facebook (fold)
-  def post_to_open_graph(redirect = false)
-    # Check if current_user has a Facebook account linked
-    if current_user.hasFacebook? then
-      # Begin rescue block
-      begin
-        # Create FB User Object
-        me = FbGraph::User.me(current_user.facebook_oauth_token)
-        # Check if topic has a price
-        if @topic.price then
-          # If so, pass price into Open Graph
-          action = me.og_action!(
-            "mightbuy:might_buy",
-              :product => "https://www.mightbuy.it/topics/#{params[:sc]}",
-              :price => Topic.find_by_shortcode(params[:sc]).price.to_s
-          )
-        else
-          # If not, don't pass price into Open Graph
-          action = me.og_action!(
-            "mightbuy:might_buy",
-              :product => "https://www.mightbuy.it/topics/#{params[:sc]}"
-          )
-        end
-
-        @topic.shares.recommends.create!(user: current_user)
-          # If a exception occurs, rescue
-      rescue Exception => e
-        # Rescue code here
-        puts "exception occured: ", e
-
-        nil
-      end
-      # If FB user doesn't exist
-    else
-      # Check if application should redirect (defined as param)
-      if redirect == true then
-        # If it should call redirect_to_social_login with the param of :facebook (redirect to facebook login)
-        redirect_to_social_login(:facebook) and return
-      end
-    end
-  end
-
   def post_to_facebook_feed(redirect = false)
-    # Check if current_user has a Facebook account linked
-    if current_user.hasFacebook? then
-      # Begin rescue block
-      begin
-        me = FbGraph::User.me(current_user.facebook_oauth_token)
-        desctext = @topic.body.blank? ? "Track stuff you mightbuy" : @topic.body
-        #check for no images - which are returned from @topic.iImage with a noimage.png file
-        noimage = true if @topic.iImage() == "https://www.mightbuy.it/assets/no_image.png"
-        fb_response = if @topic.iImage() != "https://www.mightbuy.it/assets/no_image.png" then
-          me.feed!(
-            :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
-              :picture => @topic.iImage(),
-              :link => "https://www.mightbuy.it/topics/#{params[:sc]}?r=t",
-              :name => "MightBuy",
-              :description => desctext
-          )
-        else
-          me.feed!(
-            :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
-              :link => "https://www.mightbuy.it/topics/#{params[:sc]}?r=t",
-              :name => "MightBuy",
-              :description => desctext
-          )
-        end
-
-        # create a shares item
-        @topic.shares.recommends.create!(user: current_user, with: fb_response.identifier)
-          # Rescue from any exception
-      rescue Exception => e
-        puts "exception occured: ", e
-      end
-      # If current_user doesn't have a Facebook account linked ...
+    if current_user.hasFacebook?
+      @topic.post_to_facebook(current_user)
     else
-      # Check if redirect is true (defined as param)
-      if redirect == true then
-        # Redirect to facebook login
+      if redirect
         redirect_to_social_login(:facebook)
-
       end
     end
   end

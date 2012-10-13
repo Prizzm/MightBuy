@@ -7,6 +7,37 @@ module Topic::SocialIntegration
     nil
   end
 
+  def post_to_facebook(current_user)
+    me = FbGraph::User.me(current_user.facebook_oauth_token)
+    fb_response = me.feed!(compose_facebook_message)
+    shares.recommends.create!(user: current_user, with: fb_response.identifier)
+  rescue Exception => e
+    Rails.logger.fatal(e.message)
+    Rails.logger.fatal(e.backtrace.join("\n"))
+    nil
+  end
+
+  def compose_facebook_message
+    desctext = body.blank? ? "Track stuff you mightbuy" : body
+
+    message = {
+      message: "I MightBuy a #{subject}. #{displayPrice} Should I?",
+      link: "https://www.mightbuy.it/topics/#{to_param}",
+      name: "MightBuy",
+      description: desctext
+    }
+
+    if iImage() != "https://www.mightbuy.it/assets/no_image.png"
+      message.update(picture: facebook_image_url)
+    end
+
+    message
+  end
+
+  def facebook_image_url
+    iImage().gsub(/~/,'%7E')
+  end
+
   def compose_twitter_status(current_user)
     "I #mightbuy #{subject.first(45)}.. #{displayPrice} Should I? #{MB.config.app_url}/topics/#{shortcode}"
   end

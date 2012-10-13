@@ -21,7 +21,10 @@ module Topic::Trends
     end
 
     def with_most_comments(count = 30)
-      Topic.select("topics.*,c.comment_count").joins("JOIN (select topic_id, count(topic_id) as comment_count from comments group by topic_id) c ON c.topic_id = topics.id").order("c.comment_count desc").limit(count)
+      Topic.select("topics.*,c.comment_count").
+        joins("JOIN (select topic_id, count(topic_id) as comment_count from comments group by topic_id) c ON c.topic_id = topics.id").
+        order("c.comment_count desc").
+        limit(count)
     end
   end
 

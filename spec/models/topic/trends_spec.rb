@@ -40,9 +40,7 @@ describe "Topic trends" do
     it "should return trending topics" do
       topics = Topic.trending_topics()
 
-      topics[0].should == @topics[3]
-
-      topics.should_not include(@topics[10])
+      topics[0].url.should match(/apple.com/)
     end
   end
 

@@ -179,10 +179,10 @@ class Topic < ActiveRecord::Base
   end
 
   def iImage(host = true)
-    if host == true then
+    if host == true
       # Check env
-      if Rails.env.production? then
-        if self.image then
+      if Rails.env.production?
+        if self.image
           # Return image.url with host
           # https://www.mightbuy.it/topics/43P16H (mightbuy.it)
           return self.image.url(:host => "https://www.mightbuy.it")
@@ -190,7 +190,7 @@ class Topic < ActiveRecord::Base
           return "https://www.mightbuy.it/assets/no_image.png"
         end
       else
-        if self.image then
+        if self.image
           return self.image.url(:host => MB.config.app_url)
         else
           return "https://www.mightbuy.it/assets/no_image.png"
@@ -260,9 +260,9 @@ class Topic < ActiveRecord::Base
   def activity_line(timeline_event)
     actor = timeline_event.actor
     if timeline_event.event_type == 'modified_topic'
-      "#{actor.name} updated <a href='/topics/#{to_param}'>#{subject.first(45)}..</a> in his mightbuy list".html_safe
+      "#{actor.name} updated <a href='/topics/#{to_param}'>#{subject.first(45)}..</a> in their mightbuy list".html_safe
     else
-      "#{actor.name} added <a href='/topics/#{to_param}'>#{subject.first(45)}..</a> to his mightbuy list".html_safe
+      "#{actor.name} added <a href='/topics/#{to_param}'>#{subject.first(45)}..</a> to their mightbuy list".html_safe
     end
   end
 
