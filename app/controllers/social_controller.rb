@@ -52,44 +52,11 @@ class SocialController < ApplicationController
   end
 
   def post_to_facebook_feed(redirect = false)
-    # Check if current_user has a Facebook account linked
-    if current_user.hasFacebook? then
-      # Begin rescue block
-      begin
-        me = FbGraph::User.me(current_user.facebook_oauth_token)
-        desctext = @topic.body.blank? ? "Track stuff you mightbuy" : @topic.body
-        #check for no images - which are returned from @topic.iImage with a noimage.png file
-        noimage = true if @topic.iImage() == "https://www.mightbuy.it/assets/no_image.png"
-        fb_response = if @topic.iImage() != "https://www.mightbuy.it/assets/no_image.png" then
-          me.feed!(
-            :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
-              :picture => @topic.iImage(),
-              :link => "https://www.mightbuy.it/topics/#{params[:sc]}?r=t",
-              :name => "MightBuy",
-              :description => desctext
-          )
-        else
-          me.feed!(
-            :message => "I MightBuy a #{@topic.subject}. #{@topic.displayPrice} Should I?",
-              :link => "https://www.mightbuy.it/topics/#{params[:sc]}?r=t",
-              :name => "MightBuy",
-              :description => desctext
-          )
-        end
-
-        # create a shares item
-        @topic.shares.recommends.create!(user: current_user, with: fb_response.identifier)
-          # Rescue from any exception
-      rescue Exception => e
-        puts "exception occured: ", e
-      end
-      # If current_user doesn't have a Facebook account linked ...
+    if current_user.hasFacebook?
+      @topic.post_to_facebook(current_user)
     else
-      # Check if redirect is true (defined as param)
-      if redirect == true then
-        # Redirect to facebook login
+      if redirect
         redirect_to_social_login(:facebook)
-
       end
     end
   end
