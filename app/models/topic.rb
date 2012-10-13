@@ -250,9 +250,9 @@ class Topic < ActiveRecord::Base
   def activity_line(timeline_event)
     actor = timeline_event.actor
     if timeline_event.event_type == 'modified_topic'
-      "#{actor.name} updated <a href='/topics/#{to_param}'>#{subject.first(45)}..</a> in his mightbuy list".html_safe
+      "#{actor.name} updated <a href='/topics/#{to_param}'>#{subject.first(45)}..</a> in their mightbuy list".html_safe
     else
-      "#{actor.name} added <a href='/topics/#{to_param}'>#{subject.first(45)}..</a> to his mightbuy list".html_safe
+      "#{actor.name} added <a href='/topics/#{to_param}'>#{subject.first(45)}..</a> to their mightbuy list".html_safe
     end
   end
 
