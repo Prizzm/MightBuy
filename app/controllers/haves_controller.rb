@@ -34,8 +34,8 @@ class HavesController < ApplicationController
   end
 
   def recommend
-    recommendable = params[:recommend] == "yes"
-    if @topic.update_attributes(recommendable: recommendable)
+    recommendation = params[:recommend] == "yes" ? "recommended" : "not-recommended"
+    if @topic.update_attributes(recommendation: recommendation)
       flash[:notice] = "Recommendation Updated"
     else
       flash[:error]  = "Failed to Update Recommendation"

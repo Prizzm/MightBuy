@@ -133,6 +133,11 @@ Given /^I visit my have topic$/ do
   visit have_path(@have_topic)
 end
 
+Then /^I should not see any topic recommendation$/ do
+  page.should_not have_css("#topic-recommended")
+  page.should_not have_css("#topic-not-recommended")
+end
+
 Then /^I should be able to recommend the topic$/ do
   page.find(".topic-recommend li a").click
   wait_for_ajax_call_to_finish

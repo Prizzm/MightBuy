@@ -3,8 +3,8 @@
   %ul.horizontal-list.mtop5
     %li
       = link_to recommend_have_path(topic, recommend: "yes"), method: :put, remote: true do
-        .topic-recommend-yes-icon{id: topic.recommendable? ? "topic-recommended" : ""}
+        .topic-recommend-yes-icon{id: topic.recommended? ? "topic-recommended" : ""}
     %li
       = link_to recommend_have_path(topic, recommend: "no"), method: :put, remote: true do
-        .topic-recommend-no-icon{id: topic.recommendable? ? "" : "topic-not-recommended"}
+        .topic-recommend-no-icon{id: topic.not_recommended? ? "topic-not-recommended" : ""}
 
