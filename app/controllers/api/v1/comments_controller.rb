@@ -11,7 +11,7 @@ class Api::V1::CommentsController < Api::V1::ApiController
       comment[:user] = commentD[:user]
       @comments[0] = comment
     end
-    present @comments, :with => Entity::Comment, :status => 200
+    present @comments, :raw => true, :status => 200
   end
 
   private
