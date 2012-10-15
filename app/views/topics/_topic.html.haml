@@ -1,7 +1,8 @@
 %li
   .row
-    .span2.item-list-image
+    .span2.item-list-image.p-rel
       = image_tag(topic.thumbnail_image, :alt => topic.subject)
+      %span.mask-140
     .span7.pull-right
       .span5.topic-description
         .topic-title

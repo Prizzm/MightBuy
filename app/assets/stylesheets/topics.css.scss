@@ -385,6 +385,7 @@ ol.topics {
 
 .span2.item-list-image {
   text-align: center;
+  min-height:140px;
 }
 
 .topic-actions {
@@ -821,4 +822,34 @@ span.no-votes {
 
 .image-border{
   border: 3px solid #D9D1CF;
+}
+
+.p-rel{
+  position:relative
+}
+.mask-link{
+  display:block;
+  min-height:64px;
+}
+span.mask-140, span.mask-64, span.mask-256{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+span.mask-140{
+  width: 140px;
+  height: 140px;
+  background: image-url('mask-140.png') 0 0 no-repeat;
+}
+span.mask-64{
+  width: 64px;
+  height: 64px;
+  background: image-url('mask-64.png') 0 0 no-repeat;
+}
+span.mask-256{
+  width: 256px;
+  height: 256px;
+  background: image-url('mask-256.png') 0 0 no-repeat;
 }
