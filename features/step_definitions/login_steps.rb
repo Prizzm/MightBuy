@@ -57,3 +57,9 @@ Then /^I visit profile of "(.*?)"$/ do |name|
   user = User.find_by_name(name)
   visit user_path(user)
 end
+
+Given /^I delete my profile$/ do
+  click_link("Edit Profile")
+  click_link("Delete Account")
+  page.should have_content("Bye! Your account was successfully cancelled. We hope to see you again soon.")
+end

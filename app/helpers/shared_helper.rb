@@ -8,7 +8,11 @@ module SharedHelper
   end
 
   def user_path (user, *args)
-    user.person? ? super(user, *args) : brand_path(user, *args)
+    if user
+      user.person? ? super(user, *args) : brand_path(user, *args)
+    else
+      "javascript:void(0);"
+    end
   end
   
   def override (id, &block)
