@@ -27,3 +27,13 @@ Feature: As a user
     Then I should be able to add the topic to might buy list
     And I browse for a topic
     Then I should be able to add the topic to have list
+
+  @javascript @deleted-user
+  Scenario: Topics populated by a deleted user should be browsable
+    Given a confirmed user "Bob" with a topic
+    Given a confirmed user "Tyler"
+    And I login as "Bob"
+    And I delete my profile
+    And I login as "Tyler"
+    And I browse for a topic
+    Then I should see "Jeans"
