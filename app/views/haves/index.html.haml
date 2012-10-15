@@ -1,6 +1,14 @@
 #details
-  %ol.list.topics
-    .row
-      .add-topic-link
-        = link_to("Add an item", new_have_path, :class=>"btn btn-red")
-    = render partial: "have", collection: @haves
+  - if @haves.empty?
+    .have-item-instruction
+      %h3 You have not added anything to your Have list yet.Click button below to start adding.
+      = link_to("Add an item", new_have_path, :class=>"btn btn-red")
+      
+        
+
+  - else
+    %ol.list.topics
+      .row
+        .add-topic-link
+          = link_to("Add an item", new_have_path, :class=>"btn btn-red")
+      = render partial: "have", collection: @haves
