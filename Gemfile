@@ -54,6 +54,7 @@ gem 'jquery-fileupload-rails'
 # Admin
 gem 'activeadmin'
 gem "meta_search"
+gem 'heroku'
 gem 'airbrake'
 
 # Background Jobs
