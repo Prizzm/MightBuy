@@ -20,5 +20,14 @@ module Entity
     expose :topic_id
     expose :user_id
     expose :description
+    expose :user
+  end
+  
+  class User < Grape::Entity
+    expose :id
+    expose :email
+    expose :name
+    expose :image
+    expose :last_seen
   end
 end
