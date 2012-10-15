@@ -76,12 +76,13 @@ ActiveRecord::Schema.define(:version => 20121013082628) do
     t.text     "description"
     t.string   "url"
     t.integer  "product_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "value"
     t.string   "application"
     t.string   "bargin_type"
     t.string   "barcode"
+    t.boolean  "accept_payments"
   end
 
   create_table "beta_signups", :force => true do |t|
@@ -183,10 +184,12 @@ ActiveRecord::Schema.define(:version => 20121013082628) do
 
   create_table "products", :force => true do |t|
     t.string   "url"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "name"
     t.integer  "business_id"
+    t.float    "price"
+    t.integer  "accept_payments"
   end
 
   create_table "responses", :force => true do |t|
