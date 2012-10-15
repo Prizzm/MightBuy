@@ -1,6 +1,6 @@
 .row
+  %hr.mleft60.mright40
   .topic-votes-and-deals
-    %hr
     #topic-percentage-row
       - unless @topic.votes.empty?
         = render :partial => "vote_percentage", locals: {topic: @topic}

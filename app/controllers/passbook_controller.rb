@@ -6,7 +6,6 @@ class PassbookController < PassbookManager
   end
   
   def register_device
-    puts "headers: ", request.authorization
     token = AntiForgeToken.find_by_serial_number(params[:serialnumber])
     render :text => ""
     if "ApplePass #{token.authorization_token}" == request.authorization

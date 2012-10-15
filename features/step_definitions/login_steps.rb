@@ -7,6 +7,12 @@ Given /^a confirmed user "(.*?)" with a topic$/ do |name|
   @topic = FactoryGirl.create(:topic, user: @user)
 end
 
+Given /^a confirmed user "(.*?)" with a have topic$/ do |name|
+  step %Q{a confirmed user "#{name}"}
+  @topic = FactoryGirl.create(:topic, user: @user, status: "ihave")
+  @have_topic = @topic
+end
+
 Then /^I should be asked to login via lightbox$/ do
   page.has_css?("#login-lightbox").should be_true
 end
@@ -18,6 +24,7 @@ def signin_user(user)
   fill_in "user[email]", with: @user.email
   fill_in "user[password]", with: temp.password
   page.find("#sign-in-submit-button").click()
+  page.should have_content(I18n.t "devise.sessions.signed_in")
 end
 
 Given /^I am logged in a user$/ do

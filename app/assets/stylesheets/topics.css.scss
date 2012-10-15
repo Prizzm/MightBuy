@@ -37,7 +37,7 @@
 
     li {
       float: left;
-      margin: 0px 5px;
+      margin: 0 0 0 10px;
     }
 
     #home-link {
@@ -60,13 +60,21 @@
       background: image-url("details-page-buttons.jpg") no-repeat scroll -377px -17px;
       &:hover { background-position: -466px -17px; }
     }
+
+    .topic-right-navbar {
+      ul {
+        float: right;
+        padding-left:  0px;
+        padding-right: 40px;
+      }
+    }
   }
 
   .topic-image {
     width: 256px;
-    height: 219px;
-    padding: 15px;
+    height: 256px;
     margin-bottom: 30px;
+    
     img {
       display: block;
       margin: auto;
@@ -168,19 +176,36 @@
   &:hover { background-position: -1523px -16px; }
 }
 
-.topic-vote-yes-icon, .topic-vote-no-icon {
+.topic-vote-yes-icon, .topic-vote-no-icon, .topic-recommend-yes-icon, .topic-recommend-no-icon {
   width: 90px;
   height: 34px;
 }
 
-.topic-vote-yes-icon {
+.topic-vote-yes-icon, .topic-recommend-yes-icon {
+  margin-right: 2px;
+}
+
+.topic-vote-yes-icon, .topic-recommend-yes-icon {
   background: image-url("details-page-buttons.jpg") no-repeat scroll -923px -15px;
   &:hover { background-position: -1014px -15px; }
 }
 
-.topic-vote-no-icon {
+.topic-vote-no-icon, .topic-recommend-no-icon {
   background: image-url("details-page-buttons.jpg") no-repeat scroll -741px -15px;
   &:hover { background-position: -832px -15px; }
+}
+
+#topic-recommended {
+  width:  92px;
+  height: 40px;
+  margin-right: 0px;
+  background: image-url("yes-marked.jpg") no-repeat
+}
+
+#topic-not-recommended {
+  width:  92px;
+  height: 40px;
+  background: image-url("no-marked.jpg") no-repeat
 }
 
 .topic-form-wrapper {
@@ -241,11 +266,10 @@
     height: 45px;
     width: 180px;
     text-align: center;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 6px;
     margin-left: 3px;
     border:1px solid #cd383f;
     @include gradient(#df646c, #aa383c);
+    @include border-radius-multi(6px,6px,0,0);
     @include box-shadow( inset 0 1px 0 rgba(255,255,255,0.25));
     
     &:hover {
@@ -361,9 +385,6 @@ ol.topics {
 
 .span2.item-list-image {
   text-align: center;
-  img {
-    padding: 5px;
-  }
 }
 
 .topic-actions {
@@ -764,6 +785,18 @@ span.no-votes {
   }
 }
 
+
+#choose-image {
+  position: absolute;
+  right: 210px;
+  bottom: 85px;
+
+  button {
+    padding: 11px;
+  }
+}
+
+
 .topic-poster-prompt {
   font-size: 2.1em;
   margin-left: 67px;
@@ -773,22 +806,16 @@ span.no-votes {
   margin-right: -32px;
 }
 
-#ihave_edit_topic {
-  @include bg-reddish;
-  border: 1px solid #CD383F;
-  border-radius: 5px;
-  margin-top: 1px;
-  padding: 5px 12px;
-
-  #ihave {
-    margin-top: -1px;
-  }
-
-  label {
-    display: inline;
-    color: white;
-    font-size: 1.1em;
-    padding-left: 4px;
+.boughtit-button {
+  height: 22px;
+  font-size:16px;
+  display: table-cell;
+  vertical-align: middle;
+  @include border-radius(6px);
+  width: 115px;
+  
+  i{
+    margin:2px 5px 0 0;
   }
 }
 
