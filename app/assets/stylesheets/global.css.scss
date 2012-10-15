@@ -150,6 +150,7 @@
 .mleft30 { margin-left: 30px; }
 .mleft40 { margin-left: 40px; }
 .mleft60 { margin-left: 60px; }
+.mright10 { margin-right: 10px }
 .mright40 { margin-right: 40px }
 .mbot10 { margin-bottom: 10px; }
 .mbot15 { margin-bottom: 15px; }
@@ -172,7 +173,8 @@
 .pleft40 { padding-left: 40px; }
 .width90p { width: 90%; }
 .mright20 { margin-right: 20px; }
-
+.width40{width:40%;float:left}
+.width60{width:60%;float:left}
 
 .flash-notice {
   z-index: 1050;
@@ -260,4 +262,17 @@
   .mtop-leftcol{
     margin-top: 75px;
   }
+}
+.well-small{
+  padding:2px 10px;
+  margin-bottom:0 !important
+}
+.raquo a{
+  text-decoration:none;
+}
+.raquo a:after{
+content:"\00bb";
+position:relative;
+top:2px;
+font-size:20px;
 }

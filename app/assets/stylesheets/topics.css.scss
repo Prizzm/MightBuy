@@ -350,13 +350,14 @@ ol.topics {
 
   .topic-listing-tag {
     margin: 10px 0px 10px 0px;
+    
     a{
       padding: 0px 3px 0px 3px;
     }
   }
 
   div.price {
-    margin-top: 30px;
+    margin-top: 20px;
     color: #879d6c;
     float: right;
     font-size: 2.8em;
@@ -400,10 +401,6 @@ ol.topics {
     background-position: left top;
     text-decoration:none;
   }
-}
-
-.topic-list-actions {
-  margin-top: 10px;
 }
 
 #gsearch-results {
@@ -831,25 +828,83 @@ span.no-votes {
   display:block;
   min-height:64px;
 }
-span.mask-140, span.mask-64, span.mask-256{
+.mask-140, .mask-64, .mask-256{
   display: block;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 10;
+  font-size:0;
+  color:#fff;
 }
-span.mask-140{
+.mask-140{
   width: 140px;
   height: 140px;
   background: image-url('mask-140.png') 0 0 no-repeat;
 }
-span.mask-64{
+.mask-64{
   width: 64px;
   height: 64px;
   background: image-url('mask-64.png') 0 0 no-repeat;
 }
-span.mask-256{
+.mask-256{
   width: 256px;
   height: 256px;
   background: image-url('mask-256.png') 0 0 no-repeat;
+}
+
+.img-container{
+  min-height:140px;
+}
+
+.dotted-border{
+  border-top: 1px dotted #ccc;
+  padding-top: 15px
+}        
+
+.email-icon-small, .facebook-icon-small, .twitter-icon-small {
+  background: image-url('sprite-icns.png') no-repeat 0 0;
+  width: 16px;
+  height: 16px;
+  margin-right:5px
+}
+
+.email-icon-small {
+  background-position:-1px -1px;
+}
+
+.email-icon-small:hover {
+  background-position:-20px -1px;
+}
+
+.email-icon-small:active {
+  background-position:-39px -1px;
+}
+
+.facebook-icon-small {
+  background-position:-1px -20px;
+}
+
+.facebook-icon-small:hover {
+  background-position:-20px -20px;
+}
+
+.facebook-icon-small:active {
+  background-position:-39px -20px;
+}
+
+.twitter-icon-small {
+  background-position: -1px -39px;
+}
+
+.twitter-icon-small:hover {
+  background-position: -20px -39px;
+}
+
+.twitter-icon-small:active {
+  background-position: -39px -39px;
+}
+
+.color-brown{
+  color: #4E3227
 }
