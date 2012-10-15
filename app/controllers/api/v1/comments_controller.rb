@@ -7,7 +7,6 @@ class Api::V1::CommentsController < Api::V1::ApiController
     commentsA = @topic.comments
     commentsA.each do |commentD|
       comment = {}
-      comment[:id] = commentD[:id]
       comment[:description] = commentD[:description]
       comment[:user] = commentD[:user]
       @comments[0] = comment
