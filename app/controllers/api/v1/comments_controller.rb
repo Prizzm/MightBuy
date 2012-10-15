@@ -8,7 +8,7 @@ class Api::V1::CommentsController < Api::V1::ApiController
     commentsA.each do |commentD|
       comment = {}
       comment[:description] = commentD[:description]
-      comment[:user] = commentD[:user]
+      comment[:user] = User.find(commentD[:user_id])
       @comments[0] = comment
     end
     present @comments, :raw => true, :status => 200
