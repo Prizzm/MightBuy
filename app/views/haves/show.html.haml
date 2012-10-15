@@ -18,6 +18,26 @@
   .row.mtop50
     = render :partial => "have_detail", locals: { topic: @have }
 
+  %hr.comment-have-separator
   .row.mleft40.mright40
     %h2 Review
     %p= @have.body
+  %hr.comment-have-separator
+
+  .row
+    .span6
+      %h3.mleft40.mtop20.mbot30 Write Responses
+
+  .topic-comments
+    - @comments.each do |comment|
+      = render partial: "/topics/comment_entry", locals: { comment: comment }
+
+  .row
+    .new-topic-comment.mleft40
+      .span1= image_tag(avatar_image)
+      .span8.mbot30
+        = simple_form_for [@have, @comment], remote: true do |f|
+          = f.input :description, label: false, input_html: { rows: 3 }
+          .new-comment-form-submit
+            = f.submit ""
+
