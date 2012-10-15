@@ -1,6 +1,10 @@
 class Api::V1::UsersApiController < Api::V1::ApiController
   def info
-    @user = current_user
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+    else
+      @user = current_user
+    end
   end
   
   def new
