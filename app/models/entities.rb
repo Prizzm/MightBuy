@@ -20,5 +20,6 @@ module Entity
     expose :topic_id
     expose :user_id
     expose :description
+    expose :user
   end
 end

@@ -3,15 +3,8 @@ class Api::V1::CommentsController < Api::V1::ApiController
   before_filter :find_topic
 
   def index
-    @comments = {}
-    commentsA = @topic.comments
-    commentsA.each do |commentD|
-      comment = {}
-      comment[:description] = commentD[:description]
-      comment[:user] = commentD[:user]
-      @comments[0] = comment
-    end
-    present @comments, :raw => true, :status => 200
+    @comments = @topic.comments
+    present @comments, :with => Entity::Comment, :status => 200
   end
 
   private
