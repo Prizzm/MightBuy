@@ -281,6 +281,10 @@ module ApplicationHelper
      \"&topic[url]=\"+encodeURIComponent(window.location.href)); })() })();"
   end
 
+  def topic_image_url_helper(topic)
+    request.base_url.to_s + topic.image.try(:url).to_s
+  end
+
   def twitter_url(topic)
     query_params = {
       url:  topic_url(topic),
@@ -292,7 +296,7 @@ module ApplicationHelper
   end
 
   def facebook_data_params(topic)
-    image_url = request.base_url.to_s + topic.image.try(:url).to_s
+    image_url = topic_image_url_helper(topic)
     topic_caption =
       if topic.ihave?
         "I Have Bought #{topic.subject}"

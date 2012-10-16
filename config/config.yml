@@ -4,6 +4,10 @@ development: &local
   facebook:
     appid: "361205880625409"
     token: 6ee39bb339038cc00fee44c336f4b029
+    og:
+      namespace: testmightbuyit
+      action: review
+      object: topic
 
   twitter:
     appid: kLGDHfctWCOTax3IY0Nwig
