@@ -11,10 +11,6 @@
         .twitter-icon
 
     %li
-      - if current_user.hasFacebook?
-        = link_to social_ask_facebook_path(topic.shortcode), remote: true do
-          .facebook-icon{id: topic.recommended_by?(current_user) ? "recommended" : ""}
-      - else
-        = link_to user_omniauth_authorize_path(:facebook) do
-          .facebook-icon
+      = link_to "javascript:void(0);", facebook_data_params(topic).merge(class: "like-topic") do
+        .facebook-icon
   .clear

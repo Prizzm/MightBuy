@@ -290,4 +290,22 @@ module ApplicationHelper
 
     "https://twitter.com/intent/tweet?#{query_params}"
   end
+
+  def facebook_data_params(topic)
+    image_url = request.base_url + topic.image.try(:url),
+    topic_caption =
+      if topic.ihave?
+        "I Have Bought #{topic.subject}"
+      else
+        "I MightBuy #{topic.subject}"
+      end
+
+    {
+      "data-name" => topic.subject,
+      "data-link" => topic_url(topic),
+      "data-picture" => image_url,
+      "data-caption" => topic_caption,
+      "data-description" => topic.body
+    }
+  end
 end
