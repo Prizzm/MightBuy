@@ -1,24 +1,42 @@
 %li
   .row
     .span2.item-list-image.p-rel
-      = image_tag(topic.thumbnail_image, alt: topic.subject)
-      %span.mask-140
+      = image_tag(topic.thumbnail_image, :alt => topic.subject)
+      = link_to("", topic_path(topic), :class =>"mask-140")
     .span7.pull-right
-      .span5.topic-description
-        .topic-title
-          = link_to(topic.subject.capitalize, topic_path(topic))
-        .topic-url
-          = link_to(topic.short_url, topic.url, :target=>"_blank")
-        .topic-listing-tag
-          = tag_links(topic)
-        .topic-meta-all.mtop15
-          %span
+      .row
+        .span5
+          .topic-title
+            = link_to(topic.subject.capitalize, topic_path(topic))
+          .topic-url
+            = link_to(topic.short_url, topic.url, :target=>"_blank")
+          .topic-listing-tag
+            %i.icon-tags
+            tags:
+            = tag_links(topic)
+          .topic-meta-all.mtop10
             = link_to(topic.poster_name(current_user), user_path(topic.user))
             Mightbuy this
             = link_to(copy_topic_path(topic)) do
               = image_tag("add_icon.png")
-      .span1.pull-right.topic-list-actions
-        %div.price
-          = number_to_currency(topic.price)
+        .span1.pull-right.topic-list-actions
+          %div.price
+            = number_to_currency(topic.price)
+          .clear
         .clear
+        %br
+        .span7.dotted-border.ptop10
+          .pull-left
+            .pull-left.mright10.color-brown Vote - should girish buy it?
+            %a{:href=>"#", :class=>"btn btn-success btn-mini pull-left mright10"}
+              %i.icon-thumbs-up
+              Yes
+            %a{:href=>"#", :class=>"btn btn-danger btn-mini pull-left"}
+              %i.icon-thumbs-down
+              No
+            .clear
+          .pull-right
+            .pagination-right.raquo
+              = link_to("more   ", topic_path(topic)) 
+          .clear
     .clear
