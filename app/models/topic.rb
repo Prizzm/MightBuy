@@ -23,6 +23,7 @@ class Topic < ActiveRecord::Base
   has_many :email_shares, :class_name => "Shares::Email", :inverse_of => :topic
   belongs_to :user
   belongs_to :product
+  has_many :orders
 
   has_many :topic_tags
   has_many :tags, through: :topic_tags

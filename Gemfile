@@ -17,6 +17,9 @@ gem 'haml'
 # API
 gem 'rabl'
 
+# Payment
+gem 'stripe'
+
 # Passbook
 gem 'passbook', :git => "git://github.com/frozon/passbook.git"
 

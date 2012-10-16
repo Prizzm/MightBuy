@@ -42,6 +42,9 @@ NewPrizzmCom::Application.routes.draw do
     get 'brands/join', :to => 'registrations#new', :brand => true
   end
 
+  # Payments
+  match '/topics/:topic_shortcode/payments/process' => 'payments#processP'
+  
   # Passbook
   match '/passbook/passes/generate' => "passbook#generate"
   match '/passbook/passes/:aftoken' => "passbook#pass"
