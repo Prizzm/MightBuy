@@ -39,7 +39,7 @@ module UsersHelper
   end
 
   def user_wants_title_helper(user)
-    user == current_user ? "I Might Buy" : "#{user.name.capitalize}'s Might Buy"
+    user == current_user ? "I Might Buy" : "#{user.name.capitalize} Might Buy"
   end
 
   def user_activity_feed_title_helper(user)

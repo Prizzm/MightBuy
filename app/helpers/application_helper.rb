@@ -292,7 +292,7 @@ module ApplicationHelper
   end
 
   def facebook_data_params(topic)
-    image_url = request.base_url + topic.image.try(:url),
+    image_url = request.base_url.to_s + topic.image.try(:url).to_s
     topic_caption =
       if topic.ihave?
         "I Have Bought #{topic.subject}"
