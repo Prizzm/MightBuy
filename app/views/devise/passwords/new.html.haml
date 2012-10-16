@@ -1,0 +1,18 @@
+.row
+  .span7.offset2
+    .reset-form
+      %p
+        Forgot Password!
+      = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, class: 'form-horizontal '}) do |f|
+        = devise_error_messages!
+        .forgot-password-form
+          %div
+            = f.label :email
+            = f.email_field :email
+          .clear
+          .reset-password
+            = f.submit ""
+            / Send me reset password instructions
+            .clear
+  .span12.anchor-links
+    = render :partial => "devise/shared/links"

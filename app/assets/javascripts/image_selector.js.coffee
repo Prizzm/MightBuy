@@ -28,6 +28,7 @@ class ImageSelector
     @change_handler    = options.change if options.change
     @position          = options.position if options.position
     @images            = options.images if options.images
+    @options.showloader = options.showloader if options.showloader
 
     @setImages(@images)
 

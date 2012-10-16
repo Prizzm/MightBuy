@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20121012221550) do
+=======
+ActiveRecord::Schema.define(:version => 20121013082628) do
+>>>>>>> master
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -226,6 +230,22 @@ ActiveRecord::Schema.define(:version => 20121012221550) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "timeline_events", :force => true do |t|
+    t.string   "event_type"
+    t.string   "subject_type"
+    t.string   "actor_type"
+    t.string   "secondary_subject_type"
+    t.integer  "subject_id"
+    t.integer  "actor_id"
+    t.integer  "secondary_subject_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "timeline_events", ["actor_id", "actor_type"], :name => "index_timeline_events_on_actor_id_and_actor_type"
+  add_index "timeline_events", ["secondary_subject_id", "secondary_subject_type"], :name => "secondary_subject_timeline_events"
+  add_index "timeline_events", ["subject_id", "subject_type"], :name => "index_timeline_events_on_subject_id_and_subject_type"
+
   create_table "topic_tags", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "topic_id"
@@ -252,6 +272,7 @@ ActiveRecord::Schema.define(:version => 20121012221550) do
     t.string   "mobile_image_url"
     t.integer  "product_id"
     t.string   "status",           :default => "imightbuy"
+    t.string   "recommendation",   :default => "undecided"
   end
 
   add_index "topics", ["shortcode"], :name => "index_topics_on_shortcode", :unique => true
@@ -292,6 +313,7 @@ ActiveRecord::Schema.define(:version => 20121012221550) do
     t.string   "twitter_oauth_token"
     t.string   "twitter_oauth_secret"
     t.datetime "last_seen"
+    t.string   "slug"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

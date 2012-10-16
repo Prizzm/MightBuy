@@ -14,4 +14,16 @@ module TopicSpecHelper
     topic4.tags << @tags[0]
     @topics = [topic1,topic2,topic3,topic4]
   end
+  def create_topic_with_comments
+    topics = []
+    topics << FactoryGirl.create(:topic, url: "reddit.com")
+    2.times { FactoryGirl.create(:comment, topic: topics[0] )}
+
+    topics << FactoryGirl.create(:topic, url: "gnu.org")
+    3.times { FactoryGirl.create(:comment, topic: topics[1] )}
+
+    topics << FactoryGirl.create(:topic, url: "redhat.com")
+    FactoryGirl.create(:comment, topic: topics[2])
+    topics
+  end
 end

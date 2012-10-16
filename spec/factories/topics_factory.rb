@@ -9,6 +9,7 @@ FactoryGirl.define do
     form   "recommendation"
     shortcode  { FactoryGirl.generate(:shortcode) }
     status "imightbuy"
+    url "http://www.flipkart.com"
     after_build {|topic|
       topic.user ||= FactoryGirl.create(:user)
     }

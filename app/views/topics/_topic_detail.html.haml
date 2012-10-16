@@ -15,6 +15,7 @@
       - unless @topic.tags.empty?
         %span
           Tags :&nbsp;
+<<<<<<< HEAD
           = render :partial => "topics/tags"
   - if @topic.product.accept_payments == 1
     %form{:action => "/topics/#{@topic.shortcode}/payments/process", :method => "post", :style => "margin-left: 40px;"}
@@ -22,3 +23,11 @@
 
     .topic-body.mtop15= @topic.body.try(:capitalize)
     .topic-price.mtop50= number_to_currency(@topic.price)
+=======
+          = render :partial => "/shares/tags", :locals => {:topic => @topic }
+
+
+    .topic-body.mtop15.pright20
+      = @topic.body.try(:capitalize)
+    .topic-price.mtop50= number_to_currency(@topic.price)
+>>>>>>> master

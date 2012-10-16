@@ -9,7 +9,10 @@ NewPrizzmCom::Application.routes.draw do
   namespace :api do
     namespace :v1  do
       resources :tokens,:only => [:create, :destroy]
-      resources :topics, :controller=>:topics_api
+      resources :topics, :controller=>:topics_api do
+        get :trending, on: :collection
+      end
+
       resources :comments
       get 'search', :to => "topics_api#search"
       match "/user/info" => "users_api#info"
@@ -63,6 +66,12 @@ NewPrizzmCom::Application.routes.draw do
   get 'me' => 'profile#show', :as => 'user_root'
   #get 'me' => 'topics#index', :as => 'user_root'
   resource :profile, :controller => "profile"
+  resources :haves do
+    member do
+      get 'copy'
+      put 'recommend'
+    end
+  end
 
   # Topics
   resources :topics do
@@ -79,8 +88,10 @@ NewPrizzmCom::Application.routes.draw do
       get 'business/recommendation' => 'topics#new', :topic => { :form => :business_recommendation }
       get 'recommend' => 'topics#new', :topic => { :form => :recommend }
     end
+
     member do
       get 'copy'
+      get 'bought'
     end
   end
 

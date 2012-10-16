@@ -3,7 +3,10 @@ require 'spec_helper'
 describe Topic do
   it { should validate_presence_of(:subject) }
   it { should validate_presence_of(:status) }
+  it { should validate_presence_of(:recommendation) }
   it { should ensure_inclusion_of(:status).in_array(["imightbuy", "ihave"]) }
+  it { should ensure_inclusion_of(:recommendation).
+    in_array(["undecided", "recommended", "not-recommended"]) }
 
   let(:current_user) { FactoryGirl.create(:user) }
 
@@ -26,9 +29,25 @@ describe Topic do
       topic = Topic.build_from_form_data(@topic_data, current_user,"hello")
       topic.should_not be_nil
       topic.save.should be_true
+      topic.timeline_events.should_not be_empty
+      current_user.timeline_events.should_not be_empty
     end
 
-    it "shoudlc create topic with tags" do
+    it "should create topic with partially invalid image URLs" do
+      partially_invalid_urls = [
+        "http://www.motorola.com/staticfiles/Consumers/Products/Mobile%20Phones/DROID-RAZR-by-Motorola/_Promotions/_Images/_Staticfiles/feature_brick_availability_A.png",
+        "http://s7d4.scene7.com/is/image/roomandboard/?src=ir{roomandboardrender/sanna_chr_20?obj=main&sharp=1&src=rpt_cambridgegrey&illum=0&obj=material&src=drape_material_cc}&$truvu0$&wid=307",
+        "http://rubyliving.com/catalog/images/products/marison-diningtable[1].jpg"
+      ]
+
+      partially_invalid_urls.each do |image_url|
+        topic = Topic.build_from_form_data(@topic_data.update('image_url' => image_url), current_user,"hello")
+        topic.should_not be_nil
+        topic.save.should be_true
+      end
+    end
+
+    it "should create topic with tags" do
       topic = Topic.build_from_form_data(@topic_data.update('tags' => ["emacs","vim"]),current_user, 'hello')
 
       topic.should_not be_nil
@@ -148,6 +167,32 @@ describe Topic do
       topics = Topic.except_user_topics(1)
       topics.should include(@topic)
       topics.should include(@another_topic)
+    end
+  end
+
+  describe "recommendation states on topics" do
+    before (:each) do
+      @topic = FactoryGirl.create(:topic)
+    end
+
+    it "should have undecided as default state" do
+      @topic.recommendation.should == "undecided"
+      @topic.recommended?.should be_false
+      @topic.not_recommended?.should be_false
+    end
+
+    it "should be able to recommend the topic" do
+      @topic.update_attributes(recommendation: "recommended").should be_true
+
+      @topic.recommended?.should be_true
+      @topic.not_recommended?.should be_false
+    end
+
+    it "should be able to not recommend the topic" do
+      @topic.update_attributes(recommendation: "not-recommended").should be_true
+
+      @topic.recommended?.should be_false
+      @topic.not_recommended?.should be_true
     end
   end
 end

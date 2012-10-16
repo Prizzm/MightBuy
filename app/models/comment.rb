@@ -6,6 +6,9 @@ class Comment < ActiveRecord::Base
 
   validates  :topic, :description, presence: true
 
+  has_many :timeline_events, as: :subject, dependent: :destroy
+
+  fires :new_comment, on: :create, actor: :user, secondary_subject: :topic
 
   def self.update_user(comment_id, user)
     if comment_id && comment = Comment.find_by_id(comment_id)
@@ -13,5 +16,10 @@ class Comment < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def activity_line(timeline_event)
+    actor,topic = timeline_event.actor, timeline_event.secondary_subject
+    "#{actor.name} commented on <a href='/users/#{topic.user.id}'>#{topic.user.name}'s</a> <a href='/topics/#{topic.to_param}'>#{topic.subject.first(45)}..</a> on mightbuy".html_safe
   end
 end

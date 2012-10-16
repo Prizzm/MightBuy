@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   # Includes
   include Points::Has
   include InheritUpload
+  extend FriendlyId
+
+  friendly_id :name, use: :slugged
 
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable, :omniauthable
@@ -33,7 +36,7 @@ class User < ActiveRecord::Base
   has_many :antiForgeTokens
 
   has_many :deals, :class_name => "Deals::Deal"
-  
+
   # Validations
   validates :name, :presence => true
 
@@ -41,11 +44,16 @@ class User < ActiveRecord::Base
   scope :people, where(:category => "person")
   scope :brands, where(:category => "brand")
 
+  has_many :timeline_events, :as => :actor
 
   # Methods
 
   def hasTwitter?
     twitter_uid && twitter_oauth_token && twitter_oauth_secret
+  end
+
+  def haves
+    topics.have
   end
 
   def hasFacebook?

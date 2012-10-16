@@ -1,9 +1,17 @@
 .show-topic
-  .row.ptop30
+  .row.ptop60
     .span6.topic-poster-prompt
-      #{@topic.poster_name} Mightbuy:
-    .span3.may-buy.pull-right
-      = link_to("I may buy as well",copy_topic_path(@topic), class: "btn-red")
+      #{@topic.poster_name} #{@topic.human_status}:
+
+    - if current_user
+      .span3.may-buy.pull-right
+        .btn-group
+          = link_to "#", class: "btn btn-large btn-danger dropdown-toggle", "data-toggle" => "dropdown" do
+            Add to list
+            %span.caret
+          %ul.dropdown-menu
+            %li= link_to "I may buy", copy_topic_path(@topic.shortcode)
+            %li= link_to "I have it", copy_have_path(id: @topic.shortcode)
 
   .row.mtop50
     = render :partial => "topic_detail"

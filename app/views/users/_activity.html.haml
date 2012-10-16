@@ -1,0 +1,11 @@
+.activity-feed
+  - if @timeline_events.blank?
+    There are no activities to display.
+  - else
+    %ul
+      - @timeline_events.each do |timeline_event|
+        - if timeline_event.subject && timeline_event.actor
+          %li
+            = timeline_event.activity_line
+          
+

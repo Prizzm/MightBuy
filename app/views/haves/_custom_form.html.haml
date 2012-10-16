@@ -1,0 +1,12 @@
+.custom-i-have-form
+  = simple_form_for @have do |form|
+    .custom-have-form-fields
+      = form.input :subject, label: "Name of item you have"
+      = form.input :url
+    .ihave-image-upload
+      = image_tag("upload_photo.gif", id: "preview-photo")
+      = form.input :image, :as => :file, :label => false
+    .clear
+
+
+
