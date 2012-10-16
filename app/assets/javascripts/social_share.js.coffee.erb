@@ -4,7 +4,6 @@ class @Mightbuy.SocialShare
       @bindTweetLinks()
 
     if $(".like-topic").length > 0
-      @initFB()
       @bindLikeLinks()
 
   bindTweetLinks: ->
@@ -12,12 +11,6 @@ class @Mightbuy.SocialShare
       intentUrl = $(e.currentTarget).attr("data-tweet-intent")
       window.open(intentUrl, 'MightBuy', 'scrollbars=yes,width=600,height=250')
       false
-
-  initFB: ->
-    FB.init
-      appId: '<%= MB.config.facebook_appid %>'
-      status: true
-      cookie: true
 
   bindLikeLinks: ->
       $(".like-topic").click (e) =>
@@ -30,6 +23,12 @@ class @Mightbuy.SocialShare
           caption: el.attr("data-caption")
           description: el.attr("data-description")
         false
+
+Mightbuy.initFB = ->
+  FB.init
+    appId: '<%= MB.config.facebook_appid %>'
+    status: true
+    cookie: true
 
 jQuery ->
   Mightbuy.socialShare = new Mightbuy.SocialShare()
