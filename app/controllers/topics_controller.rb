@@ -58,14 +58,18 @@ class TopicsController < ApplicationController
   end
 
   def copy
-    @old_topic = Topic.find_by_shortcode(params[:id])
-    @topic = @old_topic.copy(current_user)
-    if @topic.save
-      flash[:notice] = "Item copied to your list"
-      redirect_to topic_path(@topic)
+    if current_user
+      @old_topic = Topic.find_by_shortcode(params[:id])
+      @topic = @old_topic.copy(current_user)
+      if @topic.save
+        flash[:notice] = "Item copied to your list"
+        redirect_to topic_path(@topic)
+      else
+        flash[:error] = "Failed to copy item"
+        redirect_to topic_path(@old_topic)
+      end
     else
-      flash[:error] = "Failed to copy item"
-      redirect_to topic_path(@old_topic)
+      redirect_to "/users/login", notice: "You must login to copy this"
     end
   end
 
