@@ -9,6 +9,8 @@ class HavesController < ApplicationController
 
   def show
     @have = current_user.haves.find_by_shortcode(params[:id])
+    @comments = @have.comments
+    @comment = Comment.new()
   end
 
   def copy
