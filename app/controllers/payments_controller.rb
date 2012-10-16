@@ -80,7 +80,7 @@ class PaymentsController < ApplicationController
       
         order.save()
       
-        redirect_to("http://localhost:3000/orders/#{params[:topic_shortcode]}/#{order.invoice_id}/confirmation")
+        redirect_to("/orders/#{params[:topic_shortcode]}/#{order.invoice_id}/confirmation")
       end
     rescue
       render :text => "A error has occured.  This is a very important issue to us, please contact us at contact@mightbuy.it"
