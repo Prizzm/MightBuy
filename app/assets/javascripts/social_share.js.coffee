@@ -10,7 +10,7 @@ class @Mightbuy.SocialShare
   bindTweetLinks: ->
     $(".tweet-topic").click (e) =>
       intentUrl = $(e.currentTarget).attr("data-tweet-intent")
-      window.open(intentUrl, 'MightBuy', 'width=730,height=252')
+      window.open(intentUrl, 'MightBuy', 'scrollbars=yes,width=600,height=250')
       false
 
   initFB: ->
