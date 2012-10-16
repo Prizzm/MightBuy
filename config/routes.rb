@@ -44,7 +44,7 @@ NewPrizzmCom::Application.routes.draw do
 
   # Payments
   match '/topics/:topic_shortcode/payments/process' => 'payments#processP'
-  
+  match '/orders/:order_id/:invoice_id/confirmation' => 'payments#confirmation'
   # Passbook
   match '/passbook/passes/generate' => "passbook#generate"
   match '/passbook/passes/:aftoken' => "passbook#pass"

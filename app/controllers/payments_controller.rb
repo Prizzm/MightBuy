@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_filter :find_product
+  before_filter :find_product, :except => ["confirmation"]
 
   def processP
     begin
@@ -80,11 +80,15 @@ class PaymentsController < ApplicationController
       
         order.save()
       
-        render :text => order
+        redirect_to("http://localhost:3000/orders/#{params[:topic_shortcode]}/#{order.invoice_id}/confirmation")
       end
     rescue
       render :text => "A error has occured.  This is a very important issue to us, please contact us at contact@mightbuy.it"
     end
+  end
+  
+  def confirmation
+    @order = Order.find_by_invoice_id(params[:invoice_id])
   end
   
   private
