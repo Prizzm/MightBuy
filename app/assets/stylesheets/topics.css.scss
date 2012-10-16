@@ -853,6 +853,10 @@ span.no-votes {
   background: image-url('mask-256.png') 0 0 no-repeat;
 }
 
+.table tbody tr:hover td, .table tbody tr:hover th{
+  background:none
+}
+
 .img-container{
   min-height:140px;
 }
