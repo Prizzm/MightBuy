@@ -281,4 +281,13 @@ module ApplicationHelper
      \"&topic[url]=\"+encodeURIComponent(window.location.href)); })() })();"
   end
 
+  def twitter_url(topic)
+    query_params = {
+      url:  topic_url(topic),
+      text: topic.ihave? ? "I Have Bought" : "I MightBuy",
+      via: 'mightbuy'
+    }.to_query
+
+    "https://twitter.com/intent/tweet?#{query_params}"
+  end
 end

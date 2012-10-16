@@ -21,6 +21,7 @@
 //= require topic_tagging
 //= require profile
 //= require email_share
+//= require social_share
 //= require search
 //= require have
 //= require templates/public-search-result

@@ -7,12 +7,8 @@
         .email-icon
 
     %li
-      - if current_user.hasTwitter?
-        = link_to social_ask_twitter_path(topic.shortcode), remote: true do
-          .twitter-icon
-      - else
-        = link_to user_omniauth_authorize_path(:twitter) do
-          .twitter-icon
+      = link_to "javascript:void(0);", "data-tweet-intent" => twitter_url(topic), class: "tweet-topic" do
+        .twitter-icon
 
     %li
       - if current_user.hasFacebook?
