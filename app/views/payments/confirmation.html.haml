@@ -1,0 +1,18 @@
+%div#details
+	%center
+		%h1 Your Order Was Successful
+		%br
+		%br
+		%h3
+			= @order.invoice_id
+		%br
+		%b
+			= @order.card.name
+		%br
+		= @order.card.address_line1
+		%br
+		= "#{@order.card.address_city}, #{@order.card.address_state}, #{@order.card.address_zip}"
+		%br
+		%br
+		%span
+			If you have any comments, complaints, or questions, email us at contact@mightbuy.it
