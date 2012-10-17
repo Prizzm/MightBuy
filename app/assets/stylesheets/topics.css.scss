@@ -53,10 +53,11 @@
     margin:0;
   }
 }
+.show-topic .topic-links .dropdown-menu {
+  margin-top: 4px;
+}
 
-.dropdown-menu{
-  margin-top:5px;
-  
+.dropdown-menu{  
   li:first-child a{
     border-radius: 2px 2px 0 0;
   }
