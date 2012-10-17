@@ -4,15 +4,15 @@
     = yield :head
     %title MightBuy
     %meta{'name'=>"apple-itunes-app", 'content'=>"app-id=548123429"}
-    %script{id: "twitter-wjs", src: "https://platform.twitter.com/widgets.js"}
-    %script{id: "facebook-js", src: "https://connect.facebook.net/en_US/all.js"}
     = stylesheet_link_tag "website", :media => "all"
     = javascript_include_tag "website"
+    %script{id: "twitter-wjs", src: "https://platform.twitter.com/widgets.js"}
     = csrf_meta_tags
 
   %body
     #fb-root
     %script window.fbAsyncInit = Mightbuy.initFB
+    %script{id: "facebook-js", src: "https://connect.facebook.net/en_US/all.js"}
 
     = render  partial: "shares/flash_notice"
 
