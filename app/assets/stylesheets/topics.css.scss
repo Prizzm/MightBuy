@@ -25,9 +25,6 @@
   }
 }
 
-
-
-
 .nav-pills .dropdown-toggle.btn-red {
   min-width:30px;
 }
@@ -269,6 +266,10 @@
     margin-bottom: 10px;
   }
 
+  label.mbot5 {
+    margin-bottom: 5px;
+  }
+
   input[type='text'],input[type='url'] {
     width: 300px;
     height: 25px;
@@ -455,7 +456,7 @@ ol.topics {
 #gsearch-results {
   margin: 77px 30px 5px 0px;
   padding: 0px 20px 5px 0px;
-  height:455px;
+  height: 356px;
   overflow-y:auto;
 }
 
@@ -553,6 +554,10 @@ ol.topics {
   }
   textarea{
     resize:none;
+    position: relative;
+    width: 550px;
+    line-height:140%;
+    font-size:16px;
   }
 }
 
@@ -672,7 +677,7 @@ ol.topics {
 .btn-red-large, .btn-red-l{
   position:absolute;
   right:40px;
-  bottom:85px;
+  bottom:90px;
   
   .btn {
     @include brand-btn;
@@ -682,6 +687,8 @@ ol.topics {
   }
   
 }
+
+.btn-red-large.w115 .btn{ width:115px}
 
 .btn-red-large, .btn-red-l, .remove_fields, #share-list a{ 
   
@@ -730,13 +737,15 @@ ol.topics {
     *height: 100%;
 }
 #topic_tags {
-  margin: 0px 0px 20px 0px;
+  margin: 0 0 0 -3px;
   border: none;
+  padding:3px;
   li {
     font-family: "Museo500";
   }
   input {
     font-family: "Museo500";
+    background: white;
   }
 }
 
@@ -864,18 +873,19 @@ span.no-votes {
     }
   }
 }
-
-
 #choose-image {
-  position: absolute;
-  right: 210px;
-  bottom: 85px;
-
-  button {
-    padding: 11px;
-  }
+  top: 25px;
+  position: relative;
+  float: right;
+  right: 40px;
 }
-
+/*
+#choose-image {
+  top: -35px;
+  width:120px;
+  left:140px;
+  position: relative;
+}*/
 
 .topic-poster-prompt {
   font-size: 2.1em;

@@ -24,3 +24,4 @@
 //= require search
 //= require have
 //= require templates/public-search-result
+//= require jquery.autogrow-textarea.js
