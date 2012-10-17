@@ -5,7 +5,8 @@ class TopicsController < ApplicationController
   # Authenticate
   before_filter :authenticate_user!, except: [:index, :show]
 
-  before_filter :find_topic!, only: [:show, :update, :edit, :destroy]
+  before_filter :find_topic!, only: [:show]
+  before_filter :find_current_user_topic!, only: [:bought, :update, :edit, :destroy]
 
   respond_to :html, :js
 
@@ -40,7 +41,7 @@ class TopicsController < ApplicationController
     @vote = @topic.votes.find_by_user_id(current_user.id) if current_user
     @comments = @topic.comments.joins(:user).where(parent_id: nil).includes(:user)
     @comment = @topic.comments.build
-    
+
     if current_user && @topic.owner?(current_user)
       @selected_tab = @topic.ihave? ? 'ihave' : 'mightbuy'
     else

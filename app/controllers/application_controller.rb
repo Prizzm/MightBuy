@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   # Filters
-
   before_filter :update_last_seen
   before_filter :set_selected_tab
 
@@ -65,7 +64,7 @@ class ApplicationController < ActionController::Base
   end
 
   def update_last_seen
-    if current_user
+    if user_signed_in?
       current_user.update_attribute("last_seen", DateTime.now)
     end
   end
