@@ -282,7 +282,7 @@ module ApplicationHelper
   end
 
   def topic_image_url_helper(topic)
-    request.base_url.to_s + topic.image.try(:url).to_s
+    topic.image.try(:url).to_s
   end
 
   def twitter_url(topic)
