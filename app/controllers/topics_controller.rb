@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   index_with_xhr
 
   # Authenticate
-  authenticate! :except => [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show]
 
   before_filter :find_topic!, only: [:show, :update, :edit, :destroy]
 
@@ -56,18 +56,14 @@ class TopicsController < ApplicationController
   end
 
   def copy
-    if current_user
-      @old_topic = Topic.find_by_shortcode(params[:id])
-      @topic = @old_topic.copy(current_user)
-      if @topic.save
-        flash[:notice] = "Item copied to your list"
-        redirect_to topic_path(@topic)
-      else
-        flash[:error] = "Failed to copy item"
-        redirect_to topic_path(@old_topic)
-      end
+    @old_topic = Topic.find_by_shortcode(params[:id])
+    @topic = @old_topic.copy(current_user)
+    if @topic.save
+      flash[:notice] = "Item copied to your list"
+      redirect_to topic_path(@topic)
     else
-      redirect_to "/users/login", notice: "You must login to copy this"
+      flash[:error] = "Failed to copy item"
+      redirect_to topic_path(@old_topic)
     end
   end
 
