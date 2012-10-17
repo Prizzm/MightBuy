@@ -1,6 +1,6 @@
 class HavesController < ApplicationController
   layout :choose_layout
-  before_filter :authenticate_user!, only: [:copy, :recommend, :edit, :create, :destroy]
+  before_filter :authenticate_user!
   before_filter :find_current_user_topic!, only: [:edit, :recommend, :destroy]
 
   def index
