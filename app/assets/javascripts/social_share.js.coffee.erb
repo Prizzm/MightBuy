@@ -13,22 +13,18 @@ class @Mightbuy.SocialShare
       false
 
   bindLikeLinks: ->
-      $(".like-topic").click (e) =>
-        el = $(e.currentTarget)
-        FB.ui
-          method: "feed"
-          name: el.attr("data-name")
-          link: el.attr("data-link")
-          picture: el.attr("data-picture")
-          caption: el.attr("data-caption")
-          description: el.attr("data-description")
-        false
+    $(".like-topic").click (e) =>
+      el = $(e.currentTarget)
+      FB.ui
+        method: "feed"
+        name: el.attr("data-name")
+        link: el.attr("data-link")
+        picture: el.attr("data-picture")
+        caption: el.attr("data-caption")
+        description: el.attr("data-description")
 
-Mightbuy.initFB = ->
-  FB.init
-    appId: '<%= MB.config.facebook_appid %>'
-    status: true
-    cookie: true
+      e.preventDefault()
+      false
 
 jQuery ->
   Mightbuy.socialShare = new Mightbuy.SocialShare()
