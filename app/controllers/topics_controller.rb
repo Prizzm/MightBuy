@@ -6,8 +6,6 @@ class TopicsController < ApplicationController
   authenticate! :except => [:index, :show]
 
   before_filter :find_topic!, only: [:show, :update, :edit, :destroy]
-  before_filter :authenticate_user!, :find_current_user_topic!, only: :bought
-  before_filter :authenticate_user!, only: :haves
 
   respond_to :html, :js
 
