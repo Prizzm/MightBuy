@@ -3,11 +3,10 @@ class TopicsController < ApplicationController
   index_with_xhr
 
   # Authenticate
-  authenticate! :except => [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show]
 
-  before_filter :find_topic!, only: [:show, :update, :edit, :destroy]
-  before_filter :authenticate_user!, :find_current_user_topic!, only: :bought
-  before_filter :authenticate_user!, only: :haves
+  before_filter :find_topic!, only: [:show]
+  before_filter :find_current_user_topic!, only: [:bought, :update, :edit, :destroy]
 
   respond_to :html, :js
 
@@ -42,7 +41,7 @@ class TopicsController < ApplicationController
     @vote = @topic.votes.find_by_user_id(current_user.id) if current_user
     @comments = @topic.comments.joins(:user).where(parent_id: nil).includes(:user)
     @comment = @topic.comments.build
-    
+
     if current_user && @topic.owner?(current_user)
       @selected_tab = @topic.ihave? ? 'ihave' : 'mightbuy'
     else
@@ -58,18 +57,14 @@ class TopicsController < ApplicationController
   end
 
   def copy
-    if current_user
-      @old_topic = Topic.find_by_shortcode(params[:id])
-      @topic = @old_topic.copy(current_user)
-      if @topic.save
-        flash[:notice] = "Item copied to your list"
-        redirect_to topic_path(@topic)
-      else
-        flash[:error] = "Failed to copy item"
-        redirect_to topic_path(@old_topic)
-      end
+    @old_topic = Topic.find_by_shortcode(params[:id])
+    @topic = @old_topic.copy(current_user)
+    if @topic.save
+      flash[:notice] = "Item copied to your list"
+      redirect_to topic_path(@topic)
     else
-      redirect_to "/users/login", notice: "You must login to copy this"
+      flash[:error] = "Failed to copy item"
+      redirect_to topic_path(@old_topic)
     end
   end
 

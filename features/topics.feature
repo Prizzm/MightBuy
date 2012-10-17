@@ -48,7 +48,7 @@ Feature: As a user
     And I have bunch of topics
     And system has topics added by other users as well
     When I visit one of my topics
-    Then "I MightBuy" tab should be highlighted
+    Then "I might buy" tab should be highlighted
     And I should see "You added"
     When I visit one of other topics
     Then "Browse" tab should be highlighted

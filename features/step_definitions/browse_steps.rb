@@ -5,7 +5,7 @@ end
 
 Then /^I should see "(.*?)" feeds$/ do |name|
   page.should have_content("#{name}'s Activity feed")
-  page.should have_content("#{name} Might Buy")
+  page.should have_content("#{name}'s Might Buy")
 end
 
 
