@@ -1,7 +1,7 @@
 %div#details
   .row
     .span5
-      .topic-form-wrapper
+      .topic-form-wrapper.rich-texteditor
         = simple_form_for @topic do |form|
           = render "/topics/forms/default", :form => form
           .buttons.btn-red-big
