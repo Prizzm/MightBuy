@@ -28,6 +28,14 @@
 .nav-pills .dropdown-toggle.btn-red {
   min-width:30px;
 }
+.nav-pills .dropdown-toggle.btn-red:active {
+  background:#AA373C;
+}
+.nav-tabs .open .dropdown-toggle, .nav-pills .open .dropdown-toggle, .nav > li.dropdown.open.active > a:hover {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #CD383E #BA2F34 #A9262C #BA2F34;
+}
 
 .nav-pills .dropdown-toggle.btn-red .caret{
   border-top: 4px solid #fff;
@@ -889,11 +897,7 @@ span.no-votes {
 
 .topic-poster-prompt {
   font-size: 2.1em;
-  margin-left: 67px;
   font-weight: bold;
-}
-.may-buy {
-  margin-right: -32px;
 }
 
 .boughtit-button {
@@ -1002,4 +1006,9 @@ span.no-votes {
 
 .color-brown{
   color: #4E3227
+}
+
+.mtop7-mbot0{
+  margin-top:7px;
+  margin-bottom:0;
 }
