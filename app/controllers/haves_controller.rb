@@ -5,6 +5,7 @@ class HavesController < ApplicationController
 
   def index
     @haves = current_user.topics.have
+    @might_buys = current_user.topics.mightbuy.order("created_at desc").limit(4)
   end
 
   def show

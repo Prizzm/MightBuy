@@ -1,0 +1,28 @@
+%h3.or
+  %span or
+%ol.list.topics
+  %h3.mleft40 Move to your "I have list"
+  - @might_buys.each do |topic|
+    %li
+      .row
+        .span1.img-width
+          %a.p-rel.mask-link{:href => topic_path(topic)}
+            %img{:alt => "icon", :height => "64", :src => topic.icon_image(), :width => "64"}
+              %span.mask-64
+        .span6
+          .topic-title
+            = link_to(topic.subject.capitalize, topic_path(topic))
+          .mtop5
+            = link_to(topic.short_url, topic.url, :target=>"_blank")
+        .span2
+          .price.mtop5
+            = number_to_currency(topic.price)
+        .span8.dotted-border.mtop10.ptop10
+        .span6
+          %a.btn.btn-success.btn-mini.icn-plus{:href => bought_topic_path(topic)}
+            %i
+            %span I Bought it
+            %span.clear
+        .span2.pagination-right.raquo
+          %a{:href => topic_path(topic)} more
+          
