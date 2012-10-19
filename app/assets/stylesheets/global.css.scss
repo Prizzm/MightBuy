@@ -96,11 +96,6 @@
 
   li {
     float: left;
-    margin: 0px 10px;
-
-    &:first-child {
-      margin-left: 0px;
-    }
   }
 }
 
@@ -494,4 +489,70 @@ ol.topics div.price.mtop5{
   position:absolute;
   top:60px;
   right:40px;
+}
+
+.vote-yes,
+.vote-no,
+.topic-vote-yes-icon,
+.topic-vote-no-icon,
+.topic-recommend-yes-icon,
+.topic-recommend-no-icon,
+#topic-recommended,
+#topic-not-recommended {
+  background: image-url('sprite-yes-no.png') 0 0 no-repeat;
+}
+.vote-icons {
+  .vote-yes, .vote-no{
+    float: left;
+    width: 62px;
+    height:21px;
+    cursor: pointer;
+  }
+  .vote-yes {
+    width: 63px;
+    background-position:-1px -1px;
+  }
+  .vote-yes.checked{
+    background-position:-1px -25px;
+  }
+  
+  .vote-no{
+    background-position:-64px -1px;
+  }
+  
+  .vote-no.checked{
+    background-position:-64px -49px;
+  }
+}
+
+.topic-vote-yes-icon,
+.topic-vote-no-icon,
+.topic-recommend-yes-icon,
+.topic-recommend-no-icon,
+#topic-recommended,
+#topic-not-recommended,
+#topic-voted-yes,
+#topic-voted-no {
+  width: 88px;
+  height: 29px;
+}
+
+.topic-vote-yes-icon, .topic-recommend-yes-icon, #topic-recommended, #topic-voted-yes {
+  width: 89px;
+}
+
+.topic-vote-yes-icon, .topic-recommend-yes-icon {
+  background-position:-1px -49px;
+}
+
+.topic-vote-no-icon, .topic-recommend-no-icon {
+  background-position:-1px -113px;
+}
+
+#topic-recommended, #topic-voted-yes {
+  background-position:-1px -81px;
+}
+
+#topic-not-recommended, #topic-voted-no {
+  background-position:-1px -145px;
 }

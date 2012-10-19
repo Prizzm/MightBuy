@@ -30,20 +30,17 @@
         %br
         .span7.dotted-border.ptop10.pbot10
           .row
-            .span2
+            .span2.ptop3
               .pull-left.mright10.color-brown Share
               %a{:href=>"#", :class=>"email-icon-small pull-left"}
               %a{:href=>"#", :class=>"twitter-icon-small pull-left"}
               %a{:href=>"#", :class=>"facebook-icon-small pull-left"}
               .clear
-            .span4
-              .pull-left.mright10.color-brown Recommend this item?
-              %a{:href=>"#", :class=>"btn btn-success btn-mini pull-left mright10"}
-                %i.icon-thumbs-up
-                Yes
-              %a{:href=>"#", :class=>"btn btn-danger btn-mini pull-left"}
-                %i.icon-thumbs-down
-                No
+            .span4.form-inline
+              .pull-left.mright10.ptop3.color-brown Recommend this item?
+              .vote-icons.pull-left
+                .vote-yes
+                .vote-no
               .clear
             .span1.pagination-right.raquo
               = link_to("more   ", have_path(have)) 

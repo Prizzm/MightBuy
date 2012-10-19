@@ -38,12 +38,9 @@
               .clear
             .span3
               .color-brown Vote - should girish buy it?
-              %a{:href=>"#", :class=>"btn btn-success btn-mini mright10"}
-                %i.icon-thumbs-up
-                Yes
-              %a{:href=>"#", :class=>"btn btn-danger btn-mini"}
-                %i.icon-thumbs-down
-                No
+              .vote-icons.pull-left
+                .vote-yes
+                .vote-no
               .clear
             .span1.pagination-right.raquo
               = link_to("more   ", topic_path(topic))
