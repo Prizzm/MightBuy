@@ -1,10 +1,19 @@
 class @Mightbuy.SocialShare
   constructor: ->
+    if $("#facebook-signin").length > 0
+      @bindFacebookSignin()
+
     if $(".tweet-topic").length > 0
       @bindTweetLinks()
 
     if $(".like-topic").length > 0
       @bindLikeLinks()
+
+  bindFacebookSignin: ->
+    $('#facebook-signin').click (e) ->
+      e.preventDefault()
+      FB.login (response) ->
+        window.location = '/users/auth/facebook/callback' if response.authResponse
 
   bindTweetLinks: ->
     $(".tweet-topic").click (e) =>
