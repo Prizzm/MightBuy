@@ -209,5 +209,5 @@ Devise.setup do |config|
   # end
   config.omniauth(:twitter,  MB.config.twitter_appid,  MB.config.twitter_token)
   config.omniauth(:facebook, MB.config.facebook_appid, MB.config.facebook_token,
-                  {scope: "publish_stream, email", image_size: 'normal'})
+                  {scope: "email", image_size: 'normal'})
 end

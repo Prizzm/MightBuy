@@ -13,7 +13,9 @@ class @Mightbuy.SocialShare
     $('#facebook-signin').click (e) ->
       e.preventDefault()
       FB.login (response) ->
-        window.location = '/users/auth/facebook/callback' if response.authResponse
+        if response.authResponse
+          window.location = '/users/auth/facebook/callback'
+      , scope: 'email'
 
   bindTweetLinks: ->
     $(".tweet-topic").click (e) =>
