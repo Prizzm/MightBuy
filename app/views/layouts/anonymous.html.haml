@@ -5,9 +5,24 @@
     %meta{'name'=>"apple-itunes-app", 'content'=>"app-id=548123429"}
     = stylesheet_link_tag "website", :media => "all"
     = javascript_include_tag "website"
+    %script{id: "twitter-wjs", src: "https://platform.twitter.com/widgets.js"}
     = csrf_meta_tags
 
   %body
+    #fb-root
+    %script
+      window.fbAsyncInit = function() {
+      FB.init({ appId: '#{MB.config.facebook_appid}', status: true, cookie: true });
+      };
+    %script
+      (function(d){
+      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement('script'); js.id = id; js.async = true;
+      js.src = "//connect.facebook.net/en_US/all.js";
+      ref.parentNode.insertBefore(js, ref);
+      }(document));
+
     = render  partial: "shares/flash_notice"
 
     .container

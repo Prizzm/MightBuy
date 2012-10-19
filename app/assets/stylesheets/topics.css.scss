@@ -195,14 +195,14 @@
   &:hover { background-position: -832px -15px; }
 }
 
-#topic-recommended {
+#topic-voted-yes, #topic-recommended {
   width:  92px;
   height: 40px;
   margin-right: 0px;
   background: image-url("yes-marked.jpg") no-repeat
 }
 
-#topic-not-recommended {
+#topic-voted-no, #topic-not-recommended {
   width:  92px;
   height: 40px;
   background: image-url("no-marked.jpg") no-repeat

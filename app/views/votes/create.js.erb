@@ -7,5 +7,8 @@
     $("#topic-percentage-row").html("<%= escape_javascript(render partial: 'topics/vote_percentage', locals: {topic: @topic}) -%>");
   <% end -%>
 <% else -%>
+  $(document).bind('reveal.facebox', function() {
+    Mightbuy.socialShare.bindFacebookSignin( $(".facebook-icon") );
+  });
   $.facebox("<%= escape_javascript(render partial: 'shares/login_lightbox', locals: {user: User.new}) -%>");
 <% end -%>

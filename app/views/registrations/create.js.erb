@@ -1,5 +1,8 @@
 <%- if resource.errors.empty? -%>
   window.location = "<%= session_redirect_path -%>";
 <% else -%>
+  $(document).bind('reveal.facebox', function() {
+    Mightbuy.socialShare.bindFacebookSignin( $(".facebook-icon") );
+  });
   $.facebox("<%= escape_javascript(render partial: 'shares/login_lightbox', locals: {user: resource}) -%>");
 <% end -%>
