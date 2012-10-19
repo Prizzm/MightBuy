@@ -352,3 +352,146 @@ ol.topics div.price.mtop5{
     margin-right:2px;
   }
 }
+
+
+@mixin brand-btn {
+  color: #fff;
+  @include gradient(#e26b71, #aa373c);
+  @include text-shadow(none);
+  border-style: solid;
+  border-width: 1px; 
+  border-color: #cd383e #ba2f34 #a9262c #ba2f34;
+}
+
+.btn-red, .remove_fields, .add_fields {
+  @include brand-btn;
+  text-decoration:none;
+  font:15px/100% 'Museo500', arial;
+  @include border-radius(5px);
+  padding: 8px 10px;
+  min-width:60px;
+}
+
+.btn-red:hover, .btn-red:active, .btn-red.active, .btn-red.disabled, .btn-red[disabled],
+.remove_fields:hover, .remove_fields:active, .remove_fields.active, .remove_fields.disabled, .remove_fields[disabled],
+.add_fields:hover, .add_fields:active, .add_fields.active, .add_fields.disabled,.add_fields[disabled] {
+  text-decoration:none;
+  @include gradient(#bf3c42, #841c21);
+  @include box-shadow( inset 0 1px 0 rgba(255,255,255,0.25));
+  border:1px solid #b73d44;
+  color:#fff;
+}
+
+.btn-red:active,
+.remove_fields:active,  
+.add_fields:active {
+  background: #841c21;
+}
+
+.btn-green {
+  color: #4d6126;
+  border-style: solid;
+  border-width: 1px; 
+  @include gradient(#c3d4a8, #90af6b);
+  border-color: #819a59 #829857 #839959 #829857;
+  text-decoration:none;
+  font:15px/100% 'Museo500', arial;
+  @include border-radius(5px);
+  padding: 8px 10px;
+  min-width:60px;
+}
+
+.btn-green:hover, .btn-green:active, .btn-green.active, .btn-green.disabled, .btn-green[disabled]{
+  text-decoration:none;
+  @include gradient(#acbd86, #728d58);
+  border-color: #6e883f #6f8940 #6e883e #6f8940;
+  @include box-shadow( inset 0 1px 0 rgba(255,255,255,0.25));
+}
+
+.btn-green:active{
+  background: #819a59;
+}
+
+.btn-red.small, .btn-red.btn-small, .btn-green.btn-small, .btn-small {
+  padding: 5px 10px;
+  font-size: 13px;
+  line-height:100%;
+  @include text-shadow(0 1px 0 0 rgba(0,0,0,0.5));
+  
+  i.mtop1{
+    margin-top:1px
+  }
+  i.mtop0{
+    margin-top:0
+  }
+}
+
+.btn-green.btn-small, .btn-success.btn-small {
+  padding: 5px 10px 6px 10px;
+}
+
+
+.btn-red-large, .btn-red-l{
+  position:absolute;
+  right:40px;
+  bottom:90px;
+}
+.btn-red-large, .btn-red-l, .btn-red-big{
+  
+  .btn {
+    @include brand-btn;
+    font:300 23px/1 'Museo500', arial;
+    text-transform: uppercase;
+    min-width: 120px;
+  }
+  
+}
+
+.btn-red-large.w115 .btn{ width:115px}
+
+.btn-red-large, .btn-red-l, .btn-red-big, .remove_fields, #share-list a{ 
+  
+  .btn {
+    @include brand-btn;
+    font:normal 16px/1 'Museo500', arial;
+    padding: 8px 11px 9px 11px;
+    display: block;
+    min-width: 70px;
+  }
+  
+  .btn:hover,
+  .btn:active,
+  .btn.active,
+  .btn.disabled,
+  .btn[disabled] {
+    @include gradient(#bf3c42, #841c21);
+    @include box-shadow( inset 0 1px 0 rgba(255,255,255,0.25));
+    border:1px solid #b73d44;
+    color:#fff;
+  }
+  
+  .btn:active,
+  .btn.active {
+    background: #841c21;
+  }  
+}
+.btn-red-l{
+  position:static;
+}
+
+@import 'topic_search/image_selector';
+
+.public-search-result-scraper-info .image-selector .image-holder .cancel {
+  margin-right: 0
+}
+  
+.public-search-result-scraper-info .image-selector{
+  position:static
+}
+  
+.public-search-result-scraper-info .image-selector .reset-btn {
+  margin: 0 0 20px 0;
+  position:absolute;
+  top:60px;
+  right:40px;
+}

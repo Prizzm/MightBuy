@@ -563,10 +563,15 @@ ol.topics {
   textarea{
     resize:none;
     position: relative;
-    width: 700px;
+    width: 550px;
     line-height:140%;
     font-size:16px;
   }
+}
+
+
+.rich-texteditor #topic_body{
+  width: 700px;
 }
 
 @mixin brand-btn {
@@ -686,6 +691,8 @@ ol.topics {
   position:absolute;
   right:40px;
   bottom:90px;
+}
+.btn-red-large, .btn-red-l, .btn-red-big{
   
   .btn {
     @include brand-btn;
@@ -698,7 +705,7 @@ ol.topics {
 
 .btn-red-large.w115 .btn{ width:115px}
 
-.btn-red-large, .btn-red-l, .remove_fields, #share-list a{ 
+.btn-red-large, .btn-red-l, .btn-red-big, .remove_fields, #share-list a{ 
   
   .btn {
     @include brand-btn;
@@ -758,7 +765,7 @@ ol.topics {
 }
 
 #topic_tags_show {
-  margin: 0px 0px 20px 0px;
+  margin: 0px 0px 20px -3px;
   border: none;
   li {
     font-family: "Museo500";
