@@ -2,15 +2,20 @@ class HavesController < ApplicationController
   layout :choose_layout
   before_filter :authenticate_user!, only: [:copy, :recommend, :edit, :create, :destroy]
   before_filter :find_current_user_topic!, only: [:edit, :recommend, :destroy]
+  before_filter :find_topic_by_id!, :redirect_to_mightbuy!, only: :show
 
   def index
     @haves = current_user.topics.have
   end
 
   def show
-    @have = current_user.haves.find_by_shortcode(params[:id])
-    @comments = @have.comments
-    @comment = Comment.new()
+    @have = @topic
+    @comments = @have.comments.joins(:user).where(parent_id: nil).includes(:user)
+    @comment = @have.comments.build
+
+    unless current_user && @have.owner?(current_user)
+      @selected_tab = "everybody"
+    end
   end
 
   def copy
@@ -59,9 +64,9 @@ class HavesController < ApplicationController
     @selected_tab = 'ihave'
   end
 
-  def find_current_user_topic!
-    unless @topic = current_user.topics.find_by_shortcode(params[:id])
-      redirect_to root_path
+  def redirect_to_mightbuy!
+    unless @topic.ihave?
+      redirect_to have_path(@topic)
     end
   end
 end
