@@ -172,3 +172,8 @@ Then /^I should able to destroy the topic$/ do
   page.all(".topic-right-navbar a").last.click
   page.should have_content("The item has been removed")
 end
+
+Given /^I visit a have topic$/ do
+  visit have_path(@have_topic)
+  current_path.should == have_path(@have_topic)
+end

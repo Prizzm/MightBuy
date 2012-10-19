@@ -116,4 +116,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def find_topic_by_id!
+    unless @topic = Topic.find_by_shortcode(params[:id])
+      respond_with(@topic, location: root_path)
+    end
+  end
+
+  def find_current_user_topic!
+    unless @topic = current_user.topics.find_by_shortcode(params[:id])
+      redirect_to root_path
+    end
+  end
 end
