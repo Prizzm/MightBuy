@@ -691,8 +691,6 @@ ol.topics {
   position:absolute;
   right:40px;
   bottom:90px;
-}
-.btn-red-large, .btn-red-l, .btn-red-big{
   
   .btn {
     @include brand-btn;
@@ -705,7 +703,7 @@ ol.topics {
 
 .btn-red-large.w115 .btn{ width:115px}
 
-.btn-red-large, .btn-red-l, .btn-red-big, .remove_fields, #share-list a{ 
+.btn-red-large, .btn-red-l, .remove_fields, #share-list a{ 
   
   .btn {
     @include brand-btn;
@@ -765,7 +763,7 @@ ol.topics {
 }
 
 #topic_tags_show {
-  margin: 0px 0px 20px -3px;
+  margin: 0px 0px 20px 0px;
   border: none;
   li {
     font-family: "Museo500";

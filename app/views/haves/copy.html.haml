@@ -7,11 +7,11 @@
           = render "haves/form", :form => form
           = form.input :image, as: :file, wrapper_html: { class: "hide" }
           = form.hidden_field :retained_image
-          .buttons.btn-red-large.w115
+          .buttons.btn-red-large
             = form.button :submit, "Save"
     %div#topic_right_panel.span5
       %div#gsearch-results.hide
       %div#item-form-image-selector
       #choose-image
-        %button.btn.btn-small.btn-red.btn-large Choose Picture
+        %button.btn.btn-red.btn-large Choose Picture
     .clear
