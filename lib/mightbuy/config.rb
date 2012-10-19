@@ -10,11 +10,11 @@ module Mightbuy
     end
 
     def facebook_appid
-      configatron.facebook.appid
+      ENV['FACEBOOK_APPID'] || configatron.facebook.appid
     end
 
     def facebook_token
-      configatron.facebook.token
+      ENV['FACEBOOK_TOKEN'] || configatron.facebook.token
     end
 
     def twitter_appid

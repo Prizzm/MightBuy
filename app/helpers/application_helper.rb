@@ -281,4 +281,41 @@ module ApplicationHelper
      \"&topic[url]=\"+encodeURIComponent(window.location.href)); })() })();"
   end
 
+  def topic_url_helper(topic)
+    topic.ihave? ? have_url(topic): topic_url(topic)
+  end
+
+  def topic_image_url_helper(topic)
+    url = topic.image.try(:url).to_s
+    url = "#{request.base_url}/#{url}" unless /http/.match(url)
+    url
+  end
+
+  def topic_caption_helper(topic)
+    if topic.ihave?
+      "I Have Bought #{topic.subject}"
+    else
+      "I MightBuy #{topic.subject}"
+    end
+  end
+
+  def twitter_url(topic)
+    query_params = {
+      url:  topic_url_helper(topic),
+      text: topic_caption_helper(topic),
+      via: 'mightbuy'
+    }.to_query
+
+    "https://twitter.com/intent/tweet?#{query_params}"
+  end
+
+  def facebook_data_params(topic)
+    {
+      "data-name" => topic.subject,
+      "data-link" => topic_url_helper(topic),
+      "data-picture" => topic_image_url_helper(topic),
+      "data-caption" => topic_caption_helper(topic),
+      "data-description" => topic.body
+    }
+  end
 end

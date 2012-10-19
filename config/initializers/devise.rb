@@ -207,10 +207,7 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
-  config.omniauth :twitter, MB.config.twitter_appid, MB.config.twitter_token
-  config.omniauth(:facebook,
-    MB.config.facebook_appid,
-    MB.config.facebook_token,
-    {:scope => "offline_access, publish_stream,email", image_size: 'normal'}
-  )
+  config.omniauth(:twitter,  MB.config.twitter_appid,  MB.config.twitter_token)
+  config.omniauth(:facebook, MB.config.facebook_appid, MB.config.facebook_token,
+                  {scope: "email", image_size: 'normal'})
 end
