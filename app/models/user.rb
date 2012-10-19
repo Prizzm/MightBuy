@@ -87,8 +87,8 @@ class User < ActiveRecord::Base
 
   # Omniauth
   def self.from_omniauth(auth)
-    user = nil
-    unless User.find_with_auth_id(auth.uid)
+    user = User.find_with_auth_id(auth.uid) || User.find_by_email(auth.info.email)
+    unless user
       user = User.new()
       user.name = auth.info.name
       user.image_url = auth.info.image
@@ -104,7 +104,6 @@ class User < ActiveRecord::Base
       end
       user.save
     else
-      user = User.find_with_auth_id(auth.uid)
       if auth.provider == "twitter"
         user.twitter_uid = auth.uid
         user.twitter_oauth_token = auth['credentials']['token']
