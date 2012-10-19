@@ -4,8 +4,7 @@ class TopicsController < ApplicationController
 
   # Authenticate
   before_filter :authenticate_user!, except: [:index, :show]
-
-  before_filter :find_topic!, only: [:show]
+  before_filter :find_topic_by_id!, :redirect_to_have!, only: :show
   before_filter :find_current_user_topic!, only: [:bought, :update, :edit, :destroy]
 
   respond_to :html, :js
@@ -43,7 +42,7 @@ class TopicsController < ApplicationController
     @comment = @topic.comments.build
 
     if current_user && @topic.owner?(current_user)
-      @selected_tab = @topic.ihave? ? 'ihave' : 'mightbuy'
+      @selected_tab = 'mightbuy'
     else
       @selected_tab = "everybody"
       render template: "/topics/other_user_topic"
@@ -121,13 +120,9 @@ class TopicsController < ApplicationController
     @responses ||= @topic.responses.joins(:user).includes(:replies).where(:reply_id => nil)
   end
 
-  def find_topic!
-    @topic = Topic.find_by_shortcode(params[:id])
-  end
-
-  def find_current_user_topic!
-    unless @topic = current_user.topics.find_by_shortcode(params[:id])
-      redirect_to root_path
+  def redirect_to_have!
+    if @topic.ihave?
+      redirect_to have_path(@topic)
     end
   end
 end

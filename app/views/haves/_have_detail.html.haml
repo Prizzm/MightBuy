@@ -21,3 +21,6 @@
         = render partial: "haves/social_share_links", locals: {topic: topic}
       #topic-recommend.mtop20
         = render partial: "haves/topic_recommend", locals: {topic: topic}
+    - else
+      #topic-recommend.mtop20
+        = render partial: "haves/topic_recommend_status", locals: {topic: topic}
