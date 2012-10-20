@@ -69,6 +69,8 @@
   padding: 5px;
   width: 90px;
   background-color: white;
+  top: 20px;
+  z-index: 1060;
 
   span {
     margin: auto 5px;
@@ -123,6 +125,7 @@
 .fright { float: right; }
 
 .fixed-top {
+  position: fixed;
   top: 0px;
   width: 100%;
 }
