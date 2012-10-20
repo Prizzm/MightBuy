@@ -149,6 +149,13 @@ describe Topic do
       new_topic.user.should == another_user
       new_topic.tags.should include(@tag)
     end
+
+    it "should copy have topic to mightbuy list" do
+      topic = FactoryGirl.create(:topic, status: "ihave")
+      new_topic = topic.copy(current_user)
+      new_topic.save.should be_true
+      new_topic.ihave?.should be_false
+    end
   end
 
   describe "fetching public topics" do

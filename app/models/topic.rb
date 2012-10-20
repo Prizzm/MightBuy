@@ -175,6 +175,7 @@ class Topic < ActiveRecord::Base
     another_topic = Topic.new()
     another_topic.attributes = self.attributes.except('shortcode', 'id', 'type', 'created_at', 'updated_at')
     another_topic.tags = self.tags
+    another_topic.status = 'imightbuy'
     another_topic.user = another_user
     another_topic
   end
