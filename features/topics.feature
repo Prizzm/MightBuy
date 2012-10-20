@@ -48,7 +48,7 @@ Feature: As a user
     And I have bunch of topics
     And system has topics added by other users as well
     When I visit one of my topics
-    Then "I MightBuy" tab should be highlighted
+    Then "I might buy" tab should be highlighted
     And I should see "You added"
     When I visit one of other topics
     Then "Browse" tab should be highlighted
@@ -83,3 +83,12 @@ Feature: As a user
     Then I should not see any topic recommendation
     Then I should be able to recommend the topic
     Then I should be able to not recommend the topic
+
+  @javascript @visiting-have-topics
+  Scenario: Should be able to access topics which are mightbuy, ihave etc
+    Given a confirmed user "Tyler" with a topic
+    Given a confirmed user "Bob" with a have topic
+    And I visit a have topic
+    And I login as "Tyler"
+    And I visit a have topic
+    And "Browse" tab should be highlighted

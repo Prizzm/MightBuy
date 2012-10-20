@@ -9,7 +9,7 @@ Feature: As a user
     Given a confirmed user "Bob" with a topic
     And I login as "Tyler"
     And I visit my profile
-    Then "I MightBuy" tab should be highlighted
+    Then "I might buy" tab should be highlighted
     Then I should see my empty feed
     And I visit profile of "Bob"
     Then "Browse" tab should be highlighted

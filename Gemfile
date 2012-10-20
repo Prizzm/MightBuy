@@ -17,13 +17,16 @@ gem 'haml'
 # API
 gem 'rabl'
 
+# Payment
+gem 'stripe'
+
 # Passbook
 gem 'passbook', :git => "git://github.com/frozon/passbook.git"
 
 # Authentication
 gem 'devise', '1.4.7'
 gem 'omniauth-twitter'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 gem 'oa-core'
 
 # Social

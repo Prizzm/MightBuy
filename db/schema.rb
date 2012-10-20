@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013082628) do
+ActiveRecord::Schema.define(:version => 20121016202309) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -110,6 +110,30 @@ ActiveRecord::Schema.define(:version => 20121013082628) do
     t.text     "description"
   end
 
+  create_table "cards", :force => true do |t|
+    t.string   "address_city"
+    t.string   "address_country"
+    t.string   "address_line1"
+    t.string   "address_line1_check"
+    t.string   "address_line2"
+    t.string   "address_line2_check"
+    t.string   "address_state"
+    t.string   "address_zip"
+    t.string   "address_zip_check"
+    t.string   "country"
+    t.string   "cvc_check"
+    t.string   "exp_month"
+    t.integer  "exp_year"
+    t.string   "fingerprint"
+    t.string   "last4"
+    t.string   "name"
+    t.string   "card_object"
+    t.string   "card_type"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "order_id"
+  end
+
   create_table "comments", :force => true do |t|
     t.integer  "topic_id",                    :null => false
     t.integer  "user_id"
@@ -160,6 +184,42 @@ ActiveRecord::Schema.define(:version => 20121013082628) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
+  create_table "fees", :force => true do |t|
+    t.string   "fee_type"
+    t.string   "application"
+    t.string   "currency"
+    t.integer  "amount"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.integer  "topic_id"
+    t.string   "invoice_id"
+    t.float    "amount"
+    t.float    "amount_refunded"
+    t.integer  "created_stripe"
+    t.string   "currency"
+    t.string   "customer"
+    t.string   "description"
+    t.boolean  "disputed"
+    t.string   "failure_message"
+    t.float    "fee"
+    t.string   "invoice"
+    t.boolean  "livemode"
+    t.string   "object"
+    t.string   "paid"
+    t.boolean  "refunded"
+    t.integer  "card_id"
+    t.integer  "fee_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.boolean  "fulfilled"
+  end
+
   create_table "point_allocations", :force => true do |t|
     t.integer  "bank_id"
     t.integer  "allocatable_id"
@@ -188,8 +248,8 @@ ActiveRecord::Schema.define(:version => 20121013082628) do
     t.datetime "updated_at",      :null => false
     t.string   "name"
     t.integer  "business_id"
+    t.boolean  "accept_payments"
     t.float    "price"
-    t.integer  "accept_payments"
   end
 
   create_table "responses", :force => true do |t|

@@ -5,6 +5,7 @@ end
 Given /^a confirmed user "(.*?)" with a topic$/ do |name|
   step %Q{a confirmed user "#{name}"}
   @topic = FactoryGirl.create(:topic, user: @user)
+  @mightbuy_topic = @topic
 end
 
 Given /^a confirmed user "(.*?)" with a have topic$/ do |name|

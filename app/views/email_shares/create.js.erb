@@ -1,0 +1,10 @@
+$(".flash-notice").remove();
+$("body").prepend("<%= escape_javascript(render partial: 'shares/flash_notice') -%>");
+<%- flash.clear -%>
+
+<%- if @topic.errors.empty? -%>
+  $(document).trigger('close.facebox')
+<% else -%>
+  $.facebox("<%= escape_javascript(render partial: 'email_shares/emails_form', locals: { topic: @topic, remote: true }) -%>");
+  Mightbuy.emailShare = new Mightbuy.EmailShare();
+<% end -%>

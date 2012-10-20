@@ -1,6 +1,7 @@
 !!!
 %html
   %head
+    = yield :head
     %title MightBuy
     %meta{'name'=>"apple-itunes-app", 'content'=>"app-id=548123429"}
     = stylesheet_link_tag "website", :media => "all"
@@ -8,7 +9,8 @@
     = csrf_meta_tags
 
   %body
-    = render  partial: "shares/flash_notice"
+    = render partial: "shares/social_requirements"
+    = render partial: "shares/flash_notice"
 
     #ajax-loading
       %span Loading..
