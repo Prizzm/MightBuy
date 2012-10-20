@@ -1,4 +1,4 @@
-%li
+%li{id: "topic-list-entry-#{have.id}"}
   .row
     .span2.item-list-image.p-rel
       = image_tag(have.thumbnail_image, :alt => have.subject)
@@ -32,16 +32,10 @@
           .row
             .span2.ptop3
               .pull-left.mright10.color-brown Share
-              %a{:href=>"#", :class=>"email-icon-small pull-left"}
-              %a{:href=>"#", :class=>"twitter-icon-small pull-left"}
-              %a{:href=>"#", :class=>"facebook-icon-small pull-left"}
+              = render partial: "shares/list_view_social_links", locals: { topic: have }
               .clear
-            .span4.form-inline
-              .pull-left.mright10.ptop3.color-brown Recommend this item?
-              .vote-icons.pull-left
-                .vote-yes
-                .vote-no
-              .clear
+            %div{id: "topic-recommend-list-#{have.id}"}
+              = render partial: "haves/topic_recommend_on_list", locals: { topic: have }
             .span1.pagination-right.raquo
               = link_to("more   ", have_path(have)) 
     .clear

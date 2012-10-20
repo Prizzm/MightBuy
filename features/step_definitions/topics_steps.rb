@@ -188,9 +188,9 @@ Given /^I vote "(.*?)" from list view$/ do |vote|
   page.should have_content(I18n.t("voting.success"))
 end
 
-Given /^I should see my vote as "(.*?)" from list view$/ do |vote|
-  page.within("#topic-list-entry-#{@topic.id} .vote-icons") do
-    if vote == "Yes!"
+def check_vote_status(topic, voted_yes)
+  page.within("#topic-list-entry-#{topic.id} .vote-icons") do
+    if voted_yes
       page.should have_css(".vote-yes.checked")
       page.should_not have_css(".vote-no.checked")
     else
@@ -198,4 +198,31 @@ Given /^I should see my vote as "(.*?)" from list view$/ do |vote|
       page.should have_css(".vote-no.checked")
     end
   end
+end
+
+Given /^I should see my vote as "(.*?)" from list view$/ do |vote|
+  check_vote_status(@topic, vote == "Yes!")
+end
+
+
+def recomend_topic_from_list_view(topic, recommend)
+  page.within("#topic-list-entry-#{topic.id}") do
+    links = page.all(".vote-icons a")
+    recommend ? links.first.click : links.last.click
+    wait_for_ajax_call_to_finish
+  end
+
+  page.should have_content(I18n.t("recommend.success"))
+end
+
+Given /^I recommend the topic from list view$/ do
+  recomend_topic_from_list_view(@have_topic, true)
+end
+
+Then /^I dont recommend the topic from list view$/ do
+  recomend_topic_from_list_view(@have_topic, false)
+end
+
+Then /^I should see my recommendation as "(.*?)" from list view$/ do |recommend|
+  check_vote_status(@have_topic, recommend == "Yes!")
 end

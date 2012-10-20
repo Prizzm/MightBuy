@@ -1,0 +1,8 @@
+.span4.form-inline
+  .pull-left.mright10.ptop3.color-brown Recommend this item?
+  .vote-icons.pull-left
+    = link_to recommend_have_path(topic, recommend: "yes"), method: :put, remote: true do
+      .vote-yes{class: topic.recommended? ? "checked" : ""}
+    = link_to recommend_have_path(topic, recommend: "no"), method: :put, remote: true do
+      .vote-no{class: topic.not_recommended? ? "checked" : ""}
+  .clear

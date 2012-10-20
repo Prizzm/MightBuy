@@ -32,15 +32,7 @@
           .row
             .span3
               .color-brown Ask Friends - should you buy it?
-              = link_to new_topic_email_share_path(topic), remote: true do
-                .email-icon-small.pull-left
-
-              = link_to "javascript:void(0);", "data-tweet-intent" => twitter_url(topic), class: "tweet-topic" do
-                .twitter-icon-small.pull-left
-
-              = link_to "javascript:void(0);", facebook_data_params(topic).merge(class: "like-topic") do
-                .facebook-icon-small.pull-left
-
+              = render partial: "shares/list_view_social_links", locals: { topic: topic }
               .clear
             %div{id: "topic-vote-list-#{topic.id}"}
               = render partial: "topics/topic_votes_on_list", locals: { topic: topic, vote: topic.vote_by(current_user) }

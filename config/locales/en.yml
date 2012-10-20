@@ -12,3 +12,7 @@ en:
   commenting:
     success: "Commented Successfully"
     failed:  "Failed to Comment"
+
+  recommend:
+    success: "Recommendation Upated"
+    failed:  "Failed to Update Recommendation"
