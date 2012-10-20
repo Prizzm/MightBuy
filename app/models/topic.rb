@@ -278,6 +278,10 @@ class Topic < ActiveRecord::Base
   end
 
   def vote_by(voter)
-    votes.find_by_user_id(voter.id)
+    if voter
+      votes.find_by_user_id(voter.id)
+    else
+      nil
+    end
   end
 end

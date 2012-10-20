@@ -27,7 +27,10 @@
         %br
         .span7.dotted-border.ptop10
           %div{id: "topic-vote-browse-#{topic.id}"}
-            = render partial: "shares/topic_votes_on_browse", locals: { topic: topic, vote: topic.vote_by(current_user) }
+            - unless topic.ihave?
+              = render partial: "shares/topic_votes_on_browse", locals: { topic: topic, vote: topic.vote_by(current_user) }
+            - else
+              = recommend_text(topic)
           .pull-right
             .pagination-right.raquo
               = link_to("more   ", context_topic_path(topic))
