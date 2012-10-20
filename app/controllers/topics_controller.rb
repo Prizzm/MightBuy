@@ -51,6 +51,7 @@ class TopicsController < ApplicationController
 
   def bought
     @topic.status = "ihave"
+    @selected_tab = "ihave"
     @have = @topic
     render file: "haves/copy"
   end

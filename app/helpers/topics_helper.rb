@@ -70,23 +70,6 @@ module TopicsHelper
     current_user == resource.user
   end
 
-  def header
-    case action_name
-      when :index then "Latest Topics.."
-      when :show then phrase_for(:header)
-      when :share then "Share This With Others!"
-      when :new, :create
-        case resource.form?
-          when :business_recommendation then "See if Your Customers Recommend You!"
-          when :recommendation then "Get Recommendations.."
-          when :recommend then "Recommend a Product.."
-          else "I might buy..."
-        end
-      when :feedback then "Get Feedback on A Product"
-      else super
-    end
-  end
-  
   def form_partial_for (topic)
     "topics/forms/%s" %
       case topic.form?
@@ -96,23 +79,7 @@ module TopicsHelper
         else "default"
       end    
   end
-  
-  def quick_links
-    case action_name
-      when :show
-        if resource.user == current_user
-          #link_to("Invite Others", topic_share_path(resource), :class => "button") +
-          link_for(:edit, "Update") +
-          link_for(:delete, "Remove")
-        else
-          #link_to("Invite Others", topic_share_path(resource), :class => "button")
-        end
-      when :share
-        link_for(:back, "Go Back")
-      else super
-    end
-  end
-  
+
   def response_form_for (topic, &block)
     html = user_signed_in? ? {} : { "data-remote" => true }
     url    = topic_responses_path(topic, :format => user_signed_in? ? nil : :js)
@@ -138,6 +105,10 @@ module TopicsHelper
         else super
       end
     end
+  end
+
+  def context_topic_path(topic)
+    topic.ihave? ? have_path(topic) : topic_path(topic)
   end
   
   def invited_email_address

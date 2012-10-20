@@ -1,7 +1,2 @@
 .topic-recommend
-  %h4= topic.user.try(:name).to_s + "'s Recommendation for this item?"
-  %ul.horizontal-list.mtop5
-    %li
-      .topic-recommend-yes-icon{id: topic.recommended? ? "topic-recommended" : ""}
-    %li
-      .topic-recommend-no-icon{id: topic.not_recommended? ? "topic-not-recommended" : ""}
+  %h4= recommend_text(topic)

@@ -1,20 +1,32 @@
 = javascript_tag "Mightbuy.initialTags = #{@have.tag_array}"
+= content_for :head do
+  %title= @have.subject
 
-.show-topic.pbot30
-  .row.topic-links.ptop40
-    .span2
-      = link_to profile_path do
-        #home-link.mleft40
+.show-topic
+  .row.topic-links.ptop40.mleft20.mright40
+    .span3
+      = link_to haves_path, :class => "btn btn-red btn-small" do
+        %i.icon-chevron-left.mtop1.icon-white
+        Back to list view
+        
     - if @have.owner?(current_user)
-      .span6.offset2.topic-right-navbar
-        %ul
-          %li
-            = link_to edit_have_path(@have.shortcode) do
-              #edit-topic
-          %li
-            = link_to have_path(@have.shortcode), method: :delete, confirm: "Are you sure, you want to delete?" do
-              #delete-topic
-
+      %ul.nav.nav-pills.pull-right
+        %li.dropdown
+          %a#drop4.dropdown-toggle.btn.btn-red.btn-small{"data-toggle" => "dropdown", :href => "#", :role => "button"}
+            %i.icon-cog.icon-white.mtop1
+            %b.caret
+          %ul.dropdown-menu{"aria-labelledby" => "drop4", :role => "menu"}
+            %li
+              = link_to edit_have_path(@have.shortcode), :tabindex => "-1" do
+                %i.icon-ok
+                &nbsp;Update
+            %li.divider
+            %li
+              = link_to have_path(@have.shortcode), method: :delete, confirm: "Are you sure, you want to delete?", :tabindex => "-1" do
+                %i.icon-remove
+                &nbsp;Remove
+      %hr.mtop7-mbot0.span9
+      
   .row.mtop50
     = render :partial => "have_detail", locals: { topic: @have }
 

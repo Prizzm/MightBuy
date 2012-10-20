@@ -29,7 +29,6 @@ module NewPrizzmCom
     config.active_record.observers = :user_observer, :topic_observer, :response_observer, :share_observer
 
     config.active_support.escape_html_entities_in_json = true
-    config.action_controller.include_all_helpers = false
     config.assets.precompile += ['new.js', 'new.css', 'website.js', 'website.css', 'landing.css']
 
     # Configure the default encoding used in templates for Ruby 1.9.

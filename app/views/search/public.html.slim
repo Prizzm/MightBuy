@@ -1,10 +1,10 @@
-#search-page
-
-  a{ href="/" }
-    img#mightbuy-logo{ alt="Mightbuy-logo" src="/assets/mightbuy-logo.png" }
-  
-  form#public-search-form
+div id="search-page"
+  form id="public-search-form"
     input#q
-    button Mightbuy Search
+    button class="btn btn-green" Mightbuy Search
   .public-search-results
- 
+
+javascript:
+  $(document).ready(function(){
+    $("#q").focus();
+  });

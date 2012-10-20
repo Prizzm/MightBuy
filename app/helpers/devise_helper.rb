@@ -1,8 +1,5 @@
 module DeviseHelper
 
-  def quick_links
-  end
-
   def devise_error_messages!
     return "" if resource.errors.empty?
 

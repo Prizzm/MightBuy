@@ -1,7 +1,10 @@
 <%- if current_user -%>
   $("#topic-voting").html("<%= escape_javascript(render partial: 'topics/topic_votes', locals: { topic: @vote.topic, vote: @vote }) -%>");
+  $("#topic-vote-list-<%= @vote.topic.id -%>").html("<%= escape_javascript(render partial: 'topics/topic_votes_on_list', locals: { topic: @vote.topic, vote: @vote }) -%>");
+  $("#topic-vote-browse-<%= @vote.topic.id -%>").html("<%= escape_javascript(render partial: 'shares/topic_votes_on_browse', locals: { topic: @vote.topic, vote: @vote }) -%>");
   $(".flash-notice").remove();
   $("body").prepend("<%= escape_javascript(render partial: 'shares/flash_notice') -%>");
+  <%- flash.clear -%>
 
   <% unless @topic.votes.empty? -%>
     $("#topic-percentage-row").html("<%= escape_javascript(render partial: 'topics/vote_percentage', locals: {topic: @topic}) -%>");

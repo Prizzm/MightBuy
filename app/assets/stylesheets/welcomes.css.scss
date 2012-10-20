@@ -61,13 +61,85 @@
 
     .slider-links {
       list-style: none;
-      padding-top: 390px;
+      padding-top: 150px;
       padding-left: 230px;
 
       li {
         display: inline;
         margin: 0px 2px;
       }
+    }
+  }
+}
+
+#search-page {
+  background: #fff;
+  -moz-border-radius: 7px 7px 0 0;
+  -webkit-border-radius: 7px 7px 0 0;
+  border-radius: 7px 7px 0 0;
+  min-height: 400px;
+  padding: 60px 40px 0 40px;
+  position: relative;
+  margin-top:45px;
+}
+
+#public-search-form{
+  margin-left: 202px;
+  margin-bottom: 60px;
+
+  #q{
+    box-shadow: 0 0 0 4px #F6F3EE;
+    background-color: white;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    height: 25px;
+    width: 450px;
+    color: #4E3227;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 4px;
+  }
+  #q:focus{
+    box-shadow: 0 0 0 4px #F6F3EE;
+    border-color:rgba(82, 168, 236, 0.8);
+    outline:none;
+  }
+  
+  .btn-green{
+    border-radius: 2px;
+    position: relative;
+    top:0px;
+    right: 151px;
+    padding: 7px 15px;
+  }
+}
+.public-search-result td{
+  vertical-align:top;
+  font-family: "Museo500";
+  border-top:1px solid #ccc;
+  padding-top:30px;
+  padding-bottom:20px;
+  
+  a.title{
+    font-size: 27px;
+    font-weight: normal;
+    line-height: 110%;
+    display:block;
+    margin-bottom:10px;
+  }
+  .url{
+    padding-top:10px;
+    margin-bottom:20px
+  }
+  .price {
+    color: #849C60;
+    float: right;
+    font-size: 40px;
+    margin-right: 25px;
+    
+    i{
+      font-size: 20px;
+      color:#666;
     }
   }
 }

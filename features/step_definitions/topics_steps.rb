@@ -108,7 +108,7 @@ Then /^I should not see the topic in have$/ do
 end
 
 Given /^I buy the topic$/ do
-  click_link "I Bought it"
+  click_link "Add to have"
   fill_in("topic_body", with: "Cool Review")
   click_button("Save")
 
@@ -161,7 +161,7 @@ Then /^I should be able to not recommend the topic$/ do
 end
 
 Then /^I should be able to edit topic review to "(.*?)"$/ do |review|
-  page.find(".topic-right-navbar a").click
+  click_link "Update"
   fill_in("topic_body", with: review)
   click_button("Save")
 
@@ -169,11 +169,60 @@ Then /^I should be able to edit topic review to "(.*?)"$/ do |review|
 end
 
 Then /^I should able to destroy the topic$/ do
-  page.all(".topic-right-navbar a").last.click
+  click_link "Remove"
   page.should have_content("The item has been removed")
 end
 
 Given /^I visit a have topic$/ do
   visit have_path(@have_topic)
   current_path.should == have_path(@have_topic)
+end
+
+Given /^I vote "(.*?)" from list view$/ do |vote|
+  page.within("#topic-list-entry-#{@topic.id}") do
+    links = page.all(".vote-icons a")
+    vote == "Yes!" ? links.first.click : links.last.click
+    wait_for_ajax_call_to_finish
+  end
+
+  page.should have_content(I18n.t("voting.success"))
+end
+
+def check_vote_status(topic, voted_yes)
+  page.within("#topic-list-entry-#{topic.id} .vote-icons") do
+    if voted_yes
+      page.should have_css(".vote-yes.checked")
+      page.should_not have_css(".vote-no.checked")
+    else
+      page.should_not have_css(".vote-yes.checked")
+      page.should have_css(".vote-no.checked")
+    end
+  end
+end
+
+Given /^I should see my vote as "(.*?)" from list view$/ do |vote|
+  check_vote_status(@topic, vote == "Yes!")
+end
+
+
+def recomend_topic_from_list_view(topic, recommend)
+  page.within("#topic-list-entry-#{topic.id}") do
+    links = page.all(".vote-icons a")
+    recommend ? links.first.click : links.last.click
+    wait_for_ajax_call_to_finish
+  end
+
+  page.should have_content(I18n.t("recommend.success"))
+end
+
+Given /^I recommend the topic from list view$/ do
+  recomend_topic_from_list_view(@have_topic, true)
+end
+
+Then /^I dont recommend the topic from list view$/ do
+  recomend_topic_from_list_view(@have_topic, false)
+end
+
+Then /^I should see my recommendation as "(.*?)" from list view$/ do |recommend|
+  check_vote_status(@have_topic, recommend == "Yes!")
 end
