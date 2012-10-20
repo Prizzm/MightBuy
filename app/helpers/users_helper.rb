@@ -1,20 +1,5 @@
 module UsersHelper
 
-  def header
-    case action_name
-      when :index then "Our Beloved Users.."
-      when :show then "%s's Profile" % resource.name
-      else super
-    end
-  end
-
-  def quick_links
-    if action_name == :show
-      links = connect_links
-      ("<span>Get in Touch..</span> %s" % links).html_safe unless links.blank?
-    end
-  end
-
   def connect_links
     resource.attributes.map do |attr, value|
       unless value.blank?
@@ -62,10 +47,6 @@ module UsersHelper
 
       else super
     end
-  end
-
-  def latest_posts
-    resource.topics.order("created_at desc").limit(2)
   end
 
   def latest_activity
