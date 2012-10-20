@@ -4,6 +4,7 @@
 
   $(".flash-notice").remove();
   $("body").prepend("<%= escape_javascript(render partial: 'shares/flash_notice') -%>");
+  <%- flash.clear -%>
 <% else -%>
   $(document).bind('reveal.facebox', function() {
     Mightbuy.socialShare.bindFacebookSignin( $(".facebook-icon") );
