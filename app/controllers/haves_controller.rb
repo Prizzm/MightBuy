@@ -1,6 +1,6 @@
 class HavesController < ApplicationController
   layout :choose_layout
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:show]
   before_filter :find_current_user_topic!, only: [:edit, :recommend, :destroy]
   before_filter :find_topic_by_id!, :redirect_to_mightbuy!, only: :show
 
