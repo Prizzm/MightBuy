@@ -10,7 +10,7 @@ class ProfileController < InheritedResources::Base
   def show
     @user = current_user
     if request.xhr?
-      render :partial => "topics/topic", :collection => resource.topics.latest_posts(params[:page] || 1)
+      render :partial => "topics/topic", :collection => resource.topics.mightbuy.latest_posts(params[:page] || 1)
     end
   end
 

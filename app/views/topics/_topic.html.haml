@@ -1,25 +1,42 @@
-%li
+%li{id: "topic-list-entry-#{topic.id}"}
   .row
-    .span2.item-list-image
+    .span2.item-list-image.p-rel
       = image_tag(topic.thumbnail_image, :alt => topic.subject)
+      = link_to("", topic_path(topic), :class =>"mask-140")
     .span7.pull-right
-      .span5.topic-description
-        .topic-title
-          = link_to(topic.subject.capitalize, topic_path(topic))
-        .topic-url
-          = link_to(topic.short_url, "#{topic.url}", :target=>"_blank")
-        .topic-listing-tag
-          = tag_links(topic)
-        .topic-meta
-          %span
-            You added this #{time_ago_in_words(topic.created_at)} ago
-      .span1.pull-right.topic-list-actions
-        %a.topic-actions{:href => topic_path(topic),
-          'data-method' => :delete,
-          'data-confirm' => "Are you sure, you want to delete this item?"}
-          \&nbsp;
+      .row
+        .span5
+          .topic-title
+            = link_to(topic.subject.capitalize, topic_path(topic))
+          .topic-url
+            = link_to(topic.short_url, "#{topic.url}", :target=>"_blank")
+          .topic-listing-tag
+            %i.icon-tags
+            tags:
+            = tag_links(topic) 
+          .topic-meta.mtop10
+            %span
+              You added this #{time_ago_in_words(topic.created_at)} ago
+        .span2.pull-right.topic-list-actions
+          %a.topic-actions{:href => topic_path(topic),
+            'data-method' => :delete,
+            'data-confirm' => "Are you sure, you want to delete this item?"}
+            \&nbsp;
+          .clear
+          %div.price
+            = number_to_currency(topic.price)
+          .clear
         .clear
-        %div.price
-          = number_to_currency(topic.price)
-        .clear
+        %br
+        .span7.dotted-border.ptop10
+          .row
+            .span3
+              .color-brown Ask Friends - should you buy it?
+              = render partial: "shares/list_view_social_links", locals: { topic: topic }
+              .clear
+            %div{id: "topic-vote-list-#{topic.id}"}
+              = render partial: "topics/topic_votes_on_list", locals: { topic: topic, vote: topic.vote_by(current_user) }
+            .span1.pagination-right.raquo
+              = link_to("more   ", topic_path(topic))
+          
     .clear

@@ -1,20 +1,24 @@
 class HavesController < ApplicationController
   layout :choose_layout
-  before_filter :authenticate_user!, only: [:copy, :recommend, :edit, :create, :destroy]
+  before_filter :authenticate_user!, except: [:show]
   before_filter :find_current_user_topic!, only: [:edit, :recommend, :destroy]
   before_filter :find_topic_by_id!, :redirect_to_mightbuy!, only: :show
 
   def index
     @haves = current_user.topics.have
+    @might_buys = current_user.topics.mightbuy.order("created_at desc").limit(4)
   end
 
   def show
     @have = @topic
     @comments = @have.comments.joins(:user).where(parent_id: nil).includes(:user)
-    @comment = @have.comments.build
+    @comment = Comment.new()
 
-    unless current_user && @have.owner?(current_user)
+    if current_user && @have.owner?(current_user)
+      @selected_tab = "ihave"
+    else
       @selected_tab = "everybody"
+      render "other_have_item"
     end
   end
 
@@ -43,9 +47,9 @@ class HavesController < ApplicationController
   def recommend
     recommendation = params[:recommend] == "yes" ? "recommended" : "not-recommended"
     if @topic.update_attributes(recommendation: recommendation)
-      flash[:notice] = "Recommendation Updated"
+      flash[:notice] = t("recommend.success")
     else
-      flash[:error]  = "Failed to Update Recommendation"
+      flash[:error]  = t("recommend.failed")
     end
     respond_with(@topic)
   end

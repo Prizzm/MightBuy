@@ -3,11 +3,11 @@
     <a class="title" target="_blank" href="<%= result_data.unescapedUrl %>"><%= result_data.titleNoFormatting %></a> 
     <div class="description"><%= result_data.content %></div> 
     <div class="url"><%= result_data.visibleUrl %></div> 
-    <a class="mightbuy-button" href="/topics/new?topic[subject]=<%= encodeURIComponent(result_data.titleNoFormatting) %>&topic[url]=<%= encodeURIComponent(result_data.unescapedUrl) %>">Add to Might Buy</a> 
+    <div class="price"><i></i></div> 
+    <a class="mightbuy-button btn btn-green" href="/topics/new?topic[subject]=<%= encodeURIComponent(result_data.titleNoFormatting) %>&topic[url]=<%= encodeURIComponent(result_data.unescapedUrl) %>">Add to Might Buy</a> 
   </td> 
   <td class="public-search-result-scraper-info" style=""> 
     <span class="loading">&nbsp;</span> 
     <div class="image-selector"></div> 
-    <div class="price"><i></i></div> 
   </td> 
 </tr>

@@ -101,27 +101,6 @@ module ApplicationHelper
     render( :layout => "layouts/app", :locals => locals ) { content }
   end
 
-  def header
-    name = resource_class.to_s
-    case action_name
-      when :index then "Listing %s" % name.pluralize
-      when :new then "Adding a %s" % name
-      when :edit then "Updating a %s" % name
-      when :show then "Viewing a %s" % name
-    end
-  end
-
-  def quick_links
-    case action_name
-      when :show
-        link_for(:edit) + link_for(:delete) + link_for(:back)
-      when :new, :edit
-        link_for(:back)
-      when :index
-        link_for(:add)
-    end
-  end
-
   def link_for (action, label = nil)
     case action
       when :add

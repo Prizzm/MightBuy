@@ -1,0 +1,9 @@
+= link_to new_topic_email_share_path(topic), remote: true do
+  .email-icon-small.pull-left
+
+= link_to "javascript:void(0);", "data-tweet-intent" => twitter_url(topic), class: "tweet-topic" do
+  .twitter-icon-small.pull-left
+
+= link_to "javascript:void(0);", facebook_data_params(topic).merge(class: "like-topic") do
+  .facebook-icon-small.pull-left
+

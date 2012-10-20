@@ -6,11 +6,15 @@
           = render partial: "form", locals: { :form => form }
           = form.input :image, as: :file, wrapper_html: { class: "hide" }
           = form.hidden_field :retained_image
-          .buttons.btn-red-large
+          .buttons.btn-red-large.w115
             = form.button :submit, "Save"
     #topic_right_panel.span5
       #gsearch-results.hide
       #item-form-image-selector
       #choose-image
-        %button.btn.btn-red.btn-large Choose Picture
+        %button.btn.btn-red.btn-small Choose Picture
     .clear
+:javascript
+  $(function() {
+    $('textarea').autogrow();
+  });

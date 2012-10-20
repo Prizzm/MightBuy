@@ -175,6 +175,7 @@ class Topic < ActiveRecord::Base
     another_topic = Topic.new()
     another_topic.attributes = self.attributes.except('shortcode', 'id', 'type', 'created_at', 'updated_at')
     another_topic.tags = self.tags
+    another_topic.status = 'imightbuy'
     another_topic.user = another_user
     another_topic
   end
@@ -274,5 +275,9 @@ class Topic < ActiveRecord::Base
     vote.buyit = buyit
     vote.save
     vote
+  end
+
+  def vote_by(voter)
+    votes.find_by_user_id(voter.id)
   end
 end
