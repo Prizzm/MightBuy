@@ -1,4 +1,4 @@
-%li
+%li{id: "topic-list-entry-#{topic.id}"}
   .row
     .span2.item-list-image.p-rel
       = image_tag(topic.thumbnail_image, :alt => topic.subject)
@@ -32,16 +32,18 @@
           .row
             .span3
               .color-brown Ask Friends - should you buy it?
-              %a{:href=>"#", :class=>"email-icon-small pull-left"}
-              %a{:href=>"#", :class=>"twitter-icon-small pull-left"}
-              %a{:href=>"#", :class=>"facebook-icon-small pull-left"}
+              = link_to new_topic_email_share_path(topic), remote: true do
+                .email-icon-small.pull-left
+
+              = link_to "javascript:void(0);", "data-tweet-intent" => twitter_url(topic), class: "tweet-topic" do
+                .twitter-icon-small.pull-left
+
+              = link_to "javascript:void(0);", facebook_data_params(topic).merge(class: "like-topic") do
+                .facebook-icon-small.pull-left
+
               .clear
-            .span3
-              .color-brown Vote - should girish buy it?
-              .vote-icons.pull-left
-                .vote-yes
-                .vote-no
-              .clear
+            %div{id: "topic-vote-list-#{topic.id}"}
+              = render partial: "topics/topic_votes_on_list", locals: { topic: topic, vote: topic.vote_by(current_user) }
             .span1.pagination-right.raquo
               = link_to("more   ", topic_path(topic))
           

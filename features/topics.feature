@@ -92,3 +92,12 @@ Feature: As a user
     And I login as "Tyler"
     And I visit a have topic
     And "Browse" tab should be highlighted
+
+  @javascript @vote-from-list-view
+  Scenario: User should be able to vote from list view itself
+    Given a confirmed user "Tyler" with a topic
+    And I login as "Tyler"
+    And I vote "Yes!" from list view
+    Then I should see my vote as "Yes!" from list view
+    And I vote "No!" from list view
+    Then I should see my vote as "No!" from list view

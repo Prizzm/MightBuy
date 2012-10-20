@@ -177,3 +177,25 @@ Given /^I visit a have topic$/ do
   visit have_path(@have_topic)
   current_path.should == have_path(@have_topic)
 end
+
+Given /^I vote "(.*?)" from list view$/ do |vote|
+  page.within("#topic-list-entry-#{@topic.id}") do
+    links = page.all(".vote-icons a")
+    vote == "Yes!" ? links.first.click : links.last.click
+    wait_for_ajax_call_to_finish
+  end
+
+  page.should have_content(I18n.t("voting.success"))
+end
+
+Given /^I should see my vote as "(.*?)" from list view$/ do |vote|
+  page.within("#topic-list-entry-#{@topic.id} .vote-icons") do
+    if vote == "Yes!"
+      page.should have_css(".vote-yes.checked")
+      page.should_not have_css(".vote-no.checked")
+    else
+      page.should_not have_css(".vote-yes.checked")
+      page.should have_css(".vote-no.checked")
+    end
+  end
+end

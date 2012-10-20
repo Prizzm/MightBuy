@@ -276,4 +276,8 @@ class Topic < ActiveRecord::Base
     vote.save
     vote
   end
+
+  def vote_by(voter)
+    votes.find_by_user_id(voter.id)
+  end
 end
