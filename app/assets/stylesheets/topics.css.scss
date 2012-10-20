@@ -159,6 +159,7 @@
     font-size: 40px;
     float: right;
     margin-right: 18px;
+    line-height:100%;
   }
 
   .share-topic-link, .topic-votes {
@@ -938,9 +939,9 @@ span.no-votes {
 
 .email-icon-small, .facebook-icon-small, .twitter-icon-small {
   background: image-url('sprite-icns.png') no-repeat 0 0;
-  width: 16px;
-  height: 16px;
-  margin-right:5px
+  width: 21px;
+  height: 21px;
+  margin-right:5px;
 }
 
 .email-icon-small {
@@ -948,35 +949,35 @@ span.no-votes {
 }
 
 .email-icon-small:hover {
-  background-position:-20px -1px;
+  background-position:-25px -1px;
 }
 
 .email-icon-small:active {
-  background-position:-39px -1px;
+  background-position:-49px -1px;
 }
 
 .facebook-icon-small {
-  background-position:-1px -20px;
+  background-position:-1px -25px;
 }
 
 .facebook-icon-small:hover {
-  background-position:-20px -20px;
+  background-position:-25px -25px;
 }
 
 .facebook-icon-small:active {
-  background-position:-39px -20px;
+  background-position:-49px -25px;
 }
 
 .twitter-icon-small {
-  background-position: -1px -39px;
+  background-position:-1px -49px;
 }
 
 .twitter-icon-small:hover {
-  background-position: -20px -39px;
+  background-position:-25px -49px;
 }
 
 .twitter-icon-small:active {
-  background-position: -39px -39px;
+  background-position:-49px -49px;
 }
 
 .color-brown{

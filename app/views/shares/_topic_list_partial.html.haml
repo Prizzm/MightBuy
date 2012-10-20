@@ -17,7 +17,7 @@
           .topic-meta-all.mtop10
             = link_to(topic.poster_name(current_user), user_path(topic.user))
             #{topic.human_status} this
-            = link_to(copy_topic_path(topic)) do
+            = link_to(copy_topic_path(topic), :rel =>"tooltip", :title =>"This item will be copied to 'mightbuy'") do
               = image_tag("add_icon.png")
         .span1.pull-right.topic-list-actions
           %div.price
@@ -33,3 +33,7 @@
               = link_to("more   ", context_topic_path(topic))
           .clear
     .clear
+:javascript
+  $(document).ready(function(){
+    $('a').tooltip();
+  });
