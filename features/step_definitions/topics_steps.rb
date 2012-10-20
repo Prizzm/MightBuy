@@ -108,7 +108,7 @@ Then /^I should not see the topic in have$/ do
 end
 
 Given /^I buy the topic$/ do
-  click_link "I Bought it"
+  click_link "Add to have"
   fill_in("topic_body", with: "Cool Review")
   click_button("Save")
 
@@ -161,7 +161,7 @@ Then /^I should be able to not recommend the topic$/ do
 end
 
 Then /^I should be able to edit topic review to "(.*?)"$/ do |review|
-  page.find(".topic-right-navbar a").click
+  click_link "Update"
   fill_in("topic_body", with: review)
   click_button("Save")
 
@@ -169,7 +169,7 @@ Then /^I should be able to edit topic review to "(.*?)"$/ do |review|
 end
 
 Then /^I should able to destroy the topic$/ do
-  page.all(".topic-right-navbar a").last.click
+  click_link "Remove"
   page.should have_content("The item has been removed")
 end
 

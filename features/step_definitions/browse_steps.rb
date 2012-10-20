@@ -16,14 +16,14 @@ Then /^I browse for a topic$/ do
 end
 
 Then /^I should be able to add the topic to might buy list$/ do
-  click_link "I may buy"
+  page.find(".dropdown-menu a", :text => "I might buy").click
   page.should have_content("Item copied to your list")
   step %Q{"I might buy" tab should be highlighted}
   page.should have_content(@browse_topic_title)
 end
 
 Then /^I should be able to add the topic to have list$/ do
-  click_link "I have it"
+  page.find(".dropdown-menu a", :text => "I have").click
 
   review = "This is cool stuff!!"
   page.within(".edit_topic") do
