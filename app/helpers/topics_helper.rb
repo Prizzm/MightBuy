@@ -139,6 +139,10 @@ module TopicsHelper
       end
     end
   end
+
+  def context_topic_path(topic)
+    topic.ihave? ? have_path(topic) : topic_path(topic)
+  end
   
   def invited_email_address
     share ? share.with : nil
