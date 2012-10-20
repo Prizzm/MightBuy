@@ -14,8 +14,11 @@ class HavesController < ApplicationController
     @comments = @have.comments.joins(:user).where(parent_id: nil).includes(:user)
     @comment = Comment.new()
 
-    unless current_user && @have.owner?(current_user)
+    if current_user && @have.owner?(current_user)
+      @selected_tab = "ihave"
+    else
       @selected_tab = "everybody"
+      render "other_have_item"
     end
   end
 

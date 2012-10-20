@@ -1,0 +1,43 @@
+.show-topic
+  .row.topic-links.ptop40.mleft20.mright40
+    .span6.topic-poster-prompt
+      #{@have.poster_name} #{@have.human_status}
+
+    - if current_user
+      .pull-right
+        .btn-group
+          = link_to "#", class: "btn btn-danger btn-small dropdown-toggle", "data-toggle" => "dropdown" do
+            Add to list
+            %span.caret
+          %ul.dropdown-menu
+            %li= link_to "I might buy", copy_topic_path(@have.shortcode)
+            %li.divider
+            %li= link_to "I have", copy_have_path(id: @have.shortcode)
+        .clear
+    %hr.mtop7-mbot0.span9
+  .row.mtop50
+    = render :partial => "have_detail", locals: { topic: @have }
+
+  %hr.comment-have-separator
+  .row.mleft40.mright40
+    %h2 Review
+    %p= @have.body
+  %hr.comment-have-separator
+
+  .row
+    .span6
+      %h3.mleft40.mtop20.mbot30 Write Responses
+
+  .topic-comments
+    - @comments.each do |comment|
+      = render partial: "/topics/comment_entry", locals: { comment: comment }
+
+  .row
+    .new-topic-comment.mleft40
+      .span1= image_tag(avatar_image)
+      .span8.mbot30
+        = simple_form_for [@have, @comment], remote: true do |f|
+          = f.input :description, label: false, input_html: { rows: 3 }
+          .new-comment-form-submit
+            = f.submit ""
+

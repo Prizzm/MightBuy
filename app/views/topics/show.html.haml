@@ -1,17 +1,12 @@
 = javascript_tag "Mightbuy.initialTags = #{@topic.tag_array}"
+
 = content_for :head do
   %title= @topic.subject
-  = tag :meta, property: "fb:app_id", content: MB.config.facebook_appid
-  = tag :meta, property: "og:site_name", content: "MightBuy"
-  = tag :meta, property: "og:type", content: MB.config.facebook.og.namespace + ":" + MB.config.facebook.og.object
-  = tag :meta, property: "og:title", content: @topic.subject
-  = tag :meta, property: "og:url", content: topic_url(@topic)
-  = tag :meta, property: "og:image", content: topic_image_url_helper(@topic)
 
 .show-topic
   .row.topic-links.ptop40.mleft20.mright40
     .span3
-      = link_to url_for(:back), :class => "btn btn-red btn-small" do
+      = link_to topics_path, :class => "btn btn-red btn-small" do
         %i.icon-chevron-left.mtop1.icon-white
         Back to list view
         
