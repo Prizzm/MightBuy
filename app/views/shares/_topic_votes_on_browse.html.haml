@@ -1,0 +1,9 @@
+.pull-left
+  .pull-left.mright10.ptop3.color-brown
+    = "Vote - should #{topic.poster_name(current_user)} buy it?"
+  .vote-icons.pull-left
+    = link_to topic_votes_path(topic, vote: "yes"), method: :post, remote: true do
+      .vote-yes{class: vote && vote.buyit ? "checked" : ""}
+    = link_to topic_votes_path(topic, vote: "no"), method: :post, remote: true do
+      .vote-no{class: vote && !vote.buyit ? "checked" : ""}
+  .clear

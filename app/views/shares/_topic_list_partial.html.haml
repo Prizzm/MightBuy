@@ -1,4 +1,4 @@
-%li
+%li{id: "topic-browse-entry-#{topic.id}"}
   .row
     .span2.item-list-image.p-rel
       = image_tag(topic.thumbnail_image, :alt => topic.subject)
@@ -26,12 +26,8 @@
         .clear
         %br
         .span7.dotted-border.ptop10
-          .pull-left
-            .pull-left.mright10.ptop3.color-brown Vote - should girish buy it?
-            .vote-icons.pull-left
-              .vote-yes
-              .vote-no
-            .clear
+          %div{id: "topic-vote-browse-#{topic.id}"}
+            = render partial: "shares/topic_votes_on_browse", locals: { topic: topic, vote: topic.vote_by(current_user) }
           .pull-right
             .pagination-right.raquo
               = link_to("more   ", context_topic_path(topic))

@@ -35,3 +35,25 @@ Then /^I should be able to add the topic to have list$/ do
   page.should_not have_content("Unable to add to list")
   page.should have_content(review)
 end
+
+Given /^I vote "(.*?)" from browse view$/ do |vote|
+  page.within("#topic-browse-entry-#{@topic.id}") do
+    links = page.all(".vote-icons a")
+    vote == "Yes!" ? links.first.click : links.last.click
+    wait_for_ajax_call_to_finish
+  end
+
+  page.should have_content(I18n.t("voting.success"))
+end
+
+Then /^I should see my vote as "(.*?)" from browse view$/ do |vote|
+  page.within("#topic-browse-entry-#{@topic.id} .vote-icons") do
+    if vote == "Yes!"
+      page.should have_css(".vote-yes.checked")
+      page.should_not have_css(".vote-no.checked")
+    else
+      page.should_not have_css(".vote-yes.checked")
+      page.should have_css(".vote-no.checked")
+    end
+  end
+end
