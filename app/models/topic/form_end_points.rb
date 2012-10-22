@@ -4,11 +4,7 @@ module Topic::FormEndPoints
   module ClassMethods
     def build_from_form_data(topic_details,current_user,visitor_code)
       if topic_details['image_url']
-        topic_details['image_url'] = begin
-          URI.parse(topic_details['image_url']).to_s
-        rescue URI::InvalidURIError
-          URI.parse(URI.encode(topic_details['image_url']).gsub("[","%5B").gsub("]","%5D")).to_s
-        end
+        topic_details['image_url'] = Topic.safe_parse(topic_details['image_url']).to_s
       end
       if topic_details['tags']
         tag_string = topic_details.delete('tags')
@@ -26,6 +22,12 @@ module Topic::FormEndPoints
       topic
     end
 
+    def safe_parse(incoming_url)
+      URI.parse(incoming_url)
+    rescue URI::InvalidURIError
+      URI.parse(URI.encode(incoming_url).gsub("[","%5B").gsub("]","%5D"))
+    end
+
     def except_user_topics(page_number,current_user = nil)
       topic_scope = current_user ? Topic.where("user_id != ?",current_user.id) : Topic
       topic_scope.order("created_at desc").page(page_number).per(10)
@@ -34,14 +36,11 @@ module Topic::FormEndPoints
 
   def update_from_form_data(topic_details,visitor_code)
     if topic_details['image_url'] && URI.parse(URI.encode(topic_details['image_url'])).host
-      topic_details['image_url'] = begin
-        URI.parse(topic_details['image_url']).to_s
-      rescue URI::InvalidURIError
-        URI.parse(URI.encode(topic_details['image_url']).gsub("[","%5B").gsub("]","%5D")).to_s
-      end
+      topic_details['image_url'] = Topic.safe_parse(topic_details['image_url']).to_s
     else
       topic_details.delete('image_url')
     end
+
     tag_string = topic_details.delete('tags') || []
     self.pass_visitor_code = visitor_code
     self.add_tags(tag_string)
