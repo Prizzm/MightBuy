@@ -6,7 +6,13 @@
     = stylesheet_link_tag "landing", :media => "all"
     = javascript_include_tag "website"
     = csrf_meta_tags
-
+    /[if gte IE 9]
+      <style type="text/css">
+      \.gradient {
+      filter: none;
+      }
+    </style>
+    / 
   %body
     = render partial: "shares/social_requirements"
     = render partial: "shares/flash_notice"

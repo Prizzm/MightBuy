@@ -8,8 +8,9 @@
         = f.input :email
         = f.input :password
         = f.input :name, label: "Full name", required: false
-        .new-user-form-submit
-          = f.submit ""
+        .pull-right.mright75.mbot30
+          = f.submit "Get Started!", :class=>"btn btn-red btn-rounded"
+        %br
 
     .span5.social-login
       %p

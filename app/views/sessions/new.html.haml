@@ -9,8 +9,8 @@
         = f.input :password
         %p.forgot-password
           = link_to("Forgot your password?",new_user_password_path)
-        .user-signin-form-submit
-          = f.submit "", id: 'sign-in-submit-button'
+        .pull-right.mright75.mbot30
+          = f.submit "Sign in!", id: 'sign-in-submit-button', :class=>"btn btn-red btn-rounded small-case"
 
 
     .span5.social-login
@@ -26,6 +26,6 @@
       %p
         Don't have an account yet?
 
-      = link_to(new_user_registration_path) do
-        .join-us-today
-
+      .pull-right.mtop15
+        = link_to(new_user_registration_path, :class=>"btn btn-red btn-rounded small-case") do
+          Try it now!

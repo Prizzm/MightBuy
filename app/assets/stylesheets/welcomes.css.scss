@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "style";
+
 .welcomes-content {
   font-family: Museo500;
   margin-top: 70px;
@@ -37,18 +39,6 @@
       margin-bottom: 20px;
     }
   }
-
-  .tryitnow {
-    height: 56px;
-    width: 250px;
-    margin-left: -10px;
-    background: image-url("tryitnow.png") no-repeat;
-
-    &:hover {
-      background: image-url("tryitnow-hover.png") no-repeat;
-    }
-  }
-
   .mac-iphone-image {
     background: image-url("iphone.png") 93% 93% no-repeat, image-url("mac-screen.png") right bottom no-repeat;
     height: 417px;
