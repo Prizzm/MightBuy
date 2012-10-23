@@ -14,6 +14,7 @@
 //= require jquery-fileupload/jquery.fileupload
 //= require jquery-fileupload/vendor/load-image
 //= require mightbuy
+//= require flash_notice
 //= require item_search
 //= require image_selector
 //= require image_uploader
