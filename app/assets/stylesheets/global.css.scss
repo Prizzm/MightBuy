@@ -12,7 +12,10 @@
   font-family: Museo700;
   src: font-url("Museo700-Regular.otf");
 }
-
+.modal-header{
+  background:#e5d6c6;
+  @include border-radius(6px 6px 0 0);
+}
 .header {
   font-family: Museo700;
 

@@ -1,0 +1,18 @@
+.modal.hide.fade{id: "topic-confirm-add-modal-#{topic.id}"}
+  .modal-header
+    %button.close{type: "button", "data-dismiss" => "modal", "aria-hidden" => "true"}
+      &times
+    %h3 Confirm
+  .modal-body
+    .row
+      .span1.p-rel
+        = image_tag(topic.icon_image)
+        %span.mask-64
+      .span4
+        %h4= topic.subject.capitalize
+        %p=  link_to(topic.short_url, topic.url, :target=>"_blank")
+      %h3.price= number_to_currency(topic.price)
+  .modal-footer
+    = link_to "Add to 'I mightbuy' list", copy_topic_path(topic), class: "btn btn-red"
+    %button.btn.btn-red{"data-dismiss" => "modal", "aria-hidden" => "true"}
+      Cancel
