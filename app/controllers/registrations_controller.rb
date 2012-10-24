@@ -8,7 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
     @user.ensure_authentication_token!
     respond_to do |format|
       format.json do
-         render :text => @user.to_json
+         render :json => @user.to_json
       end
       format.html do
         redirect_to("/me?auth_token=#{@user.authentication_token}")
