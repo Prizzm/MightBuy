@@ -382,11 +382,16 @@ ol.topics {
     }
   }
 
-  div.price {
-    margin-top: 20px;
+  div.price, h3.price {
     color: #879d6c;
     float: right;
+  }
+  div.price{
+    margin-top: 20px;
     font-size: 2.8em;
+  }
+  h3.price {
+    font-size: 2em;
   }
   h2 {
     color: #4e3227;
