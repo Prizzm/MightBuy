@@ -24,6 +24,8 @@ class Comment < ActiveRecord::Base
   end
 
   def send_notifications
-    Delayed::Job.enqueue( ::CommentsMailerJob.new(self.id) )
+    if user != topic.user
+      Delayed::Job.enqueue( ::CommentsMailerJob.new(self.id) )
+    end
   end
 end

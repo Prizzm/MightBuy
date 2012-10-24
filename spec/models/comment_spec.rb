@@ -18,14 +18,25 @@ describe Comment do
   end
 
   describe "#send_notifications" do
+    before(:each) { CommentsMailer.deliveries.clear }
+    let(:mail)    { CommentsMailer.deliveries.first }
+
     context "when invoked" do
-      before(:each) { CommentsMailer.deliveries.clear }
       let(:comment) { FactoryGirl.create(:comment) }
-      let(:mail)    { CommentsMailer.deliveries.first }
 
       it "sends an email to topic owner" do
         comment.send_notifications
         mail.should_not be_nil
+      end
+    end
+
+    context "when commenter is topic owner" do
+      let(:topic)   { FactoryGirl.create(:topic) }
+      let(:comment) { FactoryGirl.create(:comment, topic: topic, user: topic.user) }
+
+      it "does not send any email to topic owner" do
+        comment.send_notifications
+        mail.should be_nil
       end
     end
   end
