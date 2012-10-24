@@ -10,7 +10,8 @@
 
   %body
     = render partial: "shares/social_requirements"
-    = render partial: "shares/flash_notice"
+    #flash-notice
+      = render partial: "shares/flash_notice"
 
     .container
       = render partial: "shares/landing_header"

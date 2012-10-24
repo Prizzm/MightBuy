@@ -26,6 +26,14 @@ class Vote < ActiveRecord::Base
 
   def activity_line(timeline_event)
     actor,topic = timeline_event.actor, timeline_event.secondary_subject
-    "#{actor.name} #{like_dislike_text} <a href='/users/#{topic.user.id}'>#{topic.user.name}'s</a> <a href='/topics/#{topic.to_param}'>#{topic.subject.first(45)}..</a> on mightbuy.".html_safe
+
+    owner_link =
+      if topic.user
+        "<a href='/users/#{topic.user.to_param}'>#{topic.user.name}'s</a>"
+      else
+        "Anonymous's"
+      end
+
+    "#{actor.name} #{like_dislike_text} #{owner_link} <a href='/topics/#{topic.to_param}'>#{topic.subject.first(45)}..</a> on mightbuy.".html_safe
   end
 end

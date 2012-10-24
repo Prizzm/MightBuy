@@ -1,5 +1,5 @@
-$(".flash-notice").remove();
-$("body").prepend("<%= escape_javascript(render partial: 'shares/flash_notice') -%>");
+Mightbuy.flashNotice.updateFlash("<%= escape_javascript(render partial: 'shares/flash_notice') -%>");
 <%- flash.clear -%>
+
 $("#topic-recommend").html("<%= escape_javascript(render partial: 'haves/topic_recommend', locals: { topic: @topic }) -%>");
 $("#topic-recommend-list-<%= @topic.id -%>").html("<%= escape_javascript(render partial: 'haves/topic_recommend_on_list', locals: { topic: @topic }) -%>");
