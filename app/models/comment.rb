@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
 
   def self.update_user(comment_id, user)
     if comment_id && comment = Comment.find_by_id(comment_id)
-      comment.update_attributes(user_id: user.id) && send_notifications
+      comment.update_attributes(user_id: user.id) && comment.send_notifications
     else
       false
     end
@@ -24,6 +24,6 @@ class Comment < ActiveRecord::Base
   end
 
   def send_notifications
-    Delayed::Job.enqueue( CommentsMailerJob.new(self.id) )
+    Delayed::Job.enqueue( ::CommentsMailerJob.new(self.id) )
   end
 end
