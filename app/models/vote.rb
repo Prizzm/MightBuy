@@ -28,8 +28,8 @@ class Vote < ActiveRecord::Base
     actor,topic = timeline_event.actor, timeline_event.secondary_subject
 
     owner_link =
-      if topic.user.try(:id)
-        "<a href='/users/#{topic.user.id}'>#{topic.user.name}'s</a>"
+      if topic.user
+        "<a href='/users/#{topic.user.to_param}'>#{topic.user.name}'s</a>"
       else
         "Anonymous's"
       end
