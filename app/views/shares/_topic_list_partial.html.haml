@@ -17,8 +17,9 @@
           .topic-meta-all.mtop10
             = link_to(topic.poster_name(current_user), user_path(topic.user))
             #{topic.human_status} this
-            = link_to(copy_topic_path(topic)) do
+            = link_to copy_topic_path(topic), "data-toggle" =>"modal", "data-target" => "#topic-confirm-add-modal-#{topic.id}" do
               = image_tag("add_icon.png")
+            = render partial: "shares/topic_confirm_add_modal", locals: { topic: topic }
         .span1.pull-right.topic-list-actions
           %div.price
             = number_to_currency(topic.price)
