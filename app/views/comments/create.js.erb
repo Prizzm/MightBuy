@@ -2,8 +2,7 @@
   $(".topic-comments").append("<%= escape_javascript(render partial: 'topics/comment_entry', locals: { comment: @comment }) -%>");
   $("#comment_description").val("");
 
-  $(".flash-notice").remove();
-  $("body").prepend("<%= escape_javascript(render partial: 'shares/flash_notice') -%>");
+  Mightbuy.flashNotice.updateFlash("<%= escape_javascript(render partial: 'shares/flash_notice') -%>");
   <%- flash.clear -%>
 <% else -%>
   $(document).bind('reveal.facebox', function() {

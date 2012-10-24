@@ -27,4 +27,24 @@ describe Vote do
       current_user.timeline_events.should be_empty
     end
   end
+
+  describe "#activity_line" do
+    let(:event)  { FactoryGirl.create(:timeline_event_for_vote) }
+    let(:vote)   { event.subject }
+
+    context "when timeline event has valid topic owner" do
+      it "returns valid topic owner link and name" do
+        vote.activity_line(event).should_not match(/anonymous/i)
+      end
+    end
+
+    context "when timeline event has invalid topic owner" do
+      let(:topic)    { event.secondary_subject }
+      before(:each)  { topic.user.delete; topic.reload }
+
+      it "returns anonymous as topic owner name" do
+        vote.activity_line(event).should match(/anonymous/i)
+      end
+    end
+  end
 end
