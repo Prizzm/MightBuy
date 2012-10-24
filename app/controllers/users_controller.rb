@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter  :find_user!, :set_selected_tab
-  skip_before_filter :verify_authenticity_token :only => [:create]
+  skip_before_filter :verify_authenticity_token, only: :create
   layout 'logged_user'
 
   # Authenticate
