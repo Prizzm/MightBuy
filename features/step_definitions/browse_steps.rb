@@ -57,3 +57,15 @@ Then /^I should see my vote as "(.*?)" from browse view$/ do |vote|
     end
   end
 end
+
+Then /^I should be able to add the topic from browse view$/ do
+  page.within("#topic-browse-entry-#{@topic.id}") do
+    click_link "Add_icon"
+  end
+
+  page.within(".modal.fade.in") do
+    click_link("Add to 'I mightbuy' list")
+  end
+
+  page.should have_content("Item copied to your list")
+end

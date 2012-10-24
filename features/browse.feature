@@ -28,6 +28,14 @@ Feature: As a user
     And I browse for a topic
     Then I should be able to add the topic to have list
 
+  @javascript @add-to-list-from-browse
+  Scenario: Adding an item to i mightbuy or i have while browsing
+    Given a confirmed user "Tyler"
+    Given a confirmed user "Marla" with a topic
+    And I login as "Tyler"
+    And I click "Browse"
+    Then I should be able to add the topic from browse view
+
   @javascript @deleted-user
   Scenario: Topics populated by a deleted user should be browsable
     Given a confirmed user "Bob" with a topic
