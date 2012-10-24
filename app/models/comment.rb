@@ -22,4 +22,8 @@ class Comment < ActiveRecord::Base
     actor,topic = timeline_event.actor, timeline_event.secondary_subject
     "#{actor.name} commented on <a href='/users/#{topic.user.id}'>#{topic.user.name}'s</a> <a href='/topics/#{topic.to_param}'>#{topic.subject.first(45)}..</a> on mightbuy".html_safe
   end
+
+  def send_notifications
+    Delayed::Job.enqueue( CommentsMailerJob.new(self.id) )
+  end
 end

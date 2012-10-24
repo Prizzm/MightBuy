@@ -16,4 +16,17 @@ describe Comment do
       comment_event.activity_line.should =~ /#{current_user.name}/i
     end
   end
+
+  describe "#send_notifications" do
+    context "when invoked" do
+      before(:each) { CommentsMailer.deliveries.clear }
+      let(:comment) { FactoryGirl.create(:comment) }
+      let(:mail)    { CommentsMailer.deliveries.first }
+
+      it "sends an email to topic owner" do
+        comment.send_notifications
+        mail.should_not be_nil
+      end
+    end
+  end
 end
