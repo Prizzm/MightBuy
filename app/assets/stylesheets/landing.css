@@ -4,4 +4,7 @@
  *= require welcomes
  *= require signup
  *= require pages
+ *= require jquery-ui-1.8.23.custom
+ *= require tagit/tagit-simple-grey.css
+ *= require topic_search/item_search
 */
