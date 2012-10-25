@@ -40,6 +40,30 @@ function updateScraperInfo($elem){
 }
 
 $(function(){
+  
+  $("#public-search-form #q").autocomplete({
+    source : function(request,response){
+      queryParams = {q: request.term};
+      $.getJSON(Mightbuy.suggestApiURL,queryParams, function(result){
+        res = result[1];
+        if(res.length){
+          res = $.map(res.slice(0, 4), function(suggestion, index){
+            return {
+              label: suggestion[0],
+              value: suggestion[0]
+            };
+          });
+        }
+        response(res);
+      });
+    },
+    open : function(event, ui){},
+    close : function(event, ui){},
+    select : function(event, ui){
+      $("#public-search-form .btn").click();
+    },
+    appendTo : "#search_autocomplete"
+  });
 
   $("#public-search-form").submit(function(e){
     window.location.hash = $("#public-search-form #q").val();
