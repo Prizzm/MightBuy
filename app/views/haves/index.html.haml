@@ -2,11 +2,8 @@
   - if @haves.empty?
     = render :partial => "empty_have"
   - else
-    %a.btn.btn-red.add-item{:href => "/haves/new"}
+    = link_to new_have_path, class: "btn btn-red add-item" do
       %i.icon-plus-sign.icon-white
       Add an item
     %ol.list.topics
-      .row
-        .add-topic-link.hide
-          = link_to("Add an item", new_have_path, :class=>"btn btn-red")
       = render partial: "have", collection: @haves
