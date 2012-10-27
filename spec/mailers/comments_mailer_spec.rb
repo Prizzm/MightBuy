@@ -23,6 +23,10 @@ describe CommentsMailer do
       it "has topic url in the body" do
         mail.body.should match(topic_url(topic))
       end
+
+      it "has comment in the body" do
+        mail.body.should match(comment.description)
+      end
     end
   end
 end
