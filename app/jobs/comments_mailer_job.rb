@@ -27,7 +27,7 @@ class CommentsMailerJob < Struct.new(:comment_id)
 
   def perform
     if comment && comment.user && comment.topic && comment.topic.user
-      send_comments_notification_to_commenters
+      send_comment_notifications_to_commenters
     end
   end
 end
