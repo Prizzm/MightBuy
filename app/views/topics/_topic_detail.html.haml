@@ -15,7 +15,6 @@
     .topic-tags.mtop10
       - unless @topic.tags.empty?
         %span
-          Tags :&nbsp;
           = render :partial => "/shares/tags", :locals => {:topic => @topic }
     - if @topic.product.accept_payments == true
       %form{:action => "/topics/#{@topic.shortcode}/payments/process", :method => "post", :style => "margin-left: 40px;"}
@@ -27,3 +26,8 @@
       .topic-price.mtop50= number_to_currency(@topic.product.price)
     - else
       .topic-price.mtop50= number_to_currency(@topic.price)
+
+:javascript
+  $(document).ready(function(){
+    $('.tagit-new .tagit-input').attr('placeholder', '+ add more tags');
+  });

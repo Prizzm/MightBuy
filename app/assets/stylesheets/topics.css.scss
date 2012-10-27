@@ -992,3 +992,17 @@ span.no-votes {
   margin-top:7px;
   margin-bottom:0;
 }
+.icon-plus-sign{
+  background:image-url('icon-plus-sign.png') no-repeat 0 0;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.add-item{
+  float:right;
+  position:relative;
+  top:-35px;
+  right:15px;
+  @include border-radius(5px 5px 0 0);
+  padding: 8px 10px 5px 10px;
+}
