@@ -562,3 +562,84 @@ ol.topics div.price.mtop5{
 #topic-not-recommended, #topic-voted-no {
   background-position:-1px -145px;
 }
+
+ul.tagit{
+
+ li{
+    margin: 2px 7px 2px 0;
+  }
+  li.tagit-choice{
+    border: 1px solid #CCC !important;
+    padding: 2px 20px 3px 25px;
+    position:relative;
+    color: #806459;
+    
+    &:after{
+      position:absolute;
+      content:"";
+      width:20px;
+      height:25px;
+      background-image: image-url('glyphicons-halflings.png');
+      background-position: 0 -48px;
+      top: 5px;
+      left: 5px;
+      z-index:10;
+    }
+    
+    a.tagit-close {
+      padding: 2px 5px 2px 3px;
+      line-height: 9px;
+      right: -2px;
+      visibility:hidden
+    }
+    
+    &:hover{
+      a.tagit-close {
+        visibility:visible
+      }
+    }
+  }
+  li.ui-state-error.selected{
+    background: #900;
+    color: white;
+    
+    &:after{
+      background-image: image-url('glyphicons-halflings-white.png');
+    }
+    
+    a.tagit-close {
+      color: #fff;
+      @include text-shadow(none);
+    }
+  }
+  input[type="text"]{
+    background-color: white;
+    @include border-radius(3px);
+    border: 1px solid #CCC !important;
+    padding: 1px 5px 2px 5px !important;
+    @include box-shadow(0 0 0 4px #F6F3EE);
+  }
+}
+
+.ui-autocomplete{
+  @include border-radius(3px);
+  
+  li.ui-menu-item {
+    padding: 0;
+    margin: 0;
+    
+    a{    
+      padding: 5px;
+      color:#806459;
+      border:none;
+      border-bottom:1px solid #ccc !important;
+      @include border-radius(0);
+    }
+    a.ui-state-hover, a.ui-state-active, a:hover{
+      border:none;
+      border-bottom:1px solid #ccc !important;
+      background:#D4C7BE !important;
+      margin:0;
+    }
+  }
+}

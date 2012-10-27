@@ -1,7 +1,0 @@
-ol.list.topics#pageless-topic-listing data-total-pages="#{@user.topics.mightbuy.latest_posts.num_pages}" data-pageless-url="/me"
-  .row.add-topic-link
-    = link_to("Add an item",new_topic_path, :class=>"btn btn-red")
-  .clear
-  = placeholder latest_posts do |collection|
-    = render :partial => "topics/topic", :collection => collection
-

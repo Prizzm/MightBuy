@@ -92,11 +92,11 @@ def tab_has_topic?(tab, topic)
 end
 
 Then /^I should see the topic in mightbuy$/ do
-  tab_has_topic?("I might buy", @topic).should be_true
+  tab_has_topic?("I MightBuy", @topic).should be_true
 end
 
 Then /^I should not see the topic in mightbuy$/ do
-  tab_has_topic?("I might buy", @topic).should be_false
+  tab_has_topic?("I MightBuy", @topic).should be_false
 end
 
 Then /^I should see the topic in have$/ do
