@@ -230,7 +230,7 @@ describe Topic do
       end
 
       it "returns no commenters excluding requested commenter" do
-        watch.commenters =~ []
+        watch.commenters.exclude(tyler) =~ []
       end
     end
   end
