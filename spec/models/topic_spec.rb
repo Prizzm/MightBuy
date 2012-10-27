@@ -202,4 +202,36 @@ describe Topic do
       @topic.not_recommended?.should be_true
     end
   end
+
+  describe "#commenters" do
+    let(:tyler)  { FactoryGirl.create(:user, name: "Tyler") }
+    let(:marla)  { FactoryGirl.create(:user, name: "Marla") }
+    let(:watch)  { FactoryGirl.create(:topic, subject: "Rolex", user: tyler) }
+
+    context "when there are comments by others" do
+      # make sure that we have 3 comments here to validate uniqueness ...
+      let(:buyit)    { FactoryGirl.create(:comment, topic: watch, user: marla) }
+      let(:yousure)  { FactoryGirl.create(:comment, topic: watch, user: tyler) }
+      let(:ofcourse) { FactoryGirl.create(:comment, topic: watch, user: marla) }
+      before(:each)  { [buyit, yousure] }
+
+      it "returns all unique commenters" do
+        watch.commenters =~ [tyler, marla]
+      end
+
+      it "returns commenters excluding requested commenter" do
+        watch.commenters.exclude(tyler) =~ [marla]
+      end
+    end
+
+    context "when there are no comments" do
+      it "returns no commenters" do
+        watch.commenters =~ []
+      end
+
+      it "returns no commenters excluding requested commenter" do
+        watch.commenters =~ []
+      end
+    end
+  end
 end
