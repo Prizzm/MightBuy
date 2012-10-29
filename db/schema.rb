@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121016202309) do
+ActiveRecord::Schema.define(:version => 20121029134511) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -59,6 +59,13 @@ ActiveRecord::Schema.define(:version => 20121016202309) do
     t.string   "serial_number"
     t.string   "device_id"
     t.string   "authorization_token"
+  end
+
+  create_table "articles", :force => true do |t|
+    t.string   "title"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "auth_providers", :force => true do |t|
@@ -192,6 +199,12 @@ ActiveRecord::Schema.define(:version => 20121016202309) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "foos", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "orders", :force => true do |t|
