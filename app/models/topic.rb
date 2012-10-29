@@ -30,6 +30,12 @@ class Topic < ActiveRecord::Base
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_many :commenters, through: :comments, source: :user, uniq: true do
+    def exclude(commenter)
+      where("comments.user_id != ?", commenter.id)
+    end
+  end
+
   # Scopes
   scope :publics, where(:access => "public")
   scope :privates, where(:access => "private")
@@ -285,3 +291,4 @@ class Topic < ActiveRecord::Base
     end
   end
 end
+
