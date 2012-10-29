@@ -12,7 +12,10 @@ class CommentsController < ApplicationController
     end
 
     if @comment.errors.empty?
-      flash[:notice] = t("commenting.success")
+      if current_user
+        @comment.send_notifications
+        flash[:notice] = t("commenting.success")
+      end
     else
       flash[:error]  = t("commenting.failed")
     end

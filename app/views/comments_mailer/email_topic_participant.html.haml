@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+  :css
+    @font-face{font-family:Museo500;src:url(http://mightbuy.it/assets/Museo500-Regular-cd6a065fae566782a04d39349928ec50.otf)}
+    @font-face{font-family:Museo700;src:url(http://mightbuy.it/assets/Museo700-Regular-c09a3b3f8e853b6d0ae9b18190e9b8c4.otf)}
+  %body{style: "background-color:#e6d6c7"}
+    %table{align: "center", border: "0", cellpadding: "0", cellspacing: "0", width: "700"}
+      %tr
+        %td{height: "50"}
+      %tr
+        %td{align: "center"}
+          = link_to MB.config.app_url, target: "_blank" do
+            = image_tag("mightbuy-logo.png", alt: "MightBuy")
+          %p{align: "center", style: "margin:0;color: #333;font-family: Museo700;font-size: 22px;-moz-text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;-webkit-text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;"}
+            Track stuff you might buy
+      %tr
+        %td{height: "15"}
+      %tr
+        %td{style: "background-color:#fff;padding:20px 35px;word-break: break-all;"}
+          %h3{style: "color: #4E3227;font-family: Museo500;font-size: 18px;"}
+            = "Hi #{@receiver.name},"
+          %p{style: "font-family: Museo500;color: #4E3227;font-size: 16px;"}
+            = "#{@commenter.name.capitalize} has commented on your topic:"
+          %p{style: "font-family: Museo500;color: #4E3227;font-size: 16px; background-color: lightgray; padding: 5px; border: 1px solid black;"}
+            = @comment.description
+          %p{style: "font-family: Museo500;color: #4E3227;font-size: 16px;"}
+            = "Visit "
+            = link_to topic_url(@comment.topic), target: "_blank" do
+              = @comment.topic.subject
+            = " for more information"
+      %tr
+        %td{height: "80"}

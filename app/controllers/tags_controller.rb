@@ -14,7 +14,10 @@ class TagsController < ApplicationController
   def update_tags
     @topic = Topic.find_by_shortcode(params["topic_id"])
     if @topic && @topic.owner?(current_user)
-      @topic.update_tags(params["tags"])
+      incoming_tags = params["tags"]
+      incoming_tags = [] if incoming_tags.blank?
+
+      @topic.update_tags(incoming_tags)
       head :accepted
     else
       head :bad_request
