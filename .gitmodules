@@ -1,0 +1,3 @@
+[submodule "vendor/mightbuy-models"]
+	path = vendor/mightbuy-models
+	url = git@github.com:Prizzm/mightbuy-models.git

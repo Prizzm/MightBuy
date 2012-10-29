@@ -54,6 +54,7 @@ gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly'
 gem 'jquery-fileupload-rails'
 
+
 # Admin
 gem 'activeadmin'
 gem "meta_search"
@@ -72,6 +73,8 @@ gem 'facebox-rails'
 gem 'ministry_of_state', git: "git://github.com/code-mancers/ministry_of_state.git"
 
 gem "timeline_fu", git: "git://github.com/styx/timeline_fu.git"
+
+gem "mightbuy_models", :path => "vendor/mightbuy-models"
 
 group :development do
   gem 'pry-rails'
