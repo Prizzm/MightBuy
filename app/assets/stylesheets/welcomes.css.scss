@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "style";
 .welcomes-content {
   font-family: Museo500;
   margin-top: 70px;
@@ -78,20 +79,19 @@
   -webkit-border-radius: 7px 7px 0 0;
   border-radius: 7px 7px 0 0;
   min-height: 400px;
-  padding: 60px 40px 0 40px;
+  padding: 40px 40px 0 40px;
   position: relative;
-  margin-top:45px;
+  margin-top:20px;
 }
 
 #public-search-form{
-  margin-left: 202px;
-  margin-bottom: 60px;
-
+  margin:15px 0 0 5px;
+  
   #q{
-    box-shadow: 0 0 0 4px #F6F3EE;
+    @include box-shadow(0 0 0 5px rgba(0,0,0,0.10));
+    @include border-radius(3px 3px 3px 3px);
     background-color: white;
-    border: 1px solid #CCCCCC;
-    border-radius: 3px 3px 3px 3px;
+    border: 1px solid #ccc;
     height: 25px;
     width: 450px;
     color: #4E3227;
@@ -100,17 +100,35 @@
     padding: 4px;
   }
   #q:focus{
-    box-shadow: 0 0 0 4px #F6F3EE;
+    @include box-shadow(0 0 0 5px rgba(0,0,0,0.10));
     border-color:rgba(82, 168, 236, 0.8);
     outline:none;
   }
   
   .btn-green{
-    border-radius: 2px;
+    @include border-radius(2px);
     position: relative;
     top:0px;
     right: 151px;
     padding: 7px 15px;
+  }
+}
+.search-items{
+  .header #mightbuy-logo {
+    margin-top: 20px;
+  }
+  .header .caption {
+    display:none
+  }
+}
+.top-nav-links{
+  margin-top:15px;
+  font-size:15px;
+  font-family: 'Museo500';
+  
+  a{
+    color:#4E3227;
+    padding:0 15px;
   }
 }
 .public-search-result td{
@@ -142,4 +160,11 @@
       color:#666;
     }
   }
+}
+.public-search-result:first-child td{
+  padding-top:0;
+  border:none;
+}
+.modal-header-bg{
+  background-color:#e4d6c7
 }

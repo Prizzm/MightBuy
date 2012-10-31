@@ -1,0 +1,26 @@
+.header
+  .row
+    .span4
+      = link_to("/") do
+        = image_tag("mightbuy-logo.png", id: "mightbuy-logo")
+      %p.caption
+        Track stuff you might buy
+    .span6.offset2
+      .pull-right.top-nav-links
+        %a{"data-toggle" => "modal", :href => "#myModal", :role => "button"} Video
+        |
+        = link_to(new_user_session_path) do
+          Sign In
+        |
+        = link_to(new_user_registration_path) do
+          Sign Up
+
+#myModal.hide.modal{"aria-hidden" => "false", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-header.modal-header-bg
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3#myModalLabel Video Demo
+  .modal-body
+    %iframe{:height => "350", :src => "http://www.youtube.com/embed/9riCsmyrW3g", :width => "520"} 
+
+:javascript
+  $('#myModal').modal('hide')
