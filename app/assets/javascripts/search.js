@@ -97,7 +97,7 @@ $(function(){
       }
       else
       {
-        $(".public-search-results").html("<br /><br /><br />");
+        $("#search-page").html("<div class='bevel-line mtop20 mbot20'></div><div class='no-search-result'>Start searching things you might buy in future, or things you already have, and share with your friends and family.</div>");
       }
     });
   };
