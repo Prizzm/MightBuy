@@ -2,7 +2,9 @@
 
 = content_for :head do
   %title= @topic.subject
-
+= link_to new_have_path, class: "btn btn-red add-item" do
+  %i.icon-plus-sign.icon-white
+  Add an item
 .show-topic
   .row.topic-links.ptop40.mleft20.mright40
     .span3
@@ -44,5 +46,3 @@
         = render partial: "topics/topic_votes", locals: { topic: @topic, vote: @vote }
 
   = render :partial => "topic_meta_information"
-
-

@@ -1,9 +1,9 @@
 #details
+  = link_to new_have_path, class: "btn btn-red add-item" do
+    %i.icon-plus-sign.icon-white
+    Add an item
   - if @haves.empty?
     = render :partial => "empty_have"
   - else
-    = link_to new_have_path, class: "btn btn-red add-item" do
-      %i.icon-plus-sign.icon-white
-      Add an item
     %ol.list.topics
       = render partial: "have", collection: @haves

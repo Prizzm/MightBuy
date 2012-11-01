@@ -643,3 +643,40 @@ ul.tagit{
     }
   }
 }
+/* -------------------------------------- */
+.topic-tabs > li.add-an-item-btn{
+  float: right;
+  margin-right: 15px;
+  height: 33px;
+  width: 133px;
+  margin-top: 11px;
+  text-align: left;
+}
+.topic-tabs > li.add-an-item-btn > a{
+  font-size: 15px;
+  padding: 2px 0 0 10px;
+}
+/* -------------------------------------- */
+.topic-tabs > li.add-an-item-drop{
+  float: right;
+  margin-right: 13px;
+  height: 35px;
+  width: 160px;
+  margin-top: 9px;
+  text-align:left;
+  @include box-shadow(none);
+}
+.topic-tabs > li.add-an-item-drop a.dropdown-toggle{
+  padding-bottom:5px;
+  @include border-radius(5px 5px 0 0);
+}
+.topic-tabs > li.add-an-item-drop, .topic-tabs > li.add-an-item-drop:hover{
+  background: none;
+  border: none;
+}
+.topic-tabs > li.add-an-item-drop .nav-pills .dropdown-menu{
+  padding:0;
+}
+.topic-tabs > li.add-an-item-drop .nav-pills .dropdown-menu li{
+  margin:0;
+}

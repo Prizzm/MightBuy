@@ -1,6 +1,4 @@
 .have-item-instruction
-  %h3.font-normal.muted You have not added anything to your Have list yet. Click button below to start adding.
-  .a-center
-    = link_to("Add an item", new_have_path, :class=>"btn btn-red")
+  %h3.font-normal.muted You have not added anything to your Have list yet. Click on 'Add an Item' button to start adding.
 - unless @might_buys.empty?
   = render :partial => "copy_have_list"
