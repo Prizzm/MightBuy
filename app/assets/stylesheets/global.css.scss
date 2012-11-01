@@ -492,9 +492,9 @@ ol.topics div.price.mtop5{
   
 .public-search-result-scraper-info .image-selector .reset-btn {
   margin: 0 0 20px 0;
-  position:absolute;
-  top:60px;
-  right:40px;
+  position: absolute;
+  top: -54px;
+  left: 481px;
 }
 
 .vote-yes,
@@ -679,4 +679,12 @@ ul.tagit{
 }
 .topic-tabs > li.add-an-item-drop .nav-pills .dropdown-menu li{
   margin:0;
+}
+.no-search-result{
+  font-family:"Museo300";
+  font-size:16px;
+  color:#666;
+  text-align:center;
+  margin-top:90px;
+  min-height: 350px;
 }
