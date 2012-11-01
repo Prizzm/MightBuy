@@ -20,5 +20,4 @@ begin
     end
   end
 rescue LoadError
-  puts "Unable to load Rake Tasks for CI Server"
 end
