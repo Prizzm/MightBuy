@@ -44,7 +44,7 @@ Feature: As a user
     And I delete my profile
     And I login as "Tyler"
     And I browse for a topic
-    Then I should see "Jeans"
+    Then I should see "Macbook"
 
   @javascript @vote-from-browse-view
   Scenario: User should be able to vote from browse view itself
@@ -56,3 +56,13 @@ Feature: As a user
     Then I should see my vote as "Yes!" from browse view
     And I vote "No!" from browse view
     Then I should see my vote as "No!" from browse view
+
+
+  @javascript @user-items-on-browse
+  Scenario: User should be able to see his own mightbuy/have items on browse
+    Given a confirmed user "Tyler" with a have topic
+      And the user has another topic
+    When I login as "Tyler"
+     And I click "Browse"
+    Then I should see "Macbook"
+     And I should see "Apple thunderbolt display"

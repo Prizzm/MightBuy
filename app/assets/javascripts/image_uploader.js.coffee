@@ -21,6 +21,14 @@ class @Mightbuy.ImageUploader
         window.loadImage data.files[0], (imgOrError) =>
           if imgOrError.type != "error"
             @image = $(imgOrError)
+
+            imageWidth  = $("a.image").width()
+            imageHeight = $("a.image").height()
+            if @image.attr("width") > imageWidth
+              @image.attr("width", imageWidth)
+            if @image.attr("height") > imageHeight
+              @image.attr("height", imageHeight)
+
             $("#gsearch-results").hide()
             $("#item-form-image-selector").show()
             $("#item-form-image-selector").imageSelector
