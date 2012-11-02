@@ -226,3 +226,8 @@ end
 Then /^I should see my recommendation as "(.*?)" from list view$/ do |recommend|
   check_vote_status(@have_topic, recommend == "Yes!")
 end
+
+
+Given /^the user has another topic$/ do
+  @mightbuy_topic = FactoryGirl.create(:topic, user: @user)
+end

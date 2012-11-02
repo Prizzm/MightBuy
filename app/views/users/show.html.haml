@@ -14,19 +14,43 @@
     %hr.hr.mleft20.mright20
   .row.mleft20.mtop40
     .span4.user-item-list
-      %h3= user_wants_title_helper(@user)
-      - if @topics.empty?
-        %br
-        User has not added any item
-      - else
-        %table.table.table-border-less
-          - @topics.each_slice(3) do |topics|
-            %tr
-              - topics.each do |topic|
-                %td
-                  = link_to(context_topic_path(topic), :class=>"p-rel mask-link") do
-                    = image_tag(topic.icon_image, size: "64x64", alt: "icon")
-                    %span.mask-64
+      .row
+        .span4#user-mightbuy-topics
+          %h3= user_wants_title_helper(@user)
+          - if @topics.empty?
+            %br
+            - if @user == current_user
+              You have not added any items
+            - else
+              User has not added any items
+          - else
+            %table.table.table-border-less
+              - @topics.each_slice(3) do |topics|
+                %tr
+                  - topics.each do |topic|
+                    %td{id: "topic-#{topic.id}-img"}
+                      = link_to(context_topic_path(topic), :class=>"p-rel mask-link") do
+                        = image_tag(topic.icon_image, size: "64x64", alt: "icon")
+                        %span.mask-64
+      .row
+        .span4#user-have-topics
+          %h3= user_has_title_helper(@user)
+          - if @haves.empty?
+            %br
+            - if @user == current_user
+              You have not added any items
+            - else
+              User has not added any items
+          - else
+            %table.table.table-border-less
+              - @haves.each_slice(3) do |topics|
+                %tr
+                  - topics.each do |topic|
+                    %td{id: "topic-#{topic.id}-img"}
+                      = link_to(context_topic_path(topic), :class=>"p-rel mask-link") do
+                        = image_tag(topic.icon_image, size: "64x64", alt: "icon")
+                        %span.mask-64
+
     .span5.user-activity-feed
       %h3= user_activity_feed_title_helper(@user)
       = render :partial => "activity"
