@@ -13,7 +13,10 @@ class VotesController < ApplicationController
     end
 
     if @vote.errors.empty?
-      flash[:notice] = t("voting.success")
+      if current_user
+        @vote.send_notifications
+        flash[:notice] = t("voting.success")
+      end
     else
       flash[:error]  = t("voting.failed")
     end
