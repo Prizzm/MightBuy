@@ -30,7 +30,7 @@ class TopicsController < ApplicationController
 
   def index
     page = params[:page] || 1
-    @topics = Topic.except_user_topics(page,current_user)
+    @topics = Topic.except_user_topics(page)
     if request.xhr?
       render :partial => "/topics/topic_list"
     end

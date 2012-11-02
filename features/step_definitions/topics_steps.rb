@@ -229,5 +229,5 @@ end
 
 
 Given /^the user has another topic$/ do
-  @mightbuy_topic = FactoryGirl.create(:topic, user: @user)
+  @mightbuy_topic = FactoryGirl.create(:topic, user: @user, subject: "MacBook")
 end

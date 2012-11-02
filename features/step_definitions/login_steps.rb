@@ -4,13 +4,13 @@ end
 
 Given /^a confirmed user "(.*?)" with a topic$/ do |name|
   step %Q{a confirmed user "#{name}"}
-  @topic = FactoryGirl.create(:topic, user: @user)
+  @topic = FactoryGirl.create(:topic, user: @user, subject: "Macbook")
   @mightbuy_topic = @topic
 end
 
 Given /^a confirmed user "(.*?)" with a have topic$/ do |name|
   step %Q{a confirmed user "#{name}"}
-  @topic = FactoryGirl.create(:topic, user: @user, status: "ihave")
+  @topic = FactoryGirl.create(:topic, user: @user, status: "ihave", subject: "Apple thunderbolt display")
   @have_topic = @topic
 end
 
