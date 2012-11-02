@@ -39,6 +39,13 @@ Then /^I login as "(.*?)"$/ do |name|
   signin_user(@user)
 end
 
+Then /^I re-login as "(.*?)"$/ do |name|
+  click_link "Sign out"
+
+  @user = User.find_by_name(name)
+  signin_user(@user)
+end
+
 Then /^I login as "(.*?)" via lightbox$/ do |name|
   temp = FactoryGirl.build(:user)
   @user = User.find_by_name(name)

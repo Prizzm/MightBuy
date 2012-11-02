@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   # Authenticate
   before_filter :authenticate_user!
   def show
-    @topics = @user.topics.order("created_at desc").limit(12)
+    @topics = @user.topics.mightbuy.order("created_at desc").limit(6)
+    @haves  = @user.topics.have.order("created_at desc").limit(6)
     @timeline_events = @user.timeline_events.order("created_at desc").limit(50)
   end
 
