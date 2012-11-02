@@ -234,4 +234,20 @@ describe Topic do
       end
     end
   end
+
+  describe "#ordered_comments" do
+    let(:topic)  { FactoryGirl.create(:topic) }
+    let(:buyit)  { FactoryGirl.create(:comment, topic: topic) }
+    let(:nonono) { FactoryGirl.create(:comment, topic: topic) }
+    let(:comments) { [buyit, nonono] }
+    before(:each)  { comments; buyit.update_attributes(created_at: 2.hours.ago) }
+
+    it "returns all the comments" do
+      topic.ordered_comments =~ comments
+    end
+
+    it "returns buyit as first comment" do
+      topic.ordered_comments[0].should == buyit
+    end
+  end
 end
