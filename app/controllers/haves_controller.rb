@@ -11,7 +11,7 @@ class HavesController < ApplicationController
 
   def show
     @have = @topic
-    @comments = @have.comments.joins(:user).where(parent_id: nil).includes(:user)
+    @comments = @have.ordered_comments
     @comment = Comment.new()
 
     if current_user && @have.owner?(current_user)

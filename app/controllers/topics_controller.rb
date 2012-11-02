@@ -30,7 +30,7 @@ class TopicsController < ApplicationController
 
   def index
     page = params[:page] || 1
-    @topics = Topic.except_user_topics(page,current_user)
+    @topics = Topic.except_user_topics(page)
     if request.xhr?
       render :partial => "/topics/topic_list"
     end
@@ -38,8 +38,8 @@ class TopicsController < ApplicationController
 
   def show
     @vote = @topic.votes.find_by_user_id(current_user.id) if current_user
-    @comments = @topic.comments.joins(:user).where(parent_id: nil).includes(:user)
-    @comment = @topic.comments.build
+    @comments = @topic.ordered_comments
+    @comment = Comment.new
 
     if current_user && @topic.owner?(current_user)
       @selected_tab = 'mightbuy'

@@ -11,7 +11,10 @@ end
 
 Then /^I browse for a topic$/ do
   click_link "Browse"
-  page.find(".topic-title a").click
+
+  topic = Topic.except_user_topics(1, @user).first
+  topic.should_not be_nil
+  page.find("#topic-browse-entry-#{topic.id} .topic-title a").click
   @browse_topic_title = page.find(".topic-subject").text()
 end
 
