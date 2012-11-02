@@ -44,7 +44,7 @@ Feature: As a user
     And I delete my profile
     And I login as "Tyler"
     And I browse for a topic
-    Then I should see "Jeans"
+    Then I should see "Macbook"
 
   @javascript @vote-from-browse-view
   Scenario: User should be able to vote from browse view itself
