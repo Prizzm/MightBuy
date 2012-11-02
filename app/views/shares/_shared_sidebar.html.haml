@@ -12,9 +12,9 @@
 .topic-tag-list
   %h2 Tags
   %ul
-    - popular_tags.each do |tag|
-      %li
-        = link_to(tag.name,topics_tag_path(tag))
-
-
-    
+    - if @selected_tab == 'everybody' || current_user.nil?
+      - popular_tags.each do |tag|
+        %li= link_to(tag.name, topics_tag_path(tag))
+    - else
+      - current_user.popular_tags.each do |tag|
+        %li= link_to(tag.name, topics_tag_path(tag))
