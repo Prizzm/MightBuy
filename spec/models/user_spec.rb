@@ -61,6 +61,10 @@ describe User, "authenticating using facebook" do
         let(:reebok)  { FactoryGirl.create(:topic, user: tyler) }
         before(:each) { reebok.tags << shoes }
 
+        it "returns associated tags" do
+          tyler.popular_tags.should =~ [shoes, cars]
+        end
+
         it "returns shoes as more popular tag" do
           tyler.popular_tags.first.should == shoes
         end
@@ -69,6 +73,10 @@ describe User, "authenticating using facebook" do
       context "when cars tag is more popular" do
         let(:audi)  { FactoryGirl.create(:topic, user: tyler) }
         before(:each) { audi.tags << cars }
+
+        it "returns associated tags" do
+          tyler.popular_tags.should =~ [shoes, cars]
+        end
 
         it "returns cars as more popular tag" do
           tyler.popular_tags.first.should == cars
