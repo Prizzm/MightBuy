@@ -19,7 +19,10 @@
           %h3= user_wants_title_helper(@user)
           - if @topics.empty?
             %br
-            User has not added any item
+            - if @user == current_user
+              You have not added any items
+            - else
+              User has not added any items
           - else
             %table.table.table-border-less
               - @topics.each_slice(3) do |topics|
@@ -34,7 +37,10 @@
           %h3= user_has_title_helper(@user)
           - if @haves.empty?
             %br
-            User has not added any item
+            - if @user == current_user
+              You have not added any items
+            - else
+              User has not added any items
           - else
             %table.table.table-border-less
               - @haves.each_slice(3) do |topics|
