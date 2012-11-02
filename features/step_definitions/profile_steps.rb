@@ -25,14 +25,14 @@ When /^I visit my profile page$/ do
   visit user_path(@user)
 end
 
-Then /^I should my mightbuy items$/ do
+Then /^I should see my mightbuy items$/ do
   page.should have_content("I Might Buy")
   page.within("#user-mightbuy-topics") do
     page.should have_css("#topic-#{@mightbuy_topic.id}-img")
   end
 end
 
-Then /^I should my have items$/ do
+Then /^I should see my have items$/ do
   page.should have_content("I Have")
   page.within("#user-have-topics") do
     page.should have_css("#topic-#{@have_topic.id}-img")

@@ -13,5 +13,5 @@ Feature: As an user
     Then I should see have items of "Tyler"
     And I re-login as "Tyler"
     When I visit my profile page
-    Then I should my mightbuy items
-    Then I should my have items
+    Then I should see my mightbuy items
+    Then I should see my have items
