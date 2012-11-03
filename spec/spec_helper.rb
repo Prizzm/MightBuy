@@ -8,6 +8,9 @@ require 'rspec/autorun'
 require "vcr"
 
 OmniAuth.config.test_mode = true
+FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__),"..","vendor/mightbuy-models/spec/factories")
+FactoryGirl.find_definitions
+
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
