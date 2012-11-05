@@ -6,7 +6,7 @@
 
 require 'cucumber/rails'
 require "vcr"
-FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__),"..","vendor/mightbuy-models/spec/factories")
+FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__),"../../vendor/mightbuy-models/spec/factories")
 FactoryGirl.find_definitions
 
 Capybara.javascript_driver = :webkit
