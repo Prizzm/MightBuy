@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029134511) do
+ActiveRecord::Schema.define(:version => 20121103140056) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -76,13 +76,15 @@ ActiveRecord::Schema.define(:version => 20121029134511) do
     t.text     "description"
     t.string   "url"
     t.integer  "product_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                                                            :null => false
+    t.datetime "updated_at",                                                            :null => false
     t.string   "value"
     t.string   "application"
     t.string   "bargin_type"
     t.string   "barcode"
     t.boolean  "accept_payments"
+    t.decimal  "discount",        :precision => 6, :scale => 2
+    t.string   "payment_type",                                  :default => "MightBuy"
   end
 
   create_table "beta_signups", :force => true do |t|
@@ -99,15 +101,52 @@ ActiveRecord::Schema.define(:version => 20121029134511) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "business_staffs", :force => true do |t|
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "authentication_token"
+    t.integer  "business_id"
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
+    t.string   "name"
+  end
+
+  add_index "business_staffs", ["email"], :name => "index_business_staffs_on_email", :unique => true
+  add_index "business_staffs", ["reset_password_token"], :name => "index_business_staffs_on_reset_password_token", :unique => true
+
+  create_table "business_urls", :force => true do |t|
+    t.string   "domain"
+    t.integer  "business_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "businesses", :force => true do |t|
     t.string   "name"
     t.string   "latitude"
     t.string   "longitude"
     t.string   "foreground"
     t.string   "background"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.text     "description"
+    t.string   "logo_uid"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "facebook_url"
+    t.string   "twitter_handle"
+    t.string   "pinterest_handle"
+    t.text     "address"
+    t.boolean  "url_verified"
+    t.boolean  "profile_updated"
   end
 
   create_table "cards", :force => true do |t|
@@ -141,6 +180,15 @@ ActiveRecord::Schema.define(:version => 20121029134511) do
     t.text     "description", :default => ""
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "customer_leads", :force => true do |t|
+    t.string   "email"
+    t.string   "name"
+    t.string   "status"
+    t.integer  "product_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "deal_deals", :force => true do |t|
@@ -250,6 +298,7 @@ ActiveRecord::Schema.define(:version => 20121029134511) do
     t.integer  "business_id"
     t.boolean  "accept_payments"
     t.float    "price"
+    t.string   "domain_name"
   end
 
   create_table "responses", :force => true do |t|
