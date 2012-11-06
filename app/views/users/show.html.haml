@@ -32,6 +32,17 @@
                       = link_to(context_topic_path(topic), :class=>"p-rel mask-link") do
                         = image_tag(topic.icon_image, size: "64x64", alt: "icon")
                         %span.mask-64
+            .wishlist
+              %span.text
+                Share 'I Mightbuy' list via
+              = link_to "#", class: "email-icon" do
+                &nbsp;
+              = link_to "#", class: "twitter-icon" do
+                &nbsp;
+              = link_to "#", class: "facebook-icon" do
+                &nbsp;
+              %br.clear
+              %hr
       .row
         .span4#user-have-topics
           %h3= user_has_title_helper(@user)
