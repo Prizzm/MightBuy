@@ -3,8 +3,25 @@
 
 .show-topic
   .row.topic-links.ptop40.mleft20.mright40
-    .span6.topic-poster-prompt
-      #{@topic.poster_name} #{@topic.human_status}
+    .span9
+      .recommended-flag
+        = link_to "#" do
+          #{@topic.poster_name}
+        %span.text
+          \&nbsp;##{@topic.human_status}
+          this, and
+        %span.recommended-tag
+          %span.recomend-icon
+          Recommended!
+      .share-links
+        %span.text
+          Share
+        = link_to "#", class: "email-icon" do
+          &nbsp;
+        = link_to "#", class: "twitter-icon" do
+          &nbsp;
+        = link_to "#", class: "facebook-icon" do
+          &nbsp;
 
     - if current_user
       .pull-right

@@ -7,11 +7,11 @@
 .edit-page {
   background-color: white;
   padding:30px;
-  
+
   h3{
     margin-bottom:10px;
   }
-  
+
   .image-holder{
     margin-left:0 !important;
   }
@@ -19,7 +19,7 @@
     width:100px !important;
     height:100px !important;
   }
-  
+
   .image-selector .image-holder .next{
     margin-left:45px
   }
@@ -52,7 +52,7 @@
   list-style: none;
   padding: 0px;
   margin: 0px;
-  
+
   li{
     float: none;
     margin:0;
@@ -62,17 +62,17 @@
   margin-top: 4px;
 }
 
-.dropdown-menu{  
+.dropdown-menu{
   li:first-child a{
     border-radius: 2px 2px 0 0;
   }
   li:last-child a{
     border-radius: 0 0 2px 2px;
   }
-  
+
   li > a:hover, .active > a, .active > a:hover{
     background-color:#ab393d;
-    
+
     i{
       background-image: image-url("glyphicons-halflings-white.png");
     }
@@ -106,7 +106,7 @@
     width: 256px;
     height: 256px;
     margin-bottom: 30px;
-    
+
     img {
       display: block;
       margin: auto;
@@ -223,7 +223,7 @@
     width: 300px;
     height: 25px;
   }
-  
+
   .input-append{
     input[type='text'] {
       width: 218px;
@@ -252,7 +252,7 @@
   top: 28px;
   right: 10px;
   z-index:1000;
-  
+
   &.btn-green{
     padding: 9px 10px;
     @include border-radius(0 0 2px 2px);
@@ -323,7 +323,7 @@
 ol.topics {
   padding: 30px 0 0 0;
   margin:0;
-  
+
   li {
     display: block;
     border-bottom: 1px solid #cacaca;
@@ -347,7 +347,7 @@ ol.topics {
 
   .topic-listing-tag {
     margin: 10px 0px 10px 0px;
-    
+
     a{
       padding: 0px 3px 0px 3px;
     }
@@ -398,7 +398,7 @@ ol.topics {
   background-position: right top;
   width: 26px;
   height: 28px;
-  
+
   &:hover {
     background-position: left top;
     text-decoration:none;
@@ -423,7 +423,7 @@ ol.topics {
 
 .share-view{
   margin:0 40px 40px 40px;
-  
+
   h3{
     font-size:25px;
     border-bottom:1px solid #ccc;
@@ -458,23 +458,23 @@ ol.topics {
   margin-bottom:20px;
 }
 
-#share-csv, #share-list, .mini-container, .gen-detail{ 
+#share-csv, #share-list, .mini-container, .gen-detail{
   @include label-group;
 }
 
-.gen-detail{ 
+.gen-detail{
   @include label-group;
-  
+
   label{
     width:90px;
   }
-  
+
   .btn-marg{
     margin-left:150px;
   }
-  
+
   .control-group{
-    clear:both;  
+    clear:both;
   }
 }
 
@@ -485,10 +485,10 @@ ol.topics {
   border: 2px dashed #D4C7BE;
   height: 80px;
   margin-top: 10px;
-  
+
   h1, p{
     font:bold 14px arial;
-    text-align:center; 
+    text-align:center;
   }
   h1{
     font-size:20px;
@@ -523,7 +523,7 @@ ol.topics {
   @include gradient(#e26b71, #aa373c);
   @include text-shadow(none);
   border-style: solid;
-  border-width: 1px; 
+  border-width: 1px;
   border-color: #cd383e #ba2f34 #a9262c #ba2f34;
 }
 
@@ -547,7 +547,7 @@ ol.topics {
 }
 
 .btn-red:active,
-.remove_fields:active,  
+.remove_fields:active,
 .add_fields:active {
   background: #841c21;
 }
@@ -555,7 +555,7 @@ ol.topics {
 .btn-green {
   color: #4d6126;
   border-style: solid;
-  border-width: 1px; 
+  border-width: 1px;
   @include gradient(#c3d4a8, #90af6b);
   border-color: #819a59 #829857 #839959 #829857;
   text-decoration:none;
@@ -581,7 +581,7 @@ ol.topics {
   font-size: 13px;
   line-height:100%;
   @include text-shadow(0 1px 0 0 rgba(0,0,0,0.5));
-  
+
   i.mtop1{
     margin-top:1px
   }
@@ -609,7 +609,7 @@ ol.topics {
   @include border-radius(3px);
   padding: 4px 10px;
   min-width:95px;
-  
+
   &:hover{
     text-decoration:none;
     @include gradient(#e26b71, #a9262c);
@@ -637,20 +637,20 @@ ol.topics {
   bottom:90px;
 }
 .btn-red-large, .btn-red-l, .btn-red-big{
-  
+
   .btn {
     @include brand-btn;
     font:300 23px/1 'Museo500', arial;
     text-transform: uppercase;
     min-width: 120px;
   }
-  
+
 }
 
 .btn-red-large.w115 .btn{ width:128px}
 
-.btn-red-large, .btn-red-l, .btn-red-big, .remove_fields, #share-list a{ 
-  
+.btn-red-large, .btn-red-l, .btn-red-big, .remove_fields, #share-list a{
+
   .btn {
     @include brand-btn;
     font:normal 16px/1 'Museo500', arial;
@@ -658,7 +658,7 @@ ol.topics {
     display: block;
     min-width: 70px;
   }
-  
+
   .btn:hover,
   .btn:active,
   .btn.active,
@@ -669,11 +669,11 @@ ol.topics {
     border:1px solid #b73d44;
     color:#fff;
   }
-  
+
   .btn:active,
   .btn.active {
     background: #841c21;
-  }  
+  }
 }
 .btn-red-l{
   position:static;
@@ -711,7 +711,7 @@ ol.topics {
   margin: 0px 0px 20px -3px;
   border: none;
   overflow: visible;
-  
+
   li {
     font-family: "Museo500";
   }
@@ -737,7 +737,7 @@ ol.topics {
 
 .topic-tag-list {
   margin: 50px 0px 0px 10px;
-  h2 { 
+  h2 {
     font-size: 1.5em;
     text-shadow: 1px 2px 0px rgba(255,255,255,0.8);
   }
@@ -759,11 +759,11 @@ border-bottom: none;
 }
 
 .topic-page{
-  
+
  .topic-tabs{
    display:none
  }
-  
+
   .topics{
     padding-top:20px
   }
@@ -859,7 +859,7 @@ span.no-votes {
   vertical-align: middle;
   @include border-radius(6px);
   width: 115px;
-  
+
   i{
     margin:2px 5px 0 0;
   }
@@ -911,7 +911,7 @@ span.no-votes {
 
 .dotted-border{
   border-top: 1px dotted #ccc;
-}        
+}
 
 .email-icon-small, .facebook-icon-small, .twitter-icon-small {
   background: image-url('sprite-icns.png') no-repeat 0 0;
