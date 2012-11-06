@@ -195,8 +195,9 @@
 
 
 .email-icon, .twitter-icon, .facebook-icon {
-  width: 37px;
-  height: 37px;
+  height: 32px;
+  margin-right: 8px;
+  width: 32px;
 }
 
 .email-icon {
@@ -210,6 +211,7 @@
 }
 
 .facebook-icon {
+  margin-right:0;
   background: image-url("details-page-buttons.jpg") no-repeat scroll -1181px -16px;
   &:hover { background-position: -1295px -16px; }
 }
