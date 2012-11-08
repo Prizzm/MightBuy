@@ -154,6 +154,8 @@ NewPrizzmCom::Application.routes.draw do
     end
   end
 
+  resource :invite
+
   # in config/routes.rb
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
 
