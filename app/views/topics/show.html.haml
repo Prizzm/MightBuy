@@ -35,14 +35,14 @@
                 &nbsp;Remove
     %hr.mtop7-mbot0.span9
   .row.mtop50.mbot30
-    = render :partial => "topic_detail"
+    = render :partial => "/topics/topic_detail"
 
   .row
     .span5
       #social-sharing.mleft40
-        = render partial: "topics/social_share_topic", locals: { topic: @topic }
+        = render partial: "/topics/social_share_topic", locals: { topic: @topic }
     .span5{class: current_user ? "" : "offset4"}
       #topic-voting.pleft40
-        = render partial: "topics/topic_votes", locals: { topic: @topic, vote: @vote }
+        = render partial: "/topics/topic_votes", locals: { topic: @topic, vote: @vote }
 
-  = render :partial => "topic_meta_information"
+  = render :partial => "/topics/topic_meta_information"
