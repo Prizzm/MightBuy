@@ -684,3 +684,26 @@ ul.tagit{
   margin-top:90px;
   min-height: 350px;
 }
+/* -------------------------- */
+.reset-pass-modal{
+  .modal-header{
+    border-bottom-color:#bbb;
+  }
+  label{
+    width: 150px;
+  }
+  .controls{
+    margin-left: 170px;
+  }
+  form, .modal-footer > .control-group{
+    margin-bottom:0;
+  }
+  .modal-body{
+    padding-top:20px;
+    padding-bottom:0;
+  }
+  .modal-footer{
+    padding:10px;
+  }
+}
+/**/
