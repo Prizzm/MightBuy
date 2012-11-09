@@ -154,7 +154,9 @@ NewPrizzmCom::Application.routes.draw do
     end
   end
 
-  resource :invite
+  resource :invite do
+    put :update_password, on: :member
+  end
 
   # in config/routes.rb
   match "/pages/*id" => 'pages#show', :as => :page, :format => false

@@ -1,6 +1,6 @@
 class InvitesController < ApplicationController
 
-  before_filter :find_user_with_invite_token
+  before_filter :find_user_with_invite_token, only: :show
   layout 'logged_user'
 
   def show
@@ -10,6 +10,14 @@ class InvitesController < ApplicationController
 
     if current_user && @topic.owner?(current_user)
       @selected_tab = 'mightbuy'
+    end
+  end
+
+  def update_password
+    if current_user.update_attributes(params[:user])
+      flash[:notice] = "Password successfully updated"
+    else
+      flash[:error] = "Error updating password"
     end
   end
 
