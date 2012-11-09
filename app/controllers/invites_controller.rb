@@ -24,7 +24,13 @@ class InvitesController < ApplicationController
 
   private
   def find_user_with_invite_token
-    @user = User.find_by_invite_token!(params[:token])
-    sign_in @user
+    @customer_lead = CustomerLead.find_by_invite_token!(params[:token])
+    @user = @customer_lead.user
+    if @user
+      @customer_lead.accept!
+      sign_in @user
+    else
+      raise ActiveRecord::RecordNotFound, "Couldn't find user with the token"
+    end
   end
 end
