@@ -1,0 +1,20 @@
+= render :template => "/topics/show"
+
+.modal.hide.fade{id: "reset-password"}
+  .modal-header
+    %button.close{type: "button", "data-dismiss" => "modal", "aria-hidden" => "true"}
+      &times
+    %h3 Set a password for your account.
+  = form_for(current_user, :url => update_password_invite_path(), remote: true,html: {method: :put}) do |f|
+    .modal-body
+      .row
+        %div
+          = f.label :password, "New password"
+          %br/
+          = f.password_field :password
+        %div
+          = f.label :password_confirmation, "Confirm new password"
+          %br/
+          = f.password_field :password_confirmation
+    .modal-footer
+      %div= f.submit "Change my password"
