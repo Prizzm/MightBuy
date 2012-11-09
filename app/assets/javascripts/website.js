@@ -13,6 +13,7 @@
 //= require jquery.facebox
 //= require jquery-fileupload/jquery.fileupload
 //= require jquery-fileupload/vendor/load-image
+//= require jquery.autogrow-textarea.js
 //= require mightbuy
 //= require flash_notice
 //= require item_search
@@ -26,4 +27,4 @@
 //= require search
 //= require have
 //= require templates/public-search-result
-//= require jquery.autogrow-textarea.js
+//= require invites
