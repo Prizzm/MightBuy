@@ -1,20 +1,52 @@
 = render :template => "/topics/show"
 
-.modal.hide.fade{id: "reset-password"}
+.modal.reset-pass-modal.hide.fade{id: "reset-password"}
   .modal-header
     %button.close{type: "button", "data-dismiss" => "modal", "aria-hidden" => "true"}
       &times
-    %h3 Set a password for your account.
+    %h3 Your _product_ from _company_ picture!
   = form_for(current_user, :url => update_password_invite_path(), remote: true,html: {method: :put}) do |f|
     .modal-body
-      .row
-        %div
-          = f.label :password, "New password"
-          %br/
-          = f.password_field :password
-        %div
-          = f.label :password_confirmation, "Confirm new password"
-          %br/
-          = f.password_field :password_confirmation
+      .row-fluid
+        .span12
+          Thanks for visiting on dd/mm/yyyy! Here is the pic, just set a password below.
+      .row-fluid
+        .span6
+          %br
+          = f.password_field :password{:placeholder => "password"}
+          /control-group
+          / = f.label :password, "New password"
+          / .controls
+          /   = f.password_field :password
+          /.control-group
+          /  = f.label :password_confirmation, "Confirm new password"
+          /  .controls
+          /   = f.password_field :password_confirmation
+          %hr
+          %h5
+            Features
+          %ul.feature-list
+            %li
+              Download pic
+            %li
+              Save to your wishlist, share.
+            %li
+              Comment, ask questions
+            %li
+              Buy online!
+          %hr  
+          %h5
+            Deals
+          .deals
+            %span.vote-count
+              5 
+            Votes from friends = 
+            %span.percent-off
+              20% off
+        .span6
+          %div.your-pic
     .modal-footer
-      %div= f.submit "Change my password"
+      .powered-caption
+        Powered by: 
+        %img{:src=>"/assets/logo-small.png"}
+      = f.submit "Save", :class => 'btn btn-red'
