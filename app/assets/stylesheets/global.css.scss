@@ -806,3 +806,9 @@ ul.tagit{
   padding-top:13px;
   padding-bottom:12px;
 }
+@-moz-document url-prefix() { 
+  input[type="submit"].btn-rounded, input[type="submit"].btn-rounded.small-case{
+    height:45px;
+    padding-top:11px;
+  }
+}

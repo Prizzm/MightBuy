@@ -136,7 +136,7 @@
     margin-bottom: 10px;
   }
 
-  input {
+  input[type="email"]{
     float:left;
     font-family: Museo500;
     height: 28px;
@@ -175,15 +175,4 @@
 .reset-password{
   margin-top: 30px;
   margin-bottom: 50px;
-  
-  input{
-    border:none;
-    background: image-url('buttons-sprite.png') no-repeat 0 -118px;
-    width: 458px;
-    height: 56px;
-  
-    &:hover {
-      background-position:0 -177px
-    }
-  }
 }
