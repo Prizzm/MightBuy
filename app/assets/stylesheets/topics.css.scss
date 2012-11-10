@@ -223,7 +223,12 @@
     width: 300px;
     height: 25px;
   }
-
+  
+  .input-append{
+    input[type='text'] {
+      width: 218px;
+    }
+  }
   input[type='number'] {
     height: 25px;
     width: 80px;
@@ -244,15 +249,13 @@
 
 .topic-search-link {
   position: absolute;
-  top: 30px;
-  right: 12px;
-  background: url("/assets/search_button.png");
-  background-position: 0px 31px;
-  width: 81px;
-  height: 31px;
-  &:hover {
-    background: url("/assets/search_button.png");
-    background-position: 81px 31px;
+  top: 28px;
+  right: 10px;
+  z-index:1000;
+  
+  &.btn-green{
+    padding: 9px 10px;
+    @include border-radius(0 0 2px 2px);
   }
 }
 
