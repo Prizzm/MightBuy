@@ -93,28 +93,6 @@
       float: left;
       margin: 0 0 0 10px;
     }
-
-    #home-link {
-      height: 32px;
-      width: 88px;
-      background: image-url("details-page-buttons.jpg") no-repeat scroll -21px -17px;
-      &:hover { background-position: -110px -17px; }
-    }
-
-    #edit-topic {
-      height: 32px;
-      width: 88px;
-      background: image-url("details-page-buttons.jpg") no-repeat scroll -199px -17px;
-      &:hover { background-position: -288px -17px; }
-    }
-
-    #delete-topic {
-      height: 32px;
-      width: 88px;
-      background: image-url("details-page-buttons.jpg") no-repeat scroll -377px -17px;
-      &:hover { background-position: -466px -17px; }
-    }
-
     .topic-right-navbar {
       ul {
         float: right;
@@ -177,57 +155,52 @@
   }
   #new_comment {
     textarea {
-      width: 98%;
+      width: 100%;
       @include box-shadow(0 0 0 4px #f6f3ee);
       resize:none;
-    }
-
-    input[type='submit'] {
-      float: right;
-      height: 32px;
-      width: 92px;
-      border: none;
-      background: image-url("details-page-buttons.jpg") no-repeat scroll -555px -18px;
-      &:hover { background-position: -648px -18px; }
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
     }
   }
 }
 
 
-.email-icon, .twitter-icon, .facebook-icon {
+.email-icon, .twitter-icon, .facebook-icon, #emailed, #tweeted, #recommended {
+  background: image-url("details-page-buttons.png") no-repeat 0 0 ;
   width: 37px;
-  height: 37px;
+  height: 33px;
 }
 
 .email-icon {
-  background: image-url("details-page-buttons.jpg") no-repeat scroll -1104px -16px;
-  &:hover { background-position: -1218px -16px; }
+  background-position: -1px -1px;
+  &:hover { background-position: -115px -1px;}
 }
 
 .twitter-icon {
-  background: image-url("details-page-buttons.jpg") no-repeat scroll -1142px -16px;
-  &:hover { background-position: -1256px -16px; }
+  background-position: -39px -1px;
+  &:hover { background-position: -153px -1px;}
 }
 
 .facebook-icon {
-  background: image-url("details-page-buttons.jpg") no-repeat scroll -1181px -16px;
-  &:hover { background-position: -1295px -16px; }
+  background-position: -77px -1px;
+  &:hover { background-position: -191px -1px;}
 }
 
 
 #emailed {
-  background: image-url("details-page-buttons.jpg") no-repeat scroll -1333px -16px;
-  &:hover { background-position: -1447px -16px; }
+  background-position: -229px -1px;
+  &:hover { background-position: -343px -1px;}
 }
 
 #tweeted {
-  background: image-url("details-page-buttons.jpg") no-repeat scroll -1371px -16px;
-  &:hover { background-position: -1485px -16px; }
+  background-position: -267px -1px;
+  &:hover { background-position: -381px -1px;}
 }
 
 #recommended {
-  background: image-url("details-page-buttons.jpg") no-repeat scroll -1409px -16px;
-  &:hover { background-position: -1523px -16px; }
+  background-position: -305px -1px;
+  &:hover { background-position: -419px -1px;}
 }
 
 .topic-form-wrapper {
