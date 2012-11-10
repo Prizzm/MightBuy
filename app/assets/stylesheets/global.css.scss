@@ -692,6 +692,9 @@ ul.tagit{
   label{
     width: 150px;
   }
+  input[type="text"]{
+    width: 240px;
+  }
   .controls{
     margin-left: 170px;
   }
@@ -705,5 +708,43 @@ ul.tagit{
   .modal-footer{
     padding:10px;
   }
+  h5 {
+    margin: 0 0 7px 0;
+  }
+  hr {
+    margin: 15px 0;
+    width: 249px;
+    border-top-color:#ccc;
+  }  
 }
 /**/
+.feature-list{
+  font-weight:normal;
+  
+  li{
+    margin:0
+  }
+}
+.powered-caption{
+  float:left;
+  margin:10px 0 0 10px;
+}
+.your-pic{
+  border:1px solid #ccc;
+  height:250px;
+  width:250px;
+  margin: 0 0 20px 0;
+  background:image-url('no-image-small.gif') center center no-repeat;
+}
+.deals{
+  
+  span{
+    font-size:20px;
+  }
+  .vote-count{
+    color:#900; 
+  }
+  .percent-off{
+    color:#090
+  }
+}
