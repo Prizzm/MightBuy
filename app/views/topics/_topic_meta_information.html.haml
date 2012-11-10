@@ -22,5 +22,4 @@
     .span8.mbot30
       = simple_form_for [@topic, @comment], remote: true do |f|
         = f.input :description, label: false, input_html: { rows: 3 }
-        .new-comment-form-submit
-          = f.submit ""
+        = f.submit "Comment", :class=>"btn btn-green pull-right"

@@ -1,6 +1,6 @@
 .row
-  .span7.offset2
-    .reset-form
+  .span7.offset2.clearfix
+    .reset-form.clearfix
       %p
         Forgot Password!
       = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, class: 'form-horizontal '}) do |f|
@@ -11,8 +11,6 @@
             = f.email_field :email
           .clear
           .reset-password
-            = f.submit ""
-            / Send me reset password instructions
-            .clear
+            = f.submit "Send me reset password instructions", :class=>"btn btn-red btn-rounded"
   .span12.anchor-links
     = render :partial => "devise/shared/links"
