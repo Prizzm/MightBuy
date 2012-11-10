@@ -34,22 +34,6 @@
         padding-left: 10px;
       }
     }
-
-    .new-user-form-submit {
-      margin-top: 30px;
-      padding-left: 45%;
-
-      input {
-        background: image-url("get-started.png");
-        width: 230px;
-        height: 56px;
-        border: none;
-
-        &:hover {
-          background: image-url("get-started-hover.png");
-        }
-      }
-    }
   }
 
   .social-login {
