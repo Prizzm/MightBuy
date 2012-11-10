@@ -731,10 +731,11 @@ ol.topics {
     background: white;
   }
 }
-
 #topic_tags_show {
   margin: 0px 0px 20px -3px;
   border: none;
+  overflow: visible;
+  
   li {
     font-family: "Museo500";
   }
