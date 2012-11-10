@@ -1,7 +1,7 @@
 #topic-deals
   .span4
     %h3 Deals
-    - for bargin in @topic.product.bargins do
+    - for bargin in [@topic.product.bargin] do
       .bargin
         .description
           = bargin.description
