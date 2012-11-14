@@ -250,4 +250,29 @@ describe Topic do
       topic.ordered_comments[0].should == buyit
     end
   end
+
+  describe "Finding business from topic" do
+    before do
+      @business_url = FactoryGirl.create(:business_url, domain: "http://www.flipkart.com")
+
+    end
+
+    it "should use direct relationship from product if it exists" do
+      product = FactoryGirl.create(:product)
+      product.business = @business_url.business
+      product.save
+
+      topic = FactoryGirl.create(:topic, url: product.url)
+
+      topic.business.should == @business_url.business
+    end
+
+    it "should use find by url, when there is no direct relatinship" do
+      product = FactoryGirl.create(:product)
+      topic = FactoryGirl.create(:topic, url: product.url)
+
+
+      topic.business.should == @business_url.business
+    end
+  end
 end
