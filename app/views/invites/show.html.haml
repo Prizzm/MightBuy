@@ -4,24 +4,16 @@
   .modal-header
     %button.close{type: "button", "data-dismiss" => "modal", "aria-hidden" => "true"}
       &times
-    %h3 Your _product_ from _company_ picture!
+    %h3 Your #{@topic.product.try(:name)} from #{@topic.business.try(:name)} picture!
   = form_for(current_user, :url => update_password_invite_path(), remote: true,html: {method: :put}) do |f|
     .modal-body
       .row-fluid
         .span12
-          Thanks for visiting on dd/mm/yyyy! Here is the pic, just set a password below.
+          Thanks for visiting on #{current_user.created_at.to_s(:short)}. Here is the pic, just set a password below.
       .row-fluid
         .span6
           %br
-          = f.password_field :password{:placeholder => "password"}
-          /control-group
-          / = f.label :password, "New password"
-          / .controls
-          /   = f.password_field :password
-          /.control-group
-          /  = f.label :password_confirmation, "Confirm new password"
-          /  .controls
-          /   = f.password_field :password_confirmation
+          = f.password_field :password, {:placeholder => "password"}
           %hr
           %h5
             Features
@@ -45,6 +37,7 @@
               20% off
         .span6
           %div.your-pic
+            = image_tag topic_image(@topic), alt: @topic.subject
     .modal-footer
       .powered-caption
         Powered by: 
