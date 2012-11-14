@@ -1,11 +1,13 @@
-<tr class="public-search-result" style="display:none;" data-url="<%= result_data.unescapedUrl %>" >
-  <td class="public-search-result-google-info" > 
+<tr class="public-search-result" data-url="<%= result_data.unescapedUrl %>" data-result-data='<%= JSON.stringify(result_data) %>' >
+  <td class="public-search-result-google-info" style="" > 
     <a class="title" target="_blank" href="<%= result_data.unescapedUrl %>"><%= result_data.titleNoFormatting %></a> 
     <div class="description"><%= result_data.content %></div> 
     <div class="url"><%= result_data.visibleUrl %></div> 
     <div class="price"><i></i></div> 
-    <a class="mightbuy-button btn btn-green" href="/topics/new?topic[subject]=<%= encodeURIComponent(result_data.titleNoFormatting) %>&topic[url]=<%= encodeURIComponent(result_data.unescapedUrl) %>">Add to Might Buy</a> 
-  </td> 
+    <a class="mightbuy-button btn btn-green" href="/topics/new?topic[subject]=<%= encodeURIComponent(result_data.titleNoFormatting) %>&topic[url]=<%= encodeURIComponent(result_data.unescapedUrl) %>">Add to Might Buy</a>
+    &nbsp;
+    <a class="like-topic" href="javascript:void(0);">ask friends on fb</a>
+  </td>
   <td class="public-search-result-scraper-info" style=""> 
     <span class="loading">&nbsp;</span> 
     <div class="image-selector"></div> 

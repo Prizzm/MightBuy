@@ -1,7 +1,5 @@
 function updateScraperInfo($elem){
 
-  $elem.css({ "display" : "table-row" });
-
   (function($elem, $next){
     $.getJSON(Mightbuy.scrapeApiURL,{url:$elem.data("url")},function(r){
       if(r.price) {
@@ -14,13 +12,14 @@ function updateScraperInfo($elem){
 
       $elem.find(".image-selector").imageSelector({
         change : function(image){
+          $elem.closest(".public-search-result").attr("data-image", image);
           var orig_href = $elem.find(".mightbuy-button").attr("href");
           var new_href = orig_href.split("#")[0] + "#" + encodeURIComponent(image);
           $elem.find(".mightbuy-button").attr("href", new_href);
         },
         images : r.	images
       });
-      
+
       if(r.images[0]) {
         $elem.find(".thumb img").attr("src", r.images[0]);
       }
@@ -40,7 +39,20 @@ function updateScraperInfo($elem){
 }
 
 $(function(){
-  
+
+  $(document).on("click", ".like-topic", function(e){
+    var result_data = $(this).closest(".public-search-result").data("result-data");
+    FB.ui({
+      method: "feed",
+      name: result_data.titleNoFormatting,
+      link: window.location.href,
+      picture: $(this).closest(".public-search-result").data("image") || "", // selected image or ""
+      caption: "",
+      description: result_data.content
+    });
+    e.preventDefault();
+  });
+
   $("#public-search-form #q").autocomplete({
     source : function(request,response){
       queryParams = {q: request.term};
