@@ -15,7 +15,7 @@ class InvitesController < ApplicationController
 
   def update_password
     user_params = params[:user]
-    if current_user.update_password_with_validations(user_params[:password],user_params[:password_confirmation])
+    if current_user.update_password_with_validations(user_params[:password],user_params[:password])
       flash[:notice] = "Password successfully updated"
     else
       flash[:error] = "Error updating password"
