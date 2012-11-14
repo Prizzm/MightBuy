@@ -1,6 +1,7 @@
 @import "bootstrap";
 
 body {
-  background: image-url("welcome-background.jpg");
+  background: image-url("welcome-background.jpg") no-repeat top left #e4d6c7;
+  background-attachment: fixed;
   font-family: "Museo500";
 }

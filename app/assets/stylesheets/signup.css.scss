@@ -34,22 +34,6 @@
         padding-left: 10px;
       }
     }
-
-    .new-user-form-submit {
-      margin-top: 30px;
-      padding-left: 45%;
-
-      input {
-        background: image-url("get-started.png");
-        width: 230px;
-        height: 56px;
-        border: none;
-
-        &:hover {
-          background: image-url("get-started-hover.png");
-        }
-      }
-    }
   }
 
   .social-login {
@@ -104,21 +88,6 @@
         padding-left: 10px;
       }
     }
-
-    .user-signin-form-submit {
-      margin-top: 30px;
-      padding-left: 52%;
-
-      input {
-        background: image-url("login_buttons.png");
-        width: 190px;
-        height: 56px;
-        border: none;
-        &:hover {
-          background-position: -192px 0px;
-        }
-      }
-    }
   }
 
   .social-login {
@@ -130,19 +99,6 @@
 
     #social-buttons {
       margin: 35px 6px 45px 10px;
-    }
-
-    .join-us-today {
-      height: 56px;
-      width: 230px;
-      background: image-url("login_buttons.png");
-      margin-top: 15px;
-      float: right;
-      background-position: -385px 0px;
-      &:hover {
-        background: image-url("login_buttons.png");
-        background-position: -617px 0px;
-      }
     }
   }
 
@@ -180,7 +136,7 @@
     margin-bottom: 10px;
   }
 
-  input {
+  input[type="email"]{
     float:left;
     font-family: Museo500;
     height: 28px;
@@ -219,15 +175,4 @@
 .reset-password{
   margin-top: 30px;
   margin-bottom: 50px;
-  
-  input{
-    border:none;
-    background: image-url('buttons-sprite.png') no-repeat 0 -118px;
-    width: 458px;
-    height: 56px;
-  
-    &:hover {
-      background-position:0 -177px
-    }
-  }
 }
