@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114050143) do
+ActiveRecord::Schema.define(:version => 20121115060548) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -186,18 +186,20 @@ ActiveRecord::Schema.define(:version => 20121114050143) do
   create_table "customer_leads", :force => true do |t|
     t.string   "email"
     t.string   "name"
-    t.string   "status",                                     :default => "notsent"
+    t.string   "status",                                               :default => "notsent"
     t.integer  "product_id"
-    t.datetime "created_at",                                                        :null => false
-    t.datetime "updated_at",                                                        :null => false
-    t.integer  "business_id",                                                       :null => false
+    t.datetime "created_at",                                                                  :null => false
+    t.datetime "updated_at",                                                                  :null => false
+    t.integer  "business_id",                                                                 :null => false
     t.string   "phone_number"
-    t.boolean  "join_list",                                  :default => false
+    t.boolean  "join_list",                                            :default => false
     t.string   "photo_uid"
-    t.decimal  "price",        :precision => 6, :scale => 2
+    t.decimal  "price",                  :precision => 6, :scale => 2
     t.string   "invite_token"
     t.integer  "user_id"
-    t.text     "message",                                    :default => ""
+    t.text     "message",                                              :default => ""
+    t.string   "emergency_phone_number"
+    t.string   "helmet_waiver"
   end
 
   create_table "deal_deals", :force => true do |t|
@@ -253,14 +255,18 @@ ActiveRecord::Schema.define(:version => 20121114050143) do
 
   create_table "lead_configs", :force => true do |t|
     t.integer  "business_id"
-    t.boolean  "include_liability",      :default => false
-    t.text     "liability",              :default => ""
-    t.boolean  "ask_for_name",           :default => false
-    t.boolean  "ask_to_join_list",       :default => false
-    t.boolean  "include_product_select", :default => false
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
-    t.boolean  "ask_for_phonenumber",    :default => false
+    t.boolean  "include_liability",        :default => false
+    t.text     "liability",                :default => ""
+    t.boolean  "ask_for_name",             :default => false
+    t.boolean  "ask_to_join_list",         :default => false
+    t.boolean  "include_product_select",   :default => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.boolean  "ask_for_phonenumber",      :default => false
+    t.boolean  "ask_for_description",      :default => false
+    t.boolean  "ask_for_emergency_number", :default => false
+    t.string   "join_list_description"
+    t.boolean  "ask_for_helmet_waiver",    :default => false
   end
 
   create_table "orders", :force => true do |t|
