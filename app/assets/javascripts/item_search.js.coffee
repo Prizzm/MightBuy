@@ -61,6 +61,12 @@ class @Mightbuy.ItemSearch
       if $("#item-form-image-selector .image-holder img").length == 0
         @fetchImages()
 
+    # setup event Handler for Reset button
+    $("#topic_right_panel .reset-btn a").click (e) =>
+      $.data($(".topic-form-wrapper form").get(0), "is-reset", "1")
+      @fetchImages()
+      e.preventDefault()
+
   enableAutoComplete: ->
     $("#topic_subject").autocomplete
       source : @searchAutoComplete
@@ -123,6 +129,11 @@ class @Mightbuy.ItemSearch
     $("#item-form-image-selector").css("display": "")
 
   fetchImages: ->
+
+    is_reset = $(".topic-form-wrapper form").data("is-reset")
+    if is_reset == 0 || is_reset == "0"
+      return # can not change
+
     url = $("#topic_url").val()
 
     # clear input field..
