@@ -4,14 +4,15 @@
   .modal-header
     %button.close{type: "button", "data-dismiss" => "modal", "aria-hidden" => "true"}
       &times
-    %h3 Your #{@topic.product.try(:name)} from #{@topic.business.try(:name)} picture!
+    %h3 Welcome to MightBuy.it! 
   = form_for(current_user, :url => update_password_invite_path(), remote: true,html: {method: :put}) do |f|
     .modal-body
       .row-fluid
         .span12
-          Thanks for visiting on #{current_user.created_at.to_s(:short)}. Here is the pic, just set a password below.
+          MightBuy is for tracking things you MightBuy, such as the <b> #{@topic.product.try(:name)} </b> you looked at when visiting <b> #{@topic.business.try(:name)} </b>! 
       .row-fluid
         .span6
+          /Set your password!
           %br
           = f.password_field :password, {:placeholder => "password"}
           %hr
@@ -19,22 +20,22 @@
             Features
           %ul.feature-list
             %li
-              Download pic
+              Ask <b> #{@topic.business.try(:name)} </b> questions about this product
             %li
-              Save to your wishlist, share.
+              Share, ask your friends to vote!              
             %li
-              Comment, ask questions
+              Save to your wishlist for later
             %li
               Buy online!
           %hr  
           %h5
-            Deals
+            /Deals
           .deals
             %span.vote-count
-              5 
-            Votes from friends = 
+              /5 
+            /Votes from friends = 
             %span.percent-off
-              20% off
+              /20% off
         .span6
           %div.your-pic
             = image_tag topic_image(@topic), alt: @topic.subject
