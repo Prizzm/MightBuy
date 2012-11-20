@@ -1,17 +1,32 @@
 class RegistrationsController < Devise::RegistrationsController
   skip_before_filter :verify_authenticity_token, :only => [:create]
-  
+
   layout "welcomes"
-  
+
   def create
-    @user = User.create(params[:user])
-    @user.ensure_authentication_token!
-    respond_to do |format|
-      format.json do
-         render :json => @user.to_json
+    @user = User.new(params[:user])
+
+    if @user.save
+      @user.ensure_authentication_token!
+
+      respond_to do |format|
+        format.json do
+           render :json => @user.to_json
+        end
+        format.html do
+          redirect_to("/me?auth_token=#{@user.authentication_token}")
+        end
       end
-      format.html do
-        redirect_to("/me?auth_token=#{@user.authentication_token}")
+    else
+      respond_to do |format|
+        format.json do
+           render :json => {
+             :errors => @user.errors
+           }
+        end
+        format.html do
+          render :new
+        end
       end
     end
   end
