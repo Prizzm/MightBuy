@@ -10,7 +10,7 @@
       = link_to haves_path, :class => "btn btn-red btn-small" do
         %i.icon-chevron-left.mtop1.icon-white
         Back to list view
-        
+
     - if @have.owner?(current_user)
       %ul.nav.nav-pills.pull-right
         %li.dropdown
@@ -28,7 +28,7 @@
                 %i.icon-remove
                 &nbsp;Remove
       %hr.mtop7-mbot0.span9
-      
+
   .row.mtop50
     = render :partial => "have_detail", locals: { topic: @have }
 
@@ -52,5 +52,4 @@
       .span8.mbot30
         = simple_form_for [@have, @comment], remote: true do |f|
           = f.input :description, label: false, input_html: { rows: 3 }
-          .new-comment-form-submit
-            = f.submit ""
+          = f.submit "Comment", :class=>"btn btn-green pull-right"
