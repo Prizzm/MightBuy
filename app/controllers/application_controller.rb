@@ -117,8 +117,10 @@ class ApplicationController < ActionController::Base
   end
 
   def find_topic_by_id!
-    unless @topic = Topic.find_by_shortcode(params[:id])
+    if @topic = Topic.find_by_shortcode(params[:id])
       respond_with(@topic, location: root_path)
+    else
+      redirect_to root_path, alert: 'Topic does not exist'
     end
   end
 
