@@ -38,11 +38,8 @@
     = render :partial => "/topics/topic_detail"
 
   .row
-    .span5
+    .span10
       #social-sharing.mleft40
         = render partial: "/topics/social_share_topic", locals: { topic: @topic }
-    .span5{class: current_user ? "" : "offset4"}
-      #topic-voting.pleft40
-        = render partial: "/topics/topic_votes", locals: { topic: @topic, vote: @vote }
 
   = render :partial => "/topics/topic_meta_information"
