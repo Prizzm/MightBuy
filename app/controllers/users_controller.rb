@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
   before_filter  :find_user!, :set_selected_tab
-  skip_before_filter :verify_authenticity_token, only: :create
   layout 'logged_user'
 
-  # Authenticate
-  before_filter :authenticate_user!
   def show
     @topics = @user.topics.mightbuy.order("created_at desc").limit(6)
     @haves  = @user.topics.have.order("created_at desc").limit(6)
