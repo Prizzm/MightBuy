@@ -14,11 +14,13 @@
       = link_to "Sign out", destroy_user_session_path, :method => :delete
 
 .topic-tag-list
-  %h2 Tags
+  - if not current_user or current_page?(topics_path)
+    %h2 Popular Tags
+    - tags = popular_tags
+  - else
+    %h2 Personal Tags
+    - tags = current_user.popular_tags
+
   %ul
-    - if @selected_tab == 'everybody' || current_user.nil?
-      - popular_tags.each do |tag|
-        %li= link_to(tag.name, topics_tag_path(tag))
-    - else
-      - current_user.popular_tags.each do |tag|
-        %li= link_to(tag.name, topics_tag_path(tag))
+    - tags.each do |tag|
+      %li= link_to(tag.name, topics_tag_path(tag))
