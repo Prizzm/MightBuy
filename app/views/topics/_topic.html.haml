@@ -34,8 +34,6 @@
               .color-brown Ask Friends - should you buy it?
               = render partial: "shares/list_view_social_links", locals: { topic: topic }
               .clear
-            %div{id: "topic-vote-list-#{topic.id}"}
-              = render partial: "topics/topic_votes_on_list", locals: { topic: topic, vote: topic.vote_by(current_user) }
             .span1.pagination-right.raquo
               = link_to("more   ", topic_path(topic))
           
