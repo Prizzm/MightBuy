@@ -22,9 +22,9 @@
             = render partial: "shares/topic_confirm_add_modal", locals: { topic: topic }
         .span1.pull-right.topic-list-actions
           %div.price
-            - if topic.product.price
+            - if topic.product && topic.product.price 
               = number_to_currency(topic.product.price)
-            - else
+            - else 
               = number_to_currency(topic.price)
           .clear
         .clear
