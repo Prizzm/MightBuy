@@ -77,6 +77,7 @@ gem "timeline_fu", git: "git://github.com/styx/timeline_fu.git"
 gem "mightbuy_models", :path => "vendor/mightbuy-models"
 
 group :development do
+  gem 'ffaker'
   gem 'pry-rails'
   gem "quiet_assets"
   gem 'rspec-rails', "~> 2.6"

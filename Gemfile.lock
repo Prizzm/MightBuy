@@ -94,7 +94,7 @@ GEM
     bourbon (2.1.1)
       sass (>= 3.1)
     builder (3.0.0)
-    capistrano (2.13.3)
+    capistrano (2.13.5)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -181,6 +181,7 @@ GEM
       httpclient (>= 2.2.0.2)
       rack-oauth2 (>= 0.14.4)
       tzinfo
+    ffaker (1.15.0)
     ffi (1.1.5)
     fog (1.5.0)
       builder
@@ -512,6 +513,7 @@ DEPENDENCIES
   factory_girl_rails (= 1.3.0)
   fancybox-rails (= 0.1.4)
   fb_graph
+  ffaker
   fog
   friendly_id
   gelf
