@@ -1,11 +1,15 @@
 - if current_user
   .avatar.mtop40
-    = link_to(user_path(current_user)) do 
+    = link_to(user_path(current_user)) do
       = image_tag(avatar_image)
 
   .profile-actions
     .edit-profile
-      = link_to "Edit Profile", edit_profile_path
+      - if not current_page?(user_path(current_user))
+        = link_to "View Profile", user_path(current_user)
+      - else
+        = link_to "Edit Profile", edit_profile_path
+
     .logout
       = link_to "Sign out", destroy_user_session_path, :method => :delete
 
