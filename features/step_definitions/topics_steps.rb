@@ -43,7 +43,7 @@ end
 
 When /^I comment "(.*?)"$/ do |description|
   fill_in("comment_description", with: description)
-  page.find(".new-comment-form-submit input").click
+  page.find(".new_comment input[type=submit]").click
   wait_for_ajax_call_to_finish
 end
 
