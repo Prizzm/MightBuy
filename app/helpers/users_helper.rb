@@ -35,6 +35,10 @@ module UsersHelper
     user == current_user ? "My Activity feed" : "#{user.name.capitalize}'s Activity feed"
   end
 
+  def valid_activity?(timeline_event)
+    timeline_event.subject && timeline_event.actor && timeline_event.activity_line
+  end
+
   def phrase_for (subject, object = nil)
     object ||= resource
 
