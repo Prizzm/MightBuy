@@ -278,14 +278,38 @@ module ApplicationHelper
     end
   end
 
-  def twitter_url(topic)
-    query_params = {
-      url:  topic_url_helper(topic),
-      text: topic_caption_helper(topic),
-      via: 'mightbuy'
-    }.to_query
+  def twitter_url(object)
+    if object.is_a? Topic
+      query_params = {
+        url:  topic_url_helper(object),
+        text: topic_caption_helper(object),
+        via: 'mightbuy'
+      }.to_query
+    elsif object.is_a? Hash
+      query_params = {
+        url:  object[:url],
+        text: object[:text],
+        via: 'mightbuy'
+      }.to_query
+    else
+      return
+    end
 
     "https://twitter.com/intent/tweet?#{query_params}"
+  end
+
+
+  def facebook_url(object)
+    if object.is_a? Hash
+      query_params = {
+        u:  object[:url],
+        t: object[:text]
+      }.to_query
+    else
+      return
+    end
+
+    "https://www.facebook.com/sharer.php?#{query_params}"
   end
 
   def facebook_data_params(topic)

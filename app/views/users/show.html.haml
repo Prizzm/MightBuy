@@ -3,7 +3,7 @@
     .span2
       = image_tag(avatar_image(@user), :class=>"image-border")
     .span7
-      %h1 
+      %h1
         = @user.name
       %span
         = @user.name
@@ -32,17 +32,22 @@
                       = link_to(context_topic_path(topic), :class=>"p-rel mask-link") do
                         = image_tag(topic.icon_image, size: "64x64", alt: "icon")
                         %span.mask-64
-            .wishlist
-              %span.text
-                Share 'I Mightbuy' list via
-              = link_to "#", class: "email-icon" do
-                &nbsp;
-              = link_to "#", class: "twitter-icon" do
-                &nbsp;
-              = link_to "#", class: "facebook-icon" do
-                &nbsp;
-              %br.clear
-              %hr
+
+            - if @user == current_user
+              .wishlist
+                %span.text
+                  Share 'I Mightbuy' list via
+
+                - twitter_share_url = twitter_url(url: user_url(current_user), text: 'View my wishlist')
+                - facebook_share_url = facebook_url(url: user_url(current_user), text: 'View my wishlist')
+
+                = link_to twitter_share_url, class: "twitter-icon", data: { 'twitter-intent' => twitter_share_url } do
+                  &nbsp;
+                = link_to facebook_share_url, class: "facebook-icon" do
+                  &nbsp;
+                %br.clear
+                %hr
+
       .row
         .span4#user-have-topics
           %h3= user_has_title_helper(@user)
