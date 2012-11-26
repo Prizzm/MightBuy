@@ -9,10 +9,14 @@
           #{@have.poster_name}
         %span.text
           \&nbsp;##{@have.human_status}
-          this, and
-        %span.recommended-tag
-          %span.recomend-icon
-          Recommended!
+          this
+
+        - if @topic.recommended?
+          %span.text &nbsp;and
+          %span.recommended-tag
+            %span.recomend-icon
+            Recommended it!
+
       .share-links
         %span.text
           Share
