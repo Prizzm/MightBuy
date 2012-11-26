@@ -1,6 +1,6 @@
+= title_tag @topic.subject
 = javascript_tag "Mightbuy.initialTags = #{@have.tag_array}"
-= content_for :head do
-  %title= @have.subject
+
 = link_to new_have_path, class: "btn btn-red add-item" do
   %i.icon-plus-sign.icon-white
   Add an item
