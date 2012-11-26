@@ -198,7 +198,7 @@
 #login-lightbox {
 
   font-family: Museo500;
-  
+
   .caption {
     color: #4E3227;
     text-align: center;
@@ -208,14 +208,14 @@
     margin: 50px 0 60px 0;
     text-shadow: 1px 2px 0 #fff;
   }
-  
+
   p {
     color: #4E3227;
     font-size: 17px;
     font-weight: bold;
     margin-bottom: 24px;
   }
-  
+
   label {
     font-size: 15px;
     color: #4E3227;
@@ -223,42 +223,42 @@
     text-align: left;
     font-weight: bold;
   }
-  
+
   input[type="text"], input[type="email"], input[type="password"]{
     width:330px;
   }
-  
+
   a{
     color:#b84349
   }
-  
+
   .new-user-form-submit{
     margin: 20px 40px 0 0;
   }
-  
+
   .mright40{
     margin: 0 34px 0 0;
   }
-    
+
   .control-group {
     margin-bottom: 0;
   }
-  
+
   .font18{
     font-size:18px;
     font-weight: bold;
   }
-  
+
   .col-right{
     border-left: 1px #CCC solid;
     padding: 0 0 0 55px;
     margin-bottom: 50px;
   }
-  
+
   .mtop-rightcol{
     margin-top:15px;
   }
-  
+
   .mtop-leftcol{
     margin-top: 75px;
   }
@@ -300,13 +300,13 @@ h3.or{
   text-align:center;
   position:relative;
   margin:0 40px 0 40px;
-  
+
   span{
     background-color: white;
     position: relative;
     padding: 0 15px;
   }
-  
+
   &::before {
     content: "";
     position: absolute;
@@ -335,7 +335,7 @@ ol.topics div.price.mtop5{
     display: inline-block;
     line-height: 9px;
   }
-  
+
   span{
     margin-top:4px;
   }
@@ -356,7 +356,7 @@ ol.topics div.price.mtop5{
   @include gradient(#e26b71, #aa373c);
   @include text-shadow(none);
   border-style: solid;
-  border-width: 1px; 
+  border-width: 1px;
   border-color: #cd383e #ba2f34 #a9262c #ba2f34;
 }
 
@@ -380,7 +380,7 @@ ol.topics div.price.mtop5{
 }
 
 .btn-red:active,
-.remove_fields:active,  
+.remove_fields:active,
 .add_fields:active {
   background: #841c21;
 }
@@ -388,7 +388,7 @@ ol.topics div.price.mtop5{
 .btn-green {
   color: #4d6126;
   border-style: solid;
-  border-width: 1px; 
+  border-width: 1px;
   @include gradient(#c3d4a8, #90af6b);
   border-color: #819a59 #829857 #839959 #829857;
   text-decoration:none;
@@ -414,7 +414,7 @@ ol.topics div.price.mtop5{
   font-size: 13px;
   line-height:100%;
   @include text-shadow(0 1px 0 0 rgba(0,0,0,0.5));
-  
+
   i.mtop1{
     margin-top:1px
   }
@@ -434,20 +434,20 @@ ol.topics div.price.mtop5{
   bottom:90px;
 }
 .btn-red-large, .btn-red-l, .btn-red-big{
-  
+
   .btn {
     @include brand-btn;
     font:300 23px/1 'Museo500', arial;
     text-transform: uppercase;
     min-width: 120px;
   }
-  
+
 }
 
 .btn-red-large.w115 .btn{ width:115px}
 
-.btn-red-large, .btn-red-l, .btn-red-big, .remove_fields, #share-list a{ 
-  
+.btn-red-large, .btn-red-l, .btn-red-big, .remove_fields, #share-list a{
+
   .btn {
     @include brand-btn;
     font:normal 16px/1 'Museo500', arial;
@@ -455,7 +455,7 @@ ol.topics div.price.mtop5{
     display: block;
     min-width: 70px;
   }
-  
+
   .btn:hover,
   .btn:active,
   .btn.active,
@@ -466,11 +466,11 @@ ol.topics div.price.mtop5{
     border:1px solid #b73d44;
     color:#fff;
   }
-  
+
   .btn:active,
   .btn.active {
     background: #841c21;
-  }  
+  }
 }
 .btn-red-l{
   position:static;
@@ -481,11 +481,11 @@ ol.topics div.price.mtop5{
 .public-search-result-scraper-info .image-selector .image-holder .cancel {
   margin-right: 0
 }
-  
+
 .public-search-result-scraper-info .image-selector{
   position:static
 }
-  
+
 .public-search-result-scraper-info .image-selector .reset-btn {
   margin: 0 0 20px 0;
   position: absolute;
@@ -517,11 +517,11 @@ ol.topics div.price.mtop5{
   .vote-yes.checked, .vote-yes:hover {
     background-position:-1px -23px;
   }
-  
+
   .vote-no{
     background-position:-59px -1px;
   }
-  
+
   .vote-no.checked, .vote-no:hover {
     background-position:-59px -23px;
   }
@@ -565,7 +565,7 @@ ul.tagit{
     padding: 2px 20px 3px 25px;
     position:relative;
     color: #806459;
-    
+
     &:after{
       position:absolute;
       content:"";
@@ -577,14 +577,14 @@ ul.tagit{
       left: 5px;
       z-index:10;
     }
-    
+
     a.tagit-close {
       padding: 2px 5px 2px 3px;
       line-height: 9px;
       right: -2px;
       visibility:hidden
     }
-    
+
     &:hover{
       a.tagit-close {
         visibility:visible
@@ -594,11 +594,11 @@ ul.tagit{
   li.ui-state-error.selected{
     background: #900;
     color: white;
-    
+
     &:after{
       background-image: image-url('glyphicons-halflings-white.png');
     }
-    
+
     a.tagit-close {
       color: #fff;
       @include text-shadow(none);
@@ -615,12 +615,12 @@ ul.tagit{
 
 .ui-autocomplete{
   @include border-radius(3px);
-  
+
   li.ui-menu-item {
     padding: 0;
     margin: 0;
-    
-    a{    
+
+    a{
       padding: 5px;
       color:#806459;
       border:none;
@@ -680,6 +680,7 @@ ul.tagit{
   margin-top:90px;
   min-height: 350px;
 }
+
 /* -------------------------- */
 .reset-pass-modal{
   .modal-header{
@@ -711,12 +712,12 @@ ul.tagit{
     margin: 15px 0;
     width: 249px;
     border-top-color:#ccc;
-  }  
+  }
 }
 /**/
 .feature-list{
   font-weight:normal;
-  
+
   li{
     margin:0
   }
@@ -732,12 +733,12 @@ ul.tagit{
   margin: 0 0 20px 0;
 }
 .deals{
-  
+
   span{
     font-size:20px;
   }
   .vote-count{
-    color:#900; 
+    color:#900;
   }
   .percent-off{
     color:#090
@@ -777,7 +778,7 @@ ul.tagit{
   background-position:top right;
   background-repeat:no-repeat;
   margin-top:5px;
-}  
+}
 .btn-rounded:hover, a.btn-rounded:hover, input[type="submit"].btn-rounded:hover,
 .btn-rounded:active, a.btn-rounded:active, input[type="submit"].btn-rounded:active{
   background: #bf3c42; /* Old browsers */
@@ -789,14 +790,14 @@ ul.tagit{
   background-image: image-url('btn-go.png'), linear-gradient(to bottom, #bf3c42 0%,#841c21 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf3c42', endColorstr='#841c21',GradientType=0 ); /* IE6-9 */
   background-position:bottom right;
-  background-repeat:no-repeat; 
+  background-repeat:no-repeat;
 }
 .btn-rounded:hover, a.btn-rounded:hover, input[type="submit"].btn-rounded:hover{
   @include box-shadow(0 0 0 5px rgba(0,0,0,0.15));
   transition: width 0s, height 0s, transform 0s;
   -moz-transition: width 0s, height 0s, -moz-transform 0s;
   -webkit-transition: width 0s, height 0s, -webkit-transform 0s;
-  -o-transition: width 0s, height 0s,-o-transform 0s;    
+  -o-transition: width 0s, height 0s,-o-transform 0s;
 }
 .btn-rounded:active, a.btn-rounded:active, input[type="submit"].btn-rounded:active{
   @include box-shadow-2values(0 0 0 5px rgba(0,0,0,0.15), inset 0 0 5px 3px rgba(0,0,0,0.15));
@@ -805,9 +806,106 @@ ul.tagit{
   padding-top:13px;
   padding-bottom:12px;
 }
-@-moz-document url-prefix() { 
+@-moz-document url-prefix() {
   input[type="submit"].btn-rounded, input[type="submit"].btn-rounded.small-case{
     height:45px;
     padding-top:11px;
   }
 }
+.recommended-flag{
+    float: left;
+    margin-bottom: 10px;
+    min-width: 525px;
+  a{
+    font-family:"Museo700";
+    margin-top:7px;
+    font-size: 28px;
+    font-weight: normal;
+    float:left;
+  }
+}
+.recommended-flag span.text, .share-links span.text{
+  display:block;
+  float:left;
+  font-size: 20px;
+  font-weight: normal;
+  font-family:"Museo500";
+  margin-top:10px;
+}
+.share-links span.text{
+  margin:7px 10px 0 0;
+  color:#4e3227;
+}
+.share-links{
+  float:left;
+
+  a{
+    text-decoration:none;
+    float:left;
+  }
+}
+.share-links a, .wishlist a{
+  text-decoration:none;
+  float:left;
+}
+.wishlist{
+  margin-top:30px;
+
+  span.text{
+    color:#4e3227;
+    display:block;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: "Museo700";
+    margin-bottom:10px;
+  }
+
+  hr{
+    width:230px;
+  }
+}
+.recomend-icon{
+  background: image-url('recomend.png') no-repeat 0 0;
+  float:left;
+  height: 18px;
+  margin: 2px 5px 0 0;
+  width: 18px;
+}
+.recommended-tag {
+  @include gradient(#b4de5a, #a5d148);
+  border: 1px solid #86B227;
+  border-radius: 5px 5px 5px 5px;
+  @include box-shadow(inset 0 1px 0 0 rgba(255, 255, 255, 0.35));
+  color: #65871E;
+  font: 18px "Museo700";
+  margin: 0 0 0 10px;
+  padding: 3px 12px 3px 10px;
+  position: relative;
+  @include text-shadow(0 1px 0 rgba(255, 255, 255, 0.5));
+  float:left;
+
+  &:after, &:before {
+    right: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  &:after {
+    border-color: rgba(164, 208, 71, 0);
+    border-right-color: #a4d047;
+    border-width: 5px;
+    top: 50%;
+    margin-top: -5px;
+  }
+  &:before {
+    border-color: rgba(134, 178, 39, 0);
+    border-right-color: #86b227;
+    border-width: 6px;
+    top: 50%;
+    margin-top: -6px;
+  }
+}
+

@@ -3,8 +3,32 @@
 
 .show-topic
   .row.topic-links.ptop40.mleft20.mright40
-    .span6.topic-poster-prompt
-      #{@have.poster_name} #{@have.human_status}
+    .span9
+      .recommended-flag
+        = link_to "#" do
+          #{@have.poster_name}
+        %span.text
+          \&nbsp;##{@have.human_status}
+          this
+
+        - if @topic.recommended?
+          %span.text &nbsp;and
+          %span.recommended-tag
+            %span.recomend-icon
+            Recommended it!
+
+      .share-links
+        %span.text
+          Share
+        - twitter_share_url = twitter_url(@topic)
+        - facebook_share_url = facebook_url(@topic)
+
+        = link_to new_topic_email_share_path(@topic), class: "email-icon", data: { remote: true } do
+          &nbsp;
+        = link_to twitter_share_url, class: "twitter-icon", data: { 'tweet-intent' => twitter_share_url } do
+          &nbsp;
+        = link_to facebook_share_url, facebook_data_params(@topic).merge(class: "facebook-icon like-topic") do
+          &nbsp;
 
     - if current_user
       .pull-right
