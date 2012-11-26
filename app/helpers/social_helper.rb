@@ -3,7 +3,7 @@ module SocialHelper
   def facebook_share_button
     social_share_button :facebook
   end
-  
+
   def twitter_share_button
     social_share_button :twitter
   end
@@ -16,7 +16,7 @@ module SocialHelper
     url = ShareTracker.tag(url, response.topic)
     social_info_wrapper :recommend, response, facebook.like(url)
   end
-  
+
   def response_tweet (response, url)
     url   = ShareTracker.tag(url, response.topic)
     title = response.topic.share_title
@@ -40,43 +40,17 @@ module SocialHelper
   def twitter_url_for(string)
     "http://twitter.com/%s" % string
   end
-  
+
   def facebook
     @facebook ||= FacebookHelper
   end
-  
+
   def twitter
     @twitter ||= TwitterHelper
   end
-  
-  def open_graph_tags
-    [
-      "\n",
-      open_graph_tag( :type, :article ),
-      open_graph_tag( :site_name, "Prizzm" ),
-      open_graph_tag( :url, open_graph_info[:url] ),
-      open_graph_tag( :title, h(open_graph_info[:title]) ),
-      open_graph_tag( :description, h(open_graph_info[:desc]) ),
-      open_graph_tag( :image, open_graph_info[:image] ),
-      "\n"
-    ].join("\n").html_safe
-  end
-  
-  def open_graph_tag (name, content)
-    ('<meta property="og:%s" content="%s" />' % [name, content]).html_safe
-  end
-  
-  def open_graph_info
-    {
-      :title => title,
-      :url   => request.url,
-      :image => absolute_url("/images/app/open-graph-image.png"),
-      :desc  => "Prizzm - collaborate with brands, share ideas & help make products you can't live without!"
-    }
-  end
-  
+
+
   module FacebookHelper
-    
     def self.script
       script = <<-EOF
         <div id="fb-root"></div>
@@ -88,28 +62,26 @@ module SocialHelper
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
       EOF
-      
+
       script.html_safe
     end
-    
+
     def self.like (url)
-      button = '<div class="fb-like" data-href="%s" data-send="true" data-layout="button_count" 
+      button = '<div class="fb-like" data-href="%s" data-send="true" data-layout="button_count"
         data-show-faces="false" data-action="recommend"></div>'
-        
+
       (button % url).html_safe
     end
-    
   end
-  
+
+
   module TwitterHelper
-    
     def self.tweet (text, url)
-      button = '<a href="https://twitter.com/share" class="twitter-share-button" data-url="%s" 
-        data-text="%s" data-count="none" data-via="Mightbuy">Tweet</a><script type="text/javascript" 
+      button = '<a href="https://twitter.com/share" class="twitter-share-button" data-url="%s"
+        data-text="%s" data-count="none" data-via="Mightbuy">Tweet</a><script type="text/javascript"
         src="//platform.twitter.com/widgets.js"></script>'
-        
+
       (button % [url, text]).html_safe
     end
   end
-  
 end
