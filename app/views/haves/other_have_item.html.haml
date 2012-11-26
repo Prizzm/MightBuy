@@ -16,13 +16,16 @@
       .share-links
         %span.text
           Share
-        = link_to "#", class: "email-icon" do
+        - twitter_share_url = twitter_url(@topic)
+        - facebook_share_url = facebook_url(@topic)
+
+        = link_to new_topic_email_share_path(@topic), class: "email-icon", data: { remote: true } do
           &nbsp;
-        = link_to "#", class: "twitter-icon" do
+        = link_to twitter_share_url, class: "twitter-icon", data: { 'tweet-intent' => twitter_share_url } do
           &nbsp;
-        = link_to "#", class: "facebook-icon" do
+        = link_to facebook_share_url, facebook_data_params(@topic).merge(class: "facebook-icon like-topic") do
           &nbsp;
-          
+
     - if current_user
       .pull-right
         .btn-group

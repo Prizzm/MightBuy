@@ -33,20 +33,19 @@
                         = image_tag(topic.icon_image, size: "64x64", alt: "icon")
                         %span.mask-64
 
-            - if @user == current_user
-              .wishlist
-                %span.text
-                  Share 'I Mightbuy' list via
+            .wishlist
+              %span.text
+                Share 'I Mightbuy' list via
 
-                - twitter_share_url = twitter_url(url: user_url(current_user), text: 'View my wishlist')
-                - facebook_share_url = facebook_url(url: user_url(current_user), text: 'View my wishlist')
+              - twitter_share_url = twitter_url(@user)
+              - facebook_share_url = facebook_url(@user)
 
-                = link_to twitter_share_url, class: "twitter-icon", data: { 'twitter-intent' => twitter_share_url } do
-                  &nbsp;
-                = link_to facebook_share_url, class: "facebook-icon" do
-                  &nbsp;
-                %br.clear
-                %hr
+              = link_to twitter_share_url, class: "twitter-icon", data: { 'twitter-intent' => twitter_share_url } do
+                &nbsp;
+              = link_to facebook_share_url, facebook_data_params(@user).merge(class: "facebook-icon like-topic") do
+                &nbsp;
+              %br.clear
+              %hr
 
       .row
         .span4#user-have-topics

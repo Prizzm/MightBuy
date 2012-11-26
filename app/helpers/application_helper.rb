@@ -260,29 +260,71 @@ module ApplicationHelper
      \"&topic[url]=\"+encodeURIComponent(window.location.href)); })() })();"
   end
 
-  def topic_url_helper(topic)
+
+
+  def share_topic_url_helper(topic)
     topic.ihave? ? have_url(topic): topic_url(topic)
   end
 
-  def topic_image_url_helper(topic)
+
+  def share_topic_image_url_helper(topic)
     url = topic.image.try(:url).to_s
     url = "#{request.base_url}/#{url}" unless /http/.match(url)
     url
   end
 
-  def topic_caption_helper(topic)
-    if topic.ihave?
-      "I Have Bought #{topic.subject}"
+
+  def share_topic_caption_helper(topic)
+    if topic.user === current_user
+      string = "I "
+      if topic.ihave?
+        string += "#have"
+      else
+        string += "#mightbuy"
+      end
     else
-      "I MightBuy #{topic.subject}"
+      string = "#{topic.user.name} "
+      if topic.ihave?
+        string += "#has"
+      else
+        string += "#mightbuy"
+      end
+    end
+
+    string += " #{topic.subject} #{topic_url(topic)}"
+  end
+
+
+  def share_wishlist_caption_helper(user)
+    if user == current_user
+      "Things I #mightbuy.. hint hint"
+    else
+      "Checkout #{user.name}'s #wishlist on #mightbuy #{user_url(user)} .. hint hint"
     end
   end
+
+
+  def share_wishlist_name_helper(user)
+    if user == current_user
+      "My Wishlist"
+    else
+      "#{user.name} Wishlist"
+    end
+  end
+
+
 
   def twitter_url(object)
     if object.is_a? Topic
       query_params = {
-        url:  topic_url_helper(object),
-        text: topic_caption_helper(object),
+        url:  share_topic_url_helper(object),
+        text: share_topic_caption_helper(object),
+        via: 'mightbuy'
+      }.to_query
+    elsif object.is_a? User
+      query_params = {
+        url:  user_url(object),
+        text: share_wishlist_caption_helper(object),
         via: 'mightbuy'
       }.to_query
     elsif object.is_a? Hash
@@ -300,10 +342,20 @@ module ApplicationHelper
 
 
   def facebook_url(object)
-    if object.is_a? Hash
+    if object.is_a? Topic
       query_params = {
-        u:  object[:url],
-        t: object[:text]
+        url:  share_topic_url_helper(object),
+        text: share_topic_caption_helper(object)
+      }.to_query
+    elsif object.is_a? User
+      query_params = {
+        url:  user_url(object),
+        text: share_wishlist_caption_helper(object)
+      }.to_query
+    elsif object.is_a? Hash
+      query_params = {
+        url:  object[:url],
+        text: object[:text]
       }.to_query
     else
       return
@@ -312,13 +364,34 @@ module ApplicationHelper
     "https://www.facebook.com/sharer.php?#{query_params}"
   end
 
-  def facebook_data_params(topic)
-    {
-      "data-name" => topic.subject,
-      "data-link" => topic_url_helper(topic),
-      "data-picture" => topic_image_url_helper(topic),
-      "data-caption" => topic_caption_helper(topic),
-      "data-description" => topic.body
-    }
+  def facebook_data_params(object)
+    if object.is_a? Topic
+      {
+        data: {
+          name: object.subject,
+          link: share_topic_url_helper(object),
+          picture: share_topic_image_url_helper(object),
+          caption: share_topic_caption_helper(object),
+          description: object.body || ''
+        }
+      }
+    elsif object.is_a? User
+      {
+        data: {
+          name: share_wishlist_name_helper(object),
+          link: user_url(object),
+          picture: asset_url('mightbuy-logo.png'),
+          caption: 'MightBuy.it',
+          description: share_wishlist_caption_helper(object)
+        }
+      }
+    else
+      return
+    end
+  end
+
+
+  def asset_url asset
+    "#{request.protocol}#{request.host_with_port}#{asset_path(asset)}"
   end
 end
