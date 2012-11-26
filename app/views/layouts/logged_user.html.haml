@@ -2,13 +2,16 @@
 %html
   %head
     = yield :head
-    %title MightBuy
-    %meta{'name'=>"apple-itunes-app", 'content'=>"app-id=548123429"}
-    = stylesheet_link_tag "website", :media => "all"
-    = javascript_include_tag "website"
-    = render partial: "partials/uservoice"
+
+    = render partial: 'partials/meta', locals: { topic: @topic }
     = csrf_meta_tags
 
+    = stylesheet_link_tag "website", :media => "all"
+    = javascript_include_tag "website"
+
+    = render partial: "partials/uservoice"
+
+    %title MightBuy
   %body
     = render partial: "shares/social_requirements"
     #flash-notice
