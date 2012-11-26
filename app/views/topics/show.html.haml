@@ -1,7 +1,6 @@
+= title_tag @topic.subject
 = javascript_tag "Mightbuy.initialTags = #{@topic.tag_array}"
 
-= content_for :head do
-  %title= @topic.subject
 = link_to new_have_path, class: "btn btn-red add-item" do
   %i.icon-plus-sign.icon-white
   Add an item
@@ -11,7 +10,7 @@
       = link_to profile_path, :class => "btn btn-red btn-small" do
         %i.icon-chevron-left.mtop1.icon-white
         Back to list view
-        
+
     - if current_user == @topic.user
       %ul.nav.nav-pills.pull-right
         %li.dropdown
