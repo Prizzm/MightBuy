@@ -15,26 +15,30 @@
     color: #4E3227;
 
     h2 {
-      font-family: Museo700;
-      font-size: 28px;
-      font-weight: 300;
+      font-family: Museo500;
+      font-size: 21px;
+      font-weight: 700;
     }
 
-    p {
+    div {
       width: 430px;
       line-height: 24px;
       margin: 10px 0px;
 
       img {
-        margin: -10px 5px 0px 0px;
+        margin: 0 5px 0px 0px;
+      }
+
+      img.last {
+        margin: 0 5px 20px 0px;
       }
     }
 
-    p.first-point {
+    .first-point {
       margin-top: 20px;
     }
 
-    p.last-point {
+    .last-point {
       margin-bottom: 20px;
     }
   }

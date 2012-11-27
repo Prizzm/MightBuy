@@ -25,3 +25,5 @@ reports/
 /public/assets
 /config/database.yml
 
+.idea/.generators
+.idea/.rakeTasks
