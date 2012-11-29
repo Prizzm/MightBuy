@@ -5,7 +5,7 @@
 @import "style";
 .welcomes-content {
   font-family: Museo500;
-  margin-top: 70px;
+  margin-top: 30px;
   text-shadow: 1px 2px 0px #FCF8F5;
   padding-bottom: 10px;
 
@@ -15,32 +15,36 @@
     color: #4E3227;
 
     h2 {
-      font-family: Museo700;
-      font-size: 28px;
-      font-weight: 300;
+      font-family: Museo500;
+      font-size: 21px;
+      font-weight: 700;
     }
 
-    p {
+    div {
       width: 430px;
       line-height: 24px;
       margin: 10px 0px;
 
       img {
-        margin: -10px 5px 0px 0px;
+        margin: 0 5px 0px 0px;
+      }
+
+      img.last {
+        margin: 0 5px 20px 0px;
       }
     }
 
-    p.first-point {
+    .first-point {
       margin-top: 20px;
     }
 
-    p.last-point {
+    .last-point {
       margin-bottom: 20px;
     }
   }
 
   .mac-iphone-image {
-    background: image-url("iphone.png") 93% 93% no-repeat, image-url("mac-screen.png") right bottom no-repeat;
+    background: image-url("iphone.png") 93% 93% no-repeat, image-url("mac-screen-01.png") right bottom no-repeat;
     height: 417px;
 
     #iphone-bubble {

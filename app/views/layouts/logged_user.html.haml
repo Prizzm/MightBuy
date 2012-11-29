@@ -9,7 +9,7 @@
     = stylesheet_link_tag "website", :media => "all"
     = javascript_include_tag "website"
 
-    = render partial: "partials/uservoice"
+    /= render partial: "partials/uservoice"
 
     %title= "MightBuy - #{content_for(:title).empty? ? "Track stuff you might buy" : content_for(:title)}"
   %body

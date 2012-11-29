@@ -2,19 +2,28 @@
   .row
     .span5
       .welcome-description
-        %h2 Add a link to anything.
-        %h2 Get your friends feedback.
-        %p.first-point
+        %h3 Track anything you #mightbuy
+        .first-point
           = image_tag("check-mark.png")
-          Add to your list from any website
-        %p
+          Bookmark from any website.
+        %div
           = image_tag("check-mark.png")
-          Or on your mobile.
-        %p.last-point
+          %a{:href=>"/search"} Search 
+          or 
+          %a{:href=>"/topics"} Browse.
+        .first-point
           = image_tag("check-mark.png")
-          Share items when you need friends' advice.
+          Use 
+          = link_to("mobile", "http://itunes.apple.com/app/mightbuy/id548123429?mt=8")
+          while out shopping.
+        .first-point
+          = image_tag("check-mark.png")
+          Read reviews, write reviews. 
+        .last-point
+          = image_tag("check-mark.png")
+          Ask friends! Drop some hints! Xmas time!
 
-        It's almost as fun as actually buying things!
+
       .row
         .span5
           = link_to(new_user_registration_path, :class=>"btn btn-red btn-rounded") do
