@@ -2,8 +2,7 @@
   .row
     .span5
       .welcome-description
-        %h2 MightBuy - your universal wishlist!
-        %h3 Add things you might buy&hellip;
+        %h3 Track anything you #mightbuy
         .first-point
           = image_tag("check-mark.png")
           Bookmark from any website.
@@ -11,18 +10,19 @@
           = image_tag("check-mark.png")
           %a{:href=>"/search"} Search 
           or 
-          %a{:href=>"/topics"} Browse 
-          trending items.
+          %a{:href=>"/topics"} Browse.
+        .first-point
+          = image_tag("check-mark.png")
+          Use 
+          = link_to("mobile", "http://itunes.apple.com/app/mightbuy/id548123429?mt=8")
+          while out shopping.
+        .first-point
+          = image_tag("check-mark.png")
+          Read reviews, write reviews. 
         .last-point
           = image_tag("check-mark.png")
-          Use mobile while shopping.
+          Ask friends! Drop some hints! Xmas time!
 
-        %h3 Drop some hints!
-        .first-point
-          = image_tag("check-mark.png", :class=>"pull-left last")
-          How are people going to know what you
-          %br
-          want for xmas otherwise??
 
       .row
         .span5
