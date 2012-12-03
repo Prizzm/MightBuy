@@ -1,12 +1,12 @@
 #topic-deals
   .span4
     %h3 Deals
-    - if @topic.product.bargin
+    - if @topic.product.bargin and @topic.bargin_valid?
       .bargin
         .description
           = @topic.product.bargin.description
           - if @topic.product.bargin.accept_payments == true && @topic.product.bargin.bargin_type == "percentage"
-            %form{:action => "/topics/#{@topic.shortcode}/payments/process", :method => "post", :style => "margin-left: 40px;"}	
+            %form{:action => "/topics/#{@topic.shortcode}/payments/process", :method => "post", :style => "margin-left: 40px;"}
               %script.stripe-button{"data-address" => "", "data-amount" => ((@topic.product.price*100.0)*@topic.product.bargin.value.to_f/100).to_i, "data-description" => @topic.product.name, "data-key" => "pk_LdHsiwROde1xSfRJxlblt2gNiCD8m", :src => "https://button.stripe.com/v1/button.js"}
         %input{:class => "button_buy", :name => "commit",
           :type => "submit", :value => "Buy It!",
