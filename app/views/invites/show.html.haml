@@ -14,7 +14,7 @@
         .span6
           /Set your password!
           %br
-          = f.password_field :password, {:placeholder => "password"}
+          = f.password_field :password, {:placeholder => "set your password"}
           %hr
           %h5
             Features
@@ -29,13 +29,16 @@
               Buy online!
           %hr  
           %h5
-            /Deals
-          .deals
-            %span.vote-count
-              /5 
-            /Votes from friends = 
-            %span.percent-off
-              /20% off
+            - if @topic.product.bargin
+              Bonus Incentives
+              .deals
+                %span.vote-count
+                  = @topic.product.bargin.bargin_conditions.first.operator  
+                  = @topic.product.bargin.bargin_conditions.first.operand  
+                  = @topic.product.bargin.bargin_conditions.first.object
+                  from friends = 
+                %span.percent-off
+                  = @topic.product.bargin.offer
         .span6
           %div.your-pic
             = image_tag topic_image(@topic), alt: @topic.subject
