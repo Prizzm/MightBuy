@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202003353) do
+ActiveRecord::Schema.define(:version => 20121203072229) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(:version => 20121202003353) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "bargin_conditions", :force => true do |t|
+    t.integer  "bargin_id"
+    t.string   "object"
+    t.string   "operator"
+    t.integer  "operand"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "bargin_conditions", ["bargin_id"], :name => "index_bargin_conditions_on_bargin_id"
 
   create_table "bargins", :force => true do |t|
     t.string   "name"
