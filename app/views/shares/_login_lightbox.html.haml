@@ -18,7 +18,7 @@
             = f.input :email
           - else
             = f.input :email, input_html: { value: "" }
-          
+
           = f.input :password
           %a{:href=>"#"} Forgot your password?
           .user-signin-form-submit
@@ -32,7 +32,7 @@
                 .facebook-icon.pull-left
               = link_to user_omniauth_authorize_path(:twitter) do
                 .twitter-icon.pull-left
-            
+
             Or you could sign in with
             %br
             Facebook & Twitter!
@@ -42,10 +42,25 @@
       .span5.col-right
         %p
           Join us today!
-        = simple_form_for user, remote: true do |f|
-          = f.input :name, label: "Username", required: false
-          = f.input :password
-          = f.input :email
+        = form_for user, html: { data: { remote: true, type: :json } } do |f|
+          .control-group
+            = f.label :name, class: 'control-label'
+            .controls
+              = f.text_field :name, required: false
+              .help-inline
+
+          .control-group
+            = f.label :password, class: 'control-label'
+            .controls
+              = f.password_field :password
+              .help-inline
+
+          .control-group
+            = f.label :email, class: 'control-label'
+            .controls
+              = f.text_field :email
+              .help-inline
+
           .new-user-form-submit
             = f.submit "Get Started!", class: "btn btn-red pull-right"
           .clear
@@ -57,7 +72,7 @@
                 .facebook-icon.pull-left
               = link_to user_omniauth_authorize_path(:twitter) do
                 .twitter-icon.pull-left
-            
+
             Or you could also join us
             %br
             with Facebook & Twitter!

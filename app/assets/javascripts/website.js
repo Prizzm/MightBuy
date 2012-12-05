@@ -28,3 +28,4 @@
 //= require have
 //= require templates/public-search-result
 //= require invites
+//= require registrations
