@@ -283,7 +283,12 @@ module ApplicationHelper
         string += "#mightbuy"
       end
     else
-      string = "#{topic.user.name} "
+      if topic.user
+        string = "#{topic.user.name} "
+      else
+        string = "anonymous "
+      end
+
       if topic.ihave?
         string += "#has"
       else
