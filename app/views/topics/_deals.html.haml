@@ -1,7 +1,7 @@
 #topic-deals
   .span4
     %h3 Deals
-    - if @topic.product.bargin and @topic.bargin_valid?
+    - if @topic.product.bargin
       .bargin
         .description
           = @topic.product.bargin.description
@@ -11,6 +11,12 @@
         %input{:class => "button_buy", :name => "commit",
           :type => "submit", :value => "Buy It!",
           :class => "btn-large btn-danger",
-          :onClick => "window.location.href = '#{@topic.product.bargin.url}'"}
+          :onClick => "window.location.href = '#{@topic.product.bargin.url}'",
+          :disabled => !@topic.bargin_valid? }
         %br
+        - if @topic.product.bargin.bargin_conditions
+          Valid with  
+          = @topic.product.bargin.bargin_conditions.first.operator  
+          = @topic.product.bargin.bargin_conditions.first.operand  
+          = @topic.product.bargin.bargin_conditions.first.object 
         %br
