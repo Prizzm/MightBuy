@@ -9,6 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
     if @user.save
       @user.ensure_authentication_token!
 
+      sign_in(@user)
       respond_to do |format|
         format.json do
            render :json => @user.to_json
