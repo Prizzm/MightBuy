@@ -4,7 +4,7 @@
   .row.topic-links.ptop40.mleft20.mright40
     .span9
       .recommended-flag
-        = link_to "#" do
+        = link_to user_path(@topic.user) do
           #{@topic.poster_name}
         %span.text
           \&nbsp;##{@topic.human_status}
