@@ -4,12 +4,12 @@
   .modal-header
     %button.close{type: "button", "data-dismiss" => "modal", "aria-hidden" => "true"}
       &times
-    %h3 Welcome to MightBuy.it! 
+    %h3 Welcome to MightBuy.it!
   = form_for(current_user, :url => update_password_invite_path(), remote: true,html: {method: :put}) do |f|
     .modal-body
       .row-fluid
         .span12
-          MightBuy is for tracking things you MightBuy, such as the <b> #{@topic.product.try(:name)} </b> you looked at when visiting <b> #{@topic.business.try(:name)} </b>! 
+          MightBuy is for tracking things you MightBuy, such as the <b> #{@topic.product.try(:name)} </b> you looked at when visiting <b> #{@topic.business.try(:name)} </b>!
       .row-fluid
         .span6
           /Set your password!
@@ -22,22 +22,22 @@
             %li
               Ask <b> #{@topic.business.try(:name)} </b> questions about this product
             %li
-              Share, ask your friends to vote!              
+              Share, ask your friends to vote!
             %li
               Save to your wishlist for later
             %li
               Buy online!
-          %hr  
+          %hr
           %h5
             - if @topic.product.bargin
               Bonus Incentives
               .deals
-                - if @topic.product.bargin.bargin_conditions
+                - if @topic.product.bargin.bargin_conditions.length > 0
                   %span.vote-count
-                    = @topic.product.bargin.bargin_conditions.first.operator  
-                    = @topic.product.bargin.bargin_conditions.first.operand  
+                    = @topic.product.bargin.bargin_conditions.first.operator
+                    = @topic.product.bargin.bargin_conditions.first.operand
                     = @topic.product.bargin.bargin_conditions.first.object
-                    from friends = 
+                    from friends =
                 %span.percent-off
                   = @topic.product.bargin.offer
         .span6
@@ -45,6 +45,6 @@
             = image_tag topic_image(@topic), alt: @topic.subject
     .modal-footer
       .powered-caption
-        Powered by: 
+        Powered by:
         %img{:src=>"/assets/logo-small.png"}
       = f.submit "Save", :class => 'btn btn-red'
