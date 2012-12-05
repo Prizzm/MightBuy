@@ -2,8 +2,7 @@
   %hr.mleft60.mright40
   .topic-votes-and-deals
     #topic-percentage-row
-      - unless @topic.votes.empty?
-        = render :partial => "/topics/vote_percentage", locals: {topic: @topic}
+      = render :partial => "/topics/vote_statistics", locals: {topic: @topic}
     - if @topic.has_bargin?
       = render :partial => "/topics/deals", locals: {topic: @topic}
     .clear
