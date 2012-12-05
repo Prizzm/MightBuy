@@ -1,7 +1,7 @@
 #topic-deals
   .span4
     %h3 Deals
-    - if @topic.product.bargin
+    - if @topic.product.bargin and (@topic.product.bargin.public or @topic.user == current_user.id)
       .bargin
         .description
           = @topic.product.bargin.description
@@ -14,9 +14,9 @@
           :onClick => "window.location.href = '#{@topic.product.bargin.url}'",
           :disabled => !@topic.bargin_valid? }
         %br
-        - if @topic.product.bargin.bargin_conditions
-          Valid with  
-          = @topic.product.bargin.bargin_conditions.first.operator  
-          = @topic.product.bargin.bargin_conditions.first.operand  
-          = @topic.product.bargin.bargin_conditions.first.object 
+        - if @topic.product.bargin.bargin_conditions.length > 0
+          Valid with
+          = @topic.product.bargin.bargin_conditions.first.operator
+          = @topic.product.bargin.bargin_conditions.first.operand
+          = @topic.product.bargin.bargin_conditions.first.object
         %br
