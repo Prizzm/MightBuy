@@ -1,0 +1,20 @@
+.span5
+  %h3= "Votes #{topic.vote_statistics[:number][:total]}"
+  %div.vote-statistics
+    %span.yes-votes
+      .yes-no-flag
+        Yes
+      .percentage
+        = topic.vote_statistics[:percentage][:yes]
+        \%
+      .number
+        = "#{topic.vote_statistics[:number][:yes]} / #{topic.vote_statistics[:number][:total]}"
+    %span.no-votes
+      .yes-no-flag
+        No
+      .percentage
+        = topic.vote_statistics[:percentage][:no]
+        \%
+      .number
+        = "#{topic.vote_statistics[:number][:no]} / #{topic.vote_statistics[:number][:total]}"
+  .clear

@@ -770,39 +770,48 @@ border-bottom: none;
 }
 
 
-.vote-percentages > span {
-  padding-top: 45px;
-  padding-bottom: 45px;
-  padding-left: 12px;
-  padding-right: 12px;
+.vote-statistics {
+  .yes-votes,
+  .no-votes {
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #F7F7F7;
+    cursor: pointer;
+    float: left;
+    margin: 5px 20px 5px 0px;
+    padding: 45px 12px;
+    text-align: center;
+    width: 98px;
 
-  background-color: #F7F7F7;
-  cursor: pointer;
-  width: 98px;
-  text-align: center;
-  float: left;
-  -webkit-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  margin: 5px 20px 5px 0px;
-  &:hover {
-    background-color: #eeeeee;
+    &:hover {
+      background-color: #eeeeee;
+    }
+  }
+
+  .total {
+    color: #000;
+  }
+
+  .percentage {
+    margin-top: 10px;
+    font-size: 1.8em;
+  }
+
+  .number {
+    margin-top: 12px;
+  }
+
+  .yes-votes {
+    color: #167f07;
+  }
+
+  .no-votes {
+    color: #b35158;
   }
 }
 
-div.percentage {
-  margin-top: 10px;
-  font-size: 2em;
-}
-
-span.yes-votes {
-  color: #167f07;
-}
-
-span.no-votes {
-  color: #b35158;
-}
 
 .bargin {
   input {

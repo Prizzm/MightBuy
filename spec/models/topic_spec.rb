@@ -20,7 +20,7 @@ describe Topic do
   describe "creating new topis" do
     before do
       @topic_data = {
-        "subject"=>"htc one x", "url"=>"http://www.htc.com/www/smartphones/", 
+        "subject"=>"htc one x", "url"=>"http://www.htc.com/www/smartphones/",
         "image_url"=>"http://www.htc.com/managed-assets/www/smartphones/htc-one-x/explorer/htc-one-x.png",
         "price"=>"9", "body"=>"asdsa"
       }
@@ -106,9 +106,17 @@ describe Topic do
     it "should return percentage votes" do
       another_user = FactoryGirl.create(:user)
       @topic.vote(another_user,true)
-      @topic.percentage_votes.should_not be_empty
-      @topic.percentage_votes[:yes].should == 100
-      @topic.percentage_votes[:no].should == 0
+      @topic.vote_statistics.should_not be_empty
+      @topic.vote_statistics[:percentage][:yes].should == 100
+      @topic.vote_statistics[:percentage][:no].should == 0
+    end
+
+    it "should return number votes" do
+      @topic.vote(FactoryGirl.create(:user), true)
+      @topic.vote(FactoryGirl.create(:user), true)
+      @topic.vote_statistics.should_not be_empty
+      @topic.vote_statistics[:number][:yes].should == 2
+      @topic.vote_statistics[:number][:no].should == 0
     end
   end
 
