@@ -23,7 +23,7 @@
           %p{style: "font-family: Museo500;color: #4E3227;font-size: 16px;"}
             = "#{@voter.name.capitalize} has #{@vote.buyit? ? "upvoted" : "downvoted"} your item:"
           %p{style: "font-family: Museo500;color: #4E3227;font-size: 16px;"}
-            = "Now #{@topic.percentage_votes[:yes]}% of voters recommend this item"
+            = "Now #{@topic.vote_statistics[:percentage][:yes]}% of voters recommend this item"
           %p{style: "font-family: Museo500;color: #4E3227;font-size: 16px;"}
             = "Visit "
             = link_to @topic.subject, topic_url(@topic), target: "_blank"

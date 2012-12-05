@@ -7,7 +7,7 @@
   <%- flash.clear -%>
 
   <% unless @topic.votes.empty? -%>
-    $("#topic-percentage-row").html("<%= escape_javascript(render partial: 'topics/vote_percentage', locals: {topic: @topic}) -%>");
+    $("#topic-percentage-row").html("<%= escape_javascript(render partial: 'topics/vote_statistics', locals: {topic: @topic}) -%>");
   <% end -%>
 <% else -%>
   $(document).bind('reveal.facebox', function() {
