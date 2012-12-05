@@ -32,11 +32,12 @@
             - if @topic.product.bargin
               Bonus Incentives
               .deals
-                %span.vote-count
-                  = @topic.product.bargin.bargin_conditions.first.operator  
-                  = @topic.product.bargin.bargin_conditions.first.operand  
-                  = @topic.product.bargin.bargin_conditions.first.object
-                  from friends = 
+                - if @topic.product.bargin.bargin_conditions
+                  %span.vote-count
+                    = @topic.product.bargin.bargin_conditions.first.operator  
+                    = @topic.product.bargin.bargin_conditions.first.operand  
+                    = @topic.product.bargin.bargin_conditions.first.object
+                    from friends = 
                 %span.percent-off
                   = @topic.product.bargin.offer
         .span6
