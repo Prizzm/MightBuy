@@ -10,8 +10,14 @@ class UsersController < ApplicationController
 
   private
   def find_user!
-    unless @user = User.find(params[:id])
-      redirect_to root_path
+    if params[:id] =~ /^[0-9]+$/
+      @user = User.find_by_id(params[:id])
+    else
+      @user = User.find_by_slug(params[:id])
+    end
+
+    unless @user
+      redirect_to root_path, alert: 'User does not exist'
     end
   end
 
