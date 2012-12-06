@@ -501,8 +501,8 @@ ol.topics div.price.mtop5{
 .public-search-result-scraper-info .image-selector .reset-btn {
   margin: 0 0 20px 0;
   position: absolute;
-  top: -54px;
-  left: 481px;
+  top: -59px;
+  left: 580px;
 }
 
 .vote-yes,
@@ -920,4 +920,31 @@ ul.tagit{
     margin-top: -6px;
   }
 }
+.public-search-result td .image-selector.small {
+  min-height: auto;
+}
+.image-selector.small{
 
+  a.image {
+    width: 150px;
+    height: 150px;
+  }
+}
+.mtop3{
+  margin-top:3px;
+}
+.mleft5{
+  margin-left:5px;
+}
+.public-search-result-google-info.small{
+
+  .description{
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .ask-title{
+    font-size:16px;
+    line-height:25px;
+  }
+}

@@ -206,7 +206,8 @@
 .topic-form-wrapper {
   padding: 20px;
   margin: 60px 0px 20px 20px;
-  label,input,button,select,textarea {
+
+  label, input, button, select, textarea {
     font-size: 18px;
     color: #4e3227;
   }
@@ -247,16 +248,9 @@
   position: relative;
 }
 
-.topic-search-link {
-  position: absolute;
-  top: 28px;
-  right: 10px;
-  z-index:1000;
-
-  &.btn-green{
-    padding: 9px 10px;
-    @include border-radius(0 0 2px 2px);
-  }
+.topic-search-link.btn-green{
+  padding: 9px 10px;
+  position: relative;
 }
 
 .topic-tabs {
@@ -501,8 +495,15 @@ ol.topics {
 }
 .topic-form-wrapper{
 
-  input[type="text"], input[type="number"], input[type="url"], select, textarea{
+  input[type="text"], input[type="number"], input[type="url"], select, textarea, .input-append.d-inline-block{
     @include box-shadow(0 0 0 4px #f6f3ee);
+  }
+  .input-append.d-inline-block{
+    display:inline-block;
+    @include border-radius(3px);
+  }
+  input[type="text"].input-what-might{
+    @include box-shadow(none);
   }
   textarea{
     resize:none;
