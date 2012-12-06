@@ -80,30 +80,31 @@
 #public-search-form{
   margin:15px 0 0 5px;
   
-  #q{
+  .input-append.d-inline-block{
     @include box-shadow(0 0 0 5px rgba(0,0,0,0.10));
-    @include border-radius(3px 3px 3px 3px);
+    display:inline-block;
+    @include border-radius(3px);
+  }
+
+  #q{
     background-color: white;
-    border: 1px solid #ccc;
+    border: 1px solid #aaa;
     height: 25px;
-    width: 450px;
+    width: 400px;
     color: #4E3227;
     font-size: 18px;
     line-height: 18px;
     padding: 4px;
   }
   #q:focus{
-    @include box-shadow(0 0 0 5px rgba(0,0,0,0.10));
     border-color:rgba(82, 168, 236, 0.8);
     outline:none;
   }
   
   .btn-green{
-    @include border-radius(2px);
-    position: relative;
-    top:0px;
-    right: 151px;
-    padding: 7px 15px;
+    padding: 4px 15px 0 15px;
+    line-height: 20px;
+    height: 35px;
   }
 }
 .search-items{
@@ -146,11 +147,11 @@
     color: #849C60;
     float: right;
     font-size: 40px;
-    margin-right: 25px;
     
     i{
+      font-style: normal;
       font-size: 20px;
-      color:#666;
+      color:#999;
     }
   }
 

@@ -1,22 +1,22 @@
 <tr class="public-search-result" data-url="<%= result_data.unescapedUrl %>" data-result-data='<%= JSON.stringify(result_data) %>' >
-  <td class="public-search-result-scraper-info" style="">
-    <span class="loading">&nbsp;</span>
-    <div class="image-selector small"></div>
-  </td>
   <td class="public-search-result-google-info small" style="">
     <a class="title" target="_blank" href="<%= result_data.unescapedUrl %>"><%= result_data.titleNoFormatting %></a>
     <div class="description"><%= result_data.content %></div>
     <div class="url"><%= result_data.visibleUrl %></div>
     <div class="row">
-      <a class="mightbuy-button btn btn-green pull-right" href="/topics/new?topic[subject]=<%= encodeURIComponent(result_data.titleNoFormatting) %>&topic[url]=<%= encodeURIComponent(result_data.unescapedUrl) %>">Add to Might Buy</a>
+      <div class="price"><i></i></div>
       <div class="span3">
-        <div class="price"><i></i></div>
+      <a class="mightbuy-button btn btn-green" href="/topics/new?topic[subject]=<%= encodeURIComponent(result_data.titleNoFormatting) %>&topic[url]=<%= encodeURIComponent(result_data.unescapedUrl) %>">Add to Might Buy</a>
       </div>
       <div class="span3 mtop3">
-        <span class="ask-title like-topic pull-left">Ask Friends on </span>
-        <a href="javascript:void(0);" class="pull-left mleft10"><img src="/assets/facebook-icon.png" alt=""></a>
-        <a href="javascript:void(0);" class="pull-left mleft5"> <img src="/assets/twitter-icon.png" alt=""></a>
+        <span class="ask-title pull-left">Ask Friends on </span>
+        <a href="javascript:void(0);" class="pull-left mleft10 like-topic"><img src="/assets/facebook-icon.png" alt=""></a>
+        <a href="javascript:void(0);" class="pull-left mleft5 tweet-topic"><img src="/assets/twitter-icon.png" alt=""></a>
       </div>
     </div>
+  </td>
+  <td class="public-search-result-scraper-info" style="">
+    <span class="loading">&nbsp;</span>
+    <div class="image-selector small"></div>
   </td>
 </tr>
