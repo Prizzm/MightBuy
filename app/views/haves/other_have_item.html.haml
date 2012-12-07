@@ -46,7 +46,7 @@
   %hr.comment-have-separator
   .row.mleft40.mright40
     %h2 Review
-    %p= @have.body.gsub("\r\n","<br>").html_safe
+    %p= simple_format(@have.body)
   %hr.comment-have-separator
 
   .row

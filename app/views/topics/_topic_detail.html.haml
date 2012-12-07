@@ -23,7 +23,7 @@
           %script.stripe-button{"data-address" => "", "data-amount" => (@topic.product.price*100).to_i, "data-description" => @topic.product.name, "data-key" => "pk_LdHsiwROde1xSfRJxlblt2gNiCD8m", :src => "https://button.stripe.com/v1/button.js"}
 
       .topic-body.mtop15.pright20
-        = @topic.body.try(:capitalize).gsub("\r\n","<br>").html_safe
+        = simple_format(@topic.body.try(:capitalize))
         
 
       - if @topic.product.accept_payments
