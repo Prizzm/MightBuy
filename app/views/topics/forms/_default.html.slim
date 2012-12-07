@@ -1,8 +1,8 @@
 div{id="topic_fields"}
   div.input.topic-subject
     = form.label(:subject, "What might you buy?")
-    .input-append
-      = form.input_field(:subject, :class=>"test")
+    .input-append.d-inline-block
+      = form.input_field(:subject, :class=>"input-what-might")
       a href="javascript:void(0);" class="topic-search-link btn btn-green show-google-search"
         |Search
 
