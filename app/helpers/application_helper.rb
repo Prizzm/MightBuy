@@ -400,6 +400,10 @@ module ApplicationHelper
     "#{request.protocol}#{request.host_with_port}#{asset_path(asset)}"
   end
 
+  def mightbuy_tag_line
+    "Whislist + Reviews"
+  end
+
 
   def title_tag(string)
     content_for :title, string

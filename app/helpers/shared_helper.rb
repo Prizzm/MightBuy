@@ -4,7 +4,7 @@ module SharedHelper
   include ResponsesHelper
   
   def title (heading = nil)
-    heading ? "%s | MightBuy" % heading : "MightBuy | Track stuff you might buy"
+    heading ? "%s | MightBuy" % heading : "MightBuy | #{mightbuy_tag_line}"
   end
 
   def user_path (user, *args)

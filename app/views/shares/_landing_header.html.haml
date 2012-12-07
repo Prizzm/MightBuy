@@ -4,7 +4,7 @@
       = link_to("/") do
         = image_tag("mightbuy-logo.png", id: "mightbuy-logo")
       %p.caption
-        Wishlist + Reviews
+        = mightbuy_tag_line
     .span2.offset6
       = link_to(new_user_session_path) do
         = image_tag("signin-ribbon.png")
