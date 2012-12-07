@@ -4,7 +4,7 @@
       = link_to("/") do
         = image_tag("mightbuy-logo.png", id: "mightbuy-logo")
       %p.caption
-        Track stuff you might buy
+        = mightbuy_tag_line
     .span3.offset4
       .bookmarklet-button
         = link_to bookmarklet_url, :onclick => "return false;" do

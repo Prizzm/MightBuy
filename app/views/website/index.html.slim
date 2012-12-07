@@ -1,8 +1,8 @@
 #website class="#{ brand? ? 'brands' : 'shoppers' }"
   #content
     h1.logo
-      span= brand? ? "MightBuy." : "track stuff you might buy"
-    h2= brand? ? "Track stuff you might buy" : "Track stuff you might buy"
+      span= brand? ? "MightBuy." :  mightbuy_tag_line
+    h2= brand? ? mightbuy_tag_line : mightbuy_tag_line
 
     #sections
       

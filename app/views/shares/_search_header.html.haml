@@ -4,7 +4,7 @@
       = link_to("/") do
         = image_tag("mightbuy-logo.png", id: "mightbuy-logo")
       %p.caption
-        Track stuff you might buy
+        = mightbuy_tag_line
     .span6.offset2
       .pull-right.top-nav-links
         %a{"data-toggle" => "modal", :href => "#myModal", :role => "button"} Video

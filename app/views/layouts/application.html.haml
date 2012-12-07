@@ -11,7 +11,7 @@
 
     -#= render partial: "partials/uservoice"
 
-    %title= "MightBuy - #{content_for(:title).empty? ? "Track stuff you might buy" : content_for(:title)}"
+    %title= "MightBuy - #{content_for(:title).empty? ? mightbuy_tag_line : content_for(:title)}"
   %body
     = render  partial: "shares/flash_notice"
 
