@@ -1,7 +1,7 @@
 #topic-deals
   .span4
-    %h3 Deals
     - if @topic.product.bargin and (@topic.product.bargin.public or @topic.user == current_user)
+    %h3 Deals
       .bargin
         .description
           = @topic.product.bargin.description
