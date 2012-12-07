@@ -3,7 +3,7 @@
     .span1= image_tag avatar_image(comment.user)
     .span8
       %p.username= comment.user.name      
-      %p= comment.description.gsub("\r\n","<br>").html_safe
+      %p= simple_format(comment.description)
 
     .clear
     %hr.mleft20.mtop15.mbot15.comment-hr
