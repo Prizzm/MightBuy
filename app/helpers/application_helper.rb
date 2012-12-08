@@ -401,7 +401,7 @@ module ApplicationHelper
   end
 
   def mightbuy_tag_line
-    "Whislist + Reviews"
+    "Wishlist + Reviews"
   end
 
 
