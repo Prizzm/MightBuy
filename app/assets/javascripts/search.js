@@ -53,6 +53,16 @@ $(function(){
     e.preventDefault();
   });
 
+
+  $(document).on("click", ".tweet-topic", function(e){
+      var result_data = $(this).closest(".public-search-result").data("result-data");    	     
+      var intentUrl = $(e.currentTarget).attr("data-tweet-intent");
+      window.open(intentUrl, 'MightBuy', 'scrollbars=yes,width=600,height=250')
+
+      e.preventDefault();
+  });
+
+
   $("#public-search-form #q").autocomplete({
     source : function(request,response){
       queryParams = {q: request.term};
