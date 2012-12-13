@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203072229) do
+ActiveRecord::Schema.define(:version => 20121205183148) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20121203072229) do
     t.boolean  "accept_payments"
     t.decimal  "discount",        :precision => 6, :scale => 2
     t.string   "payment_type",                                  :default => "MightBuy"
+    t.boolean  "public"
   end
 
   create_table "beta_signups", :force => true do |t|
