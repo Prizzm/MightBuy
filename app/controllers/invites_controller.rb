@@ -1,16 +1,24 @@
-class InvitesController < ApplicationController
+class InvitesController < InheritedResources::Base
+  include ProfileHelper
 
   before_filter :find_user_with_invite_token, only: :show
+
+  # Defaults
+  defaults :resource_class => User, :collection_name => 'users', :instance_name => 'user'
+
   layout 'logged_user'
 
   def show
-    @topic = @user.topics.find_by_shortcode(params[:topic_id])
-    @comments = @topic.ordered_comments
-    @comment = Comment.new
-
-    if current_user && @topic.owner?(current_user)
-      @selected_tab = 'mightbuy'
+    if params[:topic_id]
+      @topic = @user.topics.find_by_shortcode(params[:topic_id])
+      @comments = @topic.ordered_comments
+      @comment = Comment.new
+    else
+      @topics = @user.topics
+      @topic = @topics.first
     end
+
+    @selected_tab = 'mightbuy'
   end
 
   def update_password

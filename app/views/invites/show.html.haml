@@ -1,4 +1,8 @@
-= render :template => "/topics/show"
+- if not @topics
+  = render :template => "/topics/show"
+- else
+  = render :template => "/profile/show"
+
 
 .modal.reset-pass-modal.hide.fade{id: "reset-password"}
   .modal-header
