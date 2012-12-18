@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121205183148) do
+ActiveRecord::Schema.define(:version => 20121210083104) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -212,6 +212,14 @@ ActiveRecord::Schema.define(:version => 20121205183148) do
     t.datetime "updated_at",                  :null => false
   end
 
+  create_table "customer_lead_topics", :force => true do |t|
+    t.integer "customer_lead_id"
+    t.integer "topic_id"
+  end
+
+  add_index "customer_lead_topics", ["customer_lead_id"], :name => "index_customer_lead_topics_on_customer_lead_id"
+  add_index "customer_lead_topics", ["topic_id"], :name => "index_customer_lead_topics_on_topic_id"
+
   create_table "customer_leads", :force => true do |t|
     t.string   "email"
     t.string   "name"
@@ -403,7 +411,7 @@ ActiveRecord::Schema.define(:version => 20121205183148) do
     t.string   "shortcode"
     t.string   "subject"
     t.text     "body"
-    t.string   "access"
+    t.string   "access",           :default => "public"
     t.string   "type"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
