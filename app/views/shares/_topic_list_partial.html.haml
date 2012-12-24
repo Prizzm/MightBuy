@@ -1,8 +1,8 @@
 %li{id: "topic-browse-entry-#{topic.id}"}
   .row
     .span2.item-list-image.p-rel
-      = image_tag(topic.thumbnail_image, :alt => topic.subject)
-      = link_to("", topic_path(topic), :class =>"mask-140")
+      = image_tag(topic.thumbnail_image, :alt => topic.subject, :class =>"shadow")
+      = link_to("", topic_path(topic))
     .span7.pull-right
       .row
         .span5

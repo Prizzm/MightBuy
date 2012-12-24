@@ -1,7 +1,6 @@
 .span4
   .topic-image.mleft40.p-rel
-    = image_tag topic_image(@topic), alt: @topic.subject
-    %span.mask-256
+    = image_tag topic_image(@topic), alt: @topic.subject, class: "shadow"
 .span6
   .topic-details
     .topic-subject= @topic.subject.capitalize

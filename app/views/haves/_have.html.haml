@@ -1,8 +1,8 @@
 %li{id: "topic-list-entry-#{have.id}"}
   .row
     .span2.item-list-image.p-rel
-      = image_tag(have.thumbnail_image, :alt => have.subject)
-      = link_to("", have_path(have), :class =>"mask-140")
+      = image_tag(have.thumbnail_image, :alt => have.subject, :class =>"shadow")
+      = link_to("", have_path(have))
     .span7.pull-right
       .row
         .span5

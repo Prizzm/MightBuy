@@ -910,6 +910,10 @@ border-bottom: none;
   height: 256px;
   background: image-url('mask-256.png') 0 0 no-repeat;
 }
+.shadow{
+box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.92);
+border-radius: 9px;
+}
 
 .table tbody tr:hover td, .table tbody tr:hover th{
   background:none
