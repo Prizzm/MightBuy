@@ -11,7 +11,6 @@
               %script.stripe-button{ data: { address: '', amount: ((@topic.product.price*100.0)*@topic.product.bargin.value.to_f/100).to_i, key: 'pk_LdHsiwROde1xSfRJxlblt2gNiCD8m' }, src: 'https://button.stripe.com/v1/button.js' }
 
           - else
-            = @topic.product.bargin.inspect.to_s
             - if @topic.bargin_valid?
               - if @topic.product.bargin.other and not @topic.product.bargin.other.blank?
                 %br
@@ -22,8 +21,11 @@
                 = link_to 'Get Deal!', @topic.product.bargin.url, class: 'btn-large btn-danger'
 
             - elsif @topic.product.bargin.bargin_conditions.length > 0
-              Valid with
-              = @topic.product.bargin.bargin_conditions.first.operator
-              = @topic.product.bargin.bargin_conditions.first.operand
-              = @topic.product.bargin.bargin_conditions.first.object
-            %br
+              .deals
+                - if @topic.product.bargin.bargin_conditions.length > 0
+                  %span.vote-count
+                    = @topic.product.bargin.humanize
+                    \=
+                %span.percent-off
+                  = @topic.product.bargin.offer
+              %br
